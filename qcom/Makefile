@@ -5,7 +5,7 @@ $(error Moto DT w/o overlay is undefined!!!)
 endif
 
 # Motorola Device Trees
-dtbo-$(CONFIG_ARCH_LITO) += \
+dtbo-$(CONFIG_SMITH_DTB) += \
 		lito-smith-evt1-overlay.dtbo \
 		lito-smith-dvt1a-overlay.dtbo \
 		lito-smith-dvt2a-overlay.dtbo
