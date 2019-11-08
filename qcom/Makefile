@@ -7,10 +7,12 @@ endif
 # Motorola Device Trees
 dtbo-$(CONFIG_SMITH_DTB) += \
 		lito-smith-evt1-overlay.dtbo \
+		lito-smith-evt2-overlay.dtbo \
 		lito-smith-dvt1a-overlay.dtbo \
 		lito-smith-dvt2a-overlay.dtbo
 
 lito-smith-evt1-overlay.dtbo-base := lito-moto-base.dtb
+lito-smith-evt2-overlay.dtbo-base := lito-moto-base.dtb
 lito-smith-dvt1a-overlay.dtbo-base := lito-moto-base.dtb
 lito-smith-dvt2a-overlay.dtbo-base := lito-moto-base.dtb
 
