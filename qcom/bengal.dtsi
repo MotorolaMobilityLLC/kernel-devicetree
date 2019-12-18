@@ -1064,6 +1064,7 @@
 	qcom,turing@b300000 {
 		compatible = "qcom,pil-tz-generic";
 		reg = <0xb300000 0x100000>;
+		status = "disabled";
 
 		vdd_cx-supply = <&VDD_CX_LEVEL>;
 		qcom,proxy-reg-names = "vdd_cx";
