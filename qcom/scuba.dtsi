@@ -120,6 +120,23 @@
 		method = "smc";
 	};
 
+	firmware: firmware {
+		android {
+			compatible = "android,firmware";
+			fstab {
+				compatible = "android,fstab";
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/platform/soc/4744000.sdhci/by-name/vendor";
+					type = "ext4";
+					mnt_flags = "ro,barrier=1,discard";
+					fsmgr_flags = "wait,slotselect";
+					status = "ok";
+				};
+			};
+		};
+	};
+
 	chosen {
 		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7";
 	};
@@ -210,6 +227,15 @@
 			reg = <0xf128000 0x1000>;
 			status = "disabled";
 		};
+	};
+
+	arm64_cpu_erp {
+		compatible = "arm,arm64-cpu-erp";
+		interrupt-names = "pri-dbe-irq",
+				  "pri-ext-irq";
+		interrupts = <0 43 4>,
+			     <0 41 4>;
+		poll-delay-ms = <5000>;
 	};
 
 	qcom,msm-imem@c125000 {
@@ -324,6 +350,11 @@
 		qcom,pet-time = <9360>;
 		qcom,ipi-ping;
 		qcom,wakeup-enable;
+	};
+
+	qcom,sps {
+		compatible = "qcom,msm-sps-4k";
+		qcom,pipe-attr-ee;
 	};
 
 	mem_dump {
@@ -491,7 +522,9 @@
 };
 
 #include "scuba-pinctrl.dtsi"
+#include "scuba-stub-regulator.dtsi"
 #include "scuba-gdsc.dtsi"
+#include "scuba-qupv3.dtsi"
 
 &gcc_camss_top_gdsc {
 	status = "ok";
@@ -536,5 +569,9 @@
 };
 
 &gpu_gx_gdsc {
+	status = "ok";
+};
+
+&qupv3_se4_2uart {
 	status = "ok";
 };
