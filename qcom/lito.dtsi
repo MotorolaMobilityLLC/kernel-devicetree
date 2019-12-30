@@ -526,6 +526,11 @@
 			label = "dfps_data_region";
 		};
 
+		disp_rdump_memory: disp_rdump_region@0xa0000000 {
+			reg = <0x0 0xA0000000 0x0 0x02300000>;
+			label = "disp_rdump_region";
+		};
+
 		dump_mem: mem_dump_region {
 			compatible = "shared-dma-pool";
 			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -2843,6 +2848,13 @@
 		qcom,aux-minidump-ids = <4>;
 		qcom,signal-aop;
 		qcom,complete-ramdump;
+
+		qcom,msm-bus,name = "pil-modem";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<129 512 0 0>,
+			<129 512 0 8171520>;
 
 		/* Inputs from mss */
 		interrupts-extended = <&intc GIC_SPI 266 IRQ_TYPE_EDGE_RISING>,

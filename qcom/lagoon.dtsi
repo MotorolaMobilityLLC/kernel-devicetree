@@ -5,6 +5,7 @@
 #include <dt-bindings/clock/qcom,gpucc-lagoon.h>
 #include <dt-bindings/clock/qcom,npucc-lagoon.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/clock/qcom,videocc-lagoon.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
@@ -395,7 +396,7 @@
 			reg = <0x0 0x86000000 0x0 0x500000>;
 		};
 
-		npu_mem: npu_region@86500000 {
+		pil_npu_mem: pil_npu_region@86500000 {
 			compatible = "removed-dma-pool";
 			no-map;
 			reg = <0x0 0x86500000 0x0 0x500000>;
@@ -757,10 +758,16 @@
 				  <CONTROL_TCS 1>;
 	};
 
-	qcom,msm-imem@146ab000 {
+	cpu_pmu: cpu-pmu {
+		compatible = "arm,armv8-pmuv3";
+		qcom,irq-is-percpu;
+		interrupts = <GIC_PPI 5 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	qcom,msm-imem@146aa000 {
 		compatible = "qcom,msm-imem";
-		reg = <0x146ab000 0x1000>;
-		ranges = <0x0 0x146ab000 0x1000>;
+		reg = <0x146aa000 0x1000>;
+		ranges = <0x0 0x146aa000 0x1000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 
@@ -861,6 +868,53 @@
 			     <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "l1-l2-faultirq",
 				  "l3-scu-faultirq";
+	};
+
+	qcom,lpass@3000000 {
+		compatible = "qcom,pil-tz-generic";
+		reg = <0x03000000 0x00100>;
+
+		vdd_lpi_cx-supply = <&L1A_LEVEL>;
+		qcom,vdd_lpi_cx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		vdd_lpi_mx-supply = <&L17A_LEVEL>;
+		qcom,vdd_lpi_mx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		qcom,proxy-reg-names = "vdd_lpi_cx", "vdd_lpi_mx";
+
+		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		clock-names = "xo";
+		qcom,proxy-clock-names = "xo";
+
+		qcom,pas-id = <1>;
+		qcom,proxy-timeout-ms = <10000>;
+		qcom,smem-id = <423>;
+		qcom,minidump-id = <5>;
+		qcom,sysmon-id = <1>;
+		qcom,ssctl-instance-id = <0x14>;
+		qcom,firmware-name = "adsp";
+		memory-region = <&pil_adsp_mem>;
+		qcom,signal-aop;
+		qcom,complete-ramdump;
+		qcom,minidump-as-elf32;
+
+		/* Inputs from lpass */
+		interrupts-extended = <&pdc GIC_SPI 162 IRQ_TYPE_EDGE_RISING>,
+				      <&adsp_smp2p_in 0 0>,
+				      <&adsp_smp2p_in 1 0>,
+				      <&adsp_smp2p_in 2 0>,
+				      <&adsp_smp2p_in 3 0>;
+
+		interrupt-names = "qcom,wdog",
+				  "qcom,err-fatal",
+				  "qcom,err-ready",
+				  "qcom,proxy-unvote",
+				  "qcom,stop-ack";
+
+		/* Outputs to lpass */
+		qcom,smem-states = <&adsp_smp2p_out 0>;
+		qcom,smem-state-names = "qcom,force-stop";
+
+		mboxes = <&qmp_aop 0>;
+		mbox-names = "adsp-pil";
 	};
 
 	cpuss_dump {
@@ -1494,10 +1548,52 @@
 		mbox-desc-offset = <0x0>;
 		#mbox-cells = <1>;
 	};
+
+	qcom,venus@aab0000 {
+		compatible = "qcom,pil-tz-generic";
+		reg = <0xaab0000 0x2000>;
+
+		vdd-supply = <&video_cc_mvsc_gdsc>;
+		qcom,proxy-reg-names = "vdd";
+		qcom,complete-ramdump;
+
+		clocks = <&videocc VIDEO_CC_MVSC_CORE_CLK>,
+			<&videocc VIDEO_CC_VENUS_AHB_CLK>;
+		clock-names = "core", "ahb";
+		qcom,proxy-clock-names = "core", "ahb";
+
+		qcom,core-freq = <200000000>;
+		qcom,ahb-freq = <200000000>;
+
+		qcom,pas-id = <9>;
+		qcom,msm-bus,name = "pil-venus";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<63 512 0 0>,
+			<63 512 0 304000>;
+		qcom,proxy-timeout-ms = <100>;
+		qcom,firmware-name = "venus";
+		memory-region = <&pil_video_mem>;
+	};
+
+	qcom,npu@9800000 {
+		compatible = "qcom,pil-tz-generic";
+		reg = <0x9800000 0x800000>;
+		status = "ok";
+		qcom,pas-id = <23>;
+		qcom,firmware-name = "npu";
+		memory-region = <&pil_npu_mem>;
+
+		/* Outputs to npu */
+		qcom,smem-states = <&npu_smp2p_out 0>;
+		qcom,smem-state-names = "qcom,force-stop";
+	};
 };
 
 #include "lagoon-gdsc.dtsi"
 #include "lagoon-usb.dtsi"
+#include "lagoon-npu.dtsi"
 
 &gcc_pcie_0_gdsc {
 	qcom,support-hw-trigger;
@@ -1576,10 +1672,11 @@
 #include "msm-arm-smmu-lagoon.dtsi"
 #include "lagoon-pinctrl.dtsi"
 #include "lagoon-pm.dtsi"
-#include "lagoon-stub-regulator.dtsi"
+#include "lagoon-regulators.dtsi"
 #include "pm6350.dtsi"
 #include "lagoon-ion.dtsi"
 #include "lagoon-qupv3.dtsi"
+#include "ipcc-test-lagoon.dtsi"
 
 /*Debug UART*/
 &qupv3_se9_2uart {
