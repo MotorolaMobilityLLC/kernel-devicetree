@@ -4,6 +4,7 @@
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
 #include "lagoon-sde-display.dtsi"
 #include "lagoon-thermal-overlay.dtsi"
+#include "camera/lagoon-camera-sensor-mtp.dtsi"
 
 &soc {
 	gpio_keys {
