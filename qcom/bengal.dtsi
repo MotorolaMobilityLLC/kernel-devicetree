@@ -1668,6 +1668,7 @@
 			     "tsens_tm_physical";
 		interrupts = <0 275 0>, <0 190 0>;
 		interrupt-names = "tsens-upper-lower", "tsens-critical";
+		tsens-reinit-wa;
 		#thermal-sensor-cells = <1>;
 	};
 
@@ -2287,16 +2288,12 @@
 		vdd-supply = <&gcc_venus_gdsc>;
 		qcom,proxy-reg-names = "vdd";
 
-		clocks =
-			<&gcc GCC_VIDEO_XO_CLK>,
-			<&gcc GCC_VIDEO_VENUS_CTL_CLK>,
+		clocks = <&gcc GCC_VIDEO_VENUS_CTL_CLK>,
 			<&gcc GCC_VENUS_CTL_AXI_CLK>,
-			<&gcc GCC_VENUS_AHB_CLK>,
-			<&gcc GCC_VIDEO_AXI0_CLK>,
 			<&gcc GCC_VIDEO_AHB_CLK>,
 			<&gcc GCC_VIDEO_THROTTLE_CORE_CLK>;
-		clock-names = "xo_clock", "core_clk", "bus_clk", "iface_clk", "video_bus0_clk", "video_iface_clk", "throttle_clk";
-		qcom,proxy-clock-names = "xo_clock", "core_clk", "bus_clk", "iface_clk", "video_bus0_clk", "video_iface_clk", "throttle_clk";
+		clock-names = "core_clk", "bus_clk", "iface_clk", "throttle_clk";
+		qcom,proxy-clock-names = "core_clk", "bus_clk", "iface_clk", "throttle_clk";
 		qcom,mas-crypto = <&mas_crypto_c0>;
 
 		qcom,core-freq = <240000000>;
@@ -2342,6 +2339,13 @@
 		qcom,minidump-id = <3>;
 		qcom,aux-minidump-ids = <4>;
 		qcom,complete-ramdump;
+
+		qcom,msm-bus,name = "pil-modem";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<MSM_BUS_MASTER_AMPSS_M0 MSM_BUS_SLAVE_EBI_CH0 0 0>,
+			<MSM_BUS_MASTER_AMPSS_M0 MSM_BUS_SLAVE_EBI_CH0 0 8171520>;
 
 		/* Inputs from mss */
 		interrupts-extended = <&intc 0 307 1>,
