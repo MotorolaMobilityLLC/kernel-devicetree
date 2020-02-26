@@ -1011,7 +1011,7 @@
 		qcom,tcs-config = <ACTIVE_TCS  0>,
 				  <SLEEP_TCS   1>,
 				  <WAKE_TCS    1>,
-				  <CONTROL_TCS 1>;
+				  <CONTROL_TCS 0>;
 		status = "disabled";
 
 		msm_bus_disp_rsc {
