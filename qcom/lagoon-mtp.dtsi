@@ -29,6 +29,7 @@
 		qcom,batt-id-range-pct = <15>;
 		#include "qg-batterydata-alium-3600mah.dtsi"
 		#include "qg-batterydata-atl466271_3300mAh.dtsi"
+		#include "qg-batterydata-atl436186020H_3780mAh.dtsi"
 	};
 };
 
@@ -179,6 +180,7 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
+	qcom,i2c-touch-active="synaptics,tcm-i2c";
 
 	synaptics_tcm@20 {
 		compatible = "synaptics,tcm-i2c";
