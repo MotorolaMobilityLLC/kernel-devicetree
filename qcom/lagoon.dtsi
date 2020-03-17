@@ -3424,7 +3424,6 @@
 #include "pm7250b.dtsi"
 #include "pm6150l.dtsi"
 #include "pmk8350.dtsi"
-#include "pmr735b.dtsi"
 #include "lagoon-ion.dtsi"
 #include "lagoon-qupv3.dtsi"
 #include "lagoon-audio.dtsi"
