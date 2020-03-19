@@ -298,6 +298,14 @@
 		qcom,chip-wakeup-maskbit = <0>;
 		qcom,chip-wakeup-default-val = <0x1>;
 	};
+
+	wsa881x_analog_clk_gpio: msm_cdc_pinctrl@18 {
+		compatible = "qcom,msm-cdc-pinctrl";
+		pinctrl-names = "aud_active", "aud_sleep";
+		pinctrl-0 = <&wsa_mclk_active>;
+		pinctrl-1 = <&wsa_mclk_sleep>;
+		qcom,lpi-gpios;
+	};
 };
 
 &soc {
@@ -313,13 +321,6 @@
 		pinctrl-names = "aud_active", "aud_sleep";
 		pinctrl-0 = <&spkr_1_sd_n_active>;
 		pinctrl-1 = <&spkr_1_sd_n_sleep>;
-	};
-
-	wsa881x_analog_clk_gpio: msm_cdc_pinctrl@18 {
-		compatible = "qcom,msm-cdc-pinctrl";
-		pinctrl-names = "aud_active", "aud_sleep";
-		pinctrl-0 = <&wsa_mclk_active>;
-		pinctrl-1 = <&wsa_mclk_sleep>;
 	};
 
 	wsa881x_analog_clk: wsa_ana_clk {
