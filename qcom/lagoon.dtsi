@@ -528,6 +528,11 @@
 			size = <0 0x8c00000>;
 		};
 
+		cont_splash_memory: cont_splash_region {
+			reg = <0x0 0xA0000000 0x0 0x02300000>;
+			label = "cont_splash_region";
+		};
+
 		dump_mem: mem_dump_region {
 			compatible = "shared-dma-pool";
 			reusable;
@@ -1792,10 +1797,6 @@
 			compatible = "qcom,devfreq-fw-voter";
 		};
 
-		cpu7_l3: qcom,cpu7-cpu-l3-lat {
-			compatible = "qcom,devfreq-fw-voter";
-		};
-
 		cdsp_l3: qcom,cdsp-cdsp-l3-lat {
 			compatible = "qcom,devfreq-fw-voter";
 		};
@@ -2523,8 +2524,6 @@
 			<0x088e2000 0x1000>;
 		reg-names = "eud_base", "eud_mode_mgr2";
 		qcom,secure-eud-en;
-		qcom,eud-clock-vote-req;
-		clock-names = "eud_ahb2phy_clk";
 		status = "ok";
 	};
 
@@ -3248,6 +3247,7 @@
 		qcom,arm-smmu;
 		qcom,smmu-fast-map;
 		qcom,bandwidth-vote-for-ipa;
+		qcom,ipa-endp-delay-wa;
 		qcom,use-64-bit-dma-mask;
 		qcom,msm-bus,name = "ipa";
 		qcom,wan-use-skb-page;
