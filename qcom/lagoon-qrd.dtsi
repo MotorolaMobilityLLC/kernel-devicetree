@@ -61,6 +61,7 @@
 	vcc-supply = <&L7E>;
 	vcc-voltage-level = <2950000 2960000>;
 	vccq2-supply = <&L12A>;
+	vccq2-voltage-level = <1800000 1800000>;
 	vcc-max-microamp = <800000>;
 	vccq2-max-microamp = <800000>;
 
@@ -275,7 +276,7 @@
 &lagoon_snd {
 	qcom,model = "lito-lagoonqrd-snd-card";
 	qcom,msm-mi2s-master = <1>, <1>, <1>, <1>, <1>, <1>;
-	qcom,wcn-btfm = <0>;
+	qcom,wcn-btfm = <1>;
 	qcom,ext-disp-audio-rx = <0>;
 	qcom,audio-routing =
 		"AMIC1", "MIC BIAS1",
