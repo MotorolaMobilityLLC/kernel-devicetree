@@ -3,6 +3,7 @@
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
 #include "lagoon-audio-overlay.dtsi"
 #include "lagoon-sde-display.dtsi"
+#include "camera/lagoon-camera-sensor-mtp.dtsi"
 
 &soc {
 	gpio_keys {
@@ -25,6 +26,7 @@
 
 	qrd_batterydata: qcom,battery-data {
 		qcom,batt-id-range-pct = <15>;
+		#include "qg-batterydata-atl436186020H_3780mAh.dtsi"
 		#include "qg-batterydata-atl466271_3300mAh.dtsi"
 	};
 };
@@ -101,7 +103,7 @@
 	pinctrl-0 = <&sdc2_clk_on  &sdc2_cmd_on &sdc2_data_on &sdc2_cd_on>;
 	pinctrl-1 = <&sdc2_clk_off &sdc2_cmd_off &sdc2_data_off &sdc2_cd_off>;
 
-	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+	cd-gpios = <&tlmm 94 GPIO_ACTIVE_LOW>;
 
 	status = "ok";
 };
@@ -278,7 +280,7 @@
 		"IN3_AUX", "AUX_OUT",
 		"TX SWR_ADC0", "ADC1_OUTPUT",
 		"TX SWR_ADC2", "ADC2_OUTPUT",
-		"TX SWR_ADC2", "ADC3_OUTPUT",
+		"TX SWR_ADC3", "ADC3_OUTPUT",
 		"TX SWR_DMIC0", "DMIC1_OUTPUT",
 		"TX SWR_DMIC1", "DMIC2_OUTPUT",
 		"TX SWR_DMIC2", "DMIC3_OUTPUT",
@@ -324,7 +326,7 @@
 		"VA SWR_MIC7", "VA_SWR_CLK",
 		"VA SWR_ADC0", "ADC1_OUTPUT",
 		"VA SWR_ADC2", "ADC2_OUTPUT",
-		"VA SWR_ADC2", "ADC3_OUTPUT",
+		"VA SWR_ADC3", "ADC3_OUTPUT",
 		"VA SWR_MIC0", "DMIC1_OUTPUT",
 		"VA SWR_MIC1", "DMIC2_OUTPUT",
 		"VA SWR_MIC2", "DMIC3_OUTPUT",
@@ -346,3 +348,37 @@
 	qcom,msm_audio_ssr_devs = <&audio_apr>, <&q6core>,
 				<&lpi_tlmm>, <&bolero>;
 };
+
+&qupv3_se8_i2c {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+	qcom,i2c-touch-active = "focaltech,fts_ts";
+
+	focaltech@38 {
+		compatible = "focaltech,fts_ts";
+		reg = <0x38>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <22 0x2008>;
+		focaltech,reset-gpio = <&tlmm 21 0x00>;
+		focaltech,irq-gpio = <&tlmm 22 0x2008>;
+		focaltech,max-touch-number = <5>;
+		focaltech,display-coords = <0 0 1080 2340>;
+
+		vdd-supply = <&L6A>;
+
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend","pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&pmx_ts_release>;
+
+		panel = <&dsi_r66451_amoled_60hz_cmd
+			 &dsi_r66451_amoled_90hz_cmd
+			 &dsi_r66451_amoled_120hz_cmd
+			 &dsi_r66451_amoled_60hz_video
+			 &dsi_r66451_amoled_90hz_video
+			 &dsi_r66451_amoled_120hz_video>;
+	};
+};
+
