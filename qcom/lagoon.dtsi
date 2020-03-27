@@ -2929,7 +2929,6 @@
 	};
 
 	icnss: qcom,icnss@18800000 {
-		status = "disabled";
 		compatible = "qcom,icnss";
 		reg = <0x18800000 0x800000>,
 		      <0xb0000000 0x10000>;
