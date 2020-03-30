@@ -3483,7 +3483,7 @@
 };
 
 &gpu_gx_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_GFX_LEVEL>;
 	status = "ok";
 };
 
