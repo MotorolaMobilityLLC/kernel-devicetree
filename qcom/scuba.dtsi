@@ -1342,28 +1342,6 @@
 		#freq-domain-cells = <2>;
 	};
 
-	mccc_debug: syscon@447d200 {
-		compatible = "syscon";
-		reg = <0x447d200 0x100>;
-	};
-
-	cpucc_debug: syscon@f11101c {
-		compatible = "syscon";
-		reg = <0xf11101c 0x4>;
-	};
-
-	debugcc: qcom,cc-debug {
-		compatible = "qcom,bengal-debugcc";
-		qcom,gcc = <&gcc>;
-		qcom,dispcc = <&dispcc>;
-		qcom,gpucc = <&gpucc>;
-		qcom,mccc = <&mccc_debug>;
-		qcom,cpucc = <&cpucc_debug>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
-		#clock-cells = <1>;
-	};
-
 	ddr_bw_opp_table: ddr-bw-opp-table {
 		compatible = "operating-points-v2";
 		BW_OPP_ENTRY_DDR( 200, 8, 0xA0); /* 1525 MB/s */
