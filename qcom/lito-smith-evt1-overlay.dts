@@ -44,6 +44,10 @@
 	/delete-property/ ois-src;
 };
 
+&cli_sensor {
+	/delete-property/ ois-src;
+};
+
 &prince_irq_default {
 	mux {
 		pins = "gpio85";

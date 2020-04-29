@@ -31,3 +31,7 @@
 &rear_sensor {
 	/delete-property/ ois-src;
 };
+
+&cli_sensor {
+	/delete-property/ ois-src;
+};
