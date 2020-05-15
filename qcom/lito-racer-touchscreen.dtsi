@@ -153,7 +153,7 @@
 		pinctrl-1 = <&touch_reset_suspend &touch_int_suspend>;
 		/* touchscreen_mmi class entries */
 		mmi,enable-gestures;
-		/*mmi,usb-charger-detection;*/
+		mmi,usb-charger-detection;
 		mmi,power-off-suspend;
 		mmi,suppression-control;
 		mmi,gs-distance-control;
