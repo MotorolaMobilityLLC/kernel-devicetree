@@ -623,6 +623,36 @@
 		polling-delay = <2000>;
 		thermal-governor = "user_space";
 	};
+
+	front-step {
+		polling-delay-passive = <2000>;
+		polling-delay = <2000>;
+		thermal-governor = "step_wise";
+		trips {
+			modem_trip1: modem-trip1 {
+				temperature = <44000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+			modem_trip2: modem-trip2 {
+				temperature = <47000>;
+				hysteresis = <2000>;
+				type = "passive";
+			};
+		};
+		cooling-maps {
+			/* Tx backoff */
+			skin_pa_lvl2 {
+				trip = <&modem_trip1>;
+				cooling-device = <&modem_pa_fr1 2 2>;
+			};
+			/* Disable 5G */
+			skin_modem_lvl2 {
+				trip = <&modem_trip2>;
+				cooling-device = <&modem_skin 2 2>;
+			};
+		};
+	};
 };
 
 &pm7250b_charger {
