@@ -587,9 +587,9 @@
 		qcom,op-freq-hz = <75000000>;
 	};
 
-	qcom_seecom: qseecom@a1700000 {
+	qcom_seecom: qseecom@a1800000 {
 		compatible = "qcom,qseecom";
-		reg = <0xa1700000 0x2200000>;
+		reg = <0xa1800000 0x2100000>;
 		reg-names = "secapp-region";
 		memory-region = <&qseecom_mem>;
 		qcom,hlos-num-ce-hw-instances = <1>;
@@ -624,9 +624,9 @@
 		qcom,qsee-reentrancy-support = <2>;
 	};
 
-	qcom_smcinvoke: smcinvoke@a1700000 {
+	qcom_smcinvoke: smcinvoke@a1800000 {
 		compatible = "qcom,smcinvoke";
-		reg = <0xa1700000 0x2200000>;
+		reg = <0xa1800000 0x2100000>;
 		reg-names = "secapp-region";
 	};
 
@@ -636,6 +636,23 @@
 		qcom,hyplog-enabled;
 		hyplog-address-offset = <0x410>;
 		hyplog-size-offset = <0x414>;
+	};
+
+	qcom_rng: qrng@4453000 {
+		compatible = "qcom,msm-rng";
+		reg = <0x4453000 0x1000>;
+		qcom,msm-rng-hwkm-clk;
+		qcom,no-qrng-config;
+		qcom,msm-bus,name = "msm-rng-noc";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<MSM_BUS_MASTER_AMPSS_M0
+			 MSM_BUS_SLAVE_HWKM 0 0>,    /* No vote */
+			<MSM_BUS_MASTER_AMPSS_M0
+			 MSM_BUS_SLAVE_HWKM 0 300000>;  /* 75 MHz */
+		clock-names = "km_clk_src";
+		clocks = <&rpmcc RPM_SMD_HWKM_CLK>;
 	};
 
 	qcom_cedev: qcedev@1b20000 {
@@ -829,6 +846,11 @@
 		gpu_speed_bin: gpu_speed_bin@6006 {
 			reg = <0x6006 0x2>;
 			bits = <5 8>;
+		};
+
+		adsp_variant: adsp_variant@6011 {
+			reg = <0x6011 0x1>;
+			bits = <3 1>;
 		};
 	};
 
