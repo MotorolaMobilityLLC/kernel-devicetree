@@ -65,6 +65,7 @@
 	lagoon_snd: sound {
 		compatible = "qcom,kona-asoc-snd";
 		qcom,mi2s-audio-intf = <1>;
+		qcom,tdm-audio-intf = <0>;
 		qcom,auxpcm-audio-intf = <1>;
 		qcom,wcn-btfm = <1>;
 		qcom,ext-disp-audio-rx = <0>;
