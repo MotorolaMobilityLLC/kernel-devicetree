@@ -467,7 +467,7 @@
 	};
 
 	socd {
-		polling-delay-passive = <100>;
+		polling-delay-passive = <0>;
 		polling-delay = <0>;
 		thermal-governor = "step_wise";
 		thermal-sensors = <&bcl_soc>;
@@ -477,6 +477,22 @@
 			pm2250_socd_trip: socd-trip {
 				temperature = <90>;
 				hysteresis = <0>;
+				type = "passive";
+			};
+		};
+	};
+
+	socd-usr {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-governor = "user_space";
+		thermal-sensors = <&bcl_soc>;
+		wake-capable-sensor;
+
+		trips {
+			socd-usr-trip {
+				temperature = <100>;
+				hysteresis = <5>;
 				type = "passive";
 			};
 		};
