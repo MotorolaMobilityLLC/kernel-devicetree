@@ -1142,6 +1142,7 @@
 		qcom,bus-vector-names = "MIN",
 					"MAX";
 		qcom,instance-type = "sdcc";
+		qcom,hwkm-supported;
 	};
 
 	sdhc_1: sdhci@4744000 {
