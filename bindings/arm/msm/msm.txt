@@ -59,6 +59,12 @@ SoCs:
 - SCUBA
   compatible = "qcom,scuba"
 
+- SCUBAIOT
+  compatible = "qcom,scuba-iot"
+
+- SCUBAPIOT
+  compatible = "qcom,scubap-iot"
+
 - SDMSHRIKE
   compatible = "qcom,sdmshrike"
 
