@@ -77,12 +77,6 @@ SoCs:
 - SDMMAGPIE
   compatible = "qcom,sdmmagpie"
 
-- QCM4290
-  compatible = "qcom,qcm4290"
-
-- QCS4290
-  compatible = "qcom,qcs4290"
-
 Generic board variants:
 
 - CDP device:
@@ -219,7 +213,3 @@ compatible = "qcom,sdxprairie-cdp"
 compatible = "qcom,sdmmagpie-rumi"
 compatible = "qcom,sdmmagpie-idp"
 compatible = "qcom,sdmmagpie-qrd"
-compatible = "qcom,qcm4290"
-compatible = "qcom,qcs4290"
-compatible = "qcom,qcm4290-idp"
-compatible = "qcom,qcs4290-idp"
