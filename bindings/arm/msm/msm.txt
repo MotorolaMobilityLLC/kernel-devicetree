@@ -77,6 +77,12 @@ SoCs:
 - SDMMAGPIE
   compatible = "qcom,sdmmagpie"
 
+- BENGAL_IOT
+  compatible = "qcom,bengal-iot"
+
+- BENGALP-IOT
+  compatible = "qcom,bengalp-iot"
+
 Generic board variants:
 
 - CDP device:
@@ -213,3 +219,7 @@ compatible = "qcom,sdxprairie-cdp"
 compatible = "qcom,sdmmagpie-rumi"
 compatible = "qcom,sdmmagpie-idp"
 compatible = "qcom,sdmmagpie-qrd"
+compatible = "qcom,bengal-iot"
+compatible = "qcom,bengalp-iot"
+compatible = "qcom,bengal-iot-idp"
+compatible = "qcom,bengalp-iot-idp"
