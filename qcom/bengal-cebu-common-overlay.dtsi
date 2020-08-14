@@ -284,6 +284,7 @@
         qcom,ignore-shutdown-soc-secs = <1800>;
 	qcom.hold-soc-while-full;
 	qcom,linearize-soc;
+        qcom,tcss-enable;
 };
 
 &pmi632_charger {
