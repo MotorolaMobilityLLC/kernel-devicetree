@@ -361,6 +361,7 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 
+		cirrus,dmic-ref = <0 2>;
 		cirrus,inmode = <
 				0 0 0 0
 				2 2 0 0
