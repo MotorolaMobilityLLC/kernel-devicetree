@@ -88,3 +88,9 @@
 &usb0 {
         extcon = <&pmi632_charger>, <&eud>;
 };
+
+&sdhc_2 {
+	vdd-io-bias-supply = <&L7A>;
+	qcom,vdd-io-bias-voltage-level = <1256000 1256000>;
+	qcom,vdd-io-bias-current-level = <0 6000>;
+};
