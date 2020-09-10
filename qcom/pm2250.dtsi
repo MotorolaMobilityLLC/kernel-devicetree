@@ -483,7 +483,7 @@
 		trips {
 			pm2250_socd_trip: socd-trip {
 				temperature = <90>;
-				hysteresis = <0>;
+				hysteresis = <1>;
 				type = "passive";
 			};
 		};
