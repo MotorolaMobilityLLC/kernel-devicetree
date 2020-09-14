@@ -57,10 +57,22 @@ qcom,mdss-dsi-bl-min-level = <21>;
 qcom,mdss-dsi-bl-max-level = <2047>;
 qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 
+qcom,mdss-dsi-hbm-fod-on-command = [
+		39 00 00 00 00 00 06 F0 55 AA 52 08 00
+		15 00 00 00 00 00 02 6F 1C
+		15 01 00 00 00 00 02 B4 0A
+		39 01 00 00 00 00 03 51 0F FF];
+
 qcom,mdss-dsi-hbm-on-command = [
+		39 00 00 00 00 00 06 F0 55 AA 52 08 00
+		15 00 00 00 00 00 02 6F 1C
+		15 01 00 00 00 00 02 B4 48
 		39 01 00 00 00 00 03 51 0F FF];
 qcom,mdss-dsi-hbm-off-command = [
-		39 01 00 00 00 00 03 51 07 FF];
+		39 00 00 00 00 00 06 F0 55 AA 52 08 00
+		15 00 00 00 00 00 02 6F 1C
+		15 01 00 00 00 00 02 B4 48
+		39 01 00 00 00 00 03 51 0d e4];
 
 qcom,mdss-dsi-acl-on-command = [
 		39 01 00 00 00 00 06 F0 55 AA 52 08 00
@@ -68,6 +80,8 @@ qcom,mdss-dsi-acl-on-command = [
 		15 01 00 00 00 00 02 55 05];
 qcom,mdss-dsi-acl-off-command = [
 		15 01 00 00 00 00 02 55 00];
+
+qcom,mdss-dsi-hbm-fod;
 
 qcom,mdss-dsi-panel-hbm-is-51cmd;
 
