@@ -82,6 +82,7 @@ qcom,mdss-dsi-acl-off-command = [
 		15 01 00 00 00 00 02 55 00];
 
 qcom,mdss-dsi-hbm-fod;
+qcom,boe_nt37800_dcmode_workaround;
 
 qcom,mdss-dsi-panel-hbm-is-51cmd;
 
