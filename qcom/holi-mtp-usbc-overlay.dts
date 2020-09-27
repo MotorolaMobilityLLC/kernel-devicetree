@@ -1,7 +1,9 @@
 /dts-v1/;
 /plugin/;
 
-#include "holi-mtp-usbc.dtsi"
+#include "holi-mtp.dtsi"
+#include "denver-display.dtsi"
+#include "denver-touchscreen.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Holi MTP USBC audio";
