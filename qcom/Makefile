@@ -1,3 +1,17 @@
+# Only include Motorola DTBs
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+ifneq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+$(error Moto DT w/o overlay is undefined!!!)
+endif
+
+# Motorola Device Trees
+dtbo-$(CONFIG_DENVER_DTB) += \
+		holi-denver-evt1-overlay.dtbo
+
+holi-denver-evt1-overlay.dtbo-base := holi-moto-base.dtb
+
+
+else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi-overlay.dtbo \
@@ -514,6 +528,7 @@ dtb-$(CONFIG_ARCH_QTI_VM) += shima-vm-rumi.dtb \
 	shima-vm-atp.dtb \
 	shima-vm-idp.dtb \
 	shima-vm-qrd.dtb
+endif
 endif
 endif
 
