@@ -277,8 +277,6 @@
 	qcom,use-cp-iin-sns;
 };
 
-#include "camera/holi-camera-sensor-mtp.dtsi"
-
 &pm7250b_charger {
 	dpdm-supply = <&qusb_phy0>;
 
