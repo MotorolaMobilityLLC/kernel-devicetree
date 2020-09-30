@@ -40,3 +40,8 @@
 		pinctrl-0 = <&tps61280_en_default>;
 	};
 };
+
+&sdhc_2 {
+	status = "ok";
+	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+};
