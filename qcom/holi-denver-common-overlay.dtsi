@@ -13,3 +13,30 @@
 #include "holi-moto-common-overlay.dtsi"
 #include "denver-display.dtsi"
 #include "denver-touchscreen.dtsi"
+
+&tlmm {
+	tps61280_en_default: tps61280_en_default {
+		mux {
+				pins = "gpio102";
+		};
+		config {
+				pins = "gpio102";
+				drive_strength = <16>;
+				output-high;
+		};
+	};
+};
+
+&qupv3_se10_i2c {
+	status = "ok";
+	tps61280@75 {
+		compatible = "ti,tps61280";
+		reg = <0x75>;
+		ti,config = <0x0D>;
+		ti,vout-floor = <0x13>;
+		ti,vout-roof = <0x17>;
+		ti,ilim = <0x0F>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&tps61280_en_default>;
+	};
+};
