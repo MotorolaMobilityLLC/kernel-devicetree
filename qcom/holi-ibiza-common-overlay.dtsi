@@ -1,0 +1,131 @@
+/* Copyright (c) 2020, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+#include "holi-moto-common-overlay.dtsi"
+#include "ibiza-display.dtsi"
+#include "ibiza-touchscreen.dtsi"
+#include "camera/holi-camera-sensor-mot-ibiza-overlay.dtsi"
+
+&tlmm {
+	tps61280_en_default: tps61280_en_default {
+		mux {
+				pins = "gpio102";
+		};
+		config {
+				pins = "gpio102";
+				drive_strength = <16>;
+				output-high;
+		};
+	};
+};
+
+&qupv3_se10_i2c {
+	status = "ok";
+	tps61280@75 {
+		compatible = "ti,tps61280";
+		reg = <0x75>;
+		ti,config = <0x0D>;
+		ti,vout-floor = <0x13>;
+		ti,vout-roof = <0x17>;
+		ti,ilim = <0x0F>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&tps61280_en_default>;
+	};
+};
+
+&sdhc_2 {
+	status = "ok";
+	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+};
+
+&tlmm {
+	cam_pmic_en_default: cam_pmic_en_default {
+		mux {
+			pins = "gpio38";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio38";
+			drive-strength = <2>;
+			bias-pull-down;
+		};
+	};
+};
+
+&qupv3_se10_i2c {
+	status = "ok";
+
+	cam_pmic: wl2864c@29{
+		compatible = "semi,wl2864c";
+		reg = <0x29>;
+
+		semi,cs-gpios = <&tlmm 38 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_pmic_en_default>;
+
+		vin1-supply = <&S8E>;
+		vin2-supply = <&BOB>;
+
+		regulators {
+			cam_ldo1: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <3787500>;
+			};
+
+			cam_ldo2: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <3787500>;
+			};
+
+			cam_ldo3: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4387500>;
+			};
+
+			cam_ldo4: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4387500>;
+			};
+
+			cam_ldo5: ldo5 {
+				regulator-name = "ldo5";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4387500>;
+			};
+
+			cam_ldo6: ldo6 {
+				regulator-name = "ldo6";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4387500>;
+			};
+
+			cam_ldo7: ldo7 {
+				regulator-name = "ldo7";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4387500>;
+			};
+		};
+	};
+};
+
+&pm8008_8 {
+	status = "disabled";
+};
+
+&pm8008_9 {
+	status = "disabled";
+};
