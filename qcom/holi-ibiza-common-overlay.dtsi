@@ -28,7 +28,7 @@
 	};
 };
 
-&qupv3_se10_i2c {
+&qupv3_se8_i2c {
 	status = "ok";
 	tps61280@75 {
 		compatible = "ti,tps61280";
