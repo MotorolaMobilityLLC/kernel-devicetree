@@ -14,7 +14,7 @@
 #include "denver-display.dtsi"
 #include "denver-touchscreen.dtsi"
 #include "camera/holi-camera-sensor-mot-denver-overlay.dtsi"
-#include "holi-denver-audio-overlay.dtsi"
+#include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
 
 &tlmm {
 	tps61280_en_default: tps61280_en_default {
