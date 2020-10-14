@@ -1,5 +1,5 @@
 
-#include "dsi-panel-mot-auo-nt36675-fhd-video.dtsi"
+#include "dsi-panel-mot-djn-nt36525c-hd-video.dtsi"
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
 
 
@@ -21,7 +21,7 @@
 	ibb-supply = <&lcdb_ncp_vreg>;
 	vddio-supply = <&L1E>;
 
-	qcom,dsi-default-panel = <&dsi_nt36675_auo_video>;
+	qcom,dsi-default-panel = <&dsi_nt36525c_djn_video>;
 };
 
 &dsi_panel_pwr_supply {
@@ -58,7 +58,7 @@
 	};
 };
 
-&dsi_nt36675_auo_video {
+&dsi_nt36525c_djn_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pm6150l_gpios 9 0>;
 
@@ -77,12 +77,12 @@
 	qcom,mdss-dsi-panel-status-read-length = <1>;
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
-	qcom,mdss-dsi-t-clk-post = <0x0F>;
-	qcom,mdss-dsi-t-clk-pre = <0x37>;
+	qcom,mdss-dsi-t-clk-post = <0x0E>;
+	qcom,mdss-dsi-t-clk-pre = <0x34>;
 	qcom,mdss-dsi-display-timings {
 		timing@0 {
-			qcom,mdss-dsi-panel-phy-timings = [00 24 0A 0A 26 25 09
-				0A 06 02 04 00];
+			qcom,mdss-dsi-panel-phy-timings = [00 22 08 09 25 23 09
+				09 06 02 04 00];
 			qcom,display-topology = <1 0 1>;
 			qcom,default-topology-index = <0>;
 		};
