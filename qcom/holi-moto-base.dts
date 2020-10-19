@@ -30,3 +30,7 @@
 &reserved_memory {
         /delete-node/ ramoops;
 };
+
+&tlmm {
+	/delete-node/ nfc;
+};
