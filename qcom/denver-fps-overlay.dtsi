@@ -1,0 +1,54 @@
+&tlmm {
+	chipone {
+		chipone_int_active: chipone_int_active {
+			/* INTERRUPT */
+			mux {
+				pins = "gpio17";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio17";
+				drive-strength = <2>; /* 2 MA */
+				input-enable;
+				bias-pull-up;
+			};
+		};
+		chipone_int_suspend: chipone_int_suspend {
+			/* INTERRUPT */
+			mux {
+				pins = "gpio17";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio17";
+				drive-strength = <2>; /* 2 MA */
+				input-enable;
+				bias-pull-up;
+			};
+		};
+	};
+};
+
+&pm6350_l8 {
+ qcom,init-voltage = <3304000>;
+ regulator-min-microvolt = <3304000>;
+ regulator-max-microvolt = <3304000>;
+ regulator-always-on;
+};
+
+&soc {
+	fingerprint {
+		compatible = "qcom,fingerprint-gpio";
+		status = "ok";
+		reg = <0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0x0>;
+		fp-gpio-int = <&tlmm 17 0x2>;
+		fp-gpio-reset = <&tlmm 18 0x2>;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&chipone_int_active>;
+		pinctrl-1 = <&chipone_int_suspend>;
+	};
+};
