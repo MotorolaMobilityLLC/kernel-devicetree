@@ -16,6 +16,7 @@
 #include "denver-sensors.dtsi"
 #include "camera/holi-camera-sensor-mot-denver-overlay.dtsi"
 #include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
+#include "denver-fps-overlay.dtsi"
 #include "holi-denver-fmr-overlay.dtsi"
 
 &tlmm {
