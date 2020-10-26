@@ -133,6 +133,7 @@
 			qcom,swr-num-dev = <1>;
 			qcom,swr-clock-stop-mode0 = <1>;
 			qcom,swr-mstr-irq-wakeup-capable = <1>;
+			qcom,is-always-on = <1>;
 			wcd937x_tx_slave: wcd937x-tx-slave {
 				compatible = "qcom,wcd937x-slave";
 				reg = <0x0A 0x01170223>;
@@ -238,7 +239,7 @@
 };
 
 &holi_snd {
-	qcom,model = "holi-mtp-snd-card";
+	qcom,model = "holi-9370-aw882xx-snd-card";
 	qcom,msm-mi2s-master = <1>, <1>, <1>, <1>;
 	qcom,wcn-btfm = <1>;
 	qcom,tdm-max-slots = <4>;
