@@ -320,6 +320,59 @@
 	qcom,usbpd-phandle = <&pm7250b_pdphy>;
 };
 
+&spmi_bus {
+	qcom,pm7250b@2 {
+		pm7250b_mmi: qcom,qpnp-smb5-mmi {
+			status = "ok";
+			compatible = "qcom,mmi-pm7250b-smb5";
+			#io-channel-cells = <1>;
+			io-channels = <&pm7250b_charger PSY_IIO_CTM_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_TYPEC_MODE>,
+				      <&pm7250b_charger PSY_IIO_DP_DM>,
+				      <&pm7250b_charger PSY_IIO_PD_ACTIVE>,
+				      <&pm7250b_charger PSY_IIO_USB_REAL_TYPE>,
+				      <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_USB_INPUT_CURRENT_SETTLED>,
+				      <&pm7250b_charger PSY_IIO_RERUN_AICL>,
+				      <&pm7250b_charger PSY_IIO_SW_JEITA_ENABLED>,
+				      <&pm7250b_qg PSY_IIO_VOLTAGE_NOW>,
+				      <&pm7250b_qg PSY_IIO_CURRENT_NOW>,
+				      <&pm7250b_qg PSY_IIO_TEMP>,
+				      <&pm7250b_qg PSY_IIO_CAPACITY>,
+				      <&pm7250b_qg PSY_IIO_CHARGE_FULL>,
+				      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>;
+			io-channel-names = "usb_ctm_current_max",
+					   "main_current_max",
+					   "usb_typec_mode",
+					   "battery_dp_dm",
+					   "usb_pd_active",
+					   "usb_real_type",
+					   "usb_hw_current_max",
+					   "usb_input_current_settled",
+					   "battery_rerun_aicl",
+					   "battery_sw_jeita_enabled",
+					   "voltage_now",
+					   "current_now",
+					   "temp",
+					   "capacity",
+					   "charge_full",
+					   "charge_full_design";
+			qcom,enable-charging-limit;
+			qcom,upper-limit-capacity = <75>;
+			qcom,lower-limit-capacity = <60>;
+			qcom,mmi-temp-zones = <0 4200 970 0>,
+						<10 4200 2500 970>,
+						<15 0 2500 2500>,
+						<45 0 4000 4000>,
+						<60 4200 2500 0>;
+			qcom,iterm-ma = <242>;
+			qcom,vfloat-comp-uv = <20000>;
+			qcom,force-hvdcp-5v;
+		};
+	};
+};
+
 &pm7250b_qg {
 	status = "ok";
 	#io-channel-cells = <1>;
