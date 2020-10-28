@@ -126,6 +126,12 @@
 };
 
 &soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x20000>;
+	};
+
 	gpio_keys: gpio_keys {
 		compatible = "gpio-keys";
 		label = "gpio-keys";
