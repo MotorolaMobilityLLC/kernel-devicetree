@@ -448,6 +448,20 @@
 			   "pe_start";
 };
 
+&pm6150l_rgb_led {
+	red {
+		label = "charging";
+	};
+
+	green {
+		status = "disabled";
+	};
+
+	blue {
+		status = "disabled";
+	};
+};
+
 &usb0 {
 	extcon = <&pm7250b_pdphy>, <&eud>;
 };
