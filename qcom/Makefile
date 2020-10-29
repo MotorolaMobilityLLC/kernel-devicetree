@@ -6,9 +6,17 @@ endif
 
 # Motorola Device Trees
 dtbo-$(CONFIG_DENVER_DTB) += \
-        holi-denver-evt1-overlay.dtbo
+        holi-denver-evt1-overlay.dtbo \
+        holi-denver-evt2-overlay.dtbo \
+        holi-denver-dvt1-overlay.dtbo \
+        holi-denver-dvt2-overlay.dtbo \
+        holi-denver-pvt-overlay.dtbo
 
 holi-denver-evt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-denver-evt2-overlay.dtbo-base := holi-moto-base.dtb
+holi-denver-dvt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-denver-dvt2-overlay.dtbo-base := holi-moto-base.dtb
+holi-denver-pvt-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_IBIZA_DTB) += \
         holi-ibiza-evt1-overlay.dtbo \
