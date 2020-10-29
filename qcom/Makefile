@@ -11,10 +11,17 @@ dtbo-$(CONFIG_DENVER_DTB) += \
 holi-denver-evt1-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_IBIZA_DTB) += \
-        holi-ibiza-evt1-overlay.dtbo
+        holi-ibiza-evt1-overlay.dtbo \
+        holi-ibiza-evt2-overlay.dtbo \
+        holi-ibiza-dvt1-overlay.dtbo \
+        holi-ibiza-dvt2-overlay.dtbo \
+        holi-ibiza-pvt-overlay.dtbo
 
 holi-ibiza-evt1-overlay.dtbo-base := holi-moto-base.dtb
-
+holi-ibiza-evt2-overlay.dtbo-base := holi-moto-base.dtb
+holi-ibiza-dvt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-ibiza-dvt2-overlay.dtbo-base := holi-moto-base.dtb
+holi-ibiza-pvt-overlay.dtbo-base := holi-moto-base.dtb
 
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
