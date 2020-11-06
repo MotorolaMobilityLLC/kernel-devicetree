@@ -462,6 +462,12 @@
 	};
 };
 
+&bcl_soc {
+	io-channels = <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>;
+	io-channel-names = "usb_hw_current_max";
+	qcom,bcl-not-mitigate-icl = <2500>;
+};
+
 &usb0 {
 	extcon = <&pm7250b_pdphy>, <&eud>;
 };
