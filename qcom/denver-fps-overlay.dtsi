@@ -29,6 +29,63 @@
 			};
 		};
 	};
+
+	fps_rst_active: fps_rst_active {
+		/* active state */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	fps_rst_suspend: fps_rst_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	fps_int_active: fps_int_active {
+		/* active state */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fps_int_suspend: fps_int_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
 };
 
 &pm6350_l8 {
@@ -50,5 +107,17 @@
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&chipone_int_active>;
 		pinctrl-1 = <&chipone_int_suspend>;
+	};
+
+	goodix_fingerprint{
+		compatible = "goodix,fingerprint";
+		fp-gpio-reset = <&tlmm 18 0x2>;
+		fp-gpio-irq = <&tlmm 17 0x2>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0>;
+		interrupt-controller;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_rst_active &fps_int_active>;
+		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
 	};
 };
