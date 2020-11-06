@@ -16,7 +16,6 @@
 #include "denver-fps-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-ibiza-overlay.dtsi"
 #include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
-#include "holi-ibiza-fmr-overlay.dtsi"
 
 &tlmm {
 	tps61280_en_default: tps61280_en_default {
