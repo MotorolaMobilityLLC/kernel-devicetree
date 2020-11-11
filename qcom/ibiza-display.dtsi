@@ -15,12 +15,17 @@
 &pm6150l_wled {
 	status = "ok";
 
+	qcom,string-cfg = <3>;
+
 	qcom,fs-current-limit = <25000>;
 	qcom,en-cabc;
 	qcom,cabc-sel = <1>;
 
 	qcom,wled-bl-step-up;
 	qcom,wled-bl-step-sequence = <255 5>, <2048 6>;
+
+	qcom,ovp = <29500>;
+	qcom,boost-current-limit = <875>;
 };
 
 &sde_dsi {
