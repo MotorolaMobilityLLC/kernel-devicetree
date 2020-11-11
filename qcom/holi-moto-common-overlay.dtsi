@@ -12,6 +12,8 @@
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
+#include "carrier-channel-ids.dtsi"
+
 #include "holi-pmic-overlay.dtsi"
 #include "display/holi-sde-display-mtp.dtsi"
 #include "holi-thermal-overlay.dtsi"
