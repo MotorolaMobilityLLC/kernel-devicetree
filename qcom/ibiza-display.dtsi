@@ -88,6 +88,12 @@
 	qcom,mdss-dsi-panel-status-value = <0x9c>;
 	qcom,mdss-dsi-panel-status-read-length = <1>;
 
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
+	qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0C CC];
+	qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
+
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
 	qcom,mdss-dsi-t-clk-post = <0x0E>;
 	qcom,mdss-dsi-t-clk-pre = <0x34>;
