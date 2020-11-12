@@ -35,3 +35,7 @@
 &tlmm {
 	/delete-node/ nfc;
 };
+
+&firmware {
+        /delete-node/ android;
+};
