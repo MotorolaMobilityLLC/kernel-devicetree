@@ -134,6 +134,10 @@
 		mem-size = <0x20000>;
 	};
 
+	mmi_relay{
+		compatible = "mmi,sys-relay";
+	};
+
 	gpio_keys: gpio_keys {
 		compatible = "gpio-keys";
 		label = "gpio-keys";
