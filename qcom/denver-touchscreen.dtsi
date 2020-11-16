@@ -83,7 +83,8 @@
 		novatek,swrst-n8-addr = <0x03F0FE>;
 		novatek,spi-rd-fast-addr = <0x03F310>;
 		novatek,report_gesture_key;
-		panel = <&dsi_nt36675_auo_video>;
+		novatek,panel-supplier = "auo","boe";
+		panel = <&dsi_nt36675_auo_video &dsi_nt36675_boe_video>;
 		status = "ok";
 	};
 
