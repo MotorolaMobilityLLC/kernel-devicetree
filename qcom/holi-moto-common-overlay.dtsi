@@ -429,6 +429,8 @@
 	vdd-pdphy-supply = <&L3A>;
 	vbus-supply = <&smb5_vbus>;
 	vconn-supply = <&smb5_vconn>;
+	qcom,default-sink-caps = <5000 3000>, /*5V @ 3A*/
+				 <9000 2000>; /*9V @ 2A*/
 
 	#io-channel-cells = <1>;
 	io-channels = <&pm7250b_charger PSY_IIO_PD_ACTIVE>,
