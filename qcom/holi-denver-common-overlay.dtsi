@@ -127,6 +127,10 @@
 	};
 };
 
+&pm7250b_charger {
+	qcom,dcp-curr-max = <2000000>;
+};
+
 &thermal_zones {
 	pa-therm0-usr {
 		status = "disabled";
