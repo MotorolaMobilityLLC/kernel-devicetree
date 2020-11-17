@@ -205,7 +205,7 @@
 			&dsi_rm69299_visionox_amoled_cmd>;
 	};
 
-	sx937x@2c {
+	sx937x:sx937x@2c {
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
 		interrupt-parent = <&tlmm>;
