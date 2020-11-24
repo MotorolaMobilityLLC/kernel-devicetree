@@ -87,4 +87,22 @@
 		status = "ok";
 	};
 
+	chipone_tddi@1 {
+		compatible = "chipone-tddi";
+		reg = <0x1>;
+		spi-max-frequency = <4800000>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <22 0x2008>;
+		spi-cpha;
+		spi-cpol;
+		chipone,rst-gpio = <&tlmm 21 0x00>;
+		chipone,irq-gpio = <&tlmm 22 0x2008>;
+		chipone,x-res = <720>;
+		chipone,y-res = <1600>;
+		chipone,def-build-id = <0x0101>;
+		chipone,def-config-id = <0x0001>;
+		panel = <&dsi_icnl9911c_tm_video>;
+		status = "ok";
+	};
+
 };
