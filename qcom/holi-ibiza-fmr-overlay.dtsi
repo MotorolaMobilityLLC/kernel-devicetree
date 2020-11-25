@@ -7,7 +7,7 @@
 		config {
 				pins = "gpio47";
 				drive_strength = <16>;
-				output-high;
+				output-low;
 		};
 	};
 
