@@ -119,8 +119,9 @@
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <16>;
-	qcom,mdss-dsi-bl-max-level = <1024>;
+	qcom,mdss-dsi-bl-max-level = <3382>;
 	qcom,mdss-dsi-bl-default-level = <1691>;
+	qcom,mdss-brightness-max-level = <3382>;
 
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
@@ -160,8 +161,9 @@
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <16>;
-	qcom,mdss-dsi-bl-max-level = <2047>;
-	qcom,mdss-dsi-bl-default-level = <1024>;
+	qcom,mdss-dsi-bl-max-level = <4095>;
+	qcom,mdss-dsi-bl-default-level = <2047>;
+	qcom,mdss-brightness-max-level = <4095>;
 
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
