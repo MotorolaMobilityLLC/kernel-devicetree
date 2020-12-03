@@ -157,9 +157,9 @@
 	};
 
 	mot_batterydata: qcom,battery-data {
-		df-serialnum = "SB18C74375";
+		df-serialnum = "SB18D00294";
 		qcom,batt-id-range-pct = <15>;
-		#include "qg-batterydata-lz50-scud-5000mah.dtsi"
+		#include "qg-batterydata-md50-amperex-5000mah.dtsi"
 	};
 };
 
