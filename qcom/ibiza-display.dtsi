@@ -50,6 +50,7 @@
 			qcom,supply-disable-load = <80>;
 			qcom,supply-post-on-sleep= <0>;
 			qcom,supply-post-off-sleep = <21>;
+			qcom,supply-always-on;
 		};
 
 		qcom,panel-supply-entry@1 {
@@ -116,6 +117,8 @@
 	qcom,platform-reset-gpio = <&pm6150l_gpios 9 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_djn_panel>;
+
+	qcom,platform-reset-gpio-always-on;
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 	qcom,mdss-dsi-bl-min-level = <16>;
