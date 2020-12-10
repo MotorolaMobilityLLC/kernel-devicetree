@@ -172,6 +172,34 @@
 	qcom,init-voltage = <1800000>;
 };
 
+&tlmm {
+	sar_int_default: sar_int_default {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	sar_int_sleep: sar_int_sleep {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+};
+
 &qupv3_se8_i2c {
 	status = "okay";
 	qcom,i2c-touch-active="synaptics,tcm-i2c";
@@ -208,6 +236,9 @@
 	sx937x:sx937x@2c {
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&sar_int_default>;
+		pinctrl-1 = <&sar_int_sleep>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <24 0x02>;
 		interrupt-names = "sx937x_irq";
