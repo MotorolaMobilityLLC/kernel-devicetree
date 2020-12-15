@@ -277,8 +277,8 @@
 			/*Set Phase Proximity Threshold*/
 			0x8098  0x00008643		/*prox threshold ph0*/
 			0x80B8  0x0000783C		/*prox threshold ph1*/
-			0x80D8  0x0000004D		/*prox threshold ph2*/
-			0x80F8  0x00000059		/*prox threshold ph3*/
+			0x80D8  0x00004D00		/*prox threshold ph2*/
+			0x80F8  0x00005900		/*prox threshold ph3*/
 			0x8118  0x00000000		/*prox threshold ph4*/
 			0x8138  0x00000000		/*prox threshold ph5*/
 			0x8158  0x00000000		/*prox threshold ph6*/
