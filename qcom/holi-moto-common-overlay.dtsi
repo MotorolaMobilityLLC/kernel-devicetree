@@ -568,3 +568,7 @@
 &usb0 {
 	extcon = <&pm7250b_pdphy>, <&eud>;
 };
+
+&ufshc_mem {
+	spm-level = <3>;
+};
