@@ -76,6 +76,7 @@
            pinctrl-1 = <&lpi_i2s2_sck_sleep &lpi_i2s2_ws_sleep
                            &lpi_i2s2_sd0_sleep &lpi_i2s2_sd1_sleep>;
            qcom,lpi-gpios;
+           #gpio-cells = <0>;
    };
 };
 
