@@ -11,7 +11,7 @@
 				pins = "gpio17";
 				drive-strength = <2>; /* 2 MA */
 				input-enable;
-				bias-pull-up;
+				bias-disable;
 			};
 		};
 		chipone_int_suspend: chipone_int_suspend {
@@ -25,7 +25,7 @@
 				pins = "gpio17";
 				drive-strength = <2>; /* 2 MA */
 				input-enable;
-				bias-pull-up;
+				bias-disable;
 			};
 		};
 	};
@@ -60,12 +60,12 @@
 	fps_int_active: fps_int_active {
 		/* active state */
 		mux {
-			pins = "gpio18";
+			pins = "gpio17";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio18";
+			pins = "gpio17";
 			drive-strength = <2>; /* 2 MA */
 			bias-disable;
 			input-enable;
@@ -102,20 +102,20 @@
 		reg = <0>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <17 0x0>;
-		fp-gpio-int = <&tlmm 17 0x2>;
-		fp-gpio-reset = <&tlmm 18 0x2>;
+		fp-gpio-int = <&tlmm 17 0x0>;
+		fp-gpio-reset = <&tlmm 18 0x0>;
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&chipone_int_active>;
 		pinctrl-1 = <&chipone_int_suspend>;
 	};
 
-	goodix_fingerprint{
-		compatible = "goodix,fingerprint";
-		fp-gpio-reset = <&tlmm 18 0x2>;
-		fp-gpio-irq = <&tlmm 17 0x2>;
+	fpc: fpc_fpc1020 {
+		compatible = "fpc,fpc1020";
+		status = "ok";
+		irq = <&tlmm 17 0>;
+		rst = <&tlmm 18 0>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <17 0>;
-		interrupt-controller;
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&fps_rst_active &fps_int_active>;
 		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
