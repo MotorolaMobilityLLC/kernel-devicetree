@@ -183,6 +183,7 @@
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,dsi-supported-dfps-list = <60 90>;
+	qcom,mdss-dsi-pan-dpfs-send-command;
 
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 FF 0E];
 	qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
@@ -199,6 +200,11 @@
 				07 07 02 04 00];
 			qcom,display-topology = <1 0 1>;
 			qcom,default-topology-index = <0>;
+
+			qcom,mdss-dsi-dfps-60-command = [15 01 00 00 00 00 02 26 01];
+			qcom,mdss-dsi-dfps-60-command-state = "dsi_hs_mode";
+			qcom,mdss-dsi-dfps-90-command = [15 01 00 00 00 00 02 26 02];
+			qcom,mdss-dsi-dfps-90-command-state = "dsi_hs_mode";
 		};
 	};
 };
