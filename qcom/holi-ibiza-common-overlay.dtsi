@@ -270,10 +270,11 @@
 };
 
 &mot_batterydata {
-	df-serialnum = "SB18C85291";
+	df-serialnum = "SB18C77591";
 	qcom,batt-id-range-pct = <15>;
 	#include "qg-batterydata-jk50-swd-5000mah.dtsi"
 	#include "qg-batterydata-jk50-sunwoda-5000mah.dtsi"
+	#include "qg-batterydata-jk50-atl-5000mah.dtsi"
 };
 
 &pm7250b_charger {
