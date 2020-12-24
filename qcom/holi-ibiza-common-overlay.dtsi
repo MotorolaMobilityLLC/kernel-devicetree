@@ -269,6 +269,11 @@
 	qcom,iterm-ma = <150>;
 };
 
+
+&pm7250b_qg {
+	qcom,qg-iterm-ma = <500>;
+};
+
 &thermal_zones {
 	pa-therm0-usr {
 		status = "disabled";
