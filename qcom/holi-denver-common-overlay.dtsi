@@ -63,6 +63,34 @@
 			bias-pull-down;
 		};
 	};
+
+	nfc_clk_active: nfc_clk_active {
+		/* active state */
+		mux {
+			pins = "gpio7", "gpio9";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio7", "gpio9";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	nfc_clk_suspend: nfc_clk_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio7", "gpio9";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio7", "gpio9";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
 };
 
 &qupv3_se10_i2c {
@@ -267,6 +295,10 @@
 };
 
 &sx937x {
+		/*MMI_STOPSHIP:PMIC:unit shutdown issue*/
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&sar_int_default &nfc_clk_active>;
+		pinctrl-1 = <&sar_int_sleep &nfc_clk_suspend>;
 		/*use PH4/5/6 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
 		Semtech,ref-phases-a = <5>;
