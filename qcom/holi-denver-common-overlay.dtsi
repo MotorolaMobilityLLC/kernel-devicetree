@@ -268,7 +268,6 @@
 };
 
 &sx937x {
-		/*MMI_STOPSHIP:PMIC:unit shutdown issue*/
 		pinctrl-names = "default","sleep";
 		pinctrl-0 = <&sar_int_default &nfc_clk_active>;
 		pinctrl-1 = <&sar_int_sleep &nfc_clk_suspend>;
