@@ -85,7 +85,7 @@
 		novatek,report_gesture_key;
 		novatek,usb_charger;
 		novatek,panel-supplier = "auo","boe";
-		panel = <&dsi_nt36675_auo_video &dsi_nt36675_boe_video>;
+		panel = <&dsi_nt36675_auo_video &dsi_nt36675_boe_video &mot_dummy_vid_qhd>;
 		status = "ok";
 	};
 
