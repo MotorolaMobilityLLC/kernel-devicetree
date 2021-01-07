@@ -127,6 +127,13 @@
 	};
 };
 
+&mot_batterydata {
+	df-serialnum = "SB18D00294";
+	qcom,batt-id-range-pct = <15>;
+	#include "qg-batterydata-md50-amperex-5000mah.dtsi"
+	#include "qg-batterydata-md50-scud-5000mah.dtsi"
+};
+
 &pm7250b_charger {
 	qcom,dcp-curr-max = <2000000>;
 };
