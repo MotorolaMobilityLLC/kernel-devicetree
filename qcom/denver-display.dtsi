@@ -37,37 +37,42 @@
 	qcom,dsi-default-panel = <&dsi_nt36675_auo_video>;
 };
 
-&dsi_panel_pwr_supply {
-	qcom,panel-supply-entry@0 {
-		reg = <0>;
-		qcom,supply-name = "vddio";
-		qcom,supply-min-voltage = <1800000>;
-		qcom,supply-max-voltage = <1904000>;
-		qcom,supply-enable-load = <32000>;
-		qcom,supply-disable-load = <80>;
-		qcom,supply-post-on-sleep= <0>;
-		qcom,supply-post-off-sleep = <21>;
-	};
+&soc {
+	dsi_panel_pwr_supply_denver: dsi_panel_pwr_supply_denver{
+		#address-cells = <1>;
+		#size-cells = <0>;
 
-	qcom,panel-supply-entry@1 {
-		reg = <1>;
-		qcom,supply-name = "lab";
-		qcom,supply-min-voltage = <5800000>;
-		qcom,supply-max-voltage = <5800000>;
-		qcom,supply-enable-load = <100000>;
-		qcom,supply-disable-load = <100>;
-		qcom,supply-pre-on-sleep = <3>;
-	};
+		qcom,panel-supply-entry@0 {
+			reg = <0>;
+			qcom,supply-name = "vddio";
+			qcom,supply-min-voltage = <1800000>;
+			qcom,supply-max-voltage = <1904000>;
+			qcom,supply-enable-load = <32000>;
+			qcom,supply-disable-load = <80>;
+			qcom,supply-post-on-sleep= <0>;
+			qcom,supply-post-off-sleep = <21>;
+		};
 
-	qcom,panel-supply-entry@2 {
-		reg = <2>;
-		qcom,supply-name = "ibb";
-		qcom,supply-min-voltage = <5800000>;
-		qcom,supply-max-voltage = <5800000>;
-		qcom,supply-enable-load = <100000>;
-		qcom,supply-disable-load = <100>;
-		qcom,supply-pre-off-sleep = <3>;
-		qcom,supply-post-on-sleep = <10>;
+		qcom,panel-supply-entry@1 {
+			reg = <1>;
+			qcom,supply-name = "lab";
+			qcom,supply-min-voltage = <5800000>;
+			qcom,supply-max-voltage = <5800000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-on-sleep = <3>;
+		};
+
+		qcom,panel-supply-entry@2 {
+			reg = <2>;
+			qcom,supply-name = "ibb";
+			qcom,supply-min-voltage = <5800000>;
+			qcom,supply-max-voltage = <5800000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-off-sleep = <3>;
+			qcom,supply-post-on-sleep = <10>;
+		};
 	};
 };
 
@@ -75,7 +80,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pm6150l_gpios 9 0>;
 
-	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_denver>;
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 
@@ -116,7 +121,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pm6150l_gpios 9 0>;
 
-	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_denver>;
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
 
