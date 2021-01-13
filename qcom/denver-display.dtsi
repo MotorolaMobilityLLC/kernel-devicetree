@@ -37,6 +37,14 @@
 	qcom,dsi-default-panel = <&dsi_nt36675_auo_video>;
 };
 
+&mdss_dsi_phy0 {
+	qcom,platform-strength-ctrl = [55 03 30 30
+				55 03 30 30
+				55 03 30 30
+				55 03 30 30
+				55 00 30 30];
+};
+
 &soc {
 	dsi_panel_pwr_supply_denver: dsi_panel_pwr_supply_denver{
 		#address-cells = <1>;
