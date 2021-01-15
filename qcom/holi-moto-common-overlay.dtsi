@@ -250,19 +250,20 @@
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
 		Semtech,button-flag = <0x0f>;
-		Semtech,reg-num = <60>;
+		Semtech,reg-num = <61>;
 		Semtech,reg-init = <
 			0x8024  0x7F00 		/*PHEN, Disable all Phases*/
 			0x4004  0x74 		/*irq mask*/
-
-			0x8028  0x86E 		/*AFE_PARAM_PH0*/
-			0x8034  0x86E 		/*AFE_PARAM_PH1*/
-			0x8040  0x86E 		/*AFE_PARAM_PH2*/
-			0x804C  0x86E    	/*AFE_PARAM_PH3*/
-			0x8058  0x86E 		/*AFE_PARAM_PH4*/
-			0x8064  0x86E 		/*AFE_PARAM_PH5*/
-			0x8070  0x86E 		/*AFE_PARAM_PH6*/
-			/*0x807C  0x86E */	/*AFE_PARAM_PH7*/
+			0x8020  0x10 		/*Set scan period*/
+			/*set Phase sampling frequency*/
+			0x8028  0x886 		/*AFE_PARAM_PH0*/
+			0x8034  0x886 		/*AFE_PARAM_PH1*/
+			0x8040  0x886 		/*AFE_PARAM_PH2*/
+			0x804C  0x886    	/*AFE_PARAM_PH3*/
+			0x8058  0x886 		/*AFE_PARAM_PH4*/
+			0x8064  0x886 		/*AFE_PARAM_PH5*/
+			0x8070  0x886 		/*AFE_PARAM_PH6*/
+			/*0x807C  0x886 */	/*AFE_PARAM_PH7*/
 
 			/*set CS3 to hiz, because it used as IRQ pin*/
 			0x8030  0xFFD9FF 	/*REG_AFEPH_PH0, CS4, ANT1, Bottom*/
@@ -275,10 +276,10 @@
 			0x8084  0xBFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
 
 			/*Set Phase Proximity Threshold*/
-			0x8098  0x0000924A		/*prox threshold ph0*/
-			0x80B8  0x00008038		/*prox threshold ph1*/
+			0x8098  0x00009240		/*prox threshold ph0*/
+			0x80B8  0x00008035		/*prox threshold ph1*/
 			0x80D8  0x00004343		/*prox threshold ph2*/
-			0x80F8  0x00003F3F		/*prox threshold ph3*/
+			0x80F8  0x00003C3C		/*prox threshold ph3*/
 			0x8118  0x00000000		/*prox threshold ph4*/
 			0x8138  0x00000000		/*prox threshold ph5*/
 			0x8158  0x00000000		/*prox threshold ph6*/
@@ -295,7 +296,7 @@
 			0x816C  0x20600019		/*PH7 Filter Setup B, non-detect threshold of USE filter*/
 
 			0x8090  0x50D47000
-			0x80B0  0x46DA7000
+			0x80B0  0x46D87000
 			0x80D0  0x46D07000
 			0x80F0  0x3CDE7000
 			0x8110  0x50D27000
@@ -304,10 +305,10 @@
 			0x8170  0x50D27000
 
 			/*PH0123 raw filter 1/4*/
-			0x8088  0x200000
-			0x80A8  0x200000
-			0x80C8  0x200000
-			0x80E8  0x200000
+			0x8088  0x300000
+			0x80A8  0x300000
+			0x80C8  0x300000
+			0x80E8  0x300000
 
 			/*PH456 raw filter 1/64*/
 			0x8108  0x600000
