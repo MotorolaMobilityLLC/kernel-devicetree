@@ -184,9 +184,9 @@
 
 	qcom,tp_state_check_enable;
 
-	qcom,mdss-dsi-hbm-on-command = [15 01 00 00 00 00 03 51 FF];
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
 	qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
-	qcom,mdss-dsi-hbm-off-command = [15 01 00 00 00 00 03 51 CC];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0C CC];
 	qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 
