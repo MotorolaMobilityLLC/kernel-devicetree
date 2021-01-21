@@ -145,7 +145,7 @@
 
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
 	qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
-	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0C CC];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0B 13];
 	qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 
@@ -186,7 +186,7 @@
 
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
 	qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
-	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0C CC];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0B 13];
 	qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 
