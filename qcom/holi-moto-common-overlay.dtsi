@@ -255,15 +255,16 @@
 			0x8024  0x7F00 		/*PHEN, Disable all Phases*/
 			0x4004  0x74 		/*irq mask*/
 			0x8020  0x10 		/*Set scan period*/
-			/*set Phase sampling frequency*/
-			0x8028  0x886 		/*AFE_PARAM_PH0*/
-			0x8034  0x886 		/*AFE_PARAM_PH1*/
-			0x8040  0x886 		/*AFE_PARAM_PH2*/
-			0x804C  0x886    	/*AFE_PARAM_PH3*/
-			0x8058  0x886 		/*AFE_PARAM_PH4*/
-			0x8064  0x886 		/*AFE_PARAM_PH5*/
-			0x8070  0x886 		/*AFE_PARAM_PH6*/
-			/*0x807C  0x886 */	/*AFE_PARAM_PH7*/
+
+			/*set Phase sampling frequency to 65KHz*/
+			0x8028  0x876 		/*AFE_PARAM_PH0*/
+			0x8034  0x876 		/*AFE_PARAM_PH1*/
+			0x8040  0x876 		/*AFE_PARAM_PH2*/
+			0x804C  0x876    	/*AFE_PARAM_PH3*/
+			0x8058  0x876 		/*AFE_PARAM_PH4*/
+			0x8064  0x876 		/*AFE_PARAM_PH5*/
+			0x8070  0x876 		/*AFE_PARAM_PH6*/
+			/*0x807C  0x876 */	/*AFE_PARAM_PH7*/
 
 			/*set CS3 to hiz, because it used as IRQ pin*/
 			0x8030  0xFFD9FF 	/*REG_AFEPH_PH0, CS4, ANT1, Bottom*/
