@@ -28,10 +28,9 @@
 	qcom,ovp = <29500>;
 	qcom,boost-current-limit = <875>;
 
-	mmi,low-bl-force-cabc-disable;
+	mmi,only-low-bl-force-cabc-disable;
 	mmi,low-bl-threshold = <200>;
 	mmi,low-bl-remap-percent = <80>;
-	mmi,low-bl-delay-ms = <50>;
 };
 
 &sde_dsi {
