@@ -27,7 +27,7 @@
 		qcom,mdss-dsi-lp11-init;
 		qcom,mdss-dsi-bl-min-level = <1>;
 		qcom,mdss-dsi-bl-max-level = <255>;
-		qcom,mdss-dsi-reset-sequence = <0 6>, <1 11>, <0 4>, <1 11>;
+		qcom,mdss-dsi-reset-sequence = <1 2>, <0 2>, <1 11>;
 		qcom,mdss-pan-physical-width-dimension = <68>;
 		qcom,mdss-pan-physical-height-dimension = <151>;
 
@@ -79,7 +79,7 @@
 					39 01 00 00 00 00 18 E1 EF FE FE FE FE EE F0 20 33 FF 00 00 6A 90 C0 0D 6A F0 3E FF 00 07 D0
 					39 01 00 00 00 00 03 F1 5A 59
 					39 01 00 00 00 00 03 F0 A5 A6
-					05 01 00 00 5A 00 01 11
+					05 01 00 00 46 00 01 11
 					05 01 00 00 32 00 01 29
 					15 01 00 00 96 00 02 26 02
 				];
