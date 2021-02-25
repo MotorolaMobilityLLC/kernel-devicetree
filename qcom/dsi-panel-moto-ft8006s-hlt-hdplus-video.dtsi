@@ -68,6 +68,7 @@
 		qcom,mdss-dsi-hbm-on-command-state = "dsi_hs_mode";
 		qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 CC 0C];
 		qcom,mdss-dsi-hbm-off-command-state = "dsi_hs_mode";
+		qcom,platform-reset-gpio-always-on;
 
 		qcom,mdss-dsi-display-timings {
 			timing@0{
@@ -92,8 +93,10 @@
 				15 01 00 00 00 00 02 53 2C
 				15 01 00 00 0A 00 02 55 01];
 				qcom,mdss-dsi-off-command = [
-					05 01 00 00 14 00 01 28
-					05 01 00 00 50 00 01 10];
+					05 01 00 00 32 00 01 28
+					05 01 00 00 96 00 01 10
+					15 01 00 00 00 00 02 17 5A
+					15 01 00 00 96 00 02 18 5A];
 				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 				qcom,mdss-dsi-off-command-state = "dsi_hs_mode";
                         };
