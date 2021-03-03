@@ -3030,7 +3030,6 @@
 		qcom,fde-key-size;
 		qcom,appsbl-qseecom-support;
 		qcom,commonlib64-loaded-by-uefi;
-		qcom,support-bus-scaling;
 		interconnect-names = "data_path";
 		interconnects = <&system_noc MASTER_CRYPTO_CORE0 &bimc SLAVE_EBI>;
 		clock-names =
