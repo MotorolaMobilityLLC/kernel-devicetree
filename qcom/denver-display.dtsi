@@ -30,7 +30,7 @@
 
 	mmi,low-bl-force-cabc-disable;
 	mmi,low-bl-threshold = <200>;
-	mmi,low-bl-remap-percent = <80>;
+	mmi,low-bl-remap-percent = <69>;
 };
 
 &sde_dsi {
