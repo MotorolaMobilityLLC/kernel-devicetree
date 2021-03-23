@@ -36,6 +36,6 @@
 };
 
 &dsi_hlt_ft8006s_video {
-        qcom,mdss-dsi-bl-max-level = <3686>;
-        qcom,mdss-brightness-max-level = <3686>;
+        qcom,mdss-dsi-bl-max-level = <3890>;
+        qcom,mdss-brightness-max-level = <3890>;
 };
