@@ -49,7 +49,7 @@
 		qcom,mdss-dsi-dma-trigger = "trigger_sw";
 		qcom,mdss-dsi-mdp-trigger = "none";
 		qcom,mdss-dsi-lp11-init;
-		qcom,mdss-dsi-reset-sequence = <1 5>, <0 2>, <1 60>;
+		qcom,mdss-dsi-reset-sequence = <1 5>, <0 10>, <1 60>;
 		qcom,mdss-pan-physical-width-dimension = <68>;
 		qcom,mdss-pan-physical-height-dimension = <151>;
 
@@ -59,16 +59,18 @@
 		qcom,mdss-dsi-bl-default-level = <127>;
 
 		qcom,mdss-dsi-cabc-ui-command = [15 01 00 00 00 00 02 55 01];
-		qcom,mdss-dsi-cabc-ui-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-cabc-ui-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-cabc-mv-command = [15 01 00 00 00 00 02 55 03];
-		qcom,mdss-dsi-cabc-mv-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-cabc-mv-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-cabc-dis-command = [15 01 00 00 00 00 02 55 00];
-		qcom,mdss-dsi-cabc-dis-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-cabc-dis-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 FF 0F];
-		qcom,mdss-dsi-hbm-on-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 E6 06];
-		qcom,mdss-dsi-hbm-off-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
 		qcom,platform-reset-gpio-always-on;
+		qcom,platform-tp-reset-enable;
+        qcom,mdss-dsi-tp-rst-gpio = <&tlmm 66 0>;
 
 		qcom,mdss-dsi-display-timings {
 			timing@0{
@@ -98,7 +100,7 @@
 					15 01 00 00 00 00 02 17 5A
 					15 01 00 00 96 00 02 18 5A];
 				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
-				qcom,mdss-dsi-off-command-state = "dsi_hs_mode";
+				qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
                         };
                 };
 	};
