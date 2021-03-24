@@ -1,0 +1,24 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "holi-corfup-common-overlay.dtsi"
+
+/ {
+	model = "corfup";
+	compatible = "qcom,holi-corfup", "qcom,holi-moto", "qcom,holi";
+	qcom,msm-id = <454 0x10000>, <472 0x10000>;
+	qcom,board-id = <0x44 0xA100>;
+};
+
