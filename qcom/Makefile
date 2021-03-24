@@ -33,6 +33,13 @@ holi-ibiza-dvt1-overlay.dtbo-base := holi-moto-base.dtb
 holi-ibiza-dvt2-overlay.dtbo-base := holi-moto-base.dtb
 holi-ibiza-pvt-overlay.dtbo-base := holi-moto-base.dtb
 
+dtbo-$(CONFIG_CORFUP_DTB) += \
+        holi-corfup-evb-overlay.dtbo \
+        holi-corfup-evt1-overlay.dtbo
+
+holi-corfup-evb-overlay.dtbo-base := holi-moto-base.dtb
+holi-corfup-evt1-overlay.dtbo-base := holi-moto-base.dtb
+
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
