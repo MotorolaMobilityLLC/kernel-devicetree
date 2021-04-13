@@ -1,0 +1,32 @@
+
+&mot_batterydata {
+	df-serialnum = "SB18C77591";
+	qcom,batt-id-range-pct = <15>;
+	#include "qg-batterydata-jk50-swd-5000mah.dtsi"
+	#include "qg-batterydata-jk50-sunwoda-5000mah.dtsi"
+	#include "qg-batterydata-jk50-atl-5000mah.dtsi"
+};
+
+&pm7250b_charger {
+	qcom,fcc-max-ua = <3000000>;
+	qcom,fv-max-uv = <4450000>;
+	qcom,dcp-curr-max = <2000000>;
+	qcom,thermal-mitigation = <3000000 2500000
+			2000000 1500000
+			1200000 900000
+			600000>;
+};
+
+&pm7250b_mmi {
+	qcom,mmi-temp-zones = <0 4200 1000 0>,
+				<15 0 2500 2500>,
+				<45 0 3000 3000>,
+				<60 4200 3000 0>;
+	qcom,iterm-ma = <243>;
+};
+
+
+&pm7250b_qg {
+	qcom,qg-iterm-ma = <500>;
+};
+
