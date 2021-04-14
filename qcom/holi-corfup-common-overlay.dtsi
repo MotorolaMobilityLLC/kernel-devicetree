@@ -11,8 +11,7 @@
  */
 
 #include "holi-moto-common-overlay.dtsi"
-#include "ibiza-display.dtsi"
-#include "ibiza-touchscreen.dtsi"
+#include "corfup-display.dtsi"
 #include "corfup-fps-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
 #include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
