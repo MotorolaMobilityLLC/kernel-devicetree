@@ -30,3 +30,48 @@
 	qcom,qg-iterm-ma = <500>;
 };
 
+&tlmm {
+	sc8549_int {
+		sc8549_int_default: sc8549_int_default {
+			mux {
+				pins = "gpio84";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio84";
+				bias-pull-up;         /* PULL UP */
+				input-enable;
+			};
+		};
+	};
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+
+	sc8549-charger@6F{
+		compatible = "sc,sc8549-standalone";
+		reg = <0x6F>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <84 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&sc8549_int_default>;
+		/*sc,sc8549,bat-ovp-disable;
+		sc,sc8549,bat-ocp-disable;
+		sc,sc8549,bus-ocp-disable;
+		sc,sc8549,bus-ovp-disable;*/
+		sc,sc8549,bat-therm-disable;
+		sc,sc8549,bus-therm-disable;
+
+		sc,sc8549,bat-ovp-threshold = <4575>;
+		sc,sc8549,bat-ocp-threshold = <7000>;
+
+		sc,sc8549,bus-ovp-threshold = <11000>;
+		sc,sc8549,bus-ocp-threshold = <3500>;
+
+		sc,sc8549,ac-ovp-threshold = <17>;
+		sc,sc8549,sense-resistor-mohm = <5>;
+	};
+};
+
