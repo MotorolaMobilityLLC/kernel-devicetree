@@ -170,11 +170,6 @@
 		compatible = "semi,wl2866d";
 		reg = <0x28>;
 
-		semi,cs-gpios = <&tlmm 38 0>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&cam_pmic_en_default>;
-
 		vin1-supply = <&S8E>;
 		vin2-supply = <&BOB>;
 
