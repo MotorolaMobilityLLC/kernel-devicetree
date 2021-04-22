@@ -172,6 +172,7 @@
 
 		vin1-supply = <&S8E>;
 		vin2-supply = <&BOB>;
+		semi,init-value = <0x05>;
 
 		regulators {
 			cam_pmic2_ldo1_dvdd1: ldo1 {
