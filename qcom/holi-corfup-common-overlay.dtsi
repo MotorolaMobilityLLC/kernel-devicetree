@@ -148,21 +148,6 @@
 	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
 };
 
-&tlmm {
-	cam_pmic_en_default: cam_pmic_en_default {
-		mux {
-			pins = "gpio38";
-			function = "gpio";
-		};
-		config {
-			pins = "gpio38";
-			drive-strength = <2>;
-			bias-pull-down;
-			output-low;
-		};
-	};
-};
-
 &qupv3_se10_i2c {
 	status = "ok";
 
@@ -204,11 +189,6 @@
 	cam_pmic1: wl2864c@29{
 		compatible = "semi,wl2864c";
 		reg = <0x29>;
-
-		semi,cs-gpios = <&tlmm 38 0>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&cam_pmic_en_default>;
 
 		vin1-supply = <&S8E>;
 		vin2-supply = <&BOB>;
