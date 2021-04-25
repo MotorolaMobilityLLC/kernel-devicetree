@@ -138,7 +138,6 @@ dsi_panel_pwr_supply_visionox: dsi_panel_pwr_supply_visionox {
 
 &dsi_vtdr6110c_visionox_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
-	qcom,platform-en-gpio = <&tlmm 38 0>;
 	qcom,platform-reset-gpio = <&pm6150l_gpios 9 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_visionox>;
