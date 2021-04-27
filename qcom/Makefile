@@ -40,6 +40,11 @@ dtbo-$(CONFIG_CORFUP_DTB) += \
 holi-corfup-evb-overlay.dtbo-base := holi-moto-base.dtb
 holi-corfup-evt1-overlay.dtbo-base := holi-moto-base.dtb
 
+dtbo-$(CONFIG_CYPRUS_DTB) += \
+        holi-cyprus-evb-overlay.dtbo
+
+holi-cyprus-evb-overlay.dtbo-base := holi-moto-base.dtb
+
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
