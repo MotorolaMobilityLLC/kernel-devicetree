@@ -176,6 +176,7 @@
 				regulator-name = "ldo3";
 				regulator-min-microvolt = <1200000>;
 				regulator-max-microvolt = <4300000>;
+				regulator-always-on;
 			};
 
 			cam_pmic2_ldo4_avdd2: ldo4 {
