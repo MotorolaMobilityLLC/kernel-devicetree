@@ -19,6 +19,6 @@
 	model = "cypfg";
 	compatible = "qcom,holi-cypfg", "qcom,holi-moto", "qcom,holi";
 	qcom,msm-id = <454 0x10000>, <472 0x10000>;
-	qcom,board-id = <0x47 0xA100>;
+	qcom,board-id = <0x47 0x9100>;
 };
 
