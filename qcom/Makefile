@@ -76,6 +76,12 @@ dtb-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+
+#remove useless qcom device tree in moto build
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+dtbo-$(CONFIG_ARCH_WAIPIO) += \
+	waipio-hiphi-evb1-overlay.dtbo
+else
 dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-mtp-pm8008-overlay.dtbo \
 	waipio-cdp-pm8008-overlay.dtbo \
@@ -94,8 +100,10 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-kiwi-mtp-pm8008-overlay.dtbo \
 	waipio-kiwi-mtp-pm8010-overlay.dtbo \
 	waipio-kiwi-cdp-pm8008-overlay.dtbo \
-	waipio-kiwi-cdp-pm8010-overlay.dtbo \
+	waipio-kiwi-cdp-pm8010-overlay.dtbo
+endif
 
+waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-base.dtb
 waipio-rumi-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-cdp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
@@ -163,6 +171,8 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+#remove useless diwali device tree in moto build
+ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_DIWALI) += diwali-rumi-overlay.dtbo \
 	diwali-idp-overlay.dtbo \
 	diwali-atp-overlay.dtbo \
@@ -172,6 +182,7 @@ dtbo-$(CONFIG_ARCH_DIWALI) += diwali-rumi-overlay.dtbo \
 	diwali-idp-hsp-overlay.dtbo \
 	diwali-idp-nopmi-overlay.dtbo \
 	diwali-qrd-nopmi-overlay.dtbo
+endif
 
 diwali-rumi-overlay.dtbo-base := diwali.dtb
 diwali-idp-overlay.dtbo-base := diwali.dtb
