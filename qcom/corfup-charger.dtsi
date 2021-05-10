@@ -1,4 +1,7 @@
 
+#include <dt-bindings/iio/qti_power_supply_iio.h>
+
+
 &mot_batterydata {
 	df-serialnum = "SB18C77591";
 	qcom,batt-id-range-pct = <15>;
@@ -50,8 +53,9 @@
 &qupv3_se8_i2c {
 	status = "okay";
 
-	sc8549-charger@6F{
+	sc8549: sc8549-charger@6F{
 		compatible = "sc,sc8549-standalone";
+		#io-channel-cells = <1>;
 		reg = <0x6F>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <84 0>;
@@ -72,6 +76,70 @@
 
 		sc,sc8549,ac-ovp-threshold = <17>;
 		sc,sc8549,sense-resistor-mohm = <5>;
+	};
+};
+
+&soc {
+	mmi_chrg_manager {
+		compatible = "mmi,chrg-manager";
+		#io-channel-cells = <1>;
+		io-channels = <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>,
+				<&pm7250b_charger PSY_IIO_CHARGING_ENABLED>,
+				<&pm7250b_charger PSY_IIO_TYPEC_MODE>,
+				<&pm7250b_charger PSY_IIO_USB_INPUT_CURRENT_SETTLED>,
+				<&pm7250b_charger PSY_IIO_PD_ACTIVE>,
+				<&sc8549 PSY_IIO_CP_ENABLE>,
+				<&sc8549 PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
+				<&sc8549 PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
+				<&sc8549 PSY_IIO_CP_STATUS1>,
+				<&sc8549 PSY_IIO_MMI_CP_CLEAR_ERROR>;
+
+
+		io-channel-names = "usb_hw_current_max",
+					"charging_enabled",
+					"usb_typec_mode",
+					"usb_input_current_settled",
+					"usb_pd_active",
+					"sc8549_cp_enable",
+					"sc8549_input_current_now",
+					"sc8549_input_voltage_now",
+					"sc8549_cp_status1",
+					"sc8549_cp_clear_error";
+
+		qcom,usbpd-phandle = <&pm7250b_pdphy>;
+		mmi,pps-volt-steps = <20000>;
+		mmi,pps-curr-steps = <100000>;
+		mmi,pd-volt-max = <10000000>;
+		mmi,pd-curr-max = <3000000>;
+		mmi,batt-curr-boost = <300000>;
+		mmi,batt-ovp-lmt = <4550000>;
+		mmi,pl-chrg-vbatt-min = <3600000>;
+		mmi,typec-middle-current = <1500000>;
+		mmi,step-first-current-comp = <0>;
+		mmi,dont-rerun-aicl;
+		mmi,chrg-temp-zones-num = <5>;
+		mmi,mmi-chrg-temp-zones =
+					<0 4200 970  0 0>,
+					<10 4450 2425 0 0>,
+					<15 4450 4850 0 0>,
+					<45 4350 5800 4480 4000>,
+					<60 4200 4850 0 0>;
+		mmi,thermal-mitigation =
+					<5800000>,
+					<5000000>,
+					<4000000>,
+					<3000000>,
+					<2000000>;
+		charger_device_0 {
+			chrg-name = "pmic-sw";
+			psy-name = "battery";
+			charging-curr-limited = <500000>;
+		};
+		charger_device_1 {
+			chrg-name = "cp-master";
+			psy-name = "cp-standalone";
+			charging-curr-min = <2000000>;
+		};
 	};
 };
 
