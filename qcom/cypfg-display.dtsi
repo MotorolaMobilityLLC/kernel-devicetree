@@ -7,11 +7,22 @@
 };
 
 &pm6150l_lcdb {
-	status = "disabled";
+	status = "ok";
 };
 
 &pm6150l_wled {
-	status = "disabled";
+	status = "ok";
+
+	qcom,string-cfg= <7>;
+	qcom,leds-per-string = <7>;
+	qcom,fs-current-limit = <25000>;
+	qcom,en-cabc;
+	qcom,cabc-sel = <1>;
+	qcom,wled-bl-step-up;
+	qcom,wled-bl-step-sequence = <255 5>, <2048 6>;
+
+	qcom,ovp = <26500>;
+	qcom,boost-current-limit = <1400>;
 };
 
 &sde_dsi {
