@@ -11,7 +11,7 @@
  */
 
 #include "holi-moto-common-overlay.dtsi"
-#include "denver-display.dtsi"
+#include "cypfg-display.dtsi"
 #include "denver-touchscreen.dtsi"
 #include "denver-sensors.dtsi"
 #include "camera/holi-camera-sensor-mot-denver-overlay.dtsi"
