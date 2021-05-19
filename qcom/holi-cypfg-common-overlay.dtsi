@@ -16,7 +16,7 @@
 #include "denver-sensors.dtsi"
 #include "camera/holi-camera-sensor-mot-denver-overlay.dtsi"
 #include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
-#include "denver-fps-overlay.dtsi"
+#include "cypfg-fps-overlay.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 
 &sdhc_2 {
