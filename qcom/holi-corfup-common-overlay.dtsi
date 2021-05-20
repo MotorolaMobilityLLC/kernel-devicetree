@@ -460,3 +460,8 @@
 &pm8008_9 {
 	status = "disabled";
 };
+
+&sdhc_2 {
+	qcom,vdd-voltage-level = <3000000 3000000>;
+};
+
