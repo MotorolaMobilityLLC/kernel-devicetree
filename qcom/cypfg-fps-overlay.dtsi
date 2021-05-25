@@ -1,5 +1,5 @@
 &tlmm {
-	ets_int_active: ets_int_active {
+	ets_irq_active: egis_irq_active {
 		/* INTERRUPT */
 		mux {
 			pins = "gpio17";
@@ -13,17 +13,31 @@
 		};
 	};
 
-	ets_int_suspend: ets_int_suspend {
+	ets_rst_high: ets_rst_high {
 		/* INTERRUPT */
 		mux {
-			pins = "gpio17";
+			pins = "gpio18";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio17";
+			pins = "gpio18";
 			drive-strength = <2>; /* 2 MA */
-			input-enable;
+			output-high;
+		};
+	};
+
+	ets_rst_low: ets_rst_low {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
 		};
 	};
 
@@ -86,24 +100,28 @@
 };
 
 &pm6350_l8 {
- qcom,init-voltage = <3304000>;
- regulator-min-microvolt = <3304000>;
+ qcom,init-voltage = <3008000>;
+ regulator-min-microvolt = <3008000>;
  regulator-max-microvolt = <3304000>;
  regulator-always-on;
 };
 
 &soc {
 	et528: et528 {
-		compatible = "egistec,et516";
+		compatible = "fp-egistec";
 		status = "ok";
 		reg = <0>;
 		interrupt-parent = <&tlmm>;
-		interrupts = <93 0x0>;
-		egistec,gpio_irq = <&tlmm 93 0x2>;
-		egistec,gpio_rst = <&tlmm 95 0x2>;
-		pinctrl-names = "default", "suspend";
-		pinctrl-0 = <&ets_int_active>;
-		pinctrl-1 = <&ets_int_suspend>;
+		interrupts = <17 0x0>;
+		egistec,gpio_irq = <&tlmm 17 0x0>;
+		egistec,gpio_reset = <&tlmm 18 0x0>;
+		vcc_fp-supply = <&pm6350_l8>;
+		egis-fp,vcc-voltage = <3008000 3008000>;
+		egis-fp,vcc-current = <100000>;
+		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active";
+		pinctrl-0 = <&ets_rst_high>;
+		pinctrl-1 = <&ets_rst_low>;
+		pinctrl-2 = <&ets_irq_active>;
 	};
 
 	fpc: fpc_fpc1020 {
