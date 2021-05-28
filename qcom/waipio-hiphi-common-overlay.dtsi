@@ -18,6 +18,7 @@
 
 #include "waipio-moto-common-overlay.dtsi"
 #include "waipio-moto-common-redriver.dtsi"
+#include "waipio-hiphi-fingerprint.dtsi"
 
 
 &qupv3_se9_i2c {
