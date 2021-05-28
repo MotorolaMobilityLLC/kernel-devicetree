@@ -18,4 +18,13 @@
 	model = "Qualcomm Technologies, Inc. Waipio SoC";
 	compatible = "qcom,waipio";
 	qcom,board-id = <0 0>;
+/*
+ * Some nodes need labels assigned to appear in __symbols__
+ */
+	chosen: chosen { };
+	aliases: aliases { };
+	reserved_memory: reserved-memory { };
+	mot_batterydata: qcom,battery-data { };
+	utags: utags { };
+	hw: hw { };
 };
