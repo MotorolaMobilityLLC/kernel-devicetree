@@ -35,10 +35,12 @@ holi-ibiza-pvt-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CORFUP_DTB) += \
         holi-corfup-evb-overlay.dtbo \
-        holi-corfup-evt1-overlay.dtbo
+        holi-corfup-evt1-overlay.dtbo \
+        holi-corfup-evt2-overlay.dtbo
 
 holi-corfup-evb-overlay.dtbo-base := holi-moto-base.dtb
 holi-corfup-evt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-corfup-evt2-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFG_DTB) += \
         holi-cypfg-evb-overlay.dtbo
