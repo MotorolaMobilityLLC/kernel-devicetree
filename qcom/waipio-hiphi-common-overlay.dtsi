@@ -18,3 +18,24 @@
 
 #include "waipio-moto-common-overlay.dtsi"
 
+
+&qupv3_se9_i2c {
+	status = "ok";
+	qcom,clk-freq-out = <1000000>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	st21nfc@8 {
+		compatible = "st,st21nfc";
+		reg = <0x08>;
+		st,irq_gpio = <&tlmm 46 0x00>;
+		st,reset_gpio = <&tlmm 34 0x00>;
+		st,clkreq_gpio = <&tlmm 35 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <46 0>;
+		interrupt-names = "nfc_irq";
+		pinctrl-names = "nfc_active", "nfc_suspend";
+		pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
+		pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
+	};
+};
+
