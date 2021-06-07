@@ -43,9 +43,11 @@ holi-corfup-evt1-overlay.dtbo-base := holi-moto-base.dtb
 holi-corfup-evt2-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFG_DTB) += \
-        holi-cypfg-evb-overlay.dtbo
+        holi-cypfg-evb-overlay.dtbo \
+	holi-cypfg-evt-overlay.dtbo
 
 holi-cypfg-evb-overlay.dtbo-base := holi-moto-base.dtb
+holi-cypfg-evt-overlay.dtbo-base := holi-moto-base.dtb
 
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
