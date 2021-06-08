@@ -33,5 +33,10 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&pmx_ts_release>;
+
+		/* touchscreen_mmi class entries*/
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+		mmi,class-entry-name = "ft3519";
 	};
 };
