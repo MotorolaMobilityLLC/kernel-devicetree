@@ -3,11 +3,9 @@
 
 
 &mot_batterydata {
-	df-serialnum = "SB18C77591";
+	df-serialnum = "SB18D17151";
 	qcom,batt-id-range-pct = <15>;
-	#include "qg-batterydata-jk50-swd-5000mah.dtsi"
-	#include "qg-batterydata-jk50-sunwoda-5000mah.dtsi"
-	#include "qg-batterydata-jk50-atl-5000mah.dtsi"
+	#include "qg-batterydata-ng50-atl-5000mah.dtsi"
 };
 
 &pm7250b_charger {
@@ -75,9 +73,10 @@
 
 &pm7250b_mmi {
 	qcom,mmi-temp-zones = <0 4200 1000 0>,
-				<15 0 2500 2500>,
-				<45 0 3000 3000>,
-				<60 4200 3000 0>;
+				<10 4250 3000 1000>,
+				<15 0 3000 3000>,
+				<45 0 4000 4000>,
+				<60 4200 4000 0>;
 	qcom,iterm-ma = <243>;
 };
 
@@ -187,11 +186,11 @@
                 /*qc3p end*/
 		mmi,chrg-temp-zones-num = <5>;
 		mmi,mmi-chrg-temp-zones =
-					<0 4200 970  0 0>,
-					<10 4450 2425 0 0>,
-					<15 4450 4850 0 0>,
-					<45 4350 5800 4480 4000>,
-					<60 4200 4850 0 0>;
+					<0 4200 1000  0 0>,
+					<10 4250 3000 4450 1000>,
+					<15 4450 3000 0 0>,
+					<45 4350 5800 4450 4000>,
+					<60 4200 4000 0 0>;
 		mmi,thermal-mitigation =
 					<5800000>,
 					<5000000>,
