@@ -33,6 +33,7 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&pmx_ts_release>;
+		panel = <&dsi_vtdr6110c_visionox_video>;
 
 		/* touchscreen_mmi class entries*/
 		mmi,enable-gestures;
