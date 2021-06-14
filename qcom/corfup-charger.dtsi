@@ -82,6 +82,22 @@
 
 
 &pm7250b_qg {
+	#io-channel-cells = <1>;
+	io-channels = <&pm7250b_vadc ADC5_BAT_THERM_100K_PU>,
+		      <&pm7250b_vadc ADC5_BAT_ID_100K_PU>,
+		      <&pm7250b_charger PSY_IIO_INPUT_CURRENT_LIMITED>,
+		      <&pm7250b_charger PSY_IIO_RECHARGE_SOC>,
+		      <&pm7250b_charger PSY_IIO_FORCE_RECHARGE>,
+		      <&pm7250b_charger PSY_IIO_CHARGE_DONE>,
+		      <&mmi_chrg PSY_IIO_CP_ENABLE>;
+	io-channel-names = "batt-therm",
+			   "batt-id",
+			   "input_current_limited",
+			   "recharge_soc",
+			   "force_recharge",
+			   "charge_done",
+			   "cp_charging_enabled";
+	mmi,cp-use-internal-qg;
 	qcom,qg-iterm-ma = <500>;
 };
 
@@ -132,7 +148,7 @@
 };
 
 &soc {
-	mmi_chrg_manager {
+	mmi_chrg: mmi_chrg_manager {
 		compatible = "mmi,chrg-manager";
 		#io-channel-cells = <1>;
 		io-channels = <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>,
