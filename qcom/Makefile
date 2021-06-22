@@ -52,6 +52,20 @@ dtbo-$(CONFIG_CYPFG_DTB) += \
 holi-cypfg-evb-overlay.dtbo-base := holi-moto-base.dtb
 holi-cypfg-evt-overlay.dtbo-base := holi-moto-base.dtb
 
+dtbo-$(CONFIG_CYPFQ_DTB) += \
+        holi-cypfq-evb-overlay.dtbo \
+	holi-cypfq-evt-overlay.dtbo
+
+holi-cypfq-evb-overlay.dtbo-base := holi-moto-base.dtb
+holi-cypfq-evt-overlay.dtbo-base := holi-moto-base.dtb
+
+dtbo-$(CONFIG_CYPFR_DTB) += \
+        holi-cypfr-evb-overlay.dtbo \
+	holi-cypfr-evt-overlay.dtbo
+
+holi-cypfr-evb-overlay.dtbo-base := holi-moto-base.dtb
+holi-cypfr-evt-overlay.dtbo-base := holi-moto-base.dtb
+
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
