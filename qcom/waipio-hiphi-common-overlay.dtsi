@@ -50,6 +50,10 @@
 	status = "ok";
 };
 
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
 &tlmm {
 	redriver_enable: redriver_enable {
 		mux {
