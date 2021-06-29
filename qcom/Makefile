@@ -84,7 +84,9 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-ironmn-evb1-overlay.dtbo
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += \
-	waipio-hiphi-evb1-overlay.dtbo
+	waipio-hiphi-evb1-overlay.dtbo \
+	waipio-hiphic-evb1-overlay.dtbo \
+	waipio-hiphic-evt1-overlay.dtbo
 endif
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
@@ -115,6 +117,8 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 endif
 
 waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-base.dtb
+waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-base.dtb
+waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-base.dtb
 waipio-ironmn-evb1-overlay.dtbo-base := waipio-moto-base.dtb
 waipio-rumi-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
