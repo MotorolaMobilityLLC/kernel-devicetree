@@ -46,28 +46,14 @@ holi-corfup-evt2-overlay.dtbo-base := holi-moto-base.dtb
 holi-corfup-dvt1-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CORFUQ_DTB) += \
-        holi-corfuq-evb-overlay.dtbo \
-        holi-corfuq-evt1-overlay.dtbo \
-        holi-corfuq-evt2-overlay.dtbo \
-        holi-corfuq-dvt1-overlay.dtbo
+        holi-corfuq-dvt1a-overlay.dtbo
 
-
-holi-corfuq-evb-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfuq-evt1-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfuq-evt2-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfuq-dvt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-corfuq-dvt1a-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CORFUR_DTB) += \
-        holi-corfur-evb-overlay.dtbo \
-        holi-corfur-evt1-overlay.dtbo \
-        holi-corfur-evt2-overlay.dtbo \
-        holi-corfur-dvt1-overlay.dtbo
+        holi-corfur-dvt1b-overlay.dtbo
 
-
-holi-corfur-evb-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfur-evt1-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfur-evt2-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfur-dvt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-corfur-dvt1b-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFG_DTB) += \
         holi-cypfg-evb-overlay.dtbo \
