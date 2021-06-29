@@ -16,8 +16,8 @@
 #include "waipio-hiphi-common-overlay.dtsi"
 
 / {
-	model = "hiphi";
-	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphi";
+	model = "hiphic";
+	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphic";
 	qcom,msm-id = <457 0x10000>, <482 0x10000>;
-	qcom,board-id = <0x47 0x9100>;
+	qcom,board-id = < 0x45 0x9100>;
 };
