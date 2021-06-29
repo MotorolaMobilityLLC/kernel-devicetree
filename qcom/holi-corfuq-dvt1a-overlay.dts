@@ -14,12 +14,13 @@
 /plugin/;
 
 #include "holi-corfuq-common-overlay.dtsi"
+#include "camera/holi-camera-sensor-mot-corfup-dvt1-overlay.dtsi"
 
 / {
 	model = "corfuq";
 	compatible = "qcom,holi-corfuq", "qcom,holi-moto", "qcom,holi";
 	qcom,msm-id = <454 0x10000>, <472 0x10000>;
-	qcom,board-id = <0x45 0xA200>;
+	qcom,board-id = <0x45 0xB1A0>;
 };
 &qupv3_se8_i2c {
 	sx937x@2c {
@@ -62,14 +63,14 @@
 			/*0x807C  0x876 */	/*AFE_PARAM_PH7*/
 
 			/*set CS3 to hiz, because it used as IRQ pin*/
-			0x8030  0xFEF9FF 	/*REG_AFEPH_PH0, CS5, ANT1, Bottom*/
+			0x8030  0xFFD9FF 	/*REG_AFEPH_PH0, CS4, ANT1, Bottom*/
 			0x803C  0xBFF9FF 	/*REG_AFEPH_PH1, CS7, ANT2, Top Right*/
 			0x8048  0xFFF9FD 	/*REG_AFEPH_PH2, CS0, ANT3, Top Left*/
-			0x8054  0xFFD9FF	/*REG_AFEPH_PH3, CS4, ANT4, Top Right side*/
+			0x8054  0xFEF9FF	/*REG_AFEPH_PH3, CS5, ANT4, Top Right side*/
 			0x8060  0xF7F9FF 	/*REG_AFEPH_PH4, CS6, ANT1_REF, Bottom*/
-			0x806C  0xFFF9EF 	/*REG_AFEPH_PH5, CS1, ANT2_REF, Top Right*/
-			0x8078  0xFFF97F 	/*REG_AFEPH_PH6, CS2, ANT3_REF, Top Left*/
-			0x8084  0xFFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
+			0x806C  0xFFF97F 	/*REG_AFEPH_PH5, CS2, ANT2_REF, Top Right*/
+			0x8078  0xFFF9EF 	/*REG_AFEPH_PH6, CS1, ANT3_REF, Top Left*/
+			0x8084  0xBFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
 
 			/*Set Phase Proximity Threshold*/
 			0x8098  0x00009240		/*prox threshold ph0*/
