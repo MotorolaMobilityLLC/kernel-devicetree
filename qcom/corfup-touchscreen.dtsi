@@ -36,7 +36,6 @@
 		panel = <&dsi_vtdr6110c_visionox_video>;
 
 		/* touchscreen_mmi class entries*/
-		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 		mmi,class-entry-name = "ft3519";
 	};
