@@ -11,13 +11,13 @@
  */
 
 #include "holi-moto-common-overlay.dtsi"
-#include "corfuq-display.dtsi"
-#include "corfuq-touchscreen.dtsi"
-#include "corfuq-fps-overlay.dtsi"
-#include "camera/holi-camera-sensor-mot-corfuq-overlay.dtsi"
+#include "corfup-display.dtsi"
+#include "corfup-touchscreen.dtsi"
+#include "corfup-fps-overlay.dtsi"
+#include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
 #include "holi-audio-wcd9370-aw882xx-overlay.dtsi"
 #include "moto_therm_sys_temp.dtsi"
-#include "corfuq-charger.dtsi"
+#include "corfup-charger.dtsi"
 
 &tlmm {
 	google_key_default: google_key_default {
