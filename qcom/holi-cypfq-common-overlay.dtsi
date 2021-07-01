@@ -19,6 +19,7 @@
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include <dt-bindings/iio/qti_power_supply_iio.h>
 #include "camera/holi-camera-pm6125-overlay.dtsi"
+#include "cypfq-display.dtsi"
 
 &wcd938x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
