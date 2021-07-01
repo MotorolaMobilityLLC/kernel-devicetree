@@ -56,3 +56,11 @@
 				0x0 MMI_ANNOTATE_SIZE>;
 	};
 };
+
+&mdss_dsi_phy0 {
+	qcom,platform-strength-ctrl = [55 03 00 00
+				55 03 00 00
+				55 03 00 00
+				55 03 00 00
+				55 00 00 00];
+};
