@@ -30,6 +30,8 @@
 #include <dt-bindings/iio/qti_power_supply_iio.h>
 #include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
 #include "corfup-fps-overlay.dtsi"
+#include "corfuq-display.dtsi"
+#include "corfuq-touchscreen.dtsi"
 
 &tlmm {
 	google_key_default: google_key_default {
