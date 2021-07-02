@@ -283,6 +283,11 @@
 	};
 };
 
+&pm6125_l12 {
+	regulator-always-on;
+	qcom,init-voltage = <1800000>;
+};
+
 &qupv3_se8_i2c {
 	status = "okay";
 	qcom,i2c-touch-active="synaptics,tcm-i2c";
@@ -327,7 +332,7 @@
 		interrupt-names = "sx937x_irq";
 		Semtech,nirq-gpio = <&tlmm 24 0x02>;
                 //please fix me
-		//cap_vdd-supply = <&pm6150a_l8>;
+		cap_vdd-supply = <&pm6125_l12>;
 		/*use PH4/5/6 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
 		Semtech,ref-phases-a = <4>;
