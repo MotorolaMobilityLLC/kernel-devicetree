@@ -27,17 +27,51 @@
 
 };
 
+&tlmm {
+	sde_avdd_avee_enable_active {
+		sde_avdd_avee_enable_active: sde_avdd_avee_enable_active {
+			mux {
+				pins = "gpio84", "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio84", "gpio85";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	sde_avdd_avee_enable_suspend {
+		sde_avdd_avee_enable_suspend: sde_avdd_avee_enable_suspend {
+			mux {
+				pins = "gpio84", "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio84", "gpio85";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+};
+
 &sde_dsi {
 	/delete-property/ lab-supply;
 	/delete-property/ ibb-supply;
 	/delete-property/ vddio-supply;
 	/delete-property/ qcom,dsi-default-panel;
 
-	lab-supply = <&tps65132_outp>;
-	ibb-supply = <&tps65132_outn>;
+	//lab-supply = <&tps65132_outp>;
+	//ibb-supply = <&tps65132_outn>;
 	vddio-supply = <&L13A>;
 
 	qcom,dsi-default-panel = <&dsi_tm_ili7807s_678_fhd_video>;
+
+	pinctrl-1 = <&sde_avdd_avee_enable_active &sde_avdd_avee_enable_suspend>;
 };
 &soc {
 	dsi_panel_pwr_supply_cypfq: dsi_panel_pwr_supply_cypfq{
@@ -52,7 +86,7 @@
 			qcom,supply-enable-load = <32000>;
 			qcom,supply-disable-load = <80>;
 		};
-
+/*
 		qcom,panel-supply-entry@1 {
 			reg = <1>;
 			qcom,supply-name = "lab";
@@ -72,7 +106,7 @@
 			qcom,supply-disable-load = <100>;
 			qcom,supply-pre-off-sleep = <3>;
 			qcom,supply-post-on-sleep = <3>;
-		};
+		};*/
 
 	};
 };
@@ -81,6 +115,9 @@
 &dsi_tm_ili7807s_678_fhd_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
+
+	qcom,avdd-enable-gpio = <&tlmm 84 0>;
+	qcom,avee-enable-gpio = <&tlmm 85 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
@@ -132,6 +169,9 @@
 &dsi_csot_gc7372_678_fhd_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
+
+	qcom,avdd-enable-gpio = <&tlmm 84 0>;
+	qcom,avee-enable-gpio = <&tlmm 85 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
