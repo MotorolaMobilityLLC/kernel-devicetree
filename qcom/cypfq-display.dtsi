@@ -28,6 +28,11 @@
 };
 
 &sde_dsi {
+	/delete-property/ lab-supply;
+	/delete-property/ ibb-supply;
+	/delete-property/ vddio-supply;
+	/delete-property/ qcom,dsi-default-panel;
+
 	lab-supply = <&tps65132_outp>;
 	ibb-supply = <&tps65132_outn>;
 	vddio-supply = <&L13A>;
@@ -35,7 +40,7 @@
 	qcom,dsi-default-panel = <&dsi_tm_ili7807s_678_fhd_video>;
 };
 &soc {
-	dsi_panel_pwr_supply_cypfg: dsi_panel_pwr_supply_cypfg{
+	dsi_panel_pwr_supply_cypfq: dsi_panel_pwr_supply_cypfq{
 		#address-cells = <1>;
 		#size-cells = <0>;
 
@@ -68,6 +73,7 @@
 			qcom,supply-pre-off-sleep = <3>;
 			qcom,supply-post-on-sleep = <3>;
 		};
+
 	};
 };
 
@@ -76,9 +82,9 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfg>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
-	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 
 	qcom,mdss-dsi-bl-min-level = <27>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
@@ -127,9 +133,9 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfg>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
-	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 
 	qcom,mdss-dsi-bl-min-level = <27>;
 	qcom,mdss-dsi-bl-max-level = <4095>;
@@ -178,7 +184,9 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfg>;
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
+
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
 	qcom,mdss-dsi-t-clk-post = <0x09>;
