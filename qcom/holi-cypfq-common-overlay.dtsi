@@ -370,6 +370,10 @@
 	qcom,use-cp-iin-sns;
 };
 
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <3000000>;
+};
+
 &pm7250b_vadc {
 	smb1390_therm@e {
 		qcom,scale-fn-type = <ADC_SCALE_HW_CALIB_PM5_SMB1398_TEMP>;
