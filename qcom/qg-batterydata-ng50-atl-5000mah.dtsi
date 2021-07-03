@@ -4,8 +4,8 @@ qcom,ng50-atl-5000mah {
     /* 4984199_Lenovo_corfp_5000mAH_PM7250B_averaged_MasterSlave_Dec17th2020 */
     serialnum = "SB18D17151";
     qcom,sdam-magic-number = <0x18D17151>;
-    qcom,max-voltage-uv = <4450000>;
-    qcom,fg-cc-cv-threshold-uv = <4440000>;
+    qcom,max-voltage-uv = <4480000>;
+    qcom,fg-cc-cv-threshold-uv = <4470000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <3440>;
