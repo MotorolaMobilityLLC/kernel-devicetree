@@ -14,7 +14,6 @@
 /plugin/;
 
 #include "holi-corfuq-common-overlay.dtsi"
-#include "camera/holi-camera-sensor-mot-corfup-dvt1-overlay.dtsi"
 
 / {
 	model = "corfuq";
