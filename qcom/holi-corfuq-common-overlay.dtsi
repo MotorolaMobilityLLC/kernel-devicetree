@@ -21,14 +21,14 @@
 
 #include "holi-pm6125-moto-common-overlay.dtsi"
 
-#include "holi-audio-overlay.dtsi"
+//#include "holi-audio-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
 #include "holi-pmic-overlay-pm6125.dtsi"
 #include "holi-thermal-overlay-pm6125.dtsi"
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include <dt-bindings/iio/qti_power_supply_iio.h>
-#include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
+#include "camera/holi-camera-pm6125-overlay.dtsi"
 #include "corfup-fps-overlay.dtsi"
 #include "corfuq-display.dtsi"
 #include "corfuq-touchscreen.dtsi"
@@ -160,9 +160,70 @@
 		};
 };
 
+/* Dummy LDO reference */
+&sdhc_1 {
+	status = "ok";
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc1_on>;
+	pinctrl-1 = <&sdc1_off>;
+
+	vdd-supply = <&L24A>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 570000>;
+
+	vdd-io-supply = <&L11A>;
+	qcom,vdd-io-always-on;
+	qcom,vdd-io-lpm-sup;
+	qcom,vdd-io-voltage-level = <1800000 1800000>;
+	qcom,vdd-io-current-level = <0 325000>;
+};
+
 &sdhc_2 {
 	status = "ok";
-	cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc2_on>;
+	pinctrl-1 = <&sdc2_off>;
+
+	vdd-supply = <&L22A>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 800000>;
+
+	vdd-io-supply = <&L5A>;
+	qcom,vdd-io-voltage-level = <1800000 2960000>;
+	qcom,vdd-io-current-level = <0 22000>;
+
+	cd-gpios = <&tlmm 94 GPIO_ACTIVE_LOW>;
+};
+
+&ufsphy_mem {
+		compatible = "qcom,ufs-phy-qmp-v3";
+
+		vdda-phy-supply = <&L7A>;
+		vdda-pll-supply = <&L4A>;
+		vdda-phy-max-microamp = <62900>;
+		vdda-pll-max-microamp = <18300>;
+
+		status = "ok";
+};
+
+&ufshc_mem {
+		vdd-hba-supply = <&gcc_ufs_phy_gdsc>;
+		vdd-hba-fixed-regulator;
+
+		vcc-supply = <&L24A>;
+		vcc-voltage-level = <2950000 2960000>;
+		vcc-max-microamp = <800000>;
+
+		vccq2-supply = <&L11A>;
+		vccq2-max-microamp = <800000>;
+		vccq2-voltage-level = <1800000 1800000>;
+
+		qcom,vddp-ref-clk-supply = <&L4A>;
+		qcom,vddp-ref-clk-max-microamp = <100>;
+
+		status = "ok";
 };
 
 &qupv3_se10_i2c {
