@@ -430,6 +430,7 @@
 				      <&pm7250b_qg PSY_IIO_TEMP>,
 				      <&pm7250b_qg PSY_IIO_CAPACITY>,
 				      <&pm7250b_qg PSY_IIO_CHARGE_FULL>,
+				      <&pm7250b_qg PSY_IIO_BATT_FULL_CURRENT>,
 				      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>;
 			io-channel-names = "usb_ctm_current_max",
 					   "main_current_max",
@@ -446,6 +447,7 @@
 					   "temp",
 					   "capacity",
 					   "charge_full",
+					   "batt_full_current",
 					   "charge_full_design";
 			qcom,enable-charging-limit;
 			qcom,upper-limit-capacity = <65>;
