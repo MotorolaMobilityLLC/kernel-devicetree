@@ -20,6 +20,19 @@
 #include <dt-bindings/iio/qti_power_supply_iio.h>
 #include "camera/holi-camera-pm6125-overlay.dtsi"
 
+&wcd937x_codec {
+	cdc-vdd-rxtx-supply = <&L9A>;
+	cdc-vddio-supply = <&L9A>;
+	qcom,cdc-static-supplies = "cdc-vdd-rxtx",
+				   "cdc-vddpx";
+	/*
+	 * Overriding cdc-vdd-mic-bias-supply to dummy value
+	 * to avoid compilation errors as BOB is not definied
+	 * for pm6125
+	 */
+	cdc-vdd-mic-bias-supply = <>;
+};
+
 /* Dummy LDO reference */
 &sdhc_1 {
 	status = "ok";
