@@ -13,8 +13,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "holi-corfup-common-overlay.dtsi"
-#include "camera/holi-camera-sensor-mot-corfup-dvt1-overlay.dtsi"
+#include "holi-corfuq-common-overlay.dtsi"
 
 / {
 	model = "corfur";
