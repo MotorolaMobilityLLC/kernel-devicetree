@@ -251,6 +251,38 @@
 
 		status = "ok";
 };
+&tlmm {
+	sar_int_default: sar_int_default {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	sar_int_sleep: sar_int_sleep {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+};
+
+&pm6125_l12 {
+	regulator-always-on;
+	qcom,init-voltage = <1800000>;
+};
 
 &qupv3_se10_i2c {
 	status = "ok";
@@ -343,74 +375,6 @@
 			};
 		};
 	};
-};
-
-&tlmm {
-	sar_int_default: sar_int_default {
-			mux {
-				pins = "gpio24";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio24";
-				num-grp-pins = <1>;
-				drive-strength = <2>;
-				bias-pull-up;
-			};
-	};
-
-	sar_int_sleep: sar_int_sleep {
-			mux {
-				pins = "gpio24";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio24";
-				num-grp-pins = <1>;
-				drive-strength = <2>;
-				bias-pull-up;
-			};
-	};
-};
-
-&pm6125_l12 {
-	regulator-always-on;
-	qcom,init-voltage = <1800000>;
-};
-
-&qupv3_se8_i2c {
-	status = "okay";
-	qcom,i2c-touch-active="synaptics,tcm-i2c";
-
-	synaptics_tcm@20 {
-		compatible = "synaptics,tcm-i2c";
-		reg = <0x20>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <22 0x2008>;
-		pinctrl-names = "pmx_ts_active","pmx_ts_suspend",
-					"pmx_ts_release";
-		pinctrl-0 = <&ts_active>;
-		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
-		pinctrl-2 = <&pmx_ts_release>;
-		vdd-supply = <&L11A>;
-		avdd-supply = <&L6A>;
-		synaptics,pwr-reg-name = "avdd";
-		synaptics,bus-reg-name = "vdd";
-		synaptics,irq-gpio = <&tlmm 22 0x2008>;
-		synaptics,irq-on-state = <0>;
-		synaptics,reset-gpio = <&tlmm 21 0x00>;
-		synaptics,reset-on-state = <0>;
-		synaptics,reset-active-ms = <20>;
-		synaptics,reset-delay-ms = <200>;
-		synaptics,power-delay-ms = <200>;
-		synaptics,ubl-i2c-addr = <0x20>;
-		synaptics,extend_report;
-		synaptics,firmware-name = "synaptics_firmware.img";
-
-		panel = <&dsi_rm69299_visionox_amoled_video
-			&dsi_rm69299_visionox_amoled_cmd>;
-	};
-
 	sx937x:sx937x@2c {
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
@@ -446,14 +410,14 @@
 			/*0x807C  0x876 */	/*AFE_PARAM_PH7*/
 
 			/*set CS3 to hiz, because it used as IRQ pin*/
-			0x8030  0xFFD9FF 	/*REG_AFEPH_PH0, CS4, ANT1, Bottom*/
+			0x8030  0xFEF9FF 	/*REG_AFEPH_PH0, CS5, ANT1, Bottom*/
 			0x803C  0xBFF9FF 	/*REG_AFEPH_PH1, CS7, ANT2, Top Right*/
 			0x8048  0xFFF9FD 	/*REG_AFEPH_PH2, CS0, ANT3, Top Left*/
-			0x8054  0xFEF9FF	/*REG_AFEPH_PH3, CS5, ANT4, Top Right side*/
+			0x8054  0xFFD9FF	/*REG_AFEPH_PH3, CS4, ANT4, Top Right side*/
 			0x8060  0xF7F9FF 	/*REG_AFEPH_PH4, CS6, ANT1_REF, Bottom*/
-			0x806C  0xFFF97F 	/*REG_AFEPH_PH5, CS2, ANT2_REF, Top Right*/
-			0x8078  0xFFF9EF 	/*REG_AFEPH_PH6, CS1, ANT3_REF, Top Left*/
-			0x8084  0xBFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
+			0x806C  0xFFF9EF 	/*REG_AFEPH_PH5, CS1, ANT2_REF, Top Right*/
+			0x8078  0xFFF97F 	/*REG_AFEPH_PH6, CS2, ANT3_REF, Top Left*/
+			0x8084  0xFFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
 
 			/*Set Phase Proximity Threshold*/
 			0x8098  0x00009240		/*prox threshold ph0*/
@@ -515,6 +479,40 @@
 		>;
 
 		status = "ok";
+	};
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+	qcom,i2c-touch-active="synaptics,tcm-i2c";
+
+	synaptics_tcm@20 {
+		compatible = "synaptics,tcm-i2c";
+		reg = <0x20>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <22 0x2008>;
+		pinctrl-names = "pmx_ts_active","pmx_ts_suspend",
+					"pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&pmx_ts_release>;
+		vdd-supply = <&L11A>;
+		avdd-supply = <&L6A>;
+		synaptics,pwr-reg-name = "avdd";
+		synaptics,bus-reg-name = "vdd";
+		synaptics,irq-gpio = <&tlmm 22 0x2008>;
+		synaptics,irq-on-state = <0>;
+		synaptics,reset-gpio = <&tlmm 21 0x00>;
+		synaptics,reset-on-state = <0>;
+		synaptics,reset-active-ms = <20>;
+		synaptics,reset-delay-ms = <200>;
+		synaptics,power-delay-ms = <200>;
+		synaptics,ubl-i2c-addr = <0x20>;
+		synaptics,extend_report;
+		synaptics,firmware-name = "synaptics_firmware.img";
+
+		panel = <&dsi_rm69299_visionox_amoled_video
+			&dsi_rm69299_visionox_amoled_cmd>;
 	};
 };
 
