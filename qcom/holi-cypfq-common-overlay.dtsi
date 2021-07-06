@@ -22,6 +22,10 @@
 #include "cypfq-display.dtsi"
 #include "cypfg-touchscreen.dtsi"
 
+&smb1394 {
+	status = "disabled";
+};
+
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
 	cdc-vddpx-supply = <&L9A>;
