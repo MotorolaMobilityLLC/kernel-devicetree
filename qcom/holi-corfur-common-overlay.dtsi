@@ -16,7 +16,6 @@
 //#include "corfup-fps-overlay.dtsi"
 //#include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
 //#include "moto_therm_sys_temp.dtsi"
-//#include "corfup-charger.dtsi"
 
 #include "holi-pm6125-moto-common-overlay.dtsi"
 
@@ -32,6 +31,7 @@
 #include "corfuq-display.dtsi"
 #include "corfuq-touchscreen.dtsi"
 #include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
+#include "corfup-charger.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
