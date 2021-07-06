@@ -287,6 +287,7 @@
 				regulator-name = "ldo4";
 				regulator-min-microvolt = <1200000>;
 				regulator-max-microvolt = <4300000>;
+				regulator-always-on;
 			};
 		};
 	};
