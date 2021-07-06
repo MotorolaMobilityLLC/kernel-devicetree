@@ -32,6 +32,10 @@
 #include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
 #include "corfup-charger.dtsi"
 
+&smb1394 {
+	status = "disabled";
+};
+
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
 	cdc-vddpx-supply = <&L9A>;
