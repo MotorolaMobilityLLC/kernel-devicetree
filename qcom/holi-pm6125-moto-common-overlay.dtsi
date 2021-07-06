@@ -11,6 +11,7 @@
  */
 #include "holi-pm6125-overlay.dtsi"
 #include "holi-regulators-pm6125.dtsi"
+#include "holi-mtp-pm7250b.dtsi"
 
 #include "carrier-channel-ids.dtsi"
 #include <dt-bindings/moto/moto-mem-reserve.h>
