@@ -7,6 +7,7 @@
 	/delete-property/ qcom,dsi-default-panel;
 	qcom,dsi-default-panel = <&dsi_vtdr6110c_visionox_video>;
 
+	/delete-property/ avdd-supply;
 	vddio-supply = <&L13A>;
 };
 
@@ -25,6 +26,11 @@
 			qcom,supply-post-on-sleep = <20>;
 		};
 	};
+};
+
+&display_panel_avdd {
+	/delete-property/ gpio;
+	/delete-property/ pinctrl-0;
 };
 
 &dsi_vtdr6110c_visionox_video {
