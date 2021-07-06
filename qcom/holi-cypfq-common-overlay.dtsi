@@ -264,6 +264,33 @@
 	qcom,vib-ldo-volt-uv = <3000000>;
 };
 
+&mot_batterydata {
+	df-serialnum = "SB18C77591";
+	qcom,batt-id-range-pct = <15>;
+	#include "qg-batterydata-jk50-atl-5000mah.dtsi"
+	#include "qg-batterydata-jk50-scud-5000mah.dtsi"
+};
 
+&pm7250b_mmi {
+	qcom,mmi-temp-zones = <0 4200 1000 0>,
+				<15 0 1000 1000>,
+				<45 0 3000 3000>,
+				<60 4200 2500 0>;
+	qcom,iterm-ma = <150>;
+};
+
+&pm7250b_charger {
+	qcom,dcp-curr-max = <2000000>;
+	qcom,fcc-max-ua = <3000000>;
+	qcom,fv-max-uv = <4400000>;
+	qcom,thermal-mitigation = <3000000 2500000
+			2000000 1500000
+			1200000 900000
+			600000 300000>;
+};
+
+&pm7250b_qg {
+	qcom,qg-iterm-ma = <500>;
+};
 
 #include "camera/holi-camera-sensor-pm6125-mtp.dtsi"
