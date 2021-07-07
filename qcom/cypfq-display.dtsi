@@ -59,11 +59,17 @@
 	};
 };
 
+&display_panel_avdd {
+	/delete-property/ gpio;
+	/delete-property/ pinctrl-0;
+};
+
 &sde_dsi {
 	/delete-property/ lab-supply;
 	/delete-property/ ibb-supply;
 	/delete-property/ vddio-supply;
 	/delete-property/ qcom,dsi-default-panel;
+	/delete-property/ avdd-supply;
 
 	//lab-supply = <&tps65132_outp>;
 	//ibb-supply = <&tps65132_outn>;
@@ -73,6 +79,7 @@
 
 	pinctrl-1 = <&sde_avdd_avee_enable_active &sde_avdd_avee_enable_suspend>;
 };
+
 &soc {
 	dsi_panel_pwr_supply_cypfq: dsi_panel_pwr_supply_cypfq{
 		#address-cells = <1>;
