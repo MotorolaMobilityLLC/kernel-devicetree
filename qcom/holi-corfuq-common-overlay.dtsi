@@ -15,7 +15,6 @@
 //#include "corfup-touchscreen.dtsi"
 //#include "corfup-fps-overlay.dtsi"
 //#include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
-//#include "moto_therm_sys_temp.dtsi"
 
 #include "holi-pm6125-moto-common-overlay.dtsi"
 
@@ -30,6 +29,7 @@
 #include "corfuq-display.dtsi"
 #include "corfuq-touchscreen.dtsi"
 #include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
+#include "moto_therm_sys_temp.dtsi"
 #include "corfup-charger.dtsi"
 #include "camera/holi-camera-sensor-mot-corfup-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-corfup-dvt1-overlay.dtsi"
@@ -544,7 +544,6 @@
 	};
 };
 
-/*
 &thermal_zones {
 	pa-therm0-usr {
 		status = "disabled";
@@ -573,11 +572,15 @@
 	xo-therm-usr {
 		status = "disabled";
 	};
+	rear-cam-therm-usr {
+		status = "disabled";
+	};
+
 	pa_therm2 {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM1_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm ADC5_GPIO4_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -587,11 +590,12 @@
 			};
 		};
 	};
+
 	msm_therm {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm_iio ADC5_AMUX_THM2_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm_iio ADC5_GPIO1_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -602,10 +606,10 @@
 		};
 	};
 	pa_therm3 {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM3_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm_iio ADC5_GPIO2_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -616,10 +620,10 @@
 		};
 	};
 	pa_therm1 {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm ADC5_GPIO3_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm ADC5_AMUX_THM1_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -633,7 +637,7 @@
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm ADC5_GPIO4_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm ADC5_AMUX_THM2_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -689,7 +693,7 @@
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO2_100K_PU>;
+		thermal-sensors = <&pm6125_adc_tm ADC5_GPIO3_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
@@ -714,7 +718,6 @@
 		};
 	};
 };
-*/
 
 &pm8008_8 {
 	status = "disabled";
