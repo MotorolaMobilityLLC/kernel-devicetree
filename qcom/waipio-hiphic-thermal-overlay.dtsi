@@ -1,0 +1,17 @@
+&thermal_zones {
+	xo-therm {
+		trips {
+			xo-config0 {
+				temperature = <88000>;
+			};
+
+			xo-config1 {
+				temperature = <90000>;
+			};
+
+			xo-config2 {
+				temperature = <100000>;
+			};
+		};
+	};
+};
