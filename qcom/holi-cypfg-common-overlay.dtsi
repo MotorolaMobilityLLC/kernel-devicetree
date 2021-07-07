@@ -195,7 +195,6 @@
 		pinctrl-0 = <&cam_pmic_en_default>;
 
 		vin1-supply = <&S8E>;
-		vin2-supply = <&BOB>;
 
 		regulators {
 			cam_ldo1: ldo1 {
