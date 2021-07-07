@@ -22,6 +22,7 @@
 #include "waipio-hiphi-touchscreen-overlay.dtsi"
 #include "waipio-hiphi-sensor-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
+#include "waipio-hiphic-thermal-overlay.dtsi"
 
 &usb0 {
 	ssusb_redriver = <&redriver>;
