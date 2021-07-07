@@ -255,37 +255,17 @@
 
 		status = "ok";
 };
-&tlmm {
-	sar_int_default: sar_int_default {
-			mux {
-				pins = "gpio24";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio24";
-				num-grp-pins = <1>;
-				drive-strength = <2>;
-				bias-pull-up;
-			};
-	};
 
-	sar_int_sleep: sar_int_sleep {
-			mux {
-				pins = "gpio24";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio24";
-				num-grp-pins = <1>;
-				drive-strength = <2>;
-				bias-pull-up;
-			};
-	};
-};
 
 &pm6125_l12 {
 	regulator-always-on;
 	qcom,init-voltage = <1800000>;
+};
+
+&qupv3_se8_i2c {
+	sx937x@2c {
+		status = "disabled";
+	};
 };
 
 &qupv3_se10_i2c {
@@ -379,7 +359,7 @@
 			};
 		};
 	};
-	sx937x:sx937x@2c {
+	sx937x@2c {
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
 		pinctrl-names = "default","sleep";
