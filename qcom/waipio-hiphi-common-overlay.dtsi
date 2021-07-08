@@ -14,7 +14,6 @@
    This base is original from "waipio-mtp-pm8008-overlay.dts"
 */
 #include "waipio-moto-common-overlay-base.dtsi"
-#include "waipio-pm8008.dtsi"
 
 #include "waipio-moto-common-overlay.dtsi"
 #include "waipio-moto-common-redriver.dtsi"
@@ -23,6 +22,7 @@
 #include "waipio-hiphi-sensor-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "waipio-hiphic-thermal-overlay.dtsi"
+#include "waipio-pm8010-spmi.dtsi"
 
 &usb0 {
 	ssusb_redriver = <&redriver>;
