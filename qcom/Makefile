@@ -53,11 +53,11 @@ holi-corfuq-dvt1a-overlay.dtbo-base := holi-moto-base.dtb
 holi-corfuq-dvt1c-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CORFUR_DTB) += \
-        holi-corfur-dvt1b-overlay.dtbo \
-        holi-corfur-dvt1d-overlay.dtbo
+	blair-corfur-dvt1b-overlay.dtbo \
+	blair-corfur-dvt1d-overlay.dtbo
 
-holi-corfur-dvt1b-overlay.dtbo-base := holi-moto-base.dtb
-holi-corfur-dvt1d-overlay.dtbo-base := holi-moto-base.dtb
+blair-corfur-dvt1b-overlay.dtbo-base := blair-moto-base.dtb
+blair-corfur-dvt1d-overlay.dtbo-base := blair-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFG_DTB) += \
         holi-cypfg-evb-overlay.dtbo \
