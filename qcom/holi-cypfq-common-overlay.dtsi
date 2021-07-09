@@ -21,6 +21,7 @@
 #include "camera/holi-camera-sensor-mot-cypfq-overlay.dtsi"
 #include "cypfq-display.dtsi"
 #include "cypfg-touchscreen.dtsi"
+#include "cypfq-fmr-overlay.dtsi"
 
 &smb1394 {
 	status = "disabled";
