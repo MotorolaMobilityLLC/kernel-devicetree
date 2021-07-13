@@ -131,10 +131,10 @@
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 	qcom,bklt-dcs-2bytes-enabled;
 
-	qcom,mdss-dsi-bl-min-level = <16>;
-	qcom,mdss-dsi-bl-max-level = <2047>;
-	qcom,mdss-dsi-bl-default-level = <1023>;
-	qcom,mdss-brightness-max-level = <2047>;
+	qcom,mdss-dsi-bl-min-level = <8>;
+	qcom,mdss-dsi-bl-max-level = <1023>;
+	qcom,mdss-dsi-bl-default-level = <512>;
+	qcom,mdss-brightness-max-level = <1023>;
 
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
