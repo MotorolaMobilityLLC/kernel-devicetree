@@ -204,3 +204,7 @@
 	};
 };
 
+&pm8350b_haptics {
+	qcom,vmax-mv = <10000>;
+	qcom,lra-period-us = <20000>;
+};
