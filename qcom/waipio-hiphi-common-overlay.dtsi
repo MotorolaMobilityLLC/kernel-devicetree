@@ -106,7 +106,6 @@
 	status = "ok";
 };
 
-
 &qupv3_se18_i2c {
 	status = "ok";
 
@@ -170,6 +169,37 @@
 				regulator-min-microvolt = <1200000>;
 				regulator-max-microvolt = <3750000>;
 			};
+		};
+	};
+};
+
+&soc {
+	gpio_keys {
+		pinctrl-0 = <&key_vol_up_default &google_key_default>;
+
+		google_key {
+			label = "google_key";
+			gpios = <&tlmm 116 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&tlmm{
+	google_key_default: google_key_default {
+		mux {
+			pins = "gpio116";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio116";
+			drive-strength = <2>;
+			bias-pull-up;
 		};
 	};
 };
