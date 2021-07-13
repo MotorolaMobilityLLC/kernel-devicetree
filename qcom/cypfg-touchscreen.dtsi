@@ -38,6 +38,20 @@
 		};
 	};
 
+	pmx_ts_int_suspend_high {
+		ts_int_suspend_high: ts_int_suspend_high {
+			mux {
+				pins = "gpio22";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio22";
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+		};
+	};
+
 	touch_reset_mux {
 		touch_reset_active: active {
 			mux {
@@ -102,10 +116,9 @@
 		panel = <&dsi_tm_ili7807s_678_fhd_video>;
 		touch,reset-gpio = <&tlmm 21 0x00>;
 		touch,irq-gpio = <&tlmm 22 0x2008>;
-		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_active>;
-		pinctrl-1 = <&touch_int_suspend &touch_reset_suspend>;
-		pinctrl-2 = <&pmx_ts_release>;
+		pinctrl-1 = <&ts_int_suspend_high>;
 		status = "ok";
 	};
 
