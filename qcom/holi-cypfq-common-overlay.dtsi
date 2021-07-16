@@ -20,7 +20,7 @@
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include "camera/holi-camera-sensor-mot-cypfq-overlay.dtsi"
 #include "cypfq-display.dtsi"
-#include "cypfg-touchscreen.dtsi"
+#include "cypfq-touchscreen.dtsi"
 #include "cypfq-fmr-overlay.dtsi"
 
 &smb1394 {
