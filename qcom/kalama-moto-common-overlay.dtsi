@@ -24,6 +24,13 @@
 	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
 };
 
+&pmk8550_sdam_2 {
+	extra_restart_reason:restart@a0 {
+		reg = <0xa0 0x1>;
+		bit = <0 7>;
+	};
+};
+
 &reserved_memory {
 	ramoops_mem: ramoops_region {
 		compatible = "ramoops";
@@ -37,5 +44,11 @@
 		no-map;
 		reg = <0x0 0xadfff000 0x0 0x1000>;
 	};
+};
 
+&soc {
+	reboot_reason {
+		nvmem-cells = <&restart_reason>, <&extra_restart_reason>;
+		nvmem-cell-names = "restart_reason", "extra_restart_reason";
+	};
 };
