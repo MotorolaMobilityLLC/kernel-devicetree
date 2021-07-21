@@ -151,7 +151,7 @@
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
-	qcom,dsi-supported-dfps-list = <60 120>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 
 	//qcom,mdss-dsi-panel-hdr-enabled;
 	//qcom,mdss-dsi-panel-hdr-color-primaries = <15115 15895 32830
@@ -209,7 +209,7 @@
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
-	qcom,dsi-supported-dfps-list = <60 120>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 
 	//qcom,mdss-dsi-panel-hdr-enabled;
 	//qcom,mdss-dsi-panel-hdr-color-primaries = <15115 15895 32830
