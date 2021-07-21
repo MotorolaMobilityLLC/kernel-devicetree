@@ -2,66 +2,64 @@
 #include "dsi-panel-mot-tianma-ili7807s-678-1080x2460-video.dtsi"
 #include "dsi-panel-mot-csot-gc7372-678-1080x2460-video.dtsi"
 
-&qupv3_se10_i2c {
-	status = "ok";
-
-	tps65132@3e {
-		compatible = "ti,tps65132";
-		reg = <0x3e>;
-
-		tps65132_outp:outp {
-			regulator-name = "outp";
-			regulator-boot-on;
-			regulator-always-on;
-			enable-gpios = <&tlmm 84 0>;
-		};
-
-		tps65132_outn:outn {
-			regulator-name = "outn";
-			regulator-boot-on;
-			regulator-always-on;
-			regulator-active-discharge = <0>;
-			enable-gpios = <&tlmm 85 0>;
-		};
-	};
-
-};
-
 &tlmm {
-	sde_avdd_avee_enable_active {
-		sde_avdd_avee_enable_active: sde_avdd_avee_enable_active {
-			mux {
-				pins = "gpio84", "gpio85";
-				function = "gpio";
-			};
+	lcd_panel_avdd_default: lcd_panel_avdd_default {
+		mux {
+			pins = "gpio84";
+			function = "gpio";
+		};
 
-			config {
-				pins = "gpio84", "gpio85";
-				drive-strength = <8>;
-				bias-pull-up;
-			};
+		config {
+			pins = "gpio84";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
 		};
 	};
 
-	sde_avdd_avee_enable_suspend {
-		sde_avdd_avee_enable_suspend: sde_avdd_avee_enable_suspend {
-			mux {
-				pins = "gpio84", "gpio85";
-				function = "gpio";
-			};
+	lcd_panel_avee_default: lcd_panel_avee_default {
+		mux {
+			pins = "gpio85";
+			function = "gpio";
+		};
 
-			config {
-				pins = "gpio84", "gpio85";
-				drive-strength = <2>;
-				bias-pull-down;
-			};
+		config {
+			pins = "gpio85";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
 		};
 	};
 };
 
-&display_panel_avdd {
-	/delete-property/ gpio;
-	/delete-property/ pinctrl-0;
+&soc {
+	lcd_panel_avdd: lcd_gpio_regulator@1 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "lcd_panel_avdd";
+		regulator-min-microvolt = <5500000>;
+		regulator-max-microvolt = <5500000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 84 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&lcd_panel_avdd>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_panel_avdd_default>;
+	};
+
+	lcd_panel_avee: lcd_gpio_regulator@2 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "lcd_panel_avee";
+		regulator-min-microvolt = <5500000>;
+		regulator-max-microvolt = <5500000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 85 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&lcd_panel_avee>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_panel_avee_default>;
+	};
 };
 
 &sde_dsi {
@@ -71,13 +69,11 @@
 	/delete-property/ qcom,dsi-default-panel;
 	/delete-property/ avdd-supply;
 
-	//lab-supply = <&tps65132_outp>;
-	//ibb-supply = <&tps65132_outn>;
+	lab-supply = <&lcd_panel_avdd>;
+	ibb-supply = <&lcd_panel_avee>;
 	vddio-supply = <&L13A>;
 
 	qcom,dsi-default-panel = <&dsi_tm_ili7807s_678_fhd_video>;
-
-	pinctrl-1 = <&sde_avdd_avee_enable_active &sde_avdd_avee_enable_suspend>;
 };
 
 &soc {
@@ -93,7 +89,7 @@
 			qcom,supply-enable-load = <32000>;
 			qcom,supply-disable-load = <80>;
 		};
-/*
+
 		qcom,panel-supply-entry@1 {
 			reg = <1>;
 			qcom,supply-name = "lab";
@@ -113,7 +109,7 @@
 			qcom,supply-disable-load = <100>;
 			qcom,supply-pre-off-sleep = <3>;
 			qcom,supply-post-on-sleep = <3>;
-		};*/
+		};
 
 	};
 };
@@ -122,9 +118,6 @@
 &dsi_tm_ili7807s_678_fhd_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
-
-	qcom,avdd-enable-gpio = <&tlmm 84 0>;
-	qcom,avee-enable-gpio = <&tlmm 85 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
@@ -180,9 +173,6 @@
 &dsi_csot_gc7372_678_fhd_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
-
-	qcom,avdd-enable-gpio = <&tlmm 84 0>;
-	qcom,avee-enable-gpio = <&tlmm 85 0>;
 
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_cypfq>;
 
