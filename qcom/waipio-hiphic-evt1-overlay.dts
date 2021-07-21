@@ -14,6 +14,8 @@
 /plugin/;
 
 #include "waipio-hiphi-common-overlay.dtsi"
+#include "waipio-hiphic-se-overlay.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
 
 / {
 	model = "hiphic";
@@ -21,3 +23,20 @@
 	qcom,msm-id = <457 0x10000>, <482 0x10000>;
 	qcom,board-id = < 0x45 0xA100>;
 };
+
+
+&soc {
+	pinctrl@f000000 {
+		compatible = "qcom,waipio-pinctrl";
+		reg = <0x0F000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		wakeup-parent = <&pdc>;
+		qcom,gpios-reserved = <36 37 38 39>;
+	};
+};
+
+
