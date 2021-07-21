@@ -1,0 +1,50 @@
+&qupv3_se8_spi {
+	status = "okay";
+	st54spi: st54spi@0 {
+		compatible = "st,st54spi";
+		reg = <0>;
+		spi-max-frequency = <1000000>;
+		/* gpio used as SE_PWR_REQ or SE_nRESET */
+		gpio-power_nreset-std = <&tlmm 93 0x00>;
+		/* Power management mode: none, ST54H (default), ST54J */
+		power_mode = "ST54J";
+		pinctrl-names = "spi_sleep", "spi_active";
+		pinctrl-0 = <&qupv3_se8_spi_sleep>;
+		pinctrl-1 = <&qupv3_se8_spi_active>;
+		status = "okay";
+	};
+};
+
+&tlmm {
+	qupv3_se8_spi_active: qupv3_se8_spi_active {
+		mux {
+			pins = "gpio28", "gpio29",
+					"gpio30", "gpio31";
+			function = "qup8";
+		};
+
+		config {
+			pins = "gpio28", "gpio29",
+					"gpio30", "gpio31";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se8_spi_sleep: qupv3_se8_spi_sleep {
+		mux {
+			pins = "gpio28", "gpio29",
+					"gpio30", "gpio31";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio28", "gpio29",
+					"gpio30", "gpio31";
+			drive-strength = <6>;
+			input-enable;
+			bias-pull-down;
+		};
+	};
+};
+
