@@ -207,3 +207,7 @@
 	qcom,vmax-mv = <10000>;
 	qcom,lra-period-us = <20000>;
 };
+
+&qupv3_se5_i2c {
+	status = "disabled";
+};
