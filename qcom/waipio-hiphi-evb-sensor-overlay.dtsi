@@ -42,8 +42,8 @@
 	sx937x@2c { /* SAR sensor */
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
-		Semtech,power-supply-type = <0>;
-		cap_vdd-supply = <&pm8350c_l8>;
+		Semtech,power-supply-type = <2>;
+		Semtech,eldo-gpio = <&tlmm 25 0x02>;
 		pinctrl-names = "default","sleep";
 		pinctrl-0 = <&sar_int_default>;
 		pinctrl-1 = <&sar_int_sleep>;
