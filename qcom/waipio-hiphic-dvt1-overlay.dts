@@ -15,6 +15,7 @@
 
 #include "waipio-hiphi-common-overlay.dtsi"
 #include "waipio-hiphic-se-overlay.dtsi"
+#include "waipio-hiphi-sensor-overlay.dtsi"
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
 / {
