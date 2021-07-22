@@ -19,7 +19,6 @@
 #include "waipio-moto-common-redriver.dtsi"
 #include "waipio-hiphi-fingerprint.dtsi"
 #include "waipio-hiphi-touchscreen-overlay.dtsi"
-#include "waipio-hiphi-sensor-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "waipio-hiphic-thermal-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
