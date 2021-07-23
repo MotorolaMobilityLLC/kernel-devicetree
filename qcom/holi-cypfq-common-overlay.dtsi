@@ -532,6 +532,7 @@
 };
 
 &pm7250b_charger {
+	qcom,otg-cl-ua = <1500000>;
 	qcom,dcp-curr-max = <2000000>;
 	qcom,fcc-max-ua = <3000000>;
 	qcom,fv-max-uv = <4400000>;
