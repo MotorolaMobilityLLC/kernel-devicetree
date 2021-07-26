@@ -2,6 +2,11 @@
 #include "dsi-panel-mot-tianma-ili7807s-678-1080x2460-video.dtsi"
 #include "dsi-panel-mot-csot-gc7372-678-1080x2460-video.dtsi"
 
+&display_panel_avdd {
+	/delete-property/ gpio;
+	/delete-property/ pinctrl-0;
+};
+
 &tlmm {
 	lcd_panel_avdd_default: lcd_panel_avdd_default {
 		mux {
