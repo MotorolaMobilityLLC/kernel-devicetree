@@ -82,6 +82,8 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 ifeq ($(CONFIG_IRONMN_DTB),y)
 dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-ironmn-evb1-overlay.dtbo
+
+waipio-ironmn-evb1-overlay.dtbo-base := waipio-moto-ironmn-base.dtb
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-hiphi-evb1-overlay.dtbo \
@@ -89,6 +91,12 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-hiphic-evb1-overlay.dtbo \
 	waipio-hiphic-evt1-overlay.dtbo \
 	waipio-hiphic-dvt1-overlay.dtbo
+
+waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphi-evt1-overlay.dtbo-base := waipio-moto-base.dtb
+waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphic-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 endif
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
@@ -118,12 +126,6 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-mtp-xr-pcie-overlay.dtbo
 endif
 
-waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-base.dtb
-waipio-hiphi-evt1-overlay.dtbo-base := waipio-moto-base.dtb
-waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-base.dtb
-waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-base.dtb
-waipio-hiphic-dvt1-overlay.dtbo-base := waipio-moto-base.dtb
-waipio-ironmn-evb1-overlay.dtbo-base := waipio-moto-base.dtb
 waipio-rumi-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
 waipio-mtp-68disp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
