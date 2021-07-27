@@ -60,7 +60,7 @@
 			   "cycle_count",
 			   "charge_full_design",
 			   "time_to_full_now",
-			   "sc8549_input_voltage_now";
+			   "cp_input_voltage_now";
 	qcom,fcc-max-ua = <3000000>;
 	qcom,fv-max-uv = <4480000>;
 	qcom,dcp-curr-max = <2000000>;
@@ -189,11 +189,11 @@
                                         "battery_dp_dm",
                                         "usb_qc3p_power",
                                         /*qc3p end*/
-					"sc8549_cp_enable",
-					"sc8549_input_current_now",
-					"sc8549_input_voltage_now",
-					"sc8549_cp_status1",
-					"sc8549_cp_clear_error";
+					"cp_enable",
+					"cp_input_current_now",
+					"cp_input_voltage_now",
+					"cp_status1",
+					"cp_clear_error";
 
 		qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		mmi,pps-volt-steps = <20000>;
