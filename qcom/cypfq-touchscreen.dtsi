@@ -119,6 +119,7 @@
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend_high>;
+		ilitek,report_gesture_key;
 		status = "ok";
 	};
 
