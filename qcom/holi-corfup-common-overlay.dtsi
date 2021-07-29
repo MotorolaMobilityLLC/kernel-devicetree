@@ -127,7 +127,12 @@
 	};
 };
 
-
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <3000000>;
+	qcom,vib-dis-short-long;
+	qcom,vib-dis-short-long-val = <70>;
+	qcom,vib-ldo-volt-uv-long = <3000000>;
+};
 
 &gpio_keys {
 	pinctrl-0 = <&key_vol_up_default &google_key_default>;
