@@ -25,6 +25,7 @@
 #include "corfup-charger.dtsi"
 #include "camera/blair-camera-sensor-mot-corfup-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-corfup-dvt1-overlay.dtsi"
+#include "blair-corfur-fmr-overlay.dtsi"
 
 &smb1394 {
 	status = "disabled";
