@@ -67,9 +67,11 @@ holi-cypfg-evb-overlay.dtbo-base := holi-moto-base.dtb
 holi-cypfg-evt-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFQ_DTB) += \
-        holi-cypfq-dvt1-overlay.dtbo
+        holi-cypfq-dvt1-overlay.dtbo \
+        holi-cypfq-dvt2-overlay.dtbo
 
 holi-cypfq-dvt1-overlay.dtbo-base := holi-moto-base.dtb
+holi-cypfq-dvt2-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_CYPFR_DTB) += \
         holi-cypfr-evb-overlay.dtbo \
