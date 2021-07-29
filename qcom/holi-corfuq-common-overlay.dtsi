@@ -51,6 +51,13 @@
 	cdc-vdd-mic-bias-supply = <>;
 };
 
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <3000000>;
+	qcom,vib-dis-short-long;
+	qcom,vib-dis-short-long-val = <70>;
+	qcom,vib-ldo-volt-uv-long = <3000000>;
+};
+
 &tlmm {
 	google_key_default: google_key_default {
 		mux {
