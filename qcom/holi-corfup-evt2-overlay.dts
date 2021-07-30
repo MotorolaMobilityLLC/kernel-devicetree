@@ -45,21 +45,22 @@
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
 		Semtech,button-flag = <0x0f>;
-		Semtech,reg-num = <61>;
+		Semtech,reg-num = <65>;
 		Semtech,reg-init = <
 			0x8024  0x7F00 		/*PHEN, Disable all Phases*/
-			0x4004  0x74 		/*irq mask*/
-			0x8020  0x10 		/*Set scan period*/
+			0x4004  0x70 		/*irq mask*/
+			0x4008  0x8 		/*irq setup*/
+			0x8020  0x32 		/*Set scan period*/
 
 			/*set Phase sampling frequency to 65KHz*/
-			0x8028  0x876 		/*AFE_PARAM_PH0*/
-			0x8034  0x876 		/*AFE_PARAM_PH1*/
-			0x8040  0x876 		/*AFE_PARAM_PH2*/
-			0x804C  0x876    	/*AFE_PARAM_PH3*/
-			0x8058  0x876 		/*AFE_PARAM_PH4*/
-			0x8064  0x876 		/*AFE_PARAM_PH5*/
-			0x8070  0x876 		/*AFE_PARAM_PH6*/
-			/*0x807C  0x876 */	/*AFE_PARAM_PH7*/
+			0x8028  0x87E 		/*AFE_PARAM_PH0*/
+			0x8034  0x87E 		/*AFE_PARAM_PH1*/
+			0x8040  0x87E 		/*AFE_PARAM_PH2*/
+			0x804C  0x87E    	/*AFE_PARAM_PH3*/
+			0x8058  0x87E 		/*AFE_PARAM_PH4*/
+			0x8064  0x87E 		/*AFE_PARAM_PH5*/
+			0x8070  0x87E 		/*AFE_PARAM_PH6*/
+			0x807C  0x876   	/*AFE_PARAM_PH7*/
 
 			/*set CS3 to hiz, because it used as IRQ pin*/
 			0x8030  0xFEF9FF 	/*REG_AFEPH_PH0, CS5, ANT1, Bottom*/
@@ -67,66 +68,57 @@
 			0x8048  0xFFF9FD 	/*REG_AFEPH_PH2, CS0, ANT3, Top Left*/
 			0x8054  0xFFD9FF	/*REG_AFEPH_PH3, CS4, ANT4, Top Right side*/
 			0x8060  0xF7F9FF 	/*REG_AFEPH_PH4, CS6, ANT1_REF, Bottom*/
-			0x806C  0xFFF9EF 	/*REG_AFEPH_PH5, CS1, ANT2_REF, Top Right*/
-			0x8078  0xFFF97F 	/*REG_AFEPH_PH6, CS2, ANT3_REF, Top Left*/
-			0x8084  0xFFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
+			0x806C  0xFFF97F 	/*REG_AFEPH_PH5, CS2, ANT2_REF, Top Right*/
+			0x8078  0xFFF9EF 	/*REG_AFEPH_PH6, CS1, ANT3_REF, WIFI GPS*/
+			0x8084  0x800 	        /*REG_AFEPH_PH7, NOT USE*/
 
 			/*Set Phase Proximity Threshold*/
-			0x8098  0x00009240		/*prox threshold ph0*/
-			0x80B8  0x00008035		/*prox threshold ph1*/
-			0x80D8  0x00004343		/*prox threshold ph2*/
-			0x80F8  0x00003C3C		/*prox threshold ph3*/
-			0x8118  0x00000000		/*prox threshold ph4*/
-			0x8138  0x00000000		/*prox threshold ph5*/
-			0x8158  0x00000000		/*prox threshold ph6*/
-			/*0x8178 0x00000000*/	/*prox threshold ph7*/
+			0x8098  0x693F		/*prox threshold ph0*/
+			0x80B8  0x8038		/*prox threshold ph1*/
+			0x80D8  0x4343		/*prox threshold ph2*/
+			0x80F8  0x3C3C		/*prox threshold ph3*/
+			0x8118  0x8E		/*prox threshold ph4*/
+			0x8138  0x8E		/*prox threshold ph5*/
+			0x8158  0x8E		/*prox threshold ph6*/
+			0x8178  0x5A40	        /*prox threshold ph7*/
 
 			/*Set Useful Filter*/
-			0x808C  0x20600019		/*PH0 Filter Setup B, non-detect threshold of USE filter*/
-			0x80AC  0x20600019		/*PH1 Filter Setup B, non-detect threshold of USE filter*/
-			0x80CC  0x20600019		/*PH2 Filter Setup B, non-detect threshold of USE filter*/
-			0x80EC  0x20600019		/*PH3 Filter Setup B, non-detect threshold of USE filter*/
-			0x810C  0x20600019		/*PH4 Filter Setup B, non-detect threshold of USE filter*/
-			0x812C  0x20600019		/*PH5 Filter Setup B, non-detect threshold of USE filter*/
-			0x814C  0x20600019		/*PH6 Filter Setup B, non-detect threshold of USE filter*/
-			0x816C  0x20600019		/*PH7 Filter Setup B, non-detect threshold of USE filter*/
-
-			0x8090  0x50D47000
-			0x80B0  0x46D87000
-			0x80D0  0x46D07000
-			0x80F0  0x3CDE7000
-			0x8110  0x50D27000
-			0x8130  0x50D27000
-			0x8150  0x50D27000
-			0x8170  0x50D27000
-
-			/*PH0123 raw filter 1/4*/
-			0x8088  0x300000
-			0x80A8  0x300000
-			0x80C8  0x300000
-			0x80E8  0x300000
-
-			/*PH456 raw filter 1/64*/
-			0x8108  0x600000
-			0x8128  0x600000
-			0x8148  0x600000
-
-			/*Set Reference Phase*/
-			0x8188  0x8000014		/*Reference Correction Setup B ENG1*/
-			0x818C  0x0				/*Reference Correction Setup B ENG2*/
-			0x8190  0x0				/*Reference Correction Setup B ENG3*/
-			0x8194  0x0				/*Reference Correction Setup B ENG4*/
-
-			/*Set Reference Correction*/
-			0x80A0  0x222200E1      /*Reference Correction Setup A PH0*/
-			0x80C0  0x0				/*Reference Correction Setup A PH1*/
-			0x80E0  0x0				/*Reference Correction Setup A PH2*/
-			0x8100  0x0				/*Reference Correction Setup A PH3*/
-			0x8120  0x0				/*Reference Correction Setup A PH4*/
-			0x8140  0x0				/*Reference Correction Setup A PH5*/
-			0x8160  0x0				/*Reference Correction Setup A PH6*/
-			0x8180  0x0				/*Reference Correction Setup A PH7*/
-
+			0x80A0  0x1E1E00E1
+			0x80C0  0x0
+			0x80E0  0xD0D0002
+			0x8100  0xF0F00E2
+			0x8120  0x0
+			0x8140  0x0
+			0x8160  0x0
+			0x8180  0x0
+			0x8188  0x8000014
+			0x818C  0x8000016
+			0x8190  0x0
+			0x8194  0x0
+			0x8090  0x3CD45000
+			0x80B0  0x3CD25000
+			0x80D0  0x3CD45000
+			0x80F0  0x3CD45000
+			0x8110  0x3CD85000
+			0x8130  0x3CD85000
+			0x8150  0x3CD85000
+			0x8170  0x3CD85000
+			0x8088  0x300001
+			0x80A8  0x300001
+			0x80C8  0x300001
+			0x80E8  0x300001
+			0x8108  0x500000
+			0x8128  0x500000
+			0x8148  0x500000
+			0x8168  0x300000
+			0x808C  0x60200030
+			0x80AC  0x60200030
+			0x80CC  0x60200030
+			0x80EC  0x60200030
+			0x810C  0x60200018
+			0x812C  0x60200018
+			0x814C  0x60200018
+			0x816C  0x60200018
 			0x8024  0x7F7F 	/*PHEN, Enable PH0~PH6*/
 		>;
 
