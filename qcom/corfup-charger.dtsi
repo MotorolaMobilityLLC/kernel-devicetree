@@ -204,7 +204,7 @@
 		mmi,batt-curr-boost = <300000>;
 		mmi,batt-ovp-lmt = <4550000>;
 		mmi,pl-chrg-vbatt-min = <3600000>;
-		mmi,typec-middle-current = <1500000>;
+		mmi,typec-middle-current = <1000000>;
 		mmi,step-first-current-comp = <0>;
 		mmi,dont-rerun-aicl;
 		/*qc3p start*/
@@ -223,8 +223,10 @@
 					<5800000>,
 					<5000000>,
 					<4000000>,
+					<3500000>,
 					<3000000>,
-					<2000000>;
+					<2000000>,
+					<1000000>;
 		charger_device_0 {
 			chrg-name = "pmic-sw";
 			psy-name = "battery";
