@@ -177,7 +177,8 @@
 				<&sc8549 PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
 				<&sc8549 PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
 				<&sc8549 PSY_IIO_CP_STATUS1>,
-				<&sc8549 PSY_IIO_MMI_CP_CLEAR_ERROR>;
+				<&sc8549 PSY_IIO_MMI_CP_CLEAR_ERROR>,
+				<&pm7250b_mmi PSY_IIO_CP_ENABLE>;
 
 
 		io-channel-names = "usb_hw_current_max",
@@ -194,7 +195,8 @@
 					"cp_input_current_now",
 					"cp_input_voltage_now",
 					"cp_status1",
-					"cp_clear_error";
+					"cp_clear_error",
+					"mmi_cp_enabled_status";
 
 		qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		mmi,pps-volt-steps = <20000>;
