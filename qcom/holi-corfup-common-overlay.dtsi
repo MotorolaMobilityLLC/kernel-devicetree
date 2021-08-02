@@ -131,7 +131,7 @@
 	qcom,vib-ldo-volt-uv = <3000000>;
 	qcom,vib-dis-short-long;
 	qcom,vib-dis-short-long-val = <70>;
-	qcom,vib-ldo-volt-uv-long = <3000000>;
+	qcom,vib-ldo-volt-uv-long = <2500000>;
 };
 
 &gpio_keys {
