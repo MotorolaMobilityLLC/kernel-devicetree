@@ -198,9 +198,9 @@
 	qcom,mdss-dsi-panel-status-read-length = <1>;
 	qcom,mdss-dsi-no-panel-on-read-support;
 	qcom,mdss-dsi-panel-supplier = "csot";
-	//qcom,platform-reset-gpio-always-on;
+	qcom,platform-reset-gpio-always-on;
 
-	//qcom,tp_state_check_enable;
+	qcom,tp_state_check_enable;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
