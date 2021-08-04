@@ -80,6 +80,13 @@ dtbo-$(CONFIG_CYPFR_DTB) += \
 holi-cypfr-evb-overlay.dtbo-base := holi-moto-base.dtb
 holi-cypfr-evt-overlay.dtbo-base := holi-moto-base.dtb
 
+dtbo-$(CONFIG_MILANF_DTB) += \
+        blair-milanf-evb1-overlay.dtbo \
+        blair-milanf-evb2-overlay.dtbo
+
+blair-milanf-evb1-overlay.dtbo-base := blair-moto-base.dtb
+blair-milanf-evb2-overlay.dtbo-base := blair-moto-base.dtb
+
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
