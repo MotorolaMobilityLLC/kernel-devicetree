@@ -239,6 +239,7 @@
 				      <&pm7250b_charger PSY_IIO_USB_INPUT_CURRENT_SETTLED>,
 				      <&pm7250b_charger PSY_IIO_RERUN_AICL>,
 				      <&pm7250b_charger PSY_IIO_SW_JEITA_ENABLED>,
+				      <&pm7250b_charger PSY_IIO_PD_CURRENT_MAX>,
 				      <&pm7250b_qg PSY_IIO_VOLTAGE_NOW>,
 				      <&pm7250b_qg PSY_IIO_CURRENT_NOW>,
 				      <&pm7250b_qg PSY_IIO_TEMP>,
@@ -256,6 +257,7 @@
 					   "usb_input_current_settled",
 					   "battery_rerun_aicl",
 					   "battery_sw_jeita_enabled",
+					   "usb_pd_current_max",
 					   "voltage_now",
 					   "current_now",
 					   "temp",
@@ -274,6 +276,7 @@
 			qcom,iterm-ma = <242>;
 			qcom,vfloat-comp-uv = <20000>;
 			qcom,force-hvdcp-5v;
+			qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		};
 	};
 };
