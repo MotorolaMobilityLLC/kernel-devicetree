@@ -9,7 +9,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "blair-pm6125-overlay.dtsi"
 #include "holi-mtp-pm7250b.dtsi"
 
 #include "carrier-channel-ids.dtsi"
