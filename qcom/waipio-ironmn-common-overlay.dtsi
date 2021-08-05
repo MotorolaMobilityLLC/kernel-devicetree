@@ -17,3 +17,74 @@
 #include "waipio-pm8008.dtsi"
 #include "waipio-moto-common-overlay.dtsi"
 
+&qupv3_se15_i2c {
+	status = "ok";
+
+	redriver: redriver@1A {
+		compatible = "onnn,redriver";
+		reg = <0x1A>;
+		vcc-supply = <&S10B>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&redriver_enable>;
+
+		gpios = <&tlmm 109 0>;
+
+		eq = /bits/ 8 <
+			/* Parameters for USB */
+			0x4 0x4 0x4 0x4
+			/* Parameters for DP */
+			0x6 0x4 0x4 0x6>;
+		flat-gain = /bits/ 8 <
+			/* Parameters for USB */
+			0x3 0x1 0x1 0x3
+			/* Parameters for DP */
+			0x2 0x1 0x1 0x2>;
+		output-comp = /bits/ 8 <
+			/* Parameters for USB */
+			0x3 0x3 0x3 0x3
+			/* Parameters for DP */
+			0x3 0x3 0x3 0x3>;
+		loss-match = /bits/ 8 <
+			/* Parameters for USB */
+			0x1 0x3 0x3 0x1
+			/* Parameters for DP */
+			0x3 0x3 0x3 0x3>;
+	};
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
+&redriver {
+	status = "ok";
+};
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio109";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio109";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio109";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio109";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
