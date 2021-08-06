@@ -47,7 +47,7 @@
 			config {
 				pins = "gpio22";
 				drive-strength = <2>;
-				bias-pull-up;
+				bias-pull-down;
 			};
 		};
 	};
@@ -117,7 +117,7 @@
 		touch,reset-gpio = <&tlmm 21 0x00>;
 		touch,irq-gpio = <&tlmm 22 0x2008>;
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
-		pinctrl-0 = <&ts_active>;
+		pinctrl-0 = <&touch_int_active>;
 		pinctrl-1 = <&ts_int_suspend_high>;
 		ilitek,report_gesture_key;
 		status = "ok";
