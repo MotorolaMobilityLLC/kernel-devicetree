@@ -10,6 +10,8 @@
  * GNU General Public License for more details.
  */
 
+#include "carrier-channel-ids.dtsi"
+
 &utags {
 	compatible = "mmi,utags";
 	mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
