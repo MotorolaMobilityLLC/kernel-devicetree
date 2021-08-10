@@ -18,6 +18,7 @@
 	model = "Qualcomm Technologies, Inc. Waipio SoC";
 	compatible = "qcom,waipio";
 	qcom,board-id = <0 0>;
+	channel-id-map = "";
 /*
  * Some nodes need labels assigned to appear in __symbols__
  */
