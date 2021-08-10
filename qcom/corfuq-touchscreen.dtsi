@@ -39,6 +39,6 @@
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 		mmi,class-entry-name = "ft3519";
-		mmi,power-off-suspend;
+		mmi,reset-on-resume = <0x01>;
 	};
 };
