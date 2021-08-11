@@ -70,6 +70,7 @@
 			1200000 900000
 			600000>;
 	mmi,qc3p-support;
+	/delete-property/ qcom,fcc-stepping-enable;
 
 };
 
