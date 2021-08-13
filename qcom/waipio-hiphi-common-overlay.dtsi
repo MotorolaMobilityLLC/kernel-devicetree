@@ -28,6 +28,12 @@
 	ssusb_redriver = <&redriver>;
 };
 
+&usb2_phy0 {
+	qcom,param-override-seq =
+		<0x0e 0x70
+		0x06 0x74>;
+};
+
 &tlmm {
 	rear_pmic_en: rear_pmic_en {
 		mux {
