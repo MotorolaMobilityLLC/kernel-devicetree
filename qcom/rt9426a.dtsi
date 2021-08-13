@@ -1,11 +1,11 @@
 #include <dt-bindings/interrupt-controller/irq.h>
 
-&qupv3_se0_i2c {
+&qupv3_se8_i2c {
 	rt9426a@55 {
 		compatible = "richtek,rt9426a";
 		reg = <0x55>;
 		status = "okay";
-		interrupts-extended = <&tlmm 14 IRQ_TYPE_LEVEL_LOW>;
+		interrupts-extended = <&tlmm 8 IRQ_TYPE_LEVEL_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&rt9426a_alert>;
 		rt,dtsi_version = <01 709>;
@@ -95,12 +95,12 @@
 &tlmm {
 	rt9426a_alert: rt9426a_alert {
 		mux {
-			pins = "gpio14";
+			pins = "gpio8";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio14";
+			pins = "gpio8";
 			drive-strength = <2>;
 			bias-pull-up;
 		};
