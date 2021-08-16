@@ -16,6 +16,7 @@
 #include "holi-thermal-overlay-pm6125.dtsi"
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include "display/blair-sde-display-mtp.dtsi"
+#include "milanf-display.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
