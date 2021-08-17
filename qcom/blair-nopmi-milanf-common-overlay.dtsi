@@ -18,3 +18,10 @@
 };
 
 
+&qupv3_se8_i2c {
+	oz8806@2f {
+		compatible = "o2micro,oz8806";
+		reg = <0x2f>;
+		status = "okay";
+	};
+};
