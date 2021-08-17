@@ -15,3 +15,7 @@
 &pm7250b_charger {
 	dpdm-supply = <&usb2_phy0>;
 };
+
+&smb1394 {
+	status = "disabled";
+};
