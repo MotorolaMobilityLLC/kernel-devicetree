@@ -9,13 +9,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "holi-audio-overlay.dtsi"
+#include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
 #include "holi-pmic-overlay-pm6125.dtsi"
 #include "holi-thermal-overlay-pm6125.dtsi"
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include "display/blair-sde-display-mtp.dtsi"
+
+&wcd937x_codec {
+	cdc-vdd-rxtx-supply = <&L9A>;
+	cdc-vddpx-supply = <&L9A>;
+	qcom,cdc-static-supplies = "cdc-vdd-rxtx",
+				   "cdc-vddpx";
+	/*
+	 * Overriding cdc-vdd-mic-bias-supply to dummy value
+	 * to avoid compilation errors as BOB is not definied
+	 * for pm6125
+	 */
+	cdc-vdd-mic-bias-supply = <>;
+};
 
 
 &tlmm {
@@ -111,40 +124,6 @@
 			};
 		};
 	};
-};
-
-&wcd938x_codec {
-	cdc-vdd-rxtx-supply = <&L9A>;
-	cdc-vddio-supply = <&L9A>;
-	qcom,cdc-static-supplies = "cdc-vdd-rxtx",
-				   "cdc-vddio";
-	/*
-	 * Overriding cdc-vdd-mic-bias-supply to dummy value
-	 * to avoid compilation errors as BOB is not definied
-	 * for pm6125
-	 */
-	cdc-vdd-mic-bias-supply = <>;
-};
-
-&wcd937x_codec {
-	cdc-vdd-rxtx-supply = <&L9A>;
-	cdc-vddpx-supply = <&L9A>;
-	qcom,cdc-static-supplies = "cdc-vdd-rxtx",
-				   "cdc-vddpx";
-	/*
-	 * Overriding cdc-vdd-mic-bias-supply to dummy value
-	 * to avoid compilation errors as BOB is not definied
-	 * for pm6125
-	 */
-	cdc-vdd-mic-bias-supply = <>;
-};
-
-&wsa881x_i2c_e {
-	cdc-vdd-1p8-supply = <&L9A>;
-};
-
-&wsa881x_i2c_f {
-	cdc-vdd-1p8-supply = <&L9A>;
 };
 
 /* Dummy LDO reference */
