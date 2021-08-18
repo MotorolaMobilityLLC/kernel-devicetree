@@ -94,10 +94,6 @@
 	};
 };
 
-&pm8350b_haptics {
-	status = "ok";
-};
-
 &pm8350c_switch0 {
 	qcom,led-mask = <9>; /* Channels 1 & 4 */
 	qcom,symmetry-en;
