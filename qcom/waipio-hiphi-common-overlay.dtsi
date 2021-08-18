@@ -213,3 +213,7 @@
 &qupv3_se5_i2c {
 	status = "disabled";
 };
+
+&pm8350b_haptics {
+	status = "ok";
+};
