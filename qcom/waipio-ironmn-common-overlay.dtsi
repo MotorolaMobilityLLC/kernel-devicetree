@@ -14,7 +14,6 @@
    This base is original from "waipio-mtp-pm8008-overlay.dts"
 */
 #include "waipio-moto-common-overlay-base.dtsi"
-#include "waipio-pm8008.dtsi"
 #include "waipio-moto-common-overlay.dtsi"
 
 &qupv3_se15_i2c {
