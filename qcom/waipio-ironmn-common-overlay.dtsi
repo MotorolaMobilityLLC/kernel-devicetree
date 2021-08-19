@@ -49,6 +49,17 @@
 			/* Parameters for DP */
 			0x3 0x3 0x3 0x3>;
 	};
+
+	fusb0: typec-portc@22 {
+		compatible = "fcs,fusb302";
+		reg = <0x22>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <85 IRQ_TYPE_LEVEL_LOW>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&fusb0_int>;
+		vbus-supply = <&BOB>;
+		status = "okay";
+	};
 };
 
 &usb0 {
@@ -84,6 +95,19 @@
 			pins = "gpio109";
 			drive-strength = <2>;
 			output-low;
+		};
+	};
+
+	fusb0_int: fusb0-int {
+		mux {
+			pins = "gpio85";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio85";
+			drive-strength = <2>;
+			bias-pull-up;
 		};
 	};
 };
