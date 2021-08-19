@@ -13,12 +13,12 @@
 /dts-v1/;
 /plugin/;
 
-#include "holi-cypfr-common-overlay.dtsi"
+#include "blair-cypfr-common-overlay.dtsi"
 
 / {
 	model = "cypfr";
-	compatible = "qcom,holi-cypfr", "qcom,holi-moto", "qcom,holi";
+	compatible = "qcom,blair-cypfr", "qcom,blair-moto", "qcom,blair";
 	qcom,msm-id = <454 0x10000>, <472 0x10000>;
-	qcom,board-id = <0x47 0xA200>, <0x48 0xA200>;
+	qcom,board-id = <0x4B 0xA100>;
 };
 
