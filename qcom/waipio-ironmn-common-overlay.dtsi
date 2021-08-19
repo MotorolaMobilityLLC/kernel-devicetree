@@ -60,6 +60,18 @@
 		vbus-supply = <&BOB>;
 		status = "ok";
 	};
+
+	pct1812_mmi@33 {
+		compatible = "pixart,pct1812_ts";
+		reg = <0x33>;
+		/*pct1812,reset-gpio = <&tlmm 20 0>;*/
+		pct1812,irq-gpio = <&tlmm 84 0x2008>;
+		pct1812,regulator_vdd = "pm8350c_l3";
+		pct1812,regulator_vio = "pm8350_s10";
+		pinctrl-names = "touchpad_active", "touchpad_suspend";
+		pinctrl-0 = <&tpad_int_active>;
+		pinctrl-1 = <&tpad_int_active>;
+	};
 };
 
 &usb0 {
@@ -107,6 +119,19 @@
 		config {
 			pins = "gpio85";
 			drive-strength = <2>;
+			bias-pull-up;
+		};
+	};
+
+	tpad_int_active: tpad-int-active {
+		mux {
+			pins = "gpio84";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio84";
+			drive-strength = <8>;
 			bias-pull-up;
 		};
 	};
