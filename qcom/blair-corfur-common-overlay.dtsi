@@ -278,6 +278,7 @@
 
 		vin1-supply = <&S6A>;
 		semi,init-value = <0x05>;
+		semi,shutdown-ldo;
 
 		regulators {
 			cam_pmic2_ldo1_dvdd1: ldo1 {
