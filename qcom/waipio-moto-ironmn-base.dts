@@ -14,6 +14,10 @@
 
 #include "waipio-moto-common-base.dtsi"
 
+&soc {
+	/delete-node/ qcom,qbt_handler;
+};
+
 &wlan {
 	/delete-property/ qcom,vreg_ipa;
 };
