@@ -11,10 +11,6 @@
 	vddio-supply = <&L13A>;
 };
 
-&pm6125_l13 {
-	regulator-always-on;
-};
-
 &soc {
 	dsi_panel_pwr_supply_visionox: dsi_panel_pwr_supply_visionox {
 		#address-cells = <1>;
