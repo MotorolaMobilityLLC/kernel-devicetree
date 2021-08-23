@@ -164,20 +164,7 @@
 		compatible = "richtek,rt-pd-manager";
 
 		#io-channel-cells = <1>;
-		io-channels = <&pm7250b_charger PSY_IIO_PD_ACTIVE>,
-			      <&pm7250b_charger PSY_IIO_PD_USB_SUSPEND_SUPPORTED>,
-			      <&pm7250b_charger PSY_IIO_PD_IN_HARD_RESET>,
-			      <&pm7250b_charger PSY_IIO_PD_CURRENT_MAX>,
-			      <&pm7250b_charger PSY_IIO_PD_VOLTAGE_MIN>,
-			      <&pm7250b_charger PSY_IIO_PD_VOLTAGE_MAX>,
-			      <&pm7250b_charger PSY_IIO_USB_REAL_TYPE>;
-		io-channel-names = "pd_active",
-				   "pd_usb_suspend_supported",
-				   "pd_in_hard_reset",
-				   "pd_current_max",
-				   "pd_voltage_min",
-				   "pd_voltage_max",
-				   "real_type";
+
 	};
 };
 
