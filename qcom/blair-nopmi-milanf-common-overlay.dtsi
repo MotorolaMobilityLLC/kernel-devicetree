@@ -11,6 +11,7 @@
  */
 #include "blair-milanf-common-overlay.dtsi"
 #include "blair-nopmi-moto-common-overlay.dtsi"
+#include "tcpc_config.dtsi"
 
 &usb0 {
        qcom,force-adb-enable;
