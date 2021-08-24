@@ -1,0 +1,41 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "waipio-hiphi-common-overlay.dtsi"
+#include "waipio-hiphic-se-overlay.dtsi"
+#include "waipio-hiphic-dvt-sensor-overlay.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	model = "hiphic";
+	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphic";
+	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
+	qcom,board-id = <0x45 0xB2A0>;
+};
+
+
+&soc {
+	pinctrl@f000000 {
+		compatible = "qcom,waipio-pinctrl";
+		reg = <0x0F000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		wakeup-parent = <&pdc>;
+		qcom,gpios-reserved = <36 37 38 39>;
+	};
+};
