@@ -19,6 +19,8 @@
 #include "milanf-fps-overlay.dtsi"
 #include "milanf-display.dtsi"
 #include "milanf-touchscreen.dtsi"
+#include "camera/blair-camera-sensor-mot-milanf-overlay.dtsi"
+#include "milanf-wl286xx.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
@@ -214,5 +216,4 @@
 		};
 	};
 };
-#include "camera/blair-camera-sensor-mtp.dtsi"
 
