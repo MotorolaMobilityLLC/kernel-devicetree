@@ -11,21 +11,14 @@
  */
 
 /dts-v1/;
+/plugin/;
 
-#include "waipio.dtsi"
+#include "waipio-hiphi-common-overlay.dtsi"
+#include "waipio-hiphi-evt-sensor-overlay.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Waipio SoC";
-	compatible = "qcom,waipio";
-	qcom,board-id = <0 0>;
-	channel-id-map = "";
-/*
- * Some nodes need labels assigned to appear in __symbols__
- */
-	chosen: chosen { };
-	aliases: aliases { };
-	reserved_memory: reserved-memory { };
-	mot_batterydata: qcom,battery-data { };
-	utags: utags { };
-	hw: hw { };
+	model = "hiphi";
+	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphi";
+	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
+	qcom,board-id = <0x47 0xB100>;
 };
