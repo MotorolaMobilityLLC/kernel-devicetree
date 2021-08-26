@@ -10,51 +10,6 @@
  * GNU General Public License for more details.
  */
 
-
-&tlmm {
-	pen_int_default: pen_int_default {
-			mux {
-				pins = "gpio23", "gpio44";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio23", "gpio44";
-				drive-strength = <2>;
-				bias-disable;
-			};
-	};
-
-	pen_int_sleep: pen_int_sleep {
-			mux {
-				pins = "gpio23", "gpio44";
-				function =  "gpio";
-			};
-			config {
-				pins = "gpio23", "gpio44";
-				drive-strength = <2>;
-				bias-disable;
-			};
-	};
-};
-
-&soc {
-	pen_detect{
-		compatible = "hall_pen_detect";
-		pinctrl-names = "default","sleep";
-		pinctrl-0 = <&pen_int_default>;
-		pinctrl-1 = <&pen_int_sleep>;
-		hall,factory-class-name = "hall_1";
-		hall_vdd-supply = <&pm8350c_l8>;
-		hall,nirq-gpio-num = <2>;
-		hall,nirq-gpio_0 = <&tlmm 23 0x02>;
-		hall,nirq-gpio-high-val_0 = <0>;
-		hall,nirq-gpio-low-val_0 = <1>;
-		hall,nirq-gpio_1 = <&tlmm 44 0x02>;
-		hall,nirq-gpio-high-val_1 = <0>;
-		hall,nirq-gpio-low-val_1 = <2>;
-	};
-};
-
 &tlmm {
 	sar_int_default: sar_int_default {
 			mux {
