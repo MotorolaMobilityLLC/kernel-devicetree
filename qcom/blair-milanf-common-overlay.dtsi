@@ -19,6 +19,7 @@
 #include "milanf-fps-overlay.dtsi"
 #include "milanf-display.dtsi"
 #include "milanf-touchscreen.dtsi"
+#include "milanf-sensors.dtsi"
 #include "camera/blair-camera-sensor-mot-milanf-overlay.dtsi"
 #include "milanf-wl286xx.dtsi"
 
