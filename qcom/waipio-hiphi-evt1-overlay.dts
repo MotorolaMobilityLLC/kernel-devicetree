@@ -14,7 +14,7 @@
 /plugin/;
 
 #include "waipio-hiphi-common-overlay.dtsi"
-#include "waipio-hiphi-sensor-overlay.dtsi"
+#include "waipio-hiphi-evt-sensor-overlay.dtsi"
 
 / {
 	model = "hiphi";
