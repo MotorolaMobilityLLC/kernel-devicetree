@@ -91,6 +91,7 @@
                                <4450 243 500>;
 
 	qcom,iterm-ma = <243>;
+	mmi,enable-factory-mode-aicl;
 };
 
 
