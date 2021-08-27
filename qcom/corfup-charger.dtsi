@@ -64,7 +64,7 @@
 	qcom,fcc-max-ua = <3000000>;
 	qcom,fv-max-uv = <4480000>;
 	qcom,dcp-curr-max = <1500000>;
-	qcom,otg-cl-ua = <1500000>;
+	qcom,otg-cl-ua = <1000000>;
 	qcom,thermal-mitigation = <3000000 2500000
 			2000000 1500000
 			1200000 900000
