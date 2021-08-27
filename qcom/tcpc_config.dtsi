@@ -11,6 +11,7 @@
  * GNU General Public License for more details.
  */
 &qupv3_se8_i2c {
+	status = "okay";
 	rt1711h@4e {
 		compatible = "richtek,rt1711h";
 		reg = <0x4e>;
