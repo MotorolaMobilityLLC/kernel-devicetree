@@ -118,14 +118,14 @@
 			0x8070  0x566 		/*AFE_PARAM_PH6*/
 			0x807C  0x58D  		/*AFE_PARAM_PH7*/
 			/*set CS3 to hiz, because it used as IRQ pin*/
-			0x8030  0xFEF9FF 	/*REG_AFEPH_PH0, CS7, ANT1, Bottom center*/
-			0x803C  0xFFD9FF 	/*REG_AFEPH_PH1, CS4, ANT2, Top Left*/
-			0x8048  0xBFF9FF 	/*REG_AFEPH_PH2, CS5, ANT8, Bottom Right*/
-			0x8054  0xFFF9EF	/*REG_AFEPH_PH3, CS1, ANT4, Right*/
-			0x8060  0xFFF9FD 	/*REG_AFEPH_PH4, CS0, ANT5, Back center*/
-			0x806C  0xF7F9FF 	/*REG_AFEPH_PH5, CS6, ANT1/8_REF, Bottom_Ref*/
-			0x8078  0xFFF97F 	/*REG_AFEPH_PH6, CS2, ANT4/5_REF, Middle*/
-			0x8084  0xBFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
+			0x8030  0xFFF9FD 	/*REG_AFEPH_PH0, CS0, ANT1, Bottom center*/
+			0x803C  0xFFD9FF 	/*REG_AFEPH_PH1, CS4, ANT2, Top right*/
+			0x8048  0xFEF9FF 	/*REG_AFEPH_PH2, CS5, ANT7, Bottom Right*/
+			0x8054  0xF7F9FF	/*REG_AFEPH_PH3, CS6, ANT4, Top Right*/
+			0x8060  0xFFF97F 	/*REG_AFEPH_PH4, CS2, ANT5, Top center*/
+			0x806C  0xFFF9EF 	/*REG_AFEPH_PH5, CS1, ANT1/7_REF, Bottom_Ref*/
+			0x8078  0xBFF9FF 	/*REG_AFEPH_PH6, CS7, ANT4 REF, Middle*/
+			0x8084  0xFFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
 			0x802C  0x0
 			0x8038  0xF3C3CF
 			0x8044  0x940250
