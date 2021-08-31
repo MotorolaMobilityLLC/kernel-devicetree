@@ -12,6 +12,7 @@
 #include "blair-milanf-common-overlay.dtsi"
 #include "blair-nopmi-moto-common-overlay.dtsi"
 #include "tcpc_config.dtsi"
+#include "sgm7220.dtsi"
 #include "rt9426a.dtsi"
 
 &usb0 {
