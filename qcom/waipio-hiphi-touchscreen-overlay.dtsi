@@ -49,6 +49,7 @@
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
 		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
 	};
 
 	goodix_ts_i2c@5d {
