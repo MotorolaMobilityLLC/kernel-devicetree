@@ -41,6 +41,34 @@
 		};
 	};
 
+	ets_vcc_high: ets_vcc_high {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio38";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio38";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+
+	ets_vcc_low: ets_vcc_low {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio38";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio38";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
 	fps_rst_active: fps_rst_active {
 		/* active state */
 		mux {
@@ -111,10 +139,26 @@
 		egistec,gpio_vcc_en = <&tlmm 38 0x0>;
 		egistec,gpio_irq = <&tlmm 17 0x0>;
 		egistec,gpio_reset = <&tlmm 18 0x0>;
-		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active";
+		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active",
+				"egis_vcc_high", "egis_vcc_low";
 		pinctrl-0 = <&ets_rst_high>;
 		pinctrl-1 = <&ets_rst_low>;
 		pinctrl-2 = <&ets_irq_active>;
+		pinctrl-3 = <&ets_vcc_high>;
+		pinctrl-4 = <&ets_vcc_low>;
 	};
 
+	silead: silead {
+		compatible = "sil,silead_fp";
+		status = "ok";
+		reg = <0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0x0>;
+		avdd-gpios = <&tlmm 38 0x0>;
+		irq-gpios = <&tlmm 17 0x0>;
+		rst-gpios = <&tlmm 18 0x0>;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_rst_active &fps_int_active>;
+		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+	};
 };
