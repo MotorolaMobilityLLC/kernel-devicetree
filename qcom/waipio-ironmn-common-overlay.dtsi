@@ -110,6 +110,34 @@
 		};
 	};
 
+	flip_balance_en_n: flip-balance-en-n {
+		mux {
+			pins = "gpio105";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio105";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	flip_battplus_dis: flip-battplus-dis {
+		mux {
+			pins = "gpio90";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio90";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
 	fusb0_int: fusb0-int {
 		mux {
 			pins = "gpio85";
@@ -137,7 +165,6 @@
 	};
 };
 
-
 &pm8350_gpios {
 	/delete-node/ pm8350_rear_tof_therm;
 
@@ -156,7 +183,40 @@
 			bias-high-impedance;
 		};
 	};
+
+	chrg_fullcurr_en {
+		chrg_fullcurr_en_default: chrg_fullcurr_en_default {
+			pins = "gpio8";
+			function = "normal";
+			output-high;
+			input-disable;
+			bias-disable;
+			power-source = <0>;       /* 1.8V */
+			qcom,drive-strength = <2>;
+		};
+	};
 };
+
+&soc {
+	flip_fet_control {
+		compatible = "mmi,fet-control";
+		pinctrl-names = "default";
+		pinctrl-0 = <&flip_battplus_dis &flip_balance_en_n &chrg_fullcurr_en_default>;
+		mmi,main-batt-psy = "battery";
+		mmi,flip-batt-psy = "flip_battery";
+		mmi,flip_battplus_en_gpio = <&tlmm 90 0>;
+		mmi,flip_balance_en_n_gpio = <&tlmm 105 0>;
+		mmi,chrg-fullcurr-en-gpio = <&pm8350b_gpios 8 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&qti_glink_charger {
+			mmi,max-fv-mv = <4490>;
+			mmi,max-fcc-ma = <3000>;
+			mmi,demo-fv-mv = <3000>;
+};
+
+
 
 &pmk8350_vadc {
 	pinctrl-names = "default";
