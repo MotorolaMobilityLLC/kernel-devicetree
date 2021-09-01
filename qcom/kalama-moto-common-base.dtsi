@@ -33,3 +33,12 @@
 	hw: hw { };
 };
 
+&reserved_memory {
+	/delete-node/ ramoops_region;
+};
+
+&firmware {
+	android {
+		/delete-node/ fstab;
+	};
+};
