@@ -50,6 +50,7 @@
 		no-map;
 		reg = <0x0 0xae000000 0x0 0x60000>;
 		console-size = <0x40000>;
+		record-size = <0x20000>;
 	};
 
 	mmi_annotate_mem: mmi_annotate_mem_region {
