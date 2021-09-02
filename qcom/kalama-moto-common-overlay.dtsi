@@ -58,3 +58,9 @@
 		nvmem-cell-names = "restart_reason", "extra_restart_reason";
 	};
 };
+
+&soc {
+	mmi,suspend_dbg {
+		compatible = "mmi,suspend_dbg";
+	};
+};
