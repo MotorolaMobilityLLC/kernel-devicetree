@@ -82,6 +82,20 @@
 	status = "ok";
 };
 
+&pm8350c_rgb {
+	red {
+	        label = "charging";
+	};
+
+	green {
+	        status = "disabled";
+	};
+
+	blue {
+	        status = "disabled";
+	};
+};
+
 &tlmm {
 	redriver_enable: redriver_enable {
 		mux {
