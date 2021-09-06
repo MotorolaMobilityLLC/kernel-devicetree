@@ -581,6 +581,10 @@
 	qcom,bcl-not-mitigate-icl = <2500>;
 };
 
+&socd_trip {
+       temperature = <95>;
+};
+
 &usb0 {
 	extcon = <&pm7250b_pdphy>, <&eud>;
 	#io-channel-cells = <1>;
