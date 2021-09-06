@@ -1,3 +1,4 @@
+#include "moto_therm_sys_temp.dtsi"
 
 &thermal_zones {
 	skin-msm-therm {
