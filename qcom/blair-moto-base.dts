@@ -26,6 +26,7 @@
 	mot_batterydata: qcom,battery-data { };
 	utags: utags { };
 	hw: hw { };
+	mmi_chg_tcmd: mmi_chg_tcmd { };
 };
 
 &reserved_memory {
