@@ -18,7 +18,7 @@
 #include "holi-thermal-overlay-pm6125.dtsi"
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
 #include "display/blair-sde-display-mtp.dtsi"
-
+#include "cypfr-display.dtsi"
 
 &tlmm {
 	nfc {
