@@ -55,7 +55,7 @@
 	goodix_ts_i2c@5d {
 		compatible = "goodix,gt9916";
 		reg = <0x5d>;
-		mmi,status = "/chosen","mmi,panel_name","contains","ili7838A";
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A";
 		interrupt-parent = <&tlmm>;
 		interrupts = <21 0>;
 		goodix,reset-gpio = <&tlmm 20 0x0>;
