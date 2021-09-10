@@ -148,6 +148,7 @@
 	qcom,suspend-ulps-enabled;
 
 	qcom,tp_state_check_enable;
+	qcom,platform-need-execute-shutdown;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
@@ -202,6 +203,7 @@
 	qcom,mdss-dsi-panel-supplier = "csot";
 
 	qcom,tp_state_check_enable;
+	qcom,platform-need-execute-shutdown;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
