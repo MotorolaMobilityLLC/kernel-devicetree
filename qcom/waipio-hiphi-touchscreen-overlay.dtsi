@@ -35,7 +35,7 @@
 	st_fts@49 {
 		compatible = "st,fts";
 		reg = <0x49>;
-		mmi,status = "/chosen","mmi,panel_name","contains","nt37701";
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_nt37701";
 		interrupt-parent = <&tlmm>;
 		interrupts = <21 0x2008>;
 		st,reset-gpio = <&tlmm 20 0>;
