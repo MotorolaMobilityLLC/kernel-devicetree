@@ -77,6 +77,7 @@
 &L9C {
 	regulator-boot-on;
 	regulator-always-on;
+        regulator-max-microvolt = <3308000>;
 	qcom,init-voltage = <3300000>;
 	status = "ok";
 };
