@@ -217,3 +217,7 @@
 &pm8350b_haptics {
 	status = "ok";
 };
+
+&sdhc_2 {
+	status = "disabled";
+};
