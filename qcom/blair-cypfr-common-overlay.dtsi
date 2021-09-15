@@ -128,6 +128,32 @@
 			};
 		};
 	};
+
+	vib_3v_active: vib_3v_active {
+		mux {
+			pins = "gpio102";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio102";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+
+	vib_3v_suspend: vib_3v_suspend {
+		mux {
+			pins = "gpio102";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio102";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
 };
 
 /* Dummy LDO reference */
@@ -227,6 +253,15 @@
 		qcom,hpm-min-load = <10000>;
 		regulator-min-microvolt = <2700000>;
 		regulator-max-microvolt = <3544000>;
+	};
+
+	ldo_vib {
+		compatible = "moto,vibrator-ldo";
+		moto,vib-ldo-gpio = <&tlmm 100 0x0>;
+		status = "ok";
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&vib_3v_active>;
+		pinctrl-1 = <&vib_3v_suspend>;
 	};
 };
 
