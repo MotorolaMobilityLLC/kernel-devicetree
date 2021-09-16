@@ -27,6 +27,12 @@
 		reg = <0x2f>;
 		status = "okay";
 	};
+
+	cw2217@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		status = "okay";
+	};
 };
 
 &pm6125_vadc {
