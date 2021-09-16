@@ -44,6 +44,10 @@
 	cdc-vdd-mic-bias-supply = <>;
 };
 
+&holi_snd {
+	qcom,msm-hs-linein-threshold = <4000>;
+};
+
 &pm7250b_vib {
 	qcom,vib-ldo-volt-uv = <3000000>;
 	qcom,vib-dis-short-long;
