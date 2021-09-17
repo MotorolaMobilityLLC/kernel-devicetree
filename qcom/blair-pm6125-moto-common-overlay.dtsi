@@ -316,3 +316,7 @@
 &socd_trip {
        temperature = <95>;
 };
+
+&ufshc_mem {
+	spm-level = <3>;
+};
