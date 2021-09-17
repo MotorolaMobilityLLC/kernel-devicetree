@@ -185,3 +185,7 @@
 		status = "ok";
 	};
 };
+
+&ufshc_mem {
+	spm-level = <3>;
+};
