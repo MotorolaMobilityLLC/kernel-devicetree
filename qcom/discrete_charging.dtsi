@@ -96,4 +96,41 @@
 		temp_t0_thres_plus_x_degree = <2>;
 		temp_neg_10_thres = <0>;
 	};
+
+	bq25890@6A {
+		status = "okay";
+		compatible = "ti,bq2589x-1";
+		reg = <0x6A>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&bq2589x_irq>;
+		bq2589x_irq-gpio = <&tlmm 12 0>;
+
+		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
+		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
+		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
+		ti,bq2589x,charge-voltage = <4350>;
+		ti,bq2589x,charge-current = <3250>;
+		ti,bq2589x,term-current = <256>;
+		ti,bq2589x,enable-auto-dpdm;
+		ti,bq2589x,enable-termination;
+		ti,bq2589x,enable-ico;
+		ti,bq2589x,use-absolute-vindpm;
+	};
+};
+
+&tlmm {
+	bq2589x_irq: bq2589x_irq {
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
 };
