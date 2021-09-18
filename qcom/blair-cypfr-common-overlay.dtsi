@@ -250,6 +250,15 @@
 		status = "ok";
 };
 
+&qupv3_se8_i2c {
+	status = "okay";
+	cw2217@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		status = "okay";
+	};
+};
+
 &qupv3_se10_i2c {
 	status = "ok";
 
