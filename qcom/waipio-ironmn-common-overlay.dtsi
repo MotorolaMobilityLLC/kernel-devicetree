@@ -26,7 +26,8 @@
 		vcc-supply = <&S10B>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&redriver_enable>;
-		gpios = <&tlmm 109 0>;
+		redriver,enable_gpio = <&tlmm 109 0>;
+		redriver,orientation_gpio = "91";
 
 		eq = /bits/ 8 <
 			/* Parameters for USB */
