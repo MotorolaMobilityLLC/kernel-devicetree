@@ -189,3 +189,9 @@
 &ufshc_mem {
 	spm-level = <3>;
 };
+
+&qupv3_se8_i2c_sleep {
+    config {
+        input-enable;
+    };
+};
