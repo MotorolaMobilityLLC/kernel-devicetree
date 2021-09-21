@@ -23,6 +23,7 @@
 #include "cypfr-touchscreen.dtsi"
 #include "camera/blair-camera-sensor-mot-cypfr-overlay.dtsi"
 #include "rt9426a.dtsi"
+#include "discrete_charging.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
