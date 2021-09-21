@@ -123,46 +123,4 @@
 		temp_t0_thres_plus_x_degree = <2>;
 		temp_neg_10_thres = <0>;
 	};
-
-	rt9467@5b {
-		compatible = "richtek,rt9467";
-		reg = <0x5b>;
-		status = "okay";
-		interrupts-extended = <&tlmm 12 IRQ_TYPE_LEVEL_LOW>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&rt9467_int>;
-		interrupt-names = "wdtmri", "chg_mivr", "chg_aiclmeasi",
-			"attachi", "detachi", "pwr_rdy", "chg_statci";
-		charger_name = "rt9467";
-		regmap_name = "rt9467_primary";
-		regmap_represent_slave_addr = <0x5b>;
-		ichg = <2000000>;	/* uA */
-		aicr = <500000>;	/* uA */
-		mivr = <4400000>;	/* uV */
-		cv = <4350000>;		/* uV */
-		ieoc = <250000>;	/* uA */
-		safety_timer = <12>;	/* hour */
-		ircmp_resistor = <25000>;	/* uohm */
-		ircmp_vclamp = <32000>;		/* uV */
-		en_te;
-		en_wdt;
-		en_chgdet;
-		/* en_jeita; */
-		/* en_irq_pulse; */
-	};
-};
-
-&tlmm {
-	rt9467_int: rt9467_int {
-		mux {
-			pins = "gpio12";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio12";
-			drive-strength = <2>;
-			bias-pull-up;
-		};
-	};
 };
