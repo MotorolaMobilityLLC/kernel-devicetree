@@ -24,6 +24,7 @@
 #include "camera/blair-camera-sensor-mot-cypfr-overlay.dtsi"
 #include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
+#include "sgm7220.dtsi"
 
 &usb0 {
        qcom,force-adb-enable;
@@ -322,6 +323,16 @@
 			};
 		};
 	};
+};
+
+&soc {
+	rpm: rt-pd-manager {
+		compatible = "richtek,rt-pd-manager";
+	};
+};
+
+&usb0 {
+	extcon = <&eud>, <&rpm>;
 };
 
 &pm8008_8 {
