@@ -25,6 +25,10 @@
 #include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
 
+&usb0 {
+       qcom,force-adb-enable;
+};
+
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
 	cdc-vddpx-supply = <&L9A>;
