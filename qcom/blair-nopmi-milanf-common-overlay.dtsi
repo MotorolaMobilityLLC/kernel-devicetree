@@ -22,12 +22,6 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
-	oz8806@2f {
-		compatible = "o2micro,oz8806";
-		reg = <0x2f>;
-		status = "okay";
-	};
-
 	cw2217@64 {
 		compatible = "cellwise,cw2217";
 		reg = <0x64>;
