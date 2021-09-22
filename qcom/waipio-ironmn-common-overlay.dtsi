@@ -188,6 +188,20 @@
 	status = "ok";
 };
 
+&pm8350c_rgb {
+	red {
+	        label = "charging";
+                linux,default-trigger = "battery-charging-blink-full-solid";
+	};
+
+	green {
+	        status = "disabled";
+	};
+
+	blue {
+	        status = "disabled";
+	};
+};
 
 &tlmm {
 	uwb_irq: uwb_irq {
