@@ -221,3 +221,7 @@
 &sdhc_2 {
 	status = "disabled";
 };
+
+&chosen {
+	mmi,dynamic_devices = "/soc/i2c@990000/st_fts@49", "/soc/i2c@990000/goodix_ts_i2c@5d";
+};
