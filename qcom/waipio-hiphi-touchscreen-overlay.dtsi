@@ -31,14 +31,12 @@
 	#size-cells = <0>;
 
 	status = "ok";
-	qcom,i2c-touch-active = "st,fts";
 
 	st_fts@49 {
+		status = "ok";
 		compatible = "st,fts";
 		reg = <0x49>;
 		mmi,status = "/chosen","mmi,panel_name","contains","csot_nt37701";
-		interrupt-parent = <&tlmm>;
-		interrupts = <21 0x2008>;
 		st,reset-gpio = <&tlmm 20 0>;
 		st,irq-gpio = <&tlmm 21 0x2008>;
 		st,regulator_avdd = "pm8350c_l3";
@@ -55,11 +53,10 @@
 	};
 
 	goodix_ts_i2c@5d {
+		status = "ok";
 		compatible = "goodix,gt9916";
 		reg = <0x5d>;
 		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A";
-		interrupt-parent = <&tlmm>;
-		interrupts = <21 0>;
 		goodix,reset-gpio = <&tlmm 20 0x0>;
 		goodix,irq-gpio = <&tlmm 21 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
