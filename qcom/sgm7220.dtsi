@@ -13,7 +13,7 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
-	sgm7220@47 {
+	sgm7220: sgm7220@47 {
 		compatible = "sgm,usb_type_c_sgm7220";
 		reg = <0x47>;
 		status = "okay";
