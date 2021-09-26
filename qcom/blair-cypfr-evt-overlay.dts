@@ -22,3 +22,6 @@
 	qcom,board-id = <0x4B 0xA200>;
 };
 
+&sgm7220 {
+	sgm7220,pwr_gpio = <&tlmm 86 GPIO_ACTIVE_HIGH>;
+};
