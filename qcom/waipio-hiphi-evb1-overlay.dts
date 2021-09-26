@@ -22,3 +22,10 @@
 	qcom,msm-id = <457 0x10000>, <482 0x10000>;
 	qcom,board-id = <0x47 0x9100>;
 };
+
+&soc {
+	smart_pen_charger: mmi,pen-charger {
+		compatible = "mmi,pen-charger";
+		mmi,pen-psy-name = "wireless";
+	};
+};
