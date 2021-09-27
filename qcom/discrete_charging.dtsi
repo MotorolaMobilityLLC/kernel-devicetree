@@ -114,6 +114,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&bq2589x_irq>;
 		bq2589x_irq-gpio = <&tlmm 12 0>;
+		bq2589x_en-gpio = <&tlmm 92 0>;
 
 		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
 		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
