@@ -51,6 +51,15 @@
 	};
 };
 
+&spmi_bus {
+	qcom,pm6125@1 {
+		#address-cells = <1>;
+		qcom,pwms@b300 {
+			status = "ok";
+		};
+	};
+};
+
 &qupv3_se8_i2c {
 	status = "okay";
 
