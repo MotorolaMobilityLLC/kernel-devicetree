@@ -75,6 +75,110 @@
 	};
 };
 
+/* enable gpio58 as qup18 L4 to connect receiver spi cs*/
+&qupv3_se18_spi_pins {
+	qupv3_se18_spi_active: qupv3_se18_spi_active {
+		mux {
+			pins = "gpio68", "gpio69",
+					"gpio70";
+			function = "qup18";
+		};
+
+		config {
+			pins = "gpio68", "gpio69",
+					"gpio70";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se18_spi_sleep: qupv3_se18_spi_sleep {
+		mux {
+			pins = "gpio68", "gpio69",
+					"gpio70";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio68", "gpio69",
+					"gpio70";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se18_spi_cs0_active: qupv3_se18_spi_cs0_active {
+		mux {
+			pins = "gpio71";
+			function = "qup18";
+		};
+
+		config {
+			pins = "gpio71";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se18_spi_cs0_sleep: qupv3_se18_spi_cs0_sleep {
+		mux {
+			pins = "gpio71";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio71";
+			drive-strength = <6>;
+			bias-pull-up;
+		};
+	};
+
+	qupv3_se18_spi_cs1_active: qupv3_se18_spi_cs1_active {
+		mux {
+			pins = "gpio58";
+			function = "qup_l4";
+		};
+
+		config {
+			pins = "gpio58";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se18_spi_cs1_sleep: qupv3_se18_spi_cs1_sleep {
+		mux {
+			pins = "gpio58";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio58";
+			drive-strength = <6>;
+			bias-pull-up;
+		};
+	};
+};
+
+&qupv3_se18_spi {
+	status = "ok";
+	pinctrl-0 = <&qupv3_se18_spi_active &qupv3_se18_spi_cs0_active &qupv3_se18_spi_cs1_active>;
+	pinctrl-1 = <&qupv3_se18_spi_sleep &qupv3_se18_spi_cs0_sleep &qupv3_se18_spi_cs1_sleep>;
+
+	sr100@0 {
+		compatible = "nxp,sr100";
+		reg = <0>;
+		nxp,sr100-irq = <&tlmm 66 0x00>;
+		nxp,sr100-ce = <&tlmm 54 0x00>;
+		nxp,sr100-ri = <&tlmm 65 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <66 0>;
+		spi-max-frequency = <20000000>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&uwb_irq>;
+	};
+};
+
 &usb0 {
 	ssusb_redriver = <&redriver>;
 };
@@ -85,6 +189,18 @@
 
 
 &tlmm {
+	uwb_irq: uwb_irq {
+		mux {
+			pins = "gpio66";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio66";
+			bias-pull-down;
+		};
+	};
+
 	redriver_enable: redriver_enable {
 		mux {
 			pins = "gpio109";
