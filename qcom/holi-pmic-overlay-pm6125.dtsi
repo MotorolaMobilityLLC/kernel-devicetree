@@ -21,7 +21,7 @@
 };
 
 &spmi_bus {
-	qcom,pmr735a@4 {
+	pmr735a_4: qcom,pmr735a@4 {
 		/* Example configuration to enable PMR735A VADC in standalone mode */
 		pmr735a_vadc: vadc@3600 {
 			compatible = "qcom,spmi-adc7-sw-calib";
