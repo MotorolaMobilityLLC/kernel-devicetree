@@ -47,9 +47,16 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
+		/* support report rate interpolation */
+		st,interpolation_cmd = /bits/ 8 <0xC0 0x05 0x00 0x01 0x50 0x0C 0x04 0x0E 0x01 0x10>;
+		/* support report rate switching */
+		st,report_rate_cmd = /bits/ 8 <0xC0 0x1C 0x00>;
+		/* support edge suppression switching */
+		st,edge_cmd = /bits/ 8 <0xC0 0x1F 0x00 0x00>;
 		mmi,enable-gestures;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		mmi,refresh-rate-update;
 	};
 
 	goodix_ts_i2c@5d {
