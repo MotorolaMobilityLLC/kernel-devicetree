@@ -76,6 +76,12 @@
 		pinctrl-names = "touchpad_active", "touchpad_suspend";
 		pinctrl-0 = <&tpad_int_active>;
 		pinctrl-1 = <&tpad_int_active>;
+		pct1812-custom-config {
+			scroll-min-distance = <2>;
+			max-coords = <1280 768>;
+			flip-x;
+			flip-y;
+		};
 	};
 };
 
