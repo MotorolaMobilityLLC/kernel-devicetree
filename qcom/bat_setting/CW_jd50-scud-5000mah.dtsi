@@ -14,13 +14,13 @@ jd50-scud-5000mah {
 	serialnum = "SB18C77226";
 	fcc_design = <4850>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
-				A5 B1 B5 CE C3 C2 97 58
-				31 FF FF E3 92 80 63 58
-				4F 4D 4A 86 F0 DC 0D D2
-				D2 D1 D1 D1 CF CC BC DC
-				B0 C3 C8 AA 96 89 80 71
-				68 64 73 8F A3 86 65 60
-				20 00 57 10 02 B0 74 00
-				00 00 64 24 D3 79 00 00
-				00 00 00 00 00 00 00 5F ];
+				 A5 B1 B5 CE C3 C2 97 58
+				 31 FF FF E3 92 80 63 58
+				 4F 4D 4A 86 F0 DC 0D D2
+				 D2 D1 D1 D1 CF CC BC DC
+				 B0 C3 C8 AA 96 89 80 71
+				 68 64 73 8F A3 86 65 60
+				 20 00 57 10 02 B0 74 00
+				 00 00 64 24 D3 79 00 00
+				 00 00 00 00 00 00 00 5F ];
 };
