@@ -450,10 +450,12 @@
 		compatible = "cellwise,cw2217";
 		reg = <0x64>;
 		status = "okay";
+
+		df-serialnum = "SB18C77591";
+		#include "bat_setting/CW_jd50-scud-5000mah.dtsi"
+		#include "bat_setting/CW_jd50-atl-5000mah.dtsi"
 	};
-	df-serialnum = "SB18C77591";
-	#include "bat_setting/CW_jd50-scud-5000mah.dtsi"
-	#include "bat_setting/CW_jd50-atl-5000mah.dtsi"
+
 };
 
 &qupv3_se10_i2c {
