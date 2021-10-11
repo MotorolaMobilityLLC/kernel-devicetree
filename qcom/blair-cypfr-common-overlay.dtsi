@@ -25,6 +25,7 @@
 #include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
 #include "sgm7220.dtsi"
+#include "blair-cypfr-fmr-overlay.dtsi"
 
 &usb0 {
        qcom,force-adb-enable;
