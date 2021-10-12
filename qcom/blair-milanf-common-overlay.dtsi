@@ -230,6 +230,47 @@
 	};
 };
 
+&pmr735a_gpios {
+	camera_therm {
+		camera_therm_default:camera_therm_default {
+			pins = "gpio3";
+			bias-high-impedance;
+		};
+	};
+};
+
+&pmr735a_vadc {
+	status = "ok";
+
+	pinctrl-names = "default";
+	pinctrl-0 = <&camera_therm_default>;
+
+	pmr735a_camera_therm {
+		reg = <ADC7_GPIO3_100K_PU>;
+		label = "pmr735a_camera_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+	};
+};
+
+&pmr735a_4{
+	pmr735a_adc_tm_iio: adc_tm@3400 {
+		compatible = "qcom,adc-tm5-iio";
+		reg = <0x3400>;
+		#thermal-sensor-cells = <1>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		io-channels = <&pmr735a_vadc ADC7_GPIO3_100K_PU>;
+
+		pmr735a_camera_therm {
+			reg = <ADC7_GPIO3_100K_PU>;
+			qcom,ratiometric;
+			qcom,hw-settle-time = <200>;
+		};
+	};
+};
+
 &qupv3_se7_i2c {
 	status = "ok";
 	#address-cells = <1>;
@@ -315,7 +356,7 @@
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
 		thermal-governor = "user_space";
-		thermal-sensors = <&pm6125_adc_tm ADC5_GPIO3_100K_PU>;
+		thermal-sensors = <&pmr735a_adc_tm_iio ADC7_GPIO3_100K_PU>;
 		wake-capable-sensor;
 		trips {
 			active-config0 {
