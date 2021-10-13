@@ -78,6 +78,8 @@
 		sgm,irq-gpio = <&tlmm 12 0>;     //irq num base on hardware design
 		sgm,chg-en-gpio = <&tlmm 92 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
+		dpdm-supply = <&usb2_phy0>;
+
 		/* sw jeita  parameter customer defined*/
 		enable_sw_jeita;
 		jeita_temp_above_t4_cv = <0>;
