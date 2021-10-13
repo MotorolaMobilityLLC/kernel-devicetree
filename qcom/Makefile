@@ -84,6 +84,11 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-ironmn-evb1-overlay.dtbo
 
 waipio-ironmn-evb1-overlay.dtbo-base := waipio-moto-ironmn-base.dtb
+else ifeq ($(CONFIG_LI_DTB),y)
+dtbo-$(CONFIG_ARCH_WAIPIO) += \
+	waipio-li-evb1-overlay.dtbo
+
+waipio-li-evb1-overlay.dtbo-base := waipio-moto-li-base.dtb
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-hiphi-evb1-overlay.dtbo \
