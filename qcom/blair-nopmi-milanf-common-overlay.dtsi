@@ -16,11 +16,6 @@
 #include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
 
-&usb0 {
-       qcom,force-adb-enable;
-};
-
-
 &qupv3_se8_i2c {
 	status = "okay";
 	cw2217@64 {
