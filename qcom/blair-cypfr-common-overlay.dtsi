@@ -610,13 +610,11 @@
 		regulator-max-microvolt = <3544000>;
 	};
 
-	ldo_vib {
-		compatible = "moto,vibrator-ldo";
-		moto,vib-ldo-gpio = <&tlmm 100 0x0>;
-		status = "ok";
-		pinctrl-names = "default", "suspend";
-		pinctrl-0 = <&vib_3v_active>;
-		pinctrl-1 = <&vib_3v_suspend>;
+	ext_vib {
+		compatible = "ext-vibrator-ldo";
+		vib_vcc-supply = <&L21A>;
+		vib,vcc-voltage = <3000000 3000000>;
+		vib,vcc-current = <300000>;
 	};
 };
 
