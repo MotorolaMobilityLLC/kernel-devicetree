@@ -10,6 +10,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+#include <dt-bindings/iio/qti_power_supply_iio.h>
+
 &qupv3_se8_i2c {
 	status = "okay";
 	rt1711h@4e {
@@ -163,6 +165,11 @@
 &soc {
 	rpm: rt-pd-manager {
 		compatible = "richtek,rt-pd-manager";
+		#io-channel-cells = <1>;
+		io-channels = <&mmi_discrete_charger PSY_IIO_USB_REAL_TYPE>,
+			      <&mmi_discrete_charger PSY_IIO_MMI_OTG_ENABLE>;
+		io-channel-names = "usb_real_type",
+				   "otg_enable";
 
 	};
 };
