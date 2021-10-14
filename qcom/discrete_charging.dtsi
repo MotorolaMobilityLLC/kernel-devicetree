@@ -163,6 +163,7 @@
 	mmi_discrete_charger: mmi,discrete-charging {
 		status = "ok";
 		compatible = "mmi,mmi-discrete-charger";
+		#io-channel-cells = <1>;
 		battery-names = "battery";
 		supplied-from = "mmi_battery";
 
