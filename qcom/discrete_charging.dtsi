@@ -9,10 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-&mmi_chg_tcmd {
-	compatible = "mmi,mmi-chg-tcmd";
-	status = "okay";
-};
+
 
 &pm6125_vadc {
 	gpio6_div3{
