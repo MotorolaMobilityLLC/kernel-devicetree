@@ -79,8 +79,8 @@
 		pct1812-custom-config {
 			scroll-min-distance = <2>;
 			max-coords = <1280 768>;
-			flip-x;
 			flip-y;
+			ty-offset = <200>;
 		};
 	};
 };
