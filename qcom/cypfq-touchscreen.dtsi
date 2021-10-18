@@ -113,7 +113,7 @@
 		spi-max-frequency = <6000000>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <22 0x2008>;
-		panel = <&dsi_tm_ili7807s_678_fhd_video>;
+		panel = <&dsi_tm_ili7807s_678_fhd_video &dsi_csot_ili7807s_678_fhd_video>;
 		touch,reset-gpio = <&tlmm 21 0x00>;
 		touch,irq-gpio = <&tlmm 22 0x2008>;
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
