@@ -22,3 +22,32 @@
 	qcom,board-id = <0x49 0xB100>;
 };
 
+&tlmm {
+	ets_vcc_high {
+		mux {
+			pins = "gpio6";
+		};
+
+		config {
+			pins = "gpio6";
+		};
+	};
+
+	ets_vcc_low {
+		mux {
+			pins = "gpio6";
+		};
+
+		config {
+			pins = "gpio6";
+		};
+	};
+};
+
+&et528 {
+	egistec,gpio_vcc_en = <&tlmm 6 0x0>;
+};
+
+&silead {
+	avdd-gpios = <&tlmm 6 0x0>;
+};
