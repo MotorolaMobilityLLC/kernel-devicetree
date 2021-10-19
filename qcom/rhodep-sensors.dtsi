@@ -1,0 +1,51 @@
+/*
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+	pen_int_default: pen_int_default {
+			mux {
+				pins = "gpio84";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio84";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+
+	pen_int_sleep: pen_int_sleep {
+			mux {
+				pins = "gpio84";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio84";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+};
+
+&soc {
+	pen_detect{
+		compatible = "rohm,bu520xx_pen_detect";
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&pen_int_default>;
+		pinctrl-1 = <&pen_int_sleep>;
+		rohm,nirq-gpio=<&tlmm 84 0x02>;
+	};
+};
+
