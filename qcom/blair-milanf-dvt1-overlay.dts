@@ -22,6 +22,22 @@
 	qcom,board-id = <0x49 0xB100>;
 };
 
+&rt9426a {
+	interrupts-extended = <&tlmm 38 IRQ_TYPE_LEVEL_LOW>;
+};
+&rt9426a_alert {
+	mux {
+		pins = "gpio38";
+		function = "gpio";
+	};
+
+	config {
+		pins = "gpio38";
+		drive-strength = <2>;
+		bias-pull-up;
+	};
+};
+
 &tlmm {
 	ets_vcc_high {
 		mux {
