@@ -2,7 +2,7 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
-	rt9426a@55 {
+	rt9426a: rt9426a@55 {
 		compatible = "richtek,rt9426a";
 		reg = <0x55>;
 		status = "okay";
