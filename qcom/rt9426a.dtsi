@@ -9,7 +9,7 @@
 		interrupts-extended = <&tlmm 8 IRQ_TYPE_LEVEL_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&rt9426a_alert>;
-		rt,dtsi_version = <01 910>;
+		rt,dtsi_version = <01 1012>;
 		rt,para_version = <0x0001>;
 		rt,battery_type = <4352>;
 		rt,volt_source = <1>;		// 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
@@ -20,20 +20,6 @@
 		rt,soc_offset_data = <0 250 0 1000 250 0>;
 		rt,rs_ic_setting = <1000>; /* unit:0.01mR ; 1000x0.01 = 10.0mR */
 		rt,rs_schematic = <1000>; /* unit:0.01mR ; 1000x0.01 = 10.0mR */
-		rt,fg_extreg_table = [80 80 33 6E B7 E4 58 02 CF 98 61 3A 88 80 00 00
-					 80 34 00 00 FB 3E 00 20 7F 08 1D 32 12 05 1E 50
-					 00 82 00 02 00 02 00 40 00 40 1F 13 1F 13 04 24
-					 64 00 5F 0B 64 00 5F 0B FF 00 00 14 00 00 14 B7
-					 15 0E 48 44 A2 4B 05 41 19 05 8D 12 23 32 1F 00
-					 13 88 24 82 77 AD 04 73 12 A3 52 68 57 64 25 0F
-					 20 16 03 04 04 04 00 00 00 00 02 02 02 00 00 FD
-					 FC FA FA FA F9 F9 EE E5 9B 9B 9B EB EB C0 AD 00
-					 76 02 E0 48 14 09 00 00 00 00 00 00 00 00 37 73
-					 2D 19 05 EC 00 00 B9 36 96 33 0F 07 00 00 0B A9
-					 32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
-					 32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
-					 32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
-					 32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88 ];
 
 		/* add for smooth soc ; 2021-01-18 */
 		rt,smooth_soc_en = <0>;  /* 0: disable(default) ; 1: enable */
