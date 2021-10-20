@@ -187,6 +187,26 @@
 			output-high;
 		};
 	};
+
+	chg_irq_default: chg_irq_default {
+		/* IRQ */
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			bias-pull-up;
+			drive-strength = <2>; /* 2 MA */
+			input-enable;
+		};
+	};
+};
+
+&sgm4154x {
+	pinctrl-names = "default";
+	pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
 };
 
 &pmk8350_vadc {
