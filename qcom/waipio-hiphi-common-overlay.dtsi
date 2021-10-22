@@ -26,6 +26,12 @@
 
 &usb0 {
 	ssusb_redriver = <&redriver>;
+
+	port {
+		usb_port0: endpoint {
+			remote-endpoint = <&usb_port0_connector>;
+		};
+	};
 };
 
 &usb2_phy0 {
@@ -193,4 +199,14 @@
 
 &chosen {
 	mmi,dynamic_devices = "/soc/i2c@990000/st_fts@49", "/soc/i2c@990000/goodix_ts_i2c@5d";
+};
+
+&ucsi {
+	connector {
+		port {
+			usb_port0_connector: endpoint {
+				remote-endpoint = <&usb_port0>;
+			};
+		};
+	};
 };
