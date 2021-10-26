@@ -92,13 +92,11 @@ blair-milanf-evb2-overlay.dtbo-base := blair-moto-base.dtb
 blair-milanf-dvt1-overlay.dtbo-base := blair-moto-base.dtb
 
 dtbo-$(CONFIG_RHODEP_DTB) += \
-        blair-rhodep-evb1-overlay.dtbo \
-        blair-rhodep-evb2-overlay.dtbo \
-        blair-rhodep-dvt1-overlay.dtbo
+        blair-rhodep-evb-overlay.dtbo \
+        blair-rhodep-evt-overlay.dtbo \
 
-blair-rhodep-evb1-overlay.dtbo-base := blair-moto-base.dtb
-blair-rhodep-evb2-overlay.dtbo-base := blair-moto-base.dtb
-blair-rhodep-dvt1-overlay.dtbo-base := blair-moto-base.dtb
+blair-rhodep-evb-overlay.dtbo-base := blair-moto-base.dtb
+blair-rhodep-evt-overlay.dtbo-base := blair-moto-base.dtb
 
 
 else
