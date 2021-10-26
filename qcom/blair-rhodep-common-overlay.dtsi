@@ -9,6 +9,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+#include "blair-nopmi-moto-common-overlay.dtsi"
+
 #include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
@@ -22,6 +24,23 @@
 #include "rhodep-sensors.dtsi"
 #include "camera/blair-camera-sensor-mot-rhodep-overlay.dtsi"
 #include "rhodep-wl286xx.dtsi"
+#include "tcpc_config.dtsi"
+#include "sgm7220.dtsi"
+#include "rt9426a.dtsi"
+#include "discrete_charging.dtsi"
+
+&qupv3_se8_i2c {
+	status = "okay";
+	cw2217@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		status = "okay";
+
+		df-serialnum = "SB18D33989";
+		#include "bat_setting/CW_md50-scud-5000mah.dtsi"
+		#include "bat_setting/CW_md50-amperex-5000mah.dtsi"
+	};
+};
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
