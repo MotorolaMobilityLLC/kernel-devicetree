@@ -9,28 +9,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+
+/dts-v1/;
+/plugin/;
+
 #include "blair-rhodep-common-overlay.dtsi"
-#include "blair-nopmi-moto-common-overlay.dtsi"
-#include "tcpc_config.dtsi"
-#include "sgm7220.dtsi"
-#include "rt9426a.dtsi"
-#include "discrete_charging.dtsi"
 
-&usb0 {
-       qcom,force-adb-enable;
-};
-
-
-&qupv3_se8_i2c {
-	status = "okay";
-	cw2217@64 {
-		compatible = "cellwise,cw2217";
-		reg = <0x64>;
-		status = "okay";
-
-		df-serialnum = "SB18D33989";
-		#include "bat_setting/CW_md50-scud-5000mah.dtsi"
-		#include "bat_setting/CW_md50-amperex-5000mah.dtsi"
-	};
+/ {
+	model = "rhodep";
+	compatible = "qcom,blair-rhodep", "qcom,blair-moto", "qcom,blair";
+	qcom,msm-id = <507 0x10000>;
+	qcom,board-id = <0x4D 0xA100>;
 };
 
