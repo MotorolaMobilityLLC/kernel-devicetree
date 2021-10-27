@@ -1,0 +1,125 @@
+/*
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+	touch_int_mux {
+		touch_int_active: active {
+			mux {
+				pins = "gpio22";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio22";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+
+		touch_int_suspend: default {
+			mux {
+				pins = "gpio22";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio22";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+
+	pmx_ts_int_suspend_high {
+		ts_int_suspend_high: ts_int_suspend_high {
+			mux {
+				pins = "gpio22";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio22";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	touch_reset_mux {
+		touch_reset_active: active {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <8>;
+				bias-disable;
+			};
+		};
+
+		touch_reset_suspend: default {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <2>;
+				bias-pull-down;
+				output-low;
+			};
+		};
+	};
+
+	ts_release_mux {
+		ts_release: ts_release {
+			mux {
+				pins = "gpio21", "gpio22";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio21", "gpio22";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&qupv3_se0_i2c {
+	status = "disabled";
+};
+
+&qupv3_se8_i2c {
+	synaptics_tcm@20 {
+		status = "disabled";
+	};
+};
+
+&qupv3_se0_spi {
+	status = "ok";
+	ilitek@0 {
+		compatible = "tchip,ilitek";
+		reg = <0x0>;
+		spi-max-frequency = <6000000>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <22 0x2008>;
+		panel = <&dsi_tm_ili7807s_678_fhd_video &dsi_csot_ili7807s_678_fhd_video>;
+		touch,reset-gpio = <&tlmm 21 0x00>;
+		touch,irq-gpio = <&tlmm 22 0x2008>;
+		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
+		pinctrl-0 = <&touch_int_active>;
+		pinctrl-1 = <&ts_int_suspend_high>;
+		ilitek,report_gesture_key;
+		status = "ok";
+	};
+};
