@@ -130,8 +130,16 @@
 	};
 
 	port {
-		usb_port0: endpoint {
-			remote-endpoint = <&usb_port0_connector>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		dwc3_ss: endpoint@0 {
+			reg = <0>;
+			remote-endpoint = <&ucsi_port>;
+		};
+
+		dwc3_role_switch: endpoint@1 {
+			reg = <1>;
+			remote-endpoint = <&fusb302_port>;
 		};
 	};
 };
@@ -139,8 +147,8 @@
 &ucsi {
 	connector {
 		port {
-			usb_port0_connector: endpoint {
-				remote-endpoint = <&usb_port0>;
+			ucsi_port: endpoint {
+				remote-endpoint = <&dwc3_ss>;
 			};
 		};
 	};
