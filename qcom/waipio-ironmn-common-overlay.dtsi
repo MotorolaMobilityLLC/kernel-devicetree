@@ -77,8 +77,8 @@
 			op-sink-microwatt = <2500000>;
 
 			port {
-				fusb302_port: endpoint {
-					remote-endpoint = <&dwc3_role_switch>;
+				usb_port0_connector: endpoint {
+					remote-endpoint = <&usb_port0>;
 				};
 			};
 		};
@@ -370,7 +370,7 @@
 };
 
 &qti_glink_charger {
-	mmi,max-fv-mv = <4490>;
-	mmi,max-fcc-ma = <3000>;
-	mmi,demo-fv-mv = <3000>;
+			mmi,max-fv-mv = <4490>;
+			mmi,max-fcc-ma = <3000>;
+			mmi,demo-fv-mv = <3000>;
 };
