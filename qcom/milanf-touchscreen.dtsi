@@ -84,7 +84,8 @@
 		novatek,spi-rd-fast-addr = <0x03F310>;
 		novatek,report_gesture_key;
 		novatek,usb_charger;
-		panel = <&dsi_tm_nt36672e_678_fhdp_120_video>;
+		novatek,panel-supplier = "tm","csot";
+		panel = <&dsi_tm_nt36672e_678_fhdp_120_video &dsi_csot_nt36672e_678_fhdp_120_video>;
 		status = "ok";
 	};
 
