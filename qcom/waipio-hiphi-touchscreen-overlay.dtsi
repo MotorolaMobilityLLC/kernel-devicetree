@@ -84,6 +84,7 @@
 		pinctrl-2 = <&ts_release>;
 		clocks = <&clock_rpmh RPMH_LN_BB_CLK3>;
 		clock-names = "stylus_clk";
+		mmi,enable-gestures;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 	};
