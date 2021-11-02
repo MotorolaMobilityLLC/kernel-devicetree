@@ -223,6 +223,7 @@
 	qcom,fcc-max-ua = <4000000>;
 	qcom,fv-max-uv = <4450000>;
 	qcom,usb-icl-ua = <3000000>;
+	qcom,hvdcp2-max-icl-ua = <1500000>;
 	qcom,thermal-mitigation = <4000000 3500000
 			3000000 2500000
 			2000000 1500000
