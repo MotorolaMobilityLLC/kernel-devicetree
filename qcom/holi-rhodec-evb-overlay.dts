@@ -19,6 +19,6 @@
 	model = "rhodec";
 	compatible = "qcom,holi-rhodec", "qcom,holi-moto", "qcom,holi";
 	qcom,msm-id = <454 0x10000>, <472 0x10000>;
-	qcom,board-id = <0x47 0xB200>;
+	qcom,board-id = <0x47 0x9000>;
 };
 
