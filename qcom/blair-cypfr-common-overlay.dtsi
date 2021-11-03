@@ -209,6 +209,21 @@
 	pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
 };
 
+&mmi_discrete_charger {
+	mmi,max-fv-mv = <4400>;
+	mmi,chrg-iterm-ma = <150>;
+	mmi,max-fcc-ma = <3000>;
+	mmi,df-serialnum = "SB18C77591";
+	mmi,mmi-temp-zones = <0 4200 1000 0>,
+			<15 0 1000 1000>,
+			<45 0 3000 3000>,
+			<60 4200 2500 0>;
+	mmi,thermal-mitigation = <3000000 2500000
+			2000000 1500000
+			1200000 900000
+			600000 300000>;
+};
+
 &pmk8350_vadc {
 	pmk8350_ufs_therm {
 		reg = <PMK8350_ADC7_AMUX_THM2_100K_PU>;
