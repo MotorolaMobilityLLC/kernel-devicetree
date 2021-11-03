@@ -9,7 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "holi-pm6125-moto-common-overlay.dtsi"
+#include "holi-nopmi-moto-common-overlay.dtsi"
 
 #include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
@@ -18,14 +18,12 @@
 #include "holi-pmic-overlay-pm6125.dtsi"
 #include "holi-thermal-overlay-pm6125.dtsi"
 #include "display/holi-sde-display-mtp-pm6125.dtsi"
-#include "camera/holi-camera-sensor-mot-rhodec-overlay.dtsi"
 #include "rhodec-display.dtsi"
 #include "rhodec-touchscreen.dtsi"
 #include "rhodec-fmr-overlay.dtsi"
-
-&smb1394 {
-	status = "disabled";
-};
+#include "tcpc_config.dtsi"
+#include "sgm7220.dtsi"
+#include "discrete_charging_holi.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
@@ -107,19 +105,6 @@
 };
 
 &tlmm {
-	google_key_default: google_key_default {
-		mux {
-			pins = "gpio11";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio11";
-			drive-strength = <2>;
-			bias-pull-up;
-		};
-	};
-
 	cam_pmic_en_default: cam_pmic_en_default {
 		mux {
 			pins = "gpio38";
@@ -250,65 +235,7 @@
 	};
 };
 
-&qupv3_se10_i2c {
-	status = "ok";
 
-	cam_pmic: wl2864c@29{
-		compatible = "semi,wl2864c";
-		reg = <0x29>;
-
-		semi,cs-gpios = <&tlmm 38 0>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&cam_pmic_en_default>;
-
-		vin1-supply = <&S6A>;
-
-		regulators {
-			cam_ldo1: ldo1 {
-				regulator-name = "ldo1";
-				regulator-min-microvolt = <600000>;
-				regulator-max-microvolt = <1800000>;
-			};
-
-			cam_ldo2: ldo2 {
-				regulator-name = "ldo2";
-				regulator-min-microvolt = <600000>;
-				regulator-max-microvolt = <1800000>;
-			};
-
-			cam_ldo3: ldo3 {
-				regulator-name = "ldo3";
-				regulator-min-microvolt = <1200000>;
-				regulator-max-microvolt = <4300000>;
-			};
-
-			cam_ldo4: ldo4 {
-				regulator-name = "ldo4";
-				regulator-min-microvolt = <1200000>;
-				regulator-max-microvolt = <4300000>;
-			};
-
-			cam_ldo5: ldo5 {
-				regulator-name = "ldo5";
-				regulator-min-microvolt = <1200000>;
-				regulator-max-microvolt = <4300000>;
-			};
-
-			cam_ldo6: ldo6 {
-				regulator-name = "ldo6";
-				regulator-min-microvolt = <1200000>;
-				regulator-max-microvolt = <4300000>;
-			};
-
-			cam_ldo7: ldo7 {
-				regulator-name = "ldo7";
-				regulator-min-microvolt = <1200000>;
-				regulator-max-microvolt = <4300000>;
-			};
-		};
-	};
-};
 
 &pm8008_8 {
 	status = "disabled";
@@ -324,23 +251,13 @@
 		label = "gpio-keys";
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&key_vol_up_default &google_key_default>;
+		pinctrl-0 = <&key_vol_up_default>;
 
 		vol_up {
 			label = "volume_up";
 			gpios = <&pmr735a_gpios 1 GPIO_ACTIVE_LOW>;
 			linux,input-type = <1>;
 			linux,code = <KEY_VOLUMEUP>;
-			gpio-key,wakeup;
-			debounce-interval = <15>;
-			linux,can-disable;
-		};
-
-		google_key {
-			label = "google_key";
-			gpios = <&tlmm 11 GPIO_ACTIVE_LOW>;
-			linux,input-type = <1>;
-			linux,code = <KEY_SEARCH>;
 			gpio-key,wakeup;
 			debounce-interval = <15>;
 			linux,can-disable;
@@ -362,26 +279,11 @@
 	};
 };
 
-&pm7250b_vib {
-	qcom,vib-ldo-volt-uv = <3000000>;
-	qcom,vib-dis-short-long;
-	qcom,vib-dis-short-long-val = <70>;
-	qcom,vib-ldo-volt-uv-long = <2600000>;
-};
-
 &mot_batterydata {
 	df-serialnum = "SB18C77591";
 	qcom,batt-id-range-pct = <15>;
 	#include "qg-batterydata-jk50-atl-5000mah.dtsi"
 	#include "qg-batterydata-jk50-scud-5000mah.dtsi"
-};
-
-&pm7250b_mmi {
-	qcom,mmi-temp-zones = <0 4200 1000 0>,
-				<15 0 1000 1000>,
-				<45 0 3000 3000>,
-				<60 4200 2500 0>;
-	qcom,iterm-ma = <150>;
 };
 
 &thermal_zones {
@@ -405,20 +307,6 @@
 	};
 	xo-therm-usr {
 		status = "disabled";
-	};
-	chg_therm {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
-		thermal-governor = "user_space";
-		thermal-sensors = <&pm7250b_adc_tm ADC5_AMUX_THM1_100K_PU>;
-		wake-capable-sensor;
-		trips {
-			active-config0 {
-				temperature = <125000>;
-				hysteresis = <1000>;
-				type = "passive";
-			};
-		};
 	};
 
 	pa_therm1 {
@@ -527,20 +415,6 @@
 	};
 };
 
-&pm7250b_charger {
-	qcom,otg-cl-ua = <1500000>;
-	qcom,dcp-curr-max = <2000000>;
-	qcom,fcc-max-ua = <2900000>;
-	qcom,fv-max-uv = <4400000>;
-	qcom,thermal-mitigation = <2900000 2600000
-			2000000 1500000
-			1200000 900000
-			600000 300000>;
-};
-
-&pm7250b_qg {
-	qcom,qg-iterm-ma = <500>;
-};
 
 &pm6125_gpios {
 	indicator_led {
