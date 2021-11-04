@@ -162,18 +162,6 @@
 	};
 };
 
-&soc {
-	rpm: rt-pd-manager {
-		compatible = "richtek,rt-pd-manager";
-		#io-channel-cells = <1>;
-		io-channels = <&mmi_discrete_charger PSY_IIO_USB_REAL_TYPE>,
-			      <&mmi_discrete_charger PSY_IIO_MMI_OTG_ENABLE>;
-		io-channel-names = "usb_real_type",
-				   "otg_enable";
-
-	};
-};
-
 &tlmm {
 	rt1711h_int_n: rt1711h_int_n {
 		mux {
