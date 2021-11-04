@@ -9,24 +9,18 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "blair-milanf-common-overlay.dtsi"
-#include "blair-nopmi-moto-common-overlay.dtsi"
-#include "tcpc_config.dtsi"
-#include "discrete-rt-pd-manger.dtsi"
-#include "sgm7220.dtsi"
-#include "rt9426a.dtsi"
-#include "discrete_charging.dtsi"
 
-&qupv3_se8_i2c {
-	status = "okay";
-	cw2217@64 {
-		compatible = "cellwise,cw2217";
-		reg = <0x64>;
-		status = "okay";
 
-		df-serialnum = "SB18D33989";
-		#include "bat_setting/CW_md50-scud-5000mah.dtsi"
-		#include "bat_setting/CW_md50-amperex-5000mah.dtsi"
+&soc {
+	rpm: rt-pd-manager {
+		compatible = "richtek,rt-pd-manager";
+		#io-channel-cells = <1>;
+		io-channels = <&mmi_discrete_charger PSY_IIO_USB_REAL_TYPE>,
+			      <&mmi_discrete_charger PSY_IIO_MMI_OTG_ENABLE>,
+			      <&mmi_discrete_charger PSY_IIO_TYPEC_MODE>;
+		io-channel-names = "usb_real_type",
+				   "otg_enable",
+				   "typec_mode";
+
 	};
 };
-
