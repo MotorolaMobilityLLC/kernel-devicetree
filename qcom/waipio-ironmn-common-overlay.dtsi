@@ -333,6 +333,26 @@
 			bias-pull-up;
 		};
 	};
+
+	vbus_ocp_fault_n: vbus-ocp-fault-n {
+		mux {
+			pins = "gpio2";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio2";
+			bias-pull-up;
+		};
+	};
+};
+
+&pmk8350_vadc {
+	pm8350b_vbatt2_sns {
+		reg = <PM8350B_ADC7_GPIO3_DIV3>;
+		label = "pm8350b_vbatt2_sns";
+		qcom,pre-scaling = <1 1>;
+	};
 };
 
 &pm8350b_gpios {
@@ -353,11 +373,14 @@
 	flip_fet_control {
 		compatible = "mmi,fet-control";
 		pinctrl-names = "default";
-		pinctrl-0 = <&flip_battplus_dis &flip_balance_en_n &chrg_fullcurr_en_default>;
+		pinctrl-0 = <&flip_battplus_dis &flip_balance_en_n &chrg_fullcurr_en_default &vbus_ocp_fault_n>;
+		io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO3_DIV3>;	//mapping to the channel define
+		io-channel-names = "pm8350b_vbatt2_sns"; 				//channel name-  pm8350b_vbatt2_sns
 		mmi,main-batt-psy = "battery";
 		mmi,flip-batt-psy = "flip_battery";
 		mmi,flip_battplus_en_gpio = <&tlmm 90 0>;
 		mmi,flip_balance_en_n_gpio = <&tlmm 105 0>;
+		mmi,vbus-ocp-fault-n-gpio = <&tlmm 2 0>;
 		mmi,chrg-fullcurr-en-gpio = <&pm8350b_gpios 8 GPIO_ACTIVE_HIGH>;
 	};
 
@@ -380,7 +403,7 @@
 };
 
 &qti_glink_charger {
-			mmi,max-fv-mv = <4490>;
-			mmi,max-fcc-ma = <3000>;
-			mmi,demo-fv-mv = <3000>;
+	mmi,max-fv-mv = <4490>;
+	mmi,max-fcc-ma = <3000>;
+	mmi,demo-fv-mv = <3000>;
 };
