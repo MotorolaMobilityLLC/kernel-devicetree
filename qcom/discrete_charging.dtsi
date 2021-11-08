@@ -115,7 +115,10 @@
 		reg = <0x6A>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&bq2589x_irq>;
+		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
+
 		bq2589x_irq-gpio = <&tlmm 12 0>;
 		bq2589x_en-gpio = <&tlmm 92 0>;
 		dpdm-supply = <&usb2_phy0>;
