@@ -26,7 +26,6 @@
 #include "rhodep-wl286xx.dtsi"
 #include "tcpc_config.dtsi"
 #include "sgm7220.dtsi"
-#include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
 
 
