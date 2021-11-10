@@ -27,6 +27,7 @@
 #include "tcpc_config.dtsi"
 #include "sgm7220.dtsi"
 #include "discrete_charging.dtsi"
+#include "discrete-rt-pd-manger.dtsi"
 
 
 &usb0 {
