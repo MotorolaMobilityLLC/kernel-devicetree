@@ -127,9 +127,9 @@
 		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
 		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
 		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
-		ti,bq2589x,charge-voltage = <4350>;
-		ti,bq2589x,charge-current = <3250>;
-		ti,bq2589x,term-current = <256>;
+		ti,bq2589x,charge-voltage = <4450>;
+		ti,bq2589x,charge-current = <3000>;
+		ti,bq2589x,term-current = <128>;
 		ti,bq2589x,enable-auto-dpdm;
 		ti,bq2589x,enable-termination;
 		ti,bq2589x,enable-ico;
@@ -175,16 +175,15 @@
 		mmi,chrg-iterm-ma = <243>;
 		mmi,fg-iterm-ma = <500>;
 		mmi,max-fv-mv = <4450>;
-		mmi,max-fcc-ma = <4000>;
+		mmi,max-fcc-ma = <3000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,df-serialnum = "SB18D33989";
 		mmi,mmi-temp-zones = <0 4200 970 0>,
 				<10 4200 2500 970>,
 				<15 0 2500 2500>,
-				<45 0 4000 4000>,
+				<45 0 3000 3000>,
 				<60 4200 2500 0>;
-		mmi,thermal-mitigation = <4000000 3500000
-				3000000 2500000
+		mmi,thermal-mitigation = <3000000 2500000
 				2000000 1500000
 				1200000 900000
 				600000 300000>;
