@@ -582,10 +582,6 @@
 	};
 };
 
-&usb0 {
-	extcon = <&eud>, <&rpm>;
-};
-
 &pm8008_8 {
 	status = "disabled";
 };
