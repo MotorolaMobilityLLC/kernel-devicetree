@@ -9,7 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
+#include "holi-audio-milanf-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
 #include "holi-pmic-overlay-pm6125.dtsi"
