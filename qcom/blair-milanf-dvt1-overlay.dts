@@ -78,6 +78,25 @@
 			pins = "gpio48";
 		};
 	};
+
+	sgm7220_en_n: sgm7220_en_n {
+		mux {
+			pins = "gpio58";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio58";
+			drive-strength = <2>;
+			bias-pull-down;
+			input-enable;
+		};
+	};
+};
+
+&sgm7220 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&sgm7220_int_n &sgm7220_en_n>;
 };
 
 &et528 {
