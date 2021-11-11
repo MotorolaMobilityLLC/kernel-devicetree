@@ -56,6 +56,14 @@
 	};
 };
 
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x20000>;
+	};
+};
+
 &tlmm {
 	sar_int_default: sar_int_default {
 			mux {
