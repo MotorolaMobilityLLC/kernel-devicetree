@@ -102,7 +102,7 @@
 		Semtech,ref-phases-b = <6>;
 		Semtech,ref-phases-c = <0xff>;
 		Semtech,button-flag = <0x1f>;
-		Semtech,reg-num = <73>;
+		Semtech,reg-num = <75>;
 		Semtech,reg-init = <
 			0x8024  0x7F00
 			0x4004  0x70
@@ -179,6 +179,7 @@
 			0x814C  0x60200018
 			0x816C  0x60200018
 			0x8024  0x7F7F
+			0x4280  0xF
 		>;
 
 		status = "ok";
