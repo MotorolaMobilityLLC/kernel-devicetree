@@ -58,6 +58,14 @@
 	};
 };
 
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x20000>;
+	};
+};
+
 &mdss_dsi_phy0 {
 	qcom,platform-strength-ctrl = [55 03 00 00
 				55 03 00 00
