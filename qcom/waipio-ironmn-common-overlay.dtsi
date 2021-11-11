@@ -33,6 +33,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&redriver_enable>;
 		redriver,orientation_gpio = <&tlmm 198 0>;
+		init-none;
 
 		eq = /bits/ 8 <
 			/* Parameters for USB */
@@ -73,9 +74,9 @@
 			data-role = "dual";
 			power-role = "dual";
 			try-power-role = "sink";
-			source-pdos = <PDO_FIXED(5000, 400, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
-			sink-pdos = <PDO_FIXED(5000, 400, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
-			op-sink-microwatt = <2500000>;
+			source-pdos = <PDO_FIXED(5000, 1500, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
+			sink-pdos = <PDO_FIXED(5000, 1500, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
+			op-sink-microwatt = <7500000>;
 
 			port {
 				fusb302_port: endpoint {
