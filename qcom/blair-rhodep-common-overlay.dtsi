@@ -26,7 +26,7 @@
 #include "rhodep-wl286xx.dtsi"
 #include "tcpc_config.dtsi"
 #include "sgm7220.dtsi"
-#include "discrete_charging.dtsi"
+#include "discrete_charging_rhodep.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
 
