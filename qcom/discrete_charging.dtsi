@@ -132,7 +132,6 @@
 		ti,bq2589x,term-current = <128>;
 		ti,bq2589x,enable-auto-dpdm;
 		ti,bq2589x,enable-termination;
-		ti,bq2589x,enable-ico;
 		ti,bq2589x,use-absolute-vindpm;
 	};
 };
