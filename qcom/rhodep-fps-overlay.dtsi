@@ -44,12 +44,12 @@
 	ets_vcc_high: ets_vcc_high {
 		/* INTERRUPT */
 		mux {
-			pins = "gpio38";
+			pins = "gpio6";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio38";
+			pins = "gpio6";
 			drive-strength = <2>; /* 2 MA */
 			output-high;
 		};
@@ -58,12 +58,12 @@
 	ets_vcc_low: ets_vcc_low {
 		/* INTERRUPT */
 		mux {
-			pins = "gpio38";
+			pins = "gpio6";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio38";
+			pins = "gpio6";
 			drive-strength = <2>; /* 2 MA */
 			output-low;
 		};
@@ -136,7 +136,7 @@
 		interrupts = <17 0x0>;
 		fp-ctrl-power;
 		fp-gpio-vcc-enable;
-		egistec,gpio_vcc_en = <&tlmm 38 0x0>;
+		egistec,gpio_vcc_en = <&tlmm 6 0x0>;
 		egistec,gpio_irq = <&tlmm 17 0x0>;
 		egistec,gpio_reset = <&tlmm 18 0x0>;
 		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active",
