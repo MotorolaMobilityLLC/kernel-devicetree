@@ -231,7 +231,7 @@
 	st21nfc@8 {
 		compatible = "st,st21nfc";
 		mmi,status = "/chosen", "mmi,nfc", "st";
-		status = "ok";
+		status = "disable";
 		reg = <0x08>;
 		st,irq_gpio = <&tlmm 9 0x00>;
 		st,reset_gpio = <&tlmm 6 0x00>;
