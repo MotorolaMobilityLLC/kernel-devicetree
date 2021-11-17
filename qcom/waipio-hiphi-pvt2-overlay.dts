@@ -62,3 +62,35 @@
     0x77 0x00 0
     0x78 0x7c 0>;
 };
+
+&pmk8350_gpios {
+    stylus_clk_ctrl {
+        stylus_clk_active: stylus_clk_active {
+            pins = "gpio3";
+            function = "func2";
+            bias-disable; /* No Pull*/
+            output-enable; /* digital output, no invert */
+            intput-disable; /* prevent GPIO from being set to DIO */
+            power-source = <0>;
+        };
+        stylus_clk_suspend: stylus_clk_suspend {
+            pins = "gpio3";
+            function = "func2";
+            bias-high-impedance;
+            output-enable; /* digital output, no invert */
+            intput-disable; /* prevent GPIO from being set to DIO */
+            power-source = <0>;
+        };
+    };
+};
+
+&qupv3_se4_i2c {
+    goodix_ts_i2c@5d {
+        pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "stylus_clk_active", "stylus_clk_suspend";
+        pinctrl-0 = <&ts_active>;
+        pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+        pinctrl-2 = <&stylus_clk_active>;
+        pinctrl-3 = <&stylus_clk_suspend>;
+        goodix,stylus-clk-source = "stylus_clk_gpio"; /* use gpio3 as stylus clk*/
+    };
+};
