@@ -90,11 +90,13 @@ blair-cypfr-evt-overlay.dtbo-base := blair-moto-base.dtb
 dtbo-$(CONFIG_MILANF_DTB) += \
         blair-milanf-evb1-overlay.dtbo \
         blair-milanf-evb2-overlay.dtbo \
-        blair-milanf-dvt1-overlay.dtbo
+        blair-milanf-dvt1-overlay.dtbo \
+        blair-milanf-dvt2-overlay.dtbo
 
 blair-milanf-evb1-overlay.dtbo-base := blair-moto-base.dtb
 blair-milanf-evb2-overlay.dtbo-base := blair-moto-base.dtb
 blair-milanf-dvt1-overlay.dtbo-base := blair-moto-base.dtb
+blair-milanf-dvt2-overlay.dtbo-base := blair-moto-base.dtb
 
 dtbo-$(CONFIG_RHODEP_DTB) += \
         blair-rhodep-evb-overlay.dtbo \
