@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  */
 &mdss_mdp {
-mot_csot_nt37701_655_1080x2400_dsc_cmd_v0: qcom,mdss_dsi_mot_csot_nt37701_655_1080x2400_dsc_cmd_v0 {
+mot_csot_nt37701_655_1080x2400_dsc_cmd_v1: qcom,mdss_dsi_mot_csot_nt37701_655_1080x2400_dsc_cmd_v1 {
 compatible = "qcom,mdss-dsi-panel";
 qcom,mdss-dsi-panel-name = "mipi_mot_cmd_csot_1080p_dsc_655";
 qcom,mdss-dsi-panel-supplier = "csot";
@@ -57,7 +57,6 @@ qcom,mdss-dsi-panel-hdr-color-primaries = <14500 15500 32000
 qcom,mdss-dsi-panel-peak-brightness = <4200000>;
 
 qcom,mdss-dsi-panel-blackness-level = <3230>;*/
-
 qcom,mdss-dsi-hbm-on-command = [
 		39 01 00 00 00 00 03 51 0F FF];
 qcom,mdss-dsi-hbm-off-command = [
@@ -142,16 +141,12 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 06 F0 55 AA 52 08 00
 			15 01 00 00 00 00 02 6F 1C
 			39 01 00 00 00 00 06 C0 03 14 25 A9 78
-			39 01 00 00 00 00 06 F0 55 AA 52 08 04
-			15 01 00 00 00 00 02 CB 06
-			39 01 00 00 00 00 06 F0 55 AA 52 08 01
-			39 01 00 00 00 00 03 CD 05 71
 
 			39 01 00 00 00 00 05 FF AA 55 A5 80
 			15 01 00 00 00 00 02 6F 1D
 			15 01 00 00 00 00 02 F2 05 //Corner&Hole page0
 
-			39 01 00 00 00 00 05 3B 00 10 00 20
+                        39 01 00 00 00 00 05 3B 00 10 00 20
 
 			15 01 00 00 00 00 02 03 01
 			15 01 00 00 00 00 02 90 01
@@ -230,17 +225,12 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 06 F0 55 AA 52 08 00
 			15 01 00 00 00 00 02 6F 1C
 			39 01 00 00 00 00 06 C0 03 14 25 A9 78
-			39 01 00 00 00 00 06 F0 55 AA 52 08 04
-			15 01 00 00 00 00 02 CB 06
-			39 01 00 00 00 00 06 F0 55 AA 52 08 01
-			39 01 00 00 00 00 03 CD 05 71
 
 			39 01 00 00 00 00 05 FF AA 55 A5 80
 			15 01 00 00 00 00 02 6F 1D
 			15 01 00 00 00 00 02 F2 05 //Corner&Hole page0
 
-			39 01 00 00 00 00 05 3B 00 10 00 20
-
+                        39 01 00 00 00 00 05 3B 00 10 00 20
 
 			15 01 00 00 00 00 02 03 01
 			15 01 00 00 00 00 02 90 01
@@ -319,16 +309,12 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 06 F0 55 AA 52 08 00
 			15 01 00 00 00 00 02 6F 1C
 			39 01 00 00 00 00 06 C0 03 14 25 A9 78
-			39 01 00 00 00 00 06 F0 55 AA 52 08 04
-			15 01 00 00 00 00 02 CB 06
-			39 01 00 00 00 00 06 F0 55 AA 52 08 01
-			39 01 00 00 00 00 03 CD 05 71
 
 			39 01 00 00 00 00 05 FF AA 55 A5 80
 			15 01 00 00 00 00 02 6F 1D
 			15 01 00 00 00 00 02 F2 05 //Corner&Hole page0
 
-			39 01 00 00 00 00 05 3B 00 10 00 20
+                        39 01 00 00 00 00 05 3B 00 10 00 20
 
 			15 01 00 00 00 00 02 03 01
 			15 01 00 00 00 00 02 90 01
@@ -407,16 +393,12 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 06 F0 55 AA 52 08 00
 			15 01 00 00 00 00 02 6F 1C
 			39 01 00 00 00 00 06 C0 03 14 25 A9 78
-			39 01 00 00 00 00 06 F0 55 AA 52 08 04
-			15 01 00 00 00 00 02 CB 06
-			39 01 00 00 00 00 06 F0 55 AA 52 08 01
-			39 01 00 00 00 00 03 CD 05 71
 
 			39 01 00 00 00 00 05 FF AA 55 A5 80
 			15 01 00 00 00 00 02 6F 1D
 			15 01 00 00 00 00 02 F2 05 //Corner&Hole page0
 
-			39 01 00 00 00 00 05 3B 00 10 00 20
+                        39 01 00 00 00 00 05 3B 00 10 00 20
 
 			15 01 00 00 00 00 02 03 01
 			15 01 00 00 00 00 02 90 01
@@ -454,8 +436,7 @@ qcom,mdss-dsi-display-timings {
 		qcom,mdss-dsc-bit-per-pixel = <8>;
 		qcom,mdss-dsc-block-prediction-enable;
 	};
-/*
-	timing@4{
+	/*timing@4{
 		qcom,mdss-dsi-cmd-mode;
 		qcom,mdss-dsi-panel-framerate = <144>;
 		qcom,mdss-dsi-panel-width = <1080>;
@@ -472,7 +453,7 @@ qcom,mdss-dsi-display-timings {
 		qcom,mdss-dsi-h-right-border = <0>;
 		qcom,mdss-dsi-v-top-border = <0>;
 		qcom,mdss-dsi-v-bottom-border = <0>;
-		qcom,mdss-dsi-panel-jitter = <0x20 0xa>; // 90fps +/- 2
+		qcom,mdss-dsi-panel-jitter = <0x20 0xa>;  //90fps +/- 2
 		qcom,mdss-dsi-timing-switch-command = [
 			15 01 00 00 06 00 02 2F 04 //08:49Hz 03:60Hz 07:90Hz 02:120Hz 04:144Hz
 		];
@@ -496,16 +477,12 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 06 F0 55 AA 52 08 00
 			15 01 00 00 00 00 02 6F 1C
 			39 01 00 00 00 00 06 C0 03 14 25 A9 78
-			39 01 00 00 00 00 06 F0 55 AA 52 08 04
-			15 01 00 00 00 00 02 CB 06
-			39 01 00 00 00 00 06 F0 55 AA 52 08 01
-			39 01 00 00 00 00 03 CD 05 71
 
 			39 01 00 00 00 00 05 FF AA 55 A5 80
 			15 01 00 00 00 00 02 6F 1D
 			15 01 00 00 00 00 02 F2 05 //Corner&Hole page0
 
-			39 01 00 00 00 00 05 3B 00 10 00 20
+                        39 01 00 00 00 00 05 3B 00 10 00 20
 
 			15 01 00 00 00 00 02 03 01
 			15 01 00 00 00 00 02 90 01
@@ -543,6 +520,7 @@ qcom,mdss-dsi-display-timings {
 		qcom,mdss-dsc-bit-per-pixel = <8>;
 		qcom,mdss-dsc-block-prediction-enable;
 	};*/
+
 
 };
 
