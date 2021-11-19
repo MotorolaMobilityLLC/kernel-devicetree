@@ -21,7 +21,6 @@
 #include "rhodep-fps-overlay.dtsi"
 #include "rhodep-display.dtsi"
 #include "rhodep-touchscreen.dtsi"
-#include "rhodep-sensors.dtsi"
 #include "camera/blair-camera-sensor-mot-rhodep-overlay.dtsi"
 #include "rhodep-wl286xx.dtsi"
 #include "tcpc_config.dtsi"
