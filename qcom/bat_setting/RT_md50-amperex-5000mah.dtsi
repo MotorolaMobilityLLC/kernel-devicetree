@@ -13,6 +13,7 @@
 md50-amperex-5000mah {
         serialnum = "SB18D33989";
 	/* add for aging cv */
+	rt,fcc_design = <5000>;
 	rt,fcc = <4654 4654 4654 4654 4654>;
 	rt,fg_fc_vth = <0x9e 0x9e 0x9e 0x9e 0x9e>;
 	rt,fg_extreg_table = [80 80 33 6E B7 E4 58 02 CF 98 61 3A 88 81 00 00
