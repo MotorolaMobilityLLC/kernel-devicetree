@@ -12,7 +12,7 @@
  */
 jd50-scud-5000mah {
 	serialnum = "SB18C77226";
-	fcc_design = <4850>;
+	fcc_design = <5000>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
 				 A5 B1 B5 CE C3 C2 97 58
 				 31 FF FF E3 92 80 63 58
