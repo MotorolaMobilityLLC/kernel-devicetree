@@ -1,5 +1,9 @@
 #include "moto_therm_sys_temp.dtsi"
 
+&socd_trip {
+    temperature = <95>;
+};
+
 &thermal_zones {
 	skin-msm-therm {
 		status = "disabled";
