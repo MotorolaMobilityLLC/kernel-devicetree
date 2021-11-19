@@ -51,12 +51,12 @@
 		qcom,mdss-dsi-bl-max-level = <4095>;
 		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 
-		qcom,mdss-dsi-panel-hdr-enabled;
+		/*qcom,mdss-dsi-panel-hdr-enabled;
 		qcom,mdss-dsi-panel-hdr-color-primaries = <14500 15500 32000
 				17000 15500 30000 8000 3000>;
 		qcom,mdss-dsi-panel-peak-brightness = <4200000>;
 
-		qcom,mdss-dsi-panel-blackness-level = <3230>;
+		qcom,mdss-dsi-panel-blackness-level = <3230>;*/
 
 		qcom,mdss-dsi-hbm-on-command = [
 				39 01 00 00 00 00 03 51 0F FF];
@@ -352,7 +352,7 @@
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
 			};
-			timing@4{
+			/*timing@4{
 				qcom,mdss-dsi-cmd-mode;
 				qcom,mdss-dsi-panel-framerate = <144>;
 				qcom,mdss-dsi-panel-width = <1080>;
@@ -369,7 +369,7 @@
 				qcom,mdss-dsi-h-right-border = <0>;
 				qcom,mdss-dsi-v-top-border = <0>;
 				qcom,mdss-dsi-v-bottom-border = <0>;
-				qcom,mdss-dsi-panel-jitter = <0x20 0xa>; /* 90fps +/- 2 */
+				qcom,mdss-dsi-panel-jitter = <0x20 0xa>; // 90fps +/- 2
 				qcom,mdss-dsi-timing-switch-command = [
 					15 01 00 00 06 00 02 2F 04 //08:49Hz 01:60Hz 03:90Hz 02:120Hz 04:144Hz
 				];
@@ -400,19 +400,19 @@
 					15 01 00 00 00 00 02 2F 04 //08:49Hz 01:60Hz 03:90Hz 02:120Hz 04:144Hz
 
 					05 01 00 00 C8 00 01 11
-					05 01 00 00 00 00 01 29];	/* display on */
+					05 01 00 00 00 00 01 29];	// display on
 				qcom,mdss-dsi-off-command = [
-					05 01 00 00 00 00 01 28		/* display_off */
-					05 01 00 00 78 00 01 10];	/* enter sleep mode */
+					05 01 00 00 00 00 01 28		// display_off
+					05 01 00 00 78 00 01 10];	// enter sleep mode
 
 				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 				qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
 				qcom,mdss-dsi-timing-switch-command-state =
 					"dsi_lp_mode";
 				qcom,compression-mode = "dsc";
-				/* Why QCOM doesn't use this, even it used 2 encoder
-				 * as for that dsi_sw43404_amoled_cmd, for ex */
-				/* qcom,mdss-dsc-encoders = <2>; */
+				// Why QCOM doesn't use this, even it used 2 encoder
+				// as for that dsi_sw43404_amoled_cmd, for ex
+				// qcom,mdss-dsc-encoders = <2>;
 				qcom,mdss-dsc-version = <0x11>;
 				qcom,mdss-dsc-slice-height = <12>;
 				qcom,mdss-dsc-slice-width = <1080>;
@@ -420,7 +420,7 @@
 				qcom,mdss-dsc-bit-per-component = <10>;
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
-			};
+			};*/
 		};
 	};
 };
