@@ -156,10 +156,10 @@
 		temp_neg_10_thres = <0>;
 	};
 
-	bq25890@62 {
+	bq25890@6A {
 		status = "okay";
 		compatible = "ti,bq2589x-1";
-		reg = <0x62>;
+		reg = <0x6A>;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
@@ -216,7 +216,7 @@
 		config {
 			pins = "gpio12";
 			drive-strength = <2>;
-			bias-disable;
+			bias-pull-up;
 			input-enable;
 		};
 	};
