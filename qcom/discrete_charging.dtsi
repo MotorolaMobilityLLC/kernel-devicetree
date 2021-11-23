@@ -33,6 +33,7 @@
 			pins = "gpio8";
 			function = "func1";
 			output-low;
+			power-source = <1>;
 		};
 	};
 };
