@@ -22,7 +22,7 @@
 #include "rhodep-display.dtsi"
 #include "rhodep-touchscreen.dtsi"
 #include "camera/blair-camera-sensor-mot-rhodep-overlay.dtsi"
-#include "rhodep-et5907.dtsi"
+#include "rhodep-wl2868c.dtsi"
 #include "tcpc_config.dtsi"
 #include "sgm7220.dtsi"
 #include "discrete_charging_rhodep.dtsi"
