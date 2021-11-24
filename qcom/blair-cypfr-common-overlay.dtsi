@@ -209,6 +209,10 @@
 	pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
 };
 
+&mmi_charger {
+	mmi,hvdcp-power-max = <18000>;
+};
+
 &mmi_discrete_charger {
 	mmi,max-fv-mv = <4400>;
 	mmi,chrg-iterm-ma = <150>;
