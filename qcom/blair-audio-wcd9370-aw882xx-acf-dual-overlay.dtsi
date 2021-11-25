@@ -344,14 +344,14 @@
                 dc-flag = <0>;
                 sync-flag = <0>;
                 sound-channel = <1>;
-                aw-tx-topo-id = <0x1000ff00>;
-                aw-rx-topo-id = <0x1000ff01>;
-                aw-tx-port-id = <0x1001>;
-                aw-rx-port-id = <0x1000>;
-                aw-re-min = <4000>;
-                aw-re-max= <30000>;
-                aw-cali-mode = "aw_attr";
-                status = "okay";
+		aw-tx-topo-id = <0x1000ff00>;
+		aw-rx-topo-id = <0x1000ff01>;
+		aw-rx-port-id = <0x1002>;
+		aw-tx-port-id = <0x1003>;
+		aw-re-min = <4000>;
+		aw-re-max = <30000>;
+		aw-cali-mode = "aw_attr";
+		status = "okay";
         };
 };
 
