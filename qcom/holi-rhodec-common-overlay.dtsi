@@ -21,8 +21,6 @@
 #include "rhodec-display.dtsi"
 #include "rhodec-touchscreen.dtsi"
 #include "rhodec-fmr-overlay.dtsi"
-#include "tcpc_config.dtsi"
-#include "sgm7220.dtsi"
 #include "discrete_charging_holi.dtsi"
 
 &wcd937x_codec {
