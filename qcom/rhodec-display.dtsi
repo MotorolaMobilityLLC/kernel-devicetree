@@ -7,6 +7,14 @@
 	/delete-property/ pinctrl-0;
 };
 
+&mdss_dsi_phy0 {
+	qcom,platform-strength-ctrl = [55 03 30 30
+				55 03 30 30
+				55 03 30 30
+				55 03 30 30
+				55 00 30 30];
+};
+
 &tlmm {
 	lcd_panel_avdd_default: lcd_panel_avdd_default {
 		mux {
