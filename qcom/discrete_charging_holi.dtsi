@@ -9,7 +9,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-
+#include <dt-bindings/iio/qti_power_supply_iio.h>
+#include "sgm7220.dtsi"
+#include "discrete-rt-pd-manger.dtsi"
 
 &pm6125_vadc {
 	gpio6_div3{
@@ -62,6 +64,14 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
+	cw2217@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		status = "okay";
+
+		df-serialnum = "SB18D33989";
+		#include "bat_setting/CW_md50-amperex-5000mah.dtsi"
+	};
 
 	sgm4154x: sgm4154x@3B {
 		status = "okay";
@@ -69,7 +79,7 @@
 		reg = <0x3B>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&gpio6_adc_default>;
+		pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
 		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
 		io-channel-names = "gpio3_div3";
 
@@ -108,45 +118,6 @@
 		temp_t0_thres_plus_x_degree = <2>;
 		temp_neg_10_thres = <0>;
 	};
-
-	bq25890@6A {
-		status = "okay";
-		compatible = "ti,bq2589x-1";
-		reg = <0x6A>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&bq2589x_irq>;
-		bq2589x_irq-gpio = <&tlmm 12 0>;
-		bq2589x_en-gpio = <&tlmm 92 0>;
-		dpdm-supply = <&qusb_phy0>;
-
-		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
-		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
-		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
-		ti,bq2589x,charge-voltage = <4350>;
-		ti,bq2589x,charge-current = <3250>;
-		ti,bq2589x,term-current = <256>;
-		ti,bq2589x,enable-auto-dpdm;
-		ti,bq2589x,enable-termination;
-		ti,bq2589x,enable-ico;
-		ti,bq2589x,use-absolute-vindpm;
-	};
-};
-
-&tlmm {
-	bq2589x_irq: bq2589x_irq {
-		mux {
-			pins = "gpio12";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio12";
-			drive-strength = <2>;
-			bias-disable;
-			input-enable;
-		};
-	};
 };
 
 &soc {
@@ -173,17 +144,33 @@
 		mmi,max-fv-mv = <4450>;
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
-		mmi,df-serialnum = "SB18D33989";
-		mmi,mmi-temp-zones = <0 4200 970 0>,
-				<10 4200 2500 970>,
-				<15 0 2500 2500>,
-				<45 0 4000 4000>,
-				<60 4200 2500 0>;
-		mmi,thermal-mitigation = <4000000 3500000
-				3000000 2500000
+		mmi,df-serialnum = "SB18C77591";
+		mmi,mmi-temp-zones = <0 4200 1000 0>,
+			<10 4250 2500 1000>,
+			<15 0 2500 2500>,
+			<45 0 4000 4000>,
+			<60 4200 4000 0>;
+
+		mmi,thermal-mitigation = <4000000 3000000 2500000
 				2000000 1500000
 				1200000 900000
 				600000 300000>;
-	};
+		};
 };
 
+&tlmm {
+	chg_irq_default: chg_irq_default {
+		/* IRQ */
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			bias-pull-up;
+			drive-strength = <2>; /* 2 MA */
+			input-enable;
+		};
+	};
+};
