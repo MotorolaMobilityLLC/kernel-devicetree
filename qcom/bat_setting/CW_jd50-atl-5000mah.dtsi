@@ -13,6 +13,7 @@
 jd50-atl-5000mah {
 	serialnum = "SB18C77591";
 	fcc_design = <5000>;
+	ui_full = <98>;
 	config_profile_info = [52 00 00 00 00 00 00 00
 				 A0 B2 BF CB C3 C2 96 59
 				 2F FF FF DB A6 8D 74 60
