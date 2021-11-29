@@ -77,6 +77,7 @@
 			source-pdos = <PDO_FIXED(5000, 1500, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
 			sink-pdos = <PDO_FIXED(5000, 1500, (PDO_FIXED_USB_COMM | PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP))>;
 			op-sink-microwatt = <7500000>;
+			mode-switch = <&typec_mux>;
 
 			port {
 				fusb302_port: endpoint {
@@ -400,6 +401,11 @@
 		startup-delay-us = <100000>;
 		gpio = <&tlmm 103 GPIO_ACTIVE_HIGH>;
 		vin-supply = <&ext5v_en>;
+	};
+
+	typec_mux: redriver-typec-mux {
+		compatible = "onsemi,redriver-typec-mux";
+		status = "ok";
 	};
 };
 
