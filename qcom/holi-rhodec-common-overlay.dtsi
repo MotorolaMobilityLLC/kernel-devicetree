@@ -11,7 +11,6 @@
  */
 #include "holi-nopmi-moto-common-overlay.dtsi"
 
-#include "holi-audio-wcd9370-aw882xx-acf-overlay.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/linux-event-codes.h>
 #include "rhodec-fps-overlay.dtsi"
