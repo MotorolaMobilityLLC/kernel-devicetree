@@ -22,18 +22,6 @@
 #include "rhodec-fmr-overlay.dtsi"
 #include "discrete_charging_holi.dtsi"
 
-&wcd937x_codec {
-	cdc-vdd-rxtx-supply = <&L9A>;
-	cdc-vddpx-supply = <&L9A>;
-	qcom,cdc-static-supplies = "cdc-vdd-rxtx",
-				   "cdc-vddpx";
-	/*
-	 * Overriding cdc-vdd-mic-bias-supply to dummy value
-	 * to avoid compilation errors as BOB is not definied
-	 * for pm6125
-	 */
-	cdc-vdd-mic-bias-supply = <>;
-};
 
 /* Dummy LDO reference */
 &sdhc_1 {
