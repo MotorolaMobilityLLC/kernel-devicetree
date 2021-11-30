@@ -34,11 +34,31 @@
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&pmx_ts_release>;
 		panel = <&dsi_vtdr6110c_visionox_video>;
+		mmi,status = "/chosen","mmi,panel_name","contains","vtdr6110c";
 
 		/* touchscreen_mmi class entries*/
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 		mmi,class-entry-name = "ft3519";
 		mmi,reset-on-resume = <0x01>;
+	};
+
+	goodix-gtx8@5d {
+		compatible = "goodix,gt9885";
+
+		goodix,avdd-name = "avdd";
+		avdd-supply = <&L22A>;
+		goodix,iovdd-name = "iovdd";
+		iovdd-supply = <&L13A>;
+
+		reg = <0x5d>;
+		mmi,status = "/chosen","mmi,panel_name","contains","rm692c9";
+		goodix,reset-gpio = <&tlmm 21 0x00>;
+		goodix,irq-gpio = <&tlmm 22 0x2008>;
+		goodix,irq-flags = <2>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-x = <1080>;
+		goodix,panel-max-y = <2400>;
+		goodix,panel-max-w = <255>;
+		panel = <&dsi_rm692c9_visionox_video>;
 	};
 };
