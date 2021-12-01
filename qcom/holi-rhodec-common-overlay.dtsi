@@ -272,6 +272,12 @@
 			linux,can-disable;
 		};
 	};
+
+	ldo_vib {
+		compatible = "moto,vibrator-ldo";
+		moto,vib-ldo-gpio = <&tlmm 100 0x0>;
+		status = "ok";
+	};
 };
 
 &soc {
