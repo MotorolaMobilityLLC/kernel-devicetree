@@ -21,6 +21,7 @@
 #include "rhodec-display.dtsi"
 #include "rhodec-touchscreen.dtsi"
 #include "rhodec-fmr-overlay.dtsi"
+#include "camera/holi-camera-sensor-mot-rhodec-overlay.dtsi"
 #include "discrete_charging_holi.dtsi"
 
 &wcd937x_codec {
