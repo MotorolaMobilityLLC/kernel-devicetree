@@ -160,7 +160,7 @@
 
 &sgm7220 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&sgm7220_en_n>;
+	pinctrl-0 = <&sgm7220_int_n &sgm7220_en_n>;
 };
 
 &tlmm {
