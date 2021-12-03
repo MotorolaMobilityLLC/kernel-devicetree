@@ -44,12 +44,12 @@
 	ets_vcc_high: ets_vcc_high {
 		/* INTERRUPT */
 		mux {
-			pins = "gpio87";
+			pins = "gpio6";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio87";
+			pins = "gpio6";
 			drive-strength = <2>; /* 2 MA */
 			output-high;
 		};
@@ -58,33 +58,60 @@
 	ets_vcc_low: ets_vcc_low {
 		/* INTERRUPT */
 		mux {
-			pins = "gpio87";
+			pins = "gpio6";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio87";
+			pins = "gpio6";
 			drive-strength = <2>; /* 2 MA */
 			output-low;
 		};
 	};
 
-	fps_rst_active: fps_rst_active {
-		/* active state */
+	ft_power_high: ft_power_high {
 		mux {
-			pins = "gpio18";
+			pins = "gpio6";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio18";
-			drive-strength = <2>; /* 2 MA */
+			pins = "gpio6";
+			drive-strength = <2>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	ft_power_low: ft_power_low {
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			drive-strength = <2>;
+			bias-disable;
 			output-low;
 		};
 	};
 
-	fps_rst_suspend: fps_rst_suspend {
-		/* sleep state */
+	ft_eint_as_int: ft_eint_as_int {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	ft_reset_high: ft_reset_high {
 		mux {
 			pins = "gpio18";
 			function = "gpio";
@@ -92,37 +119,23 @@
 
 		config {
 			pins = "gpio18";
-			drive-strength = <2>; /* 2 MA */
+			drive-strength = <2>;
+			bias-disable;
+			output-high;
 		};
 	};
 
-	fps_int_active: fps_int_active {
-		/* active state */
+	ft_reset_low: ft_reset_low {
 		mux {
-			pins = "gpio17";
+			pins = "gpio18";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio17";
-			drive-strength = <2>; /* 2 MA */
+			pins = "gpio18";
+			drive-strength = <2>;
 			bias-disable;
-			input-enable;
-		};
-	};
-
-	fps_int_suspend: fps_int_suspend {
-		/* sleep state */
-		mux {
-			pins = "gpio17";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio17";
-			drive-strength = <2>; /* 2 MA */
-			bias-disable;
-			input-enable;
+			output-low;
 		};
 	};
 };
@@ -137,9 +150,9 @@
 		interrupts = <17 0x0>;
 		fp-ctrl-power;
 		fp-gpio-vcc-enable;
+		egistec,gpio_vcc_en = <&tlmm 6 0x0>;
 		egistec,gpio_irq = <&tlmm 17 0x0>;
 		egistec,gpio_reset = <&tlmm 18 0x0>;
-		egistec,gpio_vcc_en = <&tlmm 87 0x0>;
 		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active",
 				"egis_vcc_high", "egis_vcc_low";
 		pinctrl-0 = <&ets_rst_high>;
@@ -149,15 +162,22 @@
 		pinctrl-4 = <&ets_vcc_low>;
 	};
 
-	fpc: fpc_fpc1020 {
-		compatible = "fpc,fpc1020";
+	ft9362: ft9362 {
 		status = "ok";
-		irq = <&tlmm 17 0>;
-		rst = <&tlmm 18 0>;
+		compatible = "focaltech,fingerprint";
 		interrupt-parent = <&tlmm>;
-		interrupts = <17 0>;
-		pinctrl-names = "default", "suspend";
-		pinctrl-0 = <&fps_rst_active &fps_int_active>;
-		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+		interrupts = <17 0x0>;
+		fp,reset_gpio = <&tlmm 18 0>;
+		fp,irq_gpio = <&tlmm 17 0>;
+		fp,vdd_gpio = <&tlmm 6 0>;
+
+		pinctrl-names = "fpsensor_finger_power_high","fpsensor_finger_power_low",
+				"fpsensor_finger_rst_low","fpsensor_finger_rst_high",
+				"fpsensor_eint_as_int";
+		pinctrl-0 = <&ft_power_high>;
+		pinctrl-1 = <&ft_power_low>;
+		pinctrl-2 = <&ft_reset_low>;
+		pinctrl-3 = <&ft_reset_high>;
+		pinctrl-4 = <&ft_eint_as_int>;
 	};
 };
