@@ -103,13 +103,13 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += \
 
 waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 waipio-hiphi-evt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
-waipio-hiphi-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
-waipio-hiphi-pvt2-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
-waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-hiphic-base.dtb
-waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-hiphic-base.dtb
-waipio-hiphic-dvt1-overlay.dtbo-base := waipio-moto-hiphic-base.dtb
-waipio-hiphic-dvt2a-overlay.dtbo-base := waipio-moto-hiphic-base.dtb
-waipio-hiphid-pvt-overlay.dtbo-base := waipio-moto-hiphid-base.dtb
+waipio-hiphi-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb waipio-v2-moto-hiphi-base.dtb
+waipio-hiphi-pvt2-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
+waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphic-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
+waipio-hiphic-dvt2a-overlay.dtbo-base := waipio-moto-hiphi-base.dtb waipio-v2-moto-hiphi-base.dtb
+waipio-hiphid-pvt-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
 endif
 else
 dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
