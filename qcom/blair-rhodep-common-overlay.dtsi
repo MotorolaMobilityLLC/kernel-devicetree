@@ -449,7 +449,7 @@
 		};
 	};
 
-	camera_flash_therm {
+	cam_flash_therm {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
 		thermal-governor = "user_space";
