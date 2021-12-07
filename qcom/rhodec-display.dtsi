@@ -141,6 +141,15 @@
 	qcom,mdss-dsi-bl-default-level = <1024>;
 	qcom,mdss-brightness-max-level = <2047>;
 	qcom,mdss-dsi-no-panel-on-read-support;
+
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+
 	qcom,tp_state_check_enable;
 
 	qcom,dsi-supported-dfps-list = <120 90 60>;
