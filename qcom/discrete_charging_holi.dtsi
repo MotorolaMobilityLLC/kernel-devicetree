@@ -173,8 +173,8 @@
 		config {
 			pins = "gpio58";
 			drive-strength = <2>; /* 2 MA */
-			bias-disable;
-			output-low;
+			bias-pull-down;
+			input-enable;
 		};
 	};
 
