@@ -19,6 +19,6 @@
 	model = "rhodep";
 	compatible = "qcom,blair-rhodep", "qcom,blair-moto", "qcom,blair";
 	qcom,msm-id = <507 0x10000>;
-	qcom,board-id = <0x4D 0x9000>;
+	qcom,board-id = <0x4D 0xB200>;
 };
 
