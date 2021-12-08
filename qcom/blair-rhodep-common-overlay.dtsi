@@ -28,11 +28,6 @@
 #include "discrete_charging_rhodep.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
-
-&usb0 {
-       qcom,force-adb-enable;
-};
-
 &qupv3_se8_i2c {
 	status = "okay";
 	cw2217@64 {
