@@ -27,37 +27,6 @@
 			bias-high-impedance;
 		};
 	};
-
-	indicator_led {
-		indicator_led_default: indicator_led_default {
-			pins = "gpio9";
-			function = "func1";
-			output-low;
-		};
-	};
-};
-
-&soc {
-	indicator_led {
-		compatible = "qcom,indicator-pwm-led";
-		pinctrl-names = "default";
-		pinctrl-0 = <&indicator_led_default>;
-		indicator_led {
-			label = "charging";
-			led-sources = <0>;
-			pwms = <&pm6125_pwm  0 1000000>;
-			linux,default-trigger = "timer";
-		};
-	};
-};
-
-&spmi_bus {
-	qcom,pm6125@1 {
-		#address-cells = <1>;
-		qcom,pwms@b300 {
-			status = "ok";
-		};
-	};
 };
 
 &qupv3_se10_i2c {
