@@ -29,6 +29,13 @@
 		//qcom,mdss-dsi-panel-peak-brightness = <6450000>;
 		//qcom,mdss-dsi-panel-blackness-level = <4961>;
 
+		qcom,mdss-dsi-cabc-mv-command = [15 01 00 00 00 00 02 55 03];
+		qcom,mdss-dsi-cabc-mv-command-state =  "dsi_hs_mode";
+		qcom,mdss-dsi-cabc-ui-command = [15 01 00 00 00 00 02 55 01];
+		qcom,mdss-dsi-cabc-ui-command-state =  "dsi_hs_mode";
+		qcom,mdss-dsi-cabc-dis-command = [15 01 00 00 00 00 02 55 00];
+		qcom,mdss-dsi-cabc-dis-command-state =  "dsi_hs_mode";
+
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
 				qcom,mdss-dsi-panel-width = <1080>;
@@ -66,7 +73,7 @@
 					15 01 00 00 00 00 02 FF 10
 					15 01 00 00 00 00 02 FB 01
 					15 01 00 00 00 00 02 C0 03
-					39 01 00 00 00 00 02 51 FF
+					15 01 00 00 00 00 02 51 CC
 					15 01 00 00 00 00 02 53 2C
 					15 01 00 00 00 00 02 55 01
 					05 01 00 00 64 00 01 11
