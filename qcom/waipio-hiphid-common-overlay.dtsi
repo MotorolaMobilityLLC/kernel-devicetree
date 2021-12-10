@@ -10,23 +10,5 @@
  * GNU General Public License for more details.
  */
 
-/dts-v1/;
-/plugin/;
+#include "waipio-hiphi-common-overlay.dtsi"
 
-#include "waipio-hiphi-row-common-overlay.dtsi"
-#include "waipio-hiphi-evt-sensor-overlay.dtsi"
-#include "waipio-hiphi-charger-overlay.dtsi"
-
-/ {
-	model = "hiphi";
-	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphi";
-	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
-	qcom,board-id = <0x47 0xA100>;
-};
-
-&soc {
-	smart_pen_charger: mmi,pen-charger {
-		compatible = "mmi,pen-charger";
-		mmi,pen-psy-name = "wireless";
-	};
-};
