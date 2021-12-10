@@ -15,6 +15,7 @@
 
 #include "waipio-hiphi-common-overlay.dtsi"
 #include "waipio-hiphi-evb-sensor-overlay.dtsi"
+#include "waipio-hiphi-charger-overlay.dtsi"
 
 / {
 	model = "hiphi";
