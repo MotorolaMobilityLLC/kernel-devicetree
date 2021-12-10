@@ -1,0 +1,4 @@
+&mmi_charger {
+	mmi,hvdcp-power-max = <15000>;
+};
+
