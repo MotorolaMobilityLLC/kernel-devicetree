@@ -13,7 +13,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "waipio-hiphi-common-overlay.dtsi"
+#include "waipio-hiphi-row-common-overlay.dtsi"
 #include "waipio-hiphi-evt-sensor-overlay.dtsi"
 #include "waipio-hiphi-charger-overlay.dtsi"
 
