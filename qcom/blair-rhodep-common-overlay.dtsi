@@ -61,7 +61,7 @@
 		sm,v_l_alarm = <3400>;
 		sm,v_h_alarm = <4450>;
 		sm,battery_table_num = <0>;
-		sm,param_version = <1>;
+		sm,param_version = <2>;
 		sm,t_l_alarm_in = <54>;
 		sm,t_h_alarm_in = <1>;
 		sm,t_l_alarm_ex = <0xD3D8>;
@@ -69,7 +69,7 @@
 		battery_params {
 		//battery,id = <0>;
 		//NE50(SWD)
-		battery0,param_version = <1>;
+		battery0,param_version = <2>;
 		battery0,max_voltage_uv = <4450000>;
 		battery0,battery_type = <4450 0x0 0x2600>;
 		battery0,battery_table0 = <0x1400 0x1C6C 0x1CE7 0x1D42 0x1D64 0x1D84 0x1D91 0x1D9B
@@ -106,7 +106,7 @@
 					0x909C 0x907A 0x905A 0x903B 0x901E 0x9003 0x8FE7 0x8FCE 0x8FB4 0x8F9D
 					0x8F85>;  //NTC value(DEC) table -20~80
 			//NE50(ATL)
-		battery1,param_version = <1>;
+		battery1,param_version = <2>;
 		battery1,max_voltage_uv = <4450000>;
 		battery1,battery_type = <4450 0x0 0x2666>;
 		battery1,battery_table0 = <0x1400 0x1C9E 0x1D11 0x1D72 0x1D83 0x1D88 0x1D90 0x1DB5
