@@ -77,6 +77,7 @@
 		goodix,avdd-name = "pm8350c_l3";
 		goodix,iovdd-name = "pm8350c_l2";
 		goodix,pen-enable;
+		goodix,film_mode-ctrl;
 		goodix,stylus_mode-ctrl;
 		goodix,leather_mode-ctrl;
 		goodix,sensitivity-ctrl;
