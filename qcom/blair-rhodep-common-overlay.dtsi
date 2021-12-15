@@ -35,6 +35,7 @@
 		reg = <0x64>;
 		status = "okay";
 
+		sense_r_mohm = <5>;
 		df-serialnum = "SB18D38323";
 		#include "bat_setting/CW_ng50-ATL-5000mah-rhodep.dtsi"
 		#include "bat_setting/CW_ng50-SWD-5000mah-rhodep.dtsi"
