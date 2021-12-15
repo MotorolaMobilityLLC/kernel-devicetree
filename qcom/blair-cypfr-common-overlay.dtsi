@@ -214,9 +214,11 @@
 };
 
 &mmi_discrete_charger {
+	/delete-property/ mmi,bat-ocp-ua;
 	mmi,max-fv-mv = <4400>;
 	mmi,chrg-iterm-ma = <150>;
 	mmi,max-fcc-ma = <3000>;
+	mmi,otg-cl-ua = <1200000>;
 	mmi,df-serialnum = "SB18C77591";
 	mmi,mmi-temp-zones = <0 4200 1000 0>,
 			<15 0 1000 1000>,
