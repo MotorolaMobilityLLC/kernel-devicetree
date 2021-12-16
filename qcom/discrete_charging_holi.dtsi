@@ -38,8 +38,9 @@
 		reg = <0x64>;
 		status = "okay";
 
-		df-serialnum = "SB18D33989";
-		#include "bat_setting/CW_md50-amperex-5000mah.dtsi"
+		df-serialnum = "SB18D24973";
+		#include "bat_setting/CW_nd50-atl-5000mah.dtsi"
+		#include "bat_setting/CW_nd50-jiade-5000mah.dtsi"
 	};
 
 	sm5602@71 {
@@ -219,7 +220,7 @@
 		mmi,max-fv-mv = <4450>;
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
-		mmi,df-serialnum = "SB18C77591";
+		mmi,df-serialnum = "SB18D24973";
 		mmi,mmi-temp-zones = <0 4200 1000 0>,
 			<10 4250 2500 1000>,
 			<15 0 2500 2500>,

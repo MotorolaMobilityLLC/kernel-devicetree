@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+nd50-atl-5000mah {
+	serialnum = "SB18D24973";
+	fcc_design = <5000>;
+	ui_full = <98>;
+	config_profile_info = [5A 00 00 00 00 00 00 00
+				B2 BB C3 C7 B9 B4 AC 72
+				4A FF F3 B7 8E 81 69 5B
+				53 50 4C 80 D9 DE B8 DD
+				D4 CF D3 D6 D5 D2 CF CB
+				C6 C5 CF BF 9C 91 86 7D
+				6D 6B 79 90 A8 90 5C 69
+				20 00 57 10 00 B0 61 00
+				00 00 64 22 D3 58 00 00
+				00 00 00 00 00 00 00 8B ];
+};
