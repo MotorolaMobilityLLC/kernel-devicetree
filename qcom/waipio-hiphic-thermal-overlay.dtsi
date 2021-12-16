@@ -146,3 +146,19 @@
 		};
 	};
 };
+
+&pmr735a_trip1 {
+	type = "passive";
+};
+
+&pmr735a_trip2 {
+	type = "passive";
+};
+
+&pmr735b_trip1 {
+	type = "passive";
+};
+
+&pmr735b_trip2 {
+	type = "passive";
+};
