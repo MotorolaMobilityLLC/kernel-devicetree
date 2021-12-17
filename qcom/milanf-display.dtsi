@@ -156,7 +156,6 @@
 
 	qcom,mdss-dsi-display-timings {
 		timing@0 {
-			qcom,mdss-dsi-panel-clockrate = <900000000>;
 			qcom,mdss-dsi-panel-phy-timings = [00 1A 07 06 22 21 07
 				07 07 02 04 00 1A 0C];
 			qcom,display-topology = <1 1 1>;
@@ -220,7 +219,6 @@
 
 	qcom,mdss-dsi-display-timings {
 		timing@0 {
-			qcom,mdss-dsi-panel-clockrate = <900000000>;
 			qcom,mdss-dsi-panel-phy-timings = [00 1A 07 06 22 21 07
 				07 07 02 04 00 1A 0C];
 			qcom,display-topology = <1 1 1>;
