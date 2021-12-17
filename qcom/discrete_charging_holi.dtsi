@@ -194,6 +194,32 @@
 		temp_neg_10_thres = <0>;
 	};
 
+	bq25890@6A {
+		status = "okay";
+		compatible = "ti,bq2589x-1";
+		reg = <0x6A>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
+
+		bq2589x_irq-gpio = <&tlmm 12 0>;
+		bq2589x_en-gpio = <&tlmm 92 0>;
+		dpdm-supply = <&qusb_phy0>;
+
+		mmi,qc3-support;
+		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
+		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
+		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
+		ti,bq2589x,charge-voltage = <4450>;
+		ti,bq2589x,charge-current = <3000>;
+		ti,bq2589x,term-current = <128>;
+		ti,bq2589x,enable-auto-dpdm;
+		ti,bq2589x,enable-termination;
+		ti,bq2589x,enable-ico;
+		ti,bq2589x,use-absolute-vindpm;
+	};
 };
 
 &soc {
@@ -248,6 +274,20 @@
 			pins = "gpio12";
 			bias-pull-up;
 			drive-strength = <2>; /* 2 MA */
+			input-enable;
+		};
+	};
+
+	bq2589x_irq: bq2589x_irq {
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <2>;
+			bias-pull-up;
 			input-enable;
 		};
 	};
