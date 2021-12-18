@@ -139,15 +139,26 @@
 		temp_neg_10_thres = <0>;
 	};
 
-	bq25890@6A {
+	bq25890: bq25890@6A {
 		status = "okay";
 		compatible = "ti,bq2589x-1";
 		reg = <0x6A>;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
-		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
-		io-channel-names = "gpio3_div3";
+		#io-channel-cells = <1>;
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>,
+				<&wt6670 PSY_IIO_QC3P_REAL_TYPE>,
+				<&wt6670 PSY_IIO_QC3P_POWER>,
+				<&wt6670 PSY_IIO_START_DETECTION>,
+				<&wt6670 PSY_IIO_DETECTION_READY>,
+				<&mmi_chrg PSY_IIO_QC3P_START_POLICY>;
+		io-channel-names = "gpio3_div3",
+				"wt6670_usb_real_type",
+				"wt6670_usb_qc3p_power",
+				"wt6670_start_detection",
+				"wt6670_detection_ready",
+				"qc3p_start_policy";
 
 		bq2589x_irq-gpio = <&tlmm 12 0>;
 		//bq2589x_en-gpio = <&tlmm 92 0>;
