@@ -143,7 +143,6 @@
 			reg = <0x0 0x400>;
 			cpu-idle-states = <&SLVR_PC &SLVR_RAIL_OFF>;
 			enable-method = "psci";
-			cpu-idle-states = <&SLVR_PC &SLVR_RAIL_OFF>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			cpu-release-addr = <0x0 0x50000000>;
@@ -162,7 +161,6 @@
 			reg = <0x0 0x500>;
 			cpu-idle-states = <&SLVR_PC &SLVR_RAIL_OFF>;
 			enable-method = "psci";
-			cpu-idle-states = <&SLVR_PC &SLVR_RAIL_OFF>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			cpu-release-addr = <0x0 0x50000000>;
