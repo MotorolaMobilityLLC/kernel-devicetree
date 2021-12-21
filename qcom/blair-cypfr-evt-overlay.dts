@@ -25,3 +25,7 @@
 &sgm7220 {
 	sgm7220,pwr_gpio = <&tlmm 86 GPIO_ACTIVE_HIGH>;
 };
+
+&cw2217 {
+	#include "bat_setting/CW_jd50-atl-5000mah-10mohm-cypfr.dtsi"
+};
