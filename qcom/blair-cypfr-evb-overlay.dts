@@ -22,3 +22,6 @@
 	qcom,board-id = <0x4B 0xA100>;
 };
 
+&cw2217 {
+	#include "bat_setting/CW_jd50-atl-5000mah-10mohm-cypfr.dtsi"
+};
