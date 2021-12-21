@@ -10,17 +10,18 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
  */
-jd50-scud-5000mah {
-	serialnum = "SB18C77226";
+jd50-atl-5000mah {
+	serialnum = "SB18C77591";
 	fcc_design = <5000>;
-	config_profile_info = [5A 00 00 00 00 00 00 00
-				 A5 B1 B5 CE C3 C2 97 58
-				 31 FF FF E3 92 80 63 58
-				 4F 4D 4A 86 F0 DC 0D D2
-				 D2 D1 D1 D1 CF CC BC DC
-				 B0 C3 C8 AA 96 89 80 71
-				 68 64 73 8F A3 86 65 60
-				 20 00 57 10 02 B0 74 00
-				 00 00 64 24 D3 79 00 00
-				 00 00 00 00 00 00 00 5F ];
+	ui_full = <99>;
+	config_profile_info = [52 00 00 00 00 00 00 00
+				 A0 B2 BF CB C3 C2 96 59
+				 2F FF FF DB A6 8D 74 60
+				 55 52 4D 8D FD DC 02 CF
+				 CF D2 D1 D1 D0 CD C8 CD
+				 C1 C0 C5 AD 95 8A 81 74
+				 62 62 73 8F A7 87 5F 8D
+				 20 00 AB 10 02 A0 76 00
+				 00 00 64 20 C3 7C 00 00
+				 00 00 00 00 00 00 00 1C];
 };
