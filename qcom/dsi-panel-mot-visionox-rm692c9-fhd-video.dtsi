@@ -32,10 +32,82 @@
 		qcom,mdss-pan-physical-width-dimension = <67>;
 		qcom,mdss-pan-physical-height-dimension = <149>;
 
-		qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
+		qcom,mdss-dsi-hbm-on-command = [
+				15 00 00 00 00 00 02 FE 00
+				39 00 00 00 00 00 03 51 0F FF
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 08
+				15 00 00 00 00 00 02 B9 09
+				15 00 00 00 00 00 02 BA 09
+				15 01 00 00 00 00 02 FE 00];
 		qcom,mdss-dsi-hbm-on-command-state = "dsi_lp_mode";
-		qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 07 FF];
+		qcom,mdss-dsi-hbm-off-command = [
+				15 00 00 00 00 00 02 FE 00
+				39 00 00 00 00 00 03 51 07 FF
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 08
+				15 00 00 00 00 00 02 B9 09
+				15 00 00 00 00 00 02 BA 09
+				15 01 00 00 00 00 02 FE 00];
 		qcom,mdss-dsi-hbm-off-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-1e-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 1D
+				15 00 00 00 00 00 02 B9 1D
+				15 00 00 00 00 00 02 BA 1D
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-1e-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-1fd-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 12
+				15 00 00 00 00 00 02 B9 12
+				15 00 00 00 00 00 02 BA 12
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-1fd-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-2ff-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 0D
+				15 00 00 00 00 00 02 B9 0D
+				15 00 00 00 00 00 02 BA 0D
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-2ff-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-3ff-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 0B
+				15 00 00 00 00 00 02 B9 0B
+				15 00 00 00 00 00 02 BA 0B
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-3ff-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-4ff-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 0A
+				15 00 00 00 00 00 02 B9 0A
+				15 00 00 00 00 00 02 BA 0A
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-4ff-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-5ff-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 09
+				15 00 00 00 00 00 02 B9 09
+				15 00 00 00 00 00 02 BA 09
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-5ff-command-state = "dsi_lp_mode";
+
+		qcom,mdss-dsi-brightness-fff-command = [
+				15 00 00 00 00 00 02 FE 20
+				15 00 00 00 00 00 02 B8 08
+				15 00 00 00 00 00 02 B9 09
+				15 00 00 00 00 00 02 BA 09
+				15 01 00 00 00 00 02 FE 00];
+		qcom,mdss-dsi-brightness-fff-command-state = "dsi_lp_mode";
+
+		qcom,brightness-demura-command;
 
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
