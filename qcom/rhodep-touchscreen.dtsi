@@ -99,5 +99,6 @@
 		pinctrl-2 = <&pmx_ts_release>;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
+		mmi,usb-charger-detection;
 	};
 };
