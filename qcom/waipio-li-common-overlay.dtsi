@@ -92,8 +92,42 @@
 			output-low;
 		};
 	};
+
+	bq27426_irq_flip: bq27426-irq-battery-flip {
+		mux {
+			pins = "gpio43";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio43";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
 };
 
+&qupv3_se2_spi {
+	status = "disabled";
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+	bq27426_flip: bq27426-battery-flip@55 {
+		compatible = "ti,bq27426";
+		reg = <0x55>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&bq27426_irq_flip>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <43 0>;
+		vdd-i2c-supply = <&S10B>;
+		design-capacity = <712>;
+		mmi,fg-psy-name = "fg_flip_battery";
+		mmi,batt-profile-name = "NM40_ATL_712MAH";
+		mmi,temp-source = <1>;
+	};
+};
 
 &qupv3_se9_i2c {
 	status = "ok";
