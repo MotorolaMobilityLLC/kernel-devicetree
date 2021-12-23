@@ -22,7 +22,6 @@
 #include "cypfr-display.dtsi"
 #include "cypfr-touchscreen.dtsi"
 #include "camera/blair-camera-sensor-mot-cypfr-overlay.dtsi"
-#include "rt9426a.dtsi"
 #include "discrete_charging.dtsi"
 #include "sgm7220.dtsi"
 #include "blair-cypfr-fmr-overlay.dtsi"
