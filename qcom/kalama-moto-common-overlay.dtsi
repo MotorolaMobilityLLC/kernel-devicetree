@@ -51,6 +51,7 @@
 		compatible = "mmi,annotate";
 		memory-region = <&mmi_annotate_mem>;
 		mem-size = <0x2000>;
+		persist_unsupported;
 	};
 
 	reboot_reason {
