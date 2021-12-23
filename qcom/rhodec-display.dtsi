@@ -249,7 +249,7 @@
 	status = "ok";
 
 	aw99703_backlight: sprd_backlight@36{
-		compatible = "awinic,aw99703-bl";
+		compatible = "awinic,aw99703-bl","sm-sm5350";
 		reg = <0x36>;
 		hwen-gpio = <&tlmm 60 1>;
 		/* brightness map level 1:256,2:1024,3:2048 */
@@ -274,6 +274,10 @@
 		aw99703,efuse-config = <0x1C 0x61 0x61 0x4C 0x2C 0xC0 0x08 0x00 0x01 0x80 0x00 0x00 0x00>;
 
 		status = "okay";
+		pwm-cfg = <0x0C>;
+		boost-ctl = <0x03>;
+		ctl-bank-en = <0x02>;
+		full-scale-current = <0x0A>;
 	};
 
              ocp2138@3e {
