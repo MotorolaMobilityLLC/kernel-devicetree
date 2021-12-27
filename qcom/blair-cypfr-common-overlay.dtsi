@@ -639,7 +639,7 @@
 	ext_vib {
 		compatible = "ext-vibrator-ldo";
 		vib_vcc-supply = <&L21A>;
-		vib,vcc-voltage = <3000000 3000000>;
+		vib,vcc-voltage = <3200000 3200000>;
 		vib,vcc-current = <300000>;
 	};
 };
