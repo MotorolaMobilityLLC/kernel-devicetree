@@ -13,3 +13,11 @@
 /dts-v1/;
 
 #include "waipio-moto-common-base.dtsi"
+
+&wlan {
+	/delete-property/ qcom,vreg_ipa;
+};
+
+&bluetooth {
+	/delete-property/ qcom,vreg_ipa;
+};
