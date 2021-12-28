@@ -11,5 +11,5 @@
  */
 
 #include "waipio-hiphi-common-overlay.dtsi"
-#include "waipio-hiphic-touchscreen-overlay.dtsi"
+#include "waipio-hiphid-touchscreen-overlay.dtsi"
 
