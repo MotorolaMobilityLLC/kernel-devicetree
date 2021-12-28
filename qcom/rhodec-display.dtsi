@@ -261,7 +261,7 @@
 		aw99703,auto-freq-high = <0x10>;
 		aw99703,auto-freq-low = <0x05>;
 		aw99703,bl-fscal-led = <0x19>; /* 24.8mA */
-		aw99703,bl-channel = <2>;
+		aw99703,bl-channel = <3>;
 		aw99703,turn-on-ramp = <0x04>;
 		aw99703,turn-off-ramp = <0x04>;
 		aw99703,pwm-trans-dim = <0>; /* 2ms */
