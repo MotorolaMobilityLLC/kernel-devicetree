@@ -53,6 +53,7 @@
 		regulator-min-microvolt = <5500000>;
 		regulator-max-microvolt = <5500000>;
 		regulator-enable-ramp-delay = <233>;
+		qcom,supply-post-off-sleep = <5>;
 		gpio = <&tlmm 85 0>;
 		enable-active-high;
 		regulator-boot-on;
