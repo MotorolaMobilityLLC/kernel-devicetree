@@ -221,6 +221,7 @@
 	qcom,mdss-dsi-t-clk-pre = <0x30>;
 	qcom,mdss-dsi-display-timings {
 		timing@0 {
+			qcom,mdss-dsi-panel-phy-drive-strength = <0x8C>;
 			qcom,mdss-dsi-panel-phy-timings = [00 1B 06 06 22 20 07
 				07 07 02 04 00];
 			qcom,display-topology = <1 1 1>;
