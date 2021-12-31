@@ -24,6 +24,20 @@
 #include "waipio-hiphic-thermal-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
 
+&pm8350c_rgb {
+	red {
+		label = "charging";
+	};
+
+	green {
+		status = "disabled";
+	};
+
+	blue {
+		status = "disabled";
+	};
+};
+
 &usb0 {
 	ssusb_redriver = <&redriver>;
 
