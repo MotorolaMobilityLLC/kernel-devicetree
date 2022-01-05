@@ -647,8 +647,11 @@
 	ext_vib {
 		compatible = "ext-vibrator-ldo";
 		vib_vcc-supply = <&L21A>;
-		vib,vcc-voltage = <3200000 3200000>;
-		vib,vcc-current = <300000>;
+		vib,pwr-by-regulator-enable;
+		vib,short-vcc-voltage = <3200000>;
+		vib,long-vcc-voltage = <2800000>;
+		vib,long-play-threshold = <70>;
+		vib,vcc-current = <600000>;
 	};
 };
 
