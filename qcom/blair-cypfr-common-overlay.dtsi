@@ -631,6 +631,11 @@
 	};
 };
 
+&pm6125_l21 {
+	regulator-min-microvolt = <1800000>;
+	qcom,init-voltage = <3200000>;
+};
+
 &soc {
 	touch_avdd: touch_avdd_stub {
 		/*
