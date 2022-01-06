@@ -170,6 +170,7 @@
 		fp,reset_gpio = <&tlmm 18 0>;
 		fp,irq_gpio = <&tlmm 17 0>;
 		fp,vdd_gpio = <&tlmm 6 0>;
+		panel = <&dsi_nt36672c_fhd_plus_120_video>;
 
 		pinctrl-names = "fpsensor_finger_power_high","fpsensor_finger_power_low",
 				"fpsensor_finger_rst_low","fpsensor_finger_rst_high",
