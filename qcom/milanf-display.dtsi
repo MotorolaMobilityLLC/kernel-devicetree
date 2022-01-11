@@ -229,7 +229,7 @@
 };
 
 
-&dsi_tm_nt36672e_678_fhdp_120_video_v1 {
+&dsi_tianma_nt36672e_678_fhdp_120_video_v1 {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
