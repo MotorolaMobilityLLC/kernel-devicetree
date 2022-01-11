@@ -94,6 +94,34 @@
 			input-enable;
 		};
 	};
+
+	sgm4154x_irq_default: sgm4154x_irq_default {
+		mux {
+			pins = "gpio51";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio51";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+};
+
+&pm8350c_gpios {
+	sgm4154x_ce {
+		sgm4154x_ce_default: sgm4154x_ce_default {
+			pins = "gpio2";
+			function = "normal";
+			output-high;
+                        input-disable;
+                        bias-disable;
+                        power-source = <0>;       /* GPIO_LV, can be only 0: 1.8V */
+                        qcom,drive-strength = <2>;
+		};
+	};
 };
 
 &qupv3_se2_spi {
@@ -114,6 +142,45 @@
 		mmi,fg-psy-name = "fg_flip_battery";
 		mmi,batt-profile-name = "NM40_ATL_712MAH";
 		mmi,temp-source = <1>;
+	};
+
+	sgm4154x_charger: sgm4154x@6B {
+		compatible = "sgm,sgm41516D";
+		reg = <0x6B>;
+
+		vdd-i2c-supply = <&S10B>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&sgm4154x_irq_default &sgm4154x_ce_default>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <51 0>;		//irq num base on hardware design
+		sgm,irq-gpio = <&tlmm 51 0>;	//irq num base on hardware design
+		sgm,chg-en-gpio = <&pm8350c_gpios 2 GPIO_ACTIVE_LOW>;	//gpio num base on hardware design
+
+		init-charger-disabled;
+		vrechg-millivolt = <200>;
+		iprechg-microamp = <180000>;
+		iterm-microamp = <200000>;
+		ichg-max-microamp = <1200000>;
+		vchg-max-microvolt = <4600000>;
+		ichg-microamp = <700000>;
+		vchg-microvolt = <4400000>;
+		input-current-limit-microamp = <1200000>;
+
+		mmi,ext-usb-psy-name = "usb";
+		mmi,fg-psy-name = "fg_flip_battery";
+		mmi,chrg-iterm-ma = <100>;
+		mmi,fg-iterm-ma = <150>;
+		mmi,max-fv-mv = <4480>;
+		mmi,max-fcc-ma = <1214>;
+		mmi,demo-fv-mv = <4000>;
+		mmi,df-serialnum = "SB18D44720";
+		mmi,mmi-temp-zones = <0 4200 136 0>,
+				    <10 4250 340 204>,
+				    <15 0 679 476>,
+				    <45 4300 1214 883>,
+				    <45 4350 883 679>,
+				    <60 4200 679 0>;
 	};
 };
 
