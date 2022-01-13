@@ -11,7 +11,7 @@
  */
 
 &pm8350b_haptics {
-	qcom,vmax-mv = <2800>;
+	qcom,vmax-mv = <2600>;
 	qcom,lra-period-us = <4255>;
 	haptic-context-gpio = <&tlmm 73 0>;
 	long-gain-reduced = <0x4000>;
@@ -20,7 +20,7 @@
 	effect_0 {
 		/* CLICK */
 		qcom,effect-id = <0>;
-		qcom,wf-vmax-mv = <10000>;
+		qcom,wf-vmax-mv = <8000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
@@ -33,7 +33,7 @@
 	effect_1 {
 		/* DOUBLE_CLICK */
 		qcom,effect-id = <1>;
-		qcom,wf-vmax-mv = <9000>;
+		qcom,wf-vmax-mv = <7000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
@@ -46,7 +46,7 @@
 	effect_2 {
 		/* TICK */
 		qcom,effect-id = <2>;
-		qcom,wf-vmax-mv = <7000>;
+		qcom,wf-vmax-mv = <6000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
@@ -59,7 +59,7 @@
 	effect_3 {
 		/* THUD */
 		qcom,effect-id = <3>;
-		qcom,wf-vmax-mv = <9000>;
+		qcom,wf-vmax-mv = <8000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
@@ -72,7 +72,7 @@
 	effect_4 {
 		/* POP */
 		qcom,effect-id = <4>;
-		qcom,wf-vmax-mv = <8000>;
+		qcom,wf-vmax-mv = <7000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
@@ -85,7 +85,7 @@
 	effect_5 {
 		/* HEAVY CLICK */
 		qcom,effect-id = <5>;
-		qcom,wf-vmax-mv = <10000>;
+		qcom,wf-vmax-mv = <8000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
