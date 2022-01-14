@@ -19,7 +19,7 @@
 #include "waipio-moto-common-redriver.dtsi"
 #include "waipio-hiphi-fingerprint.dtsi"
 #include "waipio-hiphi-row-touchscreen-overlay.dtsi"
-#include "waipio-hiphi-haptics-overlay.dtsi"
+#include "waipio-li-haptics-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "waipio-hiphic-thermal-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
@@ -283,10 +283,6 @@
 
 &qupv3_se5_i2c {
 	status = "disabled";
-};
-
-&pm8350b_haptics {
-	status = "ok";
 };
 
 &sdhc_2 {
