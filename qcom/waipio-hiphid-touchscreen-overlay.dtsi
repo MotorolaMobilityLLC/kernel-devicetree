@@ -65,7 +65,7 @@
 		status = "ok";
 		compatible = "goodix,gt9916";
 		reg = <0x5d>;
-		mmi,status = "/chosen","mmi,panel_name","csot_nt37701_667_1080x2400_camera_gdx_dsc_cmd";
+		mmi,status = "/chosen","mmi,panel_name", "contains", "csot_nt37701_667_1080x2400_camera_gdx";
 		goodix,reset-gpio = <&tlmm 20 0x0>;
 		goodix,irq-gpio = <&tlmm 21 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
