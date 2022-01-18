@@ -45,6 +45,8 @@
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		pci-domain0 = &pcie0; /* PCIe0 domain */
 		pci-domain1 = &pcie1; /* PCIe1 domain */
+		spi0 = &qupv3_se19_spi; /* spi 0 for Franklin */
+		spi1 = &qupv3_se18_spi; /* spi 1 for UWB */
 	};
 
 	sram: sram@17D09400 {
