@@ -222,6 +222,7 @@
 
 &mmi_discrete_charger {
 	/delete-property/ mmi,bat-ocp-ua;
+	/delete-property/ mmi,usb-pd-supported;
 	mmi,max-fv-mv = <4400>;
 	mmi,chrg-iterm-ma = <150>;
 	mmi,max-fcc-ma = <2900>;
