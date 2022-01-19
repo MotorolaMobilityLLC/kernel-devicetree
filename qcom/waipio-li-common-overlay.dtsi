@@ -21,7 +21,7 @@
 #include "waipio-li-touchscreen-overlay.dtsi"
 #include "waipio-li-haptics-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
-#include "waipio-hiphic-thermal-overlay.dtsi"
+#include "waipio-li-thermal-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
 
 &pm8350c_rgb {
