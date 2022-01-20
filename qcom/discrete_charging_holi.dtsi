@@ -72,7 +72,7 @@
 
 		df-serialnum = "SB18D24973";
 		#include "bat_setting/SM5602_ND50_ATL_Rhodec.dtsi"
-		#include "bat_setting/SM5602_ND50_JIADE_Rhodec.dtsi.dtsi"
+		#include "bat_setting/SM5602_ND50_JIADE_Rhodec.dtsi"
 	};
 
 	sgm4154x: sgm4154x@3B {
