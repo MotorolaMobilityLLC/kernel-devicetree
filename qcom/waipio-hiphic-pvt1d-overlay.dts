@@ -1,0 +1,78 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "waipio-hiphic-common-overlay.dtsi"
+#include "waipio-hiphic-se-overlay.dtsi"
+#include "waipio-hiphic-dvt-sensor-overlay.dtsi"
+#include "waipio-hiphic-key-overlay.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	model = "hiphic";
+	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphic";
+	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
+	qcom,board-id = <0x45 0xC1D0>;
+};
+
+
+&soc {
+	pinctrl@f000000 {
+		compatible = "qcom,waipio-pinctrl";
+		reg = <0x0F000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		wakeup-parent = <&pdc>;
+		qcom,gpios-reserved = <36 37 38 39>;
+	};
+};
+
+&redriver {
+	config-seq =
+	/* <reg_offset, value, delay_us> */
+	<0x9d 0x80 10000
+	0x9d 0x00 0
+	0x40 0x80 0
+	0x8d 0x01 0
+	0x90 0x01 0
+	0x51 0x87 0
+	0x50 0x20 0
+	0x54 0x11 0
+	0x5d 0x66 0
+	0x52 0x50 0
+	0x55 0x00 0
+	0x56 0x00 0
+	0x57 0x00 0
+	0x58 0x00 0
+	0x59 0x00 0
+	0x5a 0x00 0
+	0x5b 0x00 0
+	0x5e 0x07 0
+	0x5f 0x00 0
+	0x60 0x00 0
+	0x61 0x03 0
+	0x65 0x40 0
+	0x66 0x00 0
+	0x67 0x03 0
+	0x75 0x0c 0
+	0x77 0x00 0
+	0x78 0x7c 0>;
+};
+
+&chosen {
+  mmi,camera_disable_radio = "false";
+};
