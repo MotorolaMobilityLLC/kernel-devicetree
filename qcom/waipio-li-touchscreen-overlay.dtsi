@@ -12,6 +12,10 @@
  */
 #include <dt-bindings/clock/qcom,rpmh.h>
 
+&aliases {
+	i2c0 = "/soc/i2c@990000";
+};
+
 &L3C {
     status = "ok";
     regulator-boot-on;
