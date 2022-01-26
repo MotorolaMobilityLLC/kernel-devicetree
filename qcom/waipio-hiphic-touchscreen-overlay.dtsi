@@ -12,6 +12,10 @@
  */
 #include <dt-bindings/clock/qcom,rpmh.h>
 
+&aliases {
+	i2c0 = "/soc/i2c@990000";
+};
+
 &pm8350c_l3 {
 	regulator-min-microvolt = <3000000>;
 	regulator-max-microvolt = <3304000>;
