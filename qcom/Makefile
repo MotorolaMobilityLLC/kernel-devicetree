@@ -96,20 +96,24 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += \
 	waipio-hiphi-evb1-overlay.dtbo \
 	waipio-hiphi-evt1-overlay.dtbo \
 	waipio-hiphi-dvt1-overlay.dtbo \
+	waipio-hiphi-dvt1-row-overlay.dtbo \
 	waipio-hiphi-pvt2-overlay.dtbo \
+	waipio-hiphi-pvt2-row-overlay.dtbo \
 	waipio-hiphic-evb1-overlay.dtbo \
 	waipio-hiphic-evt1-overlay.dtbo \
 	waipio-hiphic-dvt1-overlay.dtbo \
 	waipio-hiphic-dvt2a-overlay.dtbo \
 	waipio-hiphid-pvt-overlay.dtbo \
 	waipio-hiphic-pvt1d-overlay.dtbo \
-	waipio-hiphi-pvt3-overlay.dtbo
+	waipio-hiphi-pvt3-row-overlay.dtbo
 
 waipio-hiphi-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 waipio-hiphi-evt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 waipio-hiphi-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb waipio-v2-moto-hiphi-base.dtb
+waipio-hiphi-dvt1-row-overlay.dtbo-base := waipio-moto-hiphi-base.dtb waipio-v2-moto-hiphi-base.dtb
 waipio-hiphi-pvt2-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
-waipio-hiphi-pvt3-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
+waipio-hiphi-pvt2-row-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
+waipio-hiphi-pvt3-row-overlay.dtbo-base := waipio-v2-moto-hiphi-base.dtb
 waipio-hiphic-evb1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 waipio-hiphic-evt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb
 waipio-hiphic-dvt1-overlay.dtbo-base := waipio-moto-hiphi-base.dtb

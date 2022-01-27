@@ -17,11 +17,13 @@
 #include "waipio-hiphi-evt-sensor-overlay.dtsi"
 #include "waipio-hiphi-charger-overlay.dtsi"
 
+#define HIPHI_RADIO_ROW 3
+
 / {
 	model = "hiphi";
 	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphi";
 	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
-	qcom,board-id = <0x47 0xC200>;
+	qcom,board-id = <(HIPHI_RADIO_ROW << 8 | 0x47) 0xC200>;
 };
 
 &soc {
@@ -99,8 +101,4 @@
         pinctrl-3 = <&stylus_clk_suspend>;
         goodix,stylus-clk-source = "stylus_clk_gpio"; /* use gpio3 as stylus clk*/
     };
-};
-
-&chosen {
-  mmi,camera_disable_radio = "false";
 };
