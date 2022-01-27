@@ -17,11 +17,13 @@
 #include "waipio-hiphi-evt-sensor-overlay.dtsi"
 #include "waipio-hiphi-charger-overlay.dtsi"
 
+#define HIPHI_RADIO_ROW 3
+
 / {
 	model = "hiphi";
 	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp", "moto,hiphi";
 	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
-	qcom,board-id = <0x47 0xC200>;
+	qcom,board-id = <(HIPHI_RADIO_ROW << 8 | 0x47) 0xB100>;
 };
 
 &soc {
@@ -61,46 +63,4 @@
     0x75 0x0c 0
     0x77 0x00 0
     0x78 0x7c 0>;
-};
-
-&usb2_phy0 {
-    qcom,param-override-seq =
-        <0x09 0x70
-        0x26 0x74>;
-};
-
-&pmk8350_gpios {
-    stylus_clk_ctrl {
-        stylus_clk_active: stylus_clk_active {
-            pins = "gpio3";
-            function = "func2";
-            bias-disable; /* No Pull*/
-            output-enable; /* digital output, no invert */
-            intput-disable; /* prevent GPIO from being set to DIO */
-            power-source = <0>;
-        };
-        stylus_clk_suspend: stylus_clk_suspend {
-            pins = "gpio3";
-            function = "func2";
-            bias-high-impedance;
-            output-enable; /* digital output, no invert */
-            intput-disable; /* prevent GPIO from being set to DIO */
-            power-source = <0>;
-        };
-    };
-};
-
-&qupv3_se4_i2c {
-    goodix_ts_i2c@5d {
-        pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "stylus_clk_active", "stylus_clk_suspend";
-        pinctrl-0 = <&ts_active>;
-        pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
-        pinctrl-2 = <&stylus_clk_active>;
-        pinctrl-3 = <&stylus_clk_suspend>;
-        goodix,stylus-clk-source = "stylus_clk_gpio"; /* use gpio3 as stylus clk*/
-    };
-};
-
-&chosen {
-  mmi,camera_disable_radio = "false";
 };
