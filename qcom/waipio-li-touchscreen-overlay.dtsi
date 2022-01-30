@@ -77,12 +77,14 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <85 0x2>;
 		cy,adapter_id = "cyttsp5_i2c_adapter";
+		ic_name = "parade,tma525b";
 
 		cy,core {
 			cy,name = "cyttsp5_core";
 
 			cy,irq_gpio = <&tlmm 85 0x2>;
 			cy,rst_gpio = <&tlmm 126 0x0>;
+			cy,class-entry-name = "secondary";
 			cy,hid_desc_register = <1>;
 			/* CY_CORE_FLAG_RESTORE_PARAMETERS */
 			cy,flags = <4>;
