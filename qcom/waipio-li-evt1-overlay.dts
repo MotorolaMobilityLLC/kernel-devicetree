@@ -22,6 +22,41 @@
 	qcom,board-id = <0x4A 0xA100>;
 };
 
+&pm8350b_gpios {
+	low_load_en {
+		low_load_en_default: low_load_en_default {
+			pins = "gpio1";
+			function = "normal";
+			output-low;
+                        input-disable;
+                        bias-disable;
+                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
+                        qcom,drive-strength = <2>;
+		};
+	};
+
+	high_load_en {
+		high_load_en_default: high_load_en_default {
+			pins = "gpio3";
+			function = "normal";
+			output-low;
+                        input-disable;
+                        bias-disable;
+                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
+                        qcom,drive-strength = <2>;
+		};
+	};
+};
+
+&sgm4154x_charger {
+	pinctrl-names = "default";
+	pinctrl-0 = <&sgm4154x_irq_default &sgm4154x_ce_default
+		     &low_load_en_default &high_load_en_default>;
+
+	mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
+	mmi,high-load-en-gpio = <&pm8350b_gpios 3 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
+};
+
 &redriver {
 	config-seq =
 	/* <reg_offset, value, delay_us> */
