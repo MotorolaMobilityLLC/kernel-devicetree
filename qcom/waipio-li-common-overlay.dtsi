@@ -172,7 +172,7 @@
 		interrupts = <43 0>;
 		vdd-i2c-supply = <&S10B>;
 		design-capacity = <712>;
-		mmi,fg-psy-name = "fg_flip_battery";
+		mmi,fg-psy-name = "flip_battery";
 		mmi,batt-profile-name = "NM40_ATL_712MAH";
 		mmi,temp-source = <1>;
 	};
@@ -201,7 +201,7 @@
 		input-current-limit-microamp = <1200000>;
 
 		mmi,ext-usb-psy-name = "usb";
-		mmi,fg-psy-name = "fg_flip_battery";
+		mmi,fg-psy-name = "flip_battery";
 		mmi,chrg-iterm-ma = <100>;
 		mmi,fg-iterm-ma = <150>;
 		mmi,max-fv-mv = <4480>;
@@ -214,7 +214,19 @@
 				    <45 4300 1214 883>,
 				    <45 4350 883 679>,
 				    <60 4200 679 0>;
+
+		mmi,ichg-invert-polority;
+		mmi,paired-id = <0x00000001>;
+		mmi,paired-ichg-table = <3 1200
+					 6 900
+					 9 600
+					 12 300>;
+		mmi,paired-load-thres = <800 400>;
 	};
+};
+
+&qti_glink_charger {
+	mmi,paired-id = <0x00010000>;
 };
 
 &qupv3_se9_i2c {
