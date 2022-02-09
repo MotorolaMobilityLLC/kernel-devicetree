@@ -21,3 +21,40 @@
 	qcom,msm-id = <457 0x10000>, <482 0x10000>, <457 0x20000>, <482 0x20000>;
 	qcom,board-id = <0x4A 0x9100>;
 };
+
+&pm8350b_gpios {
+	low_load_en {
+		low_load_en_default: low_load_en_default {
+			pins = "gpio1";
+			function = "normal";
+			output-high;
+                        input-disable;
+                        bias-disable;
+                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
+                        qcom,drive-strength = <2>;
+		};
+	};
+};
+
+&pm8350c_gpios {
+	high_load_en {
+		high_load_en_default: high_load_en_default {
+			pins = "gpio7";
+			function = "normal";
+			output-low;
+                        input-disable;
+                        bias-disable;
+                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
+                        qcom,drive-strength = <2>;
+		};
+	};
+};
+
+&sgm4154x_charger {
+	pinctrl-names = "default";
+	pinctrl-0 = <&sgm4154x_irq_default &sgm4154x_ce_default
+		     &low_load_en_default &high_load_en_default>;
+
+	mmi,high-load-en-gpio = <&pm8350c_gpios 7 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
+	mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_LOW>;	//gpio num base on hardware design
+};
