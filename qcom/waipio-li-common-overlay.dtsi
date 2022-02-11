@@ -225,7 +225,12 @@
 	};
 };
 
+&battery_charger {
+	mmi,combo-batt-psy = <&mmi_charger>;
+};
+
 &qti_glink_charger {
+	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
 };
 
