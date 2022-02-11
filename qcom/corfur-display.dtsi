@@ -82,6 +82,8 @@
 	qcom,bklt-dcs-2bytes-enabled;
 	qcom,keep-regulators-on;
 	qcom,platform-reset-gpio-always-on;
+	qcom,platform-need-execute-shutdown;
+	qcom,mdss-dsi-no-panel-on-read-support;
 
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
