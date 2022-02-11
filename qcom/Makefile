@@ -301,6 +301,8 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+#remove useless diwali device tree in moto build
+ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
         cape-mtp-120fps-pm8008-overlay.dtbo \
 	cape-mtp-nodisplay-pm8008-overlay.dtbo \
@@ -319,6 +321,7 @@ dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
 	cape-kiwi-mtp-pm8010-overlay.dtbo \
 	cape-kiwi-cdp-pm8008-overlay.dtbo \
 	cape-kiwi-cdp-pm8010-overlay.dtbo
+endif
 
 cape-mtp-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-mtp-120fps-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
