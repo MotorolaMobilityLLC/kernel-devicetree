@@ -84,6 +84,7 @@
 		novatek,spi-rd-fast-addr = <0x03F310>;
 		novatek,report_gesture_key;
 		novatek,usb_charger;
+		novatek,edge_cmd = /bits/ 8 <0x72 0x01 0x00>;
 		novatek,panel-supplier = "tianma","tm","csot";
 		panel = <&dsi_tianma_nt36672e_678_fhdp_120_video_v1 &dsi_tm_nt36672e_678_fhdp_120_video &dsi_csot_nt36672e_678_fhdp_120_video>;
 		status = "ok";
