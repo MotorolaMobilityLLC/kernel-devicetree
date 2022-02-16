@@ -53,9 +53,9 @@
 		sm,en_temp_ex;
 		//sm,en_temp_in;
 		sm,en_batt_det;
-		//sm,iocv_man_mode;
+		sm,iocv_man_mode;
 		sm,misc = <0x0800>;
-		sm,aging_ctrl = <0x0125>;
+		sm,aging_ctrl = <0x0121>;
 		sm,cycle_cfg = <0x7000>;
 		sm,rsns = <1>;
 		sm,fg_irq_set = <0x07FF>;
@@ -69,6 +69,7 @@
 		sm,t_h_alarm_in = <1>;
 		sm,t_l_alarm_ex = <0xD3D8>;
 		sm,t_h_alarm_ex = <0x9245>;
+		sm,shutdown-delay-enable;
 
 		df-serialnum = "SB18D24973";
 		#include "bat_setting/SM5602_ND50_ATL_Rhodec.dtsi"
