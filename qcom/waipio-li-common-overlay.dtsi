@@ -161,6 +161,10 @@
 	status = "disabled";
 };
 
+&aliases {
+	i2c1 = "/soc/i2c@988000";
+};
+
 &qupv3_se2_i2c {
 	status = "ok";
 	bq27426_flip: bq27426-battery-flip@55 {
