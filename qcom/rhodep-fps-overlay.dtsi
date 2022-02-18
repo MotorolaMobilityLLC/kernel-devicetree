@@ -169,6 +169,10 @@
 		fp,reset_gpio = <&tlmm 18 0>;
 		fp,irq_gpio = <&tlmm 17 0>;
 		fp,vdd_gpio = <&tlmm 6 0>;
+		panel = <&mot_csot_nt37701_655_1080x2400_dsc_cmd_v0
+				&mot_csot_nt37701_655_1080x2400_dsc_cmd_v1
+				&mot_tm_nt37701_655_1080x2400_dsc_cmd_v1
+				&mot_tm_nt37701_655_1080x2400_dsc_cmd_v0>;
 
 		pinctrl-names = "fpsensor_finger_power_high","fpsensor_finger_power_low",
 				"fpsensor_finger_rst_low","fpsensor_finger_rst_high",
