@@ -1,0 +1,222 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/iio/qti_power_supply_iio.h>
+#include "sgm7220.dtsi"
+#include "discrete-rt-pd-manger.dtsi"
+
+&pm6125_vadc {
+	gpio6_div3{
+		reg = <ADC5_GPIO3_DIV3>;
+		label = "gpio3_div3";
+		qcom,pre-scaling = <1 3>;
+	};
+};
+
+&pm6125_gpios {
+	gpio6_adc{
+		gpio6_adc_default:gpio6_adc_default{
+			pins = "gpio6";
+			function = "normal";
+			bias-high-impedance;
+		};
+	};
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+	cw2217@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		status = "okay";
+
+		df-serialnum = "SB18D24973";
+		#include "bat_setting/CW_nd50-atl-5000mah.dtsi"
+		#include "bat_setting/CW_nd50-jiade-5000mah.dtsi"
+	};
+
+	sm5602@71 {
+		compatible = "sm,sm5602";
+		reg = <0x71>;
+		//interrupt-parent = <&tlmm>;
+		//interrupts = <38 2>;
+		//qcom,irq-gpio = <&tlmm 38 0x0>;
+
+		sm,en_temp_ex;
+		//sm,en_temp_in;
+		sm,en_batt_det;
+		sm,iocv_man_mode;
+		sm,misc = <0x0800>;
+		sm,aging_ctrl = <0x0121>;
+		sm,cycle_cfg = <0x7000>;
+		sm,rsns = <1>;
+		sm,fg_irq_set = <0x07FF>;
+		sm,low_soc1 = <1>;
+		sm,low_soc2 = <15>;
+		sm,v_l_alarm = <3400>;
+		sm,v_h_alarm = <4450>;
+		sm,battery_table_num = <0>;
+		sm,param_version = <3>;
+		sm,t_l_alarm_in = <54>;
+		sm,t_h_alarm_in = <1>;
+		sm,t_l_alarm_ex = <0xD3D8>;
+		sm,t_h_alarm_ex = <0x9245>;
+		sm,shutdown-delay-enable;
+
+		df-serialnum = "SB18D24973";
+		#include "bat_setting/SM5602_ND50_ATL_Rhodec.dtsi"
+		#include "bat_setting/SM5602_ND50_JIADE_Rhodec.dtsi"
+	};
+
+	sgm4154x: sgm4154x@3B {
+		status = "okay";
+		compatible = "sgm,sgm41542";
+		reg = <0x3B>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <12 0>;            //irq num base on hardware design
+		sgm,irq-gpio = <&tlmm 12 0>;     //irq num base on hardware design
+		sgm,chg-en-gpio = <&tlmm 92 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
+
+		dpdm-supply = <&qusb_phy0>;
+		mmi,qc3-support;
+
+		/* sw jeita  parameter customer defined*/
+		enable_sw_jeita;
+		jeita_temp_above_t4_cv = <0>;
+		jeita_temp_t3_to_t4_cv = <4100000>;
+		jeita_temp_t2_to_t3_cv = <4350000>;
+		jeita_temp_t1_to_t2_cv = <4350000>;
+		jeita_temp_t0_to_t1_cv = <0>;
+		jeita_temp_below_t0_cv = <0>;
+
+		jeita_temp_above_t4_cc_current = <0>;
+		jeita_temp_t3_to_t4_cc_current = <1000000>;
+		jeita_temp_t2_to_t3_cc_current = <1250000>;
+		jeita_temp_t1_to_t2_cc_current = <1000000>;
+		jeita_temp_below_t0_cc_current = <0>;
+
+		temp_t4_thres = <50>;
+		temp_t4_thres_minus_x_degree = <48>;
+		temp_t3_thres = <45>;
+		temp_t3_thres_minus_x_degree = <45>;
+		temp_t2_thres = <20>;
+		temp_t2_thres_plus_x_degree = <15>;
+		temp_t1_thres = <0>;
+		temp_t1_thres_plus_x_degree = <0>;
+		temp_t0_thres = <0>;
+		temp_t0_thres_plus_x_degree = <2>;
+		temp_neg_10_thres = <0>;
+	};
+
+	bq25890@6A {
+		status = "okay";
+		compatible = "ti,bq2589x-1";
+		reg = <0x6A>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
+
+		bq2589x_irq-gpio = <&tlmm 12 0>;
+		bq2589x_en-gpio = <&tlmm 92 0>;
+		dpdm-supply = <&qusb_phy0>;
+
+		mmi,qc3-support;
+		ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
+		ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
+		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
+		ti,bq2589x,charge-voltage = <4450>;
+		ti,bq2589x,charge-current = <3000>;
+		ti,bq2589x,term-current = <128>;
+		ti,bq2589x,enable-auto-dpdm;
+		ti,bq2589x,enable-termination;
+		ti,bq2589x,enable-ico;
+		ti,bq2589x,use-absolute-vindpm;
+	};
+};
+
+&soc {
+	mmi_charger: mmi,charger {
+		status = "ok";
+		compatible = "mmi,mmi-charger";
+		mmi,enable-charging-limit;
+		mmi,upper-limit-capacity = <65>;
+		mmi,lower-limit-capacity = <60>;
+		mmi,heartbeat-interval = <5000>;
+		mmi,dcp-power-max = <10000>;
+		mmi,hvdcp-power-max = <15000>;
+	};
+
+	mmi_discrete_charger: mmi,discrete-charging {
+		status = "ok";
+		compatible = "mmi,mmi-discrete-charger";
+		#io-channel-cells = <1>;
+		battery-names = "battery";
+		supplied-from = "mmi_battery";
+
+		mmi,chrg-iterm-ma = <243>;
+		mmi,fg-iterm-ma = <500>;
+		mmi,max-fv-mv = <4450>;
+		mmi,max-fcc-ma = <4000>;
+		mmi,demo-fv-mv = <4000>;
+		mmi,df-serialnum = "SB18D24973";
+		mmi,mmi-temp-zones = <0 4200 1000 0>,
+			<10 4250 2500 1000>,
+			<15 0 2500 2500>,
+			<45 0 4000 4000>,
+			<60 4200 4000 0>;
+
+		mmi,thermal-mitigation = <4000000 3000000 2500000
+				2000000 1500000
+				1200000 900000
+				600000 300000>;
+		};
+};
+
+
+&tlmm {
+
+	chg_irq_default: chg_irq_default {
+		/* IRQ */
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			bias-pull-up;
+			drive-strength = <2>; /* 2 MA */
+			input-enable;
+		};
+	};
+
+	bq2589x_irq: bq2589x_irq {
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+	};
+};
