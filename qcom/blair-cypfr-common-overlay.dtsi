@@ -214,6 +214,9 @@
 &sgm4154x {
 	pinctrl-names = "default";
 	pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
+
+	/* enable dynamic adjust battery voltage */
+	enable_dynamic_adjust_batvol;
 };
 
 &mmi_charger {
