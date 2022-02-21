@@ -11,7 +11,7 @@
  */
 
 &pm8350b_haptics {
-	qcom,vmax-mv = <1400>;
+	qcom,vmax-mv = <1470>;
 	qcom,lra-period-us = <5880>;
 	haptic-context-gpio = <&tlmm 73 0>;
 	long-gain-reduced = <0x4000>;
@@ -20,7 +20,7 @@
 	effect_0 {
 		/* CLICK */
 		qcom,effect-id = <0>;
-		qcom,wf-vmax-mv = <10000>;
+		qcom,wf-vmax-mv = <7000>;
 		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA  0>,
 					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
