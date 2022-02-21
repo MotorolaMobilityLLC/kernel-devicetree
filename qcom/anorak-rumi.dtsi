@@ -110,3 +110,9 @@
 	clocks = <&bi_tcxo>, <&sleep_clk>,
 		<&gcc GCC_CAMERA_AHB_CLK>;
 };
+
+&gpucc {
+	clocks = <&bi_tcxo>,
+		<&gcc GCC_GPU_GPLL0_CLK_SRC>,
+		<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>;
+};
