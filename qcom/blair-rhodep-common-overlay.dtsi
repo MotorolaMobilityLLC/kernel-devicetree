@@ -541,7 +541,7 @@
 };
 
 &gcc {
-	qcom,critical-devices = <&qupv3_se10_i2c>, <&qupv3_se7_i2c>;
+	qcom,critical-devices = <&qupv3_se10_i2c>, <&qupv3_se7_i2c>, <&qupv3_se8_i2c>;
 };
 
 &soc {
