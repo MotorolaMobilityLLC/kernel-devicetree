@@ -340,6 +340,12 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+ifeq ($(CONFIG_ONELI_DTB),y)
+dtbo-$(CONFIG_ARCH_CAPE) += \
+	cape-oneli-evt1-overlay.dtbo
+
+cape-oneli-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb
+endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
