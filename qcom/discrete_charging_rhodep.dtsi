@@ -392,8 +392,8 @@
 					<1000000>;
 		charger_device_0 {
 			chrg-name = "pmic-sw";
-			psy-name = "mmi_battery";
-			charging-curr-limited = <500000>;
+			psy-name = "battery";
+			charging-curr-limited = <300000>;
 		};
 		charger_device_1 {
 			chrg-name = "cp-master";
