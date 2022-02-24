@@ -16,18 +16,6 @@
 	i2c0 = "/soc/i2c@990000";
 };
 
-&L3C {
-    status = "ok";
-    regulator-boot-on;
-    regulator-always-on;
-};
-
-&L2C {
-    status = "ok";
-    regulator-boot-on;
-    regulator-always-on;
-};
-
 &qupv3_se4_spi {
 	status = "disabled";
 };
@@ -78,6 +66,7 @@
 		interrupts = <85 0x2>;
 		cy,adapter_id = "cyttsp5_i2c_adapter";
 		ic_name = "parade,tma525b";
+		mmi,control-dsi = <1>;
 
 		cy,core {
 			cy,name = "cyttsp5_core";
@@ -85,9 +74,11 @@
 			cy,irq_gpio = <&tlmm 85 0x2>;
 			cy,rst_gpio = <&tlmm 126 0x0>;
 			cy,class-entry-name = "secondary";
+			cyttsp5,avdd-name = "pm8350c_l3";
+			cyttsp5,iovdd-name = "pm8350c_l2";
 			cy,hid_desc_register = <1>;
 			/* CY_CORE_FLAG_RESTORE_PARAMETERS */
-			cy,flags = <4>;
+			cy,flags = <2>;
 			/* CY_CORE_EWG_NONE */
 			cy,easy_wakeup_gesture = <0>;
 			cy,btn_keys = <172 /* KEY_HOMEPAGE */
