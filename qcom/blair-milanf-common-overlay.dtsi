@@ -22,6 +22,7 @@
 #include "milanf-sensors.dtsi"
 #include "camera/blair-camera-sensor-mot-milanf-overlay.dtsi"
 #include "milanf-wl286xx.dtsi"
+#include "moto_therm_sys_temp.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
