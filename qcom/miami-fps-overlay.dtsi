@@ -1,0 +1,182 @@
+&tlmm {
+	ets_irq_active: egis_irq_active {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>; /* 2 MA */
+			input-enable;
+		};
+	};
+
+	ets_rst_high: ets_rst_high {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+
+	ets_rst_low: ets_rst_low {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	ets_vcc_high: ets_vcc_high {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+
+	ets_vcc_low: ets_vcc_low {
+		/* INTERRUPT */
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	ft_power_high: ft_power_high {
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			drive-strength = <2>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	ft_power_low: ft_power_low {
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	ft_eint_as_int: ft_eint_as_int {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	ft_reset_high: ft_reset_high {
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	ft_reset_low: ft_reset_low {
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+};
+
+&soc {
+	et528: et528 {
+		compatible = "fp-egistec";
+		status = "ok";
+		reg = <0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0x0>;
+		fp-ctrl-power;
+		fp-gpio-vcc-enable;
+		egistec,gpio_vcc_en = <&tlmm 6 0x0>;
+		egistec,gpio_irq = <&tlmm 17 0x0>;
+		egistec,gpio_reset = <&tlmm 18 0x0>;
+		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active",
+				"egis_vcc_high", "egis_vcc_low";
+		pinctrl-0 = <&ets_rst_high>;
+		pinctrl-1 = <&ets_rst_low>;
+		pinctrl-2 = <&ets_irq_active>;
+		pinctrl-3 = <&ets_vcc_high>;
+		pinctrl-4 = <&ets_vcc_low>;
+	};
+
+	ft9362: ft9362 {
+		status = "ok";
+		compatible = "focaltech,fingerprint";
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0x0>;
+		fp,reset_gpio = <&tlmm 18 0>;
+		fp,irq_gpio = <&tlmm 17 0>;
+		fp,vdd_gpio = <&tlmm 6 0>;
+
+		pinctrl-names = "fpsensor_finger_power_high","fpsensor_finger_power_low",
+				"fpsensor_finger_rst_low","fpsensor_finger_rst_high",
+				"fpsensor_eint_as_int";
+		pinctrl-0 = <&ft_power_high>;
+		pinctrl-1 = <&ft_power_low>;
+		pinctrl-2 = <&ft_reset_low>;
+		pinctrl-3 = <&ft_reset_high>;
+		pinctrl-4 = <&ft_eint_as_int>;
+	};
+};
