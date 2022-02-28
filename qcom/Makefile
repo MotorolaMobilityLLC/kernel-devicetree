@@ -111,6 +111,10 @@ blair-rhodep-evt2-overlay.dtbo-base := blair-moto-rhodep-base.dtb
 blair-rhodep-dvt1-overlay.dtbo-base := blair-moto-rhodep-base.dtb
 blair-rhodep-dvt2-overlay.dtbo-base := blair-moto-rhodep-base.dtb
 
+dtbo-$(CONFIG_RHODEI_DTB) += \
+        blair-rhodei-evt1-overlay.dtbo
+
+blair-rhodei-evt1-overlay.dtbo-base := blair-moto-rhodei-base.dtb
 
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
