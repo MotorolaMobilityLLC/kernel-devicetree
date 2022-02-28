@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&qupv3_se0_i2c {
+	status = "disabled";
+};
+
+&qupv3_se0_spi_pins {
+	qupv3_se0_spi_active: qupv3_se0_spi_active {
+		mux {
+			pins = "gpio0", "gpio1", "gpio2";
+			function = "qup00";
+		};
+
+		config {
+			pins = "gpio0", "gpio1", "gpio2";
+			drive-strength = <10>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_sleep: qupv3_se0_spi_sleep {
+		mux {
+			pins = "gpio0", "gpio1", "gpio2";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio0", "gpio1", "gpio2";
+			drive-strength = <10>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_cs_active: qupv3_se0_spi_cs_active {
+		mux {
+			pins = "gpio3";
+			function = "qup00";
+		};
+
+		config {
+			pins = "gpio3";
+			drive-strength = <10>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_cs_sleep: qupv3_se0_spi_cs_sleep {
+		mux {
+			pins = "gpio3";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio3";
+			drive-strength = <10>;
+			bias-pull-up;
+		};
+	};
+};
+
+&qupv3_se0_spi {
+	status = "ok";
+	pinctrl-0 = <&qupv3_se0_spi_active &qupv3_se0_spi_cs_active>;
+	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
+
+	goodix_ts_spi@0 {
+		status = "ok";
+		compatible = "goodix,gt9916S";
+		reg = <0x0>;
+		mmi,status = "/chosen","mmi,panel_name","contains","nt37701";
+		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
+		goodix,reset-gpio = <&tlmm 21 0x0>;
+		goodix,irq-gpio = <&tlmm 22 0x2002>;
+		goodix,avdd-gpio = <&tlmm 92 0x0>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <1080>;
+		goodix,panel-max-y = <2400>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		panel = <&mot_csot_nt37701_655_1080x2400_dsc_cmd_v0
+						&mot_csot_nt37701_655_1080x2400_dsc_cmd_v1
+						&mot_tm_nt37701_655_1080x2400_dsc_cmd_v1
+						&mot_tm_nt37701_655_1080x2400_dsc_cmd_v0>;
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&pmx_ts_release>;
+		mmi,power-off-suspend;
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+	};
+};
