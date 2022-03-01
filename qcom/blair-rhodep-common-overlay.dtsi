@@ -27,6 +27,7 @@
 #include "sgm7220.dtsi"
 #include "discrete_charging_rhodep.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
+#include "moto_therm_sys_temp.dtsi"
 
 &qupv3_se8_i2c {
 	status = "okay";
