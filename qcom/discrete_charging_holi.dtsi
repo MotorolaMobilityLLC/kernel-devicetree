@@ -147,6 +147,7 @@
 		ti,bq2589x,enable-termination;
 		ti,bq2589x,enable-ico;
 		ti,bq2589x,use-absolute-vindpm;
+		ti,bq2589x,disable-ilim;
 	};
 };
 
