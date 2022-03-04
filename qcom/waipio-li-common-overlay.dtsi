@@ -262,6 +262,10 @@
 	};
 };
 
+&L8C {
+	regulator-boot-on;
+};
+
 &redriver {
 	status = "ok";
 	vio-supply = <&L8C>;
