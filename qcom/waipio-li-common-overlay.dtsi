@@ -179,6 +179,7 @@
 		mmi,fg-psy-name = "flip_battery";
 		mmi,batt-profile-name = "NM40_ATL_712MAH";
 		mmi,temp-source = <1>;
+		mmi,ibat-invert-polority;
 	};
 
 	sgm4154x_charger: sgm4154x@6B {
@@ -219,7 +220,6 @@
 				    <45 4350 883 679>,
 				    <60 4200 679 0>;
 
-		mmi,ichg-invert-polority;
 		mmi,paired-id = <0x00000001>;
 		mmi,paired-ichg-table = <3 1200
 					 6 900
