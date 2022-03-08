@@ -23,7 +23,7 @@
 #include "rhodei-touchscreen.dtsi"
 #include "camera/blair-camera-sensor-mot-rhodei-overlay.dtsi"
 #include "rhodei-wl2868c.dtsi"
-#include "discrete_charging_rhodep.dtsi"
+#include "discrete_charging_holi.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
