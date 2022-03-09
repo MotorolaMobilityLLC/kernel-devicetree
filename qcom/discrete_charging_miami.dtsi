@@ -157,6 +157,32 @@
 	};
 };
 
+&qupv3_se2_i2c {
+	status = "okay";
+	bq25960_master:bq25960-master@66 {
+		status = "okay";
+		compatible = "ti,bq25960-master";
+		reg = <0x66>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <57 0>;
+		ti,irq-gpio = <&tlmm 57 0>;
+	};
+
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+	bq25960_slave:bq25960-slave@67 {
+		status = "okay";
+		compatible = "ti,bq25960-slave";
+		reg = <0x67>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <84 0>;
+		ti,irq-gpio = <&tlmm 84 0>;
+	};
+
+};
+
 &tlmm {
 	sgm4154x_gpio_pins: sgm4154x_gpio_pins {
 		mux {
