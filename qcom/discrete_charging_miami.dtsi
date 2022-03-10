@@ -155,6 +155,13 @@
 		ti,bq2589x,enable-ico;
 		ti,bq2589x,use-absolute-vindpm;
 	};
+
+	mm8013@55 {
+		compatible = "mitsumi,mm8013c10";
+		reg = <0x55>;
+		status = "okay";
+
+	};
 };
 
 &qupv3_se2_i2c {
