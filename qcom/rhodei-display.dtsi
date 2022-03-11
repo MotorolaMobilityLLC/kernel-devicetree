@@ -4,6 +4,7 @@
 #include "dsi-panel-mot-tianma-nt37701-655-1080x2400-dsc-cmd-common-v1.dtsi"
 #include "dsi-panel-mot-tianma-nt37701-655-1080x2400-dsc-cmd-common-v2.dtsi"
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
+#include "dsi-panel-mot-tianma-nt36672c-645-1080x2400-video.dtsi"
 
 &display_panel_avdd {
 	/delete-property/ gpio;
@@ -27,14 +28,28 @@
 };
 
 &tlmm {
-	panel_vci_en_default: panel_vci_en_default {
+	lcd_panel_avdd_default: lcd_panel_avdd_default {
 		mux {
-			pins = "gpio46";
+			pins = "gpio85";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio46";
+			pins = "gpio85";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
+		};
+	};
+
+	lcd_panel_avee_default: lcd_panel_avee_default {
+		mux {
+			pins = "gpio86";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio86";
 			drive-strength = <8>;
 			bias-disable = <0>;
 			output-high;
@@ -43,6 +58,34 @@
 };
 
 &soc {
+	lcd_panel_avdd: lcd_gpio_regulator@1 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "lcd_panel_avdd";
+		regulator-min-microvolt = <5500000>;
+		regulator-max-microvolt = <5500000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 85 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&lcd_panel_avdd>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_panel_avdd_default>;
+	};
+
+	lcd_panel_avee: lcd_gpio_regulator@2 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "lcd_panel_avee";
+		regulator-min-microvolt = <5500000>;
+		regulator-max-microvolt = <5500000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 86 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&lcd_panel_avee>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_panel_avee_default>;
+	};
+
 	dsi_panel_pwr_supply_amoled: dsi_panel_pwr_supply_amoled {
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -81,18 +124,42 @@
 		};
 	};
 
-	panel_vci: panel_gpio_regulator@1 {
-		compatible = "qti-regulator-fixed";
-		regulator-name = "panel_vci";
-		regulator-min-microvolt = <3000000>;
-		regulator-max-microvolt = <3000000>;
-		regulator-enable-ramp-delay = <233>;
-		gpio = <&tlmm 46 0>;
-		enable-active-high;
-		regulator-boot-on;
-		proxy-supply = <&panel_vci>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&panel_vci_en_default>;
+	dsi_panel_pwr_supply_nt36672c_rhodei: dsi_panel_pwr_supply_nt36672c_rhodei{
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		qcom,panel-supply-entry@0 {
+			reg = <0>;
+			qcom,supply-name = "vddio";
+			qcom,supply-min-voltage = <1800000>;
+			qcom,supply-max-voltage = <1904000>;
+			qcom,supply-enable-load = <32000>;
+			qcom,supply-disable-load = <80>;
+			qcom,supply-pre-off-sleep = <150>;
+		};
+
+		qcom,panel-supply-entry@1 {
+			reg = <1>;
+			qcom,supply-name = "lab";
+			qcom,supply-min-voltage = <5500000>;
+			qcom,supply-max-voltage = <5500000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-on-sleep = <3>;
+		};
+
+		qcom,panel-supply-entry@2 {
+			reg = <2>;
+			qcom,supply-name = "ibb";
+			qcom,supply-min-voltage = <5500000>;
+			qcom,supply-max-voltage = <5500000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-off-sleep = <3>;
+			qcom,supply-post-on-sleep = <3>;
+			qcom,supply-post-off-sleep = <5>;
+		};
+
 	};
 };
 
@@ -103,10 +170,11 @@
 	/delete-property/ qcom,dsi-default-panel;
 	/delete-property/ avdd-supply;
 
-	vci-supply = <&panel_vci>;
+	lab-supply = <&lcd_panel_avdd>;
+	ibb-supply = <&lcd_panel_avee>;
 	vddio-supply = <&L13A>;
-        dvdd-supply = <&L3A>;
-	qcom,dsi-default-panel = <&mot_csot_nt37701_655_1080x2400_dsc_cmd_v0>;
+
+	qcom,dsi-default-panel = <&dsi_nt36672c_fhd_plus_120_video>;
 };
 
 &mot_csot_nt37701_655_1080x2400_dsc_cmd_v1 {
@@ -464,6 +532,50 @@
 	};
 };
 
+&dsi_nt36672c_fhd_plus_120_video {
+	qcom,platform-te-gpio = <&tlmm 23 0>;
+	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
+
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_nt36672c_rhodei>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_i2c";
+	qcom,mdss-dsi-bl-min-level = <8>;
+	qcom,mdss-dsi-bl-max-level = <2047>;
+	qcom,mdss-dsi-bl-default-level = <1024>;
+	qcom,mdss-brightness-max-level = <2047>;
+	qcom,mdss-dsi-no-panel-on-read-support;
+
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-panel-status-value = <0x9c>;
+	qcom,mdss-dsi-panel-on-check-value = <0x9c>;
+	qcom,mdss-dsi-panel-status-read-length = <1>;
+
+	qcom,tp_state_check_enable;
+
+	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,mdss-dsi-pan-enable-dynamic-fps;
+	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+
+	qcom,mdss-dsi-hbm-on-command = [15 01 00 00 00 00 02 51 FF];
+	qcom,mdss-dsi-hbm-on-command-state =  "dsi_lp_mode";
+	qcom,mdss-dsi-hbm-off-command = [15 01 00 00 00 00 02 51 CC];
+	qcom,mdss-dsi-hbm-off-command-state =  "dsi_lp_mode";
+	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
+
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
+	qcom,mdss-dsi-t-clk-post = <0x0D>;
+	qcom,mdss-dsi-t-clk-pre = <0x1A>;
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 1E 08 07 18 16 08 08 08 02 04 00 1A 0D];
+			qcom,display-topology = <1 1 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
 &mot_dummy_vid_qhd {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
@@ -480,5 +592,56 @@
 			qcom,default-topology-index = <0>;
 		};
 	};
+};
+
+&qupv3_se10_i2c {
+	status = "ok";
+
+	aw99703_backlight: sprd_backlight@36{
+		compatible = "awinic,aw99703-bl","sm-sm5350";
+		reg = <0x36>;
+		hwen-gpio = <&tlmm 60 1>;
+                aw99703,bl-map = <3>; /* brightness map level 1:256,2:1024,3:2048 */
+                aw99703,using-lsb;
+                aw99703,ovp-level = <2>; /* 0:17.5V, 1:24V, 2:31V, 3:38V, 4:41.5V */
+                aw99703,ocp-level = <1>; /* 0:0.9A, 1:1.8A, 2:2.7A, 3:3.4A */
+                aw99703,switch-freq = <1>; /* 1000kHz(default) */
+                aw99703,auto-freq-high = <0x10>;
+                aw99703,auto-freq-low = <0x05>;
+                aw99703,bl-fscal-led = <0x17>; /* 24.8mA */
+                aw99703,bl-channel = <3>;
+                aw99703,turn-on-ramp = <0x00>; /* 512us */
+                aw99703,turn-off-ramp = <0x04>; /* 8ms */
+                aw99703,pwm-trans-dim = <0>; /* 2ms */
+                aw99703,i2c-trans-dim = <1>; /* 128ms */
+                aw99703,pwm-mode = <1>; /* 1 pwm enable,0 PWM disable */
+                aw99703,map-type = <0>; /* 0 exponential, 4 linear */
+                aw99703,work-mode = <1>; /* backlight */
+		aw99703,default-brightness = <1810>;
+
+		status = "okay";
+		pwm-cfg = <0x0F>;
+		boost-ctl = <0x03>;
+		ctl-bank-en = <0x02>;
+		full-scale-current = <0x17>;
+		map-mode = <0>; /* 0 exponential, 1 linear */
+		sm5350,default-brightness = <1810>;
+	};
+
+             ocp2138@3e {
+                       compatible = "ocp,i2c_lcd_bias";
+                       reg = <0x3e>;
+                       i2c-pull-up;
+                       ocp,lcd-bias-enn-gpio = <&tlmm 85 0>;
+                       ocp,lcd-bias-enp-gpio = <&tlmm 86 0>;
+        };
+};
+
+&qupv3_se10_i2c_sleep {
+    config {
+        /delete-property/ bias-disable;
+        bias-pull-up;
+        input-enable;
+    };
 };
 
