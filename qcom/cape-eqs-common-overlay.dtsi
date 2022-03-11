@@ -17,6 +17,7 @@
 #include "waipio-pm8010-spmi.dtsi"
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
+#include "cape-eqs-touchscreen-overlay.dtsi"
 #include "moto-eqs-wl2868c.dtsi"
 
 &tlmm {
