@@ -14,7 +14,7 @@ nd50-atl-5000mah {
 	serialnum = "SB18D24973";
 	fcc_design = <5000>;
 	ui_full = <98>;
-	config_profile_info = [5A 00 00 00 00 00 00 00
+	config_profile_info = [49 00 00 00 00 00 00 00
 				B2 BB C3 C7 B9 B4 AC 72
 				4A FF F3 B7 8E 81 69 5B
 				53 50 4C 80 D9 DE B8 DD
@@ -23,5 +23,5 @@ nd50-atl-5000mah {
 				6D 6B 79 90 A8 90 5C 69
 				20 00 57 10 02 B0 61 00
 				00 00 64 22 D3 58 00 00
-				00 00 00 00 00 00 00 20 ];
+				00 00 00 00 00 00 00 81 ];
 };
