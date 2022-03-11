@@ -21,6 +21,9 @@
 #include "moto-eqs-wl2868c.dtsi"
 #include "cape-eqs-evb-sensor-overlay.dtsi"
 #include "cape-eqs-fingerprint-overlay.dtsi"
+#include "waipio-hiphic-se-overlay.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
 &tlmm {
 	redriver_enable: redriver_enable {
 		mux {
@@ -47,6 +50,20 @@
 			output-low;
 		};
 	};
+};
+
+&soc {
+        pinctrl@f000000 {
+                compatible = "qcom,cape-pinctrl";
+                reg = <0x0F000000 0x1000000>;
+                interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+                gpio-controller;
+                #gpio-cells = <2>;
+                interrupt-controller;
+                #interrupt-cells = <2>;
+                wakeup-parent = <&pdc>;
+                qcom,gpios-reserved = <36 37 38 39>;
+        };
 };
 
 &qupv3_se9_i2c {
