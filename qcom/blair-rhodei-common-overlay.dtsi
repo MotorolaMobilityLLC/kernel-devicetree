@@ -21,7 +21,7 @@
 #include "rhodei-fps-overlay.dtsi"
 #include "rhodei-display.dtsi"
 #include "rhodei-touchscreen.dtsi"
-#include "camera/blair-camera-sensor-mot-rhodei-overlay.dtsi"
+//#include "camera/blair-camera-sensor-mot-rhodei-overlay.dtsi"
 #include "rhodei-wl2868c.dtsi"
 #include "discrete_charging_rhodei.dtsi"
 
