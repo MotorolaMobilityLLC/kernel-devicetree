@@ -89,18 +89,8 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&sgm4154x_gpio_pins &gpio6_adc_default>;
 		#io-channel-cells = <1>;
-		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>,
-				<&wt6670 PSY_IIO_QC3P_REAL_TYPE>,
-				<&wt6670 PSY_IIO_QC3P_POWER>,
-				<&wt6670 PSY_IIO_START_DETECTION>,
-				<&wt6670 PSY_IIO_DETECTION_READY>,
-				<&mmi_chrg PSY_IIO_QC3P_START_POLICY>;
-		io-channel-names = "gpio3_div3",
-					"wt6670_usb_real_type",
-					"wt6670_usb_qc3p_power",
-					"wt6670_start_detection",
-					"wt6670_detection_ready",
-					"qc3p_start_policy";
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
 
 
 		interrupt-parent = <&tlmm>;
@@ -147,18 +137,8 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&bq2589x_irq &gpio6_adc_default>;
 		#io-channel-cells = <1>;
-		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>,
-				<&wt6670 PSY_IIO_QC3P_REAL_TYPE>,
-				<&wt6670 PSY_IIO_QC3P_POWER>,
-				<&wt6670 PSY_IIO_START_DETECTION>,
-				<&wt6670 PSY_IIO_DETECTION_READY>,
-				<&mmi_chrg PSY_IIO_QC3P_START_POLICY>;
-		io-channel-names = "gpio3_div3",
-				"wt6670_usb_real_type",
-				"wt6670_usb_qc3p_power",
-				"wt6670_start_detection",
-				"wt6670_detection_ready",
-				"qc3p_start_policy";
+		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+		io-channel-names = "gpio3_div3";
 
 		bq2589x_irq-gpio = <&tlmm 12 0>;
 		//bq2589x_en-gpio = <&tlmm 92 0>;
@@ -177,28 +157,6 @@
 		ti,bq2589x,use-absolute-vindpm;
 	};
 
-	wt6670: wt6670f@35 {
-		status = "okay";
-		compatible = "mediatek,wt6670f_qc3p";
-		reg = <0x35>;
-		#io-channel-cells = <1>;
-		wt6670f-reset-gpio = <&tlmm 56 0x0>;
-		wt6670f-int-gpio = <&tlmm 85 0x0>;
-		//wt6670f-i2c-scl-pin = <&tlmm 1 0x0>;
-		//wt6670f-i2c-sda-pin = <&tlmm 0 0x0>;
-
-		//pinctrl-names = "default",
-		//"wt6670_i2c_scl_low", "wt6670_i2c_scl_high",
-		//"wt6670_i2c_sda_low", "wt6670_i2c_sda_high",
-		//"wt6670_i2c";
-
-		//pinctrl-0 = <&wt6670_pins_default>;
-		//pinctrl-1 = <&wt6670_pins_scl_low>;
-		//pinctrl-2 = <&wt6670_pins_scl_high>;
-		//pinctrl-3 = <&wt6670_pins_sda_low>;
-		//pinctrl-4 = <&wt6670_pins_sda_high>;
-		//pinctrl-5 = <&wt6670_pins_i2c>;
-	};
 };
 
 &tlmm {
@@ -228,67 +186,7 @@
 			input-enable;
 		};
 	};
-        //add wt6670 pins
-        wt6670_pins_default: wt6670_default_mode {
-        };
-        wt6670_pins_scl_low: wt6670_scl_low {
-		mux {
-			pins = "gpio1";
-			function = "gpio";
-		};
 
-		config {
-			pins = "gpio1";
-			drive-strength = <2>;
-			bias-pull-down;
-		};
-        };
-        wt6670_pins_scl_high: wt6670_scl_high {
-		mux {
-			pins = "gpio1";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio1";
-			drive-strength = <2>;
-			bias-pull-up;
-			output-high;
-		};
-        };
-        wt6670_pins_sda_low: wt6670_sda_low {
-		mux {
-			pins = "gpio0";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio0";
-			drive-strength = <2>;
-			bias-pull-down;
-		};
-        };
-        wt6670_pins_sda_high: wt6670_sda_high {
-		mux {
-			pins = "gpio0";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio0";
-			drive-strength = <2>;
-			bias-pull-up;
-			output-high;
-		};
-        };
-/*
-        wt6670_pins_i2c: wt6670_i2c_mode {
-                pins_cmd_dat {
-                        pinmux = <PINMUX_GPIO90__FUNC_SDA6>,
-                                <PINMUX_GPIO89__FUNC_SCL6>;
-                };
-        };
-*/
 };
 
 &soc {
