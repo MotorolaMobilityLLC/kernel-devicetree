@@ -128,4 +128,20 @@
 		panel = <&dsi_nt36672c_fhd_plus_120_video>;
 		status = "ok";
 	};
+	ilitek@0 {
+		compatible = "tchip,ilitek";
+		reg = <0x1>;
+		spi-max-frequency = <6000000>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <22 0x2001>;
+		panel = <&dsi_ili7807s_fhd_plus_120_video>;
+		mmi,status = "/chosen","mmi,panel_name","contains","ili7807s";
+		touch,reset-gpio = <&tlmm 21 0x00>;
+		touch,irq-gpio = <&tlmm 22 0x2001>;
+		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
+		pinctrl-3 = <&ts_active>;
+		pinctrl-4 = <&ts_int_suspend_high>;
+		ilitek,report_gesture_key;
+		status = "ok";
+	};
 };
