@@ -19,6 +19,7 @@
 #include "waipio-moto-common-charger.dtsi"
 #include "cape-oneli-touchscreen-overlay.dtsi"
 #include "cape-oneli-evt1-sensor-overlay.dtsi"
+#include "cape-oneli-fingerprint.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
