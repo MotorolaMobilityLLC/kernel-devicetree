@@ -23,6 +23,7 @@
 #include "rhodec-fmr-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-rhodec-overlay.dtsi"
 #include "discrete_charging_holi.dtsi"
+#include "moto_therm_sys_temp.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
