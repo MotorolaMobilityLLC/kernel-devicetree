@@ -20,6 +20,7 @@
 #include "cape-oneli-touchscreen-overlay.dtsi"
 #include "cape-oneli-evt1-sensor-overlay.dtsi"
 #include "cape-oneli-fingerprint.dtsi"
+#include "cape-oneli-thermal-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
