@@ -48,32 +48,32 @@
 		interconnect-names = "gpu_icc_path";
 
 		qcom,bus-table-ddr7 =
-			<MHZ_TO_KBPS(0, 4)>,    /* index=0  */
-			<MHZ_TO_KBPS(200, 4)>,  /* index=1  */
-			<MHZ_TO_KBPS(451, 4)>,  /* index=2  */
-			<MHZ_TO_KBPS(547, 4)>,  /* index=3  */
-			<MHZ_TO_KBPS(768, 4)>,  /* index=4  */
-			<MHZ_TO_KBPS(1017, 4)>, /* index=5  */
-			<MHZ_TO_KBPS(1353, 4)>, /* index=6  */
-			<MHZ_TO_KBPS(1555, 4)>, /* index=7  */
-			<MHZ_TO_KBPS(1708, 4)>, /* index=8  */
-			<MHZ_TO_KBPS(2133, 4)>; /* index=9  */
+			<MHZ_TO_KBPS(0, 4)>,	/* index=0		*/
+			<MHZ_TO_KBPS(200, 4)>,	/* index=1  LOW SVS	*/
+			<MHZ_TO_KBPS(451, 4)>,	/* index=2  LOW SVS	*/
+			<MHZ_TO_KBPS(547, 4)>,	/* index=3  LOW SVS	*/
+			<MHZ_TO_KBPS(768, 4)>,	/* index=4  SVS		*/
+			<MHZ_TO_KBPS(1017, 4)>,	/* index=5  SVS		*/
+			<MHZ_TO_KBPS(1353, 4)>,	/* index=6  SVS L1	*/
+			<MHZ_TO_KBPS(1555, 4)>,	/* index=7  NOM		*/
+			<MHZ_TO_KBPS(1708, 4)>,	/* index=8  NOM		*/
+			<MHZ_TO_KBPS(2133, 4)>;	/* index=9  TURBO	*/
 
 		qcom,bus-table-ddr8 =
-			<MHZ_TO_KBPS(0, 4)>,    /* index=0  */
-			<MHZ_TO_KBPS(200, 4)>,  /* index=1  */
-			<MHZ_TO_KBPS(451, 4)>,  /* index=2  */
-			<MHZ_TO_KBPS(547, 4)>,  /* index=3  */
-			<MHZ_TO_KBPS(768, 4)>,  /* index=4  */
-			<MHZ_TO_KBPS(1555, 4)>, /* index=5  */
-			<MHZ_TO_KBPS(1708, 4)>, /* index=6  */
-			<MHZ_TO_KBPS(2092, 4)>, /* index=7  */
-			<MHZ_TO_KBPS(2736, 4)>, /* index=8  */
-			<MHZ_TO_KBPS(3196, 4)>; /* index=9  */
+			<MHZ_TO_KBPS(0, 4)>,	/* index=0		*/
+			<MHZ_TO_KBPS(200, 4)>,	/* index=1  LOW SVS	*/
+			<MHZ_TO_KBPS(451, 4)>,	/* index=2  LOW SVS	*/
+			<MHZ_TO_KBPS(547, 4)>,	/* index=3  LOW SVS	*/
+			<MHZ_TO_KBPS(768, 4)>,	/* index=4  SVS		*/
+			<MHZ_TO_KBPS(1555, 4)>,	/* index=5  SVS		*/
+			<MHZ_TO_KBPS(1708, 4)>,	/* index=6  SVS L1	*/
+			<MHZ_TO_KBPS(2092, 4)>,	/* index=7  NOM		*/
+			<MHZ_TO_KBPS(2736, 4)>,	/* index=8  TURBO	*/
+			<MHZ_TO_KBPS(3196, 4)>;	/* index=9  TURBO	*/
 
 		qcom,bus-table-cnoc =
-			<0>,   /* Off */
-			<100>; /* On */
+			<0>,	/* Off */
+			<100>;	/* On */
 
 		nvmem-cells = <&gpu_speed_bin>, <&gpu_gaming_bin>, <&gpu_model_bin>;
 		nvmem-cell-names = "speed_bin", "gaming_bin", "gpu_model";
