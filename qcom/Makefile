@@ -116,6 +116,11 @@ dtbo-$(CONFIG_RHODEI_DTB) += \
 
 blair-rhodei-evt1-overlay.dtbo-base := blair-moto-rhodei-base.dtb
 
+dtbo-$(CONFIG_MIAMI_DTB) += \
+        blair-miami-evt1-overlay.dtbo
+
+blair-miami-evt1-overlay.dtbo-base := blair-moto-miami-base.dtb
+
 else
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
