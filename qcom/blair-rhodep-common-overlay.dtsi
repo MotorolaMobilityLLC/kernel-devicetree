@@ -38,7 +38,7 @@
 
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
-		df-serialnum = "SB18D38323";
+		df-serialnum = "SB18D38324";
 		#include "bat_setting/CW_ng50-ATL-5000mah-rhodep.dtsi"
 		#include "bat_setting/CW_ng50-SWD-5000mah-rhodep.dtsi"
 	};
