@@ -515,3 +515,8 @@
 	};
 };
 
+&L21A{
+	regulator-always-on;
+	status = "okay";
+};
+
