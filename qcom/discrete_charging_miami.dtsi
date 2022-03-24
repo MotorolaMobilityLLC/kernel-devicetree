@@ -30,54 +30,6 @@
 	};
 };
 
-&qupv3_se10_i2c {
-	status = "okay";
-	bq2597x: bq2597x-charger@66 {
-		compatible = "ti,bq25970-charger";
-		reg = <0x66>;
-		#io-channel-cells = <1>;
-		//ti,bq2597x,interrupt_gpios = <&pio 30 0>;
-		//interrupt-parent = <&pio>;
-		//interrupts = <2 IRQ_TYPE_EDGE_FALLING 2 0>;
-		//interrupt-names = "bq2597x_irq";
-
-		//pinctrl-names = "default_slave";
-		//pinctrl-0 = <&bq2597x_int_default_slave>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <84 0>;            //irq num base on hardware design
-		bq2597x,irq-gpio = <&tlmm 84 0>;     //irq num base on hardware design
-
-		ti,bq2597x,bat-ovp-disable = <0>;
-		ti,bq2597x,bat-ocp_disable = <0>;
-		ti,bq2597x,bat-ovp-alarm-disable = <0>;
-		ti,bq2597x,bus-ocp-disable = <0>;
-		ti,bq2597x,bus-ovp-alarm-disable = <0>;
-		ti,bq2597x,bus-ocp-alarm-disable = <0>;
-		ti,bq2597x,bat-ucp-alarm-disable = <0>;
-		ti,bq2597x,bat-therm-disable = <0>;
-		ti,bq2597x,bus-therm-disable = <0>;
-
-		ti,bq2597x,bat-ovp-threshold = <4500>;
-		ti,bq2597x,bat-ovp-alarm-threshold = <4450>;
-		ti,bq2597x,bat-ocp-threshold = <8000>;
-		ti,bq2597x,bat-ocp-alarm-threshold = <7500>;
-
-		ti,bq2597x,bus-ovp-threshold = <12000>;
-		ti,bq2597x,bus-ovp-alarm-threshold = <11000>;
-		ti,bq2597x,bus-ocp-threshold = <3750>;
-		ti,bq2597x,bus-ocp-alarm-threshold = <3500>;
-
-		ti,bq2597x,bat-ucp-alarm-threshold = <2000>;
-
-		ti,bq2597x,bat-therm-threshold = <0x15>;
-		ti,bq2597x,bus-therm-threshold = <0x15>;
-		ti,bq2597x,die-therm-threshold = <125>;
-
-		ti,bq2597x,ac-ovp-threshold = <17>;
-		ti,bq2597x,sense-resistor-mohm = <5>;
-	};
-};
-
 &qupv3_se8_i2c {
 	status = "okay";
 
@@ -95,7 +47,7 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <12 0>;            //irq num base on hardware design
 		sgm,irq-gpio = <&tlmm 12 0>;     //irq num base on hardware design
-		//sgm,chg-en-gpio = <&tlmm 92 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
+		sgm,chg-en-gpio = <&tlmm 92 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
 		dpdm-supply = <&usb2_phy0>;
 		mmi,qc3-support;
@@ -140,7 +92,7 @@
 		io-channel-names = "gpio3_div3";
 
 		bq2589x_irq-gpio = <&tlmm 12 0>;
-		//bq2589x_en-gpio = <&tlmm 92 0>;
+		bq2589x_en-gpio = <&tlmm 92 0>;
 		dpdm-supply = <&usb2_phy0>;
 
 		mmi,qc3-support;
@@ -238,19 +190,19 @@
 		battery-names = "battery";
 		supplied-from = "mmi_battery";
 
-		mmi,chrg-iterm-ma = <243>;
+		mmi,chrg-iterm-ma = <196>;
 		mmi,fg-iterm-ma = <500>;
-		mmi,max-fv-mv = <4450>;
-		mmi,max-fcc-ma = <3000>;
+		mmi,max-fv-mv = <4480>;
+		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,otg-cl-ua = <1200000>;
-		mmi,df-serialnum = "SB18D33989";
-		mmi,mmi-temp-zones = <0 4200 1000 0>,
-				<10 4250 3000 1000>,
-				<15 0 3000 3000>,
+		mmi,df-serialnum = "SB18D50729";
+		mmi,mmi-temp-zones = <0 4200 800 0>,
+				<10 4250 2000 1000>,
+				<15 0 2000 2000>,
 				<45 0 4000 4000>,
-				<60 4200 3000 0>;
-		mmi,thermal-mitigation = <3000000 2500000
+				<60 4200 4000 0>;
+		mmi,thermal-mitigation = <4000000 3000000 2500000
 				2000000 1500000
 				1200000 900000
 				600000 300000>;
@@ -268,11 +220,11 @@
 				<&mmi_discrete_charger PSY_IIO_USB_REAL_TYPE>,
 				<&mmi_discrete_charger PSY_IIO_DP_DM>,
 				<&mmi_discrete_charger PSY_IIO_MMI_QC3P_POWER>,
-				<&bq2597x PSY_IIO_CP_ENABLE>,
-				<&bq2597x PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
-				<&bq2597x PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
-				<&bq2597x PSY_IIO_CP_STATUS1>,
-				<&bq2597x PSY_IIO_CP_CLEAR_ERROR>;
+				<&bq25960_master PSY_IIO_CP_ENABLE>,
+				<&bq25960_master PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
+				<&bq25960_master PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
+				<&bq25960_master PSY_IIO_CP_STATUS1>,
+				<&bq25960_master PSY_IIO_CP_CLEAR_ERROR>;
 
 		io-channel-names = "hw_current_max",
 					"charging_enabled",
@@ -283,17 +235,17 @@
 					"usb_real_type",
 					"battery_dp_dm",
 					"usb_qc3p_power",
-					"bq2597x_cp_enabled",
-					"bq2597x_input_current_now",
-					"bq2597x_input_voltage_settled",
-					"bq2597x_cp_status1",
-					"bq2597x_cp_clear_error";
+					"bq25980_cp_enabled",
+					"bq25980_input_current_now",
+					"bq25980_input_voltage_settled",
+					"bq25980_cp_status1",
+					"bq25980_cp_clear_error";
 
 	//	qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		mmi,pps-volt-steps = <20000>;
 		mmi,pps-curr-steps = <100000>;
-		mmi,pd-volt-max = <10000000>;
-		mmi,pd-curr-max = <3000000>;
+		mmi,pd-volt-max = <11000000>;
+		mmi,pd-curr-max = <6200000>;
 		mmi,batt-curr-boost = <300000>;
 		mmi,batt-ovp-lmt = <4550000>;
 		mmi,typec-middle-current = <2000000>;
@@ -305,28 +257,38 @@
 		mmi,qc3p-volt-max = <10000000>;
 		mmi,chrg-temp-zones-num = <5>;
 		mmi,mmi-chrg-temp-zones =
-					<0 4200 1000  0 0>,
-					<10 4250 3000 4450 1000>,
-					<15 4450 3000 0 0>,
-					<45 4350 6000 4480 4000>,
-					<60 4200 4000 0 0>;
+					<0 4200 800 0 0 0 0 0 0>,
+					<10 4250 2000 4480 1000 0 0 0 0>,
+					<15 4480 2000 0 0 0 0 0 0>,
+					<45 4250 12400 4300 8000 4480 6000 4510 4000>,
+					<60 4200 4000 0 0 0 0 0 0>;
 		mmi,thermal-mitigation =
-					<5800000>,
+					<12400000>,
+					<11000000>,
+					<10000000>,
+					<9000000>,
+					<8000000>,
+					<7000000>,
+					<6000000>,
 					<5000000>,
 					<4000000>,
-					<3500000>,
-				<3000000>,
+					<3000000>,
 					<2000000>,
 					<1000000>;
 		charger_device_0 {
 			chrg-name = "pmic-sw";
-			psy-name = "mmi_battery";
-			charging-curr-limited = <500000>;
+			psy-name = "battery";
+			charging-curr-limited = <300000>;
 		};
 		charger_device_1 {
 			chrg-name = "cp-master";
-			psy-name = "cp-standalone";
+			psy-name = "bq25960-master";
 			charging-curr-min = <1500000>;
+		};
+		charger_device_2 {
+			chrg-name = "cp-slave";
+			psy-name = "bq25960-slave";
+			charging-curr-min = <2000000>;
 		};
 	};
 };
