@@ -14,7 +14,6 @@
    This base is original from "cape-mtp-pm8010-overlay.dts"
 */
 #include "cape-moto-common-overlay-base.dtsi"
-#include "waipio-pm8010-spmi.dtsi"
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "cape-oneli-touchscreen-overlay.dtsi"
@@ -116,39 +115,6 @@
                         qcom,drive-strength = <2>;
 		};
 	};
-};
-
-&apps_rsc {
-    rpmh-regulator-ldoi1 {
-        compatible = "qcom,rpmh-vrm-regulator";
-        qcom,resource-name = "ldoi1";
-        qcom,regulator-type = "pmic5-ldo";
-        qcom,supported-modes =
-            <RPMH_REGULATOR_MODE_LPM
-             RPMH_REGULATOR_MODE_HPM>;
-        qcom,mode-threshold-currents = <0 30000>;
-        L1I: pm8010i_l1: regulator-pm8010i-l1 {
-            regulator-name = "pm8010i_l1";
-            qcom,set = <RPMH_REGULATOR_SET_ALL>;
-            regulator-min-microvolt = <1104000>;
-            regulator-max-microvolt = <1104000>;
-            qcom,init-voltage = <1104000>;
-            qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
-        };
-    };
-
-    rpmh-regulator-ldoi5 {
-        compatible = "qcom,rpmh-vrm-regulator";
-        qcom,resource-name = "ldoi5";
-        qcom,regulator-type = "pmic5-ldo";
-        L5I: pm8010i_l5: regulator-pm8010i-l5 {
-            regulator-name = "pm8010i_l5";
-            qcom,set = <RPMH_REGULATOR_SET_ALL>;
-            regulator-min-microvolt = <1800000>;
-            regulator-max-microvolt = <1800000>;
-            qcom,init-voltage = <1800000>;
-        };
-    };
 };
 
 &L8C {
@@ -277,4 +243,3 @@
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
 };
-
