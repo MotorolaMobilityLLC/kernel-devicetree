@@ -22,6 +22,7 @@
 #include "cape-eqs-evb-sensor-overlay.dtsi"
 #include "cape-eqs-fingerprint-overlay.dtsi"
 #include "waipio-hiphic-se-overlay.dtsi"
+#include "cape-eqs-thermal-overlay.dtsi"
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
 &tlmm {
