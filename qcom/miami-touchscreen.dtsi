@@ -82,7 +82,8 @@
 		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
 		goodix,reset-gpio = <&tlmm 21 0x0>;
 		goodix,irq-gpio = <&tlmm 22 0x2002>;
-		goodix,avdd-gpio = <&tlmm 92 0x0>;
+		goodix,avdd-gpio = <&tlmm 136 0x0>;
+		goodix,iovdd-gpio = <&tlmm 135 0x0>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
 		goodix,panel-max-id = <10>;
 		goodix,panel-max-x = <1080>;

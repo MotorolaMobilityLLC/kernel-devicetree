@@ -29,12 +29,26 @@
 &tlmm {
 	panel_vci_en_default: panel_vci_en_default {
 		mux {
-			pins = "gpio46";
+			pins = "gpio86";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio46";
+			pins = "gpio86";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
+		};
+	};
+
+	panel_dvdd_en_default: panel_dvdd_en_default {
+		mux {
+			pins = "gpio56";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio56";
 			drive-strength = <8>;
 			bias-disable = <0>;
 			output-high;
@@ -87,12 +101,26 @@
 		regulator-min-microvolt = <3000000>;
 		regulator-max-microvolt = <3000000>;
 		regulator-enable-ramp-delay = <233>;
-		gpio = <&tlmm 46 0>;
+		gpio = <&tlmm 86 0>;
 		enable-active-high;
 		regulator-boot-on;
 		proxy-supply = <&panel_vci>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&panel_vci_en_default>;
+	};
+
+	panel_dvdd: panel_gpio_regulator@2 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "panel_dvdd";
+		regulator-min-microvolt = <1250000>;
+		regulator-max-microvolt = <1250000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 56 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&panel_dvdd>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&panel_dvdd_en_default>;
 	};
 };
 
@@ -105,7 +133,7 @@
 
 	vci-supply = <&panel_vci>;
 	vddio-supply = <&L13A>;
-        dvdd-supply = <&L3A>;
+        dvdd-supply = <&panel_dvdd>;
 	qcom,dsi-default-panel = <&mot_csot_nt37701_655_1080x2400_dsc_cmd_v0>;
 };
 
