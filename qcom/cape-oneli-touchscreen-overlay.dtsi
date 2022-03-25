@@ -82,7 +82,7 @@
 			/* CY_CORE_FLAG_RESTORE_PARAMETERS */
 			cy,flags = <2>;
 			/* CY_CORE_EWG_NONE */
-			cy,easy_wakeup_gesture = <0>;
+			cy,easy_wakeup_gesture = <1>;
 			cy,btn_keys = <172 /* KEY_HOMEPAGE */
 						/* previously was KEY_HOME, new Android versions use KEY_HOMEPAGE */
 			               139 /* KEY_MENU */
