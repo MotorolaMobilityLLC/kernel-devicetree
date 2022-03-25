@@ -29,3 +29,5 @@
 &soc {
 	/delete-node/ qcom_ramoops;
 };
+
+/delete-node/ &mem_offline;
