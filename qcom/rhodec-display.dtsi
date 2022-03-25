@@ -286,9 +286,9 @@
 	qcom,mdss-dsi-no-panel-on-read-support;
 	qcom,mdss-dsi-panel-supplier = "txd";
 
-	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 06 EF];
 	qcom,mdss-dsi-hbm-on-command-state =  "dsi_lp_mode";
-	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 06 66];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 05 8B];
 	qcom,mdss-dsi-hbm-off-command-state =  "dsi_lp_mode";
         qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 
