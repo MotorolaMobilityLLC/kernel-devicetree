@@ -570,3 +570,34 @@
 	};
 };
 
+&tlmm {
+	ps_vled_en_default: ps_vled_en_default {
+		mux {
+			pins = "gpio50";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio50";
+			bias-pull-up; /* NO PULL */
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+};
+
+&soc {
+	ps_vled: gpio-regulator@0 {
+		compatible = "regulator-fixed";
+		regulator-name = "ps_vled";
+		gpio = <&tlmm 50 0>;
+		regulator-min-microvolt = <3000000>;
+		regulator-max-microvolt = <3000000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		regulator-boot-on;
+		regulator-always-on;
+		pinctrl-names = "default";
+		pinctrl-0 = <&ps_vled_en_default>;
+	};
+};
+
