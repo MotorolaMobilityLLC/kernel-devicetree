@@ -22,7 +22,7 @@
 #include "miami-display.dtsi"
 #include "miami-touchscreen.dtsi"
 //#include "camera/blair-camera-sensor-mot-miami-overlay.dtsi"
-#include "miami-wl2868c.dtsi"
+#include "miami-wl2864c.dtsi"
 #include "tcpc_config.dtsi"
 #include "sgm7220.dtsi"
 #include "discrete_charging_miami.dtsi"
