@@ -626,6 +626,21 @@
 			};
 		};
 
+	bq256xx_intr: bq256xx_intr {
+		bq256xx_intr_default: bq256xx_intr_default {
+			mux {
+				pins = "gpio6";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio6";
+				bias-pull-up;
+				input-enabled;
+			};
+		};
+	};
+
 	qupv3_se11_2uart_pins: qupv3_se11_2uart_pins {
 			qupv3_se11_2uart_active: qupv3_se11_2uart_active {
 				mux {
