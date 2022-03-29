@@ -270,7 +270,7 @@
 		mmi,pd-allow-min-current = <1000000>;
 		mmi,step-first-current-comp = <0>;
 		mmi,dont-rerun-aicl;
-		mmi,qc3p-max-ibus-ma = <3000>;
+		mmi,qc3p-max-ibus-ma = <2900>;
 		mmi,qc3p-volt-steps = <20000>;
 		mmi,qc3p-volt-max = <10000000>;
 		mmi,chrg-temp-zones-num = <5>;
@@ -278,7 +278,7 @@
 					<0 4200 1000  0 0>,
 					<10 4250 3000 4450 1000>,
 					<15 4450 3000 0 0>,
-					<45 4350 6000 4480 4000>,
+					<45 4350 5800 4480 4000>,
 					<60 4200 4000 0 0>;
 		mmi,thermal-mitigation =
 					<5800000>,
