@@ -142,6 +142,19 @@
 
 };
 
+&qupv3_se2_i2c {
+	status = "okay";
+	cps-wls-charger@30 {
+		status = "okay";
+		compatible = "cps,wls-charger-cps4019";
+		reg = <0x30>;
+		cps_wls_int = <&tlmm 38 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <38 0>;
+		interrupt-names = "cps_wls_int";
+	};
+};
+
 &tlmm {
 	sgm4154x_gpio_pins: sgm4154x_gpio_pins {
 		mux {
