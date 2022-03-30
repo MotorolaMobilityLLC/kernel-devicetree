@@ -52,6 +52,9 @@
 		mmi,enable-gestures;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		goodix,report_rate-ctrl;
+		goodix,interpolation-ctrl;
+		mmi,refresh-rate-update;
 	};
 };
 
