@@ -42,6 +42,10 @@
 	};
 };
 
+&cache_controller {
+	status = "disabled";
+};
+
 &firmware {
 	qcom_scm {
 		compatible = "qcom,scm";
