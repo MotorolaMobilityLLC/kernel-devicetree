@@ -366,6 +366,7 @@
 		ctl-bank-en = <0x02>;
 		full-scale-current = <0x17>;
 		map-mode = <0>; /* 0 exponential, 1 linear */
+		current-align-type = <1>;
 		sm5350,default-brightness = <1810>;
 	};
 
