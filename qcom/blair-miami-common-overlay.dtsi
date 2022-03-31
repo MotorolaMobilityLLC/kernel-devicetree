@@ -559,6 +559,14 @@
 	};
 };
 
+&qupv3_se10_i2c_sleep {
+	config {
+		/delete-property/ bias-disable;
+		bias-pull-up;
+		input-enable;
+	};
+};
+
 &qupv3_se10_i2c {
         status = "ok";
 	aw2033@45 {
