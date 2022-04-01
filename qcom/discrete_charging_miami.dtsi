@@ -122,6 +122,7 @@
 		status = "okay";
 		compatible = "ti,bq25960-master";
 		reg = <0x66>;
+		#io-channel-cells = <1>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <57 0>;
 		ti,irq-gpio = <&tlmm 57 0>;
@@ -135,6 +136,7 @@
 		status = "okay";
 		compatible = "ti,bq25960-slave";
 		reg = <0x67>;
+		#io-channel-cells = <1>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <84 0>;
 		ti,irq-gpio = <&tlmm 84 0>;
@@ -237,7 +239,12 @@
 				<&bq25960_master PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
 				<&bq25960_master PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
 				<&bq25960_master PSY_IIO_CP_STATUS1>,
-				<&bq25960_master PSY_IIO_CP_CLEAR_ERROR>;
+				<&bq25960_master PSY_IIO_CP_CLEAR_ERROR>,
+				<&bq25960_slave PSY_IIO_CP_ENABLE>,
+				<&bq25960_slave PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
+				<&bq25960_slave PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
+				<&bq25960_slave PSY_IIO_CP_STATUS1>,
+				<&bq25960_slave PSY_IIO_CP_CLEAR_ERROR>;
 
 		io-channel-names = "hw_current_max",
 					"charging_enabled",
@@ -248,11 +255,16 @@
 					"usb_real_type",
 					"battery_dp_dm",
 					"usb_qc3p_power",
-					"bq25980_cp_enabled",
-					"bq25980_input_current_now",
-					"bq25980_input_voltage_settled",
-					"bq25980_cp_status1",
-					"bq25980_cp_clear_error";
+					"cp_enabled",
+					"cp_input_current_now",
+					"cp_input_voltage_settled",
+					"cp_status1",
+					"cp_clear_error",
+					"cp_slave_enabled",
+					"cp_slave_input_current_now",
+					"cp_slave_input_voltage_settled",
+					"cp_slave_status1",
+					"cp_slave_clear_error";
 
 	//	qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		mmi,pps-volt-steps = <20000>;
