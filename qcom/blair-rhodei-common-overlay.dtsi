@@ -38,6 +38,9 @@
 	cdc-vdd-mic-bias-supply = <>;
 };
 
+&holi_snd {
+	qcom,msm-hs-linein-threshold = <4000>;
+};
 
 &tlmm {
 	nfc {
