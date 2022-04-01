@@ -38,6 +38,10 @@
 	cdc-vdd-mic-bias-supply = <>;
 };
 
+&holi_snd {
+	qcom,msm-hs-linein-threshold = <4000>;
+};
+
 /* Dummy LDO reference */
 &sdhc_1 {
 	status = "ok";
