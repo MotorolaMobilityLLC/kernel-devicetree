@@ -8,6 +8,7 @@
 #include <dt-bindings/interconnect/qcom,icc.h>
 #include <dt-bindings/interconnect/qcom,anorak.h>
 #include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/soc/qcom,rpmh-rsc.h>
 #include <dt-bindings/gpio/gpio.h>
 
 / {
@@ -221,6 +222,27 @@
 		reg = <0x17200000 0x10000>,	/* GICD */
 		      <0x17260000 0x100000>;	/* GICR * 8 */
 		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+	};
+
+	apps_rsc: rsc@17a00000 {
+		label = "apps_rsc";
+		compatible = "qcom,rpmh-rsc";
+		reg = <0x17a00000 0x10000>,
+		      <0x17a10000 0x10000>,
+		      <0x17a20000 0x10000>,
+		      <0x17a30000 0x10000>;
+		reg-names = "drv-0", "drv-1", "drv-2", "drv-3";
+		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>;
+			     /* No interrupt into GIC for DRV3 */
+		qcom,tcs-offset = <0xd00>;
+		qcom,drv-id = <2>;
+		qcom,tcs-config = <ACTIVE_TCS    2>,
+				  <SLEEP_TCS     3>,
+				  <WAKE_TCS      3>,
+				  <FAST_PATH_TCS 0>,
+				  <CONTROL_TCS   0>; /* PDC wakeup values will be written from TZ */
 	};
 
 	arch_timer: timer {
