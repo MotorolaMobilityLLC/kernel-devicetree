@@ -144,18 +144,19 @@
 
 		qcom,qmp-phy-init-seq =
 			/* <reg_offset, value, delay> */
-			<USB3_DP_QSERDES_COM_SSC_STEP_SIZE1_MODE1                  0x9E 0
-			USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE1                   0x06 0
+			<USB3_DP_QSERDES_COM_SSC_STEP_SIZE1_MODE1                  0x55 0
+			USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE1                   0x0E 0
 			USB3_DP_QSERDES_COM_CP_CTRL_MODE1                          0x02 0
 			USB3_DP_QSERDES_COM_PLL_RCTRL_MODE1                        0x16 0
 			USB3_DP_QSERDES_COM_PLL_CCTRL_MODE1                        0x36 0
 			USB3_DP_QSERDES_COM_CORECLK_DIV_MODE1                      0x04 0
 			USB3_DP_QSERDES_COM_LOCK_CMP1_MODE1                        0x2E 0
 			USB3_DP_QSERDES_COM_LOCK_CMP2_MODE1                        0x82 0
-			USB3_DP_QSERDES_COM_DEC_START_MODE1                        0x82 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START1_MODE1                  0xAB 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START2_MODE1                  0xEA 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START3_MODE1                  0x02 0
+			USB3_DP_QSERDES_COM_DEC_START_MODE1                        0x04 0
+			USB3_DP_QSERDES_COM_DEC_START_MSB_MODE1                    0x01 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START1_MODE1                  0x55 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START2_MODE1                  0xD5 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START3_MODE1                  0x05 0
 			USB3_DP_QSERDES_COM_HSCLK_SEL_1                            0x01 0
 			USB3_DP_QSERDES_COM_VCO_TUNE1_MODE1                        0x25 0
 			USB3_DP_QSERDES_COM_VCO_TUNE2_MODE1                        0x02 0
@@ -163,17 +164,18 @@
 			USB3_DP_QSERDES_COM_BIN_VCOCAL_CMP_CODE2_MODE1             0x1E 0
 			USB3_DP_QSERDES_COM_BIN_VCOCAL_CMP_CODE1_MODE0             0xB7 0
 			USB3_DP_QSERDES_COM_BIN_VCOCAL_CMP_CODE2_MODE0             0x1E 0
-			USB3_DP_QSERDES_COM_SSC_STEP_SIZE1_MODE0                   0x9E 0
-			USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE0                   0x06 0
+			USB3_DP_QSERDES_COM_SSC_STEP_SIZE1_MODE0                   0x55 0
+			USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE0                   0x0E 0
 			USB3_DP_QSERDES_COM_CP_CTRL_MODE0                          0x02 0
 			USB3_DP_QSERDES_COM_PLL_RCTRL_MODE0                        0x16 0
 			USB3_DP_QSERDES_COM_PLL_CCTRL_MODE0                        0x36 0
 			USB3_DP_QSERDES_COM_LOCK_CMP1_MODE0                        0x12 0
 			USB3_DP_QSERDES_COM_LOCK_CMP2_MODE0                        0x34 0
-			USB3_DP_QSERDES_COM_DEC_START_MODE0                        0x82 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START1_MODE0                  0xAB 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START2_MODE0                  0xEA 0
-			USB3_DP_QSERDES_COM_DIV_FRAC_START3_MODE0                  0x02 0
+			USB3_DP_QSERDES_COM_DEC_START_MODE0                        0x04 0
+			USB3_DP_QSERDES_COM_DEC_START_MSB_MODE0                    0x01 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START1_MODE0                  0x55 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START2_MODE0                  0xD5 0
+			USB3_DP_QSERDES_COM_DIV_FRAC_START3_MODE0                  0x05 0
 			USB3_DP_QSERDES_COM_VCO_TUNE1_MODE0                        0x25 0
 			USB3_DP_QSERDES_COM_VCO_TUNE2_MODE0                        0x02 0
 			USB3_DP_QSERDES_COM_BG_TIMER                               0x0E 0
@@ -185,7 +187,7 @@
 			USB3_DP_QSERDES_COM_LOCK_CMP_CFG                           0x14 0
 			USB3_DP_QSERDES_COM_VCO_TUNE_MAP                           0x04 0
 			USB3_DP_QSERDES_COM_CORE_CLK_EN                            0x20 0
-			USB3_DP_QSERDES_COM_CMN_CONFIG_1                           0x16 0
+			USB3_DP_QSERDES_COM_CMN_CONFIG_1                           0x04 0
 			USB3_DP_QSERDES_COM_AUTO_GAIN_ADJ_CTRL_1                   0xB6 0
 			USB3_DP_QSERDES_COM_AUTO_GAIN_ADJ_CTRL_2                   0x4B 0
 			USB3_DP_QSERDES_COM_AUTO_GAIN_ADJ_CTRL_3                   0x37 0
@@ -210,7 +212,7 @@
 			USB3_DP_QSERDES_RXA_UCDR_SB2_THRESH1                       0x08 0
 			USB3_DP_QSERDES_RXA_UCDR_SB2_THRESH2                       0x08 0
 			USB3_DP_QSERDES_RXA_UCDR_SB2_GAIN1                         0x00 0
-			USB3_DP_QSERDES_RXA_UCDR_SB2_GAIN2                         0x0A 0
+			USB3_DP_QSERDES_RXA_UCDR_SB2_GAIN2                         0x08 0
 			USB3_DP_QSERDES_RXA_AUX_DATA_TCOARSE_TFINE                 0xA0 0
 			USB3_DP_QSERDES_RXA_VGA_CAL_CNTRL1                         0x54 0
 			USB3_DP_QSERDES_RXA_VGA_CAL_CNTRL2                         0x0F 0
@@ -224,10 +226,10 @@
 			USB3_DP_QSERDES_RXA_SIGDET_CNTRL                           0x04 0
 			USB3_DP_QSERDES_RXA_SIGDET_DEGLITCH_CNTRL                  0x0E 0
 			USB3_DP_QSERDES_RXA_RX_MODE_00_LOW                         0x3F 0
-			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH                        0xBF 0
+			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH                        0xFF 0
 			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH2                       0xFF 0
 			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH3                       0xDF 0
-			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH4                       0xED 0
+			USB3_DP_QSERDES_RXA_RX_MODE_00_HIGH4                       0xFE 0
 			USB3_DP_QSERDES_RXA_RX_MODE_01_LOW                         0xDC 0
 			USB3_DP_QSERDES_RXA_RX_MODE_01_HIGH                        0x5C 0
 			USB3_DP_QSERDES_RXA_RX_MODE_01_HIGH2                       0x9C 0
@@ -259,7 +261,7 @@
 			USB3_DP_QSERDES_RXB_UCDR_SB2_THRESH1                       0x08 0
 			USB3_DP_QSERDES_RXB_UCDR_SB2_THRESH2                       0x08 0
 			USB3_DP_QSERDES_RXB_UCDR_SB2_GAIN1                         0x00 0
-			USB3_DP_QSERDES_RXB_UCDR_SB2_GAIN2                         0x0A 0
+			USB3_DP_QSERDES_RXB_UCDR_SB2_GAIN2                         0x08 0
 			USB3_DP_QSERDES_RXB_AUX_DATA_TCOARSE_TFINE                 0xA0 0
 			USB3_DP_QSERDES_RXB_VGA_CAL_CNTRL1                         0x54 0
 			USB3_DP_QSERDES_RXB_VGA_CAL_CNTRL2                         0x0F 0
@@ -272,11 +274,11 @@
 			USB3_DP_QSERDES_RXB_RX_EQ_OFFSET_ADAPTOR_CNTRL1            0x47 0
 			USB3_DP_QSERDES_RXB_SIGDET_CNTRL                           0x04 0
 			USB3_DP_QSERDES_RXB_SIGDET_DEGLITCH_CNTRL                  0x0E 0
-			USB3_DP_QSERDES_RXB_RX_MODE_00_LOW                         0xBF 0
-			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH                        0xBF 0
-			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH2                       0xBF 0
+			USB3_DP_QSERDES_RXB_RX_MODE_00_LOW                         0x3F 0
+			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH                        0xFF 0
+			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH2                       0xFF 0
 			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH3                       0xDF 0
-			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH4                       0xFD 0
+			USB3_DP_QSERDES_RXB_RX_MODE_00_HIGH4                       0xFE 0
 			USB3_DP_QSERDES_RXB_RX_MODE_01_LOW                         0xDC 0
 			USB3_DP_QSERDES_RXB_RX_MODE_01_HIGH                        0x5C 0
 			USB3_DP_QSERDES_RXB_RX_MODE_01_HIGH2                       0x9C 0
