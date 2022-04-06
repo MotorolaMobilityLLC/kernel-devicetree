@@ -293,6 +293,17 @@
 	};
 };
 
+&qupv3_se10_i2c {
+	status = "ok";
+	fsa4480: fsa4480@42 {
+		compatible = "qcom,fsa4480-i2c";
+		reg = <0x42>;
+		io-channels = <&mmi_discrete_charger PSY_IIO_TYPEC_ACCESSORY_MODE>;
+		io-channel-names = "typec_accessory_mode";
+		qcom,use-power-supply = <1>;
+	};
+};
+
 &holi_snd {
 	qcom,model = "holi-9370_aw882xx-snd-card";
 	qcom,msm-mi2s-master = <1>, <1>, <1>, <1>;
@@ -339,8 +350,6 @@
 		"VA DMIC1", "VA MIC BIAS1",
 		"VA DMIC2", "VA MIC BIAS3",
 		"VA DMIC3", "VA MIC BIAS3";
-	qcom,msm-mbhc-hphl-swh = <1>;
-	qcom,msm-mbhc-gnd-swh = <1>;
 	asoc-codec  = <&stub_codec>, <&bolero>,
 		      <&wcd937x_codec>,<&aw882xxacf>,<&aw882xxacf_recv>;
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec",
@@ -349,6 +358,10 @@
 				  <&bolero>;
 	qcom,msm-mbhc-hs-mic-max-threshold-mv = <2700>;
 	qcom,msm-mbhc-hs-mic-min-threshold-mv = <116>;
+	qcom,msm-mbhc-usbc-audio-supported = <1>;
+	qcom,msm-mbhc-hphl-swh = <0>;
+	qcom,msm-mbhc-gnd-swh = <0>;
+	fsa4480-i2c-handle = <&fsa4480>;
 };
 
 &qupv3_se10_i2c {
