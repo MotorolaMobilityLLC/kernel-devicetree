@@ -24,6 +24,7 @@
 #include "waipio-hiphic-se-overlay.dtsi"
 #include "cape-eqs-thermal-overlay.dtsi"
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include "cape-eqs-haptics-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
