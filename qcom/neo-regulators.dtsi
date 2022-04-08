@@ -311,13 +311,13 @@
 			regulator-min-microvolt =
 				<RPMH_REGULATOR_LEVEL_RETENTION>;
 			regulator-max-microvolt =
-				<RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_NOM>;
 			qcom,init-voltage-level =
-				<RPMH_REGULATOR_LEVEL_TURBO>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS>;
 			qcom,proxy-consumer-enable;
 			qcom,proxy-consumer-voltage =
-				<RPMH_REGULATOR_LEVEL_TURBO
-				 RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS
+				 RPMH_REGULATOR_LEVEL_NOM>;
 		};
 
 		VDD_CX_LEVEL_AO: S1A_LEVEL_AO:
@@ -327,7 +327,7 @@
 			regulator-min-microvolt =
 				<RPMH_REGULATOR_LEVEL_RETENTION>;
 			regulator-max-microvolt =
-				<RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_NOM>;
 			qcom,init-voltage-level =
 				<RPMH_REGULATOR_LEVEL_RETENTION>;
 		};
@@ -338,7 +338,7 @@
 			regulator-min-microvolt =
 				<RPMH_REGULATOR_LEVEL_MIN_SVS>;
 			regulator-max-microvolt =
-				<RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_NOM>;
 			qcom,init-voltage-level =
 				<RPMH_REGULATOR_LEVEL_MIN_SVS>;
 		};
@@ -431,14 +431,14 @@
 			pm8150_s7_level-parent-supply =
 				<&VDD_CX_MMCX_SUPPLY_LEVEL>;
 			regulator-min-microvolt =
-				<RPMH_REGULATOR_LEVEL_RETENTION>;
-			regulator-max-microvolt = <RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS>;
+			regulator-max-microvolt = <RPMH_REGULATOR_LEVEL_NOM>;
 			qcom,init-voltage-level =
-				<RPMH_REGULATOR_LEVEL_TURBO>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS>;
 			qcom,proxy-consumer-enable;
 			qcom,proxy-consumer-voltage =
-				<RPMH_REGULATOR_LEVEL_TURBO
-				 RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS
+				 RPMH_REGULATOR_LEVEL_NOM>;
 		};
 
 		VDD_MMCX_LEVEL_AO:
@@ -448,10 +448,10 @@
 			regulator-name = "pm8150_s7_level_ao";
 			qcom,set = <RPMH_REGULATOR_SET_ACTIVE>;
 			regulator-min-microvolt =
-				<RPMH_REGULATOR_LEVEL_RETENTION>;
-			regulator-max-microvolt = <RPMH_REGULATOR_LEVEL_MAX>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS>;
+			regulator-max-microvolt = <RPMH_REGULATOR_LEVEL_NOM>;
 			qcom,init-voltage-level =
-				<RPMH_REGULATOR_LEVEL_RETENTION>;
+				<RPMH_REGULATOR_LEVEL_LOW_SVS>;
 		};
 	};
 
