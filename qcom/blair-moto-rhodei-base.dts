@@ -43,3 +43,10 @@
 &mdss_dsi_phy0 {
 	/delete-property/ qcom,dsi-pll-ssc-en;
 };
+
+&soc {
+	icnss: qcom,icnss@C800000 {
+		/delete-property/ vdd-3.3-ch1-supply;
+		/delete-property/ qcom,vdd-3.3-ch1-config;
+	};
+};
