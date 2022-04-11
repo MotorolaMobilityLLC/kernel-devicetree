@@ -804,6 +804,7 @@
 
 	ddr_freq_table: ddr-freq-table {
 		qcom,freq-tbl =
+			<  451200 >,
 			<  547200 >,
 			<  681600 >,
 			<  768000 >,
@@ -899,6 +900,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
+					<  940800  451000 >,
 					< 1113600  547000 >,
 					< 1497600  768000 >,
 					< 1804800 1017000 >;
@@ -909,6 +911,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
+					< 1113600  451000 >,
 					< 1497600  547000 >,
 					< 1804800  768000 >;
 				qcom,sampling-enabled;
@@ -926,9 +929,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
-					< 1152000  300000 >,
-					< 1497600  466000 >,
-					< 1804800  600000 >;
+					< 1497600  300000 >;
 				qcom,sampling-enabled;
 			};
 		};
@@ -943,12 +944,11 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
-					<  300000  300000 >,
 					<  691200  556800 >,
-					<  806400  768000 >,
-					<  940800  940800 >,
-					< 1113600 1190400 >,
-					< 1804800 1516800 >;
+					< 1113600  768000 >,
+					< 1497600  940800 >,
+					< 1804800 1190400 >,
+					< 1996800 1516800 >;
 				qcom,sampling-enabled;
 			};
 		};
