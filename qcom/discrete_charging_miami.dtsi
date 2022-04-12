@@ -124,10 +124,12 @@
 		status = "okay";
 		compatible = "ti,bq25960-master";
 		reg = <0x66>;
+		sc8541-addr = <0x6B>;
+		sc8541-name = "sc8541-master";
 		#io-channel-cells = <1>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <57 0>;
-		ti,irq-gpio = <&tlmm 57 0>;
+		irq-gpio = <&tlmm 57 0>;
 	};
 
 };
@@ -138,10 +140,12 @@
 		status = "okay";
 		compatible = "ti,bq25960-slave";
 		reg = <0x67>;
+		sc8541-addr = <0x6C>;
+		sc8541-name = "sc8541-slave";
 		#io-channel-cells = <1>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <84 0>;
-		ti,irq-gpio = <&tlmm 84 0>;
+		irq-gpio = <&tlmm 84 0>;
 	};
 
 };
