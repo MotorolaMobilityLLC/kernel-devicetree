@@ -30,7 +30,7 @@
 
 	reserved_memory: reserved-memory { };
 
-	aliases {
+	aliases: aliases {
 		mmc0 = &sdhc_1; /*SDC1 eMMC slot*/
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
@@ -364,6 +364,14 @@
 		reusable;
 		alignment = <0x0 0x400000>;
 		size = <0x0 0xC00000>;
+	};
+
+	audio_cma_mem: audio_cma_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x1000000>;
 	};
 
 	sdsp_mem: sdsp_region {
@@ -1407,6 +1415,12 @@
 		status = "disabled";
 	};
 
+	/* Temporarily added for compilation */
+	adsp_variant: adsp_variant@114 {
+		reg = <0x117 0x1>;
+		bits = <2 6>;
+	};
+
 	eud: qcom,msm-eud@88e0000 {
 		compatible = "qcom,msm-eud";
 		interrupt-names = "eud_irq";
@@ -2214,6 +2228,15 @@
 
 &qupv3_se3_2uart {
 	status = "ok";
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+
+	fsa4480: fsa4480@42 {
+		compatible = "qcom,fsa4480-i2c";
+		reg = <0x42>;
+	};
 };
 
 #include "parrot-thermal.dtsi"
