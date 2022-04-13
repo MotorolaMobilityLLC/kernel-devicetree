@@ -21,3 +21,9 @@
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
 	qcom,board-id = <0x45 0xB2A0>;
 };
+
+&qupv3_se4_i2c {
+	goodix_ts_i2c@5d {
+		goodix,avdd-name = "pm8350c_l11";
+	};
+};
