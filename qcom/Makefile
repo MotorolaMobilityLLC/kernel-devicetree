@@ -345,10 +345,12 @@ ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 ifeq ($(CONFIG_ONELI_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-oneli-evt1-overlay.dtbo \
-	cape-oneli-dvt1b-overlay.dtbo
+	cape-oneli-dvt1b-overlay.dtbo \
+	cape-oneli-dvt2a-overlay.dtbo
 
 cape-oneli-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb
 cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
+cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb
 endif
 ifeq ($(CONFIG_EQS_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
