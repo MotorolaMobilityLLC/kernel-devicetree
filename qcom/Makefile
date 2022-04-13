@@ -44,6 +44,15 @@ waipio-overlays-dtb-$(CONFIG_ARCH_WAIPIO) += $(WAIPIO_BOARDS) $(NOAPQ_WAIPIO_BOA
 dtb-y += $(waipio-dtb-y)
 
 
+#remove useless qcom device tree in moto build
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_RTWO_DTB),y)
+KALAMA_BASE_DTB += kalama-rtwo-base.dtb kalama-v2-rtwo-base.dtb
+KALAMA_BOARDS += kalama-rtwo-evb1-overlay.dtbo
+endif
+
+else
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb kalama-sg.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb kalamap-sg.dtb
 
@@ -66,6 +75,7 @@ NOAPQ_KALAMA_BOARDS += \
 		 kalama-pinn-mtp-overlay.dtbo \
 		 kalama-baagha-cdp-overlay.dtbo \
 		 kalama-baagha-mtp-overlay.dtbo
+endif
 
 kalama-dtb-$(CONFIG_ARCH_KALAMA) += \
 	$(call add-overlays, $(KALAMA_BOARDS) $(NOAPQ_KALAMA_BOARDS),$(KALAMA_BASE_DTB))\
