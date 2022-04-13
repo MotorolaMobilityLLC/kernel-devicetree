@@ -261,25 +261,6 @@
 		};
 	};
 
-	rpmh-regulator-ldoa16 {
-		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "ldoa16";
-		qcom,regulator-type = "pmic5-ldo";
-		qcom,supported-modes =
-			<RPMH_REGULATOR_MODE_LPM
-			RPMH_REGULATOR_MODE_HPM>;
-		qcom,mode-threshold-currents = <0 10000>;
-		L16A:
-		pm8150_l16: regulator-pm8150-l16 {
-			regulator-name = "pm8150_l16";
-			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <1504000>;
-			regulator-max-microvolt = <3544000>;
-			qcom,init-voltage = <2600000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-	};
-
 	rpmh-regulator-ldoa17 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldoa17";
