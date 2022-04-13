@@ -350,7 +350,7 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 
 cape-oneli-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb
 cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
-cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb
+cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 endif
 ifeq ($(CONFIG_EQS_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
@@ -360,7 +360,7 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 
 cape-eqs-evt1-overlay.dtbo-base := cape-moto-eqs-base.dtb
 cape-eqs-evt2-overlay.dtbo-base := cape-moto-eqs-base.dtb
-cape-eqs-dvt1a-overlay.dtbo-base := cape-moto-eqs-base.dtb
+cape-eqs-dvt1a-overlay.dtbo-base := cape-moto-eqs-base.dtb cape-v2-moto-eqs-base.dtb
 endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
