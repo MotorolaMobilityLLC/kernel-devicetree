@@ -21,6 +21,7 @@
 #include "cape-oneli-fingerprint.dtsi"
 #include "cape-oneli-thermal-overlay.dtsi"
 #include "cape-oneli-haptics-overlay.dtsi"
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 &tlmm {
 	redriver_enable: redriver_enable {
@@ -114,6 +115,27 @@
                         bias-disable;
                         power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
                         qcom,drive-strength = <2>;
+		};
+	};
+};
+
+&apps_rsc {
+	rpmh-regulator-ldoc11 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldoc11";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 10000>;
+		L11C:
+		pm8350c_l11: regulator-pm8350c-l11 {
+			regulator-name = "pm8350c_l11";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <3000000>;
+			regulator-max-microvolt = <3000000>;
+			qcom,init-voltage = <3000000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
 };
