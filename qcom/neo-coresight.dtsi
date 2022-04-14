@@ -364,7 +364,6 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 		atid = <79>;
-		status = "disabled";
 
 		out-ports {
 			port {
@@ -782,7 +781,6 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
-		status = "disabled";
 		out-ports {
 			port {
 				tpdm_dl_north_out_tpda_dl_north: endpoint {
@@ -1750,7 +1748,6 @@
 		clock-names = "apb_pclk";
 		qcom,tpda-atid = <97>;
 
-		status = "disabled";
 		qcom,dsb-elem-size = <2 32>;
 		qcom,cmb-elem-size = <0 32>;
 
