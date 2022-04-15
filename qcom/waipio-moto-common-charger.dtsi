@@ -7,6 +7,7 @@
 		mmi,heartbeat-interval = <60000>;
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <20000>;
+		mmi,factory-kill-debounce-ms = <3000>;
 	};
 
 	qcom,pmic_glink {
