@@ -421,3 +421,7 @@
 };
 
 #include "neo_la-reserved-memory.dtsi"
+
+&kgsl_smmu {
+	status = "disabled";
+};
