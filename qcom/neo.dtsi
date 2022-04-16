@@ -2223,7 +2223,7 @@
 		reg = <0x4f>;
 		vdd18-supply = <&L15A>;
 		vdd3-supply = <&L2A>;
-		reset-gpio = <&tlmm 99 GPIO_ACTIVE_LOW>;
+		reset-gpio = <&tlmm 99 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&eusb2_reset_ctrl_default>;
 	};
