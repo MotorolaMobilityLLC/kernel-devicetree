@@ -23,6 +23,7 @@
 #include "cape-eqs-fingerprint-overlay.dtsi"
 #include "waipio-hiphic-se-overlay.dtsi"
 #include "cape-eqs-thermal-overlay.dtsi"
+#include "cape-eqs-charger-overlay.dtsi"
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include "cape-eqs-haptics-overlay.dtsi"
 
