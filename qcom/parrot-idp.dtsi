@@ -24,6 +24,10 @@
 	};
 };
 
+&pm6450_pwm_1 {
+	status = "ok";
+};
+
 &sdhc_1 {
 	status = "ok";
 
