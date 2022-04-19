@@ -1790,12 +1790,6 @@
 		status = "disabled";
 	};
 
-	/* Temporarily added for compilation */
-	adsp_variant: adsp_variant@114 {
-		reg = <0x117 0x1>;
-		bits = <2 6>;
-	};
-
 	eud: qcom,msm-eud@88e0000 {
 		compatible = "qcom,msm-eud";
 		interrupt-names = "eud_irq";
@@ -2335,6 +2329,11 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+
+		adsp_variant: adsp_variant@114 {
+			reg = <0x117 0x1>;
+			bits = <2 6>;
+		};
 
 		feat_conf12: feat_conf12@0130 {
 			reg = <0x0130 0x4>;
