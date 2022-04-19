@@ -71,46 +71,6 @@
 			qcom,dump-id = <0x7>;
 		};
 
-		c0_scandump {
-			qcom,dump-size = <0x10100>;
-			qcom,dump-id = <0x130>;
-		};
-
-		c100_scandump {
-			qcom,dump-size = <0x10100>;
-			qcom,dump-id = <0x131>;
-		};
-
-		c200_scandump {
-			qcom,dump-size = <0x10100>;
-			qcom,dump-id = <0x132>;
-		};
-
-		c300_scandump {
-			qcom,dump-size = <0x10100>;
-			qcom,dump-id = <0x133>;
-		};
-
-		c400_scandump {
-			qcom,dump-size = <0x40000>;
-			qcom,dump-id = <0x134>;
-		};
-
-		c500_scandump {
-			qcom,dump-size = <0x40000>;
-			qcom,dump-id = <0x135>;
-		};
-
-		c600_scandump {
-			qcom,dump-size = <0x40000>;
-			qcom,dump-id = <0x136>;
-		};
-
-		c700_scandump {
-			qcom,dump-size = <0x40000>;
-			qcom,dump-id = <0x137>;
-		};
-
 		cpuss_reg {
 			qcom,dump-size = <0x30000>;
 			qcom,dump-id = <0xef>;
@@ -294,11 +254,6 @@
 		l2_tlb700 {
 			qcom,dump-size = <0xc100>;
 			qcom,dump-id = <0x127>;
-		};
-
-		mhm_scan {
-			qcom,dump-size = <0x20000>;
-			qcom,dump-id = <0x161>;
 		};
 
 		rpmh {
