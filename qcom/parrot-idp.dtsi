@@ -89,3 +89,32 @@
 
 	cd-gpios = <&tlmm 107 GPIO_ACTIVE_LOW>;
 };
+
+&ufsphy_mem {
+	compatible = "qcom,ufs-phy-qmp-v4-parrot";
+
+	vdda-phy-supply = <&L5B>;
+	vdda-pll-supply = <&L16B>;
+	vdda-phy-max-microamp = <140000>;
+	vdda-pll-max-microamp = <18300>;
+
+	status = "ok";
+};
+
+&ufshc_mem {
+	vdd-hba-supply = <&gcc_ufs_phy_gdsc>;
+
+	vcc-supply = <&L24B>;
+	vcc-max-microamp = <1200000>;
+
+	vccq-supply = <&L13B>;
+	vccq-max-microamp = <1200000>;
+
+	vccq2-supply = <&L19B>;
+	vccq2-max-microamp = <750000>;
+
+	qcom,vddp-ref-clk-supply = <&L13B>;
+	qcom,vddp-ref-clk-max-microamp = <100>;
+
+	status = "ok";
+};
