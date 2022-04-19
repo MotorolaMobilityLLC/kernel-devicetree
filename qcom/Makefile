@@ -427,6 +427,23 @@ else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb
 endif
 
+ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
+	ravelin-mtp-overlay.dtbo \
+	ravelin-cdp-overlay.dtbo \
+	ravelin-qrd-overlay.dtbo
+
+ravelin-rumi-overlay.dtbo-base := ravelin.dtb
+ravelin-mtp-overlay.dtbo-base := ravelin.dtb
+ravelin-cdp-overlay.dtbo-base := ravelin.dtb
+ravelin-qrd-overlay.dtbo-base := ravelin.dtb
+else
+dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
+	ravelin-mtp.dtb \
+	ravelin-cdp.dtb \
+	ravelin-qrd.dtb
+endif
+
 ifeq ($(CONFIG_ARCH_LAHAINA), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
 dtb-$(CONFIG_ARCH_QTI_VM) += lahaina-vm-mtp.dtb \
