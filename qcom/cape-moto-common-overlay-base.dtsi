@@ -46,6 +46,7 @@
 			compatible = "qcom,bm-adsp-ulog";
 			categories = <0xFFBFFFFF>;
 			level = <4>;
+			init-log-enabled;
 		};
 	};
 };
