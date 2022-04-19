@@ -2545,6 +2545,11 @@
 		memory-region = <&va_md_mem>;
 		status = "ok";
 	};
+
+	hyp_core_ctl: qcom,hyp-core-ctl {
+		compatible = "qcom,hyp-core-ctl";
+		status = "ok";
+	};
 };
 
 #include "diwali-gdsc.dtsi"
