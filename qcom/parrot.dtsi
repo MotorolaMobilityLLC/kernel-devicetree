@@ -10,6 +10,7 @@
 #include <dt-bindings/clock/qcom,gpucc-parrot.h>
 #include <dt-bindings/clock/qcom,videocc-parrot.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/spmi/spmi.h>
 
 / {
@@ -1783,6 +1784,10 @@
 			<0 0>,
 			<0 0>,
 			<0 0>;
+
+		reset-gpios = <&tlmm 141 GPIO_ACTIVE_LOW>;
+		resets = <&gcc GCC_UFS_PHY_BCR>;
+		reset-names = "rst";
 
 		iommus = <&apps_smmu 0x20 0x0>;
 		qcom,iommu-dma = "fastmap";
