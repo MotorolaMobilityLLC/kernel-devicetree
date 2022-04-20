@@ -24,6 +24,10 @@
 #include "waipio-li-thermal-overlay.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
 
+&bm_adsp_ulog {
+	init-log-enabled;
+};
+
 &pm8350c_rgb {
 	red {
 		label = "charging";
