@@ -492,11 +492,6 @@
 		apps_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
 		};
-
-		dcvs_fp: qcom,dcvs-fp {
-			compatible = "qcom,dcvs-fp";
-			qcom,ddr-bcm-name = "MC3";
-		};
 	};
 
 	pdc: interrupt-controller@b220000 {
@@ -1133,13 +1128,6 @@
 				interconnects = <&gem_noc MASTER_APPSS_PROC
 						 &mc_virt SLAVE_EBI1>;
 			};
-
-			ddr_dcvs_fp: fp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <1>;
-				qcom,fp-voter = <&dcvs_fp>;
-			};
-
 		};
 
 		qcom_ddrqos_dcvs_hw: ddrqos {
@@ -1163,7 +1151,7 @@
 		ddr {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_ddr_dcvs_hw>;
-			qcom,sampling-path = <&ddr_dcvs_fp>;
+			qcom,sampling-path = <&ddr_dcvs_sp>;
 			qcom,miss-ev = <0x2A>;
 
 			silver {
