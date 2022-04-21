@@ -3,6 +3,7 @@
 &soc {
 	qupv3_se3_spi: spi@98c000 {  /* BLSP3 QUP3*/
 		status = "ok";
+		qcom,shared_ee;
 		qcom,helios-spi {
 			compatible = "qcom,helios-spi";
 			reg = <0>;
