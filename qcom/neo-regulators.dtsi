@@ -407,7 +407,7 @@
 
 		VDD_MXA_LEVEL_AO: S6A_LEVEL_AO:
 		pm8150_s6_level_ao: regulator-pm8150-s6-level-ao {
-			regulator-name = "pm8150_s10_level_ao";
+			regulator-name = "pm8150_s6_level_ao";
 			qcom,set = <RPMH_REGULATOR_SET_ACTIVE>;
 			regulator-min-microvolt =
 				<RPMH_REGULATOR_LEVEL_RETENTION>;
