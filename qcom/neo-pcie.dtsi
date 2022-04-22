@@ -1,4 +1,5 @@
 #include <dt-bindings/clock/qcom,gcc-neo.h>
+#include <dt-bindings/clock/qcom,tcsrcc.h>
 #include <dt-bindings/gpio/gpio.h>
 
 &soc {
@@ -34,6 +35,8 @@
 				0 0 0 3 &intc GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH
 				0 0 0 4 &intc GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH>;
 
+		msi-parent = <&pcie0_msi>;
+
 		perst-gpio = <&tlmm 55 GPIO_ACTIVE_HIGH>;
 		wake-gpio = <&tlmm 57 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default", "sleep";
@@ -45,6 +48,7 @@
 				&pcie0_wake_default>;
 
 		gdsc-vdd-supply = <&gcc_pcie_0_gdsc>;
+		gdsc-phy-vdd-supply = <&gcc_pcie_0_phy_gdsc>;
 		vreg-1p8-supply = <&pm8150_l3>;
 		vreg-0p9-supply = <&pm8150_l8>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
@@ -89,7 +93,7 @@
 		clock-names = "pcie_0_pipe_clk", "pcie_0_ref_clk_src",
 				"pcie_0_aux_clk", "pcie_0_cfg_ahb_clk",
 				"pcie_0_mstr_axi_clk", "pcie_0_slv_axi_clk",
-				"pcie_clkref_en", "pcie_0_slv_q2a_axi_clk",
+				"pcie_0_ldo", "pcie_0_slv_q2a_axi_clk",
 				"pcie_phy_refgen_clk",
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_1_axi_clk",
@@ -110,6 +114,7 @@
 		iommu-map = <0x0 &apps_smmu 0x1c00 0x1>,
 			<0x100 &apps_smmu 0x1c01 0x1>;
 
+		qcom,device-vendor-id = <0x011317cb>;
 		qcom,boot-option = <0x1>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
 		qcom,drv-supported;
@@ -316,6 +321,8 @@
 				0 0 0 3 &intc GIC_SPI 436 IRQ_TYPE_LEVEL_HIGH
 				0 0 0 4 &intc GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
 
+		msi-parent = <&pcie1_msi>;
+
 		perst-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
 		wake-gpio = <&tlmm 60 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default", "sleep";
@@ -327,6 +334,7 @@
 				&pcie1_wake_default>;
 
 		gdsc-vdd-supply = <&gcc_pcie_1_gdsc>;
+		gdsc-phy-vdd-supply = <&gcc_pcie_1_phy_gdsc>;
 		vreg-1p8-supply = <&pm8150_l3>;
 		vreg-0p9-supply = <&pm8150_l8>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
@@ -370,7 +378,7 @@
 		clock-names = "pcie_1_pipe_clk", "pcie_1_ref_clk_src",
 				"pcie_1_aux_clk", "pcie_1_cfg_ahb_clk",
 				"pcie_1_mstr_axi_clk", "pcie_1_slv_axi_clk",
-				"pcie_clkref_en", "pcie_1_slv_q2a_axi_clk",
+				"pcie_1_ldo", "pcie_1_slv_q2a_axi_clk",
 				"pcie_phy_refgen_clk",
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_1_axi_clk",
@@ -391,6 +399,7 @@
 		iommu-map = <0x0 &apps_smmu 0x1e00 0x1>,
 			<0x100 &apps_smmu 0x1e01 0x1>;
 
+		qcom,device-vendor-id = <0x011317cb>;
 		qcom,boot-option = <0x1>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
 		qcom,drv-supported;
