@@ -535,7 +535,7 @@
 			pcie0_clkreq_default: pcie0_clkreq_default {
 				mux {
 					pins = "gpio56";
-					function = "pcie0_clkreqn";
+					function = "PCIE0_CLK_REQ_N";
 				};
 
 				config {
@@ -589,7 +589,7 @@
 			pcie1_clkreq_default: pcie1_clkreq_default {
 				mux {
 					pins = "gpio59";
-					function = "pcie1_clkreqn";
+					function = "PCIE1_CLK_REQ_N";
 				};
 
 				config {
