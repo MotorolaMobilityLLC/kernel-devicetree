@@ -343,6 +343,7 @@
 	qcom_scm {
 		compatible = "qcom,scm";
 		qcom,dload-mode = <&tcsr 0x13000>;
+		memory-region = <&system_cma>;
 	};
 
 	qtee_shmbridge {
