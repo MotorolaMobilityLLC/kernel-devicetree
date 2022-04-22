@@ -1581,7 +1581,7 @@
 	rpmh-sleep-stats@c3f0000 {
 		compatible = "qcom,rpmh-sleep-stats";
 		reg = <0xc3f0000 0x400>;
-		ss-name = "adsp", "adsp_island", "cdsp", "apss";
+		ss-name = "adsp", "adsp_island", "cdsp", "apss", "wpss";
 		mboxes = <&qmp_aop 0>;
 		ddr-freq-update;
 	};
