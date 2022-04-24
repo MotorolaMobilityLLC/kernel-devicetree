@@ -208,6 +208,7 @@
 		mmi,heartbeat-interval = <5000>;
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <15000>;
+		mmi,wls-power-max = <5000>;
 	};
 
 	mmi_discrete_charger: mmi,discrete-charging {
@@ -223,6 +224,7 @@
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,otg-cl-ua = <1200000>;
+		mmi,wls-max-icl-ua = <1000000>;
 		mmi,df-serialnum = "SB18D50729";
 		mmi,mmi-temp-zones = <0 4200 800 0>,
 				<10 4250 2000 1000>,
