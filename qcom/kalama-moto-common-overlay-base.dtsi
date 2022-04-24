@@ -62,6 +62,18 @@
 			linux,can-disable;
 		};
 	};
+
+	qcom,pmic_glink_log {
+		qcom,charger_ulog_glink {
+			status = "disabled";
+		};
+		bm_adsp_ulog: qcom,bm_adsp_ulog {
+			compatible = "qcom,bm-adsp-ulog";
+			categories = <0xFFBFFFFF>;
+			level = <4>;
+			init-log-enabled;
+		};
+	};
 };
 
 &pm8550b_haptics {
@@ -131,6 +143,19 @@
 	status = "ok";
 };
 
+&pm8550_rgb {
+	red {
+		label = "charging";
+	};
+
+	green {
+		status = "disabled";
+	};
+
+	blue {
+		status = "disabled";
+	};
+};
 
 &qupv3_se4_i2c {
 	#address-cells = <1>;
