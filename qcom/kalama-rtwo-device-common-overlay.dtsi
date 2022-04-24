@@ -13,4 +13,41 @@
 /* This file is only for rtwo device */
 
 #include "kalama-rtwo-products-common-overlay.dtsi"
+#include "kalama-moto-common-charger.dtsi"
 
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&qupv3_hub_i2c2 {
+	status = "ok";
+	#include "kalama-moto-common-redriver.dtsi"
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
