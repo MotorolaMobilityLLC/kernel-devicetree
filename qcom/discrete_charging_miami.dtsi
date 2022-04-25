@@ -114,6 +114,8 @@
 		compatible = "mitsumi,mm8013c10";
 		reg = <0x55>;
 		status = "okay";
+		io-channels = <&pmk8350_vadc PMK8350_ADC7_AMUX_THM2_100K_PU>;
+		io-channel-names = "batt_therm";
 
 	};
 };
