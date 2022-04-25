@@ -19,6 +19,7 @@
 #include "cape-oneli-touchscreen-overlay.dtsi"
 #include "cape-oneli-evt1-sensor-overlay.dtsi"
 #include "cape-oneli-fingerprint.dtsi"
+#include "waipio-li-charger-overlay.dtsi"
 #include "cape-oneli-thermal-overlay.dtsi"
 #include "cape-oneli-haptics-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
