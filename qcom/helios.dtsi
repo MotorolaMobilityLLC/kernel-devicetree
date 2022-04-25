@@ -13,6 +13,12 @@
 		};
 	};
 
+	qcom,rproc-helios {
+		compatible = "qcom,rproc-helios";
+		qcom,firmware-name = "XRC130.elf";
+		qcom,ssr-name = "helios";
+	};
+
 	qcom,helios-daemon {
 		compatible = "qcom,helios-daemon";
 	};
