@@ -64,14 +64,14 @@
 				15 00 00 00 00 00 02 55 01
 				15 00 00 00 00 00 02 35 00
 				05 01 00 00 78 00 01 11
-				05 01 00 00 78 00 01 29
+				05 01 00 00 32 00 01 29
 				15 01 00 00 00 00 02 AC 05
 				];
 				qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 				qcom,mdss-dsi-off-command = [
 					15 00 00 00 00 00 02 AC 0A
 					05 01 00 00 10 00 01 28
-					05 01 00 00 32 00 01 10
+					05 01 00 00 64 00 01 10
 				];
 				qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
 				qcom,compression-mode = "dsc";
