@@ -2448,9 +2448,11 @@
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
 
-		nvmem-cells = <&feat_conf12>,
+		nvmem-cells = <&adsp_variant>,
+				<&feat_conf12>,
 				<&feat_conf13>;
-		nvmem-cell-names = "feat_conf12",
+		nvmem-cell-names = "adsp_variant",
+				"feat_conf12",
 				"feat_conf13";
 	};
 
