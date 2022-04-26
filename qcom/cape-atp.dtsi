@@ -116,7 +116,7 @@
 				/* Rx squelch detection threshold to 117mV; default is 104mV */
 				<0x2 0x73
 				/* Tx Pre-emphasis to 2.1dB; default is 0.5dB for both */
-				0x3b 0x77
+				0x3b 0x71
 				/* Output Voltage Swing to 490mV; default is 400mV */
 				0x7c 0x70>;
 	};
