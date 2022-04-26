@@ -172,6 +172,47 @@
 	};
 };
 
+&soc {
+	dsi_panel_pwr_supply_icnl9922_rhodec: dsi_panel_pwr_supply_icnl9922_rhodec{
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		qcom,panel-supply-entry@0 {
+			reg = <0>;
+			qcom,supply-name = "vddio";
+			qcom,supply-min-voltage = <1800000>;
+			qcom,supply-max-voltage = <1904000>;
+			qcom,supply-enable-load = <32000>;
+			qcom,supply-disable-load = <80>;
+			qcom,supply-pre-on-sleep = <3>;
+			qcom,supply-pre-off-sleep = <150>;
+		};
+
+		qcom,panel-supply-entry@1 {
+			reg = <1>;
+			qcom,supply-name = "lab";
+			qcom,supply-min-voltage = <5500000>;
+			qcom,supply-max-voltage = <5500000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-on-sleep = <3>;
+		};
+
+		qcom,panel-supply-entry@2 {
+			reg = <2>;
+			qcom,supply-name = "ibb";
+			qcom,supply-min-voltage = <5500000>;
+			qcom,supply-max-voltage = <5500000>;
+			qcom,supply-enable-load = <100000>;
+			qcom,supply-disable-load = <100>;
+			qcom,supply-pre-off-sleep = <3>;
+			qcom,supply-post-on-sleep = <3>;
+			qcom,supply-post-off-sleep = <3>;
+		};
+
+	};
+};
+
 &dsi_nt36672c_fhd_plus_120_video {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
@@ -223,7 +264,7 @@
         qcom,platform-te-gpio = <&tlmm 23 0>;
         qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-        qcom,panel-supply-entries = <&dsi_panel_pwr_supply_rhodec>;
+        qcom,panel-supply-entries = <&dsi_panel_pwr_supply_icnl9922_rhodec>;
         qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_i2c";
         qcom,mdss-dsi-bl-min-level = <8>;
         qcom,mdss-dsi-bl-max-level = <2047>;
@@ -256,7 +297,7 @@
         qcom,mdss-dsi-t-clk-pre = <0x39>;
         qcom,mdss-dsi-display-timings {
                 timing@0 {
-                        qcom,mdss-dsi-panel-phy-timings = [00 1A 06 06 22 20 07 07 07 02 04 00];
+                        qcom,mdss-dsi-panel-phy-timings = [00 1B 06 06 22 20 07 07 07 02 04 00];
                         qcom,display-topology = <1 1 1>;
                         qcom,default-topology-index = <0>;
                 };
