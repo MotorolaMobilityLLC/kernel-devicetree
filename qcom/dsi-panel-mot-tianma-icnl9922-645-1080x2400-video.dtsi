@@ -26,9 +26,25 @@
 		qcom,mdss-pan-physical-width-dimension = <68>;
 		qcom,mdss-pan-physical-height-dimension = <150>;
 
-		qcom,mdss-dsi-cabc-mv-command = [15 01 00 00 00 00 02 55 03];
+		qcom,mdss-dsi-cabc-mv-command = [
+				15 00 00 00 00 00 02 55 03
+				39 00 00 00 00 00 03 F0 5A 59
+				39 00 00 00 00 00 03 F1 A5 A6
+				39 00 00 00 00 00 21 E7 30 00 40 00 01 1F 20 42 1F A0 24 CC 01 00 00 30 18 15 00 A8 FF FF F0 F0 F0 F0 F0 FF F5 F8 FB FF
+				39 00 00 00 00 00 21 E8 04 10 24 38 4C 60 74 88 9C B0 C4 D8 98 84 BB BB CD DD EE FF E7 EF F7 FF 87 10 99 FB 5D BF 21 84
+				39 00 00 00 00 00 03 F0 A5 A5
+				39 01 00 00 00 00 03 F1 5A 5A
+				];
 		qcom,mdss-dsi-cabc-mv-command-state =  "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-ui-command = [15 01 00 00 00 00 02 55 01];
+		qcom,mdss-dsi-cabc-ui-command = [
+				15 00 00 00 00 00 02 55 01
+				39 00 00 00 00 00 03 F0 5A 59
+				39 00 00 00 00 00 03 F1 A5 A6
+				39 00 00 00 00 00 21 E7 30 00 40 00 01 1F 20 42 1F A0 24 CC 01 00 00 30 18 15 00 A8 F0 F0 F0 F8 F8 F8 F8 FF FC FC FD FF
+				39 00 00 00 00 00 21 E8 04 10 24 38 4C 60 74 88 9C B0 C4 D8 98 84 EE EE EE FF FF FF 20 37 4E 66 9C D3 0A 3B 6C 9D CE FF
+				39 00 00 00 00 00 03 F0 A5 A5
+				39 01 00 00 00 00 03 F1 5A 5A
+				];
 		qcom,mdss-dsi-cabc-ui-command-state =  "dsi_hs_mode";
 		qcom,mdss-dsi-cabc-dis-command = [15 01 00 00 00 00 02 55 00];
 		qcom,mdss-dsi-cabc-dis-command-state =  "dsi_hs_mode";
@@ -48,7 +64,6 @@
 				39 00 00 00 00 00 03 F0 5A 59
 				39 00 00 00 00 00 03 F1 A5 A6
 				39 00 00 00 00 00 03 F0 B4 4B
-				39 00 00 00 00 00 21 E7 30 00 40 00 01 1F 20 42 1F A0 24 CC 01 00 00 30 18 15 00 A8 F0 F0 F0 F8 F8 F8 F8 FF FC FC FD FF
 				39 00 00 00 00 00 10 70 41 12 00 05 00 5A 00 6F 00 77 00 31 02 20 20
 				39 00 00 00 00 00 21 71 11 00 00 89 30 80 09 60 04 38 00 08 02 1C 02 1C 02 00 02 0E 00 20 00 BB 00 07 00 0C 0D B7 0C B7
 				39 00 00 00 00 00 21 72 18 00 10 F0 03 0C 20 00 06 0B 0B 33 0E 1C 2A 38 46 54 62 69 70 77 79 7B 7D 7E 01 02 01 00 09 40
@@ -63,6 +78,12 @@
 				15 00 00 00 00 00 02 53 2C
 				15 00 00 00 00 00 02 55 01
 				15 00 00 00 00 00 02 35 00
+				39 00 00 00 00 00 03 F0 5A 59
+				39 00 00 00 00 00 03 F1 A5 A6
+				39 00 00 00 00 00 21 E7 30 00 40 00 01 1F 20 42 1F A0 24 CC 01 00 00 30 18 15 00 A8 F0 F0 F0 F8 F8 F8 F8 FF FC FC FD FF
+				39 00 00 00 00 00 21 E8 04 10 24 38 4C 60 74 88 9C B0 C4 D8 98 84 EE EE EE FF FF FF 20 37 4E 66 9C D3 0A 3B 6C 9D CE FF
+				39 00 00 00 00 00 03 F0 A5 A5
+				39 01 00 00 00 00 03 F1 5A 5A
 				05 01 00 00 78 00 01 11
 				05 01 00 00 32 00 01 29
 				15 01 00 00 00 00 02 AC 05
