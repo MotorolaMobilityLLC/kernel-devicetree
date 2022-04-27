@@ -296,12 +296,6 @@
 				hysteresis = <3000>;
 				type = "passive";
 			};
-
-			qtm_config2: qtm-config2 {
-				temperature = <85000>;
-				hysteresis = <2000>;
-				type = "passive";
-			};
 		};
 
 		cooling-maps {
@@ -313,11 +307,6 @@
 			mmw2_cdev1 {
 				trip = <&qtm_config1>;
 				cooling-device = <&mmw1_dsc 3 3>;
-			};
-
-			mmw2_cdev2 {
-				trip = <&qtm_config2>;
-				cooling-device = <&mmw1_dsc 4 4>;
 			};
 		};
 	};
@@ -337,13 +326,13 @@
 			};
 
 			skin_config2: skin-config2 {
-				temperature = <53000>;
+				temperature = <65000>;
 				hysteresis = <2000>;
 				type = "passive";
 			};
 
 			skin_config3: skin-config3 {
-				temperature = <56000>;
+				temperature = <85000>;
 				hysteresis = <2000>;
 				type = "passive";
 			};
@@ -363,11 +352,6 @@
 			nr_scg_cdev2 {
 				trip = <&skin_config2>;
 				cooling-device = <&modem_nr_scg_dsc 10 10>;
-			};
-
-			nr_cdev2 {
-				trip = <&skin_config2>;
-				cooling-device = <&modem_nr_dsc 9 9>;
 			};
 
 			nr_cdev3 {
