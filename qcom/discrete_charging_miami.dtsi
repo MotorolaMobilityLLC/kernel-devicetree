@@ -167,6 +167,9 @@
 		io-channel-names = "otg_enable";
 
 		wireless-fw-name = "cps4019.hex";
+		fw_ver_major = <0>;
+		fw_ver_minor = <6>;
+
 		use_bl_in_h;
 	};
 };
