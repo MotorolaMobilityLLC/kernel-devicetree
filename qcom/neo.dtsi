@@ -426,6 +426,7 @@
 		cell-index = <0>;
 		qcom,channel = <0>;
 		qcom,ee = <0>;
+		qcom,mid = <0>;
 		qcom,bus-id = <0>;
 	};
 
