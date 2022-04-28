@@ -155,7 +155,7 @@
 			L3I: pm8010i_l3: regulator@4200 {
 				reg = <0x4200>;
 				regulator-name = "pm8010i_l3";
-				regulator-min-microvolt = <2600000>;
+				regulator-min-microvolt = <1800000>;
 				regulator-max-microvolt = <3000000>;
 				qcom,min-dropout-voltage = <152000>;
 				qcom,hpm-min-load = <0>;
