@@ -101,3 +101,8 @@
 	clocks = <&bi_tcxo>, <&sleep_clk>,
 		<&gcc GCC_VIDEO_AHB_CLK>;
 };
+
+&camcc {
+	clocks = <&bi_tcxo>, <&sleep_clk>,
+		<&gcc GCC_CAMERA_AHB_CLK>;
+};
