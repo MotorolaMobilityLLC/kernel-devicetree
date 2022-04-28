@@ -69,7 +69,7 @@
 			snps,dis_u2_susphy_quirk;
 			tx-fifo-resize;
 			dr_mode = "peripheral";
-			maximum-speed = "high-speed";
+			maximum-speed = "super-speed";
 		};
 
 	};
