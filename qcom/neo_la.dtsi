@@ -460,6 +460,25 @@
 	};
 };
 
+&mc_virt {
+	compatible = "qcom,neo_la-mc_virt";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+&mmss_noc {
+	compatible = "qcom,neo_la-mmss_noc";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+&gem_noc {
+	compatible = "qcom,neo_la-gem_noc";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+
 #include "neo_la-reserved-memory.dtsi"
 
 &kgsl_smmu {
