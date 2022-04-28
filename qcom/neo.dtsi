@@ -25,7 +25,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access";
+		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -1064,6 +1064,11 @@
 		label = "core";
 		qcom,threshold-arr = <0x17800058 0x17810058 0x17820058 0x17830058>;
 		qcom,config-arr = <0x17800060 0x17810060 0x17820060 0x17830060>;
+	};
+
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
 	};
 
 	dload_mode {
