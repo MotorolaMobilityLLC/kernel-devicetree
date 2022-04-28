@@ -1604,6 +1604,10 @@
 		compatible = "qcom,dload-mode";
 	};
 
+	microdump_modem {
+		compatible = "qcom,microdump_modem";
+	};
+
 	cache-controller@19200000 {
 		compatible = "qcom,diwali-llcc", "qcom,llcc-v21";
 		reg = <0x19200000 0x180000> , <0x19A00000 0x80000>;
