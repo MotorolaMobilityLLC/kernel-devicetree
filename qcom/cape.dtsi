@@ -2242,6 +2242,10 @@
 		compatible = "qcom,dload-mode";
 	};
 
+	microdump_modem {
+		compatible = "qcom,microdump_modem";
+	};
+
 	tcsr: syscon@1fc0000 {
 		compatible = "syscon";
 		reg = <0x1fc0000 0x30000>;
