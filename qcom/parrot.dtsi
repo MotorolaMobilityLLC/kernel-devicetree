@@ -1748,7 +1748,7 @@
 		qcom,hyplog-enabled;
 		hyplog-address-offset = <0x410>;
 		hyplog-size-offset = <0x414>;
-		status = "disabled";
+		status = "ok";
 	};
 
 	qcom_qseecom: qseecom@c1700000 {
