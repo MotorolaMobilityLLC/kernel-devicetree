@@ -125,6 +125,7 @@
 		qcom,ep-latency = <10>;
 		qcom,num-parf-testbus-sel = <0xb9>;
 		qcom,config-recovery;
+		qcom,target-link-speed = <0x2>;
 
 		qcom,pcie-phy-ver = <97>;
 		qcom,phy-status-offset = <0x214>;
