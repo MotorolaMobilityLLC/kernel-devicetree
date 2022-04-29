@@ -99,5 +99,7 @@
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
+		mmi,fod_detection;
+		mmi,fod_coords = <540 2159>;
 	};
 };
