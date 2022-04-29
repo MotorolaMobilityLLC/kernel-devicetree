@@ -1,0 +1,110 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&pm8550b_haptics {
+	qcom,vmax-mv = <1470>;
+	qcom,lra-period-us = <5880>;
+	status = "ok";
+
+	effect_0 {
+		/* CLICK */
+		qcom,effect-id = <0>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_1 {
+		/* DOUBLE_CLICK */
+		qcom,effect-id = <1>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_2 {
+		/* TICK */
+		qcom,effect-id = <2>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_3 {
+		/* THUD */
+		qcom,effect-id = <3>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_4 {
+		/* POP */
+		qcom,effect-id = <4>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_5 {
+		/* HEAVY CLICK */
+		qcom,effect-id = <5>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+
+	effect_21 {
+		/* TEXTURE_TICK */
+		qcom,effect-id = <21>;
+		qcom,wf-vmax-mv = <5000>;
+		qcom,wf-pattern-data =  <0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA  0>,
+					<0x0ff  S_PERIOD_T_LRA_DIV_2 0>;
+		qcom,wf-pattern-period-us = <5880>;
+		qcom,wf-brake-mode = <BRAKE_OPEN_LOOP>;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0xff 0x9f 0x6f 0x3f 0x1f>;
+		qcom,wf-auto-res-disable;
+	};
+};
+
+
