@@ -2085,6 +2085,19 @@
 		};
 	};
 
+	qfprom: qfprom@221c8000 {
+		compatible = "qcom,qfprom";
+		reg = <0x221c8000 0x1000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		read-only;
+		ranges;
+	};
+
+	qfprom_sys: qfprom@0 {
+		compatible = "qcom,qfprom-sys";
+	};
+
 	eud: qcom,msm-eud@88e0000 {
 		compatible = "qcom,msm-eud";
 		interrupt-names = "eud_irq";
