@@ -27,5 +27,10 @@
 					0x2000 3
 					0x4400 2>;
 			};
+		qcom,glinkpkt_disp_bus {
+			qcom,glink-channels = "AH_BUS";
+			qcom,intents = <0x100 1
+					0x200 1>;
+			};
 	};
 };
