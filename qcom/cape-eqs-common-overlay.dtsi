@@ -101,3 +101,7 @@
 &usb0 {
 	ssusb_redriver = <&redriver>;
 };
+
+&sdhc_2 {
+	status = "disabled";
+};
