@@ -1236,6 +1236,12 @@
 			qcom,glinkpkt-ch-name = "apr_apps2";
 			qcom,glinkpkt-dev-name = "apr_apps2";
 		};
+
+		qcom,glinkpkt-disp-bus {
+			qcom,glinkpkt-edge = "helios";
+			qcom,glinkpkt-ch-name = "AH_BUS";
+			qcom,glinkpkt-dev-name = "glinkpkt_disp_bus";
+		};
 	};
 
 	clk_virt: interconnect@0 {
