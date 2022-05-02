@@ -89,6 +89,10 @@
 
 };
 
+&qupv3_se6_2uart {
+	qcom,rumi_platform;
+};
+
 &gcc {
 	clocks = <&bi_tcxo>, <&sleep_clk>,
 		<&pcie_0_pipe_clk>, <&pcie_1_pipe_clk>,
