@@ -13,12 +13,12 @@
 		pri_aux_pcm_clk {
 			pri_aux_pcm_clk_sleep: pri_aux_pcm_clk_sleep {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "gpio";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <2>;   /* 2 mA */
 					bias-pull-down;         /* PULL DOWN */
 					input-enable;
@@ -27,12 +27,12 @@
 
 			pri_aux_pcm_clk_active: pri_aux_pcm_clk_active {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "i2s0_sck";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <8>;   /* 8 mA */
 					bias-disable;           /* NO PULL */
 					output-high;
@@ -131,12 +131,12 @@
 		pri_tdm_clk {
 			pri_tdm_clk_sleep: pri_tdm_clk_sleep {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "gpio";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <2>;   /* 2 mA */
 					bias-pull-down;         /* PULL DOWN */
 					input-enable;
@@ -145,12 +145,12 @@
 
 			pri_tdm_clk_active: pri_tdm_clk_active {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "i2s0_sck";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <8>;   /* 8 mA */
 					bias-disable;           /* NO PULL */
 					output-high;
@@ -249,12 +249,12 @@
 		pri_mi2s_sck {
 			pri_mi2s_sck_sleep: pri_mi2s_sck_sleep {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "gpio";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <2>;   /* 2 mA */
 					bias-pull-down;         /* PULL DOWN */
 					input-enable;
@@ -263,12 +263,12 @@
 
 			pri_mi2s_sck_active: pri_mi2s_sck_active {
 				mux {
-					pins = "gpio99";
+					pins = "gpio98";
 					function = "i2s0_sck";
 				};
 
 				config {
-					pins = "gpio99";
+					pins = "gpio98";
 					drive-strength = <8>;   /* 8 mA */
 					bias-disable;           /* NO PULL */
 					output-high;
@@ -390,6 +390,36 @@
 
 				config {
 					pins = "gpio105";
+					drive-strength = <16>;   /* 16 mA */
+					bias-disable;
+					output-high;
+				};
+			};
+		};
+
+		spkr_1_1_sd_n {
+			spkr_1_1_sd_n_sleep: spkr_1_1_sd_n_sleep {
+				mux {
+					pins = "gpio30";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio30";
+					drive-strength = <2>;   /* 2 mA */
+					bias-pull-down;
+					input-enable;
+				};
+			};
+
+			spkr_1_1_sd_n_active: spkr_1_1_sd_n_active {
+				mux {
+					pins = "gpio30";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio30";
 					drive-strength = <16>;   /* 16 mA */
 					bias-disable;
 					output-high;
