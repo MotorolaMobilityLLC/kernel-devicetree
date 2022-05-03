@@ -118,6 +118,14 @@
 		io-channel-names = "batt_therm";
 
 	};
+
+	rt1711h@4e {
+		dpm_caps {
+			/* 0: disable, 1: prefer_ufp, 2: prefer_dfp */
+			dr_check = <2>;
+		};
+	};
+
 };
 
 &qupv3_se2_i2c {
