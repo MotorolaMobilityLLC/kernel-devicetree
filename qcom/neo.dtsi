@@ -1344,6 +1344,7 @@
 		ipclite_apss: apss {
 			qcom,remote-pid = <0>;
 			label = "apss";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1389,6 +1390,7 @@
 		ipclite_cdsp: cdsp {
 			qcom,remote-pid = <5>;
 			label = "cdsp";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1434,6 +1436,7 @@
 		ipclite_cvp: cvp {
 			qcom,remote-pid = <6>;
 			label = "cvp";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1479,6 +1482,7 @@
 		ipclite_vpu: vpu {
 			qcom,remote-pid = <8>;
 			label = "vpu";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
