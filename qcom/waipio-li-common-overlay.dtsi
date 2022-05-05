@@ -226,10 +226,11 @@
 				    <60 4200 679 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,paired-ichg-table = <3 1200
-					 6 900
-					 9 600
-					 12 300>;
+		// delta_ocv ichg map table
+		mmi,paired-ichg-table = <60 1200
+					 90 900
+					 120 600
+					 150 300>;
 		mmi,paired-load-thres = <800 400>;
 	};
 };
