@@ -18,6 +18,7 @@
 #include "kalama-rtwo-haptics-overlay.dtsi"
 #include "kalama-rtwo-fingerprint-overlay.dtsi"
 #include "kalama-rtwo-touchscreen-overlay.dtsi"
+#include "moto-rtwo-wl2868c.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
