@@ -760,6 +760,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,hw-enable-check;
 		out-ports {
 			port {
 				tpdm_dcc_out_tpda_qdss: endpoint {
