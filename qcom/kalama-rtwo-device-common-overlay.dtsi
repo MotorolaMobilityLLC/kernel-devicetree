@@ -19,6 +19,7 @@
 #include "kalama-rtwo-fingerprint-overlay.dtsi"
 #include "kalama-rtwo-touchscreen-overlay.dtsi"
 #include "moto-rtwo-wl2868c.dtsi"
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 &tlmm {
 	redriver_enable: redriver_enable {
@@ -55,4 +56,25 @@
 
 &usb0 {
 	ssusb_redriver = <&redriver>;
+};
+
+&apps_rsc_drv2 {
+       rpmh-regulator-ldob4 {
+               compatible = "qcom,rpmh-vrm-regulator";
+               qcom,resource-name = "ldob4";
+               qcom,regulator-type = "pmic5-ldo";
+               qcom,supported-modes =
+                       <RPMH_REGULATOR_MODE_LPM
+                        RPMH_REGULATOR_MODE_HPM>;
+               qcom,mode-threshold-currents = <0 10000>;
+
+               L4B: pm_humu_l4: regulator-pm-humu-l4 {
+                       regulator-name = "pm_humu_l4";
+                       qcom,set = <RPMH_REGULATOR_SET_ALL>;
+                       regulator-min-microvolt = <1800000>;
+                       regulator-max-microvolt = <1800000>;
+                       qcom,init-voltage = <1800000>;
+                       qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+               };
+       };
 };
