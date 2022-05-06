@@ -69,7 +69,7 @@
 			snps,dis_u2_susphy_quirk;
 			tx-fifo-resize;
 			dr_mode = "peripheral";
-			maximum-speed = "high-speed";
+			maximum-speed = "super-speed";
 		};
 
 	};
@@ -118,6 +118,9 @@
 		clock-names = "aux_clk", "pipe_clk", "pipe_clk_mux",
 				"pipe_clk_ext_src", "ref_clk_src",
 				"com_aux_clk";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb3phy_portselect_default>;
 
 		qcom,qmp-phy-reg-offset =
 			<USB3_DP_PCS_PCS_STATUS1

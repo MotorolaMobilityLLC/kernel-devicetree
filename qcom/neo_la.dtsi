@@ -8,7 +8,7 @@
 };
 
 &chosen {
-	bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access";
+	bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access cpufreq.default_governor=performance";
 
 	stdout-path = "/soc/qcom,qup_uart@994000:115200n8";
 };
@@ -61,7 +61,7 @@
 				dev = "/dev/block/platform/soc/7c4000.sdhci/by-name/vendor";
 				type = "ext4";
 				mnt_flags = "ro,barrier=1,discard";
-				fsmgr_flags = "wait,slotselect";
+				fsmgr_flags = "wait,slotselect,,avb";
 				status = "ok";
 			};
 		};
@@ -420,4 +420,93 @@
 	};
 };
 
-#include "neo_la-reserved-memory.dtsi"
+&qcom_memlat {
+	ddr {
+		silver {
+			qcom,cpufreq-memfreq-tbl =
+					<  940800  451000 >,
+					< 1113600  547000 >,
+					< 1497600  768000 >,
+					< 1804800 1017000 >;
+		};
+
+		silver-compute {
+			qcom,cpufreq-memfreq-tbl =
+					< 1113600  451000 >,
+					< 1497600  547000 >,
+					< 1804800  768000 >;
+		};
+
+	};
+
+	llcc {
+		silver {
+			qcom,cpufreq-memfreq-tbl =
+					< 1497600  300000 >,
+					< 1804800  466000 >,
+					< 1996800  600000 >;
+		};
+	};
+
+	l3 {
+		silver {
+			qcom,cpufreq-memfreq-tbl =
+					<  691200  556800 >,
+					<  940800  768000 >,
+					< 1113600  940800 >,
+					< 1497600 1190400 >,
+					< 1804800 1516800 >;
+		};
+	};
+};
+
+&mc_virt {
+	compatible = "qcom,neo_la-mc_virt";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+&mmss_noc {
+	compatible = "qcom,neo_la-mmss_noc";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+&gem_noc {
+	compatible = "qcom,neo_la-gem_noc";
+	qcom,bcm-voter-names = "hlos";
+	qcom,bcm-voters = <&apps_bcm_voter>;
+};
+
+&kgsl_smmu {
+	status = "disabled";
+};
+
+&gpucc {
+	status = "disabled";
+};
+
+&dispcc {
+	status = "disabled";
+};
+
+&debugcc {
+	/delete-property/ qcom,gpucc;
+	/delete-property/ qcom,dispcc;
+};
+
+&gpu_cc_cx_gdsc {
+	status = "disabled";
+};
+
+&gpu_cc_gx_gdsc {
+	status = "disabled";
+};
+
+&disp_cc_mdss_core_gdsc {
+	status = "disabled";
+};
+
+&disp_cc_mdss_core_int2_gdsc {
+	status = "disabled";
+};

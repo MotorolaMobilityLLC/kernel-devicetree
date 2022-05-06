@@ -17,7 +17,7 @@
 		reg = <0x22800000 0x800000>;
 		reg-names = "membase";
 		qcom,rproc-handle = <&wpss_pas>;
-		iommus = <&apps_smmu 0x1c00 0x1>;
+		iommus = <&apps_smmu 0x4c0 0x1>;
 		interrupts = <GIC_SPI 389 IRQ_TYPE_LEVEL_HIGH /* CE0 */ >,
 			     <GIC_SPI 413 IRQ_TYPE_LEVEL_HIGH /* CE1 */ >,
 			     <GIC_SPI 416 IRQ_TYPE_LEVEL_HIGH /* CE2 */ >,
