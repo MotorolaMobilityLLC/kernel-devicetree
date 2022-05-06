@@ -81,6 +81,7 @@
 				qcom,bus-max = <11>;
 
 				qcom,acd-level = <0x882b5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_TURBO_L1>;
 			};
 
 			qcom,gpu-pwrlevel@1 {
@@ -93,6 +94,7 @@
 				qcom,bus-max = <11>;
 
 				qcom,acd-level = <0x882b5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_TURBO>;
 			};
 
 			qcom,gpu-pwrlevel@2 {
@@ -105,6 +107,7 @@
 				qcom,bus-max = <11>;
 
 				qcom,acd-level = <0x882b5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_NOM_L1>;
 			};
 
 			qcom,gpu-pwrlevel@3 {
@@ -117,6 +120,7 @@
 				qcom,bus-max = <11>;
 
 				qcom,acd-level = <0x882c5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_NOM>;
 			};
 
 			qcom,gpu-pwrlevel@4 {
@@ -129,6 +133,7 @@
 				qcom,bus-max = <11>;
 
 				qcom,acd-level = <0x882c5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_NOM>;
 			};
 
 			qcom,gpu-pwrlevel@5 {
@@ -141,6 +146,7 @@
 				qcom,bus-max = <9>;
 
 				qcom,acd-level = <0x882d5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_SVS_L1>;
 			};
 
 			qcom,gpu-pwrlevel@6 {
@@ -153,6 +159,7 @@
 				qcom,bus-max = <9>;
 
 				qcom,acd-level = <0x882e5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_SVS_L1>;
 			};
 
 			qcom,gpu-pwrlevel@7 {
@@ -165,6 +172,7 @@
 				qcom,bus-max = <8>;
 
 				qcom,acd-level = <0x882e5ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_SVS>;
 			};
 
 			qcom,gpu-pwrlevel@8 {
@@ -177,6 +185,7 @@
 				qcom,bus-max = <8>;
 
 				qcom,acd-level = <0xc0285ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_SVS>;
 			};
 
 			qcom,gpu-pwrlevel@9 {
@@ -189,6 +198,7 @@
 				qcom,bus-max = <6>;
 
 				qcom,acd-level = <0xc0285ffd>;
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_SVS>;
 			};
 
 			qcom,gpu-pwrlevel@10 {
@@ -201,6 +211,8 @@
 				qcom,bus-max = <6>;
 
 				qcom,acd-level = <0xc02a5ffd>;
+
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_LOW_SVS>;
 			};
 
 			qcom,gpu-pwrlevel@11 {
@@ -213,6 +225,8 @@
 				qcom,bus-max = <5>;
 
 				qcom,acd-level = <0xc02c5ffd>;
+
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_LOW_SVS>;
 			};
 
 			qcom,gpu-pwrlevel@12 {
@@ -225,6 +239,8 @@
 				qcom,bus-max = <5>;
 
 				qcom,acd-level = <0xc8285ffd>;
+
+				qcom,cx-level = <RPMH_REGULATOR_LEVEL_LOW_SVS>;
 			};
 		};
 
