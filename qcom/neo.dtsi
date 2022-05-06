@@ -691,8 +691,7 @@
 			<&usb3_phy_wrapper_gcc_usb30_pipe_clk>;
 		clock-names = "bi_tcxo", "sleep_clk",
 			"usb3_phy_wrapper_gcc_usb30_pipe_clk";
-		protected-clocks =  <GCC_AGGRE_NOC_PCIE_1_AXI_CLK>,
-				<GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>, <GCC_DDRSS_PCIE_SF_CLK>,
+		protected-clocks =  <GCC_DDRSS_PCIE_SF_CLK>,
 				<GCC_PCIE_0_AUX_CLK>, <GCC_PCIE_0_AUX_CLK_SRC>,
 				<GCC_PCIE_0_CFG_AHB_CLK>, <GCC_PCIE_0_MSTR_AXI_CLK>,
 				<GCC_PCIE_0_PHY_RCHNG_CLK>, <GCC_PCIE_0_PHY_RCHNG_CLK_SRC>,
