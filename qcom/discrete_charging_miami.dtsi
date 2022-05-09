@@ -166,6 +166,7 @@
 		status = "okay";
 		compatible = "cps,wls-charger-cps4019";
 		reg = <0x30>;
+		force_wls_pin = <&tlmm 37 0x00>;
 		cps_wls_int = <&tlmm 38 0x00>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <38 0>;
