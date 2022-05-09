@@ -394,9 +394,9 @@
 		qcom,bt-vdd-rfa2-supply   = <&S5A>; /* BT RFA1.8 LDO */
 
 		qcom,bt-vdd18-aon-config  = <1800000 1800000 0 1>;
-		qcom,bt-vdd-aon-config    = <950000 950000 0 1>;
-		qcom,bt-vdd-dig-config    = <950000 950000 0 1>;
-		qcom,bt-vdd-rfaOp8-config = <950000 950000 0 1>;
+		qcom,bt-vdd-aon-config    = <950000 1170000 0 1>;
+		qcom,bt-vdd-dig-config    = <950000 1170000 0 1>;
+		qcom,bt-vdd-rfaOp8-config = <950000 1170000 0 1>;
 		qcom,bt-vdd-rfa2-config   = <1900000 1900000 0 1>;
 	};
 };
