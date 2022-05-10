@@ -176,6 +176,7 @@
 
 #include "ravelin-stub-regulator.dtsi"
 #include "ravelin-reserved-memory.dtsi"
+#include "ravelin-dma-heaps.dtsi"
 
 &reserved_memory {
 	#address-cells = <2>;
