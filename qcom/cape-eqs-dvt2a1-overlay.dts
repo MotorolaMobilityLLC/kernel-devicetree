@@ -21,3 +21,16 @@
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
 	qcom,board-id = <0x41 0xB2A1>;
 };
+
+&nxp_eusb2_repeater {
+	status = "disable";
+};
+
+&diodes_eusb2_repeater {
+	status = "ok";
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&diodes_eusb2_repeater>;
+	usb-repeater = <&diodes_eusb2_repeater>;
+};
