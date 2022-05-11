@@ -881,13 +881,13 @@
 			qupv3_se3_spi_active: qupv3_se3_spi_active {
 				mux {
 					pins = "gpio16", "gpio17",
-							"gpio18", "gpio19";
+							"gpio18";
 					function = "qup0_se3";
 				};
 
 				config {
 					pins = "gpio16", "gpio17",
-							"gpio18", "gpio19";
+							"gpio18";
 					drive-strength = <6>;
 					bias-disable;
 				};
@@ -896,15 +896,42 @@
 			qupv3_se3_spi_sleep: qupv3_se3_spi_sleep {
 				mux {
 					pins = "gpio16", "gpio17",
-							"gpio18", "gpio19";
+							"gpio18";
 					function = "gpio";
 				};
 
 				config {
 					pins = "gpio16", "gpio17",
-							"gpio18", "gpio19";
+							"gpio18";
 					drive-strength = <6>;
 					bias-disable;
+				};
+			};
+
+			qupv3_se3_spi_cs0_active: qupv3_se3_spi_cs0_active {
+				mux {
+					pins = "gpio19";
+					function = "qup0_se3";
+				};
+
+				config {
+					pins = "gpio19";
+					drive-strength = <6>;
+					bias-pull-up;
+				};
+			};
+
+			qupv3_se3_spi_cs0_sleep: qupv3_se3_spi_cs0_sleep {
+				mux {
+					pins = "gpio19";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio19";
+					drive-strength = <6>;
+					/* Helios specific CS requirement. */
+					bias-pull-up;
 				};
 			};
 		};
