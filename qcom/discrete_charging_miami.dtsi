@@ -179,7 +179,7 @@
 		io-channel-names = "otg_enable";
 
 		main-charger-name = "master_chg";
-		supplied-from = "bms";
+		supplied-from = "battery";
 
 		wireless-fw-name = "cps4019.hex";
 		fw_ver_major = <0>;
