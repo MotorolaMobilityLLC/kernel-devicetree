@@ -225,6 +225,11 @@
 		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
 	};
 
+	cpu_pmu: cpu-pmu {
+		compatible = "arm,armv8-pmuv3";
+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
+	};
+
 	apps_rsc: rsc@17a00000 {
 		label = "apps_rsc";
 		compatible = "qcom,rpmh-rsc";
@@ -398,6 +403,14 @@
 			clock-output-names = "usb3_phy_wrapper_gcc_usb30_pipe_clk";
 			#clock-cells = <0>;
 		};
+	};
+
+	cache-controller@19e00000 {
+		compatible = "qcom,anorak-llcc", "qcom,llcc-v41";
+		reg = <0x19e00000 0x800000>, <0x1a600000 0x200000>;
+		reg-names = "llcc_base", "llcc_broadcast_base";
+		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
+		cap-based-alloc-and-pwr-collapse;
 	};
 
 	rpmhcc: qcom,rpmhcc {
