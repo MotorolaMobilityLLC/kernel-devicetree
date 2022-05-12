@@ -851,6 +851,11 @@
 		reset-names = "rst";
 		status = "disabled";
 	};
+
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
 };
 
 #include "anorak-qupv3.dtsi"
