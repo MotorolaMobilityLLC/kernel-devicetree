@@ -117,6 +117,9 @@
 		io-channels = <&pmk8350_vadc PMK8350_ADC7_AMUX_THM2_100K_PU>;
 		io-channel-names = "batt_therm";
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&pmk8350_gpio1_adc_default>;
+
 	};
 
 	rt1711h@4e {
