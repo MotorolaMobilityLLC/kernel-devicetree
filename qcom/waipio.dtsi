@@ -2040,6 +2040,11 @@
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,bam-pipe-pair = <2>;
+		qcom,offload-ops-support;
+		qcom,bam-pipe-offload-cpb-hlos = <1>;
+		qcom,bam-pipe-offload-hlos-cpb = <3>;
+		qcom,bam-pipe-offload-hlos-hlos = <4>;
+
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
@@ -2048,17 +2053,20 @@
 		qcom,no-clock-support;
 		interconnect-names = "data_path";
 		interconnects = <&aggre2_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
-		iommus = <&apps_smmu 0x0584 0x0011>;
+		iommus = <&apps_smmu 0x0584 0x0011>,
+			 <&apps_smmu 0x0582 0x0005>,
+			 <&apps_smmu 0x0588 0x0001>;
 		qcom,iommu-dma = "atomic";
 		dma-coherent;
 
 		qcom_cedev_ns_cb {
 			compatible = "qcom,qcedev,context-bank";
 			label = "ns_context";
-			iommus = <&apps_smmu 0x588 0x0>,
+			iommus = <&apps_smmu 0x593 0x0>,
+				<&apps_smmu 0x596 0x0>,
+				<&apps_smmu 0x598 0x5>,
 				<&apps_smmu 0x59A 0x0>,
-				<&apps_smmu 0x59F 0x0>,
-				<&apps_smmu 0x598 0x5>;
+				<&apps_smmu 0x59F 0x0>;
 			dma-coherent;
 		};
 
@@ -2071,6 +2079,7 @@
 				 <&apps_smmu 0x59E 0x0>;
 			qcom,iommu-vmid = <0x9>;
 			qcom,secure-context-bank;
+			dma-coherent;
 		};
 	};
 
