@@ -343,6 +343,16 @@
 	};
 };
 
+&pmk8350_gpios {
+	 pmk8350_gpio1_adc {
+		pmk8350_gpio1_adc_default: pmk8350_gpio1_adc_default {
+		pins = "gpio1"; /* GPIO 1 */
+		function = "normal"; /* normal */
+		bias-high-impedance; /* DISABLE GPIO1 for ADC*/
+		};
+	};
+};
+
 &pmk8350_adc_tm {
 	io-channels = <&pmk8350_vadc PMK8350_ADC7_AMUX_THM1_100K_PU>,
 			<&pmk8350_vadc PMK8350_ADC7_AMUX_THM2_100K_PU>,
