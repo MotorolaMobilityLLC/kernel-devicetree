@@ -2,6 +2,7 @@
 
 #include "neo_la.dtsi"
 #include "neo-sg-idp.dtsi"
+#include "neo-pm8010.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO SG IDP";
