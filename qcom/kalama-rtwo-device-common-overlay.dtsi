@@ -16,6 +16,7 @@
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-moto-common-nxp-nfc.dtsi"
 #include "kalama-rtwo-haptics-overlay.dtsi"
+#include "kalama-rtwo-fingerprint-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
