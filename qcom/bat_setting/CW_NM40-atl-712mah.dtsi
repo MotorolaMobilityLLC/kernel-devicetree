@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2022 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+nm40-atl-712mah {
+	serialnum = "SB18D44720";
+	fcc_design = <712>;
+	ui_full = <98>;
+	config_profile_info = [46 00 00 00 00 00 00 00
+				A7 C3 C3 CE C4 C4 8A 4C
+				27 F3 D3 A5 7F 64 52 45
+				38 2E 23 57 63 E0 41 E0
+				B8 C7 CD D3 D6 D5 D3 D0
+				CC CC CF C8 AC 9B 91 89
+				83 82 8D 96 A7 9A 56 8D
+				80 00 AB 10 00 83 EA 00
+				00 00 64 0D 92 A4 00 00
+				00 00 00 00 00 00 00 FD];
+};
