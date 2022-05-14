@@ -209,6 +209,19 @@
 		mmi,ibat-invert-polority;
 	};
 
+	cw2217b_flip: cw2217b-battery-flip@64 {
+		compatible = "cellwise,cw2217";
+		reg = <0x64>;
+		sense_r_mohm = <5>;
+		df-serialnum = "SB18D44720";
+		vdd-i2c-supply = <&S10B>;
+		fg-psy-name = "flip_battery";
+		ibat-invert-polority;
+		factory_mode_ntc_exist = <1>;
+		status = "disabled";
+		#include "bat_setting/CW_NM40-atl-712mah.dtsi"
+	};
+
 	sgm4154x_charger: sgm4154x@6B {
 		compatible = "sgm,sgm41516D";
 		reg = <0x6B>;
