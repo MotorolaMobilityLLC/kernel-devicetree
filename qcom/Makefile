@@ -501,7 +501,15 @@ endif
 ifeq ($(CONFIG_ARCH_PARROT), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
 dtb-$(CONFIG_ARCH_QTI_VM) +=  \
-	parrot-vm-rumi.dtb
+	parrot-vm-rumi.dtb \
+	parrot-vm-atp.dtb \
+	parrot-vm-idp.dtb \
+	parrot-vm-idp-wcn3990.dtb \
+	parrot-vm-idp-wcn3990-amoled-rcm.dtb \
+	parrot-vm-idp-wcn6750-amoled.dtb \
+	parrot-vm-idp-wcn6750-amoled-rcm.dtb \
+	parrot-vm-qrd.dtb \
+	parrot-vm-qrd-wcn6750.dtb
 endif
 endif
 
