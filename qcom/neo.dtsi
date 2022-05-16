@@ -2391,7 +2391,6 @@
 #include "neo-usb.dtsi"
 #include "neo-thermal.dtsi"
 #include "helios.dtsi"
-#include "neo-eva.dtsi"
 #include "neo-regulators.dtsi"
 #include "neo-pcie.dtsi"
 #include "msm-rdbg.dtsi"
