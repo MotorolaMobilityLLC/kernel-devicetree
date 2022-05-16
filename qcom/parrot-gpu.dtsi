@@ -23,7 +23,7 @@
 				"gpu_cc_hlos1_vote_gpu_smmu",
 				"apb_pclk";
 
-		qcom,gpu-model = "Adreno710V1";
+		qcom,gpu-model = "Adreno710v1";
 
 		qcom,no-nap;
 
