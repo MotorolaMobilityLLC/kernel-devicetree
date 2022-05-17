@@ -279,6 +279,7 @@
 				2000000 1500000
 				1200000 900000
 				600000 300000>;
+		mmi,usb-pd-supported;
 	};
 
 	mmi_chrg: mmi_chrg_manager {
