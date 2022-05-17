@@ -3014,6 +3014,10 @@
 	status = "ok";
 };
 
+&qupv3_se11_4uart {
+	status = "ok";
+};
+
 &qupv3_se2_i2c {
 	status = "ok";
 
