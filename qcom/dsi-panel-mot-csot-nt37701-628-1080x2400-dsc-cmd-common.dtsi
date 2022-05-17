@@ -58,26 +58,20 @@ qcom,mdss-dsi-panel-peak-brightness = <4200000>;
 
 qcom,mdss-dsi-panel-blackness-level = <3230>;*/
 qcom,mdss-dsi-hbm-on-command = [
-		39 00 00 00 00 00 03 51 0F FF
-		39 00 00 00 00 00 03 87 1F FF
-		15 00 00 00 00 00 02 88 01
-		15 01 00 00 00 00 02 86 01];
+		39 01 00 00 00 00 03 51 0F FF
+		39 01 00 00 00 00 04 87 0F FF 04];
 qcom,mdss-dsi-hbm-off-command = [
-		39 00 00 00 00 00 03 51 0D BB
-		39 00 00 00 00 00 03 87 0F FF
-		15 00 00 00 00 00 02 88 01
-		15 01 00 00 00 00 02 86 01];
+		39 01 00 00 00 00 03 51 0D BB
+		39 01 00 00 00 00 04 87 0F FF 04];
 
 qcom,mdss-dsi-hbm-fod;
 qcom,mdss-dsi-hbm-fod-on-command = [
 		39 00 00 00 00 00 06 F0 55 AA 52 08 07
 		15 00 00 00 00 00 02 C0 01
 		39 00 00 00 00 00 03 51 0F FF
-		39 00 00 00 00 00 03 87 19 0D
-		15 00 00 00 00 00 02 88 01
+		39 00 00 00 00 00 04 87 1F FF 05
 		15 00 00 00 00 00 02 6F 01
-		39 00 00 00 00 00 05 88 02 1C 08 6F
-		15 01 00 00 00 00 02 85 01];
+		39 01 00 00 00 00 05 88 02 1C 08 6F];
 
 qcom,mdss-dsi-panel-local-hbm-enabled;
 qcom,mdss-dsi-panel-local-hbm-alpha-register = <0x87>;
@@ -437,6 +431,8 @@ qcom,mdss-dsi-display-timings {
 
 			15 01 00 00 00 00 02 2F 08 //08:49Hz 03:60Hz 07:90Hz 02:120Hz 04:144Hz
 
+			15 01 00 00 00 00 02 88 01
+
 			05 01 00 00 78 00 01 11
 			05 01 00 00 00 00 01 29];	/* display on */
 		qcom,mdss-dsi-off-command = [
@@ -521,6 +517,8 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 05 2B 00 00 09 5F
 
 			15 01 00 00 00 00 02 2F 03 //08:49Hz 03:60Hz 07:90Hz 02:120Hz 04:144Hz
+
+			15 01 00 00 00 00 02 88 01
 
 			05 01 00 00 78 00 01 11
 			05 01 00 00 00 00 01 29];	/* display on */
@@ -607,6 +605,8 @@ qcom,mdss-dsi-display-timings {
 
 			15 01 00 00 00 00 02 2F 07 //08:49Hz 03:60Hz 07:90Hz 02:120Hz 04:144Hz
 
+			15 01 00 00 00 00 02 88 01
+
 			05 01 00 00 78 00 01 11
 			05 01 00 00 00 00 01 29];	/* display on */
 		qcom,mdss-dsi-off-command = [
@@ -691,6 +691,8 @@ qcom,mdss-dsi-display-timings {
 			39 01 00 00 00 00 05 2B 00 00 09 5F
 
 			15 01 00 00 00 00 02 2F 02 //08:49Hz 03:60Hz 07:90Hz 02:120Hz 04:144Hz
+
+			15 01 00 00 00 00 02 88 01
 
 			05 01 00 00 78 00 01 11
 			05 01 00 00 00 00 01 29];	/* display on */
