@@ -149,9 +149,6 @@
 		interrupt-parent = <&spmi_bus>;
 		interrupts = <0x2 0x8e 0x0 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "eusb2_rptr_reset_gpio_irq";
-		qcom,param-override-seq = <0x02 0x01
-					   0x04 0x06
-					   0x08 0x07>;
 		status = "disabled";
 	};
 };
