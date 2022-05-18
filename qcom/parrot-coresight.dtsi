@@ -212,7 +212,7 @@
 
 		coresight-name = "coresight-tpdm-ddr-ch01";
 
-		atid = <97>;
+		atid = <78>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
@@ -232,7 +232,7 @@
 		reg = <0x10d00000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <97>;
+		atid = <78>;
 		coresight-name = "coresight-tpdm-ddr";
 
 		status = "disabled";
@@ -255,7 +255,7 @@
 		reg = <0x10d01000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <97>;
+		atid = <78>;
 		coresight-name = "coresight-tpdm-shrm";
 
 		status = "disabled";
@@ -319,7 +319,7 @@
 
 		coresight-name = "coresight-tpdm-gpu";
 
-		atid = <97>;
+		atid = <79>;
 		status = "disabled";
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -1098,7 +1098,7 @@
 		reg = <0x10c70000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <97>;
+		atid = <78>;
 		coresight-name = "coresight-tpdm-wpss-dsb";
 
 		clocks = <&aoss_qmp>;
@@ -1120,7 +1120,7 @@
 		reg = <0x10c71000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <97>;
+		atid = <78>;
 		coresight-name = "coresight-tpdm-wpss-cmb";
 
 		clocks = <&aoss_qmp>;
