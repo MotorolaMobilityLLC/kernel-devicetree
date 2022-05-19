@@ -1,6 +1,7 @@
 /dts-v1/;
 /plugin/;
 
+#include "parrot-wcn6750.dtsi"
 #include "parrot-qrd-wcn6750.dtsi"
 #include "parrot-qrd-pm7250b.dtsi"
 

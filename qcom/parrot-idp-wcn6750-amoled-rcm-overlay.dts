@@ -1,6 +1,7 @@
 /dts-v1/;
 /plugin/;
 
+#include "parrot-wcn6750.dtsi"
 #include "parrot-idp-wcn6750-amoled-rcm.dtsi"
 #include "parrot-idp-pm7250b.dtsi"
 
