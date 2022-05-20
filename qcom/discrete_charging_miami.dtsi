@@ -282,6 +282,7 @@
 				1200000 900000
 				600000 300000>;
 		mmi,usb-pd-supported;
+		mmi,cfg-chgmod-to-fg;
 	};
 
 	mmi_chrg: mmi_chrg_manager {
