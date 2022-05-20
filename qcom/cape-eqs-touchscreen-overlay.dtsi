@@ -61,5 +61,6 @@
 		goodix,avdd-name = "pm8350c_l11";
 		goodix,iovdd-name = "pm8350c_l2";
 		mmi,enable-gestures;
+		goodix,edge-ctrl;
 	};
 };
