@@ -41,9 +41,6 @@
 		goodix,panel-max-p = <4096>;
 		goodix,avdd-name = "pm8350c_l13";
 		goodix,iovdd-name = "pm8350c_l12";
-		goodix,pen-enable;
-		goodix,film_mode-ctrl;
-		goodix,sensitivity-ctrl;
 		goodix,edge-ctrl;
 		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
 		pinctrl-0 = <&ts_active>;
