@@ -91,3 +91,15 @@
 &disp_cc_mdss_core_int2_gdsc {
 	status = "ok";
 };
+
+&msm_gpu {
+	status = "ok";
+};
+
+&kgsl_msm_iommu {
+	status = "ok";
+};
+
+&gmu {
+	status = "ok";
+};
