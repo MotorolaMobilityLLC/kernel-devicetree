@@ -41,7 +41,7 @@
 };
 
 &cache_controller {
-	status = "disabled";
+	compatible = "qcom,neo-sg-llcc", "qcom,llcc-v31";
 };
 
 &firmware {
