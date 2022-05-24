@@ -2189,6 +2189,7 @@
 		dma-coherent;
 		qcom,fw-prefix;
 		qcom,wlan;
+		qcom,pon-gpio-control;
 		qcom,wlan-msa-fixed-region = <&wlan_msa_moselle_mem>;
 
 		qcom,smem-states = <&smp2p_wlan_1_out 0>,
