@@ -331,6 +331,38 @@
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x2800000>;
 	};
+
+	secure_lsr_lefteye_mem_heap: secure_lsr_lefteye_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		no-map;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0xC00000>;
+	};
+
+	secure_lsr_righteye_mem_heap: secure_lsr_righteye_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		no-map;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0xC00000>;
+	};
+
+	secure_lsr_depth_mem_heap: secure_lsr_depth_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		no-map;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x100000>;
+	};
+
+	secure_lsr_misc_mem_heap: secure_lsr_misc_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		no-map;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x2800000>;
+	};
 };
 
 &soc {
@@ -434,6 +466,7 @@
 		cell-index = <0>;
 		qcom,channel = <0>;
 		qcom,ee = <0>;
+		qcom,mid = <0>;
 		qcom,bus-id = <0>;
 	};
 
@@ -578,7 +611,7 @@
 			status = "disabled";
 		};
 	};
-	cache-controller@19200000 {
+	cache_controller: cache-controller@19200000 {
 		compatible = "qcom,neo-llcc", "qcom,llcc-v31";
 		reg = <0x19200000 0x180000> , <0x19A00000 0x80000>;
 		reg-names = "llcc_base", "llcc_broadcast_base";
@@ -608,7 +641,7 @@
 			reg = <0x10 0x8>;
 		};
 
-		restart_reason: restart_reason@65c {
+		restart_reason@65c {
 			compatible = "qcom,msm-imem-restart_reason";
 			reg = <0x65c 0x4>;
 		};
@@ -691,8 +724,7 @@
 			<&usb3_phy_wrapper_gcc_usb30_pipe_clk>;
 		clock-names = "bi_tcxo", "sleep_clk",
 			"usb3_phy_wrapper_gcc_usb30_pipe_clk";
-		protected-clocks =  <GCC_AGGRE_NOC_PCIE_1_AXI_CLK>,
-				<GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>, <GCC_DDRSS_PCIE_SF_CLK>,
+		protected-clocks =  <GCC_DDRSS_PCIE_SF_CLK>,
 				<GCC_PCIE_0_AUX_CLK>, <GCC_PCIE_0_AUX_CLK_SRC>,
 				<GCC_PCIE_0_CFG_AHB_CLK>, <GCC_PCIE_0_MSTR_AXI_CLK>,
 				<GCC_PCIE_0_PHY_RCHNG_CLK>, <GCC_PCIE_0_PHY_RCHNG_CLK_SRC>,
@@ -1229,6 +1261,12 @@
 			qcom,glinkpkt-ch-name = "apr_apps2";
 			qcom,glinkpkt-dev-name = "apr_apps2";
 		};
+
+		qcom,glinkpkt-disp-bus {
+			qcom,glinkpkt-edge = "helios";
+			qcom,glinkpkt-ch-name = "AH_BUS";
+			qcom,glinkpkt-dev-name = "glinkpkt_disp_bus";
+		};
 	};
 
 	clk_virt: interconnect@0 {
@@ -1259,6 +1297,7 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		#interconnect-cells = <1>;
+		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
 	};
 
 	pcie_noc: interconnect@16c0000 {
@@ -1267,6 +1306,8 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		#interconnect-cells = <1>;
+		clocks =  <&gcc GCC_AGGRE_NOC_PCIE_1_AXI_CLK>,
+			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>;
 	};
 
 	mmss_noc: interconnect@1740000 {
@@ -1600,6 +1641,10 @@
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,bam-pipe-pair = <2>;
+		qcom,offload-ops-support;
+		qcom,bam-pipe-offload-cpb-hlos = <1>;
+		qcom,bam-pipe-offload-hlos-cpb = <3>;
+		qcom,bam-pipe-offload-hlos-hlos = <4>;
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
@@ -1608,7 +1653,8 @@
 		qcom,no-clock-support;
 		interconnect-names = "data_path";
 		interconnects = <&system_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
-		iommus = <&apps_smmu 0x0080 0x0>;
+		iommus = <&apps_smmu 0x0080 0x0>,
+			<&apps_smmu 0x0081 0x0>;
 		qcom,iommu-dma = "atomic";
 		dma-coherent;
 
@@ -1625,6 +1671,7 @@
 			iommus = <&apps_smmu 0x0083 0x0>;
 			qcom,iommu-vmid = <0x9>;
 			qcom,secure-context-bank;
+			dma-coherent;
 		};
 	};
 
@@ -1674,6 +1721,17 @@
 			#interrupt-cells = <2>;
 		};
 
+		smp2p_rdbg2_out: qcom,smp2p-rdbg2-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg2_in: qcom,smp2p-rdbg2-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
 		sleepstate_smp2p_out: sleepstate-out {
 			qcom,entry-name = "sleepstate";
 			#qcom,smem-state-cells = <1>;
@@ -1711,6 +1769,17 @@
 
 		cdsp_smp2p_in: slave-kernel {
 			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg5_out: qcom,smp2p-rdbg5-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg5_in: qcom,smp2p-rdbg5-in {
+			qcom,entry-name = "rdbg";
 			interrupt-controller;
 			#interrupt-cells = <2>;
 		};
@@ -1937,8 +2006,7 @@
 		qcom,msm_fastrpc_compute_cb10 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1803 0x0>,
-					 <&apps_smmu 0x1863 0x0002>;
+			iommus = <&apps_smmu 0x1803 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
@@ -1947,8 +2015,7 @@
 		qcom,msm_fastrpc_compute_cb11 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1804 0x0>,
-					 <&apps_smmu 0x1864 0x0001>;
+			iommus = <&apps_smmu 0x1804 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
@@ -1957,22 +2024,11 @@
 		qcom,msm_fastrpc_compute_cb12 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1805 0x0>,
-					 <&apps_smmu 0x1865 0x0001>;
+			iommus = <&apps_smmu 0x1805 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 			shared-cb = <5>;
-		};
-
-		qcom,msm_fastrpc_compute_cb13 {
-			compatible = "qcom,msm-fastrpc-compute-cb";
-			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1806 0x0>,
-					 <&apps_smmu 0x1866 0x0>;
-			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
-			qcom,iommu-faults = "stall-disable", "HUPCF";
-			dma-coherent;
 		};
 	};
 
@@ -2150,12 +2206,6 @@
 		reg-names = "eud_base", "eud_mode_mgr2";
 		qcom,secure-eud-en;
 		status = "ok";
-	};
-
-	reboot_reason {
-		compatible = "qcom,reboot-reason";
-		nvmem-cells = <&restart_reason>;
-		nvmem-cell-names = "restart_reason";
 	};
 
 	qcom_tzlog: tz-log@146AA720 {
@@ -2341,9 +2391,9 @@
 #include "neo-usb.dtsi"
 #include "neo-thermal.dtsi"
 #include "helios.dtsi"
-#include "neo-eva.dtsi"
 #include "neo-regulators.dtsi"
 #include "neo-pcie.dtsi"
+#include "msm-rdbg.dtsi"
 
 &qupv3_se8_i2c {
 	status = "ok";

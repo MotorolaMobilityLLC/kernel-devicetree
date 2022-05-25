@@ -777,7 +777,7 @@
 			config {
 				pins = "gpio28", "gpio29",
 					"gpio30", "gpio31";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -887,7 +887,7 @@
 			config {
 				pins = "gpio0", "gpio1",
 					"gpio2", "gpio3";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -997,7 +997,7 @@
 			config {
 				pins = "gpio24", "gpio25",
 					"gpio34", "gpio35";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1107,7 +1107,7 @@
 			config {
 				pins = "gpio26", "gpio27",
 					"gpio34", "gpio35";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1217,7 +1217,7 @@
 			config {
 				pins = "gpio32", "gpio33",
 					"gpio34", "gpio35";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1386,7 +1386,7 @@
 			config {
 				pins = "gpio4", "gpio5",
 					"gpio6", "gpio7";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1496,7 +1496,7 @@
 			config {
 				pins = "gpio8", "gpio9",
 					"gpio6", "gpio7";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1606,7 +1606,7 @@
 			config {
 				pins = "gpio18", "gpio19",
 					"gpio20", "gpio21";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1683,7 +1683,7 @@
 		qupv3_se9_spi_clk_active: qupv3_se9_spi_clk_active {
 			mux {
 				pins = "gpio12";
-				function = "qup1_se2_l2";
+				function = "qup1_se3_l2";
 			};
 
 			config {
@@ -1696,7 +1696,7 @@
 		qupv3_se9_spi_cs_active: qupv3_se9_spi_cs_active {
 			mux {
 				pins = "gpio13";
-				function = "qup1_se2_l3";
+				function = "qup1_se3_l3";
 			};
 
 			config {
@@ -1716,7 +1716,7 @@
 			config {
 				pins = "gpio10", "gpio11",
 					"gpio12", "gpio13";
-				drive-strength = <0>;
+				drive-strength = <2>;
 				bias-disable;
 			};
 		};
@@ -1937,19 +1937,19 @@
 				drive-strength = <2>;
 			};
 		};
-	};
 
-	usb_phy_ps: usb_phy_ps {
-		usb3phy_portselect_default: usb3phy_portselect_default {
-			mux {
-				pins = "gpio100";
-				function = "usb0_phy_ps";
-			};
+		usb_phy_ps: usb_phy_ps {
+			usb3phy_portselect_default: usb3phy_portselect_default {
+				mux {
+					pins = "gpio100";
+					function = "usb0_phy_ps";
+				};
 
-			config {
-				pins = "gpio100";
-				bias-disable;
-				drive-strength = <2>;
+				config {
+					pins = "gpio100";
+					bias-disable;
+					drive-strength = <2>;
+				};
 			};
 		};
 	};

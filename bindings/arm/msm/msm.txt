@@ -104,6 +104,9 @@ SoCs:
 - ANORAK
   compatible = "qcom,anorak"
 
+- RAVELIN
+  compatible = "qcom,ravelin"
+
 Generic board variants:
 
 - CDP device:
@@ -296,3 +299,7 @@ compatible = "qcom,parrot-qrd"
 compatible = "qcom,parrot-atp"
 compatible = "qcom,anorak-rumi"
 compatible = "qcom,anorak-idp"
+compatible = "qcom,ravelin-rumi"
+compatible = "qcom,ravelin-mtp"
+compatible = "qcom,ravelin-cdp"
+compatible = "qcom,ravelin-qrd"

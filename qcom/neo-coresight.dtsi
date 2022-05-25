@@ -71,7 +71,7 @@
 	audio_etm0 {
 		compatible = "qcom,coresight-remote-etm";
 
-		coresight-name = "coresight-audio_etm0";
+		coresight-name = "coresight-audio-etm0";
 		qcom,inst-id = <5>;
 
 		atid = <40 41>;
@@ -359,7 +359,7 @@
 		reg = <0x10c08000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-dlmm";
+		coresight-name = "coresight-tpdm-mm";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -587,7 +587,7 @@
 		reg = <0x10c28000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-dlct0";
+		coresight-name = "coresight-tpdm-dlct";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -609,7 +609,7 @@
 		reg = <0x10c29000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-dlct1";
+		coresight-name = "coresight-tpdm-ipcc";
 		atid = <78>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -630,7 +630,7 @@
 		reg = <0x10b0d000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-swao";
+		coresight-name = "coresight-tpdm-swao-1";
 		atid = <71>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -735,7 +735,7 @@
 	wpss_etm {
 		compatible = "qcom,coresight-remote-etm";
 
-		coresight-name = "coresight-wpss-etm";
+		coresight-name = "coresight-wpss-etm0";
 		qcom,inst-id = <3>;
 		atid = <44>;
 
@@ -760,6 +760,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,hw-enable-check;
 		out-ports {
 			port {
 				tpdm_dcc_out_tpda_qdss: endpoint {
@@ -818,7 +819,7 @@
 		reg = <0x12860000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-apss0";
+		coresight-name = "coresight-tpdm-actpm";
 		atid = <66>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -839,7 +840,7 @@
 		reg = <0x12861000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-apss1";
+		coresight-name = "coresight-tpdm-apss";
 		atid = <66>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -904,7 +905,7 @@
 		reg = <0x10cc1000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-tmess1";
+		coresight-name = "coresight-tpdm-tmess-1";
 		atid = <85>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -925,7 +926,7 @@
 		reg = <0x10cc0000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-tmess0";
+		coresight-name = "coresight-tpdm-tmess-0";
 		atid = <85>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -1892,6 +1893,57 @@
 			};
 
 		};
+	};
+
+	ipcb_tgu: tgu@10b0e000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb999>;
+
+		reg = <0x10b0e000 0x1000>;
+		reg-names = "tgu-base";
+
+		tgu-steps = <3>;
+		tgu-conditions = <4>;
+		tgu-regs = <4>;
+		tgu-timer-counters = <8>;
+
+		coresight-name = "coresight-tgu-ipcb";
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
+	spmi_tgu0: tgu@10b0f000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb999>;
+
+		reg = <0x10b0f000 0x1000>;
+		reg-names = "tgu-base";
+
+		tgu-steps = <3>;
+		tgu-conditions = <4>;
+		tgu-regs = <9>;
+		tgu-timer-counters = <8>;
+
+		coresight-name = "coresight-tgu-spmi0";
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
+	spmi_tgu1: tgu@10b10000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb999>;
+
+		reg = <0x10b10000 0x1000>;
+		reg-names = "tgu-base";
+
+		tgu-steps = <3>;
+		tgu-conditions = <4>;
+		tgu-regs = <9>;
+		tgu-timer-counters = <8>;
+
+		coresight-name = "coresight-tgu-spmi1";
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
 	};
 
 	etm0 {
