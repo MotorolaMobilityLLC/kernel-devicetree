@@ -1,10 +1,17 @@
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
+#include <dt-bindings/interrupt-controller/irq.h>
 
 #include "pm8150.dtsi"
 
 &soc {
+	reboot_reason {
+		compatible = "qcom,reboot-reason";
+		nvmem-cells = <&restart_reason>;
+		nvmem-cell-names = "restart_reason";
+	};
+
 	gpio_keys {
 		compatible = "gpio-keys";
 		label = "gpio-keys";
@@ -111,4 +118,31 @@
 			};
 		};
 	};
+};
+
+&qupv3_se10_i2c {
+	clock-frequency = <400000>;
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "ok";
+
+	charger: charger@6b {
+		compatible = "ti,bq25600";
+		reg = <0x6b>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <6 IRQ_TYPE_EDGE_FALLING>;
+		ti,watchdog-timeout-ms = <40000>;
+		pinctrl-names =  "default";
+		pinctrl-0 = <&bq256xx_intr_default>;
+
+		input-voltage-limit-microvolt = <4500000>;
+		input-current-limit-microamp = <500000>;
+		status = "ok";
+	};
+};
+
+&usb0 {
+	extcon = <&charger>, <&eud>;
 };
