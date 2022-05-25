@@ -154,6 +154,27 @@
 	#size-cells = <0>;
 	status = "ok";
 
+	battery: battery {
+		compatible = "simple-battery";
+		charge-term-current-microamp = <12800>;
+		constant-charge-current-max-microamp = <500000>;
+		constant-charge-voltage-max-microvolt = <4480000>;
+		voltage-min-design-microvolt = <3200000>;
+		voltage-max-design-microvolt = <4480000>;
+		precharge-current-microamp = <128000>;
+		charge-full-design-microamp-hours = <645000>;
+		factory-internal-resistance-micro-ohms = <120000>;
+		ocv-capacity-celsius = <(-10) 0 15 45>;
+		/* table for -10 degree Celsius */
+		ocv-capacity-table-0 = <4185000 100>, <4113000 95>, <4066000 90>;
+		/* table for 0 degree Celsius */
+		ocv-capacity-table-1 = <4480000 100>, <4383000 95>, <4313000 90>;
+		/* table for 15 degree Celsius */
+		ocv-capacity-table-2 = <4480000 100>, <4383000 95>, <4313000 90>;
+		/* table for 45 degree Celsius */
+		ocv-capacity-table-3 = <4200000 100>, <4190000 95>, <4185000 90>;
+	};
+
 	charger: charger@6b {
 		compatible = "ti,bq25600";
 		reg = <0x6b>;
@@ -161,12 +182,25 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <6 IRQ_TYPE_EDGE_FALLING>;
 		debugboard-detect-gpio = <&tlmm 54 GPIO_ACTIVE_HIGH>;
-		ti,watchdog-timeout-ms = <40000>;
+		ti,watchdog-timeout-ms = <0>;
 		pinctrl-names =  "default";
 		pinctrl-0 = <&bq256xx_intr_default>;
 
-		input-voltage-limit-microvolt = <4500000>;
+		input-voltage-limit-microvolt = <4480000>;
 		input-current-limit-microamp = <500000>;
+		monitored-battery = <&battery>;
+		status = "ok";
+	};
+
+	bq27421: fuel-gauge@55 {
+		compatible = "ti,bq27421";
+		reg = <0x55>;
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
+		pinctrl-names =  "default";
+		pinctrl-0 = <&bq27421_intr_default>;
+		monitored-battery = <&battery>;
 		status = "ok";
 	};
 };
