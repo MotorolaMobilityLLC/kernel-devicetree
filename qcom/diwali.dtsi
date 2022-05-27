@@ -2778,6 +2778,11 @@
 			reg = <0x130 0x1>;
 			bits = <6 1>;
 		};
+
+		gpu_model_bin: gpu_model_bin@119 {
+			reg = <0x119 0x2>;
+			bits = <5 8>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
