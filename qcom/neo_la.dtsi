@@ -88,21 +88,25 @@
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 	/delete-property/ qcom,support-hw-trigger;
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 0>;
 };
 
 &gcc_pcie_0_phy_gdsc {
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 3>;
 };
 
 &gcc_pcie_1_gdsc {
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 1>;
 };
 
 &gcc_pcie_1_phy_gdsc {
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 4>;
 };
 
 &wpss_pas {
