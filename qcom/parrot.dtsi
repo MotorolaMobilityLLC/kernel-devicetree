@@ -837,6 +837,11 @@
 			interrupt-controller;
 			#interrupt-cells = <2>;
 		};
+
+		smp2p_wlan_1_out: qcom,smp2p-wlan-1-out {
+			qcom,entry-name = "wlan";
+			#qcom,smem-state-cells = <1>;
+		};
 	};
 
 	qcom,glinkpkt {
