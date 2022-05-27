@@ -421,7 +421,7 @@
 	};
 
 	camcc: clock-controller@ade0000 {
-		compatible = "qcom,anorak-camcc";
+		compatible = "qcom,anorak-camcc", "syscon";
 		reg = <0xade0000 0x20000>;
 		reg-name = "cc_base";
 		vdd_mm-supply = <&VDD_MM_LEVEL>;
