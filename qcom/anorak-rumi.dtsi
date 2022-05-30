@@ -207,3 +207,8 @@
 &debugcc {
 	clocks = <&bi_tcxo>;
 };
+
+&rpmhcc {
+	compatible = "qcom,dummycc";
+	clock-output-names = "rpmhcc_clocks";
+};
