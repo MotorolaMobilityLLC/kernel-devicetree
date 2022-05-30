@@ -245,7 +245,7 @@
 		mmi,upper-limit-capacity = <65>;
 		mmi,lower-limit-capacity = <60>;
 		mmi,heartbeat-interval = <5000>;
-		mmi,dcp-power-max = <10000>;
+		mmi,dcp-power-max = <7500>;
 		mmi,hvdcp-power-max = <15000>;
 		mmi,wls-power-max = <5000>;
 	};
