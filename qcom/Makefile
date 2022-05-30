@@ -197,7 +197,7 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo-atp.dtb \
 			neo-sg-idp.dtb \
 			neo-idp-display.dtb \
-			neo-sg-idp-pm8008.dtb
+			neo-sg-idp-pm8008.dtb \
 			neo_luna-v2-sg-idp.dtb
 
 endif
