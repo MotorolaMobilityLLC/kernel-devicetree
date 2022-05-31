@@ -324,37 +324,58 @@ ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_PARROT) += parrot-rumi-overlay.dtbo \
 	parrot-atp-overlay.dtbo \
 	parrot-idp-overlay.dtbo \
+	parrot-idp-4gb-overlay.dtbo \
 	parrot-idp-wcn3990-overlay.dtbo \
+	parrot-idp-wcn3990-4gb-overlay.dtbo \
 	parrot-idp-wcn3990-amoled-rcm-overlay.dtbo \
+	parrot-idp-wcn3990-amoled-rcm-4gb-overlay.dtbo \
 	parrot-idp-wcn6750-amoled-rcm-overlay.dtbo \
+	parrot-idp-wcn6750-amoled-rcm-4gb-overlay.dtbo \
 	parrot-idp-wcn6750-amoled-overlay.dtbo \
+	parrot-idp-wcn6750-amoled-4gb-overlay.dtbo \
 	parrot-idp-nopmi-overlay.dtbo \
 	parrot-qrd-overlay.dtbo \
+	parrot-qrd-4gb-overlay.dtbo \
 	parrot-qrd-wcn6750-overlay.dtbo \
+	parrot-qrd-wcn6750-4gb-overlay.dtbo \
 	parrot-qrd-nopmi-overlay.dtbo
 
 parrot-rumi-overlay.dtbo-base := parrot.dtb
 parrot-atp-overlay.dtbo-base := parrot.dtb
 parrot-idp-overlay.dtbo-base := parrot.dtb
+parrot-idp-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-wcn3990-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn3990-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-wcn3990-amoled-rcm-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn3990-amoled-rcm-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-wcn6750-amoled-rcm-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn6750-amoled-rcm-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-wcn6750-amoled-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn6750-amoled-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-nopmi-overlay.dtbo-base := parrot.dtb
 parrot-qrd-overlay.dtbo-base := parrot.dtb
+parrot-qrd-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-wcn6750-overlay.dtbo-base := parrot.dtb
+parrot-qrd-wcn6750-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-nopmi-overlay.dtbo-base := parrot.dtb
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-atp.dtb \
 	parrot-idp.dtb \
+	parrot-idp-4gb.dtb \
 	parrot-idp-wcn3990.dtb \
+	parrot-idp-wcn3990-4gb.dtb \
 	parrot-idp-wcn3990-amoled-rcm.dtb \
+	parrot-idp-wcn3990-amoled-rcm-4gb.dtb \
 	parrot-idp-wcn6750-amoled.dtb \
+	parrot-idp-wcn6750-amoled-4gb.dtb \
 	parrot-idp-nopmi.dtb \
 	parrot-idp-wcn6750-amoled-rcm.dtb \
+	parrot-idp-wcn6750-amoled-rcm-4gb.dtb \
 	parrot-qrd.dtb \
+	parrot-qrd-4gb.dtb \
 	parrot-qrd-wcn6750.dtb \
+	parrot-qrd-wcn6750-4gb.dtb \
 	parrot-qrd-nopmi.dtb
 endif
 
