@@ -5,3 +5,6 @@
 	qcom,msm-id = <579 0x10000>;
 };
 
+&kgsl_smmu {
+	status = "ok";
+};
