@@ -2032,8 +2032,7 @@
 		qcom,msm_fastrpc_compute_cb10 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1803 0x0>,
-					 <&apps_smmu 0x1863 0x0>;
+			iommus = <&apps_smmu 0x1803 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
@@ -2042,8 +2041,7 @@
 		qcom,msm_fastrpc_compute_cb11 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1804 0x0>,
-					 <&apps_smmu 0x1864 0x0>;
+			iommus = <&apps_smmu 0x1804 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
@@ -2052,8 +2050,7 @@
 		qcom,msm_fastrpc_compute_cb12 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1805 0x0>,
-					 <&apps_smmu 0x1865 0x0>;
+			iommus = <&apps_smmu 0x1805 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
@@ -2063,8 +2060,7 @@
 		qcom,msm_fastrpc_compute_cb13 {
 			compatible = "qcom,msm-fastrpc-compute-cb";
 			label = "adsprpc-smd";
-			iommus = <&apps_smmu 0x1806 0x0>,
-					 <&apps_smmu 0x1866 0x0>;
+			iommus = <&apps_smmu 0x1806 0x0>;
 			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
