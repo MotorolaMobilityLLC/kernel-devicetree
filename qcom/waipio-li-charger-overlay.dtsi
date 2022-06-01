@@ -1,3 +1,9 @@
+&soc {
+	mmi,charger {
+		mmi,pd-power-max = <30000>;
+	};
+};
+
 &battery_charger {
 	qcom,thermal-mitigation = <4787000 3000000 2500000 2000000 1500000 1000000 600000 300000>;
 };
