@@ -1407,7 +1407,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2169600 0 >,
+					<  300000 0 >,
 					< 2707200 1 >;
 				qcom,sampling-enabled;
 			};
@@ -1416,7 +1416,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2169600 0 >,
+					< 2035200 0 >,
 					< 2707200 1 >;
 				qcom,sampling-enabled;
 			};
