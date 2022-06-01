@@ -62,6 +62,15 @@ Optional properties:
 			Some targets have single votable register to control GDSC,
 			but there could be targets where separate votable registers
 			to control the GDSCs individually for active and sleep states.
+ - sw-reset : If present, supports asynchronous resets for GDSC. We need to pass
+			the phandles of reset registers while using the property.
+ - domain-addr : If present, supports reset for voltage rail of GDSC. We pass
+			the phandle of the register while using the property.
+ - hw-ctrl-addr : If present, separate register will be there to poll for GDSC
+			status. While using the property, need to pass the phandle
+			of the register.
+ - no-config-gdscr : Presence denotes HW only supports a single register
+			per GDSC.
 
 Example:
 	gdsc_oxili_gx: qcom,gdsc@fd8c4024 {
