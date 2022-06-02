@@ -62,5 +62,6 @@
 		goodix,iovdd-name = "pm8350c_l2";
 		mmi,enable-gestures;
 		goodix,edge-ctrl;
+		mmi,power-off-suspend;
 	};
 };
