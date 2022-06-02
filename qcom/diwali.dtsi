@@ -3401,6 +3401,7 @@
 	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
 	clock-names = "ahb_clk";
 	parent-supply = <&VDD_CX_LEVEL>;
+	qcom,clk-ctrl = <&gpucc 0x9130 22 1>;
 	status = "ok";
 };
 
