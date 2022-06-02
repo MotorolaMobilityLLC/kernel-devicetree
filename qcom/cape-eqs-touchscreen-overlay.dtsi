@@ -60,8 +60,13 @@
 		goodix,panel-max-p = <4096>;
 		goodix,avdd-name = "pm8350c_l11";
 		goodix,iovdd-name = "pm8350c_l2";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
 		mmi,enable-gestures;
 		goodix,edge-ctrl;
 		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
 	};
 };
