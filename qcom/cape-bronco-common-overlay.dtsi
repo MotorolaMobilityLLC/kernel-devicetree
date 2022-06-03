@@ -1,0 +1,107 @@
+/* Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/*
+   This base is original from "cape-mtp-pm8010-overlay.dts"
+*/
+#include "cape-moto-common-overlay-base.dtsi"
+#include "waipio-pm8010-spmi.dtsi"
+#include "cape-moto-common-overlay.dtsi"
+#include "waipio-moto-common-charger.dtsi"
+#include "cape-bronco-touchscreen-overlay.dtsi"
+#include "moto-bronco-wl2868c.dtsi"
+#include "cape-bronco-evb-sensor-overlay.dtsi"
+#include "cape-bronco-fingerprint-overlay.dtsi"
+#include "waipio-hiphic-se-overlay.dtsi"
+#include "cape-bronco-thermal-overlay.dtsi"
+#include "cape-bronco-charger-overlay.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include "cape-bronco-haptics-overlay.dtsi"
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio19";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio19";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio19";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio19";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&soc {
+        pinctrl@f000000 {
+                compatible = "qcom,cape-pinctrl";
+                reg = <0x0F000000 0x1000000>;
+                interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+                gpio-controller;
+                #gpio-cells = <2>;
+                interrupt-controller;
+                #interrupt-cells = <2>;
+                wakeup-parent = <&pdc>;
+                qcom,gpios-reserved = <36 37 38 39>;
+        };
+};
+
+&qupv3_se9_i2c {
+        status = "ok";
+        qcom,clk-freq-out = <1000000>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+        st21nfc@8 {
+                compatible = "st,st21nfc";
+                reg = <0x08>;
+                st,irq_gpio = <&tlmm 46 0x00>;
+                st,reset_gpio = <&tlmm 34 0x00>;
+                st,clkreq_gpio = <&tlmm 35 0x00>;
+                interrupt-parent = <&tlmm>;
+                interrupts = <46 0>;
+                interrupt-names = "nfc_irq";
+                pinctrl-names = "nfc_active", "nfc_suspend";
+                pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
+                pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
+        };
+};
+
+&qupv3_se5_i2c {
+	status = "ok";
+	#include "cape-moto-common-redriver.dtsi"
+};
+
+&redriver {
+	status = "ok";
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
+&sdhc_2 {
+	status = "disabled";
+};

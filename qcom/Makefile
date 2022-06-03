@@ -370,6 +370,26 @@ cape-eqs-dvt2a1-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 cape-eqs-dvt2b1-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 cape-eqs-dvt2b3-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 endif
+
+ifeq ($(CONFIG_BRONCO_DTB),y)
+dtbo-$(CONFIG_ARCH_CAPE) += \
+        cape-bronco-evt1-overlay.dtbo \
+        cape-bronco-evt2-overlay.dtbo \
+        cape-bronco-dvt1a1-overlay.dtbo \
+        cape-bronco-dvt1b1-overlay.dtbo \
+        cape-bronco-dvt2a1-overlay.dtbo \
+        cape-bronco-dvt2b1-overlay.dtbo \
+        cape-bronco-dvt2b3-overlay.dtbo
+
+cape-bronco-evt1-overlay.dtbo-base := cape-moto-bronco-base.dtb
+cape-bronco-evt2-overlay.dtbo-base := cape-moto-bronco-base.dtb
+cape-bronco-dvt1a1-overlay.dtbo-base := cape-moto-bronco-base.dtb cape-v2-moto-bronco-base.dtb
+cape-bronco-dvt1b1-overlay.dtbo-base := cape-moto-bronco-base.dtb cape-v2-moto-bronco-base.dtb
+cape-bronco-dvt2a1-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
+cape-bronco-dvt2b1-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
+cape-bronco-dvt2b3-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
+endif
+
 ifeq ($(CONFIG_FELIX_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-felix-evt1-overlay.dtbo \
