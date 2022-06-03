@@ -133,6 +133,7 @@
 
 		interrupt-parent = <&tlmm>;
 		interrupts = <6 IRQ_TYPE_EDGE_FALLING>;
+		debugboard-detect-gpio = <&tlmm 54 GPIO_ACTIVE_HIGH>;
 		ti,watchdog-timeout-ms = <40000>;
 		pinctrl-names =  "default";
 		pinctrl-0 = <&bq256xx_intr_default>;
