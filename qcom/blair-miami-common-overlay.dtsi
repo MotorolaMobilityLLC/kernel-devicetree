@@ -327,6 +327,9 @@
 };
 
 &pmk8350_vadc {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pmk8350_gpio3_adc_default>;
+
 	pmk8350_batt_therm {
 		reg = <PMK8350_ADC7_AMUX_THM2_100K_PU>;
 		label = "pmk8350_batt_therm";
@@ -349,6 +352,14 @@
 		pins = "gpio1"; /* GPIO 1 */
 		function = "normal"; /* normal */
 		bias-high-impedance; /* DISABLE GPIO1 for ADC*/
+		};
+	};
+
+	pmk8350_gpio3_adc {
+		pmk8350_gpio3_adc_default: pmk8350_gpio3_adc_default {
+		pins = "gpio3"; /* GPIO 3 */
+		function = "normal"; /* normal */
+		bias-high-impedance; /* DISABLE GPIO3 for ADC*/
 		};
 	};
 };
