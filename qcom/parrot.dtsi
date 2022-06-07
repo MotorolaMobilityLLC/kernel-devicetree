@@ -1975,7 +1975,7 @@
 		reset-names = "rst";
 
 		iommus = <&apps_smmu 0x20 0x0>;
-		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma = "atomic";
 		dma-coherent;
 
 		status = "disabled";
