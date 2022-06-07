@@ -124,11 +124,11 @@
 		pinctrl-0 = <&pmk8350_gpio1_adc_default>;
 
 		latest_fw_version = <0x0812>;
-		latest_parameter_version = <0x0201>;
+		first_battery_param_ver = <0x0201>;
+		second_battery_param_ver = <0x0201>;
 
-		first_battery_serialnum = <0x0103>;
-		second_battery_serialnum = <0x0102>;
-		default_battery_serialnum = <0x0103>;
+		first_battery_id = <0x0103>;
+		second_battery_id = <0x0102>;
 	};
 
 	rt1711h@4e {
