@@ -52,6 +52,7 @@
 
 		dpdm-supply = <&usb2_phy0>;
 		mmi,qc3-support;
+		mmi,wls-max-icl = <1000000>;
 		input-voltage-limit-microvolt = <4700000>;
 
 		/* sw jeita  parameter customer defined*/
