@@ -1,0 +1,133 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "blair-nopmi-penang-common-overlay.dtsi"
+
+/ {
+	model = "penang";
+	compatible = "qcom,blair-penang", "qcom,blair-moto", "qcom,blair";
+	qcom,msm-id = <507 0x10000>;
+	qcom,board-id = <0x49 0xB200>;
+};
+
+&rt9426a {
+	interrupts-extended = <&tlmm 38 IRQ_TYPE_LEVEL_LOW>;
+};
+&rt9426a_alert {
+	mux {
+		pins = "gpio38";
+		function = "gpio";
+	};
+
+	config {
+		pins = "gpio38";
+		drive-strength = <2>;
+		bias-pull-up;
+	};
+};
+
+&tlmm {
+	ets_vcc_high {
+		mux {
+			pins = "gpio6";
+		};
+
+		config {
+			pins = "gpio6";
+		};
+	};
+
+	ets_vcc_low {
+		mux {
+			pins = "gpio6";
+		};
+
+		config {
+			pins = "gpio6";
+		};
+	};
+
+	nfc_enable_active {
+		mux {
+			pins = "gpio48";
+		};
+
+		config {
+			pins = "gpio48";
+		};
+	};
+
+	nfc_enable_suspend {
+		mux {
+			pins = "gpio48";
+		};
+
+		config {
+			pins = "gpio48";
+		};
+	};
+
+	sgm7220_en_n: sgm7220_en_n {
+		mux {
+			pins = "gpio58";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio58";
+			drive-strength = <2>;
+			bias-pull-down;
+			input-enable;
+		};
+	};
+};
+
+&sgm7220 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&sgm7220_int_n &sgm7220_en_n>;
+};
+
+&et528 {
+	egistec,gpio_vcc_en = <&tlmm 6 0x0>;
+};
+
+&silead {
+	avdd-gpios = <&tlmm 6 0x0>;
+};
+
+&qupv3_se7_i2c {
+	st21nfc@8 {
+		status = "diabled";
+	};
+
+	nq@28 {
+		compatible = "qcom,sn-nci";
+		mmi,status = "/chosen", "mmi,nfc", "nxp";
+		reg = <0x28>;
+		qcom,sn-irq = <&tlmm 9 0x00>;
+		qcom,sn-ven = <&tlmm 48 0x00>;
+		qcom,sn-firm = <&tlmm 8 0x00>;
+		qcom,sn-clkreq = <&tlmm 7 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <9 0>;
+		interrupt-names = "nfc_irq";
+		pinctrl-names = "nfc_active", "nfc_suspend";
+		pinctrl-0 = <&nfc_int_active &nfc_enable_active
+				&nfc_clk_req_active>;
+		pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend
+				&nfc_clk_req_suspend>;
+	};
+};
+
