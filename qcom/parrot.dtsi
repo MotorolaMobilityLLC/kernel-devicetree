@@ -24,7 +24,7 @@
 
 	chosen: chosen {
 		stdout-path = "/soc/qcom,qup_uart@98c000:115200n8";
-		bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops pstore.compress=none kpti=0 swiotlb=noforce cgroup.memory=nokmem,nosocket kswapd_per_node=2 slub_debug=- allow_file_spec_access cpufreq.default_governor=performance transparent_hugepage=never page_poison=on mem_offline.bypass_send_msg=1";
+		bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops pstore.compress=none kpti=0 swiotlb=noforce cgroup.memory=nokmem,nosocket kswapd_per_node=2 slub_debug=- allow_file_spec_access cpufreq.default_governor=performance transparent_hugepage=never page_poison=on mem_offline.bypass_send_msg=1 can.stats_timer=0";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -646,6 +646,11 @@
 		mboxes = <&rimps 0>;
 		mbox-names = "tx";
 		shmem = <&cpu_scp_lpri>;
+
+		scmi_pmu: protocol@86 {
+			reg = <0x86>;
+			#clock-cells = <1>;
+		};
 	};
 
 	rimps_log: qcom,rimps_log@17d09c00 {
@@ -831,6 +836,11 @@
 			qcom,entry-name = "wlan";
 			interrupt-controller;
 			#interrupt-cells = <2>;
+		};
+
+		smp2p_wlan_1_out: qcom,smp2p-wlan-1-out {
+			qcom,entry-name = "wlan";
+			#qcom,smem-state-cells = <1>;
 		};
 	};
 
@@ -1139,12 +1149,15 @@
 
 	qcom_pmu: qcom,pmu {
 		compatible = "qcom,pmu";
+		reg = < 0x17D09300 0x300>;
+		reg-names = "pmu-base";
 		qcom,pmu-events-tbl =
-			< 0x0008 0xFF 0xFF 0xFF >,
-			< 0x0011 0xFF 0xFF 0xFF >,
+			< 0x0008 0xFF 0xFF 0x02 >,
+			< 0x0011 0xFF 0xFF 0x00 >,
 			< 0x0017 0xFF 0xFF 0xFF >,
 			< 0x0018 0xFF 0xFF 0xFF >,
 			< 0x002A 0xFF 0xFF 0xFF >,
+			< 0x4005 0xF0 0xFF 0xFF >,
 			< 0x002B 0xFF 0xFF 0xFF >;
 	};
 
@@ -1231,6 +1244,7 @@
 
 	qcom_memlat: qcom,memlat {
 		compatible = "qcom,memlat";
+		qcom,be-stall-ev = <0x4005>;
 
 		ddr {
 			compatible = "qcom,memlat-grp";
@@ -1270,7 +1284,7 @@
 						< 1190400 1017000 >,
 						< 1497600 1353600 >,
 						< 1651200 1555000 >,
-						< 2131200 1708000 >,
+						< 2112000 1708000 >,
 						< 2361600 2092000 >;
 				};
 
@@ -1280,7 +1294,7 @@
 						<  960000  547000 >,
 						< 1651200 1555000 >,
 						< 1900800 1708000 >,
-						< 2131200 2092000 >,
+						< 2112000 2092000 >,
 						< 2361600 3196000 >;
 				};
 			};
@@ -1317,7 +1331,7 @@
 						< 1497600  768000 >,
 						< 1651200 1017000 >,
 						< 1900800 1555000 >,
-						< 2131200 1708000 >,
+						< 2112000 1708000 >,
 						< 2361600 2092000 >;
 				};
 
@@ -1326,9 +1340,8 @@
 					qcom,cpufreq-memfreq-tbl =
 						< 1190400  547000 >,
 						< 1497600  768000 >,
-						< 1651200 1017000 >,
 						< 2054400 1555000 >,
-						< 2131200 1708000 >,
+						< 2112000 1708000 >,
 						< 2361600 2092000 >;
 				};
 			};
@@ -1347,7 +1360,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
-					<  300000  300000 >,
+					<  300000  307200 >,
 					<  691200  556800 >,
 					<  806400  652800 >,
 					<  940800  806400 >,
@@ -1577,6 +1590,8 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		#interconnect-cells = <1>;
+		clocks = <&gcc GCC_AGGRE_NOC_PCIE_0_AXI_CLK>,
+			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>;
 	};
 
 	aggre1_noc: interconnect@16e0000 {
@@ -1585,6 +1600,7 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		#interconnect-cells = <1>;
+		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
 	};
 
 	aggre2_noc: interconnect@1700000 {
@@ -1593,6 +1609,8 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		#interconnect-cells = <1>;
+		clocks = <&rpmhcc RPMH_IPA_CLK>,
+			<&gcc GCC_SDCC2_AHB_CLK>;
 	};
 
 	mmss_noc: interconnect@1740000 {
@@ -2295,7 +2313,7 @@
 		interconnect-names = "rproc_ddr","crypto_ddr";
 
 		qcom,qmp = <&aoss_qmp>;
-		memory-region = <&mpss_mem>;
+		memory-region = <&mpss_mem &system_cma>;
 
 		/* Inputs from mss */
 		interrupts-extended = <&intc GIC_SPI 264 IRQ_TYPE_EDGE_RISING>,

@@ -175,6 +175,26 @@
 };
 
 #include "ravelin-stub-regulator.dtsi"
+#include "msm-arm-smmu-ravelin.dtsi"
+#include "ravelin-dma-heaps.dtsi"
+#include "ravelin-reserved-memory.dtsi"
+#include "ravelin-dma-heaps.dtsi"
+
+&reserved_memory {
+	#address-cells = <2>;
+	#size-cells = <2>;
+	ranges;
+
+	/* global autoconfigured region for contiguous allocations */
+	system_cma: linux,cma {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x2000000>;
+		linux,cma-default;
+	};
+};
 
 &soc {
 	#address-cells = <1>;
@@ -271,6 +291,11 @@
 			reg = <0x1742d000 0x1000>;
 			status = "disabled";
 		};
+	};
+
+	qcom,secure-buffer {
+		compatible = "qcom,secure-buffer";
+		qcom,vmid-cp-camera-preview-ro;
 	};
 
 };

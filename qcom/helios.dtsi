@@ -13,6 +13,15 @@
 		};
 	};
 
+	qcom,rproc-helios {
+		compatible = "qcom,rproc-helios";
+		qcom,firmware-name = "XRC130.elf";
+		qcom,ssr-name = "helios";
+
+		/* This doesn't map to any interrupt */
+		interrupt-names = "dummy";
+	};
+
 	qcom,helios-daemon {
 		compatible = "qcom,helios-daemon";
 	};
