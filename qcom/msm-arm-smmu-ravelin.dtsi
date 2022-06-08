@@ -48,7 +48,7 @@
 			reg = <0x3dc9000 0x1000>,
 				<0x3dc2208 0x8>;
 			reg-names = "base", "status-reg";
-			qcom,stream-id-range = <0x1000 0x400>;
+			qcom,stream-id-range = <0x400 0x400>;
 		};
 	};
 
