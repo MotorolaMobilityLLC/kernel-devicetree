@@ -50,6 +50,48 @@
 			output-low;
 		};
 	};
+
+	drv8424_step_init: drv8424_step_init {
+		mux {
+			pins = "gpio87";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio87";
+			drive-strength = <8>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	drv8424_gpio_init: drv8424_gpio_init {
+		mux {
+			pins = "gpio60", "gpio62", "gpio64", "gpio65";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio60", "gpio62", "gpio64", "gpio65";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	drv8424_int_default: drv8424_int_default {
+		mux {
+			pins = "gpio63", "gpio66";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio63", "gpio66";
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+	};
 };
 
 &apps_rsc {
@@ -125,4 +167,22 @@
 
 &sdhc_2 {
 	status = "disabled";
+};
+
+&soc {
+	moto_drv8424_support {
+		compatible = "moto,drv8424";
+		status = "ok";
+		pinctrl-names = "drv8424_int_default", "init_state";
+		pinctrl-0 = <&drv8424_int_default>;
+		pinctrl-1 = <&drv8424_gpio_init &drv8424_step_init>;
+		MOTOR_POWER_EN-gpio = <&tlmm 62 0>;
+		MOTOR_FAULT1_INT-gpio = <&tlmm 63 GPIO_ACTIVE_LOW>;
+		MOTOR_FAULT2_INT-gpio = <&tlmm 66 GPIO_ACTIVE_LOW>;
+		MOTOR_STEP-gpio = <&tlmm 87 0>;
+		MOTOR_DIR-gpio = <&tlmm 65 0>;
+		MOTOR_SLEEP-gpio = <&tlmm 64 0>;
+		MOTOR_ACTIVE-gpio = <&tlmm 60 0>;
+		vdd-supply = <&S10B>;
+	};
 };
