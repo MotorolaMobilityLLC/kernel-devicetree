@@ -29,3 +29,9 @@
 		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
 	};
 };
+
+&soc {
+	moto_drv8424_support {
+		no-sensors;
+	};
+};
