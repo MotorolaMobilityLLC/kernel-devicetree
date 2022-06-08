@@ -47,6 +47,10 @@
 		qcom,vdd-cx-mx-config = <640000 640000>;
 		qcom,vdd-3.3-ch1-config = <3000000 3312000>;
 		qcom,vdd-3.3-ch0-config = <3000000 3312000>;
+
+		qcom,smem-states = <&smp2p_wlan_1_out 0>;
+		qcom,smem-state-names = "wlan-smp2p-out";
+
 		qcom,smp2p_map_wlan_1_in {
 			interrupts-extended = <&smp2p_wlan_1_in 0 0>,
 					      <&smp2p_wlan_1_in 1 0>;

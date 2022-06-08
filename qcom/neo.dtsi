@@ -25,7 +25,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237";
+		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237 disable_dma32=on";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -612,9 +612,11 @@
 		};
 	};
 	cache_controller: cache-controller@19200000 {
-		compatible = "qcom,neo-llcc", "qcom,llcc-v31";
-		reg = <0x19200000 0x180000> , <0x19A00000 0x80000>;
-		reg-names = "llcc_base", "llcc_broadcast_base";
+		compatible = "qcom,neo-xr-llcc", "qcom,llcc-v31";
+		reg = <0x19200000 0x180000>, <0x19A00000 0x80000>,
+		      <0x19AF0000 0x8000>, <0x19CF0000 0x8000>;
+		reg-names = "llcc_base", "llcc_broadcast_base",
+			    "spad_or_broadcast_base", "spad_and_broadcast_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
 
@@ -1058,6 +1060,7 @@
 		mmc-hs400-1_8v;
 		mmc-hs400-enhanced-strobe;
 
+		qcom,dll_lock_bist_fail_wa;
 		cap-mmc-hw-reset;
 
 		iommus = <&apps_smmu 0x160 0x0>;
@@ -1250,6 +1253,18 @@
 					qcom,glink-channels = "fastrpcglink-apps-dsp";
 					qcom,intents = <0x64 64>;
 			};
+
+			qcom,msm_cdsprm_rpmsg {
+				compatible = "qcom,msm-cdsprm-rpmsg";
+				qcom,glink-channels = "cdsprmglink-apps-dsp";
+				qcom,intents = <0x20 12>;
+
+				msm_cdsp_rm: qcom,msm_cdsp_rm {
+					compatible = "qcom,msm-cdsp-rm";
+					qcom,qos-latency-us = <70>;
+					qcom,qos-maxhold-ms = <20>;
+				};
+			};
 		};
 	};
 
@@ -1422,6 +1437,7 @@
 		ipclite_apss: apss {
 			qcom,remote-pid = <0>;
 			label = "apss";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1467,6 +1483,7 @@
 		ipclite_cdsp: cdsp {
 			qcom,remote-pid = <5>;
 			label = "cdsp";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1512,6 +1529,7 @@
 		ipclite_cvp: cvp {
 			qcom,remote-pid = <6>;
 			label = "cvp";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1557,6 +1575,7 @@
 		ipclite_vpu: vpu {
 			qcom,remote-pid = <8>;
 			label = "vpu";
+			global_atomic = <0>;
 
 			ipclite_signal_0 {
 				index = <0>;
@@ -1632,6 +1651,13 @@
 		compatible = "qcom,subsystem-sleep-stats";
 		reg = <0xc3f0000 0x400>;
 		ddr-freq-update;
+	};
+
+	sys-pm-vx@c320000 {
+		compatible = "qcom,sys-pm-violators", "qcom,sys-pm-neo";
+		reg = <0xc320000 0x0400>;
+		mboxes = <&qmp_aop 0>;
+		mbox-names = "aop";
 	};
 
 	qcom_cedev: qcedev@1de0000 {
@@ -2030,6 +2056,15 @@
 			dma-coherent;
 			shared-cb = <5>;
 		};
+
+		qcom,msm_fastrpc_compute_cb13 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x1806 0x0>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
 	};
 
 	qcom,mem-buf-msgq {
@@ -2153,6 +2188,7 @@
 		dma-coherent;
 		qcom,fw-prefix;
 		qcom,wlan;
+		qcom,pon-gpio-control;
 		qcom,wlan-msa-fixed-region = <&wlan_msa_moselle_mem>;
 
 		qcom,smem-states = <&smp2p_wlan_1_out 0>,
