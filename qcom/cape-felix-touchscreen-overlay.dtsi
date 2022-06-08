@@ -61,5 +61,6 @@
 		goodix,report_rate-ctrl;
 		goodix,interpolation-ctrl;
 		mmi,refresh-rate-update;
+		mmi,active-region-control;
 	};
 };
