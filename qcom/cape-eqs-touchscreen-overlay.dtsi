@@ -68,5 +68,6 @@
 		goodix,edge-ctrl;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		goodix,interpolation-ctrl;
 	};
 };
