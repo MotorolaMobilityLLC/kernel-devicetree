@@ -140,7 +140,6 @@
 			qcom,supply-disable-load = <100>;
 			qcom,supply-pre-off-sleep = <3>;
 			qcom,supply-post-on-sleep = <3>;
-			qcom,supply-pre-off-sleep = <3>;
 		};
 
 	};
