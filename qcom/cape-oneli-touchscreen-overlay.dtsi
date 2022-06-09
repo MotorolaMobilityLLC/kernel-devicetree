@@ -50,7 +50,6 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		goodix,interpolation-ctrl;
-		mmi,refresh-rate-update;
 	};
 };
 
