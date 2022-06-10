@@ -746,6 +746,10 @@
 			reg = <0xc8 0xc8>;
 		};
 	};
+
+	dload_mode {
+		compatible = "qcom,dload-mode";
+	};
 };
 
 #include "ravelin-pinctrl.dtsi"
