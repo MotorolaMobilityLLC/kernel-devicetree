@@ -21,6 +21,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
+		stdout-path = "/soc/qcom,qup_uart@a88000:115200n8";
 		bootargs = "cpufreq.default_governor=performance";
 	};
 
