@@ -1808,6 +1808,14 @@
 		qcom,secure-eud-en;
 		status = "ok";
 	};
+
+	qrtr-gunyah {
+		compatible = "qcom,qrtr-gunyah";
+		qcom,master;
+		gunyah-label = <3>;
+		peer-name = <2>;
+		shared-buffer = <&trust_ui_vm_qrtr>;
+	};
 };
 
 #include "ravelin-pinctrl.dtsi"
