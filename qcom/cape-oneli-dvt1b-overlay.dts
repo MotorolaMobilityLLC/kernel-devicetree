@@ -21,3 +21,7 @@
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
 	qcom,board-id = <0x45 0xB1B0>;
 };
+
+&pm8350b_haptics {
+	moto,wf-vmax-mv = <7500>;
+};
