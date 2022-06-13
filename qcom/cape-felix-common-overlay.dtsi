@@ -50,74 +50,6 @@
 			output-low;
 		};
 	};
-
-	bq27426_irq_flip: bq27426-irq-battery-flip {
-		mux {
-			pins = "gpio43";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio43";
-			drive-strength = <2>;
-			bias-disable;
-			input-enable;
-		};
-	};
-
-	sgm4154x_irq_default: sgm4154x_irq_default {
-		mux {
-			pins = "gpio51";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio51";
-			drive-strength = <2>;
-			bias-disable;
-			input-enable;
-		};
-	};
-};
-
-&pm8350c_gpios {
-	sgm4154x_ce {
-		sgm4154x_ce_default: sgm4154x_ce_default {
-			pins = "gpio2";
-			function = "normal";
-			output-high;
-                        input-disable;
-                        bias-disable;
-                        power-source = <0>;       /* GPIO_LV, can be only 0: 1.8V */
-                        qcom,drive-strength = <2>;
-		};
-	};
-};
-
-&pm8350b_gpios {
-	low_load_en {
-		low_load_en_default: low_load_en_default {
-			pins = "gpio1";
-			function = "normal";
-			output-low;
-                        input-disable;
-                        bias-disable;
-                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
-                        qcom,drive-strength = <2>;
-		};
-	};
-
-	high_load_en {
-		high_load_en_default: high_load_en_default {
-			pins = "gpio3";
-			function = "normal";
-			output-low;
-                        input-disable;
-                        bias-disable;
-                        power-source = <0>;       /* GPIO_MV, 0: vph_pwr, 1: 1.8V */
-                        qcom,drive-strength = <2>;
-		};
-	};
 };
 
 &apps_rsc {
@@ -159,14 +91,6 @@
 	ssusb_redriver = <&redriver>;
 };
 
-&qupv3_se2_spi {
-	status = "disabled";
-};
-
-&aliases {
-	i2c1 = "/soc/i2c@988000";
-};
-
 &qupv3_se9_i2c {
         status = "ok";
         qcom,clk-freq-out = <1000000>;
@@ -189,84 +113,6 @@
                 pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
                 pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
         };
-};
-
-
-&qupv3_se2_i2c {
-	status = "ok";
-	bq27426_flip: bq27426-battery-flip@55 {
-		compatible = "ti,bq27426";
-		reg = <0x55>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&bq27426_irq_flip>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <43 0>;
-		vdd-i2c-supply = <&S10B>;
-		design-capacity = <712>;
-		mmi,fg-psy-name = "flip_battery";
-		mmi,batt-profile-name = "NM40_ATL_712MAH";
-		mmi,temp-source = <1>;
-		mmi,ibat-invert-polority;
-	};
-
-	sgm4154x_charger: sgm4154x@6B {
-		compatible = "sgm,sgm41516D";
-		reg = <0x6B>;
-
-		vdd-i2c-supply = <&S10B>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&sgm4154x_irq_default &sgm4154x_ce_default
-			     &low_load_en_default &high_load_en_default>;
-
-		interrupt-parent = <&tlmm>;
-		interrupts = <51 0>;		//irq num base on hardware design
-		sgm,irq-gpio = <&tlmm 51 0>;	//irq num base on hardware design
-		sgm,chg-en-gpio = <&pm8350c_gpios 2 GPIO_ACTIVE_LOW>;	//gpio num base on hardware design
-
-		init-charger-disabled;
-		vrechg-millivolt = <200>;
-		iprechg-microamp = <180000>;
-		iterm-microamp = <200000>;
-		ichg-max-microamp = <1200000>;
-		vchg-max-microvolt = <4600000>;
-		ichg-microamp = <700000>;
-		vchg-microvolt = <4400000>;
-		input-current-limit-microamp = <1200000>;
-
-		mmi,ext-usb-psy-name = "usb";
-		mmi,fg-psy-name = "flip_battery";
-		mmi,chrg-iterm-ma = <100>;
-		mmi,fg-iterm-ma = <150>;
-		mmi,max-fv-mv = <4480>;
-		mmi,max-fcc-ma = <1214>;
-		mmi,demo-fv-mv = <4000>;
-		mmi,df-serialnum = "SB18D44720";
-		mmi,mmi-temp-zones = <0 4200 136 0>,
-				    <10 4250 340 204>,
-				    <15 0 679 476>,
-				    <45 4300 1214 883>,
-				    <45 4350 883 679>,
-				    <60 4200 679 0>;
-
-		mmi,paired-id = <0x00000001>;
-		// delta_ocv ichg map table
-		mmi,paired-ichg-table = <60 1200
-					 90 900
-					 120 600
-					 150 300>;
-		mmi,paired-load-thres = <800 400>;
-		mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
-		mmi,high-load-en-gpio = <&pm8350b_gpios 3 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
-	};
-};
-
-&battery_charger {
-	mmi,combo-batt-psy = <&mmi_charger>;
-};
-
-&qti_glink_charger {
-	mmi,main-battery-enabled;
-	mmi,paired-id = <0x00010000>;
 };
 
 &pmk8350 {
