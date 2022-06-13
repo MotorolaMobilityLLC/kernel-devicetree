@@ -8,3 +8,7 @@
 &kgsl_smmu {
 	status = "ok";
 };
+
+&wlan_kiwi {
+	/delete-property/ vdd-wlan-supply;
+};
