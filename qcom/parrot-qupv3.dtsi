@@ -120,25 +120,6 @@
 		status = "disabled";
 	};
 
-	/* I3C Instance */
-	i3c0: i3c-master@980000 {
-		compatible = "qcom,geni-i3c";
-		reg = <0x980000 0x4000>,
-				<0x3780000 0x10000>;
-		#address-cells = <3>;
-		#size-cells = <0>;
-		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
-		clock-names = "se-clk", "m-ahb", "s-ahb";
-		clocks = <&gcc GCC_QUPV3_WRAP0_S0_CLK>,
-			<&gcc GCC_QUPV3_WRAP_0_M_AHB_CLK>,
-			<&gcc GCC_QUPV3_WRAP_0_S_AHB_CLK>;
-		pinctrl-names = "default", "sleep";
-		pinctrl-0 = <&qupv3_se0_i3c_sda_active>, <&qupv3_se0_i3c_scl_active>;
-		pinctrl-1 = <&qupv3_se0_i3c_sleep>;
-		qcom,wrapper-core = <&qupv3_0>;
-		status = "disabled";
-	};
-
 	qupv3_se1_i2c: i2c@984000 {
 		compatible = "qcom,i2c-geni";
 		reg = <0x984000 0x4000>;
