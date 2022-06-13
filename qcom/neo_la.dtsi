@@ -460,3 +460,11 @@
 &gmu {
 	status = "disabled";
 };
+
+&mdp_0_tbu {
+	status = "disabled";
+};
+
+&mdp_1_tbu {
+	status = "disabled";
+};
