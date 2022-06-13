@@ -40,3 +40,6 @@
 
 };
 
+&qupv3_se2_2uart {
+	qcom,rumi_platform;
+};

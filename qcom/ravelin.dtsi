@@ -20,7 +20,9 @@
 
 	reserved_memory: reserved-memory { };
 
-	aliases { };
+	aliases {
+		serial0 = &qupv3_se2_2uart;
+	};
 
 	firmware: firmware {};
 
@@ -596,6 +598,12 @@
 #include "ravelin-pinctrl.dtsi"
 #include "diwali-gdsc.dtsi"
 #include "ipcc-test-ravelin.dtsi"
+#include "ravelin-qupv3.dtsi"
+
+&qupv3_se2_2uart {
+	status = "ok";
+};
+
 &gcc_pcie_0_gdsc {
 	compatible = "regulator-fixed";
 	status = "ok";
