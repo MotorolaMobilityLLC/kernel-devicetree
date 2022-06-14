@@ -224,6 +224,8 @@
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 	qcom,bl-dsc-cmd-state = "dsi_hs_mode";
 
+        qcom,platform-delayms-before-resetlow = <5>;
+
 	/*qcom,mdss-dsi-panel-hdr-enabled;
 	qcom,mdss-dsi-panel-hdr-color-primaries = <14950 15750 34000
 	        16000 13000 35500 7000 2500>;
