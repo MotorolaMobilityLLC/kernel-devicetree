@@ -12,6 +12,9 @@
 
 &wlan_kiwi {
 	/delete-property/ vdd-wlan-supply;
+	/delete-property/ qcom,pdc_init_table;
+	/delete-property/ qcom,vreg_pdc_map;
+	/delete-property/ qcom,pmu_vreg_map;
 };
 
 &apps_rsc {
