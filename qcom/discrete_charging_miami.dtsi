@@ -195,7 +195,7 @@
 
 		wireless-fw-name = "cps4019.hex";
 		fw_ver_major = <0>;
-		fw_ver_minor = <6>;
+		fw_ver_minor = <8>;
 
 		use_bl_in_h;
 	};
