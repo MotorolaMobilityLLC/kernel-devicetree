@@ -273,6 +273,10 @@
 	};
 };
 
+&mmi_charger {
+	mmi,upper-limit-capacity = <80>;
+};
+
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
 };
