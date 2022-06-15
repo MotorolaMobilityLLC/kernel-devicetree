@@ -70,5 +70,6 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		goodix,interpolation-ctrl;
+		mmi,fod_coords = <540 2152>;
 	};
 };
