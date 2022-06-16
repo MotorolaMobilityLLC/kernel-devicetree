@@ -20,6 +20,12 @@
 	status = "disabled";
 };
 
+&pm8350c_l3 {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3304000>;
+	qcom,init-voltage = <3300000>;
+};
+
 &qupv3_se4_i2c {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -28,7 +34,7 @@
 
 	goodix_ts_i2c@5d {
 		status = "ok";
-		compatible = "goodix,gt9916";
+		compatible = "goodix,gt9966";
 		reg = <0x5d>;
 		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
 		goodix,reset-gpio = <&tlmm 20 0x0>;
@@ -39,8 +45,8 @@
 		goodix,panel-max-y = <19200>;
 		goodix,panel-max-w = <255>;
 		goodix,panel-max-p = <4096>;
-		goodix,avdd-name = "pm8350c_l13";
-		goodix,iovdd-name = "pm8350c_l12";
+		goodix,avdd-name = "pm8350c_l3";
+		goodix,iovdd-name = "pm8350c_l2";
 		goodix,pen-enable;
 		goodix,film_mode-ctrl;
 		goodix,sensitivity-ctrl;
