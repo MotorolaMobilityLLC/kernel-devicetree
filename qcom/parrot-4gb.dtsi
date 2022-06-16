@@ -13,3 +13,19 @@
 &mem_client_3_size {
 	qcom,peripheral-size = <0x200000>;
 };
+
+&trust_ui_vm_mem {
+	status = "disabled";
+};
+
+&trust_ui_vm_qrtr {
+	status = "disabled";
+};
+
+&trust_ui_vm_vblk0_ring {
+	status = "disabled";
+};
+
+&trust_ui_vm_swiotlb {
+	status = "disabled";
+};
