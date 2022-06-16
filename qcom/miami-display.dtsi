@@ -242,7 +242,7 @@
 			qcom,partial-update-enabled = "single_roi";
 			qcom,panel-roi-alignment = <540 12 8 12 1080 12>;
 			qcom,mdss-dsi-panel-phy-drive-strength = <255>;
-			qcom,mdss-dsi-panel-phy-timings = [00 0D 03 03 10 1D 04
+			qcom,mdss-dsi-panel-phy-timings = [00 0D 03 03 10 1D 03
 							03 02 02 04 00 0C 08];
 		};
 		timing@1 {
