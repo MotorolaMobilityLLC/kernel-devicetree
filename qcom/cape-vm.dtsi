@@ -3,7 +3,7 @@
 / {
 	model = "Qualcomm Technologies, Inc. Cape SVM";
 	compatible = "qcom,cape";
-	qcom,msm-id = <530 0x10000>;
+	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
 };
 
 &tlmm {
