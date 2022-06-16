@@ -146,5 +146,25 @@
 	qcom,vddp-ref-clk-supply = <&L13B>;
 	qcom,vddp-ref-clk-max-microamp = <100>;
 
+	/*
+	 * ufs-dev-types and nvmem entries are for ufs device
+	 * identification using nvmem interface. Use number of
+	 * ufs devices supported for ufs-dev-types, and nvmem handle
+	 * added by pmic for sdam register.
+	 *
+	 * Default value taken by driver is bit[0] = 0 for 3.x and
+	 * bit[0] = 1 for 2.x driver code takes this as default case.
+	 *
+	 * But Bit value to identify ufs device is not consistent
+	 * across the targets it could be bit[0] = 0/1 for UFS2.x/3x
+	 * and vice versa. If the bit[0] value is not same as default
+	 * value used in driver and if its reverted then use flag
+	 * qcom,ufs-dev-revert to identify ufs device.
+	 */
+	ufs-dev-types = <2>;
+	qcom,ufs-dev-revert;
+	nvmem-cells = <&ufs_dev>;
+	nvmem-cell-names = "ufs_dev";
+
 	status = "ok";
 };
