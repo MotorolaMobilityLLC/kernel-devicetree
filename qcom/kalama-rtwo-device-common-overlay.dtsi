@@ -21,6 +21,7 @@
 #include "moto-rtwo-wl2868c.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "kalama-rtwo-evb-sensors-overlay.dtsi"
+#include "kalama-rtwo-thermal-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
