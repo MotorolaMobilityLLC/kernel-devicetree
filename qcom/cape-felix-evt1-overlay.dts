@@ -23,7 +23,9 @@
 };
 
 &qupv3_se4_i2c {
+	/* Rogue panel */
 	goodix_ts_i2c@5d {
-		goodix,avdd-name = "pm8350c_l11";
+		compatible = "goodix,gt9916";
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
 	};
 };
