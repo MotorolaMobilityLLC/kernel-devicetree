@@ -16,12 +16,10 @@
 #include "cape-moto-common-overlay-base.dtsi"
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
-#include "cape-oneli-evt1-sensor-overlay.dtsi"
-#include "cape-oneli-fingerprint.dtsi"
+#include "cape-felix-fingerprint-overlay.dtsi"
 #include "waipio-li-charger-overlay.dtsi"
 #include "cape-felix-touchscreen-overlay.dtsi"
 #include "cape-oneli-thermal-overlay.dtsi"
-#include "cape-oneli-haptics-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 &tlmm {
