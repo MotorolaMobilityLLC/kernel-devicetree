@@ -34,7 +34,7 @@
 
 	goodix-berlin@0 {
 		status = "ok";
-		compatible = "goodix,gt9916S";
+		compatible = "goodix,gt9916P";
 		reg = <0>;
 		spi-max-frequency = <1000000>;
 
