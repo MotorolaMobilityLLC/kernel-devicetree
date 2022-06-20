@@ -1167,3 +1167,5 @@
 #include "anorak-dma-heaps.dtsi"
 #include "ipcc-test.dtsi"
 #include "anorak-pcie.dtsi"
+#include "msm-arm-smmu-anorak.dtsi"
+
