@@ -1,0 +1,58 @@
+/* Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "parrot-geneva-common-overlay.dtsi"
+#include "waipio-pm8010-spmi.dtsi"
+
+/ {
+	model = "geneva";
+	compatible = "qcom,cape-mtp", "qcom,cape", "qcom,mtp", "moto,geneva";
+	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
+	qcom,board-id = <0x45 0xA100>;
+};
+
+&apps_rsc {
+    rpmh-regulator-ldoi1 {
+        compatible = "qcom,rpmh-vrm-regulator";
+        qcom,resource-name = "ldoi1";
+        qcom,regulator-type = "pmic5-ldo";
+        qcom,supported-modes =
+            <RPMH_REGULATOR_MODE_LPM
+             RPMH_REGULATOR_MODE_HPM>;
+        qcom,mode-threshold-currents = <0 30000>;
+        L1I: pm8010i_l1: regulator-pm8010i-l1 {
+            regulator-name = "pm8010i_l1";
+            qcom,set = <RPMH_REGULATOR_SET_ALL>;
+            regulator-min-microvolt = <1104000>;
+            regulator-max-microvolt = <1104000>;
+            qcom,init-voltage = <1104000>;
+            qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+        };
+    };
+
+    rpmh-regulator-ldoi5 {
+        compatible = "qcom,rpmh-vrm-regulator";
+        qcom,resource-name = "ldoi5";
+        qcom,regulator-type = "pmic5-ldo";
+
+        L5I: pm8010i_l5: regulator-pm8010i-l5 {
+            regulator-name = "pm8010i_l5";
+            qcom,set = <RPMH_REGULATOR_SET_ALL>;
+            regulator-min-microvolt = <1800000>;
+            regulator-max-microvolt = <1800000>;
+            qcom,init-voltage = <1800000>;
+        };
+    };
+};
