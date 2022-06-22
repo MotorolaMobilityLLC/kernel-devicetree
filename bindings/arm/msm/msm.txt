@@ -99,7 +99,7 @@ SoCs:
   compatible = "qcom,neo"
 
 - PARROT
-  compatible = "qcom,parrot"
+  compatible = "qcom,parrot", "qcom,parrotp"
 
 - ANORAK
   compatible = "qcom,anorak"
@@ -297,6 +297,9 @@ compatible = "qcom,parrot-rumi"
 compatible = "qcom,parrot-idp"
 compatible = "qcom,parrot-qrd"
 compatible = "qcom,parrot-atp"
+compatible = "qcom,parrotp-idp"
+compatible = "qcom,parrotp-qrd"
+compatible = "qcom,parrotp-atp"
 compatible = "qcom,anorak-rumi"
 compatible = "qcom,anorak-idp"
 compatible = "qcom,ravelin-rumi"

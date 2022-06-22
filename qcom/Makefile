@@ -341,23 +341,23 @@ dtbo-$(CONFIG_ARCH_PARROT) += parrot-rumi-overlay.dtbo \
 	parrot-qrd-nopmi-overlay.dtbo
 
 parrot-rumi-overlay.dtbo-base := parrot.dtb
-parrot-atp-overlay.dtbo-base := parrot.dtb
-parrot-idp-overlay.dtbo-base := parrot.dtb
+parrot-atp-overlay.dtbo-base := parrot.dtb parrotp.dtb
+parrot-idp-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-idp-wcn3990-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn3990-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-wcn3990-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-idp-wcn3990-amoled-rcm-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn3990-amoled-rcm-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-wcn3990-amoled-rcm-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-idp-wcn6750-amoled-rcm-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn6750-amoled-rcm-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-wcn6750-amoled-rcm-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-idp-wcn6750-amoled-overlay.dtbo-base := parrot.dtb
+parrot-idp-wcn6750-amoled-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-wcn6750-amoled-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-idp-nopmi-overlay.dtbo-base := parrot.dtb
-parrot-qrd-overlay.dtbo-base := parrot.dtb
+parrot-idp-nopmi-overlay.dtbo-base := parrot.dtb parrotp.dtb
+parrot-qrd-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-qrd-wcn6750-overlay.dtbo-base := parrot.dtb
+parrot-qrd-wcn6750-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-wcn6750-4gb-overlay.dtbo-base := parrot-4gb.dtb
-parrot-qrd-nopmi-overlay.dtbo-base := parrot.dtb
+parrot-qrd-nopmi-overlay.dtbo-base := parrot.dtb parrotp.dtb
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-atp.dtb \
@@ -376,7 +376,17 @@ dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-qrd-4gb.dtb \
 	parrot-qrd-wcn6750.dtb \
 	parrot-qrd-wcn6750-4gb.dtb \
-	parrot-qrd-nopmi.dtb
+	parrot-qrd-nopmi.dtb \
+	parrotp-atp.dtb \
+	parrotp-idp.dtb \
+	parrotp-idp-wcn3990.dtb \
+	parrotp-idp-wcn3990-amoled-rcm.dtb \
+	parrotp-idp-wcn6750-amoled.dtb \
+	parrotp-idp-wcn6750-amoled-rcm.dtb \
+	parrotp-idp-nopmi.dtb \
+	parrotp-qrd.dtb \
+	parrotp-qrd-wcn6750.dtb \
+	parrotp-qrd-nopmi.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
