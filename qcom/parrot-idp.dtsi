@@ -87,16 +87,14 @@
 };
 
 &sdhc_1 {
-	status = "disabled";
+	status = "ok";
 
 	vdd-supply = <&L24B>;
-	qcom,vdd-voltage-level = <2960000 2960000>;
 	qcom,vdd-current-level = <0 570000>;
 
 	vdd-io-supply = <&L19B>;
 	qcom,vdd-io-always-on;
 	qcom,vdd-io-lpm-sup;
-	qcom,vdd-io-voltage-level = <1800000 1800000>;
 	qcom,vdd-io-current-level = <0 325000>;
 
 	pinctrl-names = "default", "sleep";

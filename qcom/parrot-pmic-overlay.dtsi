@@ -560,7 +560,7 @@
 			L4J: pm8010j_l4: regulator@4300 {
 				reg = <0x4300>;
 				regulator-name = "pm8010j_l4";
-				regulator-min-microvolt = <1792000>;
+				regulator-min-microvolt = <1664000>;
 				regulator-max-microvolt = <1888000>;
 				qcom,min-dropout-voltage = <152000>;
 				qcom,hpm-min-load = <0>;

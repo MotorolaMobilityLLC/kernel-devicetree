@@ -762,6 +762,7 @@
 		coresight-name = "coresight-tpdm-dl-south-cmb";
 
 		clocks = <&aoss_qmp>;
+		status = "disabled";
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
 
