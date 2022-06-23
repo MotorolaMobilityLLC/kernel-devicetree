@@ -160,7 +160,7 @@
 
 &usb0 {
 	usb-role-switch;
-
+        qcom,disable-host-ssphy-powerdown;
 	dwc3@a600000 {
 		usb-role-switch;
 	};
