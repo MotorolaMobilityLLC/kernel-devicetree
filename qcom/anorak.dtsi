@@ -768,6 +768,11 @@
 		qcom,config-arr =<0x17800060 0x17810060 0x17820060 0x17830060 0x17840060 0x17850060>;
 	};
 
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
+	};
+
 	clk_virt: interconnect@0 {
 		compatible = "qcom,anorak-clk_virt";
 		#interconnect-cells = <1>;
