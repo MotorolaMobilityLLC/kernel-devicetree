@@ -64,8 +64,8 @@ Required properties:
  - qcom,vdd-voltage-level: This property must be a list of three integer
    values (no, min, max) where each value represents either a voltage in
    microvolts or a value corresponding to voltage corner
- - qcom,qmp-phy-init-seq: QMP PHY initialization sequence with reg offset, its
-   value, delay after register write.
+ - qcom,qmp-phy-init-seq: QMP PHY initialization sequence with reg offset and
+   its value.
  - qcom,qmp-phy-reg-offset: Provides important phy register offsets in an order
    defined in the phy driver.
    Provide below mentioned register offsets in order for non USB DP combo PHY:
