@@ -641,6 +641,21 @@
 		};
 	};
 
+	bq27421_intr: bq27421_intr {
+		bq27421_intr_default: bq27421_intr_default {
+			mux {
+				pins = "gpio7";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio7";
+				bias-pull-up;
+				input-enabled;
+			};
+		};
+	};
+
 	qupv3_se11_2uart_pins: qupv3_se11_2uart_pins {
 			qupv3_se11_2uart_active: qupv3_se11_2uart_active {
 				mux {
