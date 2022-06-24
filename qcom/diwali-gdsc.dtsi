@@ -170,6 +170,23 @@
 		status = "disabled";
 	};
 
+	gcc_venus_gdsc: qcom,gdsc@1b6020 {
+		compatible = "qcom,gdsc";
+		reg = <0x1b6020 0x4>;
+		regulator-name = "gcc_venus_gdsc";
+		qcom,retain-regs;
+		status = "disabled";
+	};
+
+	gcc_vcodec0_gdsc: qcom,gdsc@1b6044 {
+		compatible = "qcom,gdsc";
+		reg = <0x1b6044 0x4>;
+		regulator-name = "gcc_vcodec0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		status = "disabled";
+	};
+
 	hlos1_vote_mmnoc_mmu_tbu_hf0_gdsc: qcom,gdsc@18d050 {
 		compatible = "qcom,gdsc";
 		reg = <0x18d050 0x4>;
