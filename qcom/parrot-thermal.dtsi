@@ -11,8 +11,9 @@
 			<0x0c222000 0x1ff>; /* SROT */
 		#qcom,sensors = <16>;
 		interrupts = <GIC_SPI 506 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 508 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "uplow","critical";
+			     <GIC_SPI 508 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 500 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "uplow","critical", "cold";
 		#thermal-sensor-cells = <1>;
 	};
 
@@ -22,8 +23,9 @@
 			<0x0c223000 0x1ff>; /* SROT */
 		#qcom,sensors = <16>;
 		interrupts = <GIC_SPI 507 IRQ_TYPE_LEVEL_HIGH>,
-			     <GIC_SPI 509 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "uplow","critical";
+			     <GIC_SPI 509 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 501 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "uplow","critical", "cold";
 		#thermal-sensor-cells = <1>;
 	};
 
@@ -1075,6 +1077,58 @@
 				temperature = <115000>;
 				hysteresis = <5000>;
 				type = "passive";
+			};
+		};
+	};
+
+	zeroc-0-step {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&tsens0 128>;
+		trips {
+			thermal-engine-config {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+
+			min_temp_0_trip: cold-trip {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+		};
+
+		cooling-maps {
+			wcss_cx_vdd_cdev {
+				trip = <&min_temp_0_trip>;
+				cooling-device = <&cx_cdev 1 1>;
+			};
+		};
+	};
+
+	zeroc-1-step {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&tsens1 128>;
+		trips {
+			thermal-engine-config {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+
+			min_temp_1_trip: cold-trip {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+		};
+
+		cooling-maps {
+			wcss_cx_vdd_cdev {
+				trip = <&min_temp_1_trip>;
+				cooling-device = <&cx_cdev 1 1>;
 			};
 		};
 	};
