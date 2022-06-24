@@ -76,6 +76,15 @@
 				qcom,hpm-min-load = <30000>;
 			};
 
+			L2I: pm8008i_l2: regulator@4100 {
+				reg = <0x4100>;
+				regulator-name = "pm8008i_l2";
+				regulator-min-microvolt = <528000>;
+				regulator-max-microvolt = <1544000>;
+				qcom,min-dropout-voltage = <40000>;
+				qcom,hpm-min-load = <30000>;
+			};
+
 			L3I: pm8008i_l3: regulator@4200 {
 				reg = <0x4200>;
 				regulator-name = "pm8008i_l3";
