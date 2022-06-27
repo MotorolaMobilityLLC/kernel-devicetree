@@ -23,14 +23,14 @@
 };
 
 &nxp_eusb2_repeater {
-	status = "disable";
-};
-
-&diodes_eusb2_repeater {
 	status = "ok";
 };
 
+&diodes_eusb2_repeater {
+	status = "disable";
+};
+
 &eusb2_phy0 {
-	dummy-supply = <&diodes_eusb2_repeater>;
-	usb-repeater = <&diodes_eusb2_repeater>;
+	dummy-supply = <&nxp_eusb2_repeater>;
+	usb-repeater = <&nxp_eusb2_repeater>;
 };
