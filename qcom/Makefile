@@ -360,7 +360,8 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-eqs-dvt1b1-overlay.dtbo \
 	cape-eqs-dvt2a1-overlay.dtbo \
 	cape-eqs-dvt2b1-overlay.dtbo \
-	cape-eqs-dvt2b3-overlay.dtbo
+	cape-eqs-dvt2b3-overlay.dtbo \
+	cape-eqs-pvt1a-overlay.dtbo
 
 cape-eqs-evt1-overlay.dtbo-base := cape-moto-eqs-base.dtb
 cape-eqs-evt2-overlay.dtbo-base := cape-moto-eqs-base.dtb
@@ -369,6 +370,7 @@ cape-eqs-dvt1b1-overlay.dtbo-base := cape-moto-eqs-base.dtb cape-v2-moto-eqs-bas
 cape-eqs-dvt2a1-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 cape-eqs-dvt2b1-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 cape-eqs-dvt2b3-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
+cape-eqs-pvt1a-overlay.dtbo-base := cape-v2-moto-eqs-base.dtb
 endif
 
 ifeq ($(CONFIG_BRONCO_DTB),y)
