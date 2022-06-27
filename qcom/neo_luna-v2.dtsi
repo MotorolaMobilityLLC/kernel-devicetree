@@ -62,3 +62,32 @@
 &mdp_1_tbu {
 	status = "ok";
 };
+
+&gpucc {
+	status = "ok";
+};
+
+&dispcc {
+	status = "ok";
+};
+
+&debugcc {
+	qcom,gpucc = <&gpucc>;
+	qcom,dispcc = <&dispcc>;
+};
+
+&gpu_cc_cx_gdsc {
+	status = "ok";
+};
+
+&gpu_cc_gx_gdsc {
+	status = "ok";
+};
+
+&disp_cc_mdss_core_gdsc {
+	status = "ok";
+};
+
+&disp_cc_mdss_core_int2_gdsc {
+	status = "ok";
+};
