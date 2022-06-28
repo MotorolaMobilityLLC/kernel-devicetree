@@ -1,4 +1,5 @@
 #include <dt-bindings/clock/qcom,gcc-anorak.h>
+#include <dt-bindings/gpio/gpio.h>
 
 &arch_timer {
 	clock-frequency = <500000>;
@@ -99,6 +100,25 @@
 			qcom,no-l1ss-supported;
 			qcom,no-aux-clk-sync;
 	};
+};
+
+&sdhc_2 {
+	status = "ok";
+	vdd-supply = <&L12B>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 800000>;
+
+	vdd-io-supply = <&L18B>;
+	qcom,vdd-io-voltage-level = <2960000 2960000>;
+	qcom,vdd-io-current-level = <0 22000>;
+
+	is_rumi;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc2_on>;
+	pinctrl-1 = <&sdc2_off>;
+
+	cd-gpios = <&tlmm 175 GPIO_ACTIVE_LOW>;
 };
 
 &ufsphy_mem {
