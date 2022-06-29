@@ -2,7 +2,8 @@
 	sys_temp_support {
 		compatible = "mmi,sys-temp";
 		mmi,temperature-names = "front_temp",
-			"back_temp";
+			"back_temp",
+			"fuse_temp";
 		status = "ok";
 	};
 };
