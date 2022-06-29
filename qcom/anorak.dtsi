@@ -58,6 +58,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -78,6 +79,7 @@
 			next-level-cache = <&L2_1>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 			L2_1: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -94,6 +96,7 @@
 			next-level-cache = <&L2_2>;
 			capacity-dmips-mhz = <1075>;
 			dynamic-power-coefficient = <109>;
+			#cooling-cells = <2>;
 			L2_2: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -109,6 +112,7 @@
 			next-level-cache = <&L2_3>;
 			capacity-dmips-mhz = <1075>;
 			dynamic-power-coefficient = <109>;
+			#cooling-cells = <2>;
 			L2_3: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -125,6 +129,7 @@
 			next-level-cache = <&L2_4>;
 			capacity-dmips-mhz = <1075>;
 			dynamic-power-coefficient = <109>;
+			#cooling-cells = <2>;
 			L2_4: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -140,6 +145,7 @@
 			next-level-cache = <&L2_5>;
 			capacity-dmips-mhz = <1075>;
 			dynamic-power-coefficient = <109>;
+			#cooling-cells = <2>;
 			L2_5: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -2695,3 +2701,5 @@
 #include "msm-rdbg.dtsi"
 #include "anorak-gpu.dtsi"
 #include "anorak-hsp.dtsi"
+#include "anorak-thermal.dtsi"
+
