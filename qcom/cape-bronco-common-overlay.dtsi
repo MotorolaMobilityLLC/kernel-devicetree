@@ -30,12 +30,12 @@
 &tlmm {
 	redriver_enable: redriver_enable {
 		mux {
-			pins = "gpio19";
+			pins = "gpio54";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio19";
+			pins = "gpio54";
 			drive-strength = <2>;
 			bias-disable; /* NO PULL */
 			output-high;
@@ -43,12 +43,12 @@
 	};
 	redriver_disable: redriver_disable {
 		mux {
-			pins = "gpio19";
+			pins = "gpio54";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio19";
+			pins = "gpio54";
 			drive-strength = <2>;
 			output-low;
 		};
