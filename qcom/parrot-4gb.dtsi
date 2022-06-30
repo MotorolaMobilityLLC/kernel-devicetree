@@ -29,3 +29,19 @@
 &trust_ui_vm_swiotlb {
 	status = "disabled";
 };
+
+&soc {
+
+	qcom,guestvm_loader@e0b00000 {
+		status = "disabled";
+	};
+
+	qrtr-gunyah {
+		status = "disabled";
+	};
+
+	qcom,virtio_backend@0 {
+		status = "disabled";
+	};
+
+};
