@@ -265,6 +265,7 @@
 
 &flash_led {
 	status = "ok";
+	qcom,use-qti-battery-interface;
 };
 
 &pmr735a_spmi {
