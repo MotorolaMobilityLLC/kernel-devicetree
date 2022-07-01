@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "neo_luna-v2.dtsi"
+#include "neo_luna-v2-sg-idp.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO LUNA-V2";
