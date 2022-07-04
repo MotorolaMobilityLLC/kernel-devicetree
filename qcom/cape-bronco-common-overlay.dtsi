@@ -18,7 +18,7 @@
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "cape-bronco-touchscreen-overlay.dtsi"
-#include "moto-bronco-wl2868c.dtsi"
+#include "moto-bronco-wl2864c.dtsi"
 #include "cape-bronco-sensor-overlay.dtsi"
 #include "cape-bronco-fingerprint-overlay.dtsi"
 #include "waipio-hiphic-se-overlay.dtsi"
