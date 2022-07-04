@@ -4,20 +4,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/gpio/gpio.h>
 
-&tlmm{
-	aw882xx_irq_default: aw882xx_irq_default {
-		mux {
-			pins = "gpio59";
-			function = "gpio";
-		};
-		config {
-			pins = "gpio59";
-			drive-strength = <2>; /* 2 MA */
-			bias-pull-up;
-		};
-	};
-};
-
 &cdc_dmic01_gpios {
 	status = "disabled";
 };
@@ -68,19 +54,6 @@
 &dai_mi2s3_tx {
 	status = "okay";
 	qcom,msm-mi2s-lines = <0>;
-};
-
-&q6core {
-   cdc_sec_mi2s_gpios: cdc_sec_mi2s_gpios {
-           compatible = "qcom,msm-cdc-pinctrl";
-           pinctrl-names = "aud_active", "aud_sleep";
-           pinctrl-0 = <&lpi_i2s2_sck_active &lpi_i2s2_ws_active
-                           &lpi_i2s2_sd0_active &lpi_i2s2_sd1_active>;
-           pinctrl-1 = <&lpi_i2s2_sck_sleep &lpi_i2s2_ws_sleep
-                           &lpi_i2s2_sd0_sleep &lpi_i2s2_sd1_sleep>;
-           qcom,lpi-gpios;
-           #gpio-cells = <0>;
-   };
 };
 
 &bolero {
@@ -247,11 +220,10 @@
 };
 
 &holi_snd {
-	qcom,model = "holi-9370_aw882xx-snd-card";
-	qcom,msm-mi2s-master = <1>, <1>, <1>, <1>;
+	qcom,model = "holi-9370_aw87xxx-snd-card";
 	qcom,wcn-btfm = <1>;
 	qcom,tdm-max-slots = <4>;
-	qcom,sec-mi2s-gpios = <&cdc_sec_mi2s_gpios>;
+	qcom,mi2s-audio-intf = <0>;
 
 	qcom,audio-routing =
 		"AMIC1", "Analog Mic1",
@@ -295,34 +267,33 @@
 	qcom,msm-mbhc-hphl-swh = <1>;
 	qcom,msm-mbhc-gnd-swh = <1>;
 	asoc-codec  = <&stub_codec>, <&bolero>,
-		      <&wcd937x_codec>,<&aw882xxacf>;
+		      <&wcd937x_codec>;
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec",
-			   "wcd937x_codec", "aw882xx_codec";
+			   "wcd937x_codec";
 	qcom,msm_audio_ssr_devs = <&audio_apr>, <&q6core>, <&lpi_tlmm>,
 				  <&bolero>;
 	qcom,msm-mbhc-hs-mic-max-threshold-mv = <2700>;
 	qcom,msm-mbhc-hs-mic-min-threshold-mv = <116>;
 };
 
-&qupv3_se10_i2c {
+&qupv3_se7_i2c_pins {
         status = "ok";
-        aw882xxacf: aw882xxacf_smartpa@34 {
-			compatible = "awinic,aw882xxacf_smartpa";
-			reg = <0x34>;
-			pinctrl-names = "default";
-			pinctrl-0 = <&aw882xx_irq_default>;
-			irq-gpio = <&tlmm 59 0x2008>;
-			dc-flag = <0>;
-			sound-channel = <0>;
-			aw-tx-topo-id = <0x1000ff00>;
-			aw-rx-topo-id = <0x1000ff01>;
-			aw-rx-port-id = <0x1002>;
-			aw-tx-port-id = <0x1003>;
-			aw-re-min = <4000>;
-			aw-re-max = <30000>;
-			aw-cali-mode = "aw_attr";
-			status = "okay";
-		};
+        aw887xx_smartpa_0: aw87xxx_pa@58 {
+                compatible = "awinic,aw87xxx_pa";
+                reg = <0x58>;
+                dev_index = < 0 >;
+                aw-rx-topo-id = <0x1000ff01>;
+                aw-rx-port-id = <0xb030>;
+                status = "okay";
+        };
+        aw887xx_smartpa_1: aw87xxx_pa@59 {
+                compatible = "awinic,aw87xxx_pa";
+                reg = <0x59>;
+                dev_index = < 1 >;
+                aw-rx-topo-id = <0x1000ff01>;
+                aw-rx-port-id = <0xb032>;
+                status = "okay";
+        };
 };
 
 &va_cdc_dma_0_tx {
