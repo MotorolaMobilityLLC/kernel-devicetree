@@ -43,3 +43,41 @@
 &qupv3_se2_2uart {
 	qcom,rumi_platform;
 };
+
+&ufsphy_mem {
+	compatible = "qcom,ufs-phy-qrbtc-sdm845";
+
+	vdda-phy-supply = <&L5B>;
+	vdda-pll-supply = <&L16B>;
+	vdda-phy-max-microamp = <85710>;
+	vdda-pll-max-microamp = <18330>;
+
+	status = "ok";
+};
+
+&ufshc_mem {
+	limit-tx-hs-gear = <1>;
+	limit-rx-hs-gear = <1>;
+	limit-rate = <2>; /* HS Rate-B */
+
+	vdd-hba-supply = <&gcc_ufs_phy_gdsc>;
+	vdd-hba-fixed-regulator;
+
+	vcc-supply = <&L24B>;
+	vcc-max-microamp = <1056000>;
+
+	vccq-supply = <&L13B>;
+	vccq-max-microamp = <750000>;
+
+	vccq2-supply = <&L19B>;
+	vccq2-max-microamp = <750000>;
+
+	qcom,vddp-ref-clk-supply = <&L13B>;
+	qcom,vddp-ref-clk-max-microamp = <70>;
+
+	qcom,disable-lpm;
+	rpm-level = <0>;
+	spm-level = <0>;
+
+	status = "ok";
+};
