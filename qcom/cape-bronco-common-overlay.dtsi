@@ -127,7 +127,6 @@
 
 &usb0 {
 	ssusb_redriver = <&redriver>;
-	qcom,force-adb-enable;
 };
 
 &sdhc_2 {
