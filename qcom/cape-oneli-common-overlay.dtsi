@@ -270,6 +270,7 @@
 		mmi,paired-load-thres = <800 400>;
 		mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
 		mmi,high-load-en-gpio = <&pm8350b_gpios 3 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
+		mmi,thermal-mitigation = <900000 600000 300000>;
 	};
 };
 

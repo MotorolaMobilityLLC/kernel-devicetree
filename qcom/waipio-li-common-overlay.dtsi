@@ -232,6 +232,7 @@
 					 120 600
 					 150 300>;
 		mmi,paired-load-thres = <800 400>;
+		mmi,thermal-mitigation = <900000 600000 300000>;
 	};
 };
 
