@@ -45,5 +45,10 @@
 			qcom,glink-channels = "AH_IRIS";
 			qcom,intents = <0x800 2>;
 		};
+		qcom,glinkpkt_ai_bus {
+			qcom,glink-channels = "AH_AI";
+			qcom,intents = <0x200 60
+					0x4c000 10>;
+		};
 	};
 };
