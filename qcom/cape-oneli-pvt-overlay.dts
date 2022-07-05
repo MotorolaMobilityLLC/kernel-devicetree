@@ -27,7 +27,3 @@
 		goodix,avdd-name = "pm8350c_l11";
 	};
 };
-
-&pm8350b_haptics {
-        moto,wf-vmax-mv = <7500>;
-};
