@@ -101,15 +101,9 @@ blair-milanf-dvt1-overlay.dtbo-base := blair-moto-milanf-base.dtb
 blair-milanf-dvt2-overlay.dtbo-base := blair-moto-milanf-base.dtb
 
 dtbo-$(CONFIG_PENANG_DTB) += \
-        blair-penang-evb1-overlay.dtbo \
-        blair-penang-evb2-overlay.dtbo \
-        blair-penang-dvt1-overlay.dtbo \
-        blair-penang-dvt2-overlay.dtbo
+        holi-penang-evt1-overlay.dtbo
 
-blair-penang-evb1-overlay.dtbo-base := blair-moto-penang-base.dtb
-blair-penang-evb2-overlay.dtbo-base := blair-moto-penang-base.dtb
-blair-penang-dvt1-overlay.dtbo-base := blair-moto-penang-base.dtb
-blair-penang-dvt2-overlay.dtbo-base := blair-moto-penang-base.dtb
+holi-penang-evt1-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_RHODEP_DTB) += \
         blair-rhodep-evt1-overlay.dtbo \
