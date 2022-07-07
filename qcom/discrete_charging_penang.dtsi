@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  */
 #include <dt-bindings/iio/qti_power_supply_iio.h>
-#include "sgm7220.dtsi"
+#include "sgm7220-penang.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
 &pm6125_vadc {
@@ -38,92 +38,60 @@
 		reg = <0x64>;
 		status = "okay";
 
+		sense_r_mohm = <5>;
+		factory_mode_ntc_exist = <0>;
 		df-serialnum = "SB18D24973";
 		#include "bat_setting/CW_nd50-atl-5000mah.dtsi"
 		#include "bat_setting/CW_nd50-jiade-5000mah.dtsi"
 	};
-
-	sm5602@71 {
-		compatible = "sm,sm5602";
-		reg = <0x71>;
-		//interrupt-parent = <&tlmm>;
-		//interrupts = <38 2>;
-		//qcom,irq-gpio = <&tlmm 38 0x0>;
-
-		sm,en_temp_ex;
-		//sm,en_temp_in;
-		sm,en_batt_det;
-		sm,iocv_man_mode;
-		sm,misc = <0x0800>;
-		sm,aging_ctrl = <0x0121>;
-		sm,cycle_cfg = <0x7000>;
-		sm,rsns = <1>;
-		sm,fg_irq_set = <0x07FF>;
-		sm,low_soc1 = <1>;
-		sm,low_soc2 = <15>;
-		sm,v_l_alarm = <3400>;
-		sm,v_h_alarm = <4450>;
-		sm,battery_table_num = <0>;
-		sm,param_version = <3>;
-		sm,t_l_alarm_in = <54>;
-		sm,t_h_alarm_in = <1>;
-		sm,t_l_alarm_ex = <0xD3D8>;
-		sm,t_h_alarm_ex = <0x9245>;
-		sm,shutdown-delay-enable;
-
-		df-serialnum = "SB18D24973";
-		#include "bat_setting/SM5602_ND50_ATL_Rhodec.dtsi"
-		#include "bat_setting/SM5602_ND50_JIADE_Rhodec.dtsi"
-	};
 };
 
-&qupv3_se6_i2c {
+&qupv3_se10_i2c {
     status = "okay";
-	sgm4154x: sgm4154x@3B {
-		status = "okay";
-		compatible = "sgm,sgm41542";
-		reg = <0x3B>;
 
-		pinctrl-names = "default";
-		pinctrl-0 = <&gpio6_adc_default &chg_irq_default>;
-		io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
-		io-channel-names = "gpio3_div3";
+        sgm41543: sgm41543@0B {
+                status = "okay";
+                compatible = "sgm,sgm41543D";
+                reg = <0x0B>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&sgm4154x_gpio_pins &gpio6_adc_default>;
+                #io-channel-cells = <1>;
+                io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
+                io-channel-names = "gpio3_div3";
 
-		interrupt-parent = <&tlmm>;
-		interrupts = <12 0>;            //irq num base on hardware design
-		sgm,irq-gpio = <&tlmm 59 0>;     //irq num base on hardware design
-		sgm,chg-en-gpio = <&tlmm 45 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
+                interrupt-parent = <&tlmm>;
+                interrupts = <59 0>;            //irq num base on hardware design
+                sgm,irq-gpio = <&tlmm 59 0>;     //irq num base on hardware design
+                sgm,chg-en-gpio = <&tlmm 59 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
-		dpdm-supply = <&qusb_phy0>;
-		mmi,qc3-support;
+                dpdm-supply = <&qusb_phy0>;
+                mmi,qc3-support;
+                enable_sw_jeita;
+                jeita_temp_above_t4_cv = <0>;
+                jeita_temp_t3_to_t4_cv = <4100000>;
+                jeita_temp_t2_to_t3_cv = <4350000>;
+                jeita_temp_t1_to_t2_cv = <4350000>;
+                jeita_temp_t0_to_t1_cv = <0>;
+                jeita_temp_below_t0_cv = <0>;
 
-		/* sw jeita  parameter customer defined*/
-		enable_sw_jeita;
-		jeita_temp_above_t4_cv = <0>;
-		jeita_temp_t3_to_t4_cv = <4100000>;
-		jeita_temp_t2_to_t3_cv = <4350000>;
-		jeita_temp_t1_to_t2_cv = <4350000>;
-		jeita_temp_t0_to_t1_cv = <0>;
-		jeita_temp_below_t0_cv = <0>;
+                jeita_temp_above_t4_cc_current = <0>;
+                jeita_temp_t3_to_t4_cc_current = <1000000>;
+                jeita_temp_t2_to_t3_cc_current = <1250000>;
+                jeita_temp_t1_to_t2_cc_current = <1000000>;
+                jeita_temp_below_t0_cc_current = <0>;
 
-		jeita_temp_above_t4_cc_current = <0>;
-		jeita_temp_t3_to_t4_cc_current = <1000000>;
-		jeita_temp_t2_to_t3_cc_current = <1250000>;
-		jeita_temp_t1_to_t2_cc_current = <1000000>;
-		jeita_temp_below_t0_cc_current = <0>;
-
-		temp_t4_thres = <50>;
-		temp_t4_thres_minus_x_degree = <48>;
-		temp_t3_thres = <45>;
-		temp_t3_thres_minus_x_degree = <45>;
-		temp_t2_thres = <20>;
-		temp_t2_thres_plus_x_degree = <15>;
-		temp_t1_thres = <0>;
-		temp_t1_thres_plus_x_degree = <0>;
-		temp_t0_thres = <0>;
-		temp_t0_thres_plus_x_degree = <2>;
-		temp_neg_10_thres = <0>;
-	};
+                temp_t4_thres = <50>;
+                temp_t4_thres_minus_x_degree = <48>;
+                temp_t3_thres = <45>;
+                temp_t3_thres_minus_x_degree = <45>;
+                temp_t2_thres = <20>;
+                temp_t2_thres_plus_x_degree = <15>;
+                temp_t1_thres = <0>;
+                temp_t1_thres_plus_x_degree = <0>;
+                temp_t0_thres = <0>;
+                temp_t0_thres_plus_x_degree = <2>;
+                temp_neg_10_thres = <0>;
+        };
 
 };
 
@@ -168,9 +136,21 @@
 
 
 &tlmm {
+	sgm4154x_gpio_pins: sgm4154x_gpio_pins {
+                mux {
+                        pins = "gpio12";
+                        function = "gpio";
+                };
 
+                config {
+                        pins = "gpio12";
+                        drive-strength = <2>;
+                        bias-pull-up;
+                        input-enable;
+                };
+        };
+/*
 	chg_irq_default: chg_irq_default {
-		/* IRQ */
 		mux {
 			pins = "gpio59";
 			function = "gpio";
@@ -179,8 +159,9 @@
 		config {
 			pins = "gpio59";
 			bias-pull-up;
-			drive-strength = <2>; /* 2 MA */
+			drive-strength = <2>;
 			input-enable;
 		};
 	};
+*/
 };
