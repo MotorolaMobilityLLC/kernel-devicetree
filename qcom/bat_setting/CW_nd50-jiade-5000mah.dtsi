@@ -17,11 +17,11 @@ nd50-jiade-5000mah {
 	config_profile_info = [49 00 00 00 00 00 00 00
 				9E BE B7 CF C2 C1 91 4F
 				31 FF FF FF C3 A3 8B 75
-				61 57 4C 8E E6 DE 83 D0
+				61 57 4C 7E CE DE 83 D0
 				CC C8 D1 D5 D6 D4 D1 CD
 				CC CA CB C1 A0 94 8A 81
 				76 6D 7A 91 A7 86 5F 72
 				20 00 57 10 02 B0 5A 00
-				00 00 64 26 D3 4D 00 00
-				00 00 00 00 00 00 00 A5 ];
+				00 00 64 14 D3 4D 00 00
+				00 00 00 00 00 00 00 CD ];
 };
