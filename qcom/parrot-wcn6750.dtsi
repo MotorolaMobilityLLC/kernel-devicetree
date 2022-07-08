@@ -99,6 +99,7 @@
 		dma-coherent;
 		qcom,fw-prefix;
 		qcom,wlan;
+		tsens = "quiet-therm";
 		qcom,wlan-msa-fixed-region = <&wlan_fw_mem>;
 		vdd-cx-mx-supply = <&S7B>;
 		qcom,vdd-cx-mx-config = <880000 1120000 0 0 1>;
