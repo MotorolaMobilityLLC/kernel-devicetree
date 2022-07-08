@@ -21,7 +21,7 @@
 			memory-region = <&audio_cma_mem>;
 		};
 
-		qcom,display {
+		non_secure_display_dma_buf: qcom,display {
 			qcom,dma-heap-name = "qcom,display";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			qcom,max-align = <9>;
