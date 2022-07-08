@@ -138,12 +138,12 @@
 &tlmm {
 	sgm4154x_gpio_pins: sgm4154x_gpio_pins {
                 mux {
-                        pins = "gpio12";
+                        pins = "gpio59";
                         function = "gpio";
                 };
 
                 config {
-                        pins = "gpio12";
+                        pins = "gpio59";
                         drive-strength = <2>;
                         bias-pull-up;
                         input-enable;
