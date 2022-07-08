@@ -62,7 +62,7 @@
                 interrupt-parent = <&tlmm>;
                 interrupts = <59 0>;            //irq num base on hardware design
                 sgm,irq-gpio = <&tlmm 59 0>;     //irq num base on hardware design
-                sgm,chg-en-gpio = <&tlmm 59 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
+               // sgm,chg-en-gpio = <&tlmm 45 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
                 dpdm-supply = <&qusb_phy0>;
                 mmi,qc3-support;
