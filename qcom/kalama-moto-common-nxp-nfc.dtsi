@@ -12,6 +12,8 @@
 
 /* This file is used for 8550 device which use nxp nfc chipst */
 
+#include <dt-bindings/clock/qcom,rpmh.h>
+
 &tlmm {
        nfc {
                 nfc_int_active: nfc_int_active {
@@ -85,11 +87,14 @@
                 qcom,sn-irq = <&tlmm 55 0x00>;
                 qcom,sn-ven = <&tlmm 30 0x00>;
                 qcom,sn-clkreq = <&tlmm 31 0x00>;
+                qcom,clk-src = "BBCLK2";
                 interrupt-parent = <&tlmm>;
                 interrupts = <55 0>;
                 interrupt-names = "nfc_irq";
                 pinctrl-names = "nfc_active", "nfc_suspend";
                 pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
                 pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
+                clocks = <&rpmhcc RPMH_LN_BB_CLK2>;
+                clock-names = "nfc_ref_clk";
         };
 };
