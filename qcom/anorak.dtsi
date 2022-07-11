@@ -2644,3 +2644,4 @@
 #include "anorak-debug.dtsi"
 #include "msm-rdbg.dtsi"
 #include "anorak-gpu.dtsi"
+#include "anorak-hsp.dtsi"
