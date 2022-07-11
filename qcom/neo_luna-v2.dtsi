@@ -74,6 +74,18 @@
 &debugcc {
 	qcom,gpucc = <&gpucc>;
 	qcom,dispcc = <&dispcc>;
+	clock-names = "xo_clk_src",
+			"gcc",
+			"videocc",
+			"dispcc",
+			"camcc",
+			"gpucc";
+	clocks = <&rpmhcc RPMH_CXO_CLK>,
+		<&gcc 0>,
+		<&videocc 0>,
+		<&dispcc 0>,
+		<&camcc 0>,
+		<&gpucc 0>;
 };
 
 &gpu_cc_cx_gdsc {
