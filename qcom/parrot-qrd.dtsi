@@ -161,5 +161,7 @@
 		pinctrl-0 = <&ts_spi_active>;
 		pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
 		pinctrl-2 = <&ts_spi_release>;
+
+		qcom,touch-environment = "pvm";
 	};
 };
