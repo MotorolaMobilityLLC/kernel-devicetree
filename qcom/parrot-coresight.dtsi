@@ -718,7 +718,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
-
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_dlct1_out_tpda_dl_center2_27: endpoint {
