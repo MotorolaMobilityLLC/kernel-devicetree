@@ -73,5 +73,20 @@
 	status = "ok";
 	pinctrl-0 = <&qupv3_se0_spi_active &qupv3_se0_spi_cs_active>;
 	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
-
+	novatek@0{
+		compatible = "novatek,NVT-ts-spi";
+		reg = <0x0>;
+		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
+		novatek,reset-gpio = <&tlmm 21 0x00>;
+		novatek,irq-gpio = <&tlmm 22 0x2001>;
+		novatek,def-max-resolution = <720 1600>;
+		novatek,swrst-n8-addr = <0x03F0FE>;
+		novatek,spi-rd-fast-addr = <0x03F310>;
+		novatek,report_gesture_key;
+		novatek,usb_charger;
+		novatek,edge_cmd = /bits/ 8 <0x72 0x01 0x00>;
+		novatek,panel-supplier = "djn";
+		panel = <&dsi_nt36528_djn_video>;
+		status = "ok";
+	};
 };
