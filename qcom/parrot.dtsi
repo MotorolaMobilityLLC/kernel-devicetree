@@ -2995,7 +2995,6 @@
 	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
 	clock-names = "ahb_clk";
 	parent-supply = <&VDD_CX_LEVEL>;
-	regulator-always-on;
 	status = "ok";
 };
 
