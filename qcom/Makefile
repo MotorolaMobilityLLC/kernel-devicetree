@@ -354,6 +354,14 @@ cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
 cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 cape-oneli-pvt-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 endif
+
+ifeq ($(CONFIG_ZEEKR_DTB),y)
+dtbo-$(CONFIG_ARCH_CAPE) += \
+	cape-zeekr-evb-overlay.dtbo
+
+cape-zeekr-evb-overlay.dtbo-base := cape-moto-zeekr-base.dtb
+endif
+
 ifeq ($(CONFIG_EQS_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-eqs-evt1-overlay.dtbo \
