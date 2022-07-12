@@ -95,6 +95,9 @@ SoCs:
 - CAPE
   compatible = "qcom,cape", "qcom,cape-v2", "qcom,capep"
 
+- UKEE
+  compatible = "qcom,ukee"
+
 - NEO
   compatible = "qcom,neo"
 
@@ -279,6 +282,10 @@ compatible = "qcom,cape-v2-qrd"
 compatible = "qcom,capep-mtp"
 compatible = "qcom,capep-atp"
 compatible = "qcom,capep-cdp"
+compatible = "qcom,ukee-atp"
+compatible = "qcom,ukee-cdp"
+compatible = "qcom,ukee-mtp"
+compatible = "qcom,ukee-qrd"
 compatible = "qcom,diwali-rumi"
 compatible = "qcom,diwali-idp"
 compatible = "qcom,diwali-qrd"

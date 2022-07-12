@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "ukee.dtsi"
+#include "ukee-qrd.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Ukee QRD";
+	compatible = "qcom,ukee-qrd", "qcom,ukee", "qcom,qrd";
+	qcom,board-id = <11 0>;
+};
