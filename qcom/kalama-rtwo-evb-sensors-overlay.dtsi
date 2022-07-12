@@ -57,8 +57,8 @@
 		Semtech,ref-phases-a = <4>;
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
-		Semtech,button-flag = <0x0f>;
-		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch1","Moto CapSense Ch2","Moto CapSense Ch3";
+		Semtech,button-flag = <0x1f>;
+		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch1","Moto CapSense Ch2","Moto CapSense Ch3","Moto CapSense Ch4";
 		Semtech,debug-name = "capsense0";
 		Semtech,reg-num = <113>;
 		Semtech,reg-init = <
