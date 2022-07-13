@@ -463,12 +463,15 @@ endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
-		anorak-idp-overlay.dtbo
+		anorak-idp-overlay.dtbo \
+		anorak-qxr-overlay.dtbo
 anorak-rumi-overlay.dtbo-base := anorak.dtb
 anorak-idp-overlay.dtbo-base := anorak.dtb
+anorak-qxr-overlay.dtbo-base := anorak.dtb
 else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
-		anorak-idp.dtb
+		anorak-idp.dtb \
+		anorak-qxr.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
