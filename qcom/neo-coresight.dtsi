@@ -866,6 +866,8 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
+
 		out-ports {
 			port {
 				tpdm_sdcc5_out_tpda_dl_north: endpoint {
