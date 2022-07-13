@@ -26,7 +26,7 @@
 		interrupts-extended = <&pdc 14 IRQ_TYPE_EDGE_RISING>,
 				      <&intc GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>,
 				      <&pdc 17 IRQ_TYPE_LEVEL_HIGH>,
-				       <&pdc 15 IRQ_TYPE_EDGE_RISING>;
+				      <&pdc 15 IRQ_TYPE_EDGE_RISING>;
 		interrupt-names = "dp_hs_phy_irq", "pwr_event_irq",
 				"ss_phy_irq", "dm_hs_phy_irq";
 		qcom,use-pdc-interrupts;
@@ -46,7 +46,7 @@
 			reg = <0xa600000 0xd93c>;
 
 			iommus = <&apps_smmu 0x40 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
 			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
 			dma-coherent;
 
