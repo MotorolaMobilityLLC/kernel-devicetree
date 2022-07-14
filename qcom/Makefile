@@ -359,7 +359,7 @@ ifeq ($(CONFIG_ZEEKR_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-zeekr-evb-overlay.dtbo
 
-cape-zeekr-evb-overlay.dtbo-base := cape-moto-zeekr-base.dtb
+cape-zeekr-evb-overlay.dtbo-base := cape-v2-moto-zeekr-base.dtb
 endif
 
 ifeq ($(CONFIG_EQS_DTB),y)
