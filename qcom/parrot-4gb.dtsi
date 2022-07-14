@@ -9,3 +9,7 @@
 &non_secure_display_memory {
 	status = "disabled";
 };
+
+&mem_client_3_size {
+	qcom,peripheral-size = <0x200000>;
+};
