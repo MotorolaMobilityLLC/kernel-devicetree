@@ -12,5 +12,5 @@
 
 /dts-v1/;
 
-#include "cape-moto-common-base.dtsi"
+#include "cape-v2-moto-common-base.dtsi"
 
