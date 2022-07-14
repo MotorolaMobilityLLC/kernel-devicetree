@@ -1544,3 +1544,4 @@
 #include "msm-arm-smmu-anorak.dtsi"
 #include "anorak-coresight.dtsi"
 #include "anorak-debug.dtsi"
+#include "anorak-gpu.dtsi"
