@@ -47,8 +47,8 @@
 				&pcie0_wake_default>;
 
 		gdsc-vdd-supply = <&gcc_pcie_0_gdsc>;
-		vreg-1p8-supply = <&L1E>;
-		vreg-0p9-supply = <&L2E>;
+		vreg-1p8-supply = <&L2C>;
+		vreg-0p9-supply = <&L2F>;
 		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
@@ -312,8 +312,8 @@
 				&pcie1_wake_default>;
 
 		gdsc-vdd-supply = <&gcc_pcie_1_gdsc>;
-		vreg-1p8-supply = <&L1E>;
-		vreg-0p9-supply = <&L2E>;
+		vreg-1p8-supply = <&L2C>;
+		vreg-0p9-supply = <&L2F>;
 		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
@@ -573,8 +573,8 @@
 				&pcie2_clkreq_sleep>;
 
 		gdsc-vdd-supply = <&gcc_pcie_2_gdsc>;
-		vreg-1p8-supply = <&L1E>;
-		vreg-0p9-supply = <&L2E>;
+		vreg-1p8-supply = <&L2C>;
+		vreg-0p9-supply = <&L2F>;
 		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
