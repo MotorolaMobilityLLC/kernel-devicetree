@@ -1474,6 +1474,9 @@
 		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
+
 		interconnects = <&aggre1_noc MASTER_SDCC_1 &mc_virt SLAVE_EBI1>,
 			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDC1>;
 		interconnect-names = "sdhc-ddr","cpu-sdhc";
@@ -1533,6 +1536,9 @@
 		iommus = <&apps_smmu 0x540 0x0>;
 		dma-coherent;
 		qcom,iommu-dma = "fastmap";
+
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
 
 		interconnects = <&aggre2_noc MASTER_SDCC_2 &mc_virt SLAVE_EBI1>,
 			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDCC_2>;
