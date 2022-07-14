@@ -38,7 +38,7 @@
 		 mboxes = <&qmp_aop 0>;
 	 };
 
-	aliases {
+	aliases: aliases {
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 		serial0 = &qupv3_se6_2uart;
@@ -215,6 +215,14 @@
 		alloc-ranges = <0x1 0x00000000 0xfffffffe 0xffffffff>;
 		reusable;
 		size = <0 0x1000000>;
+	};
+
+	audio_cma_mem: audio_cma_region {
+	compatible = "shared-dma-pool";
+	alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+	reusable;
+	alignment = <0x0 0x400000>;
+	size = <0x0 0x1000000>;
 	};
 };
 
