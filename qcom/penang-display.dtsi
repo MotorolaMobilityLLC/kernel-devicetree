@@ -1,6 +1,11 @@
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
 #include "dsi-panel-mot-djn-nt36528-653-720x1600-video.dtsi"
 
+&display_panel_avdd {
+ 	/delete-property/ gpio;
+	/delete-property/ pinctrl-0;
+};
+
 &mdss_dsi_phy0 {
     qcom,platform-strength-ctrl = [55 03 30 30
                 55 03 30 30
