@@ -73,6 +73,7 @@ qcom,mdss-dsi-hbm-fod-on-command = [
 		15 00 00 00 00 00 02 6F 01
 		39 01 00 00 00 00 05 88 02 1C 08 6F];
 
+qcom,mdss-dsi-panel-resend-local-hbm-off;
 qcom,mdss-dsi-panel-local-hbm-enabled;
 qcom,mdss-dsi-panel-local-hbm-alpha-register = <0x87>;
 qcom,mdss-dsi-panel-local-hbm-alpha-size = <4096>;
