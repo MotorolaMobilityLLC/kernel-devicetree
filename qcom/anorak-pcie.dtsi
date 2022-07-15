@@ -88,7 +88,6 @@
 			<&gcc GCC_AGGRE_NOC_PCIE_AXI_CLK>,
 			<&gcc GCC_AGGRE_NOC_PCIE_SF_AXI_CLK>,
 			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>,
-			<&gcc GCC_PCIE_0_PIPE_DIV2_CLK>,
 			<&pcie_0_pipe_clk>;
 		clock-names = "pcie_0_pipe_clk", "pcie_0_ref_clk_src",
 				"pcie_0_aux_clk", "pcie_0_cfg_ahb_clk",
@@ -98,7 +97,7 @@
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_0_axi_clk",
 				"pcie_aggre_noc_sf_axi_clk",
-				"pcie_cfg_noc_pcie_anoc_ahb_clk", "pcie_0_pipe_div2_clk",
+				"pcie_cfg_noc_pcie_anoc_ahb_clk",
 				"pcie_pipe_clk_ext_src";
 		max-clock-frequency-hz = <0>, <0>, <19200000>, <0>, <0>, <0>,
 					<0>, <0>, <0>, <0>, <150000000>,
@@ -110,9 +109,9 @@
 				"pcie_0_phy_reset";
 
 		dma-coherent;
-//		qcom,smmu-sid-base = <0x2c80>;
-//		iommu-map = <0x0 &apps_smmu 0x2c80 0x1>,
-//			<0x100 &apps_smmu 0x2c81 0x1>;
+		qcom,smmu-sid-base = <0x2c80>;
+		iommu-map = <0x0 &apps_smmu 0x2c80 0x1>,
+			<0x100 &apps_smmu 0x2c81 0x1>;
 
 		qcom,boot-option = <0x1>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
@@ -286,7 +285,7 @@
 		#address-cells = <3>;
 		#size-cells = <2>;
 		ranges = <0x01000000 0x0 0x64200000 0x64200000 0x0 0x100000>,
-			<0x02000000 0x0 0x64300000 0x64300000 0x0 0x1fd00000>;
+			<0x02000000 0x0 0x64300000 0x64300000 0x0 0x3d00000>;
 
 		interrupt-parent = <&pcie1>;
 		interrupts = <0 1 2 3 4>;
@@ -294,11 +293,11 @@
 				"int_d";
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0 0 0 0xffffffff>;
-		interrupt-map = <0 0 0 0 &intc GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 1 &intc GIC_SPI 434 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 2 &intc GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 3 &intc GIC_SPI 438 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 4 &intc GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-map = <0 0 0 0 &intc GIC_SPI 583 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 1 &intc GIC_SPI 594 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 2 &intc GIC_SPI 595 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 3 &intc GIC_SPI 596 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 4 &intc GIC_SPI 597 IRQ_TYPE_LEVEL_HIGH>;
 
 		msi-parent = <&pcie1_msi>;
 
@@ -355,7 +354,6 @@
 			<&gcc GCC_AGGRE_NOC_PCIE_AXI_CLK>,
 			<&gcc GCC_AGGRE_NOC_PCIE_SF_AXI_CLK>,
 			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>,
-			<&gcc GCC_PCIE_1_PIPE_DIV2_CLK>,
 			<&pcie_1_pipe_clk>;
 		clock-names = "pcie_1_pipe_clk", "pcie_1_ref_clk_src",
 				"pcie_1_aux_clk", "pcie_1_cfg_ahb_clk",
@@ -364,7 +362,7 @@
 				"pcie_phy_refgen_clk",
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_0_axi_clk", "pcie_aggre_noc_sf_axi_clk",
-				"pcie_cfg_noc_pcie_anoc_ahb_clk", "pcie_1_pipe_div2_clk",
+				"pcie_cfg_noc_pcie_anoc_ahb_clk",
 				"pcie_pipe_clk_ext_src";
 		max-clock-frequency-hz = <0>, <0>, <19200000>, <0>, <0>, <0>,
 					<0>, <0>, <0>, <0>, <150000000>, <0>,
@@ -376,15 +374,15 @@
 				"pcie_1_phy_reset";
 
 		dma-coherent;
-		//qcom,smmu-sid-base = <0x2d00>;
-		//iommu-map = <0x0 &apps_smmu 0x2d00 0x1>,
-		//	<0x100 &apps_smmu 0x2d01 0x1>;
+		qcom,smmu-sid-base = <0x2d00>;
+		iommu-map = <0x0 &apps_smmu 0x2d00 0x1>,
+			<0x100 &apps_smmu 0x2d01 0x1>;
 
 		qcom,boot-option = <0x1>;
 		qcom,drv-supported;
 		qcom,drv-l1ss-timeout-us = <5000>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
-		qcom,slv-addr-space-size = <0x20000000>;
+		qcom,slv-addr-space-size = <0x4000000>;
 		qcom,ep-latency = <10>;
 		qcom,num-parf-testbus-sel = <0xb9>;
 		qcom,l1-2-th-scale = <2>;
@@ -559,23 +557,20 @@
 				"int_d";
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0 0 0 0xffffffff>;
-		interrupt-map = <0 0 0 0 &intc GIC_SPI 583 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 1 &intc GIC_SPI 594 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 2 &intc GIC_SPI 595 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 3 &intc GIC_SPI 596 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 4 &intc GIC_SPI 597 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-map = <0 0 0 0 &intc GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 1 &intc GIC_SPI 434 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 2 &intc GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 3 &intc GIC_SPI 438 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 4 &intc GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
 
 		msi-parent = <&pcie2_msi>;
 
 		perst-gpio = <&tlmm 170 GPIO_ACTIVE_HIGH>;
-		wake-gpio = <&tlmm 172 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default", "sleep";
 		pinctrl-0 = <&pcie2_perst_default
-				&pcie2_clkreq_default
-				&pcie2_wake_default>;
+				&pcie2_clkreq_default>;
 		pinctrl-1 = <&pcie2_perst_default
-				&pcie2_clkreq_sleep
-				&pcie2_wake_default>;
+				&pcie2_clkreq_sleep>;
 
 		gdsc-vdd-supply = <&gcc_pcie_2_gdsc>;
 		vreg-1p8-supply = <&L1E>;
@@ -625,7 +620,6 @@
 			<&gcc GCC_PCIE_2_PHY_AUX_CLK>,
 			<&gcc GCC_AGGRE_NOC_PCIE_SF_AXI_CLK>,
 			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>,
-			<&gcc GCC_PCIE_2_PIPE_DIV2_CLK>,
 			<&pcie_2_pipe_clk>,
 			<&pcie_2_phy_aux_clk>;
 		clock-names = "pcie_2_pipe_clk", "pcie_2_ref_clk_src",
@@ -636,7 +630,7 @@
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_0_axi_clk",
 				"pcie_phy_aux_clk", "pcie_aggre_noc_pcie_sf_axi_clk",
-				"pcie_cfg_noc_pcie_anoc_ahb_clk", "pcie_2_pipe_div2_clk",
+				"pcie_cfg_noc_pcie_anoc_ahb_clk",
 				"pcie_pipe_clk_ext_src", "pcie_phy_aux_clk_ext_src";
 		max-clock-frequency-hz = <0>, <0>, <19200000>, <0>, <0>, <0>,
 					<0>, <0>, <0>, <0>, <100000000>, <0>,
@@ -648,9 +642,9 @@
 				"pcie_2_phy_reset";
 
 		dma-coherent;
-//		qcom,smmu-sid-base = <0x2c00>;
-//		iommu-map = <0x0 &apps_smmu 0x2c00 0x1>,
-//			<0x100 &apps_smmu 0x2c01 0x1>;
+		qcom,smmu-sid-base = <0x2c00>;
+		iommu-map = <0x0 &apps_smmu 0x2c00 0x1>,
+			<0x100 &apps_smmu 0x2c01 0x1>;
 
 		qcom,boot-option = <0x1>;
 		qcom,drv-supported;
