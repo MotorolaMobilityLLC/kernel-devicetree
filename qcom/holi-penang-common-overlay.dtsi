@@ -21,6 +21,7 @@
 #include "penang-display.dtsi"
 #include "penang-touchscreen.dtsi"
 #include "penang-fmr-overlay.dtsi"
+#include "camera/holi-camera-sensor-mot-penang-overlay.dtsi"
 #include "discrete_charging_penang.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 
