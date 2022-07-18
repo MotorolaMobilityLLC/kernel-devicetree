@@ -20,3 +20,33 @@
 
 	cd-gpios = <&tlmm 175 GPIO_ACTIVE_LOW>;
 };
+
+
+&ufsphy_mem {
+	compatible = "qcom,ufs-phy-qmp-v4-anorak";
+
+	vdda-phy-supply = <&L2F>;
+	vdda-pll-supply = <&L2C>;
+	vdda-phy-max-microamp = <138000>;
+	vdda-pll-max-microamp = <18300>;
+
+	status = "ok";
+};
+
+&ufshc_mem {
+	vdd-hba-supply = <&gcc_ufs_phy_gdsc>;
+
+	vcc-supply = <&L13B>;
+	vcc-max-microamp = <1300000>;
+
+	vccq-supply = <&L3B>;
+	vccq-max-microamp = <1200000>;
+
+	vccq2-supply = <&L3F>;
+	vccq2-max-microamp = <800000>;
+
+	qcom,vddp-ref-clk-supply = <&L3B>;
+	qcom,vddp-ref-clk-max-microamp = <100>;
+
+	status = "ok";
+};
