@@ -585,7 +585,7 @@
 
 #include "ravelin-pinctrl.dtsi"
 #include "diwali-gdsc.dtsi"
-
+#include "ipcc-test-ravelin.dtsi"
 &gcc_pcie_0_gdsc {
 	compatible = "regulator-fixed";
 	status = "ok";
