@@ -50,6 +50,7 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		goodix,interpolation-ctrl;
+		mmi,supported_gesture_type = <0x06>;
 	};
 };
 
@@ -81,6 +82,7 @@
 			cy,flags = <2>;
 			/* CY_CORE_EWG_NONE */
 			cy,easy_wakeup_gesture = <1>;
+			cy,supported_gesture_type = <0x02>;
 			cy,btn_keys = <172 /* KEY_HOMEPAGE */
 						/* previously was KEY_HOME, new Android versions use KEY_HOMEPAGE */
 			               139 /* KEY_MENU */
