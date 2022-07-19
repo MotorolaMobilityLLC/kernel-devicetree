@@ -82,6 +82,33 @@
 		/* ddr: 547.2 MHz */
 		<7500 2400000>;
 	};
+
+	bluetooth: bt_qca6490 {
+		compatible = "qcom,qca6490";
+		pinctrl-names = "default";
+		pinctrl-0 = <&bt_en_sleep>;
+		qcom,wl-reset-gpio = <&tlmm 120 0>; /* WL_CTRL */
+		qcom,bt-reset-gpio = <&tlmm 122 0>; /* BT_EN */
+		qcom,bt-sw-ctrl-gpio = <&tlmm 146 0>; /* SW_CTRL */
+
+		qcom,bt-vdd-io-supply = <&L7B>;  /* IO */
+		qcom,bt-vdd-aon-supply = <&S3B>;
+		qcom,bt-vdd-dig-supply = <&S3B>; /* BT_CX_MX */
+		qcom,bt-vdd-rfacmn-supply = <&S3B>;
+		qcom,bt-vdd-rfa-0p8-supply = <&S3B>;
+		qcom,bt-vdd-rfa1-supply = <&S1B>; /* RFA 1p7 */
+		qcom,bt-vdd-rfa2-supply = <&S2B>; /* RFA 1p2 */
+
+		/* Max Voltages are derived from the buck Max Voltage */
+		qcom,bt-vdd-io-config = <1800000 1800000 0 1>;
+		qcom,bt-vdd-aon-config = <966000 1170000 0 1>;
+		qcom,bt-vdd-dig-config = <966000 1170000 0 1>;
+		qcom,bt-vdd-rfacmn-config  = <966000 1170000 0 1>;
+		qcom,bt-vdd-rfa-0p8-config  = <966000 1170000 0 1>;
+		qcom,bt-vdd-rfa1-config = <1900000 2040000 0 1>;
+		qcom,bt-vdd-rfa2-config = <1350000 2024000 0 1>;
+	};
+
 };
 
 &pcie0_rp {
