@@ -73,18 +73,6 @@
 	status = "okay";
 };
 
-&pmxr2230_switch0 {
-	qcom,led-mask = <9>; /* Channels 1 & 4 */
-};
-
-&pmxr2230_switch1 {
-	qcom,led-mask = <6>; /* Channels 2 & 3 */
-};
-
-&pmxr2230_switch2 {
-	qcom,led-mask = <15>; /* All Channels */
-};
-
 &pmxr2230_flash {
 	status = "ok";
 };
@@ -106,4 +94,46 @@
 	clkreq-gpios = <&tlmm 171 GPIO_ACTIVE_LOW>;
 
 	status = "disabled";
+};
+
+&regulator_ocp_notifier {
+	periph-1c1-supply = <&L1B>;
+	periph-1c2-supply = <&L2B>;
+	periph-1c3-supply = <&L3B>;
+	periph-1c4-supply = <&L4B>;
+	periph-1c5-supply = <&L5B>;
+	periph-1c6-supply = <&L6B>;
+	periph-1c7-supply = <&L7B>;
+	periph-1c8-supply = <&L8B>;
+	periph-1c9-supply = <&L9B>;
+	periph-1ca-supply = <&L10B>;
+	periph-1cb-supply = <&L11B>;
+	periph-1cc-supply = <&L12B>;
+	periph-1cd-supply = <&L13B>;
+	periph-1ce-supply = <&L14B>;
+	periph-1cf-supply = <&L15B>;
+	periph-1d2-supply = <&L18B>;
+	periph-1d4-supply = <&L20B>;
+	periph-1d5-supply = <&L21B>;
+	periph-1d6-supply = <&L22B>;
+	periph-1d7-supply = <&L23B>;
+	periph-2c1-supply = <&L1C_LEVEL>;
+	periph-2c2-supply = <&L2C>;
+	periph-3c1-supply = <&L1D>;
+	periph-3c2-supply = <&L2D>;
+	periph-5c1-supply = <&L1F_LEVEL>;
+	periph-5c2-supply = <&L2F>;
+	periph-5c3-supply = <&L3F>;
+	periph-c40-supply = <&L1M>;
+	periph-c41-supply = <&L2M>;
+	periph-c42-supply = <&L3M>;
+	periph-c43-supply = <&L4M>;
+	periph-c44-supply = <&L5M>;
+	periph-c45-supply = <&L6M>;
+	periph-d40-supply = <&L1N>;
+	periph-d41-supply = <&L2N>;
+	periph-d42-supply = <&L3N>;
+	periph-d43-supply = <&L4N>;
+	periph-d44-supply = <&L5N>;
+	periph-d46-supply = <&L7N>;
 };
