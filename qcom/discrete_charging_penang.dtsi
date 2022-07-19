@@ -43,6 +43,7 @@
 		df-serialnum = "SB18D34202";
 		#include "bat_setting/CW_nd50-atl-4850mah.dtsi"
 		#include "bat_setting/CW_nd50-jiade-4850mah.dtsi"
+		#include "bat_setting/CW_nd50-local-4850mah.dtsi"
 	};
 };
 
