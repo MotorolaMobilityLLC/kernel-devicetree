@@ -124,8 +124,8 @@
 &ufsphy_mem {
 	compatible = "qcom,ufs-phy-qrbtc-sdm845";
 
-	vdda-phy-supply = <&L2E>;
-	vdda-pll-supply = <&L1E>;
+	vdda-phy-supply = <&L2F>;
+	vdda-pll-supply = <&L2C>;
 	vdda-phy-max-microamp = <138000>;
 	vdda-pll-max-microamp = <18300>;
 
@@ -143,10 +143,10 @@
 	vcc-supply = <&L13B>;
 	vcc-max-microamp = <1300000>;
 
-	vccq-supply = <&L3E>;
+	vccq-supply = <&L3B>;
 	vccq-max-microamp = <1200000>;
 
-	qcom,vddp-ref-clk-supply = <&L3E>;
+	qcom,vddp-ref-clk-supply = <&L3B>;
 	qcom,vddp-ref-clk-max-microamp = <100>;
 
 	qcom,disable-lpm;
