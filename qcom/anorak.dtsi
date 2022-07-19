@@ -309,10 +309,10 @@
 			     /* No interrupt into GIC for DRV3 */
 		qcom,tcs-offset = <0xd00>;
 		qcom,drv-id = <2>;
-		qcom,tcs-config = <ACTIVE_TCS    2>,
-				  <SLEEP_TCS     3>,
-				  <WAKE_TCS      3>,
-				  <FAST_PATH_TCS 0>,
+		qcom,tcs-config = <ACTIVE_TCS    3>,
+				  <SLEEP_TCS     2>,
+				  <WAKE_TCS      2>,
+				  <FAST_PATH_TCS 1>,
 				  <CONTROL_TCS   0>; /* PDC wakeup values will be written from TZ */
 
 		apps_bcm_voter: bcm_voter {
@@ -320,8 +320,8 @@
 		};
 	};
 
-	disp_rsc: rsc@af20000 {
-		label = "disp_rsc";
+	disp_rsc_0: rsc@af20000 {
+		label = "disp_rsc_0";
 		compatible = "qcom,rpmh-rsc";
 		reg = <0xaf20000 0x10000>;
 		reg-names = "drv-0";
@@ -339,6 +339,22 @@
 			compatible = "qcom,bcm-voter";
 			qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
 		};
+	};
+
+	disp_rsc_1: rsc@15720000 {
+		label = "disp_rsc_1";
+		compatible = "qcom,rpmh-rsc";
+		reg = <0x15720000 0x10000>;
+		reg-names = "drv-0";
+		interrupts = <GIC_SPI 218 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&dispcc DISP_CC_MDSS_RSCC_AHB_CLK>;
+		qcom,tcs-offset = <0x1c00>;
+		qcom,drv-id = <0>;
+		qcom,tcs-config = <ACTIVE_TCS    0>,
+				  <SLEEP_TCS     1>,
+				  <WAKE_TCS      1>,
+				  <CONTROL_TCS   0>,
+				  <FAST_PATH_TCS 0>;
 	};
 
 	arch_timer: timer {
