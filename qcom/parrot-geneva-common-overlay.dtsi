@@ -17,6 +17,7 @@
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "parrot-geneva-touchscreen-overlay.dtsi"
+#include "moto-geneva-wl2864c.dtsi"
 #include "parrot-geneva-evt1-sensor-overlay.dtsi"
 #include "parrot-geneva-fingerprint.dtsi"
 #include "waipio-li-charger-overlay.dtsi"
