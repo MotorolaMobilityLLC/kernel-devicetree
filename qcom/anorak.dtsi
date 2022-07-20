@@ -264,6 +264,18 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		status = "ok";
+
+		ngd@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			/* slimbus child nodes */
+			slimbus: btfmslim-driver {
+				compatible = "slim217,221";
+				reg = <1 0>;
+			};
+		};
 	};
 
 	intc: interrupt-controller@17200000 {
@@ -1384,6 +1396,10 @@
 #include "diwali-gdsc.dtsi"
 
 &qupv3_se6_2uart {
+	status = "ok";
+};
+
+&qupv3_se5_4uart {
 	status = "ok";
 };
 
