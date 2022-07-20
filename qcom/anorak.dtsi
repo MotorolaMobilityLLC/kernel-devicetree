@@ -2357,7 +2357,7 @@
 
 #include "anorak-usb.dtsi"
 #include "anorak-pinctrl.dtsi"
-#include "anorak-stub-regulator.dtsi"
+#include "anorak-regulators.dtsi"
 #include "anorak-dma-heaps.dtsi"
 #include "ipcc-test.dtsi"
 #include "anorak-pcie.dtsi"
