@@ -57,7 +57,7 @@
 		};
 	};
 
-	fps_ldo3_en_active: ldo3_en_active {
+	fps_ldo3_en_active: fps_ldo3_en_active {
 		/* active state */
 		mux {
 			pins = "gpio87";
@@ -72,7 +72,7 @@
 		};
 	};
 
-	fps_ldo3_en_suspend: ldo3_en_suspend {
+	fps_ldo3_en_suspend: fps_ldo3_en_suspend {
 		/* sleep state */
 		mux {
 			pins = "gpio87";
@@ -112,7 +112,7 @@
 		fp-gpio-int = <&tlmm 17 0x0>;
 		fp-gpio-reset = <&tlmm 18 0x0>;
 		fp-gpio-power = <&tlmm 87 0x0>;
-		pinctrl-names = "fps_rst_active","fps_rst_suspend","fps_int_active","fps_ldo3_en_active","fps_ldo3_en_suspend";
+		pinctrl-names = "fps_rst_active","fps_rst_suspend","fps_int_active","fps_ido1p8_en_active","fps_ido1p8_en_suspend";
 
 		pinctrl-0 = <&fps_rst_high>;
 		pinctrl-1 = <&fps_rst_low>;
