@@ -355,6 +355,11 @@
 				  <FAST_PATH_TCS 1>,
 				  <CONTROL_TCS   0>; /* PDC wakeup values will be written from TZ */
 
+		rpmhcc: qcom,rpmhclk {
+			compatible = "qcom,anorak-rpmh-clk";
+			#clock-cells = <1>;
+	};
+
 		apps_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
 		};
@@ -740,13 +745,6 @@
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo_clk_src";
 		#clock-cells = <1>;
-	};
-
-	rpmhcc: qcom,rpmhcc {
-		compatible = "qcom,dummycc";
-		clock-output-names = "rpmhcc_clocks";
-		#clock-cells = <1>;
-		#reset-cells = <1>;
 	};
 
 	camcc: clock-controller@ade0000 {
