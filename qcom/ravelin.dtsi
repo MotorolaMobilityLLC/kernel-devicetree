@@ -184,6 +184,7 @@
 #include "ravelin-dma-heaps.dtsi"
 #include "ravelin-reserved-memory.dtsi"
 #include "ravelin-dma-heaps.dtsi"
+#include "ravelin-usb.dtsi"
 
 &reserved_memory {
 	#address-cells = <2>;
