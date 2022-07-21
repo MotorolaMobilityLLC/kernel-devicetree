@@ -137,9 +137,9 @@
 	qcom,bklt-dcs-2bytes-enabled;
 
 	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-max-level = <255>;
+	qcom,mdss-dsi-bl-max-level = <2047>;
 	qcom,mdss-dsi-bl-default-level = <128>;
-	qcom,mdss-brightness-max-level = <255>;
+	qcom,mdss-brightness-max-level = <2047>;
 
 	/*qcom,esd-check-enabled;*/
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
@@ -162,8 +162,8 @@
 
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-gpio";
 	qcom,platform-hbm-en-gpio = <&tlmm 50 0>;
-	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 02 51 FF];
-	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 02 51 FF];
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 07 FF];
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
 	qcom,mdss-dsi-t-clk-post = <0x1A>;
