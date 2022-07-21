@@ -4,7 +4,7 @@
 		mmi,enable-charging-limit;
 		mmi,upper-limit-capacity = <75>;
 		mmi,lower-limit-capacity = <65>;
-		mmi,heartbeat-interval = <60000>;
+		mmi,heartbeat-interval = <10000>;
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <20000>;
 		mmi,factory-kill-debounce-ms = <3000>;
