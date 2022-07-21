@@ -1,7 +1,7 @@
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
 
-&soc {
-};
+#include "anorak-pmic-overlay.dtsi"
 
 &sdhc_2 {
 	status = "ok";
@@ -50,3 +50,48 @@
 
 	status = "ok";
 };
+
+&soc {
+	gpio_keys {
+		compatible = "gpio-keys";
+		label = "gpio-keys";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>;
+
+		vol_up {
+			label = "volume_up";
+			gpios = <&pm8550b_gpios 10 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_VOLUMEUP>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&pm8550b_haptics {
+	status = "okay";
+};
+
+&pmxr2230_switch0 {
+	qcom,led-mask = <9>; /* Channels 1 & 4 */
+};
+
+&pmxr2230_switch1 {
+	qcom,led-mask = <6>; /* Channels 2 & 3 */
+};
+
+&pmxr2230_switch2 {
+	qcom,led-mask = <15>; /* All Channels */
+};
+
+&pmxr2230_flash {
+	status = "ok";
+};
+
+&battery_charger {
+	qcom,wireless-fw-name = "idt9418.bin";
+};
+
