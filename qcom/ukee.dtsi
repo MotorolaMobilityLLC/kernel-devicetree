@@ -1,0 +1,7 @@
+#include "cape.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Ukee SoC";
+	compatible = "qcom,ukee";
+	qcom,msm-id = <591 0x10000>;
+};
