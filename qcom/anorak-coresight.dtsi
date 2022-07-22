@@ -248,7 +248,8 @@
 		reg-names = "tmc-base", "bam-base";
 
 		qcom,iommu-dma = "bypass";
-		iommus = <&apps_smmu 0x04c0 0>;
+		iommus = <&apps_smmu 0x04c0 0>,
+			<&apps_smmu 0x04a0 0>;
 
 		qcom,iommu-dma-addr-pool = <0x0 0xffc00000>;
 
