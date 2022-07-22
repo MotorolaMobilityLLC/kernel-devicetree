@@ -386,8 +386,12 @@ endif
 ifeq ($(CONFIG_BRONCO_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
         cape-bronco-evb1-overlay.dtbo \
+        cape-bronco-evt1-overlay.dtbo \
+        cape-bronco-evt2-overlay.dtbo \
 
 cape-bronco-evb1-overlay.dtbo-base := cape-moto-bronco-base.dtb
+cape-bronco-evt1-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
+cape-bronco-evt2-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
 endif
 
 ifeq ($(CONFIG_FELIX_DTB),y)
