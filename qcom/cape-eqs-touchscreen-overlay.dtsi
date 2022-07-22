@@ -71,5 +71,6 @@
 		mmi,usb-charger-detection;
 		goodix,interpolation-ctrl;
 		mmi,fod_coords = <540 2152>;
+		mmi,supported_gesture_type = <0x07>;
 	};
 };
