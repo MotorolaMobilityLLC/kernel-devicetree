@@ -24,6 +24,14 @@
 	};
 };
 
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			0x83 0x6c
+			0xcb 0x70
+			0x1e 0x74
+			0x03 0x78>;
+};
+
 &sdhc_1 {
 	status = "ok";
 
