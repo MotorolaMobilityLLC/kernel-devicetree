@@ -468,3 +468,11 @@
 &mdp_1_tbu {
 	status = "disabled";
 };
+
+&lsr_0_tbu {
+	status = "disabled";
+};
+
+&lsr_1_tbu {
+	status = "disabled";
+};

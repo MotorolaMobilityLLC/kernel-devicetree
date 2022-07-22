@@ -1301,6 +1301,18 @@
 			qcom,glinkpkt-ch-name = "AH_BUS";
 			qcom,glinkpkt-dev-name = "glinkpkt_disp_bus";
 		};
+
+		qcom,glinkpkt-iris-bus {
+			qcom,glinkpkt-edge = "helios";
+			qcom,glinkpkt-ch-name = "AH_IRIS";
+			qcom,glinkpkt-dev-name = "glinkpkt_iris_bus";
+		};
+
+		qcom,glinkpkt-ai-bus {
+			qcom,glinkpkt-edge = "helios";
+			qcom,glinkpkt-ch-name = "AH_AI";
+			qcom,glinkpkt-dev-name = "glinkpkt_ai_bus";
+		};
 	};
 
 	clk_virt: interconnect@0 {
