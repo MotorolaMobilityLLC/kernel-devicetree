@@ -16,4 +16,6 @@
 #include "cape-moto-common-overlay-base.dtsi"
 #include "waipio-pm8010-spmi.dtsi"
 #include "cape-moto-common-overlay.dtsi"
+#include "waipio-moto-common-charger.dtsi"
+#include "cape-zeekr-charger-overlay.dtsi"
 
