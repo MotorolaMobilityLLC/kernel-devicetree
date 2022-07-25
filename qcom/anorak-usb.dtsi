@@ -64,6 +64,12 @@
 			dr_mode = "otg";
 			maximum-speed = "super-speed-plus";
 		};
+
+		port {
+			usb_port0: endpoint {
+				remote-endpoint = <&usb_port0_connector>;
+			};
+		};
 	};
 
 	/* USB port related High Speed PHY */
