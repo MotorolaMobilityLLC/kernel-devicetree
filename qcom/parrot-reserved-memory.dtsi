@@ -59,11 +59,6 @@
 		reg = <0x0 0x80b00000 0x0 0x100000>;
 	};
 
-	cdsp_secure_heap_mem: cdsp_secure_heap_region@80c00000 {
-		no-map;
-		reg = <0x0 0x80c00000 0x0 0x1e00000>;
-	};
-
 	wlan_fw_mem: wlan_fw_region@82a00000 {
 		no-map;
 		reg = <0x0 0x82a00000 0x0 0xc00000>;
