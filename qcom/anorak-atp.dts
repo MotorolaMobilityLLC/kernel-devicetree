@@ -6,5 +6,5 @@
 / {
 	model = "Qualcomm Technologies, Inc. Anorak ATP";
 	compatible = "qcom,anorak-atp", "qcom,anorak", "qcom,atp";
-	qcom,board-id = <33 0>;
+	qcom,board-id = <0x10021 0x0>;
 };
