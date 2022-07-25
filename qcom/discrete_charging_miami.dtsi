@@ -125,8 +125,8 @@
 		pinctrl-0 = <&pmk8350_gpio1_adc_default>;
 
 		latest_fw_version = <0x0812>;
-		first_battery_param_ver = <0x0201>;
-		second_battery_param_ver = <0x0201>;
+		first_battery_param_ver = <0x0202>;
+		second_battery_param_ver = <0x0202>;
 
 		first_battery_id = <0x0103>;
 		second_battery_id = <0x0102>;
