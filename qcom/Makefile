@@ -50,7 +50,9 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 ifeq ($(CONFIG_RTWO_DTB),y)
 KALAMA_BASE_DTB += kalama-rtwo-base.dtb kalama-v2-rtwo-base.dtb
 KALAMA_BOARDS += kalama-rtwo-evb1-overlay.dtbo \
-                 kalama-rtwo-evt1-overlay.dtbo
+                 kalama-rtwo-evt1-overlay.dtbo \
+                 kalama-rtwo-dvt1b-overlay.dtbo \
+                 kalama-rtwo-na-evt2-overlay.dtbo
 endif
 
 else
