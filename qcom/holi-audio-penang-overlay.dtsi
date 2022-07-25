@@ -282,16 +282,16 @@
                 compatible = "awinic,aw87xxx_pa";
                 reg = <0x58>;
                 dev_index = < 0 >;
-                aw-rx-topo-id = <0x1000ff01>;
-                aw-rx-port-id = <0xb030>;
+                aw-rx-topo-id = <0x1000ff00>;
+                aw-rx-port-id = <0xB030>;
                 status = "okay";
         };
         aw887xx_smartpa_1: aw87xxx_pa@59 {
                 compatible = "awinic,aw87xxx_pa";
                 reg = <0x59>;
                 dev_index = < 1 >;
-                aw-rx-topo-id = <0x1000ff01>;
-                aw-rx-port-id = <0xb032>;
+                aw-rx-topo-id = <0x1000ff00>;
+                aw-rx-port-id = <0xB030>;
                 status = "okay";
         };
 };
