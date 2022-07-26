@@ -2478,6 +2478,12 @@
 			};
 		};
 	};
+	msm_sdexpress: qcom,msm-sdexpress {
+		compatible = "qcom,msm-sdexpress";
+		qcom,pcie-nvme-instance = <2>;
+
+		status = "disabled";
+	};
 };
 
 #include "anorak-qupv3.dtsi"
