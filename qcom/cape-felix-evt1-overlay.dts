@@ -25,8 +25,8 @@
 &qupv3_se4_i2c {
 	/* Rogue panel */
 	goodix_ts_i2c@5d {
-		compatible = "goodix,gt9916";
-		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
+		compatible = "goodix,gt9966";
+		mmi,status = "/chosen","mmi,panel_name","contains","boe_nt37701A","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
 	};
 };
 
