@@ -133,7 +133,7 @@
 		mmi,lower-limit-capacity = <65>;
 		mmi,heartbeat-interval = <5000>;
 		mmi,dcp-power-max = <10000>;
-		mmi,hvdcp-power-max = <15000>;
+		mmi,hvdcp-power-max = <18000>;
 	};
 
 	mmi_discrete_charger: mmi,discrete-charging {
@@ -149,7 +149,7 @@
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,otg-cl-ua = <1200000>;
-		mmi,df-serialnum = "SB18D24973";
+		mmi,df-serialnum = "SB18D34202";
 		mmi,mmi-temp-zones = <0 4200 1000 0>,
 			<10 4250 2500 1000>,
 			<15 0 2500 2500>,
