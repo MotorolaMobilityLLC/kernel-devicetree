@@ -380,7 +380,7 @@
 		charger_device_1 {
 			chrg-name = "cp-master";
 			psy-name = "bq25960-master";
-			charging-curr-min = <1500000>;
+			charging-curr-min = <1000000>;
 		};
 		charger_device_2 {
 			chrg-name = "cp-slave";
