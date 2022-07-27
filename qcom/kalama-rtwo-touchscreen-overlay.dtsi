@@ -54,6 +54,7 @@
 		pinctrl-2 = <&ts_release>;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x07>;
 	};
 };
 
