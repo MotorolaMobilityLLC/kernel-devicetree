@@ -44,43 +44,43 @@
 		qcom,bus-bw-cfg =
 		/** ICC Path 1 **/
 		<0 0>, /* no vote */
-		/* idle: 0-18 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<2250 700000>,
-		/* low: 18-60 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<7500 700000>,
-		/* medium: 60-240 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<30000 700000>,
-		/* high: 240-1200 Mbps snoc/anoc: 100 Mhz ddr: 451.2 MHz */
-		<100000 700000>,
+		/* idle: 0-18 Mbps snoc/anoc: 150 Mhz ddr: 451.2 MHz */
+		<2250 1599540>,
+		/* low: 18-60 Mbps snoc/anoc: 150 Mhz ddr: 451.2 MHz */
+		<7500 1599540>,
+		/* medium: 60-240 Mbps snoc/anoc: 150 Mhz ddr: 451.2 MHz */
+		<30000 1599540>,
+		/* high: 240-1200 Mbps snoc/anoc: 150 Mhz ddr: 451.2 MHz */
+		<100000 1599540>,
 		/* very high: > 1200 Mbps snoc/anoc: 403 Mhz ddr: 1555 MHz */
-		<175000 3000000>,
+		<175000 6447980>,
 		/* ultra high: DBS mode snoc/anoc: 403 Mhz ddr: 2092 MHz */
-		<175000 3000000>,
+		<175000 6447980>,
 		/* super high: DBS mode snoc/anoc: 533 Mhz ddr: 3.2GHz */
-		<175000 4000000>,
-		/* low (latency critical): 18-60 Mbps snoc/anoc: 200 Mhz
+		<175000 8682990>,
+		/* low (latency critical): 18-60 Mbps snoc/anoc: 240 Mhz
 		 * ddr: 547.2 MHz
 		 */
-		<7500 1500000>,
+		<7500 3199610>,
 
 		/** ICC Path 2 **/
 		<0 0>,
 		/* ddr: 451.2 MHz */
-		<2250 2400000>,
+		<2250 2749600>,
 		/* ddr: 451.2 MHz */
-		<7500 2400000>,
+		<7500 2749600>,
 		/* ddr: 451.2 MHz */
-		<30000 2400000>,
+		<30000 2749600>,
 		/* ddr: 451.2 MHz */
-		<100000 2400000>,
+		<100000 2749600>,
 		/* ddr: 1555 MHz */
-		<175000 8000000>,
+		<175000 9479200>,
 		/* ddr: 2092 MHz */
-		<175000 9600000>,
-		/* ddr: 3.2 GHz */
-		<175000 10000000>,
+		<175000 12756000>,
+		/* ddr: 2133 MHz */
+		<175000 13106400>,
 		/* ddr: 547.2 MHz */
-		<7500 2400000>;
+		<7500 3335200>;
 	};
 
 	bluetooth: bt_qca6490 {
