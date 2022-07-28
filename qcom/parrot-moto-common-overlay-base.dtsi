@@ -1,0 +1,3 @@
+#include "parrot-wcn3990.dtsi"
+#include "parrot-qrd.dtsi"
+//#include "parrot-qrd-pm7250b.dtsi"
