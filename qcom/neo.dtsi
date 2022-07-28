@@ -299,6 +299,11 @@
 		size = <0x0 0x400000>;
 	};
 
+	llcc_tcm_mem: llcc_tcm_region {
+		no-map;
+		reg = <0x0 0x15800000 0x0 0x800000>;
+	};
+
 	adsp_mem_heap: adsp_heap_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -645,6 +650,7 @@
 			    "spad_or_broadcast_base", "spad_and_broadcast_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
+		memory-region = <&llcc_tcm_mem>;
 
 		llcc-perfmon {
 			compatible = "qcom,llcc-perfmon";
