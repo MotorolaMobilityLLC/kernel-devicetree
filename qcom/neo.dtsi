@@ -1720,6 +1720,8 @@
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
 		qcom,bam-ee = <0>;
+		qcom,icc_avg_bw = <9800>;
+		qcom,icc_peak_bw = <9800>;
 		qcom,smmu-s1-enable;
 		qcom,no-clock-support;
 		interconnect-names = "data_path";
