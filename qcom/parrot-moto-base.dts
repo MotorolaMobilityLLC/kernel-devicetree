@@ -1,0 +1,28 @@
+/dts-v1/;
+
+#include "parrot.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Parrot SoC";
+	compatible = "qcom,parrot";
+	qcom,board-id = <0 0>;
+/*
+ * Some nodes need labels assigned to appear in __symbols__
+ */
+	chosen: chosen { };
+	aliases: aliases { };
+	reserved_memory: reserved-memory { };
+	mot_batterydata: qcom,battery-data { };
+	utags: utags { };
+	hw: hw { };
+};
+
+&reserved_memory {
+	/delete-node/ ramoops_region;
+};
+
+&firmware {
+	android {
+		/delete-node/ fstab;
+	};
+};
