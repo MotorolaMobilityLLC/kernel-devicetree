@@ -509,6 +509,7 @@ dtb-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_PARROT) += parrot-rumi-overlay.dtbo \
 	parrot-atp-overlay.dtbo \
 	parrot-idp-overlay.dtbo \
@@ -546,6 +547,16 @@ parrot-qrd-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-wcn6750-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-wcn6750-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-nopmi-overlay.dtbo-base := parrot.dtb parrotp.dtb
+endif
+
+ifeq ($(CONFIG_GENEVA_DTB),y)
+dtbo-$(CONFIG_ARCH_PARROT) += \
+        parrot-geneva-evb0-overlay.dtbo
+
+parrot-geneva-evb0-overlay.dtbo-base := parrot-moto-base.dtb
+endif
+
+
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-atp.dtb \
@@ -626,6 +637,8 @@ dtb-$(CONFIG_ARCH_SHIMA) += shima-rumi.dtb  \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+
+ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	ravelin-atp-overlay.dtbo \
 	ravelin-idp-overlay.dtbo \
@@ -649,6 +662,8 @@ montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-moselle-overlay.dtbo-base := montague-4gb.dtb montaguep-4gb.dtb montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
+endif
+
 else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	ravelin-atp.dtb \

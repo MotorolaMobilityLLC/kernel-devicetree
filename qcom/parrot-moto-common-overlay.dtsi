@@ -1,0 +1,45 @@
+#include "carrier-channel-ids.dtsi"
+
+&utags {
+	compatible = "mmi,utags";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
+	mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+};
+
+&hw {
+	compatible = "mmi,utags";
+	mmi,dir-name = "hw";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+};
+
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x2000>;
+		persist_unsupported;
+	};
+
+};
+
+&reserved_memory{
+	ramoops_mem {
+		compatible = "ramoops";
+		no-map;
+		reg = <0x0 0xae000000 0x0 0x60000>;
+		console-size = <0x40000>;
+		record-size = <0x20000>;
+	};
+
+	mmi_annotate_mem: mmi_annotate_mem_region {
+		no-map;
+		reg = <0x0 0xadfff000 0x0 0x1000>;
+	};
+
+};
+
+&soc {
+	mmi,suspend_dbg {
+		compatible = "mmi,suspend_dbg";
+	};
+};
