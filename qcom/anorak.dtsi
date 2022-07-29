@@ -1934,6 +1934,16 @@
 			qcom,iommu-faults = "stall-disable", "HUPCF";
 			dma-coherent;
 		};
+
+		qcom,msm_fastrpc_compute_cb17 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x096F 0x0540>,
+					 <&apps_smmu 0x202F 0x2420>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
 	};
 
 	qcom,mem-buf-msgq {
