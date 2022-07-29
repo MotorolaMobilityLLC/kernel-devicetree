@@ -5,6 +5,8 @@
 #include <dt-bindings/clock/qcom,gcc-ravelin.h>
 #include <dt-bindings/clock/qcom,gpucc-ravelin.h>
 #include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/gpio/gpio.h>
+
 / {
 	model = "Qualcomm Technologies, Inc. Ravelin";
 	compatible = "qcom,ravelin";
@@ -22,6 +24,7 @@
 
 	aliases {
 		serial0 = &qupv3_se2_2uart;
+		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 	};
 
 	firmware: firmware {};
@@ -592,6 +595,93 @@
 				0x17840058 0x17850058 0x17860058 0x17870058>;
 		qcom,config-arr = <0x17800060 0x17810060 0x17820060 0x17830060
 				0x17840060 0x17850060 0x17860060 0x17870060>;
+	};
+
+	ufsphy_mem: ufsphy_mem@1d87000 {
+		reg = <0x1d87000 0xe10>;
+		reg-names = "phy_mem";
+		#phy-cells = <0>;
+
+		lanes-per-direction = <2>;
+		clock-names = "ref_clk_src",
+			"ref_aux_clk", "qref_clk",
+			"rx_sym0_mux_clk", "rx_sym1_mux_clk", "tx_sym0_mux_clk",
+			"rx_sym0_phy_clk", "rx_sym1_phy_clk", "tx_sym0_phy_clk";
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc GCC_UFS_PHY_PHY_AUX_CLK>,
+			<&gcc GCC_UFS_0_CLKREF_EN>,
+			<&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK_SRC>,
+			<&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK_SRC>,
+			<&gcc GCC_UFS_PHY_TX_SYMBOL_0_CLK_SRC>,
+			<&ufs_phy_rx_symbol_0_clk>,
+			<&ufs_phy_rx_symbol_1_clk>,
+			<&ufs_phy_tx_symbol_0_clk>;
+		resets = <&ufshc_mem 0>;
+		status = "disabled";
+	};
+
+	ufshc_mem: ufshc@1d84000 {
+		compatible = "qcom,ufshc";
+		reg = <0x1d84000 0x3000>;
+		reg-names = "ufs_mem";
+		interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
+		phys = <&ufsphy_mem>;
+		phy-names = "ufsphy";
+		#reset-cells = <1>;
+
+		lanes-per-direction = <2>;
+		dev-ref-clk-freq = <0>; /* 19.2 MHz */
+		clock-names =
+			"core_clk",
+			"bus_aggr_clk",
+			"iface_clk",
+			"core_clk_unipro",
+			"core_clk_ice",
+			"ref_clk",
+			"tx_lane0_sync_clk",
+			"rx_lane0_sync_clk",
+			"rx_lane1_sync_clk";
+		clocks =
+			<&gcc GCC_UFS_PHY_AXI_CLK>,
+			<&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>,
+			<&gcc GCC_UFS_PHY_AHB_CLK>,
+			<&gcc GCC_UFS_PHY_UNIPRO_CORE_CLK>,
+			<&gcc GCC_UFS_PHY_ICE_CORE_CLK>,
+			<&rpmhcc RPMH_CXO_CLK>,
+			<&gcc GCC_UFS_PHY_TX_SYMBOL_0_CLK>,
+			<&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK>,
+			<&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK>;
+		freq-table-hz =
+			<75000000 300000000>,
+			<0 0>,
+			<0 0>,
+			<75000000 300000000>,
+			<75000000 403000000>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>;
+
+		reset-gpios = <&tlmm 136 GPIO_ACTIVE_LOW>;
+		resets = <&gcc GCC_UFS_PHY_BCR>;
+		reset-names = "rst";
+
+		iommus = <&apps_smmu 0x580 0x0>;
+		qcom,iommu-dma = "bypass";
+		dma-coherent;
+
+		status = "disabled";
+
+		qos0 {
+			mask = <0xf0>;
+			vote = <44>;
+			perf;
+		};
+
+		qos1 {
+			mask = <0x0f>;
+			vote = <44>;
+		};
 	};
 };
 
