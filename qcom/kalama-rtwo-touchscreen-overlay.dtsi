@@ -57,6 +57,8 @@
 		mmi,supported_gesture_type = <0x07>;
 		mmi,enable-gestures;
 		goodix,gesture-wait-pm;
+		mmi,fod_detection;
+		mmi,fod_coords = <540 2141>;
 	};
 };
 
