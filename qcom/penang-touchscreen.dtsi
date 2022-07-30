@@ -73,9 +73,23 @@
 	status = "ok";
 	pinctrl-0 = <&qupv3_se0_spi_active &qupv3_se0_spi_cs_active>;
 	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
+        focaltech@38{
+                compatible = "focaltech,fts";
+                reg = <0x0>;
+                spi-max-frequency = <9600000>;
+                interrupt-parent = <&tlmm>;
+                interrupts = <22 0x2008>;
+                focaltech,reset-gpio = <&tlmm 21 0x00>;
+                focaltech,irq-gpio = <&tlmm 22 0x2008>;
+                focaltech,max-touch-number = <10>;
+                focaltech,display-coords = <0 0 720 1600>;
+                focaltech,report_gesture_key;
+                focaltech,panel-supplier = "csot";
+                panel = <&dsi_ft8057_csot_video>;
+        };
 	novatek@0{
 		compatible = "novatek,NVT-ts-spi";
-		reg = <0x0>;
+		reg = <0x1>;
 		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
 		novatek,reset-gpio = <&tlmm 21 0x00>;
 		novatek,irq-gpio = <&tlmm 22 0x2001>;
