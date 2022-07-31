@@ -407,14 +407,6 @@ cape-felix-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli
 cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
 cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 endif
-
-ifeq ($(CONFIG_GENEVA_DTB),y)
-dtbo-$(CONFIG_ARCH_CAPE) += \
-	parrot-geneva-evt1-overlay.dtbo \
-
-parrot-geneva-evt1-overlay.dtbo-base := cape-moto-geneva-base.dtb
-endif
-
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
