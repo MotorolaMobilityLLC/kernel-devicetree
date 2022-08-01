@@ -28,12 +28,6 @@
 			memory-region = <&non_secure_display_memory>;
 		};
 
-		qcom,user_contig {
-			qcom,dma-heap-name = "qcom,user-contig";
-			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
-			memory-region = <&user_contig_mem>;
-		};
-
 		qcom,qseecom {
 			qcom,dma-heap-name = "qcom,qseecom";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
