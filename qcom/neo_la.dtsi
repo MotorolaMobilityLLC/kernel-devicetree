@@ -461,6 +461,10 @@
 		<&camcc 0>;
 };
 
+&slim_msm {
+	status = "ok";
+};
+
 &gpu_cc_cx_gdsc {
 	status = "disabled";
 };
