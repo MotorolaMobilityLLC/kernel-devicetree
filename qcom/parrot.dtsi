@@ -447,14 +447,6 @@
 		alignment = <0x0 0x400000>;
 	};
 
-	user_contig_mem: user_contig_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		reusable;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0x1000000>;
-	};
-
 	qseecom_mem: qseecom_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -1803,7 +1795,6 @@
 		memory-region = <&qseecom_mem>;
 		qseecom_mem = <&qseecom_mem>;
 		qseecom_ta_mem = <&qseecom_ta_mem>;
-		user_contig_mem = <&user_contig_mem>;
 		qcom,hlos-num-ce-hw-instances = <1>;
 		qcom,hlos-ce-hw-instance = <0>;
 		qcom,qsee-ce-hw-instance = <0>;
@@ -1812,6 +1803,7 @@
 		qcom,appsbl-qseecom-support;
 		qcom,commonlib64-loaded-by-uefi;
 		qcom,qsee-reentrancy-support = <2>;
+		qcom,no-user-contig-mem-support;
 	};
 
 	qcom_cedev: qcedev@1de0000 {
