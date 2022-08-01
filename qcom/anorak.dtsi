@@ -926,6 +926,9 @@
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
 
+		interconnects = <&aggre2_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
+		interconnect-names = "crypto_ddr";
+
 		qcom,qmp = <&aoss_qmp>;
 
 		memory-region = <&adsp_mem>;
@@ -1000,6 +1003,10 @@
 		reg-names = "cx","mx","nsp";
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
+
+		interconnects = <&nsp_noc MASTER_CDSP_PROC &mc_virt SLAVE_EBI1>,
+				<&aggre2_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
+		interconnect-names = "rproc_ddr", "crypto_ddr";
 
 		qcom,qmp = <&aoss_qmp>;
 
