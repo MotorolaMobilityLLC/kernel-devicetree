@@ -397,6 +397,8 @@ endif
 ifeq ($(CONFIG_FELIX_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-felix-evt1-overlay.dtbo \
+	cape-felix-evt1a-overlay.dtbo \
+	cape-felix-evt1b-overlay.dtbo \
 	cape-oneli-dvt1b-overlay.dtbo \
 	cape-oneli-dvt2a-overlay.dtbo
 
@@ -404,6 +406,8 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 # to be able running felix sw on oneli hw
 # might need to create our own when deviation appears
 cape-felix-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
+cape-felix-evt1a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
+cape-felix-evt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
 cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
 endif
