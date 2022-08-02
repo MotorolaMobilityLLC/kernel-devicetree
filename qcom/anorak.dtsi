@@ -1006,9 +1006,12 @@
 
 		cx-supply = <&VDD_CX_LEVEL>;
 		cx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
-		mx-supply = <&VDD_MXC_LEVEL>;
-		mx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
-		reg-names = "cx","mx","nsp";
+		mxa-supply = <&VDD_MXA_LEVEL>;
+		mxa-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
+		mxc-supply = <&VDD_MXC_LEVEL>;
+		mxc-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 100000>;
+		reg-names = "cx","mxa","mxc";
+
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
 
