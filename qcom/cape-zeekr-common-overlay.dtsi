@@ -19,7 +19,7 @@
 #include "waipio-moto-common-charger.dtsi"
 #include "cape-zeekr-charger-overlay.dtsi"
 #include "cape-zeekr-fingerprint-overlay.dtsi"
-
+#include "cape-zeekr-evb-sensor-overlay.dtsi"
 
 &qupv3_se9_i2c {
         status = "ok";
