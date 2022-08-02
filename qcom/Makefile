@@ -275,7 +275,13 @@ dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
 	ukee-atp-overlay.dtbo \
 	ukee-cdp-overlay.dtbo \
 	ukee-mtp-overlay.dtbo \
-	ukee-qrd-overlay.dtbo
+	ukee-qrd-overlay.dtbo \
+	ukee-cdp-qhd-pm8008-overlay.dtbo \
+	ukee-cdp-qhd-pm8010-overlay.dtbo \
+	ukee-mtp-120fps-pm8008-overlay.dtbo \
+	ukee-mtp-120fps-pm8010-overlay.dtbo \
+	ukee-mtp-nodisplay-pm8008-overlay.dtbo \
+	ukee-mtp-nodisplay-pm8010-overlay.dtbo
 
 cape-mtp-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-mtp-120fps-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
@@ -299,6 +305,12 @@ ukee-atp-overlay.dtbo-base := ukee.dtb
 ukee-cdp-overlay.dtbo-base := ukee.dtb
 ukee-mtp-overlay.dtbo-base := ukee.dtb
 ukee-qrd-overlay.dtbo-base := ukee.dtb
+ukee-cdp-qhd-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-cdp-qhd-pm8010-overlay.dtbo-base := ukee.dtb
+ukee-mtp-120fps-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-mtp-120fps-pm8010-overlay.dtbo-base := ukee.dtb
+ukee-mtp-nodisplay-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-mtp-nodisplay-pm8010-overlay.dtbo-base := ukee.dtb
 
 else
 dtb-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008.dtb \
@@ -332,7 +344,14 @@ dtb-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008.dtb \
 	ukee-atp.dtb \
 	ukee-cdp.dtb \
 	ukee-mtp.dtb \
-	ukee-qrd.dtb
+	ukee-qrd.dtb \
+	ukee-cdp-qhd-pm8008.dtb \
+	ukee-cdp-qhd-pm8010.dtb \
+	ukee-mtp-120fps-pm8008.dtb \
+	ukee-mtp-120fps-pm8010.dtb \
+	ukee-mtp-nodisplay-pm8008.dtb \
+	ukee-mtp-nodisplay-pm8010.dtb
+
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
