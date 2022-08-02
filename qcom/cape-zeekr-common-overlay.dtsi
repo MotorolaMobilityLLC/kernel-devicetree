@@ -20,6 +20,8 @@
 #include "cape-zeekr-charger-overlay.dtsi"
 #include "cape-zeekr-fingerprint-overlay.dtsi"
 #include "cape-zeekr-evb-sensor-overlay.dtsi"
+#include "cape-zeekr-haptics-overlay.dtsi"
+
 
 &qupv3_se9_i2c {
         status = "ok";
