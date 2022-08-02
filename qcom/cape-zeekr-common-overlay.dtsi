@@ -18,6 +18,7 @@
 #include "cape-moto-common-overlay.dtsi"
 #include "waipio-moto-common-charger.dtsi"
 #include "cape-zeekr-charger-overlay.dtsi"
+#include "cape-zeekr-fingerprint-overlay.dtsi"
 
 
 &qupv3_se9_i2c {
