@@ -24,3 +24,14 @@
 	qcom,board-id = <0x41 0x9100>;
 };
 
+&soc {
+	regulator-ocp-notifier {
+		periph-c40-supply = <&L1M>;
+		periph-c41-supply = <&L2M>;
+		periph-c42-supply = <&L3M>;
+		periph-c43-supply = <&L4M>;
+		periph-c44-supply = <&L5M>;
+		periph-c45-supply = <&L6M>;
+		periph-c46-supply = <&L7M>;
+	};
+};
