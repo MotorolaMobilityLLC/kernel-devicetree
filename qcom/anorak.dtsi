@@ -2315,6 +2315,10 @@
 		compatible = "qcom,cpu-vendor-hooks";
 	};
 
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
 	qfprom: qfprom@221c8000 {
 		compatible = "qcom,qfprom";
 		reg = <0x221c8000 0x1000>;
