@@ -1159,9 +1159,9 @@
 		reg = <0x03000000 0x10000>;
 
 		cx-supply = <&VDD_LPI_CX_LEVEL>;
-		cx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		cx-uV-uA = <RPMH_REGULATOR_LEVEL_NOM 0>;
 		mx-supply = <&VDD_LPI_MX_LEVEL>;
-		mx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		mx-uV-uA = <RPMH_REGULATOR_LEVEL_NOM 0>;
 		reg-names = "cx", "mx";
 
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
