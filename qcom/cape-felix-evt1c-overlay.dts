@@ -19,15 +19,7 @@
 	model = "felix";
 	compatible = "qcom,cape-mtp", "qcom,cape", "qcom,mtp", "moto,felix";
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
-	qcom,board-id = <0x49 0xA100>;
-};
-
-&qupv3_se4_i2c {
-	/* Rogue panel */
-	goodix_ts_i2c@5d {
-		compatible = "goodix,gt9916";
-		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
-	};
+	qcom,board-id = <0x49 0xA1C0>;
 };
 
 &soc {
