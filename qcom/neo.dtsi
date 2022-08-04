@@ -1727,11 +1727,13 @@
 			<0x1dc4000 0x28000>;
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
-		qcom,bam-pipe-pair = <2>;
+		qcom,bam-pipe-pair = <1>;
 		qcom,offload-ops-support;
-		qcom,bam-pipe-offload-cpb-hlos = <1>;
-		qcom,bam-pipe-offload-hlos-cpb = <3>;
-		qcom,bam-pipe-offload-hlos-hlos = <4>;
+		qcom,bam-pipe-offload-hlos-cpb-1 = <2>;
+		qcom,bam-pipe-offload-hlos-cpb-2 = <3>;
+		qcom,bam-pipe-offload-hlos-cpb-3 = <4>;
+		qcom,bam-pipe-offload-hlos-cpb-4 = <8>;
+		qcom,bam-pipe-offload-hlos-hlos = <9>;
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
