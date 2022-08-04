@@ -1,10 +1,18 @@
-&soc {
-	mmi,charger {
-		mmi,pd-power-max = <125000>;
-	};
+
+&mmi_charger{
+	mmi,dcp-power-max = <7500>;
+	mmi,hvdcp-power-max = <20000>;
+	mmi,pd-power-max = <68000>;
+};
+
+&qti_glink_charger{
+	mmi,chrg-iterm-ma = <243>;
+	mmi,max-fv-mv = <4480>;
+	mmi,max-fcc-ma = <4000>;
+	mmi,demo-fv-mv = <4000>;
 };
 
 &battery_charger {
-	qcom,thermal-mitigation = <23000000 18000000 16000000 12000000 10000000 8000000 6000000 4000000 3000000 1500000 1000000 300000>;
+	qcom,thermal-mitigation = <12400000 10000000 8000000 7000000 6000000 5000000 4000000 3000000 1500000 1000000 100000>;
 	qcom,wireless-fw-name = "cps4038.bin";
 };
