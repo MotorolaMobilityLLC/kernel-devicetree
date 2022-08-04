@@ -11,3 +11,4 @@
  */
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
+#include "parrot-geneva-touchscreen-overlay.dtsi"
