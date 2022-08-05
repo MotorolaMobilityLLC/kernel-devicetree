@@ -105,6 +105,11 @@ dtbo-$(CONFIG_PENANG_DTB) += \
 
 holi-penang-evt1-overlay.dtbo-base := holi-moto-base.dtb
 
+dtbo-$(CONFIG_PNANGN_DTB) += \
+        holi-pnangn-evt1-overlay.dtbo
+
+holi-pnangn-evt1-overlay.dtbo-base := holi-moto-base.dtb
+
 dtbo-$(CONFIG_RHODEP_DTB) += \
         blair-rhodep-evt1-overlay.dtbo \
         blair-rhodep-evt2-overlay.dtbo \
