@@ -60,8 +60,18 @@
 			#cooling-cells = <2>;
 		};
 
+		cpu_2_3_pause: cpu_2_3-pause {
+			qcom,cpus = <&CPU2 &CPU3>;
+			#cooling-cells = <2>;
+		};
+
+		cpu_4_5_pause: cpu_4_5-pause {
+			qcom,cpus = <&CPU4 &CPU5>;
+			#cooling-cells = <2>;
+		};
+
 		APC1_pause: apc1-pause {
-			qcom,cpus = <&CPU3 &CPU4 &CPU5>;
+			qcom,cpus = <&CPU2 &CPU3 &CPU4 &CPU5>;
 			#cooling-cells = <2>;
 		};
 
