@@ -22,7 +22,7 @@
 #include "cape-zeekr-evb-sensor-overlay.dtsi"
 #include "cape-zeekr-haptics-overlay.dtsi"
 #include "cape-zeekr-touchscreen-overlay.dtsi"
-
+#include "cape-zeekr-thermal-overlay.dtsi"
 
 &qupv3_se9_i2c {
         status = "ok";
