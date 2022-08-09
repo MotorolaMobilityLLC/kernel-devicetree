@@ -1120,8 +1120,18 @@
 		qcom,gpucc = <&gpucc>;
 		qcom,apsscc = <&apsscc>;
 		qcom,mccc = <&mccc>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gpucc 0>,
+			<&videocc 0>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"camcc",
+				"dispcc",
+				"gpucc",
+				"videocc";
 		#clock-cells = <1>;
 	};
 
