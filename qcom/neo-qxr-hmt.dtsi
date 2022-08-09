@@ -1,4 +1,4 @@
-#include "neo.dtsi"
+#include <dt-bindings/interconnect/qcom,neo.h>
 #include "neo-qxr.dtsi"
 
 &icnss2 {
@@ -22,6 +22,18 @@
 };
 
 &pcie0 {
+	status = "ok";
+};
+
+&pcie_noc {
+	status = "ok";
+};
+
+&gem_noc {
+	status = "ok";
+};
+
+&mc_virt {
 	status = "ok";
 };
 
