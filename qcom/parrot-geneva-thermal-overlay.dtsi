@@ -1,0 +1,235 @@
+#include "moto_therm_sys_temp.dtsi"
+
+&pmk8350_vadc {
+	pinctrl-names = "default";
+	pinctrl-0 = <&quiet_therm_default &chg_therm_default>;
+	pm6450_chg_pump_therm {
+		reg = <PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
+		label = "pm6450_chg_pump_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+	};
+};
+&pmk8350_adc_tm {
+	io-channels = <&pmk8350_vadc PMK8350_ADC7_AMUX_THM1_100K_PU>,
+			<&pmk8350_vadc PM6450_ADC7_AMUX1_GPIO2_100K_PU>,
+			<&pmk8350_vadc PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
+
+	pm6450_chg_pump_therm {
+		reg = <PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+	};
+};
+
+&pm6450_gpios {
+	chg_pump_therm{
+		chg_therm_default: chg_therm_default{
+			pins = "gpio4";
+			bias-high-impedance;
+		};
+	};
+};
+&pm6150l_vadc {
+	msm_therm {
+		reg = <ADC5_AMUX_THM2_100K_PU>;
+		label = "msm_therm1";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+	};
+
+};
+
+
+&spmi_bus {
+	qcom,pm6150l@4 {
+		pm6150l_adc_tm_iio: adc_tm@3400 {
+		compatible = "qcom,adc-tm5-iio";
+			reg = <0x3400>;
+			#thermal-sensor-cells = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			io-channels = <&pm6150l_vadc ADC5_AMUX_THM2_100K_PU>;
+
+			msm_therm {
+				reg = <ADC5_AMUX_THM2_100K_PU>;
+				qcom,ratiometric;
+				qcom,hw-settle-time = <200>;
+			};
+		};
+	};
+};
+
+&thermal_zones {
+	sys-therm-2 {
+		status = "disabled";
+	};
+	cam-therm {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors = <&pm6150l_adc_tm ADC5_GPIO3_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	sys-therm-3 {
+		status = "disabled";
+	};
+	quiet-therm {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors = <&pmk8350_adc_tm PM6450_ADC7_AMUX1_GPIO2_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+
+	chg-therm {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors = <&pmk8350_adc_tm PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+	sys-therm-4 {
+		status = "disabled";
+	};
+	pa-therm1 {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM1_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+	sys-therm-5 {
+		status = "disabled";
+	};
+	pa-therm0 {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM3_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+
+	msm-therm {
+		polling-delay-passive = <3000>;
+		polling-delay = <5000>;
+		thermal-sensors = <&pm6150l_adc_tm_iio ADC5_AMUX_THM2_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+	sys-therm-7 {
+		status = "disabled";
+	};
+	conn-therm {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM3_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	sys-therm-6 {
+		status = "disabled";
+	};
+	schg-therm  {
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
+		thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM1_100K_PU>;
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+};
+
