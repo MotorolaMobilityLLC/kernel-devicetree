@@ -3,6 +3,7 @@
 
 #include "parrot-wcn3990.dtsi"
 #include "parrot-idp-wcn3990-amoled-rcm-4gb.dtsi"
+#include "parrot-idp-pm7250b.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Parrot WCN3990 IDP 4GB DDR + AMOLED + RCM";

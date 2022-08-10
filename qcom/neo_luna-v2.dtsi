@@ -12,6 +12,9 @@
 
 &wlan_kiwi {
 	/delete-property/ vdd-wlan-supply;
+	/delete-property/ qcom,pdc_init_table;
+	/delete-property/ qcom,vreg_pdc_map;
+	/delete-property/ qcom,pmu_vreg_map;
 };
 
 &apps_rsc {
@@ -74,6 +77,18 @@
 &debugcc {
 	qcom,gpucc = <&gpucc>;
 	qcom,dispcc = <&dispcc>;
+	clock-names = "xo_clk_src",
+			"gcc",
+			"videocc",
+			"dispcc",
+			"camcc",
+			"gpucc";
+	clocks = <&rpmhcc RPMH_CXO_CLK>,
+		<&gcc 0>,
+		<&videocc 0>,
+		<&dispcc 0>,
+		<&camcc 0>,
+		<&gpucc 0>;
 };
 
 &gpu_cc_cx_gdsc {
@@ -90,4 +105,31 @@
 
 &disp_cc_mdss_core_int2_gdsc {
 	status = "ok";
+};
+
+&msm_gpu {
+	status = "ok";
+};
+
+&kgsl_msm_iommu {
+	status = "ok";
+};
+
+&gmu {
+	status = "ok";
+};
+
+&mc_virt {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&mmss_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&gem_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
 };

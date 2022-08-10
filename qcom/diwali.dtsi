@@ -2018,13 +2018,15 @@
 				      <&adsp_smp2p_in 0 0>,
 				      <&adsp_smp2p_in 2 0>,
 				      <&adsp_smp2p_in 1 0>,
-				      <&adsp_smp2p_in 3 0>;
+				      <&adsp_smp2p_in 3 0>,
+				      <&adsp_smp2p_in 7 0>;
 
 		interrupt-names = "wdog",
 				  "fatal",
 				  "handover",
 				  "ready",
-				  "stop-ack";
+				  "stop-ack",
+				  "shutdown-ack";
 
 		qcom,smem-states = <&adsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
@@ -2084,13 +2086,15 @@
 				      <&cdsp_smp2p_in 0 0>,
 				      <&cdsp_smp2p_in 2 0>,
 				      <&cdsp_smp2p_in 1 0>,
-				      <&cdsp_smp2p_in 3 0>;
+				      <&cdsp_smp2p_in 3 0>,
+				      <&cdsp_smp2p_in 7 0>;
 
 		interrupt-names = "wdog",
 				  "fatal",
 				  "handover",
 				  "ready",
-				  "stop-ack";
+				  "stop-ack",
+				  "shutdown-ack";
 
 		/* Outputs to turing */
 		qcom,smem-states = <&cdsp_smp2p_out 0>;
@@ -3182,7 +3186,7 @@
 
 		/* SVS2 */
 		qcom,svs2 =
-		<590000 0 590000 1900000 0 76800>;
+		<0 0 0 1900000 0 76800>;
 
 		/* SVS */
 		qcom,svs =

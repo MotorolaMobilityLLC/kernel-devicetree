@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "ukee.dtsi"
+#include "ukee-atp.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Ukee ATP";
+	compatible = "qcom,ukee-atp", "qcom,ukee", "qcom,atp";
+	qcom,board-id = <33 0>;
+};

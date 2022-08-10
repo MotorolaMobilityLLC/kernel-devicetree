@@ -142,7 +142,5 @@
 
 		/* GPU-MPROC IPC page */
 		qcom,ipc-core = <0x0ed19000 0x1000>;
-
-		qcom,gmu-perf-ddr-bw = <MHZ_TO_KBPS(681, 4)>;
 	};
 };
