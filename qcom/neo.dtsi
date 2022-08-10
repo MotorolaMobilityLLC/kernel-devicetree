@@ -25,7 +25,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237 disable_dma32=on";
+		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K console=ttyMSM0,115200,n8 loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237 disable_dma32=on ftrace_dump_on_oops";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -299,6 +299,11 @@
 		size = <0x0 0x400000>;
 	};
 
+	llcc_tcm_mem: llcc_tcm_region {
+		no-map;
+		reg = <0x0 0x15800000 0x0 0x800000>;
+	};
+
 	adsp_mem_heap: adsp_heap_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -370,6 +375,13 @@
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x2800000>;
 	};
+	audio_cma_mem: audio_cma_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x1000000>;
+	};
 };
 
 &soc {
@@ -431,7 +443,7 @@
 		dma-names = "rx", "tx";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		status = "ok";
+		status = "disabled";
 
 		ngd@1 {
 			reg = <1>;
@@ -638,6 +650,7 @@
 			    "spad_or_broadcast_base", "spad_and_broadcast_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
+		memory-region = <&llcc_tcm_mem>;
 
 		llcc-perfmon {
 			compatible = "qcom,llcc-perfmon";
@@ -1060,8 +1073,9 @@
 		status = "disabled";
 
 		compatible = "qcom,sdhci-msm-v5";
-		reg = <0x007C4000 0x1000>, <0x007C5000 0x1000>;
-		reg-names = "hc", "cqhci";
+		reg = <0x007C4000 0x1000>, <0x007C5000 0x1000>,
+		      <0x007C8000 0x8000>, <0x007D0000 0x9000>;
+		reg-names = "hc", "cqhci", "cqhci_ice", "cqhci_ice_hwkm";
 
 		interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_HIGH>,
 				<GIC_SPI 222 IRQ_TYPE_LEVEL_HIGH>;
@@ -1391,8 +1405,18 @@
 		qcom,dispcc = <&dispcc>;
 		qcom,apsscc = <&apsscc>;
 		qcom,mccc = <&mccc>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"videocc",
+				"dispcc",
+				"camcc",
+				"gpucc";
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&videocc 0>,
+			<&dispcc 0>,
+			<&camcc 0>,
+			<&gpucc 0>;
 		#clock-cells = <1>;
 	};
 
@@ -1703,15 +1727,19 @@
 			<0x1dc4000 0x28000>;
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
-		qcom,bam-pipe-pair = <2>;
+		qcom,bam-pipe-pair = <1>;
 		qcom,offload-ops-support;
-		qcom,bam-pipe-offload-cpb-hlos = <1>;
-		qcom,bam-pipe-offload-hlos-cpb = <3>;
-		qcom,bam-pipe-offload-hlos-hlos = <4>;
+		qcom,bam-pipe-offload-hlos-cpb-1 = <2>;
+		qcom,bam-pipe-offload-hlos-cpb-2 = <3>;
+		qcom,bam-pipe-offload-hlos-cpb-3 = <4>;
+		qcom,bam-pipe-offload-hlos-cpb-4 = <8>;
+		qcom,bam-pipe-offload-hlos-hlos = <9>;
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
 		qcom,bam-ee = <0>;
+		qcom,icc_avg_bw = <9800>;
+		qcom,icc_peak_bw = <9800>;
 		qcom,smmu-s1-enable;
 		qcom,no-clock-support;
 		interconnect-names = "data_path";

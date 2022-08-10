@@ -212,6 +212,11 @@
 };
 
 &thermal_zones {
+	/delete-node/ sdr-mmw-therm;
+	/delete-node/ mmw_pa1;
+	/delete-node/ mmw_pa2;
+	/delete-node/ mmw_pa3;
+
 	aoss-0 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;

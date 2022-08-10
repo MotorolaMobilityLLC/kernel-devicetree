@@ -172,6 +172,7 @@ ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo_la-rumi-overlay.dtbo \
 		neo-qxr-overlay.dtbo \
+		neo-qxr-hmt-overlay.dtbo \
 		neo-idp-overlay.dtbo \
 		neo-atp-overlay.dtbo \
 		neo-sg-idp-overlay.dtbo \
@@ -182,6 +183,7 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 neo-rumi-overlay.dtbo-base := neo.dtb
 neo_la-rumi-overlay.dtbo-base := neo_la.dtb
 neo-qxr-overlay.dtbo-base := neo.dtb
+neo-qxr-hmt-overlay.dtbo-base := neo.dtb
 neo-idp-overlay.dtbo-base := neo.dtb
 neo-atp-overlay.dtbo-base := neo.dtb
 neo-sg-idp-overlay.dtbo-base := neo_la.dtb
@@ -193,6 +195,7 @@ else
 dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo_la-rumi.dtb \
 			neo-qxr.dtb \
+			neo-qxr-hmt.dtb \
 			neo-idp.dtb \
 			neo-atp.dtb \
 			neo-sg-idp.dtb \
@@ -268,7 +271,17 @@ dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
 	cape-kiwi-mtp-pm8008-overlay.dtbo \
 	cape-kiwi-mtp-pm8010-overlay.dtbo \
 	cape-kiwi-cdp-pm8008-overlay.dtbo \
-	cape-kiwi-cdp-pm8010-overlay.dtbo
+	cape-kiwi-cdp-pm8010-overlay.dtbo \
+	ukee-atp-overlay.dtbo \
+	ukee-cdp-overlay.dtbo \
+	ukee-mtp-overlay.dtbo \
+	ukee-qrd-overlay.dtbo \
+	ukee-cdp-qhd-pm8008-overlay.dtbo \
+	ukee-cdp-qhd-pm8010-overlay.dtbo \
+	ukee-mtp-120fps-pm8008-overlay.dtbo \
+	ukee-mtp-120fps-pm8010-overlay.dtbo \
+	ukee-mtp-nodisplay-pm8008-overlay.dtbo \
+	ukee-mtp-nodisplay-pm8010-overlay.dtbo
 
 cape-mtp-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-mtp-120fps-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
@@ -288,6 +301,16 @@ cape-kiwi-mtp-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-kiwi-mtp-pm8010-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-kiwi-cdp-pm8008-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 cape-kiwi-cdp-pm8010-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
+ukee-atp-overlay.dtbo-base := ukee.dtb
+ukee-cdp-overlay.dtbo-base := ukee.dtb
+ukee-mtp-overlay.dtbo-base := ukee.dtb
+ukee-qrd-overlay.dtbo-base := ukee.dtb
+ukee-cdp-qhd-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-cdp-qhd-pm8010-overlay.dtbo-base := ukee.dtb
+ukee-mtp-120fps-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-mtp-120fps-pm8010-overlay.dtbo-base := ukee.dtb
+ukee-mtp-nodisplay-pm8008-overlay.dtbo-base := ukee.dtb
+ukee-mtp-nodisplay-pm8010-overlay.dtbo-base := ukee.dtb
 
 else
 dtb-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008.dtb \
@@ -317,7 +340,18 @@ dtb-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008.dtb \
         cape-v2-qrd-pm8010.dtb \
 	capep-mtp-pm8010.dtb \
 	capep-cdp-pm8010.dtb \
-	capep-atp-pm8010.dtb
+	capep-atp-pm8010.dtb \
+	ukee-atp.dtb \
+	ukee-cdp.dtb \
+	ukee-mtp.dtb \
+	ukee-qrd.dtb \
+	ukee-cdp-qhd-pm8008.dtb \
+	ukee-cdp-qhd-pm8010.dtb \
+	ukee-mtp-120fps-pm8008.dtb \
+	ukee-mtp-120fps-pm8010.dtb \
+	ukee-mtp-nodisplay-pm8008.dtb \
+	ukee-mtp-nodisplay-pm8010.dtb
+
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -463,12 +497,24 @@ endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
-		anorak-idp-overlay.dtbo
+		anorak-idp-overlay.dtbo \
+		anorak-qxr-overlay.dtbo \
+		anorak-atp-overlay.dtbo \
+		anorak-idp-hmt-overlay.dtbo \
+		anorak-qxr-hmt-overlay.dtbo
 anorak-rumi-overlay.dtbo-base := anorak.dtb
 anorak-idp-overlay.dtbo-base := anorak.dtb
+anorak-qxr-overlay.dtbo-base := anorak.dtb
+anorak-atp-overlay.dtbo-base := anorak.dtb
+anorak-idp-hmt-overlay.dtbo-base := anorak.dtb
+anorak-qxr-hmt-overlay.dtbo-base := anorak.dtb
 else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
-		anorak-idp.dtb
+		anorak-idp.dtb \
+		anorak-qxr.dtb \
+		anorak-atp.dtb \
+		anorak-idp-hmt.dtb \
+		anorak-qxr-hmt.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)

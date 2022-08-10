@@ -1,0 +1,148 @@
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+#include "anorak-pmic-overlay.dtsi"
+
+&sdhc_2 {
+	status = "ok";
+
+	vdd-supply = <&L12B>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 800000>;
+
+	vdd-io-supply = <&L18B>;
+	qcom,vdd-io-voltage-level = <1800000 2960000>;
+	qcom,vdd-io-current-level = <0 22000>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc2_on>;
+	pinctrl-1 = <&sdc2_off>;
+
+	cd-gpios = <&tlmm 175 GPIO_ACTIVE_LOW>;
+};
+
+&ufsphy_mem {
+	compatible = "qcom,ufs-phy-qmp-v4-anorak";
+
+	vdda-phy-supply = <&L2F>;
+	vdda-pll-supply = <&L2C>;
+	vdda-phy-max-microamp = <138000>;
+	vdda-pll-max-microamp = <18300>;
+
+	status = "ok";
+};
+
+&ufshc_mem {
+	vdd-hba-supply = <&gcc_ufs_phy_gdsc>;
+
+	vcc-supply = <&L13B>;
+	vcc-max-microamp = <1300000>;
+
+	vccq-supply = <&L3B>;
+	vccq-max-microamp = <1200000>;
+
+	vccq2-supply = <&L3F>;
+	vccq2-max-microamp = <800000>;
+
+	qcom,vddp-ref-clk-supply = <&L3B>;
+	qcom,vddp-ref-clk-max-microamp = <100>;
+
+	status = "ok";
+};
+
+&soc {
+	gpio_keys {
+		compatible = "gpio-keys";
+		label = "gpio-keys";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>;
+
+		vol_up {
+			label = "volume_up";
+			gpios = <&pm8550b_gpios 10 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_VOLUMEUP>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&pm8550b_haptics {
+	qcom,vmax-mv = <1300>;
+	qcom,lra-period-us = <5880>;
+	status = "ok";
+
+	effect_0 {
+		/* CLICK */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+
+	effect_1 {
+		/* DOUBLE_CLICK */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+
+	effect_2 {
+		/* TICK */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+
+	effect_3 {
+		/* THUD */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+
+	effect_4 {
+		/* POP */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+
+	effect_5 {
+		/* HEAVY CLICK */
+		qcom,wf-vmax-mv = <1800>;
+		qcom,wf-pattern-period-us = <5880>;
+	};
+};
+
+&pmxr2230_switch0 {
+	qcom,led-mask = <9>; /* Channels 1 & 4 */
+};
+
+&pmxr2230_switch1 {
+	qcom,led-mask = <6>; /* Channels 2 & 3 */
+};
+
+&pmxr2230_switch2 {
+	qcom,led-mask = <15>; /* All Channels */
+};
+
+&pmxr2230_flash {
+	status = "ok";
+};
+
+&battery_charger {
+	qcom,wireless-fw-name = "idt9418.bin";
+};
+
+&msm_sdexpress {
+	vdd1-supply = <&L12B>;
+	qcom,vdd1-voltage-level = <2960000 2960000>;
+	qcom,vdd1-current-level = <0 600000>;
+
+	vdd2-supply = <&L4B>;
+	qcom,vdd2-voltage-level = <1800000 1800000>;
+	qcom,vdd2-current-level = <0 600000>;
+
+	sdexpress-gpios = <&tlmm 172 0>;
+	clkreq-gpios = <&tlmm 171 GPIO_ACTIVE_LOW>;
+
+	status = "disabled";
+};

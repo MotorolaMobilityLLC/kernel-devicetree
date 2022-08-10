@@ -29,6 +29,8 @@
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
+	ddr-regions { };
+
 	reserved_memory: reserved-memory { };
 
 	mem-offline {
@@ -964,7 +966,7 @@
 			label = "modem";
 		};
 
-		qcom,client_3 {
+		mem_client_3_size: qcom,client_3 {
 			compatible = "qcom,memshare-peripheral";
 			qcom,peripheral-size = <0x500000>;
 			qcom,client-id = <1>;
@@ -1388,6 +1390,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
+					<  300000  307200 >,
 					<  960000  556800 >,
 					< 1190400  806400 >,
 					< 1344000  940800 >,
@@ -1474,6 +1477,9 @@
 		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
+
 		interconnects = <&aggre1_noc MASTER_SDCC_1 &mc_virt SLAVE_EBI1>,
 			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDC1>;
 		interconnect-names = "sdhc-ddr","cpu-sdhc";
@@ -1533,6 +1539,9 @@
 		iommus = <&apps_smmu 0x540 0x0>;
 		dma-coherent;
 		qcom,iommu-dma = "fastmap";
+
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
 
 		interconnects = <&aggre2_noc MASTER_SDCC_2 &mc_virt SLAVE_EBI1>,
 			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDCC_2>;
@@ -1989,6 +1998,9 @@
 		qcom,iommu-dma = "fastmap";
 		dma-coherent;
 
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
+
 		status = "disabled";
 
 		qos0 {
@@ -2061,25 +2073,6 @@
 		gunyah-label = <3>;
 		peer-name = <2>;
 		shared-buffer = <&trust_ui_vm_qrtr>;
-	};
-
-	qfprom: qfprom@221c8000 {
-		compatible = "qcom,qfprom";
-		reg = <0x221c8000 0x1000>;
-		#address-cells = <1>;
-		#size-cells = <1>;
-		read-only;
-		ranges;
-
-		gpu_speed_bin: gpu_speed_bin@119 {
-			reg = <0x119 0x2>;
-			bits = <5 8>;
-		};
-
-		gpu_gaming_bin: gpu_gaming_bin@130 {
-			reg = <0x130 0x1>;
-			bits = <6 1>;
-		};
 	};
 
 	qcom,chd {
@@ -2581,6 +2574,16 @@
 
 		feat_conf13: feat_conf13@0134 {
 			reg = <0x0134 0x4>;
+		};
+
+		gpu_speed_bin: gpu_speed_bin@119 {
+			reg = <0x119 0x2>;
+			bits = <5 8>;
+		};
+
+		gpu_gaming_bin: gpu_gaming_bin@130 {
+			reg = <0x130 0x1>;
+			bits = <6 1>;
 		};
 	};
 

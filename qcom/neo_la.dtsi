@@ -261,9 +261,9 @@
 		mboxes = <&qmp_aop 0>;
 
 		vdd-wlan-io-supply = <&L15A>;
-		qcom,vdd-wlan-io-config = <1800000 2000000 0 0 0>;
+		qcom,vdd-wlan-io-config = <1800000 2000000 0 0 1>;
 		vdd-wlan-supply = <&S2A>;
-		qcom,vdd-wlan-config = <1000000 1004000 0 0 0>;
+		qcom,vdd-wlan-config = <1000000 1004000 0 0 1>;
 		vdd-wlan-aon-supply = <&S4A>;
 		qcom,vdd-wlan-aon-config = <980000 1170000 0 0 1>;
 		vdd-wlan-dig-supply = <&S5A>;
@@ -315,6 +315,26 @@
 		/* ddr: 547.2 MHz */
 		<7500 1094362>;
 
+		qcom,pmu_vreg_map =
+			"VDD095_MX_PMU", "s4a",
+			"VDD095_PMU", "s2a",
+			"VDD_PMU_AON_I", "s4a",
+			"VDD095_PMU_BT", "s4a",
+			"VDD09_PMU_RFA_I", "s4a",
+			"VDD19_PMU_PCIE_I", "s5a",
+			"VDD19_PMU_RFA_I", "s5a";
+
+		qcom,vreg_pdc_map =
+			"s4a", "rf", "s5a", "rf", "l15a", "rf", "s2a", "bb";
+
+		qcom,pdc_init_table =
+			" {class: wlan_pdc, ss: rf, res: s4a.v, upval: 1012}",
+			" {class: wlan_pdc, ss: rf, res: s4a.v, dwnval: 615}",
+			" {class: wlan_pdc, ss: rf, res: s5a.v, upval: 1900}",
+			" {class: wlan_pdc, ss: rf, res: s5a.v, dwnval: 1825}",
+			" {class: wlan_pdc, ss: bb, res: s2a.v, upval: 830}",
+			" {class: wlan_pdc, ss: bb, res: s2a.v, dwnval: 410}",
+			" {class: wlan_pdc, ss: bb, res: pdc, enable: 1}";
 	};
 
 	bluetooth: bt_wcn6x5x {
@@ -431,6 +451,18 @@
 &debugcc {
 	/delete-property/ qcom,gpucc;
 	/delete-property/ qcom,dispcc;
+	clock-names = "xo_clk_src",
+			"gcc",
+			"videocc",
+			"camcc";
+	clocks = <&rpmhcc RPMH_CXO_CLK>,
+		<&gcc 0>,
+		<&videocc 0>,
+		<&camcc 0>;
+};
+
+&slim_msm {
+	status = "ok";
 };
 
 &gpu_cc_cx_gdsc {
