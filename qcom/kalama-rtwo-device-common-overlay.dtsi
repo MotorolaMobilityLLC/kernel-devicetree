@@ -22,6 +22,7 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "kalama-rtwo-evb-sensors-overlay.dtsi"
 #include "kalama-rtwo-thermal-overlay.dtsi"
+#include "kalama-rtwo-charger-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
