@@ -14,6 +14,7 @@
 #include "parrot-geneva-charger-overlay.dtsi"
 #include "parrot-geneva-touchscreen-overlay.dtsi"
 #include "parrot-geneva-sensor-overlay.dtsi"
+#include "parrot-geneva-nfc-overlay.dtsi"
 
 &sdhc_2 {
 	status = "disabled";
