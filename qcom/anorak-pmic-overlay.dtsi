@@ -61,6 +61,26 @@
 };
 
 &pm8550b_gpios {
+	key_confirm {
+		key_confirm_default: key_confirm_default {
+			pins = "gpio2";
+			function = "normal";
+			input-enable;
+			bias-pull-up;
+			power-source = <1>;
+		};
+	};
+
+	key_back {
+		key_back_default: key_back_default {
+			pins = "gpio6";
+			function = "normal";
+			input-enable;
+			bias-pull-up;
+			power-source = <1>;
+		};
+	};
+
 	key_vol_up {
 		key_vol_up_default: key_vol_up_default {
 			pins = "gpio10";
