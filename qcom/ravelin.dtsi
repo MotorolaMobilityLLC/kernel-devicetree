@@ -683,6 +683,11 @@
 			vote = <44>;
 		};
 	};
+
+	psci {
+		compatible = "arm,psci-1.0";
+		method = "smc";
+	};
 };
 
 #include "ravelin-pinctrl.dtsi"
