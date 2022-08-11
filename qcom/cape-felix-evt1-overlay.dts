@@ -27,6 +27,7 @@
 	goodix_ts_i2c@5d {
 		compatible = "goodix,gt9916";
 		mmi,status = "/chosen","mmi,panel_name","contains","csot_ili7838A","tianma_nt37701A", "csot_nt37701A";
+		goodix,panel-max-y = <2400>;
 	};
 };
 
