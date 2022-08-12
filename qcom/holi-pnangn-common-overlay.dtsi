@@ -293,7 +293,7 @@
 
 	ldo_vib {
 		compatible = "moto,vibrator-ldo";
-		moto,vib-ldo-gpio = <&tlmm 101 0x0>;
+		moto,vib-ldo-gpio = <&tlmm 50 0x0>;
 		status = "ok";
 	};
 };
