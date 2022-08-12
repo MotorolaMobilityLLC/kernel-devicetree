@@ -23,10 +23,6 @@
 	};
 };
 
-&pmxr2230_flash {
-	status = "ok";
-};
-
 &battery_charger {
 	qcom,wireless-fw-name = "idt9418.bin";
 };

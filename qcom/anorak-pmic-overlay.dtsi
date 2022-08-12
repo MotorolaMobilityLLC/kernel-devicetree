@@ -129,7 +129,22 @@
 	io-channel-names = "thermal";
 };
 
+&pmxr2230_flash {
+	qcom,external-led;
+	pinctrl-names = "default";
+	pinctrl-0 = <&ext_flash_default>;
+};
+
 &pmxr2230_gpios {
+	key_confirm {
+		ext_flash_default: ext_flash_default {
+			pins = "gpio1";
+			function = "normal";
+			input-enable;
+			power-source = <0>;
+		};
+	};
+
 	pmxr2230_sd_card_therm {
 		pmxr2230_sd_card_therm_default: pmxr2230_sd_card_therm_default {
 			pins = "gpio3";
