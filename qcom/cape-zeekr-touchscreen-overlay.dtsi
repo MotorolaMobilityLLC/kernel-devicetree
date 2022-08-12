@@ -76,7 +76,7 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	status = "ok";
+	status = "disabled";
 
 	focaltech@1 {
 		compatible = "focaltech,fts";
