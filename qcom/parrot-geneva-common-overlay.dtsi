@@ -16,6 +16,7 @@
 #include "parrot-geneva-touchscreen-overlay.dtsi"
 #include "parrot-geneva-sensor-overlay.dtsi"
 #include "parrot-geneva-nfc-overlay.dtsi"
+#include "moto-geneva-wl2864c.dtsi"
 
 &sdhc_2 {
 	status = "disabled";
