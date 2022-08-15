@@ -193,7 +193,6 @@
 	qcom,mdss-dsi-bl-max-level = <2047>;
 	qcom,mdss-dsi-bl-default-level = <128>;
 	qcom,mdss-brightness-max-level = <2047>;
-        qcom,mdss-dsi-bl-inverted-dbv;
 
 	/*qcom,esd-check-enabled;*/
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
