@@ -840,6 +840,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_rdpm_out_funnel_dl_west: endpoint {
@@ -862,6 +863,7 @@
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_rdpm_mx_out_funnel_dl_west: endpoint {
@@ -904,6 +906,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_qm_out_tpda_dl_center: endpoint {
@@ -1212,6 +1215,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_tmess1_out_tpda_tmess: endpoint {
@@ -1233,6 +1237,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_tmess0_out_tpda_tmess: endpoint {
@@ -3635,6 +3640,7 @@
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-tmess_cpu";
 
+		status = "disabled";
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 	};
