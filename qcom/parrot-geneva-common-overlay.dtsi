@@ -17,7 +17,12 @@
 #include "parrot-geneva-sensor-overlay.dtsi"
 #include "parrot-geneva-nfc-overlay.dtsi"
 #include "moto-geneva-wl2864c.dtsi"
+#include "parrot-geneva-fps-overlay.dtsi"
 
 &sdhc_2 {
 	status = "disabled";
+};
+
+&tlmm {
+	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
 };
