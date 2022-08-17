@@ -50,5 +50,10 @@
 			qcom,intents = <0x200 60
 					0x4c000 10>;
 		};
+		qcom,glinkpkt_pm_bus {
+			qcom,glink-channels = "AH_PM";
+			qcom,intents = <0x200 6
+					0x200 1>;
+		};
 	};
 };
