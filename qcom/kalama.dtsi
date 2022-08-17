@@ -33,7 +33,7 @@
 
 	reserved_memory: reserved-memory { };
 
-	mem-offline {
+	mem_offline: mem-offline {
 		compatible = "qcom,mem-offline";
 		offline-sizes = <0x2 0xc0000000 0x1 0x00000000>;
 		granule = <512>;
