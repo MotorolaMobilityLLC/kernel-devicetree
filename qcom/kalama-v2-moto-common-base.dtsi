@@ -33,3 +33,4 @@
 	hw: hw { };
 };
 
+/delete-node/ &mem_offline;
