@@ -10,6 +10,7 @@
  * GNU General Public License for more details.
  */
 #include <dt-bindings/iio/qti_power_supply_iio.h>
+#include "tcpc_config_pnangn.dtsi"
 #include "sgm7220-pnangn.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
