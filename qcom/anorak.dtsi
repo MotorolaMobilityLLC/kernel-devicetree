@@ -58,7 +58,7 @@
 			device_type = "cpu";
 			compatible = "qcom,kryo";
 			reg = <0x0 0x0>;
-			cpu-idle-states = <&SILVER_OFF>;
+			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD0>;
 			power-domain-names = "psci";
 			enable-method = "psci";
@@ -84,7 +84,7 @@
 			compatible = "qcom,kryo";
 			reg = <0x0 0x100>;
 			enable-method = "psci";
-			cpu-idle-states = <&SILVER_OFF>;
+			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD1>;
 			power-domain-names = "psci";
 			next-level-cache = <&L2_1>;
@@ -104,7 +104,7 @@
 			device_type = "cpu";
 			compatible = "qcom,kryo";
 			reg = <0x0 0x200>;
-			cpu-idle-states = <&GOLD_OFF>;
+			cpu-idle-states = <&GOLD_PLUS_CPU_OFF &GOLD_PLUS_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD2>;
 			power-domain-names = "psci";
 			enable-method = "psci";
@@ -124,7 +124,7 @@
 			device_type = "cpu";
 			compatible = "qcom,kryo";
 			reg = <0x0 0x300>;
-			cpu-idle-states = <&GOLD_OFF>;
+			cpu-idle-states = <&GOLD_PLUS_CPU_OFF &GOLD_PLUS_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD3>;
 			power-domain-names = "psci";
 			enable-method = "psci";
@@ -145,7 +145,7 @@
 			device_type = "cpu";
 			compatible = "qcom,kryo";
 			reg = <0x0 0x400>;
-			cpu-idle-states = <&GOLD_OFF>;
+			cpu-idle-states = <&GOLD_PLUS_CPU_OFF &GOLD_PLUS_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD4>;
 			power-domain-names = "psci";
 			enable-method = "psci";
@@ -165,7 +165,7 @@
 			device_type = "cpu";
 			compatible = "qcom,kryo";
 			reg = <0x0 0x500>;
-			cpu-idle-states = <&GOLD_OFF>;
+			cpu-idle-states = <&GOLD_PLUS_CPU_OFF &GOLD_PLUS_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD5>;
 			power-domain-names = "psci";
 			enable-method = "psci";
@@ -213,22 +213,42 @@
 	};
 
 	idle-states {
-		SILVER_OFF: silver-c4 {  /* C4 */
+		GOLD_CPU_OFF: gold-c3 {  /* C3 */
+			compatible = "arm,idle-state";
+			idle-state-name = "pc";
+			entry-latency-us = <400>;
+			exit-latency-us = <1400>;
+			min-residency-us = <2207>;
+			arm,psci-suspend-param = <0x40000003>;
+			local-timer-stop;
+		};
+
+		GOLD_CPU_RAIL_OFF: gold-c4 {  /* C4 */
 			compatible = "arm,idle-state";
 			idle-state-name = "rail-pc";
-			entry-latency-us = <800>;
-			exit-latency-us = <750>;
-			min-residency-us = <4090>;
+			entry-latency-us = <600>;
+			exit-latency-us = <1300>;
+			min-residency-us = <8136>;
 			arm,psci-suspend-param = <0x40000004>;
 			local-timer-stop;
 		};
 
-		GOLD_OFF: gold-c4 {  /* C4 */
+		GOLD_PLUS_CPU_OFF: gold-plus-c3 {  /* C3 */
+			compatible = "arm,idle-state";
+			idle-state-name = "pc";
+			entry-latency-us = <300>;
+			exit-latency-us = <1450>;
+			min-residency-us = <3230>;
+			arm,psci-suspend-param = <0x40000003>;
+			local-timer-stop;
+		};
+
+		GOLD_PLUS_CPU_RAIL_OFF: gold-plus-c4 {  /* C4 */
 			compatible = "arm,idle-state";
 			idle-state-name = "rail-pc";
-			entry-latency-us = <600>;
-			exit-latency-us = <1550>;
-			min-residency-us = <4791>;
+			entry-latency-us = <500>;
+			exit-latency-us = <1350>;
+			min-residency-us = <7480>;
 			arm,psci-suspend-param = <0x40000004>;
 			local-timer-stop;
 		};
@@ -238,7 +258,7 @@
 			idle-state-name = "l3-off";
 			entry-latency-us = <1050>;
 			exit-latency-us = <2500>;
-			min-residency-us = <5309>;
+			min-residency-us = <9309>;
 			arm,psci-suspend-param = <0x41000044>;
 		};
 
@@ -600,6 +620,18 @@
 			  "apss";
 		mboxes = <&qmp_aop 0>;
 		ddr-freq-update;
+	};
+
+	cpuss-sleep-stats@17800054 {
+		compatible = "qcom,cpuss-sleep-stats-v3";
+		reg = <0x17800054 0x4>, <0x17810054 0x4>, <0x17820054 0x4>,
+		      <0x17830054 0x4>, <0x17840054 0x4>, <0x17850054 0x4>,
+		      <0x17880098 0x4>, <0x178C0000 0x10000>;
+		reg-names = "seq_lpm_cntr_cfg_cpu0", "seq_lpm_cntr_cfg_cpu1",
+			    "seq_lpm_cntr_cfg_cpu2", "seq_lpm_cntr_cfg_cpu3",
+			    "seq_lpm_cntr_cfg_cpu4", "seq_lpm_cntr_cfg_cpu5",
+			    "l3_seq_lpm_cntr_cfg", "apss_seq_mem_base";
+		num-cpus = <6>;
 	};
 
 	subsystem-sleep-stats@c3f0000 {
