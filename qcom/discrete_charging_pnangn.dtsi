@@ -62,8 +62,8 @@
                 io-channel-names = "gpio3_div3";
 
                 interrupt-parent = <&tlmm>;
-                interrupts = <59 0>;            //irq num base on hardware design
-                sgm,irq-gpio = <&tlmm 59 0>;     //irq num base on hardware design
+                interrupts = <12 0>;            //irq num base on hardware design
+                sgm,irq-gpio = <&tlmm 12 0>;     //irq num base on hardware design
                // sgm,chg-en-gpio = <&tlmm 45 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
                 dpdm-supply = <&qusb_phy0>;
@@ -106,7 +106,7 @@
                 io-channels = <&pm6125_vadc ADC5_GPIO3_DIV3>;
                 io-channel-names = "gpio3_div3";
 
-                bq2589x_irq-gpio = <&tlmm 59 0>;
+                bq2589x_irq-gpio = <&tlmm 12 0>;
                 //bq2589x_en-gpio = <&tlmm 45 0>;
                 dpdm-supply = <&qusb_phy0>;
 
@@ -168,12 +168,12 @@
 &tlmm {
 	sgm4154x_gpio_pins: sgm4154x_gpio_pins {
                 mux {
-                        pins = "gpio59";
+                        pins = "gpio12";
                         function = "gpio";
                 };
 
                 config {
-                        pins = "gpio59";
+                        pins = "gpio12";
                         drive-strength = <2>;
                         bias-pull-up;
                         input-enable;
@@ -182,12 +182,12 @@
 
         bq2589x_irq: bq2589x_irq {
                 mux {
-                        pins = "gpio59";
+                        pins = "gpio12";
                         function = "gpio";
                 };
 
                 config {
-                        pins = "gpio59";
+                        pins = "gpio12";
                         drive-strength = <2>;
                         bias-pull-up;
                         input-enable;
