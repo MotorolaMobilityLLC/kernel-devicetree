@@ -48,3 +48,15 @@
         };
 };
 
+&nxp_eusb2_repeater {
+	qcom,param-override-seq = <0x40 0x06
+				   0x22 0x07
+				   0x64 0x08>;
+};
+
+&usb0 {
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
+		maximum-speed = "high-speed";
+	};
+};
