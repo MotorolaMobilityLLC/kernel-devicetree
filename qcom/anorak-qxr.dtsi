@@ -152,7 +152,7 @@
 	sdexpress-gpios = <&tlmm 172 0>;
 	clkreq-gpios = <&tlmm 171 GPIO_ACTIVE_LOW>;
 
-	status = "disabled";
+	status = "ok";
 };
 
 &regulator_ocp_notifier {
