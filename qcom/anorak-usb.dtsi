@@ -38,9 +38,13 @@
 
 		qcom,pm-qos-latency = <2>;
 
+		usb-role-switch;
+
 		interconnect-names = "usb-ddr", "ddr-usb";
 		interconnects = <&aggre1_noc MASTER_USB3_0 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_USB3_0>;
+
+		extcon = <&eud>;
 
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
@@ -63,6 +67,13 @@
 			tx-fifo-resize;
 			dr_mode = "otg";
 			maximum-speed = "super-speed-plus";
+			usb-role-switch;
+		};
+
+		port {
+			usb_port0: endpoint {
+				remote-endpoint = <&usb_port0_connector>;
+			};
 		};
 	};
 
