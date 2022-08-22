@@ -22,7 +22,7 @@
 			regulator-name = "pmxr2230_s2";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
 			regulator-min-microvolt = <1224000>;
-			regulator-max-microvolt = <1518000>;
+			regulator-max-microvolt = <1370000>;
 			qcom,init-voltage = <1272000>;
 		};
 	};
@@ -131,6 +131,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L1B:
 		pmxr2230_l1: regulator-pmxr2230-l1 {
 			regulator-name = "pmxr2230_l1";
@@ -138,25 +139,6 @@
 			regulator-min-microvolt = <830000>;
 			regulator-max-microvolt = <920000>;
 			qcom,init-voltage = <912000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-	};
-
-	rpmh-regulator-ldob2 {
-		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "ldob2";
-		qcom,regulator-type = "pmic5-ldo";
-		qcom,supported-modes =
-			<RPMH_REGULATOR_MODE_LPM
-			RPMH_REGULATOR_MODE_HPM>;
-		qcom,mode-threshold-currents = <0 30000>;
-		L2B:
-		pmxr2230_l2: regulator-pmxr2230-l2 {
-			regulator-name = "pmxr2230_l2";
-			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <1170000>;
-			regulator-max-microvolt = <1800000>;
-			qcom,init-voltage = <1200000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
@@ -169,6 +151,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L3B:
 		pmxr2230_l3: regulator-pmxr2230-l3 {
 			regulator-name = "pmxr2230_l3";
@@ -188,6 +171,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L4B:
 		pmxr2230_l4: regulator-pmxr2230-l4 {
 			regulator-name = "pmxr2230_l4";
@@ -207,6 +191,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L5B:
 		pmxr2230_l5: regulator-pmxr2230-l5 {
 			regulator-name = "pmxr2230_l5";
@@ -226,6 +211,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L6B:
 		pmxr2230_l6: regulator-pmxr2230-l6 {
 			regulator-name = "pmxr2230_l6";
@@ -245,6 +231,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L7B:
 		pmxr2230_l7: regulator-pmxr2230-l7 {
 			regulator-name = "pmxr2230_l7";
@@ -264,6 +251,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L8B:
 		pmxr2230_l8: regulator-pmxr2230-l8 {
 			regulator-name = "pmxr2230_l8";
@@ -283,6 +271,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L9B:
 		pmxr2230_l9: regulator-pmxr2230-l9 {
 			regulator-name = "pmxr2230_l9";
@@ -302,6 +291,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L10B:
 		pmxr2230_l10: regulator-pmxr2230-l10 {
 			regulator-name = "pmxr2230_l10";
@@ -321,6 +311,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L11B:
 		pmxr2230_l11: regulator-pmxr2230-l11 {
 			regulator-name = "pmxr2230_l11";
@@ -340,6 +331,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L12B:
 		pmxr2230_l12: regulator-pmxr2230-l12 {
 			regulator-name = "pmxr2230_l12";
@@ -359,6 +351,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L13B:
 		pmxr2230_l13: regulator-pmxr2230-l13 {
 			regulator-name = "pmxr2230_l13";
@@ -381,6 +374,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L14B:
 		pmxr2230_l14: regulator-pmxr2230-l14 {
 			regulator-name = "pmxr2230_l14";
@@ -400,6 +394,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L15B:
 		pmxr2230_l15: regulator-pmxr2230-l15 {
 			regulator-name = "pmxr2230_l15";
@@ -419,6 +414,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L18B:
 		pmxr2230_l18: regulator-pmxr2230-l18 {
 			regulator-name = "pmxr2230_l18";
@@ -438,6 +434,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L20B:
 		pmxr2230_l20: regulator-pmxr2230-l20 {
 			regulator-name = "pmxr2230_l20";
@@ -457,6 +454,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L21B:
 		pmxr2230_l21: regulator-pmxr2230-l21 {
 			regulator-name = "pmxr2230_l21";
@@ -476,6 +474,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L22B:
 		pmxr2230_l22: regulator-pmxr2230-l22 {
 			regulator-name = "pmxr2230_l22";
@@ -495,6 +494,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 10000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L23B:
 		pmxr2230_l23: regulator-pmxr2230-l23 {
 			regulator-name = "pmxr2230_l23";
@@ -564,6 +564,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L2C:
 		pm_v6c_l2: regulator-pm_v6c-l2 {
 			regulator-name = "pm_v6c_l2";
@@ -612,6 +613,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L1D:
 		pm_v6d_l1: regulator-pm_v6d-l1 {
 			regulator-name = "pm_v6d_l1";
@@ -631,6 +633,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L2D:
 		pm_v6d_l2: regulator-pm_v6d-l2 {
 			regulator-name = "pm_v6d_l2";
@@ -758,6 +761,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L2F:
 		pm_v8_l2: regulator-pm_v8-l2 {
 			regulator-name = "pm_v8_l2";
@@ -777,6 +781,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L3F:
 		pm_v8_l3: regulator-pm_v8-l3 {
 			regulator-name = "pm_v8_l3";
@@ -809,6 +814,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L1M:
 		pm8010m_l1: regulator-pm8010m-l1 {
 			regulator-name = "pm8010m_l1";
@@ -828,6 +834,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L2M:
 		pm8010m_l2: regulator-pm8010m-l2 {
 			regulator-name = "pm8010m_l2";
@@ -903,6 +910,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L1N:
 		pm8010n_l1: regulator-pm8010n-l1 {
 			regulator-name = "pm8010n_l1";
@@ -922,6 +930,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L2N:
 		pm8010n_l2: regulator-pm8010n-l2 {
 			regulator-name = "pm8010n_l2";
