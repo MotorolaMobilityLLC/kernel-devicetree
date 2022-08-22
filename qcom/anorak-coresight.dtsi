@@ -793,7 +793,7 @@
 	turing_etm {
 		compatible = "qcom,coresight-remote-etm";
 
-		coresight-name = "coresight-turing-etm";
+		coresight-name = "coresight-turing-etm0";
 		qcom,inst-id = <13>;
 
 		atid = <38 39>;
@@ -984,7 +984,7 @@
 	audio_etm {
 		compatible = "qcom,coresight-remote-etm";
 
-		coresight-name = "coresight-audio_etm";
+		coresight-name = "coresight-audio-etm0";
 		qcom,inst-id = <5>;
 
 		atid = <40 41>;
