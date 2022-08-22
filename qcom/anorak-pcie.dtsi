@@ -49,7 +49,6 @@
 		gdsc-vdd-supply = <&gcc_pcie_0_gdsc>;
 		vreg-1p8-supply = <&L2C>;
 		vreg-0p9-supply = <&L2F>;
-		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
 		qcom,vreg-1p8-voltage-level = <1200000 1200000 15000>;
@@ -58,7 +57,6 @@
 						RPMH_REGULATOR_LEVEL_NOM 0>;
 		qcom,vreg-mx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
 						RPMH_REGULATOR_LEVEL_NOM 0>;
-		qcom,vreg-qref-voltage-level = <880000 880000 600>;
 		qcom,bw-scale = /* Gen1 */
 				<RPMH_REGULATOR_LEVEL_LOW_SVS
 				RPMH_REGULATOR_LEVEL_LOW_SVS
@@ -313,11 +311,9 @@
 		pinctrl-1 = <&pcie1_perst_default
 				&pcie1_clkreq_sleep
 				&pcie1_wake_default>;
-
 		gdsc-vdd-supply = <&gcc_pcie_1_gdsc>;
 		vreg-1p8-supply = <&L2C>;
 		vreg-0p9-supply = <&L2F>;
-		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
 
@@ -327,7 +323,7 @@
 						RPMH_REGULATOR_LEVEL_LOW_SVS 0>;
 		qcom,vreg-mx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
 						RPMH_REGULATOR_LEVEL_LOW_SVS 0>;
-		qcom,vreg-qref-voltage-level = <880000 880000 600>;
+
 		qcom,bw-scale = /* Gen1 */
 				<RPMH_REGULATOR_LEVEL_LOW_SVS
 				RPMH_REGULATOR_LEVEL_LOW_SVS
@@ -581,7 +577,6 @@
 		gdsc-vdd-supply = <&gcc_pcie_2_gdsc>;
 		vreg-1p8-supply = <&L2C>;
 		vreg-0p9-supply = <&L2F>;
-		vreg-qref-supply = <&L2D>;
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXA_LEVEL>;
 
@@ -591,7 +586,6 @@
 						RPMH_REGULATOR_LEVEL_LOW_SVS 0>;
 		qcom,vreg-mx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
 						RPMH_REGULATOR_LEVEL_LOW_SVS 0>;
-		qcom,vreg-qref-voltage-level = <880000 880000 600>;
 		qcom,bw-scale = /* Gen1 */
 				<RPMH_REGULATOR_LEVEL_LOW_SVS
 				RPMH_REGULATOR_LEVEL_LOW_SVS
