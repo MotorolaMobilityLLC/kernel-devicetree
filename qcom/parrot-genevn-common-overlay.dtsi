@@ -12,3 +12,7 @@
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-genevn-touchscreen-overlay.dtsi"
+
+&usb0 {
+	qcom,force-adb-enable;
+};
