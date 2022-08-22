@@ -101,6 +101,7 @@
 
 &battery_charger {
 	qcom,wireless-fw-name = "idt9418.bin";
+	qcom,thermal-mitigation-step = <500000>;
 };
 
 &msm_sdexpress {
