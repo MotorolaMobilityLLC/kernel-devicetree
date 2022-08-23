@@ -9,7 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "holi-audio-pnangn-overlay.dtsi"
+#include "pnangn-audio-wcd9370-aw882xx-acf-dual-overlay.dtsi"
 #include "holi-nopmi-moto-common-overlay.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
