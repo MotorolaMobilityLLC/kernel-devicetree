@@ -61,6 +61,7 @@
 		mmi,fod_coords = <540 2141>;
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
 	};
 };
 
