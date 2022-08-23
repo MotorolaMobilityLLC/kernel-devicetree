@@ -639,6 +639,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_ddr_dl_0_out_funnel_ddr_dl_0: endpoint {
@@ -660,6 +661,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_ddr_dpm_out_funnel_ddr_dl_0: endpoint {
@@ -1387,6 +1389,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_dl_ct1_out_tpda_dl_center: endpoint {
