@@ -15,13 +15,15 @@
 /dts-v1/;
 /plugin/;
 
-#include "kalama-rtwo-device-common-overlay.dtsi"
+#include "kalama-rtwo-device-na-vzw-common-overlay.dtsi"
 
+#define RTWO_RADIO_NA 3
+#define RTWO_RADIO_VZM 4
 / {
 	model = "rtwo";
 	compatible = "qcom,kalama-mtp", "qcom,kalama", "qcom,mtp", "qcom,rtwo";
 	qcom,msm-id = <519 0x10000>, <536 0x10000>, <519 0x20000>, <536 0x20000>;
-	qcom,board-id = <0x41 0xB1B0>;
+	qcom,board-id = <(RTWO_RADIO_NA << 8 | 0x41) 0xA200>, <(RTWO_RADIO_VZM << 8 | 0x41) 0xA200>;
 };
 
 &pm8550b_eusb2_repeater {
