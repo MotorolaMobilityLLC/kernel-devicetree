@@ -36,6 +36,41 @@
 				bias-pull-up;
 			};
 	};
+	pen_int_default: pen_int_default {
+			mux {
+				pins = "gpio31";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio31";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+
+	pen_int_sleep: pen_int_sleep {
+			mux {
+				pins = "gpio31";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio31";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+};
+
+&soc {
+	pen_detect{
+		compatible = "rohm,bu520xx_pen_detect";
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&pen_int_default>;
+		pinctrl-1 = <&pen_int_sleep>;
+		rohm,nirq-gpio=<&tlmm 31 0x02>;
+	};
 };
 
 &qupv3_se4_i2c {
