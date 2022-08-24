@@ -765,6 +765,11 @@
 		compatible = "qcom,msm-rtb";
 		qcom,rtb-size = <0x100000>;
 	};
+
+	mini_dump_node {
+		compatible = "qcom,minidump";
+		status = "ok";
+	};
 };
 
 #include "ravelin-pinctrl.dtsi"
