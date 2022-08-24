@@ -403,15 +403,12 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-oneli-dvt1b-overlay.dtbo \
 	cape-oneli-dvt2a-overlay.dtbo
 
-# at this point reusing oneli base and keeping oneli overlays
-# to be able running felix sw on oneli hw
-# might need to create our own when deviation appears
-cape-felix-evt1-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
-cape-felix-evt1a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
-cape-felix-evt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
-cape-felix-evt1c-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
-cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-oneli-base.dtb
-cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-oneli-base.dtb cape-v2-moto-oneli-base.dtb
+cape-felix-evt1-overlay.dtbo-base := cape-moto-felix-base.dtb cape-v2-moto-felix-base.dtb
+cape-felix-evt1a-overlay.dtbo-base := cape-moto-felix-base.dtb cape-v2-moto-felix-base.dtb
+cape-felix-evt1b-overlay.dtbo-base := cape-moto-felix-base.dtb cape-v2-moto-felix-base.dtb
+cape-felix-evt1c-overlay.dtbo-base := cape-moto-felix-base.dtb cape-v2-moto-felix-base.dtb
+cape-oneli-dvt1b-overlay.dtbo-base := cape-moto-felix-base.dtb
+cape-oneli-dvt2a-overlay.dtbo-base := cape-moto-felix-base.dtb cape-v2-moto-felix-base.dtb
 endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
