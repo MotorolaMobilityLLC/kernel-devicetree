@@ -597,7 +597,7 @@
 				  <CONTROL_TCS   0>,
 				  <FAST_PATH_TCS 0>;
 
-		disp_bcm_voter: bcm_voter {
+		disp0_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
 			qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
 		};
@@ -616,6 +616,11 @@
 				  <WAKE_TCS      1>,
 				  <CONTROL_TCS   0>,
 				  <FAST_PATH_TCS 0>;
+
+		disp1_bcm_voter: bcm_voter {
+			compatible = "qcom,bcm-voter";
+			qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
+		};
 	};
 
 	soc-sleep-stats@c3f0000 {
@@ -1972,8 +1977,8 @@
 	mc_virt: interconnect@1 {
 		compatible = "qcom,anorak-mc_virt";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	config_noc: interconnect@1500000 {
@@ -2025,16 +2030,16 @@
 		reg = <0x01740000 0x1C100>;
 		compatible = "qcom,anorak-mmss_noc";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	gem_noc: interconnect@19100000 {
 		reg = <0x19100000 0xA9080>;
 		compatible = "qcom,anorak-gem_noc";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	nsp_noc: interconnect@320C0000 {
