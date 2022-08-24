@@ -2,9 +2,10 @@
 
 #include "ukee.dtsi"
 #include "ukee-qrd.dtsi"
+#include "waipio-pm8008.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Ukee QRD";
+	model = "Qualcomm Technologies, Inc. Ukee QRD with PM8008";
 	compatible = "qcom,ukee-qrd", "qcom,ukee", "qcom,qrd";
-	qcom,board-id = <11 0>;
+	qcom,board-id = <0x1000B 0>;
 };

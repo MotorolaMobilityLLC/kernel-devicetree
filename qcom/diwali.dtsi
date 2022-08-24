@@ -1362,6 +1362,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6>;
 				qcom,cpufreq-memfreq-tbl =
+					<  300000  307200 >,
 					<  940800  537600 >,
 					< 1132800  748800 >,
 					< 1382400  979200 >,
@@ -1376,6 +1377,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
+					<  300000  307200 >,
 					< 1094400  537600 >,
 					< 1401600  748800 >,
 					< 1766400 1209600 >,
@@ -1491,8 +1493,18 @@
 		qcom,gpucc = <&gpucc>;
 		qcom,apsscc = <&apsscc>;
 		qcom,mccc = <&mccc>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gpucc 0>,
+			<&videocc 0>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"camcc",
+				"dispcc",
+				"gpucc",
+				"videocc";
 		#clock-cells = <1>;
 	};
 
@@ -2235,15 +2247,13 @@
 				      <&wpss_smp2p_in 0 0>,
 				      <&wpss_smp2p_in 2 0>,
 				      <&wpss_smp2p_in 1 0>,
-				      <&wpss_smp2p_in 3 0>,
-				      <&wpss_smp2p_in 7 0>;
+				      <&wpss_smp2p_in 3 0>;
 
 		interrupt-names = "wdog",
 				   "fatal",
 				   "handover",
 				   "ready",
-				   "stop-ack",
-				   "shutdown-ack";
+				   "stop-ack";
 
 		/* Outputs to wpss */
 		qcom,smem-states = <&wpss_smp2p_out 0>;
@@ -3401,6 +3411,7 @@
 	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
 	clock-names = "ahb_clk";
 	parent-supply = <&VDD_CX_LEVEL>;
+	qcom,clk-ctrl = <&gpucc 0x9130 22 1>;
 	status = "ok";
 };
 
