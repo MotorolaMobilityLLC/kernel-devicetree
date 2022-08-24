@@ -1120,8 +1120,18 @@
 		qcom,gpucc = <&gpucc>;
 		qcom,apsscc = <&apsscc>;
 		qcom,mccc = <&mccc>;
-		clock-names = "xo_clk_src";
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gpucc 0>,
+			<&videocc 0>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"camcc",
+				"dispcc",
+				"gpucc",
+				"videocc";
 		#clock-cells = <1>;
 	};
 
@@ -2885,7 +2895,7 @@
 		<0 0 0 0 0 0>;
 		/* SVS2 */
 		qcom,svs2 =
-		<590000 0 590000 1900000 0 76800>;
+		<0 0 0 1900000 0 76800>;
 
 		/* SVS */
 		qcom,svs =

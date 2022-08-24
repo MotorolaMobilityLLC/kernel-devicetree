@@ -207,6 +207,12 @@
 	};
 };
 
+&firmware {
+	qcom_scm {
+		compatible = "qcom,scm";
+	};
+};
+
 &soc {
 	#address-cells = <1>;
 	#size-cells = <1>;
@@ -682,6 +688,11 @@
 			mask = <0x0f>;
 			vote = <44>;
 		};
+	};
+
+	psci {
+		compatible = "arm,psci-1.0";
+		method = "smc";
 	};
 };
 
