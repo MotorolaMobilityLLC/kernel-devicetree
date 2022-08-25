@@ -344,37 +344,6 @@
 		size = <0x0 0x2800000>;
 	};
 
-	secure_lsr_lefteye_mem_heap: secure_lsr_lefteye_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		no-map;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0xC00000>;
-	};
-
-	secure_lsr_righteye_mem_heap: secure_lsr_righteye_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		no-map;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0xC00000>;
-	};
-
-	secure_lsr_depth_mem_heap: secure_lsr_depth_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		no-map;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0x100000>;
-	};
-
-	secure_lsr_misc_mem_heap: secure_lsr_misc_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		no-map;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0x2800000>;
-	};
 	audio_cma_mem: audio_cma_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
