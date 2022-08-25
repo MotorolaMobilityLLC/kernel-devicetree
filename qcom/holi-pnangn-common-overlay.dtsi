@@ -22,7 +22,7 @@
 #include "pnangn-touchscreen.dtsi"
 #include "pnangn-fmr-overlay.dtsi"
 #include "camera/holi-camera-sensor-mot-pnangn-overlay.dtsi"
-//#include "discrete_charging_pnangn.dtsi"
+#include "discrete_charging_pnangn.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 
 &wcd937x_codec {
