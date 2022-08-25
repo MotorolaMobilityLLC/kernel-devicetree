@@ -639,6 +639,8 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_ddr_dl_0_out_funnel_ddr_dl_0: endpoint {
@@ -660,6 +662,8 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_ddr_dpm_out_funnel_ddr_dl_0: endpoint {
@@ -949,6 +953,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_vsense_out_tpda_dl_center: endpoint {
@@ -971,6 +976,7 @@
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_ipa_out_tpda_dl_center: endpoint {
@@ -1173,6 +1179,7 @@
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_sdcc_out_tpda_dl_north: endpoint {
@@ -1194,6 +1201,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		out-ports {
 			port {
 				tpdm_tmess_prng_out_tpda_tmess: endpoint {
@@ -1387,6 +1395,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		qcom,cmb-msr-skip;
 		out-ports {
 			port {
 				tpdm_dl_ct1_out_tpda_dl_center: endpoint {
@@ -1636,6 +1645,7 @@
 
 		qcom,tpda-atid = <85>;
 
+		status = "disabled";
 		qcom,dsb-elem-size = <2 32>;
 		qcom,cmb-elem-size = <0 32>,
 					<1 32>,
@@ -2911,6 +2921,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		in-ports {
 
 			#address-cells = <1>;
