@@ -576,7 +576,7 @@
 		0x8024  0x7F7F
 		0x4280  0xE
 		>;
-		status = "disabled";
+		status = "ok";
 		};
 };
 
