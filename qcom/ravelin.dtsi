@@ -205,6 +205,13 @@
 		size = <0x0 0x2000000>;
 		linux,cma-default;
 	};
+
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x1 0x00000000 0xfffffffe 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
+	};
 };
 
 &firmware {
@@ -759,6 +766,16 @@
 
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
+	};
+
+	mini_dump_node {
+		compatible = "qcom,minidump";
+		status = "ok";
 	};
 };
 
