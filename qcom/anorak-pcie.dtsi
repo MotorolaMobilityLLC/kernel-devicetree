@@ -569,10 +569,8 @@
 
 		perst-gpio = <&tlmm 170 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default", "sleep";
-		pinctrl-0 = <&pcie2_perst_default
-				&pcie2_clkreq_default>;
-		pinctrl-1 = <&pcie2_perst_default
-				&pcie2_clkreq_sleep>;
+		pinctrl-0 = <&pcie2_perst_default>;
+		pinctrl-1 = <&pcie2_perst_default>;
 
 		gdsc-vdd-supply = <&gcc_pcie_2_gdsc>;
 		vreg-1p8-supply = <&L2C>;
