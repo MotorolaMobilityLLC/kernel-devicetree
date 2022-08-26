@@ -54,7 +54,6 @@
 		mmi,qc3-support;
 		mmi,wls-max-icl = <1000000>;
 		input-voltage-limit-microvolt = <4700000>;
-		mmi,i2c-err-wa-dis;
 
 		/* sw jeita  parameter customer defined*/
 		enable_sw_jeita;
