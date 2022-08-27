@@ -23,3 +23,7 @@
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
 };
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
+};
