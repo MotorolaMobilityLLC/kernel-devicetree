@@ -587,7 +587,11 @@ ifeq ($(CONFIG_ARCH_QTI_VM), y)
 dtb-$(CONFIG_ARCH_QTI_VM) += cape-vm-mtp.dtb \
 	cape-vm-cdp.dtb \
 	cape-vm-cdp-qhd.dtb \
-	cape-vm-qrd.dtb
+	cape-vm-qrd.dtb \
+	ukee-vm-mtp.dtb \
+	ukee-vm-cdp.dtb \
+	ukee-vm-cdp-qhd.dtb \
+	ukee-vm-qrd.dtb
 endif
 endif
 
