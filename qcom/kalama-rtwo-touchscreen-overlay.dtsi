@@ -36,7 +36,7 @@
 		status = "ok";
 		compatible = "goodix,gt9916P";
 		reg = <0>;
-		spi-max-frequency = <1000000>;
+		spi-max-frequency = <15000000>;
 
 		goodix,reset-gpio = <&tlmm 24 0x0>;
 		goodix,irq-gpio = <&tlmm 25 0x2002>;
