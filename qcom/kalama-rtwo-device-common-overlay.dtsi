@@ -13,7 +13,6 @@
 /* This file is only for rtwo device */
 
 #include "kalama-rtwo-products-common-overlay.dtsi"
-#include "kalama-moto-common-charger.dtsi"
 #include "kalama-moto-common-nxp-nfc.dtsi"
 #include "kalama-rtwo-haptics-overlay.dtsi"
 #include "kalama-rtwo-fingerprint-overlay.dtsi"
@@ -22,7 +21,6 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "kalama-rtwo-evb-sensors-overlay.dtsi"
 #include "kalama-rtwo-thermal-overlay.dtsi"
-#include "kalama-rtwo-charger-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {

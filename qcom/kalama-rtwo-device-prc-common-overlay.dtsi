@@ -13,3 +13,4 @@
 /* This file is only for rtwo device */
 
 #include "kalama-rtwo-device-common-overlay.dtsi"
+#include "kalama-rtwo-prc-charger-overlay.dtsi"
