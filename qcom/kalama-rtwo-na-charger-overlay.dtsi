@@ -1,0 +1,35 @@
+&soc {
+	mmi_charger: mmi,charger {
+		compatible = "mmi,mmi-charger";
+		mmi,enable-charging-limit;
+		mmi,upper-limit-capacity = <75>;
+		mmi,lower-limit-capacity = <65>;
+		mmi,heartbeat-interval = <10000>;
+		mmi,pd-power-max = <68000>;
+		mmi,dcp-power-max = <10000>;
+		mmi,hvdcp-power-max = <15000>;
+		mmi,factory-kill-debounce-ms = <3000>;
+	};
+
+	qcom,pmic_glink {
+		qti_glink_charger: mmi,qti-glink-charger {
+			compatible = "mmi,qti-glink-charger";
+			mmi,df-serialnum = "unknown-sn";
+			mmi,chrg-iterm-ma = <300>;
+			mmi,fg-iterm-ma = <350>;
+			mmi,max-fv-mv = <4400>;
+			mmi,max-fcc-ma = <4000>;
+			mmi,demo-fv-mv = <4000>;
+		};
+	};
+};
+
+&qti_glink_charger {
+	profile-ids-map = "107000", "SB18D58448", "38000", "SB18D58447";
+};
+
+&battery_charger {
+	qcom,thermal-mitigation = <12400000 10000000 8000000 7000000 6000000 5000000 4000000 3000000 1500000 1000000 100000>;
+	qcom,wireless-fw-name = "cps4035.bin";
+};
+
