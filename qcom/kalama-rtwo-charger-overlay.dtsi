@@ -1,8 +1,6 @@
 &mmi_charger {
-		mmi,heartbeat-interval = <10000>;
-		mmi,pd-power-max = <125000>;
-		mmi,dcp-power-max = <10000>;
-		mmi,hvdcp-power-max = <33000>;
+	mmi,pd-power-max = <125000>;
+	mmi,heartbeat-interval = <10000>;
 };
 
 &qti_glink_charger {
