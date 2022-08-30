@@ -195,7 +195,7 @@
 			pm8550b_trip1: trip1 {
 				temperature = <115000>;
 				hysteresis = <0>;
-				type = "critical";
+				type = "passive";
 			};
 
 			pm8550b_trip2: trip2 {
@@ -222,7 +222,7 @@
 			trip1 {
 				temperature = <135000>;
 				hysteresis = <0>;
-				type = "critical";
+				type = "passive";
 			};
 
 			trip2 {
