@@ -68,8 +68,8 @@
 	 */
 	ufs-dev-types = <2>;
 	qcom,ufs-dev-revert;
-	nvmem-cells = <&ufs_dev>;
-	nvmem-cell-names = "ufs_dev";
+	nvmem-cells = <&ufs_dev>, <&boot_config>;
+	nvmem-cell-names = "ufs_dev", "boot_conf";
 
 	status = "ok";
 };
