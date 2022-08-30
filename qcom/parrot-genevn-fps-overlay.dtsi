@@ -1,0 +1,118 @@
+&tlmm {
+	fingerfp_rst_high: fingerfp_rst_high {
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio101";
+			drive-strength = <8>;
+			output-high;
+			bias-pull-up;
+		};
+	};
+
+	fingerfp_rst_low: fingerfp_rst_low {
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio101";
+			drive-strength = <8>;
+			output-low;
+			bias-pull-down;
+		};
+	};
+
+	fingerfp_irq_active: fingerfp_irq_active {
+		mux {
+			pins = "gpio111";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio111";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fingerprint_pins_eint_as_int: fingerprint_pins_eint_as_int
+	{
+		mux {
+			pins = "gpio111";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio111";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fingerprint_pins_rst_output1: fingerprint_pins_rst_output1 {
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio101";
+			drive-strength = <8>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	fingerprint_pins_rst_output0: fingerprint_pins_rst_output0 {
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio101";
+			drive-strength = <8>;
+			bias-disable;
+			output-low;
+		};
+	};
+};
+
+&pm6450_l28 {
+ qcom,init-voltage = <3000000>;
+ regulator-min-microvolt = <3000000>;
+ regulator-max-microvolt = <3000000>;
+ regulator-always-on;
+};
+
+&soc {
+
+	fp_egistec {
+		status = "ok";
+		compatible = "fp-egistec";
+		egistec,gpio_reset = <&tlmm 101 0x00>;
+		egistec,gpio_irq = <&tlmm 111 0x00>;
+		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active";
+		pinctrl-0 = <&fingerfp_rst_high>;
+		pinctrl-1 = <&fingerfp_rst_low>;
+		pinctrl-2 = <&fingerfp_irq_active>;
+	};
+
+	fingerprint: fpc1020 {
+                status = "ok";
+		compatible = "fpc,fpc1020";
+		interrupt-parent = <&tlmm>;
+		interrupts = <111 0>;
+		rst = <&tlmm 101 0>;
+		irq = <&tlmm 111 0>;
+	        pinctrl-names = "fpc_rst_lo","fpc_rst_hi","fpc_irq_en";
+		pinctrl-0 = <&fingerprint_pins_rst_output0>;
+		pinctrl-1 = <&fingerprint_pins_rst_output1>;
+		pinctrl-2 = <&fingerprint_pins_eint_as_int>;
+	};
+};

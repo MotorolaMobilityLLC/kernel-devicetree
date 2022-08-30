@@ -14,6 +14,7 @@
 #include "parrot-genevn-charger-overlay.dtsi"
 #include "parrot-genevn-touchscreen-overlay.dtsi"
 #include "parrot-genevn-sensor-overlay.dtsi"
+#include "parrot-genevn-fps-overlay.dtsi"
 #include "moto-genevn-wl2864c.dtsi"
 
 &usb0 {
