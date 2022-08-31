@@ -48,7 +48,7 @@
 		compatible = "goodix,gt9916P";
 		reg = <0>;
 
-		mmi,status = "/chosen","mmi,panel_name","contains","csot_vtdr6115";
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_vtdr6115","tianma_nt37703";
 		spi-max-frequency = <1000000>;
 		goodix,reset-gpio = <&tlmm 20 0x0>;
 		goodix,irq-gpio = <&tlmm 21 0x2002>;
