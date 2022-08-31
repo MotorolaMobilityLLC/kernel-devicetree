@@ -13,3 +13,5 @@
 /dts-v1/;
 
 #include "kalama-v2-moto-common-base.dtsi"
+#include "kalama-moto-common-nxp-nfc.dtsi"
+
