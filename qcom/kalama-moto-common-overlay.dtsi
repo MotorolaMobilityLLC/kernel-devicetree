@@ -32,7 +32,7 @@
 };
 
 &reserved_memory {
-	ramoops_mem: ramoops_region {
+	ramoops_region {
 		compatible = "ramoops";
 		no-map;
 		reg = <0x0 0xae000000 0x0 0x60000>;
