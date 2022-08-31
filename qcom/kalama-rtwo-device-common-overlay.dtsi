@@ -13,7 +13,6 @@
 /* This file is only for rtwo device */
 
 #include "kalama-rtwo-products-common-overlay.dtsi"
-#include "kalama-moto-common-nxp-nfc.dtsi"
 #include "kalama-rtwo-haptics-overlay.dtsi"
 #include "kalama-rtwo-fingerprint-overlay.dtsi"
 #include "kalama-rtwo-touchscreen-overlay.dtsi"
