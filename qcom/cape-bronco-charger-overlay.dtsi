@@ -10,6 +10,7 @@
 	mmi,max-fv-mv = <4480>;
 	mmi,max-fcc-ma = <4000>;
 	mmi,demo-fv-mv = <4000>;
+	profile-ids-map = "0", "unknown-sn", "107111", "SB18D60922", "107222", "SB18D60923";
 };
 
 &battery_charger {
