@@ -161,10 +161,10 @@
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,dsi-supported-dfps-list = <60 90 120>;
 
-	qcom,mdss-dsi-hbm-type = "lcd-dcs-gpio";
-	//qcom,platform-hbm-en-gpio = <&tlmm 50 0>;
-	//qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
-	//qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 07 FF];
+	qcom,mdss-dsi-panel-hbm-is-51cmd;
+	qcom,mdss-dsi-hbm-type = "lcd-dcs-only";
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 0F FF];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 0C CC];
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
 	qcom,mdss-dsi-t-clk-post = <0x1A>;
@@ -214,10 +214,10 @@
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,dsi-supported-dfps-list = <60 90 120>;
 
-	qcom,mdss-dsi-hbm-type = "lcd-dcs-gpio";
-	//qcom,platform-hbm-en-gpio = <&tlmm 50 0>;
-	//qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 FF 0E];
-	//qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 FF 0E];
+	qcom,mdss-dsi-panel-hbm-is-51cmd;
+	qcom,mdss-dsi-hbm-type = "lcd-dcs-only";
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 FF 0F];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 CC 0C];
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
 	qcom,mdss-dsi-t-clk-post = <0x0E>;
