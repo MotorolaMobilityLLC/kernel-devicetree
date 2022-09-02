@@ -71,10 +71,11 @@
 };
 
 &pm6450_l28 {
- qcom,init-voltage = <3000000>;
- regulator-min-microvolt = <3000000>;
- regulator-max-microvolt = <3000000>;
- regulator-always-on;
+	qcom,init-voltage = <3000000>;
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3000000>;
+	status = "ok";
+	//regulator-always-on;
 };
 
 &soc {
@@ -84,6 +85,11 @@
 		compatible = "fp-egistec";
 		egistec,gpio_reset = <&tlmm 101 0x00>;
 		egistec,gpio_irq = <&tlmm 111 0x00>;
+
+		fp-ctrl-power;
+		vcc_fp-supply = <&pm6450_l28>;
+		egis-fp,vcc-voltage = <3000000 3000000>;
+		egis-fp,vcc-current = <100000>;
 		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active";
 		pinctrl-0 = <&fingerfp_rst_high>;
 		pinctrl-1 = <&fingerfp_rst_low>;
@@ -97,6 +103,9 @@
 		interrupts = <111 0>;
 		rst = <&tlmm 101 0>;
 		irq = <&tlmm 111 0>;
+		rgltr-ctrl-support;
+		fp,vdd-supply=<&pm6450_l28>;
+		fp,voltage-range = <3300000 3300000>;
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&fps_int_active>;
 		pinctrl-1 = < &fps_int_suspend>;
