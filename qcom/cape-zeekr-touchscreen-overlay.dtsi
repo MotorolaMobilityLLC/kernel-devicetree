@@ -37,6 +37,11 @@
 	status = "disabled";
 };
 
+&aliases {
+    spi1 = "/soc/spi@990000";
+    spi2 = "/soc/spi@884000";
+};
+
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
