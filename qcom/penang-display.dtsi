@@ -139,7 +139,7 @@
 
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <2047>;
-	qcom,mdss-dsi-bl-default-level = <128>;
+	qcom,mdss-dsi-bl-default-level = <932>;
 	qcom,mdss-brightness-max-level = <2047>;
 
 	qcom,esd-check-enabled;
