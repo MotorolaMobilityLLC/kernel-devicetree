@@ -18,7 +18,7 @@
  * to GCC.
  */
 &gcc {
-	qcom,critical-devices = <&qupv3_hub_i2c2>;
+	qcom,critical-devices = <&qupv3_hub_i2c2>, <&qupv3_2>;
 };
 
 &qupv3_hub_i2c2 {
