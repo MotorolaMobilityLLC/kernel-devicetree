@@ -27,6 +27,15 @@
 };
 
 &pm8550b_eusb2_repeater {
-	qcom,param-override-seq = <0x0b 0x51 0x06 0x57>;
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xb 0x51
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* Squelch detection threshold */
+		 0x6 0x54
+		/* Tx pre-emphasis tuning */
+		 0x6 0x57>;
 };
 
