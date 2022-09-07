@@ -77,6 +77,69 @@
 	status = "disabled";
 };
 
+/* CLI touchscreen pins */
+&tlmm {
+	cli_pmx_ts_active {
+		cli_ts_active: cli_ts_active {
+			mux {
+				pins = "gpio85", "gpio126";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85", "gpio126";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	cli_pmx_ts_reset_suspend {
+		cli_ts_reset_suspend: cli_ts_reset_suspend {
+			mux {
+				pins = "gpio126";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio126";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend: cli_ts_int_suspend {
+			mux {
+				pins = "gpio85";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release: cli_ts_release {
+			mux {
+				pins = "gpio85", "gpio126";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio85", "gpio126";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
 &qupv3_se16_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -98,6 +161,12 @@
 		focaltech,display-coords =  <0 0 1056 1068>;
 		vdd-supply=<&pm8350c_l3>;
 		vcc_i2c-supply=<&pm8350c_l2>;
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
     };
