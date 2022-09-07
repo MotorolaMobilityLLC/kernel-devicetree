@@ -121,10 +121,3 @@
 &sdhc_2 {
 	status = "disabled";
 };
-
-&usb_qmp_dp_phy {
-	qcom,qmp-phy-override-seq =
-		/* <reg_offset,	value> */
-		<USB3_DP_QSERDES_TXA_TX_DRV_LVL   0x29
-		USB3_DP_QSERDES_TXB_TX_DRV_LVL    0x29>;
-};
