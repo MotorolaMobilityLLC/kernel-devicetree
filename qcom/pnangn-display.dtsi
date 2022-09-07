@@ -138,9 +138,9 @@
 	qcom,bklt-dcs-2bytes-enabled;
 
 	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-max-level = <3500>;
-	qcom,mdss-dsi-bl-default-level = <2047>;
-	qcom,mdss-brightness-max-level = <3500>;
+	qcom,mdss-dsi-bl-max-level = <3276>;
+	qcom,mdss-dsi-bl-default-level = <1478>;
+	qcom,mdss-brightness-max-level = <3276>;
 
 	/*qcom,esd-check-enabled;*/
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
@@ -190,9 +190,9 @@
 	qcom,bklt-dcs-2bytes-enabled;
 
 	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-max-level = <3500>;
-	qcom,mdss-dsi-bl-default-level = <2047>;
-	qcom,mdss-brightness-max-level = <3500>;
+	qcom,mdss-dsi-bl-max-level = <3276>;
+	qcom,mdss-dsi-bl-default-level = <1478>;
+	qcom,mdss-brightness-max-level = <3276>;
 	qcom,mdss-dsi-bl-level-align = <2>;
 
 	//qcom,esd-check-enabled;
