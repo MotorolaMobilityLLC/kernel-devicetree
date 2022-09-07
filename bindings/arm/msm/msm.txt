@@ -110,6 +110,9 @@ SoCs:
 - RAVELIN
   compatible = "qcom,ravelin"
 
+- MONTAGUE
+  compatible = "qcom,montague", "qcom,montaguep"
+
 Generic board variants:
 
 - CDP device:
@@ -315,3 +318,6 @@ compatible = "qcom,ravelin-rumi"
 compatible = "qcom,ravelin-mtp"
 compatible = "qcom,ravelin-cdp"
 compatible = "qcom,ravelin-qrd"
+compatible = "qcom,montague-rumi"
+compatible = "qcom,montague-idp"
+compatible = "qcom,montague-qrd"
