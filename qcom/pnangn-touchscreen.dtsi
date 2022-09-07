@@ -83,7 +83,7 @@
                 focaltech,irq-gpio = <&tlmm 22 0x2008>;
                 focaltech,max-touch-number = <10>;
                 focaltech,display-coords = <0 0 720 1600>;
-                focaltech,report_gesture_key;
+                //focaltech,report_gesture_key;
                 focaltech,panel-supplier = "csot";
                 panel = <&dsi_ft8057_csot_hdplus_video>;
         };
@@ -97,7 +97,7 @@
 		novatek,def-max-resolution = <720 1600>;
 		novatek,swrst-n8-addr = <0x03F0FE>;
 		novatek,spi-rd-fast-addr = <0x03F310>;
-		novatek,report_gesture_key;
+		//novatek,report_gesture_key;
 		novatek,usb_charger;
 		novatek,edge_cmd = /bits/ 8 <0x72 0x01 0x00>;
 		novatek,panel-supplier = "djn";
