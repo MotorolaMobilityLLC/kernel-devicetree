@@ -92,6 +92,28 @@
 	};
 };
 
+&pm8550ve_f_gpios {
+	pwr_en_gpio {
+		pwr_en_gpio_default: pwr_en_gpio_default {
+			pins = "gpio6";
+			function = "normal";
+			power-source = <0>;
+			output-low;
+			input-disable;
+		};
+	};
+
+	driver_en_gpio {
+		driver_en_gpio_default: driver_en_gpio_default {
+			pins = "gpio5";
+			function = "normal";
+			power-source = <0>;
+			output-low;
+			input-disable;
+		};
+	};
+};
+
 &pmk8550_sdam_1 {
 	ufs_dev: ufs_dev@af {
 		reg = <0xaf 0x1>;
@@ -129,7 +151,22 @@
 	io-channel-names = "thermal";
 };
 
+&pmxr2230_flash {
+	qcom,external-led;
+	pinctrl-names = "default";
+	pinctrl-0 = <&ext_flash_default>;
+};
+
 &pmxr2230_gpios {
+	key_confirm {
+		ext_flash_default: ext_flash_default {
+			pins = "gpio1";
+			function = "normal";
+			input-enable;
+			power-source = <0>;
+		};
+	};
+
 	pmxr2230_sd_card_therm {
 		pmxr2230_sd_card_therm_default: pmxr2230_sd_card_therm_default {
 			pins = "gpio3";
@@ -524,5 +561,21 @@
 		interrupts = <0x0 0x71 0x1 IRQ_TYPE_EDGE_RISING>;
 		nvmem-cells = <&ocp_log>;
 		nvmem-cell-names = "ocp_log";
+	};
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+
+	fancontroller: max31760@50 {
+		compatible = "maxim,max31760";
+		reg = <0x50>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pwr_en_gpio_default
+			&driver_en_gpio_default>;
+
+		maxim,driver-en-gpio = <&pm8550ve_f_gpios 5 GPIO_ACTIVE_LOW>;
+		maxim,pwr-en-gpio = <&pm8550ve_f_gpios 6 GPIO_ACTIVE_LOW>;
+		status = "ok";
 	};
 };

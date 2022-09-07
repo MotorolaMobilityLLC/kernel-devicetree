@@ -156,13 +156,17 @@
 
 	battery: battery {
 		compatible = "simple-battery";
-		charge-term-current-microamp = <12800>;
+		voltage-min-design-microvolt = <3200000>;
+		energy-full-design-microwatt-hours = <2520000>;
+		charge-full-design-microamp-hours = <645000>;
+		over-voltage-threshold-microvolt = <4500000>;
+		re-charge-voltage-microvolt = <250000>;
+		/* bq256xx's termination current setting has a min limit of 60mA */
+		charge-term-current-microamp = <60000>;
 		constant-charge-current-max-microamp = <500000>;
 		constant-charge-voltage-max-microvolt = <4480000>;
-		voltage-min-design-microvolt = <3200000>;
 		voltage-max-design-microvolt = <4480000>;
 		precharge-current-microamp = <128000>;
-		charge-full-design-microamp-hours = <645000>;
 		factory-internal-resistance-micro-ohms = <120000>;
 		ocv-capacity-celsius = <(-10) 0 15 45>;
 		/* table for -10 degree Celsius */

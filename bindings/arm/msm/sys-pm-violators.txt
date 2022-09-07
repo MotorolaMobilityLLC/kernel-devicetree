@@ -18,6 +18,8 @@ PROPERTIES
 		    - "qcom,sys-pm-cape"
 		    - "qcom,sys-pm-parrot"
 		    - "qcom,sys-pm-neo"
+		    - "qcom,sys-pm-anorak"
+		    - "qcom,sys-pm-ravelin"
 
 - reg:
 	Usage: required

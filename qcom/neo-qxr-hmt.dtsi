@@ -1,4 +1,4 @@
-#include "neo.dtsi"
+#include <dt-bindings/interconnect/qcom,neo.h>
 #include "neo-qxr.dtsi"
 
 &icnss2 {
@@ -22,6 +22,18 @@
 };
 
 &pcie0 {
+	status = "ok";
+};
+
+&pcie_noc {
+	status = "ok";
+};
+
+&gem_noc {
+	status = "ok";
+};
+
+&mc_virt {
 	status = "ok";
 };
 
@@ -142,7 +154,7 @@ wlan_kiwi: qcom,cnss-kiwi@b0000000 {
 			<7500 1094362>;
 	};
 
-	bluetooth: bt_wcn6x5x {
+	bluetooth_kiwi: bt_wcn6x5x {
 		compatible = "qcom,kiwi";
 		pinctrl-names = "default";
 		pinctrl-0 = <&bt_en_sleep>;

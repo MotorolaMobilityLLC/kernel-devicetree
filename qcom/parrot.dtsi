@@ -664,6 +664,10 @@
 			#clock-cells = <1>;
 		};
 
+		scmi_shared_rail: protocol@88 {
+			reg = <0x88>;
+			#clock-cells = <1>;
+		};
 	};
 
 	rimps_log: qcom,rimps_log@17d09c00 {
@@ -2603,6 +2607,10 @@
 			reg = <0x130 0x1>;
 			bits = <6 1>;
 		};
+
+		boot_config: boot_config@600 {
+			reg = <0x600 0x1>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
@@ -2610,10 +2618,12 @@
 
 		nvmem-cells = <&adsp_variant>,
 				<&feat_conf12>,
-				<&feat_conf13>;
+				<&feat_conf13>,
+				<&boot_config>;
 		nvmem-cell-names = "adsp_variant",
 				"feat_conf12",
-				"feat_conf13";
+				"feat_conf13",
+				"boot_config";
 	};
 
 	qcom,msm-cdsp-loader {
