@@ -55,7 +55,29 @@
 		label = "gpio-keys";
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&key_vol_up_default>;
+		pinctrl-0 = <&key_vol_up_default
+			     &key_confirm_default
+			     &key_back_default>;
+
+		confirm_key {
+			label = "confirm_key";
+			gpios = <&pm8550b_gpios 2 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_OK>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+
+		back_key {
+			label = "back_key";
+			gpios = <&pm8550b_gpios 6 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_BACK>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
 
 		vol_up {
 			label = "volume_up";
@@ -98,7 +120,6 @@
 
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
-	periph-1c2-supply = <&L2B>;
 	periph-1c3-supply = <&L3B>;
 	periph-1c4-supply = <&L4B>;
 	periph-1c5-supply = <&L5B>;

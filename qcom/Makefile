@@ -513,20 +513,23 @@ dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
 		anorak-qxr-overlay.dtbo \
 		anorak-atp-overlay.dtbo \
 		anorak-idp-hmt-overlay.dtbo \
-		anorak-qxr-hmt-overlay.dtbo
+		anorak-qxr-hmt-overlay.dtbo \
+		anorak-idp-sd-overlay.dtbo
 anorak-rumi-overlay.dtbo-base := anorak.dtb
 anorak-idp-overlay.dtbo-base := anorak.dtb
 anorak-qxr-overlay.dtbo-base := anorak.dtb
 anorak-atp-overlay.dtbo-base := anorak.dtb
 anorak-idp-hmt-overlay.dtbo-base := anorak.dtb
 anorak-qxr-hmt-overlay.dtbo-base := anorak.dtb
+anorak-idp-sd-overlay.dtbo-base := anorak.dtb
 else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
 		anorak-idp.dtb \
 		anorak-qxr.dtb \
 		anorak-atp.dtb \
 		anorak-idp-hmt.dtb \
-		anorak-qxr-hmt.dtb
+		anorak-qxr-hmt.dtb \
+		anorak-idp-sd.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -584,7 +587,11 @@ ifeq ($(CONFIG_ARCH_QTI_VM), y)
 dtb-$(CONFIG_ARCH_QTI_VM) += cape-vm-mtp.dtb \
 	cape-vm-cdp.dtb \
 	cape-vm-cdp-qhd.dtb \
-	cape-vm-qrd.dtb
+	cape-vm-qrd.dtb \
+	ukee-vm-mtp.dtb \
+	ukee-vm-cdp.dtb \
+	ukee-vm-cdp-qhd.dtb \
+	ukee-vm-qrd.dtb
 endif
 endif
 

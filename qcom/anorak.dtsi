@@ -27,7 +27,7 @@
 
 
 	chosen: chosen {
-		bootargs = "console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x00998000 loglevel=8 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-5 ftrace_dump_on_oops pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access can.stats_timer=0 disable_dma32=on cpufreq.default_governor=performance";
+		bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-5 ftrace_dump_on_oops pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access can.stats_timer=0 disable_dma32=on cpufreq.default_governor=performance";
 	};
 
 	ddr-regions { };
@@ -316,6 +316,14 @@
 		reusable;
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x1000000>;
+	};
+
+	cdsp_eva_mem: cdsp_eva_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x400000>;
 	};
 
 	adsp_mem_heap: adsp_heap_region {
@@ -620,6 +628,13 @@
 			  "apss";
 		mboxes = <&qmp_aop 0>;
 		ddr-freq-update;
+	};
+
+	sys-pm-vx@c320000 {
+		compatible = "qcom,sys-pm-violators", "qcom,sys-pm-anorak";
+		reg = <0xc320000 0x0400>;
+		mboxes = <&qmp_aop 0>;
+		mbox-names = "aop";
 	};
 
 	cpuss-sleep-stats@17800054 {
@@ -987,8 +1002,20 @@
 		qcom,dispcc1 = <&dispcc1>;
 		qcom,apsscc = <&apsscc>;
 		qcom,mccc = <&mccc>;
-		clocks = <&rpmhcc RPMH_CXO_CLK>;
-		clock-names = "xo_clk_src";
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc0 0>,
+			<&dispcc1 0>,
+			<&gpucc 0>,
+			<&videocc 0>;
+		clock-names = "xo_clk_src",
+			"gcc",
+			"camcc",
+			"dispcc0",
+			"dispcc1",
+			"gpucc",
+			"videocc";
 		#clock-cells = <1>;
 	};
 
@@ -1802,6 +1829,14 @@
 		#mbox-cells = <1>;
 	};
 
+	qcom,tmecom-qmp-client {
+		compatible = "qcom,tmecom-qmp-client";
+		mboxes = <&qmp_tme 0>;
+		mbox-names = "tmecom";
+		label = "tmecom";
+		depends-on-supply = <&qmp_tme>;
+	};
+
 	qcom,glinkpkt {
 		compatible = "qcom,glinkpkt";
 
@@ -1929,6 +1964,9 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&gcc GCC_AGGRE_NOC_PCIE_AXI_CLK>,
+			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>,
+			<&gcc GCC_AGGRE_NOC_PCIE_SF_AXI_CLK>;
 	};
 
 	aggre1_noc: interconnect@16e0000 {
@@ -1937,6 +1975,7 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
 	};
 
 	aggre2_noc: interconnect@1700000 {
@@ -1945,6 +1984,7 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&rpmhcc RPMH_IPA_CLK>;
 	};
 
 	mmss_noc: interconnect@1740000 {
@@ -2509,10 +2549,23 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+
+		feat_conf10: feat_conf10@128 {
+			reg = <0x128 0x4>;
+		};
+
+		feat_conf11: feat_conf11@12c {
+			reg = <0x12c 0x4>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
+
+		nvmem-cells = <&feat_conf10>,
+				<&feat_conf11>;
+		nvmem-cell-names = "feat_conf10",
+				"feat_conf11";
 	};
 
 	eud: qcom,msm-eud@88e0000 {
@@ -2693,6 +2746,13 @@
 
 		ucsi: qcom,ucsi {
 			compatible = "qcom,ucsi-glink";
+			connector {
+				port {
+					usb_port0_connector: endpoint {
+						remote-endpoint = <&usb_port0>;
+					};
+				};
+			};
 		};
 
 		altmode: qcom,altmode {
@@ -2761,6 +2821,10 @@
 	msm_sdexpress: qcom,msm-sdexpress {
 		compatible = "qcom,msm-sdexpress";
 		qcom,pcie-nvme-instance = <2>;
+
+		pinctrl-names = "default", "sleep";
+		pinctrl-0 = <&pcie2_clkreq_default>;
+		pinctrl-1 = <&pcie2_clkreq_sleep>;
 
 		status = "disabled";
 	};
