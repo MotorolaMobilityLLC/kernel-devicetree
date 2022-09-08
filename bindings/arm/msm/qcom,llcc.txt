@@ -85,3 +85,21 @@ Example:
 		};
 		...
 	};
+
+LLCC Performance Monitor SPAD
+===
+
+- compatible:
+	Usage: required
+	Value type: <string>
+	Definition: must be "qcom,llcc-perfom-spad"
+
+Example:
+
+	cache-controller@1100000 {
+		...
+		llcc-perfmon-spad {
+			compatible = "qcom,llcc-perfmon-spad";
+		};
+		...
+	};
