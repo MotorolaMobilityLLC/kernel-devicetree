@@ -153,4 +153,10 @@ wlan_kiwi: qcom,cnss-kiwi@b0000000 {
 			/* ddr: 547.2 MHz */
 			<7500 1094362>;
 	};
+
+	bluetooth_kiwi: bt_wcn6x5x {
+		compatible = "qcom,kiwi";
+		pinctrl-names = "default";
+		pinctrl-0 = <&bt_en_sleep>;
+	};
 };
