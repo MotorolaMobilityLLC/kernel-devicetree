@@ -1,2 +1,4 @@
+#include "anorak-qxr.dtsi"
+
 &soc {
 };
