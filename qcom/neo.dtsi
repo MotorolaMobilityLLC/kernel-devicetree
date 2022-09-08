@@ -657,6 +657,10 @@
 			clocks = <&aoss_qmp QDSS_CLK>;
 			clock-names = "qdss_clk";
 		};
+
+		llcc-perfmon-spad {
+			compatible = "qcom,llcc-perfmon-spad";
+		};
 	};
 
 	vendor_hooks: qcom,cpu-vendor-hooks {
