@@ -64,7 +64,35 @@
 		config {
 			pins = "gpio3";
 			drive-strength = <6>;
-			bias-pull-up;
+			output-low;
+		};
+	};
+
+	touch_reset_mux {
+		touch_reset_active: touch_reset_active {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <8>;
+				bias-disable;
+				output-high;
+			};
+		};
+
+		touch_reset_suspend: touch_reset_suspend {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <2>;
+				bias-pull-down;
+				output-low;
+			};
 		};
 	};
 };
@@ -85,6 +113,11 @@
                 focaltech,display-coords = <0 0 720 1600>;
                 focaltech,report_gesture_key;
                 focaltech,panel-supplier = "csot";
+                pinctrl-names = "pmx_ts_active", "pmx_ts_suspend",
+                        "pmx_ts_release";
+                pinctrl-0 = <&touch_reset_active>;
+                pinctrl-1 = <&touch_reset_suspend>;
+                pinctrl-2 = <&pmx_ts_release>;
                 panel = <&dsi_ft8057_csot_video>;
         };
 	novatek@0{
