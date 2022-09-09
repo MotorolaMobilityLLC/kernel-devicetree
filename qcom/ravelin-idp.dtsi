@@ -1,2 +1,5 @@
+#include "ravelin-pmic-overlay.dtsi"
+#include "ravelin-pm7250b.dtsi"
+
 &soc {
 };
