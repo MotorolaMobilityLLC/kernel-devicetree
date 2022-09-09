@@ -48,6 +48,30 @@
 	};
 };
 
+&SILVER_CPU_OFF {
+	status = "nok";
+};
+
+&SILVER_CPU_RAIL_OFF {
+	status = "nok";
+};
+
+&GOLD_CPU_OFF {
+	status = "nok";
+};
+
+&GOLD_CPU_RAIL_OFF {
+	status = "nok";
+};
+
+&CLUSTER_OFF {
+	status = "nok";
+};
+
+&CX_RET {
+	status = "nok";
+};
+
 &disp_rsc {
 	status = "nok";
 };
