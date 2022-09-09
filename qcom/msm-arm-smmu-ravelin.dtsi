@@ -209,6 +209,8 @@
 			reg-names = "base", "status-reg";
 			qcom,stream-id-range = <0x800 0x400>;
 			qcom,micro-idle;
+			qcom,regulator-names = "vdd";
+			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_hf0_gdsc>;
 			interconnects = <&mmss_noc MASTER_CAMNOC_HF
 					&mc_virt SLAVE_EBI1>;
 			qcom,active-only;
@@ -221,6 +223,8 @@
 			reg-names = "base", "status-reg";
 			qcom,stream-id-range = <0xc00 0x400>;
 			qcom,micro-idle;
+			qcom,regulator-names = "vdd";
+			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_hf1_gdsc>;
 			interconnects = <&mmss_noc MASTER_CAMNOC_HF
 					&mc_virt SLAVE_EBI1>;
 			qcom,active-only;
@@ -256,6 +260,8 @@
 				<0x151e2230  0x8>;
 			reg-names = "base", "status-reg";
 			qcom,stream-id-range = <0x1800 0x400>;
+			qcom,regulator-names = "vdd";
+			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_sf0_gdsc>;
 			qcom,micro-idle;
 			interconnects = <&mmss_noc MASTER_CAMNOC_SF
 					&mc_virt SLAVE_EBI1>;
