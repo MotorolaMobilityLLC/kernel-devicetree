@@ -70,6 +70,8 @@
 		pinctrl-2 = <&ts_release>;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
 	};
 };
 
@@ -169,5 +171,7 @@
 
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
+		mmi,cli-enable-gestures;
+		mmi,cli_supported_gesture_type = <0x06>;
     };
 };
