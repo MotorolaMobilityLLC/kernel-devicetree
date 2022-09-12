@@ -71,6 +71,7 @@
 			reg = <0x3de8000 0x1000>;
 			reg-names = "base";
 			qcom,iova-width = <49>;
+			interconnects = <&gem_noc MASTER_GPU_TCU &mc_virt SLAVE_EBI1>;
 			qcom,stream-id-range = <0x0 0x400>;
 			qcom,num-qtb-ports = <2>;
 		};
