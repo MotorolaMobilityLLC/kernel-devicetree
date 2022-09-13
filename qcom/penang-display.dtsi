@@ -163,6 +163,7 @@
 
 	//qcom,mdss-dsi-hbm-type = "lcd-dcs-gpio";
 	//qcom,platform-hbm-en-gpio = <&tlmm 50 0>;
+	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
 	qcom,mdss-dsi-hbm-on-command-state =  "dsi_lp_mode";
@@ -218,6 +219,7 @@
 
 	//qcom,mdss-dsi-hbm-type = "lcd-dcs-gpio";
 	//qcom,platform-hbm-en-gpio = <&tlmm 50 0>;
+	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 FF 0E];
 	qcom,mdss-dsi-hbm-on-command-state =  "dsi_lp_mode";
