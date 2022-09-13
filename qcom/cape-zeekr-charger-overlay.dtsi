@@ -69,12 +69,12 @@
 		compatible = "cellwise,cw2217";
 		reg = <0x64>;
 		sense_r_mohm = <5>;
-		df-serialnum = "SB18D44720";
+		df-serialnum = "SB18D64677";
 		vdd-i2c-supply = <&S10B>;
 		fg-psy-name = "flip_battery";
 		ibat-invert-polority;
 		factory_mode_ntc_exist = <1>;
-		#include "bat_setting/CW_NM40-atl-712mah.dtsi"
+		#include "bat_setting/CW_PM08-atl-790mah.dtsi"
 	};
 
 	sgm4154x_charger: sgm4154x@6B {
