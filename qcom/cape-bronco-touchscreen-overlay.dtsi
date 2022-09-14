@@ -64,9 +64,10 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
-		mmi,enable-gestures;
 		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
 		mmi,power-off-suspend;
+		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 	};
 };
