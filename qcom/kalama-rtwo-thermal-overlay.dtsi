@@ -300,4 +300,21 @@
 			};
 		};
 	};
+
+	socd {
+		cooling-maps {
+			socd_apc1 {
+				trip = <&socd_trip>;
+				cooling-device = <&APC1_pause 0 0>;
+			};
+			socd_cpu3 {
+				trip = <&socd_trip>;
+				cooling-device = <&CPU3 THERMAL_NO_LIMIT 7>;
+			};
+			socd_cpu7 {
+				trip = <&socd_trip>;
+				cooling-device = <&cpu7_pause 1 1>;
+			};
+		};
+	};
 };
