@@ -327,6 +327,7 @@
 };
 
 #include "msm-arm-smmu-ravelin.dtsi"
+#include "ravelin-gpu.dtsi"
 #include "ravelin-dma-heaps.dtsi"
 #include "ravelin-reserved-memory.dtsi"
 #include "ravelin-dma-heaps.dtsi"
