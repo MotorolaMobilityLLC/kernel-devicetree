@@ -27,6 +27,7 @@
 #include "blair-cypfr-fmr-overlay.dtsi"
 #include <dt-bindings/iio/qti_power_supply_iio.h>
 #include "discrete-rt-pd-manger.dtsi"
+#include "moto_therm_sys_temp.dtsi"
 
 /* Primary USB port related QUSB2 PHY */
 &usb2_phy0 {
