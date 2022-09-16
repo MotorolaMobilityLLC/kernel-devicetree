@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+nh50-atl-4850mah {
+	serialnum = "SB18D69208";
+	fcc_design = <4850>;
+	ui_full = <97>;
+	config_profile_info = [5A 00 00 00 00 00 00 00
+				 A4 C5 9B D0 BC BE 9E 63
+				 38 FF FF FF A5 8D 74 62
+				 57 53 4E 8A DC DE F6 ED
+				 D6 CF D4 D6 D4 D2 CE CA
+				 C6 C5 CC BB 9B 8E 85 7B
+				 6A 66 76 90 AA 8C 5D 65
+				 80 00 AB 10 00 A0 60 00
+				 00 00 64 23 C3 56 00 00
+				 00 00 00 00 00 00 00 45];
+};
