@@ -1433,12 +1433,11 @@
 		};
 	};
 
-	bwmon_ddr: qcom,bwmon-ddr@190b6400 {
-		compatible = "qcom,bwmon4";
-		reg = <0x190b6400 0x300>, <0x190b6300 0x200>;
-		reg-names = "base", "global_base";
-		interrupts = <GIC_SPI 581 IRQ_TYPE_LEVEL_HIGH>;
-		qcom,mport = <0>;
+	bwmon_ddr: qcom,bwmon-ddr@19091000 {
+		compatible = "qcom,bwmon5";
+		reg = <0x19091000 0x1000>;
+		reg-names = "base";
+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,hw-timer-hz = <19200000>;
 		qcom,count-unit = <0x10000>;
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
