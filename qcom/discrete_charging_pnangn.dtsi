@@ -41,10 +41,12 @@
 
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
-		df-serialnum = "SB18D34202";
-		#include "bat_setting/CW_nd50-atl-4850mah.dtsi"
-		#include "bat_setting/CW_nd50-jiade-4850mah.dtsi"
-		#include "bat_setting/CW_nd50-local-4850mah.dtsi"
+		df-serialnum = "SB18D69208";
+		//#include "bat_setting/CW_nd50-atl-4850mah.dtsi"
+		//#include "bat_setting/CW_nd50-jiade-4850mah.dtsi"
+		//#include "bat_setting/CW_nd50-local-4850mah.dtsi"
+		#include "bat_setting/CW_nh50-atl-4850mah-5mohm.dtsi"
+		#include "bat_setting/CW_nh50-scud-4850mah-5mohm.dtsi"
 	};
 };
 
@@ -150,7 +152,7 @@
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,otg-cl-ua = <1200000>;
-		mmi,df-serialnum = "SB18D34202";
+		mmi,df-serialnum = "SB18D69208";
 		mmi,mmi-temp-zones = <0 4200 1000 0>,
 			<10 4250 2500 1000>,
 			<15 0 2500 2500>,
