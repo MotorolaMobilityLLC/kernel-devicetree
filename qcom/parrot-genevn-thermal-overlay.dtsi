@@ -33,6 +33,8 @@
 };
 
 &pm6150l_vadc {
+	pinctrl-0 = <&ufs_therm_default &cam_therm_default &wide_rfc_therm_default>;
+
 	msm_therm {
 		reg = <ADC5_AMUX_THM2_100K_PU>;
 		label = "msm_therm1";
@@ -49,6 +51,14 @@
 	};
 };
 
+&pm6150l_gpios {
+	cam_therm {
+		cam_therm_default: cam_therm_default {
+			pins = "gpio6";
+			bias-high-impedance;
+		};
+	};
+};
 
 &spmi_bus {
 	qcom,pm6150l@4 {
@@ -75,7 +85,11 @@
 	};
 };
 
+
 &thermal_zones {
+	sys-therm-1 {
+		status = "disabled";
+	};
 	sys-therm-2 {
 		status = "disabled";
 	};
