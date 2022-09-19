@@ -99,7 +99,7 @@
 				"pcie_aggre_noc_1_axi_clk",
 				"gcc_cfg_noc_pcie_anoc_ahb_clk",
 				"pcie_pipe_clk_mux",
-				"gcc_qmip_pcie_ahb_clk", "pcie_pipe_clk_ext_src";
+				"pcie_qmip_pcie_ahb_clk", "pcie_pipe_clk_ext_src";
 		max-clock-frequency-hz = <0>, <0>, <19200000>, <0>, <0>, <0>,
 					<0>, <0>, <0>, <0>, <150000000>,
 					<0>, <0>, <0>, <0>, <0>;
