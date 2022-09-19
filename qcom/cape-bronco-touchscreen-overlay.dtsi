@@ -69,5 +69,6 @@
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x07>;
 	};
 };
