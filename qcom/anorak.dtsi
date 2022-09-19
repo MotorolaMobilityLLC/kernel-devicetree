@@ -589,7 +589,6 @@
 		reg = <0xaf20000 0x10000>;
 		reg-names = "drv-0";
 		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&dispcc0 DISP_CC_MDSS_RSCC_AHB_CLK>;
 		qcom,tcs-offset = <0x1c00>;
 		qcom,drv-id = <0>;
 		qcom,tcs-config = <ACTIVE_TCS    0>,
@@ -610,7 +609,6 @@
 		reg = <0x15720000 0x10000>;
 		reg-names = "drv-0";
 		interrupts = <GIC_SPI 218 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&dispcc1 DISP_CC_MDSS_RSCC_AHB_CLK>;
 		qcom,tcs-offset = <0x1c00>;
 		qcom,drv-id = <0>;
 		qcom,tcs-config = <ACTIVE_TCS    0>,
@@ -1414,7 +1412,8 @@
 					< 1228800  768000 >,
 					< 1651200 1555000 >,
 					< 1920000 1708000 >,
-					< 2361600 2092000 >;
+					< 2208000 2092000 >,
+					< 2361600 3196000 >;
 			};
 
 			prime {
@@ -1426,7 +1425,8 @@
 					< 1228800  768000 >,
 					< 1651200 1555000 >,
 					< 1920000 1708000 >,
-					< 2361600 2092000 >;
+					< 2208000 2092000 >,
+					< 2361600 3196000 >;
 				};
 
 			gold-compute {
@@ -1439,7 +1439,8 @@
 					< 1516800  768000 >,
 					< 1651200 1555000 >,
 					< 1920000 1708000 >,
-					< 2361600 2092000 >;
+					< 2208000 2092000 >,
+					< 2361600 3196000 >;
 			};
 
 			prime-compute {
@@ -1452,7 +1453,8 @@
 					< 1516800  768000 >,
 					< 1651200 1555000 >,
 					< 1920000 1708000 >,
-					< 2361600 2092000 >;
+					< 2208000 2092000 >,
+					< 2361600 3196000 >;
 			};
 		};
 
@@ -1470,7 +1472,8 @@
 					<  960000  466500 >,
 					< 1228800  600000 >,
 					< 1651200  806000 >,
-					< 2361600  933000 >;
+					< 2208000  933000 >,
+					< 2361600 1066000 >;
 				qcom,sampling-enabled;
 			};
 
@@ -1482,8 +1485,29 @@
 					<  960000  466500 >,
 					< 1228800  600000 >,
 					< 1651200  806000 >,
-					< 2361600  933000 >;
+					< 2208000  933000 >,
+					< 2361600 1066000 >;
 				qcom,sampling-enabled;
+			};
+
+			gold-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1>;
+				qcom,cpufreq-memfreq-tbl =
+					< 1920000  300000 >,
+					< 2361600  600000 >;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
+			};
+
+			prime-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU2 &CPU3 &CPU4 &CPU5>;
+				qcom,cpufreq-memfreq-tbl =
+					< 1920000  300000 >,
+					< 2361600  600000 >;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
 			};
 		};
 
@@ -1529,6 +1553,16 @@
 					< 2054400 1401600 >,
 					< 2361600 1516800 >;
 				qcom,sampling-enabled;
+			};
+
+			gold-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1>;
+				qcom,cpufreq-memfreq-tbl =
+					< 1920000  307200 >,
+					< 2361600 1305600 >;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
 			};
 
 			prime-compute {
@@ -2017,6 +2051,18 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	qcom,qsee_ipc_irq_bridge {
+		compatible = "qcom,qsee-ipc-irq-bridge";
+		qcom,qsee-ipc-irq-spss {
+			qcom,dev-name = "qsee_ipc_irq_spss";
+			interrupt-parent = <&ipcc_mproc>;
+			interrupts = <IPCC_CLIENT_SPSS
+					IPCC_MPROC_SIGNAL_TZ
+					IRQ_TYPE_EDGE_RISING>;
+			label = "spss";
+		};
 	};
 
 	qcom,secure-buffer {
