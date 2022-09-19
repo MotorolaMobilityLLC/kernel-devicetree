@@ -137,6 +137,7 @@
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
 	qcom,thermal-mitigation = <4787000 3000000 2500000 2000000 1500000 1000000 600000 300000>;
+	qcom,wireless-fw-name = "cps4019.bin";
 };
 
 &qti_glink_charger {
