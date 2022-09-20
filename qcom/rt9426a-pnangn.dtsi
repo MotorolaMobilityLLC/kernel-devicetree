@@ -1,0 +1,47 @@
+#include <dt-bindings/interrupt-controller/irq.h>
+
+&qupv3_se8_i2c {
+	status = "okay";
+	rt9426a: rt9426a@55 {
+		compatible = "richtek,rt9426a";
+		reg = <0x55>;
+		status = "okay";
+		interrupts-extended = <&tlmm 38 IRQ_TYPE_LEVEL_LOW>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&rt9426a_alert>;
+		rt,dtsi_version = <01 1012>;
+		rt,para_version = <0x0000>;
+		rt,battery_type = <4400>;
+		rt,volt_source = <1>;		// 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
+		rt,temp_source = <1>;		// 0:AP 1:FG_TEMP 2:FG_INTT; 3:FG_AT
+		rt,curr_source = <2>;		// 0:AP 1:FG_CURR 2:FG_AI
+		rt,offset_interpolation_order = <2 2>;
+		rt,soc_offset_size = <2 1>;
+		rt,soc_offset_data = <0 250 0 1000 250 0>;
+		rt,rs_ic_setting = <500>; /* unit:0.01mR ; 500x0.01 = 5.0mR */
+		rt,rs_schematic = <500>; /* unit:0.01mR ; 500x0.01 = 5.0mR */
+
+		/* add for aging cv ; 2021-01-18 */
+		rt,smooth_soc_en = <0>;  /* 0: disable(default) ; 1: enable */
+
+		df-serialnum = "SB18D33989";
+		#include "bat_setting/RT_md50-atl-5000mah.dtsi"
+		//#include "bat_setting/RT_md50-scud-5000mah.dtsi"
+
+	};
+};
+
+&tlmm {
+	rt9426a_alert: rt9426a_alert {
+		mux {
+			pins = "gpio38";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio38";
+			drive-strength = <2>;
+			bias-pull-up;
+		};
+	};
+};
