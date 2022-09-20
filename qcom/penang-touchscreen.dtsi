@@ -64,7 +64,7 @@
 		config {
 			pins = "gpio3";
 			drive-strength = <6>;
-			output-low;
+			bias-bus-hold;
 		};
 	};
 
