@@ -1,7 +1,7 @@
 /dts-v1/;
 
 #include "neo.dtsi"
-#include "neo-qxr.dtsi"
+#include "neo-qxr-mos.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO QXR";
