@@ -13,6 +13,7 @@
 #include "tcpc_config_pnangn.dtsi"
 #include "sgm7220-pnangn.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
+#include "rt9426a-pnangn.dtsi"
 
 &pm6125_vadc {
 	gpio6_div3{
