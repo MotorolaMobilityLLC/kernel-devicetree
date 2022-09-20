@@ -32,11 +32,18 @@
 		qcom,mdss-pan-physical-width-dimension = <68>;
 		qcom,mdss-pan-physical-height-dimension = <151>;
 
-		qcom,mdss-dsi-cabc-mv-command = [15 01 00 00 00 00 02 55 03];
+		qcom,mdss-dsi-cabc-mv-command = [
+						15 01 00 00 00 00 02 55 03
+						15 01 00 00 00 00 02 26 02];
 		qcom,mdss-dsi-cabc-mv-command-state =  "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-ui-command = [15 01 00 00 00 00 02 55 01];
+		qcom,mdss-dsi-cabc-ui-command = [
+						15 01 00 00 00 00 02 55 01
+						15 01 00 00 00 00 02 26 02];
 		qcom,mdss-dsi-cabc-ui-command-state =  "dsi_hs_mode";
-		qcom,mdss-dsi-cabc-dis-command = [15 01 00 00 00 00 02 55 00];
+		qcom,mdss-dsi-cabc-dis-command = [
+						15 01 00 00 00 00 02 55 00
+						15 01 00 00 00 00 02 26 01
+		];
 		qcom,mdss-dsi-cabc-dis-command-state =  "dsi_hs_mode";
 
 		qcom,mdss-dsi-display-timings {
@@ -77,7 +84,8 @@
 					05 01 00 00 14 00 01 29
 					39 01 00 00 00 00 03 51 00 00
 					15 01 00 00 00 00 02 53 24
-					15 01 00 00 00 00 02 55 00
+					15 01 00 00 00 00 02 55 01
+					15 01 00 00 00 00 02 26 02
 				];
 				qcom,mdss-dsi-off-command = [
 					05 00 00 00 14 00 01 28
