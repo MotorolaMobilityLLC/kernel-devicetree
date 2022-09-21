@@ -53,6 +53,7 @@ KALAMA_BOARDS += kalama-rtwo-evb1-overlay.dtbo \
                  kalama-rtwo-evt1-overlay.dtbo \
                  kalama-rtwo-prc-dvt1b-overlay.dtbo \
                  kalama-rtwo-row-dvt1b-overlay.dtbo \
+                 kalama-rtwo-prc-pvt-overlay.dtbo \
                  kalama-rtwo-na-vzw-evt2-overlay.dtbo
 endif
 
