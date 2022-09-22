@@ -55,6 +55,13 @@ information on "qcom,pmic_glink" device which is used in the example below.
 	Value type: <bool>
 	Definition: Indicates that two USB ports are present.
 
+- qcom,wireless-charging-not-supported:
+	Usage: optional
+	Value type: <bool>
+	Definition: If this property is specified, registration for
+		    wireless power supply will be skipped. It should be defined
+		    for boards where wireless charging is not supported.
+
 = EXAMPLE
 
 &soc {
