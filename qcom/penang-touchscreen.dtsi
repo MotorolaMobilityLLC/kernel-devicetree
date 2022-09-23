@@ -131,7 +131,6 @@
 		novatek,spi-rd-fast-addr = <0x03F310>;
 		novatek,report_gesture_key;
 		novatek,usb_charger;
-		novatek,edge_cmd = /bits/ 8 <0x72 0x01 0x00>;
 		novatek,panel-supplier = "djn";
 		panel = <&dsi_nt36528_djn_video>;
 		status = "ok";
