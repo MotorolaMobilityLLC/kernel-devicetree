@@ -175,7 +175,7 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo-qxr-hmt-overlay.dtbo \
 		neo-idp-mos-overlay.dtbo \
 		neo-atp-overlay.dtbo \
-		neo-sg-idp-overlay.dtbo \
+		neo-sg-idp-hmt-overlay.dtbo \
 		neo-idp-display-overlay.dtbo \
 		neo-idp-hmt-overlay.dtbo \
 		neo-sg-idp-pm8008-overlay.dtbo \
@@ -187,7 +187,7 @@ neo-qxr-mos-overlay.dtbo-base := neo.dtb
 neo-qxr-hmt-overlay.dtbo-base := neo.dtb
 neo-idp-mos-overlay.dtbo-base := neo.dtb
 neo-atp-overlay.dtbo-base := neo.dtb
-neo-sg-idp-overlay.dtbo-base := neo_la.dtb
+neo-sg-idp-hmt-overlay.dtbo-base := neo_la.dtb
 neo-idp-display-overlay.dtbo-base := neo.dtb
 neo-idp-hmt-overlay.dtbo-base := neo.dtb
 neo-sg-idp-pm8008-overlay.dtbo-base := neo_la.dtb
@@ -200,7 +200,7 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo-qxr-hmt.dtb \
 			neo-idp-mos.dtb \
 			neo-atp.dtb \
-			neo-sg-idp.dtb \
+			neo-sg-idp-hmt.dtb \
 			neo-idp-display.dtb \
 			neo-idp-hmt.dtb \
 			neo-sg-idp-pm8008.dtb \
