@@ -243,7 +243,7 @@
 			pmxr2230_trip1: trip1 {
 				temperature = <115000>;
 				hysteresis = <0>;
-				type = "critical";
+				type = "passive";
 			};
 
 			pmxr2230_trip2: trip2 {
