@@ -13,7 +13,7 @@
 nd50-atl-4850mah {
 	serialnum = "SB18D34202";
 	fcc_design = <4850>;
-	ui_full = <97>;
+	ui_full = <100>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
                                A7 B6 BC CA B9 B2 AE 6F
                                51 FF FF CF 97 82 68 57
