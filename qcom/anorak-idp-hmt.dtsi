@@ -5,6 +5,10 @@
 	status = "disabled";
 };
 
+&bluetooth {
+	status = "disabled";
+};
+
 &cnss_pins {
 	cnss_host_sol_default: cnss_host_sol_default {
 		mux {
@@ -111,6 +115,31 @@
 		<175000 13106400>,
 		/* ddr: 547.2 MHz */
 		<7500 3335200>;
+	};
+
+	bt_hmt: bt_kiwi {
+		compatible = "qcom,kiwi";
+		pinctrl-names = "default";
+		pinctrl-0 = <&bt_en_sleep>;
+		qcom,wl-reset-gpio = <&tlmm 120 0>; /* WL_CTRL */
+		qcom,bt-reset-gpio = <&tlmm 122 0>; /* BT_EN */
+		qcom,bt-sw-ctrl-gpio = <&tlmm 146 0>; /* SW_CTRL */
+
+		qcom,bt-vdd-io-supply     = <&L7B>; /* BT VDD1.8 AON */
+		qcom,bt-vdd-aon-supply    = <&S3B>; /* BT AON LDO*/
+		qcom,bt-vdd-rfacmn-supply = <&S3B>;
+		qcom,bt-vdd-dig-supply    = <&S3B>; /* BT LDO*/
+		qcom,bt-vdd-rfa-0p8-supply = <&S3B>; /* BT RFA0p8 CMN LDO*/
+		qcom,bt-vdd-rfa1-supply   = <&S1B>; /* BT RFA1.8 LDO */
+		qcom,bt-vdd-rfa2-supply   = <&S2B>; /* BT RFA1.2 LDO */
+
+		qcom,bt-vdd-io-config  = <1800000 1800000 0 1>;
+		qcom,bt-vdd-aon-config = <950000 950000 0 1>;
+		qcom,bt-vdd-rfacmn-config = <950000 950000 0 1>;
+		qcom,bt-vdd-dig-config = <950000 950000 0 1>;
+		qcom,bt-vdd-rfa-0p8-config  = <950000 950000 0 1>;
+		qcom,bt-vdd-rfa1-config = <1900000 1900000 0 1>;
+		qcom,bt-vdd-rfa2-config = <1350000 1350000 0 1>;
 	};
 
 };
