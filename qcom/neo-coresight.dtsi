@@ -445,6 +445,8 @@
 		coresight-name = "coresight-tpdm-turing-llm";
 		qcom,dummy-source;
 
+		atid = <78>;
+
 		out-ports {
 			port {
 				tpdm_turing_llm_out_funnel_turing: endpoint {
@@ -1395,6 +1397,7 @@
 				funnel_dl_west_out_tpda_dl_center_13: endpoint {
 					remote-endpoint =
 					<&tpda_dl_center_13_in_funnel_dl_west>;
+					source = <&tpdm_rdpm>;
 				};
 			};
 
@@ -1403,6 +1406,7 @@
 				funnel_dl_west_out_tpda_dl_center_14: endpoint {
 					remote-endpoint =
 					<&tpda_dl_center_14_in_funnel_dl_west>;
+					source = <&tpdm_rdpm_mx>;
 				};
 			};
 		};
@@ -1545,7 +1549,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			port@10 {
+			port@a {
 				reg = <10>;
 				tpda_dlct3_in_tpdm_dlct3: endpoint {
 					remote-endpoint =
@@ -1652,10 +1656,9 @@
 
 		qcom,tpda-atid = <85>;
 
-		qcom,dsb-elem-size = <2 32>;
+		qcom,dsb-elem-size = <2 64>;
 		qcom,cmb-elem-size = <0 32>,
-							<1 32>,
-							<2 64>;
+							<1 32>;
 
 		in-ports {
 
@@ -1752,7 +1755,7 @@
 		qcom,tpda-atid = <97>;
 
 		qcom,dsb-elem-size = <2 32>;
-		qcom,cmb-elem-size = <0 32>;
+		qcom,cmb-elem-size = <1 32>;
 
 		in-ports {
 
@@ -1852,7 +1855,7 @@
 
 		qcom,dsb-elem-size = <4 32>;
 		qcom,cmb-elem-size = <0 32>,
-							<2 64>;
+							<3 64>;
 
 		in-ports {
 
@@ -2141,7 +2144,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			port@25 {
+			port@19 {
 				reg = <25>;
 				tpda_dl_center_in_tpdm_pime: endpoint {
 					remote-endpoint =
@@ -2149,7 +2152,7 @@
 				};
 			};
 
-			port@13 {
+			port@d {
 				reg = <13>;
 				tpda_dl_center_13_in_funnel_dl_west: endpoint {
 					remote-endpoint =
@@ -2157,7 +2160,7 @@
 				};
 			};
 
-			port@27 {
+			port@1b {
 				reg = <27>;
 				tpda_dl_center_in_tpdm_dl_ct1: endpoint {
 					remote-endpoint =
@@ -2165,7 +2168,7 @@
 				};
 			};
 
-			port@15 {
+			port@f {
 				reg = <15>;
 				tpda_dl_center_15_in_funnel_turing: endpoint {
 					remote-endpoint =
@@ -2173,7 +2176,7 @@
 				};
 			};
 
-			port@14 {
+			port@e {
 				reg = <14>;
 				tpda_dl_center_14_in_funnel_dl_west: endpoint {
 					remote-endpoint =
@@ -2181,7 +2184,7 @@
 				};
 			};
 
-			port@17 {
+			port@11 {
 				reg = <17>;
 				tpda_dl_center_in_funnel_gpu_dl: endpoint {
 					remote-endpoint =
@@ -2189,7 +2192,7 @@
 				};
 			};
 
-			port@16 {
+			port@10 {
 				reg = <16>;
 				tpda_dl_center_16_in_funnel_turing: endpoint {
 					remote-endpoint =
@@ -2197,7 +2200,7 @@
 				};
 			};
 
-			port@19 {
+			port@13 {
 				reg = <19>;
 				tpda_dl_center_in_tpdm_prng: endpoint {
 					remote-endpoint =
@@ -2205,7 +2208,7 @@
 				};
 			};
 
-			port@22 {
+			port@16 {
 				reg = <22>;
 				tpda_dl_center_in_tpdm_vsense: endpoint {
 					remote-endpoint =
@@ -2213,7 +2216,7 @@
 				};
 			};
 
-			port@26 {
+			port@1a {
 				reg = <26>;
 				tpda_dl_center_in_tpdm_dl_ct0: endpoint {
 					remote-endpoint =
@@ -2221,7 +2224,7 @@
 				};
 			};
 
-			port@20 {
+			port@14 {
 				reg = <20>;
 				tpda_dl_center_in_tpdm_qm: endpoint {
 					remote-endpoint =
@@ -2269,7 +2272,7 @@
 				};
 			};
 
-			port@21 {
+			port@15 {
 				reg = <21>;
 				tpda_dl_center_in_tpdm_gcc: endpoint {
 					remote-endpoint =
@@ -2569,7 +2572,7 @@
 
 		qcom,tpda-atid = <71>;
 
-		qcom,dsb-elem-size = <2 32>;
+		qcom,dsb-elem-size = <4 32>;
 		qcom,cmb-elem-size = <0 64>,
 							<1 64>,
 							<2 64>,
