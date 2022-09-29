@@ -13,7 +13,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "holi-penang-common-overlay.dtsi"
+#include "holi-penang-common-jp-overlay.dtsi"
 
 / {
 	model = "penang";
