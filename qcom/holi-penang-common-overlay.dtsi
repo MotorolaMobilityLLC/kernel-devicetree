@@ -296,6 +296,10 @@
 		moto,vib-ldo-gpio = <&tlmm 101 0x0>;
 		status = "ok";
 	};
+
+	mcd {
+		 status = "disabled";
+	};
 };
 
 &mot_batterydata {
