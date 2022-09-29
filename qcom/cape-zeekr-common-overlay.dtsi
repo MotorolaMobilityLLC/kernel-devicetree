@@ -60,3 +60,7 @@
 		maximum-speed = "high-speed";
 	};
 };
+
+&sdhc_2 {
+        status = "disabled";
+};
