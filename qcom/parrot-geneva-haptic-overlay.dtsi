@@ -1,0 +1,91 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&pm7250b_vib {
+	status = "disabled";
+};
+
+&tlmm {
+	haptic_irq_default: haptic_irq_default {
+		mux {
+			pins = "gpio57";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio57";
+			drive-strength = <2>; /* 2 MA */
+			bias-pull-up;
+		};
+	};
+	haptic_rst_high: haptic_rst_high {
+		mux {
+			pins = "gpio112";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio112";
+			drive-strength = <2>; /* 2 MA */
+			output-high;
+		};
+	};
+	haptic_rst_low: haptic_rst_low {
+		mux {
+			pins = "gpio112";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio112";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+};
+
+&qupv3_se1_i2c {
+	#address-cells = <1>;
+	#size-cells = <0>;
+        status = "okay";
+	haptic_nv@5a{
+		compatible = "awinic,haptic_nv";
+		reg = <0x5a>;
+		aw862xx_i2c_addr = <0x58>;
+		reset-gpio = <&tlmm 112 0>;
+		irq-gpio = <&tlmm 57 0>;
+		aw8622x_vib_lk_f0_cali = < 0 >;
+		aw8622x_vib_mode = < 2 >; /* mode: RAM -> 2; CONT -> 3 */
+		aw8622x_vib_f0_pre = < 2350 >;
+		aw8622x_vib_f0_cali_percen = < 7 >;
+		aw8622x_vib_cont_drv1_lvl = < 0x7F >;
+		aw8622x_vib_lra_vrms = < 1000 >; /* Motor rated voltage, mV */
+		aw8622x_vib_cont_brk_time = < 0x06 >;
+		aw8622x_vib_cont_tset = < 0x06 >;
+		aw8622x_vib_cont_bemf_set = < 0x02 >;
+		aw8622x_vib_cont_wait_num = < 0x06 >;
+		aw8622x_vib_cont_brk_gain = < 0x08 >;
+		aw8622x_vib_cont_drv1_time = < 0x04 >;
+		aw8622x_vib_cont_drv2_time = < 0x14 >;
+		aw8622x_vib_cont_track_margin = < 0x0F >;
+		aw8622x_vib_sine_array = < 0x05 0xB2 0xFF 0xEF >; /* SIN_H SIN_L COS_H COS_L */
+		aw8622x_vib_d2s_gain = < 0x05 >;
+		aw8622x_vib_trig_config = < 0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0 >;
+		aw8622x_vib_duration_time = < 20 30 60 >;
+		aw8622x_vib_is_enabled_track_en;
+		/* aw8622x_vib_is_enabled_auto_brk; */
+		pinctrl-names = "default";
+		pinctrl-0 = <&haptic_irq_default>;
+		status = "okay";
+	};
+};
