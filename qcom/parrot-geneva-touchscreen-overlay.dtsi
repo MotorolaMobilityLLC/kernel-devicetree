@@ -1,13 +1,11 @@
 &L28B{
 	regulator-min-microvolt = <3000000>;
 	regulator-max-microvolt = <3000000>;
-	regulator-always-on;
 };
 
 &L21B{
 	regulator-min-microvolt = <1800000>;
 	regulator-max-microvolt = <1800000>;
-	regulator-always-on;
 };
 
 &qupv3_se9_i2c{
@@ -45,6 +43,10 @@
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
+		goodix,gesture-wait-pm;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		mmi,supported_gesture_type = <0x07>;
 	};
 
 };
