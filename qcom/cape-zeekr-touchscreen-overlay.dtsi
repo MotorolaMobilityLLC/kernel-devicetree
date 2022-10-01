@@ -72,6 +72,11 @@
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
+
+		goodix,gesture-wait-pm;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
 	};
 };
 
