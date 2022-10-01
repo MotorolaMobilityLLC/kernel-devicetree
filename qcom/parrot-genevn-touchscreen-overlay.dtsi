@@ -134,7 +134,7 @@
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_spi_active>;
 		pinctrl-1 = <&ts_spi_int_suspend_high>;
-		ilitek,report_gesture_key;
+		mmi,usb-charger-detection;
 		status = "ok";
 	};
 };
