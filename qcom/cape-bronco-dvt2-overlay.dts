@@ -1,0 +1,57 @@
+/* Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "cape-bronco-common-overlay.dtsi"
+
+/ {
+	model = "bronco";
+	compatible = "qcom,cape-mtp", "qcom,cape", "qcom,mtp", "moto,bronco";
+	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
+	qcom,board-id = <0x46 0xB200>;
+};
+
+
+&redriver {
+	config-seq =
+		/* <reg_offset, value, delay_us> */
+		<0x9d 0x80 10000
+		0x9d 0x00 0
+		0x40 0x80 0
+		0x9f 0x02 0
+		0x8d 0x01 0
+		0x90 0x01 0
+		0x51 0x87 0
+		0x50 0x20 0
+		0x54 0x11 0
+		0x5d 0x66 0
+		0x52 0x50 0
+		0x55 0x00 0
+		0x56 0x00 0
+		0x57 0x00 0
+		0x58 0x00 0
+		0x59 0x00 0
+		0x5a 0x00 0
+		0x5b 0x00 0
+		0x5e 0x07 0
+		0x5f 0x00 0
+		0x60 0x00 0
+		0x61 0x03 0
+		0x65 0x40 0
+		0x66 0x00 0
+		0x67 0x03 0
+		0x75 0x0c 0
+		0x77 0x00 0
+		0x78 0x7c 0>;
+};
