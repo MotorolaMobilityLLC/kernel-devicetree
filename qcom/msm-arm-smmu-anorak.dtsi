@@ -71,6 +71,7 @@
 			reg = <0x3de8000 0x1000>;
 			reg-names = "base";
 			qcom,iova-width = <49>;
+			interconnects = <&gem_noc MASTER_GPU_TCU &mc_virt SLAVE_EBI1>;
 			qcom,stream-id-range = <0x0 0x400>;
 			qcom,num-qtb-ports = <2>;
 		};
@@ -342,7 +343,7 @@
 			qcom,micro-idle;
 			qcom,regulator-names = "vdd";
 			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_hf1_gdsc>;
-			interconnects = <&mmss_noc MASTER_MDP1
+			interconnects = <&mmss_noc MASTER_MDP0
 				&mc_virt SLAVE_EBI1>;
 			qcom,active-only;
 			qcom,iova-width = <32>;
@@ -357,7 +358,7 @@
 			qcom,micro-idle;
 			qcom,regulator-names = "vdd";
 			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_hf2_gdsc>;
-			interconnects = <&mmss_noc MASTER_MDP_CORE1_0
+			interconnects = <&mmss_noc MASTER_MDP1
 				&mc_virt SLAVE_EBI1>;
 			qcom,active-only;
 			qcom,iova-width = <32>;
@@ -372,7 +373,7 @@
 			qcom,micro-idle;
 			qcom,regulator-names = "vdd";
 			vdd-supply = <&hlos1_vote_mmnoc_mmu_tbu_hf3_gdsc>;
-			interconnects = <&mmss_noc MASTER_MDP_CORE1_1
+			interconnects = <&mmss_noc MASTER_MDP1
 				&mc_virt SLAVE_EBI1>;
 			qcom,active-only;
 			qcom,iova-width = <32>;

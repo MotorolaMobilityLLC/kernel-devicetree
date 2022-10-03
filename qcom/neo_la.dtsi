@@ -6,7 +6,7 @@
 };
 
 &chosen {
-	bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access cpufreq.default_governor=performance disable_dma32=on";
+	bootargs = "console=ttyMSM0,115200n8 loglevel=6 log_buf_len=256K kernel.panic_on_rcu_stall=1 loop.max_part=7 pcie_ports=compat service_locator.enable=1 msm_rtb.filter=0x237 allow_mismatched_32bit_el0 kasan=off rcupdate.rcu_expedited=1 rcu_nocbs=0-7 pstore.compress=none kpti=off swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access cpufreq.default_governor=performance disable_dma32=on ftrace_dump_on_oops";
 
 	stdout-path = "/soc/qcom,qup_uart@994000:115200n8";
 };
@@ -70,45 +70,6 @@
 	};
 };
 
-&tcsrcc {
-	/delete-property/ protected-clocks;
-};
-
-&gcc {
-	clocks = <&rpmhcc RPMH_CXO_CLK>, <&sleep_clk>,
-		<&pcie_0_pipe_clk>, <&pcie_1_pipe_clk>,
-		<&usb3_phy_wrapper_gcc_usb30_pipe_clk>;
-	clock-names = "bi_tcxo", "sleep_clk",
-		"pcie_0_pipe_clk", "pcie_1_pipe_clk",
-		"usb3_phy_wrapper_gcc_usb30_pipe_clk";
-	/delete-property/ protected-clocks;
-};
-
-&gcc_pcie_0_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
-	status = "ok";
-	/delete-property/ qcom,support-hw-trigger;
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 0>;
-};
-
-&gcc_pcie_0_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
-	status = "ok";
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 3>;
-};
-
-&gcc_pcie_1_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
-	status = "ok";
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 1>;
-};
-
-&gcc_pcie_1_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
-	status = "ok";
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 4>;
-};
-
 &wpss_pas {
 	status = "disabled";
 	/delete-property/ memory-region;
@@ -145,22 +106,6 @@
 	status = "disabled";
 };
 
-&secure_lsr_lefteye_dma_buf {
-	status = "disabled";
-};
-
-&secure_lsr_righteye_dma_buf {
-	status = "disabled";
-};
-
-&secure_lsr_depth_dma_buf {
-	status = "disabled";
-};
-
-&secure_lsr_misc_dma_buf {
-	status = "disabled";
-};
-
 &lsr_lefteye_mem_heap {
 	status = "disabled";
 };
@@ -174,22 +119,6 @@
 };
 
 &lsr_misc_mem_heap {
-	status = "disabled";
-};
-
-&secure_lsr_lefteye_mem_heap {
-	status = "disabled";
-};
-
-&secure_lsr_righteye_mem_heap {
-	status = "disabled";
-};
-
-&secure_lsr_depth_mem_heap {
-	status = "disabled";
-};
-
-&secure_lsr_misc_mem_heap {
 	status = "disabled";
 };
 

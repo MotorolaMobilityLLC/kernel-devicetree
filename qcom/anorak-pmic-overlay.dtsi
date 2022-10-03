@@ -158,12 +158,15 @@
 };
 
 &pmxr2230_gpios {
-	key_confirm {
+	flash_default {
 		ext_flash_default: ext_flash_default {
 			pins = "gpio1";
 			function = "normal";
 			input-enable;
-			power-source = <0>;
+			output-disable;
+			bias-disable;
+			bias-high-impedance;
+			power-source = <1>;
 		};
 	};
 
@@ -345,7 +348,7 @@
 			trip1 {
 				temperature = <115000>;
 				hysteresis = <0>;
-				type = "critical";
+				type = "passive";
 			};
 
 			trip2 {
@@ -372,7 +375,7 @@
 			trip1 {
 				temperature = <115000>;
 				hysteresis = <0>;
-				type = "critical";
+				type = "passive";
 			};
 
 			trip2 {
