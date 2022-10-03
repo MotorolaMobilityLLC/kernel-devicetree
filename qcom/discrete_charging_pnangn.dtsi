@@ -96,6 +96,12 @@
                 temp_t0_thres = <0>;
                 temp_t0_thres_plus_x_degree = <2>;
                 temp_neg_10_thres = <0>;
+		indicator_led {
+			label = "charging";
+			led-sources = <0>;
+			pwms = <&pm6125_pwm  0 1000000>;
+			linux,default-trigger = "timer";
+		};
         };
 
         bq25890: bq25890@6A {
