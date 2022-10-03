@@ -372,6 +372,14 @@
 	alignment = <0x0 0x400000>;
 	size = <0x0 0x1000000>;
 	};
+
+	non_secure_display_memory: non_secure_display_region {
+		compatible = "shared-dma-pool";
+		reusable;
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		size = <0x0 0xa400000>;
+		alignment = <0x0 0x400000>;
+	};
 };
 
 &firmware {
@@ -597,7 +605,7 @@
 				  <CONTROL_TCS   0>,
 				  <FAST_PATH_TCS 0>;
 
-		disp_bcm_voter: bcm_voter {
+		disp0_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
 			qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
 		};
@@ -616,6 +624,11 @@
 				  <WAKE_TCS      1>,
 				  <CONTROL_TCS   0>,
 				  <FAST_PATH_TCS 0>;
+
+		disp1_bcm_voter: bcm_voter {
+			compatible = "qcom,bcm-voter";
+			qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
+		};
 	};
 
 	soc-sleep-stats@c3f0000 {
@@ -1282,9 +1295,7 @@
 			< 0x0008 0x3F 0xFF 0x02 >,
 			< 0x0011 0x3F 0xFF 0x00 >,
 			< 0x0017 0x3F 0xFF 0xFF >,
-			< 0x0018 0x3F 0xFF 0xFF >,
 			< 0x002A 0x3F 0xFF 0xFF >,
-			< 0x002B 0x3F 0xFF 0xFF >,
 			< 0x4005 0x3F 0xFF 0xFF >,
 			< 0x1000 0x3F 0xFF 0xFF >;
 	};
@@ -1516,8 +1527,6 @@
 			qcom,target-dev = <&qcom_l3_dcvs_hw>;
 			qcom,sampling-path = <&l3_dcvs_sp>;
 			qcom,miss-ev = <0x17>;
-			qcom,wb-ev = <0x18>;
-			qcom,access-ev = <0x2B>;
 
 			gold {
 				compatible = "qcom,memlat-mon";
@@ -1908,6 +1917,9 @@
 		reg-names = "crypto-base","crypto-bam-base";
 		interrupts = <GIC_SPI 272 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,bam-pipe-pair = <2>;
+		qcom,offload-ops-support;
+		qcom,bam-pipe-offload-cpb-hlos = <1>;
+		qcom,bam-pipe-offload-hlos-cpb = <3>;
 		qcom,ce-hw-instance = <0>;
 		qcom,ce-device = <0>;
 		qcom,ce-hw-shared;
@@ -1916,7 +1928,8 @@
 		qcom,no-clock-support;
 		interconnect-names = "data_path";
 		interconnects = <&aggre2_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
-		iommus = <&apps_smmu 0x0480 0x0>;
+		iommus = <&apps_smmu 0x0480 0x0>,
+			<&apps_smmu 0x0481 0x0>;
 		qcom,iommu-dma = "atomic";
 		dma-coherent;
 
@@ -1972,8 +1985,8 @@
 	mc_virt: interconnect@1 {
 		compatible = "qcom,anorak-mc_virt";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	config_noc: interconnect@1500000 {
@@ -2025,16 +2038,16 @@
 		reg = <0x01740000 0x1C100>;
 		compatible = "qcom,anorak-mmss_noc";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	gem_noc: interconnect@19100000 {
 		reg = <0x19100000 0xA9080>;
 		compatible = "qcom,anorak-gem_noc";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp0", "disp1";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
 	};
 
 	nsp_noc: interconnect@320C0000 {

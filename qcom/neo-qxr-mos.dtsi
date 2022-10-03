@@ -1,4 +1,4 @@
-#include "neo-idp.dtsi"
+#include "neo-qxr.dtsi"
 #include <dt-bindings/clock/qcom,gcc-neo.h>
 #include <dt-bindings/clock/qcom,tcsrcc.h>
 

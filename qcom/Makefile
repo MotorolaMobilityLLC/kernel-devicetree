@@ -171,11 +171,11 @@ endif
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo_la-rumi-overlay.dtbo \
-		neo-qxr-overlay.dtbo \
+		neo-qxr-mos-overlay.dtbo \
 		neo-qxr-hmt-overlay.dtbo \
 		neo-idp-mos-overlay.dtbo \
 		neo-atp-overlay.dtbo \
-		neo-sg-idp-overlay.dtbo \
+		neo-sg-idp-hmt-overlay.dtbo \
 		neo-idp-display-overlay.dtbo \
 		neo-idp-hmt-overlay.dtbo \
 		neo-sg-idp-pm8008-overlay.dtbo \
@@ -183,11 +183,11 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 
 neo-rumi-overlay.dtbo-base := neo.dtb
 neo_la-rumi-overlay.dtbo-base := neo_la.dtb
-neo-qxr-overlay.dtbo-base := neo.dtb
+neo-qxr-mos-overlay.dtbo-base := neo.dtb
 neo-qxr-hmt-overlay.dtbo-base := neo.dtb
 neo-idp-mos-overlay.dtbo-base := neo.dtb
 neo-atp-overlay.dtbo-base := neo.dtb
-neo-sg-idp-overlay.dtbo-base := neo_la.dtb
+neo-sg-idp-hmt-overlay.dtbo-base := neo_la.dtb
 neo-idp-display-overlay.dtbo-base := neo.dtb
 neo-idp-hmt-overlay.dtbo-base := neo.dtb
 neo-sg-idp-pm8008-overlay.dtbo-base := neo_la.dtb
@@ -196,11 +196,11 @@ neo_luna-v2-sg-idp-overlay.dtbo-base := neo_luna-v2.dtb
 else
 dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo_la-rumi.dtb \
-			neo-qxr.dtb \
+			neo-qxr-mos.dtb \
 			neo-qxr-hmt.dtb \
 			neo-idp-mos.dtb \
 			neo-atp.dtb \
-			neo-sg-idp.dtb \
+			neo-sg-idp-hmt.dtb \
 			neo-idp-display.dtb \
 			neo-idp-hmt.dtb \
 			neo-sg-idp-pm8008.dtb \
@@ -537,8 +537,6 @@ endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
-	ravelin-mtp-overlay.dtbo \
-	ravelin-cdp-overlay.dtbo \
 	ravelin-qrd-overlay.dtbo \
 	montague-rumi-overlay.dtbo \
 	montague-qrd-overlay.dtbo \
@@ -547,8 +545,6 @@ dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	montague-rcm-overlay.dtbo
 
 ravelin-rumi-overlay.dtbo-base := ravelin.dtb
-ravelin-mtp-overlay.dtbo-base := ravelin.dtb
-ravelin-cdp-overlay.dtbo-base := ravelin.dtb
 ravelin-qrd-overlay.dtbo-base := ravelin.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-qrd-overlay.dtbo-base := montague.dtb montaguep.dtb
@@ -557,8 +553,6 @@ montague-moselle-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
 else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
-	ravelin-mtp.dtb \
-	ravelin-cdp.dtb \
 	ravelin-qrd.dtb \
 	montague-rumi.dtb \
 	montague-qrd.dtb \

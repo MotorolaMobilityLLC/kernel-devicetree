@@ -49,6 +49,7 @@ PMIC's from Qualcomm.
 		    "qcom,pm8550vs-gpio"
 		    "qcom,pmk8550-gpio"
 		    "qcom,pmr735d-gpio"
+		    "qcom,pmi632-gpio"
 
 		    And must contain either "qcom,spmi-gpio" or "qcom,ssbi-gpio"
 		    if the device is on an spmi bus or an ssbi bus respectively

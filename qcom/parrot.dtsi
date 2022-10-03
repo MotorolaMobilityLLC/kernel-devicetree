@@ -1058,6 +1058,7 @@
 		reg = <0xaf00000 0x20000>;
 		reg-name = "cc_base";
 		vdd_cx-supply = <&VDD_CX_LEVEL>;
+		vdd_mxa-supply = <&VDD_MXA_LEVEL>;
 		clocks = <&rpmhcc RPMH_CXO_CLK>,
 			<&rpmhcc RPMH_CXO_CLK_A>,
 			<&sleep_clk>,
@@ -1787,11 +1788,13 @@
 		reg = <0xc3f0000 0x400>;
 		ss-name = "modem", "adsp", "adsp_island",
 			  "cdsp", "apss", "wpss";
+		ddr-freq-update;
 	};
 
 	subsystem-sleep-stats@c3f0000 {
 		compatible = "qcom,subsystem-sleep-stats";
 		reg = <0xc3f0000 0x400>;
+		ddr-freq-update;
 	};
 
 	sys-pm-vx@c320000 {
@@ -3022,11 +3025,15 @@
 };
 
 &disp_cc_mdss_core_gdsc {
+	clocks = <&gcc GCC_DISP_AHB_CLK>;
+	clock-names = "ahb_clk";
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 };
 
 &disp_cc_mdss_core_int2_gdsc {
+	clocks = <&gcc GCC_DISP_AHB_CLK>;
+	clock-names = "ahb_clk";
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 };
