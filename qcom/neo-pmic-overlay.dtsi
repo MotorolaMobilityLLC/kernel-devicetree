@@ -156,7 +156,7 @@
 
 	battery: battery {
 		compatible = "simple-battery";
-		voltage-min-design-microvolt = <3200000>;
+		voltage-min-design-microvolt = <3100000>;
 		energy-full-design-microwatt-hours = <2520000>;
 		charge-full-design-microamp-hours = <645000>;
 		over-voltage-threshold-microvolt = <4500000>;
@@ -168,15 +168,6 @@
 		voltage-max-design-microvolt = <4480000>;
 		precharge-current-microamp = <128000>;
 		factory-internal-resistance-micro-ohms = <120000>;
-		ocv-capacity-celsius = <(-10) 0 15 45>;
-		/* table for -10 degree Celsius */
-		ocv-capacity-table-0 = <4185000 100>, <4113000 95>, <4066000 90>;
-		/* table for 0 degree Celsius */
-		ocv-capacity-table-1 = <4480000 100>, <4383000 95>, <4313000 90>;
-		/* table for 15 degree Celsius */
-		ocv-capacity-table-2 = <4480000 100>, <4383000 95>, <4313000 90>;
-		/* table for 45 degree Celsius */
-		ocv-capacity-table-3 = <4200000 100>, <4190000 95>, <4185000 90>;
 	};
 
 	charger: charger@6b {
@@ -196,6 +187,16 @@
 		status = "ok";
 	};
 
+	battery_645mAh: battery_645mAh {
+		qmax-cell0 = <15546>;
+		resist-table = <8 8 8 10 12 9 13 18 23 29 34 47 60 87 131>;
+	};
+
+	battery_630mAh: battery_630mAh {
+		qmax-cell0 = <15656>;
+		resist-table = <16 16 17 20 22 13 17 18 18 18 17 23 28 44 62>;
+	};
+
 	bq27421: fuel-gauge@55 {
 		compatible = "ti,bq27421";
 		reg = <0x55>;
@@ -204,6 +205,8 @@
 		interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
 		pinctrl-names =  "default";
 		pinctrl-0 = <&bq27421_intr_default>;
+
+		bat-resist-table = <&battery_645mAh>;
 		monitored-battery = <&battery>;
 		status = "ok";
 	};
