@@ -57,6 +57,10 @@ KALAMA_BOARDS += kalama-rtwo-evb1-overlay.dtbo \
                  kalama-rtwo-na-vzw-evt2-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_OBERON_DTB),y)
+KALAMA_BOARDS += kalama-oberon-evb-overlay.dtbo
+endif
+
 else
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb kalama-sg.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb kalamap-sg.dtb
