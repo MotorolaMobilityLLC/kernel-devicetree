@@ -256,4 +256,14 @@
 	};
 };
 
+&qupv3_se7_i2c {
+	status = "ok";
 
+             ocp2138@3e {
+                       compatible = "ocp,i2c_lcd_bias";
+                       reg = <0x3e>;
+                       i2c-pull-up;
+                       ocp,lcd-bias-enn-gpio = <&tlmm 85 0>;
+                       ocp,lcd-bias-enp-gpio = <&tlmm 86 0>;
+        };
+};
