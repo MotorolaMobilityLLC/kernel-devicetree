@@ -165,7 +165,7 @@
 		focaltech,reset-gpio = <&tlmm 126 0x0>;
 		focaltech,irq-gpio = <&tlmm 85 0x2800>;
 		focaltech,max-touch-number = <10>;
-		focaltech,display-coords =  <0 0 1056 1068>;
+		focaltech,display-coords =  <0 0 16896 17056>;
 		vdd-supply=<&pm8350c_l3>;
 		vcc_i2c-supply=<&pm8350c_l2>;
 
