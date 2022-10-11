@@ -130,6 +130,12 @@
                 ti,bq2589x,enable-termination;
                 ti,bq2589x,enable-ico;
                 ti,bq2589x,use-absolute-vindpm;
+		indicator_led {
+			label = "charging";
+			led-sources = <0>;
+			pwms = <&pm6125_pwm  0 1000000>;
+			linux,default-trigger = "timer";
+		};
         };
 
 };
