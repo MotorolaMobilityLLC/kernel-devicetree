@@ -16,12 +16,13 @@
 		status = "ok";
 		qti_glink_charger: mmi,qti-glink-charger {
 			compatible = "mmi,qti-glink-charger";
-			mmi,df-serialnum = "unknown-sn";
 			mmi,chrg-iterm-ma = <243>;
 			mmi,fg-iterm-ma = <350>;
 			mmi,max-fv-mv = <4480>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
+			mmi,df-serialnum = "SB18D67654";
+			profile-ids-map = "107000", "SB18D67654","38000","SB18D67655";
 		};
 	};
 
