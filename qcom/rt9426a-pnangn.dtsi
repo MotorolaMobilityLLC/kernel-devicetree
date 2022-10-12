@@ -9,8 +9,8 @@
 		interrupts-extended = <&tlmm 38 IRQ_TYPE_LEVEL_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&rt9426a_alert>;
-		rt,dtsi_version = <01 1012>;
-		rt,para_version = <0x0000>;
+		rt,dtsi_version = <01 1005>;
+		rt,para_version = <0x0001>;
 		rt,battery_type = <4400>;
 		rt,volt_source = <1>;		// 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
 		rt,temp_source = <1>;		// 0:AP 1:FG_TEMP 2:FG_INTT; 3:FG_AT
@@ -24,9 +24,9 @@
 		/* add for aging cv ; 2021-01-18 */
 		rt,smooth_soc_en = <0>;  /* 0: disable(default) ; 1: enable */
 
-		df-serialnum = "SB18D33989";
-		#include "bat_setting/RT_md50-atl-5000mah.dtsi"
-		//#include "bat_setting/RT_md50-scud-5000mah.dtsi"
+		df-serialnum = "SB18D69208";
+		#include "bat_setting/RT_nh50-atl-4850mah-5mohm.dtsi"
+		#include "bat_setting/RT_nh50-scud-4850mah-5mohm.dtsi"
 
 	};
 };
