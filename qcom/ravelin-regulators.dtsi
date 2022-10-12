@@ -733,4 +733,27 @@
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
+
+	rpmh-regulator-mxlvl {
+		compatible = "qcom,rpmh-arc-regulator";
+		qcom,resource-name = "mx.lvl";
+		proxy-supply = <&VDD_MX_LEVEL>;
+
+		VDD_MX_LEVEL:
+		S1G_LEVEL:
+		pmg1110_s1_level: regulator-pmg1110-s1-level {
+			regulator-name = "pmg1110_s1_level";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt =
+				<RPMH_REGULATOR_LEVEL_RETENTION>;
+			regulator-max-microvolt = <RPMH_REGULATOR_LEVEL_MAX>;
+			qcom,init-voltage-level =
+				<RPMH_REGULATOR_LEVEL_TURBO>;
+			qcom,proxy-consumer-enable;
+			qcom,proxy-consumer-voltage =
+				<RPMH_REGULATOR_LEVEL_TURBO
+				 RPMH_REGULATOR_LEVEL_MAX>;
+
+		};
+	};
 };
