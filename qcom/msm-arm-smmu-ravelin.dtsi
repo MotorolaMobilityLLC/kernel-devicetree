@@ -3,7 +3,7 @@
 &soc {
 	kgsl_smmu: kgsl-smmu@3da0000 {
 		compatible = "qcom,qsmmu-v500", "qcom,adreno-smmu";
-		reg = <0x3da0000 0x40000>,
+		reg = <0x3da0000 0x10000>,
 			<0x3dc2000 0x20>;
 		reg-names = "base", "tcu-base";
 		#iommu-cells = <2>;
