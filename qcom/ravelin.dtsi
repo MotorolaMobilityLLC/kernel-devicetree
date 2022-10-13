@@ -1234,7 +1234,7 @@
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
 
-	conc3: interconnect@1510000 {
+	cnoc3: interconnect@1510000 {
 		reg = <0x01510000 0xF200>;
 		compatible = "qcom,ravelin-cnoc3";
 		#interconnect-cells = <1>;
