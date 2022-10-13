@@ -79,7 +79,7 @@
 		config {
 			pins = "gpio13";
 			drive-strength = <2>;
-			output-high;
+			bias-bus-hold;
 		};
 	};
 };
