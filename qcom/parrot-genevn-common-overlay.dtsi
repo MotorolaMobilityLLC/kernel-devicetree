@@ -27,3 +27,11 @@
 &sdhc_2 {
 	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
 };
+
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			0x83 0x6c
+			0xc3 0x70
+			0xc7 0x74
+			0x03 0x78>;
+};
