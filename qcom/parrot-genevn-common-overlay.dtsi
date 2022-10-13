@@ -19,9 +19,6 @@
 #include "moto-genevn-wl2864c.dtsi"
 #include "parrot-genevn-nfc-overlay.dtsi"
 
-&usb0 {
-	qcom,force-adb-enable;
-};
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
