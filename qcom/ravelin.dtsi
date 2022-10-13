@@ -1607,6 +1607,11 @@
 		boot_config: boot_config@600 {
 			reg = <0x600 0x1>;
 		};
+
+		gpu_speed_bin: gpu_speed_bin@119 {
+			reg = <0x119 0x2>;
+			bits = <5 8>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
@@ -1614,10 +1619,12 @@
 
 		nvmem-cells = <&feat_conf12>,
 				<&feat_conf13>,
-				<&boot_config>;
+				<&boot_config>,
+				<&gpu_speed_bin>;
 		nvmem-cell-names = "feat_conf12",
 				"feat_conf13",
-				"boot_config";
+				"boot_config",
+				"gpu_speed_bin";
 	};
 
 	adsp_pas: remoteproc-adsp@03000000 {
