@@ -2524,14 +2524,15 @@
 		coresight-name = "coresight-funnel-turing_dup";
 
 		qcom,duplicate-funnel;
+
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
 		in-ports {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			port@4 {
-				reg = <4>;
+			port@3 {
+				reg = <3>;
 				funnel_turing_dup_in_turing_etm: endpoint {
 					remote-endpoint =
 					<&turing_etm_out_funnel_turing_dup>;
@@ -2582,8 +2583,8 @@
 				};
 			};
 
-			port@5 {
-				reg = <5>;
+			port@4 {
+				reg = <4>;
 					funnel_turing_in_funnel_turing_dup: endpoint {
 					remote-endpoint =
 					<&funnel_turing_dup_out_funnel_turing>;
