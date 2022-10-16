@@ -388,11 +388,13 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
         cape-bronco-evb1-overlay.dtbo \
         cape-bronco-evt1-overlay.dtbo \
         cape-bronco-evt2-overlay.dtbo \
+        cape-bronco-dvt1-overlay.dtbo \
         cape-bronco-dvt2-overlay.dtbo
 
 cape-bronco-evb1-overlay.dtbo-base := cape-moto-bronco-base.dtb
 cape-bronco-evt1-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
 cape-bronco-evt2-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
+cape-bronco-dvt1-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
 cape-bronco-dvt2-overlay.dtbo-base := cape-v2-moto-bronco-base.dtb
 endif
 
