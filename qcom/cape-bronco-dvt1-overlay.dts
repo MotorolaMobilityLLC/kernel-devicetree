@@ -19,7 +19,7 @@
 	model = "bronco";
 	compatible = "qcom,cape-mtp", "qcom,cape", "qcom,mtp", "moto,bronco";
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
-	qcom,board-id = <0x46 0xA400>;
+	qcom,board-id = <0x46 0xB100>;
 };
 
 
