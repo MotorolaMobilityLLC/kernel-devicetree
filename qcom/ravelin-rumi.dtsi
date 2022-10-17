@@ -187,3 +187,10 @@
 	clocks = <&bi_tcxo>, <&bi_tcxo_ao>,
 		<&sleep_clk>, <&gcc GCC_DISP_AHB_CLK>;
 };
+
+&gpucc {
+	clocks = <&bi_tcxo>,
+		<&gcc GCC_GPU_GPLL0_CLK_SRC>,
+		<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>,
+		<&gcc GCC_GPU_SNOC_DVM_GFX_CLK>;
+};

@@ -163,12 +163,12 @@
 };
 
 &battery {
-	voltage-min-design-microvolt = <3200000>;
-	energy-full-design-microwatt-hours = <2322000>;
-	/* bq256xx's termination current setting has a min limit of 60mA */
-	charge-full-design-microamp-hours = <600000>;
+	voltage-min-design-microvolt = <3100000>;
+	energy-full-design-microwatt-hours = <2438000>;
+	charge-full-design-microamp-hours = <630000>;
 	over-voltage-threshold-microvolt = <4500000>;
 	re-charge-voltage-microvolt = <250000>;
+	/* bq256xx's termination current setting has a min limit of 60mA */
 	charge-term-current-microamp = <60000>;
 	constant-charge-current-max-microamp = <500000>;
 	constant-charge-voltage-max-microvolt = <4450000>;
@@ -179,4 +179,8 @@
 
 &charger {
 	input-voltage-limit-microvolt = <4450000>;
+};
+
+&bq27421 {
+	bat-resist-table = <&battery_630mAh>;
 };

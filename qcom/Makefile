@@ -537,7 +537,11 @@ endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
+	ravelin-atp-overlay.dtbo \
+	ravelin-idp-overlay.dtbo \
 	ravelin-qrd-overlay.dtbo \
+	ravelin-idp-4gb-overlay.dtbo \
+	ravelin-qrd-4gb-overlay.dtbo \
 	montague-rumi-overlay.dtbo \
 	montague-qrd-overlay.dtbo \
 	montague-hsp-overlay.dtbo \
@@ -545,7 +549,11 @@ dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	montague-rcm-overlay.dtbo
 
 ravelin-rumi-overlay.dtbo-base := ravelin.dtb
+ravelin-atp-overlay.dtbo-base := ravelin.dtb
+ravelin-idp-overlay.dtbo-base := ravelin.dtb
 ravelin-qrd-overlay.dtbo-base := ravelin.dtb
+ravelin-idp-4gb-overlay.dtbo-base := ravelin-4gb.dtb
+ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-qrd-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
@@ -553,7 +561,11 @@ montague-moselle-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
 else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
+	ravelin-atp.dtb \
+	ravelin-idp.dtb \
 	ravelin-qrd.dtb \
+	ravelin-idp-4gb.dtb \
+	ravelin-qrd-4gb.dtb \
 	montague-rumi.dtb \
 	montague-qrd.dtb \
 	montague-hsp.dtb \
