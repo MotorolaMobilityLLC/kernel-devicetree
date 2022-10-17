@@ -10,9 +10,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
  */
-nd50-atl-4850mah_new {
+nd50-atl-5000mah_new {
 	serialnum = "SB18D69208";
-	fcc_design = <4850>;
+	fcc_design = <5000>;
 	ui_full = <100>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
                                A7 B6 BC CA B9 B2 AE 6F
