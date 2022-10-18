@@ -66,6 +66,7 @@
 		pinctrl-2 = <&ts_release>;
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		goodix,gesture-wait-pm;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
