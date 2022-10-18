@@ -143,7 +143,7 @@
 	qcom,mdss-brightness-max-level = <3276>;
 	qcom,platform-reset-gpio-always-on;
 
-	/*qcom,esd-check-enabled;*/
+	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
@@ -199,7 +199,7 @@
 	qcom,mdss-panel-on-rst-pull-down;
 
 
-	//qcom,esd-check-enabled;
+	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0a];
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
