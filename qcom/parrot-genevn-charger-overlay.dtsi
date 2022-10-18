@@ -17,7 +17,7 @@
 		qti_glink_charger: mmi,qti-glink-charger {
 			compatible = "mmi,qti-glink-charger";
 			mmi,chrg-iterm-ma = <243>;
-			mmi,fg-iterm-ma = <350>;
+			mmi,fg-iterm-ma = <130>;
 			mmi,max-fv-mv = <4480>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
