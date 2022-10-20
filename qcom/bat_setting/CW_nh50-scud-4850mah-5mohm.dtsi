@@ -13,7 +13,7 @@
 nh50-scud-4850mah {
 	serialnum = "SB18D69209";
 	fcc_design = <4850>;
-	ui_full = <97>;
+	ui_full = <99>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
 				 A9 C0 C7 C5 BA B4 A1 63
 				 42 FD D8 A4 8B 77 65 58
