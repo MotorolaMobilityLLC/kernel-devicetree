@@ -119,6 +119,7 @@
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 		mmi,enable-palm;
+		mmi,supported_gesture_type = <0x06>;
 		status = "ok";
 	};
 
