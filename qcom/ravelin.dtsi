@@ -410,6 +410,11 @@
 				  <FAST_PATH_TCS 0>;
 		power-domains = <&CLUSTER_PD>;
 
+		rpmhcc: qcom,rpmhclk {
+			compatible = "qcom,ravelin-rpmh-clk";
+			#clock-cells = <1>;
+		};
+
 		apps_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
 		};
@@ -761,11 +766,35 @@
 		#reset-cells = <1>;
 	};
 
-	rpmhcc: qcom,rpmhcc {
-		compatible = "qcom,dummycc";
-		clock-output-names = "rmphcc_clocks";
+	apsscc: syscon@17aa0000 {
+		compatible = "syscon";
+		reg = <0x17aa0000 0x1c>;
+	};
+
+	mccc: syscon@190ba000 {
+		compatible = "syscon";
+		reg = <0x190ba000 0x54>;
+	};
+
+	debugcc: debug-clock-controller@0 {
+		compatible = "qcom,ravelin-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,dispcc = <&dispcc>;
+		qcom,camcc = <&camcc>;
+		qcom,gpucc = <&gpucc>;
+		qcom,apsscc = <&apsscc>;
+		qcom,mccc = <&mccc>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gpucc 0>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"camcc",
+				"dispcc",
+				"gpucc";
 		#clock-cells = <1>;
-		#reset-cells = <1>;
 	};
 
 	tcsr: syscon@1fc0000 {
