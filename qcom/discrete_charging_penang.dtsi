@@ -71,6 +71,8 @@
                 dpdm-supply = <&qusb_phy0>;
                 mmi,qc3-support;
 		sgm,18w_iindpm_comp;
+		/* enable dynamic adjust battery voltage */
+		enable_dynamic_adjust_batvol;
                 enable_sw_jeita;
                 jeita_temp_above_t4_cv = <0>;
                 jeita_temp_t3_to_t4_cv = <4100000>;
