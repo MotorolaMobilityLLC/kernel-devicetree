@@ -92,6 +92,7 @@
 		status = "ok";
 		irq = <&tlmm 40 0>;
 		rst = <&tlmm 42 0>;
+		delay-ctrl-support;
 		rgltr-ctrl-support;
 		fp,vdd-supply=<&L9C>;
 		fp,voltage-range = <3300000 3300000>;
