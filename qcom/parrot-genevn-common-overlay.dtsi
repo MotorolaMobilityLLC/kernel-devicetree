@@ -35,3 +35,7 @@
 			0xc7 0x74
 			0x03 0x78>;
 };
+
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <2900000>;
+};
