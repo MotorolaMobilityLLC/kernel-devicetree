@@ -107,7 +107,7 @@ dtbo-$(CONFIG_PENANG_DTB) += \
 
 holi-penang-evt1-overlay.dtbo-base := holi-moto-base.dtb
 holi-penang-dvt2-jp-overlay.dtbo-base := holi-moto-base.dtb
-holi-penang-dvt2-sb-overlay.dtbo := holi-moto-base.dtb
+holi-penang-dvt2-sb-overlay.dtbo-base := holi-moto-base.dtb
 
 dtbo-$(CONFIG_PNANGN_DTB) += \
         holi-pnangn-evt1-overlay.dtbo
