@@ -282,6 +282,7 @@
 #include "ravelin-reserved-memory.dtsi"
 #include "ravelin-dma-heaps.dtsi"
 #include "ravelin-usb.dtsi"
+#include "ravelin-coresight.dtsi"
 
 &reserved_memory {
 	#address-cells = <2>;
