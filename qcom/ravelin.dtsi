@@ -41,7 +41,9 @@
 	};
 
 	aliases: aliases {
-		serial0 = &qupv3_se2_2uart;
+		serial0 = &qupv3_se7_2uart; /* Debug UART */
+		serial1 = &qupv3_se0_2uart; /* HST debug UART */
+		hsuart0 = &qupv3_se2_4uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc0 = &sdhc_1; /*SDC1 eMMC slot*/
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
@@ -1853,7 +1855,7 @@
 #include "ipcc-test-ravelin.dtsi"
 #include "ravelin-qupv3.dtsi"
 
-&qupv3_se2_2uart {
+&qupv3_se7_2uart {
 	status = "ok";
 };
 
