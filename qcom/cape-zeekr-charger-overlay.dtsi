@@ -104,19 +104,21 @@
 		mmi,ext-usb-psy-name = "usb";
 		mmi,fg-psy-name = "flip_battery";
 		mmi,chrg-iterm-ma = <100>;
-		mmi,fg-iterm-ma = <150>;
-		mmi,max-fv-mv = <4480>;
-		mmi,max-fcc-ma = <1214>;
+		mmi,fg-iterm-ma = <100>;
+		mmi,max-fv-mv = <4500>;
+		mmi,max-fcc-ma = <1324>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,df-serialnum = "SB18D44720";
-		mmi,mmi-temp-zones = <0 4200 136 0>,
-				    <10 4250 340 204>,
-				    <15 0 679 476>,
-				    <45 4300 1214 883>,
-				    <45 4350 883 679>,
-				    <60 4200 679 0>;
+		mmi,mmi-temp-zones = <0 4200 162 0>,
+					<10 4250 405 243>,
+					<15 4250 810 567>,
+					<45 4300 1324 1053>,
+					<45 4350 1053 810>,
+					<60 4200 810 0>;
 
 		mmi,paired-id = <0x00000001>;
+		mmi,paired-esr = <5>;
+		mmi,batt-esr = <5>;
 		// delta_ocv ichg map table
 		mmi,paired-ichg-table = <60 1200
 					 90 900
