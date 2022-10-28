@@ -88,6 +88,7 @@
 	};
 
 	pct1812_mmi@33 {
+		status = "disabled";
 		compatible = "pixart,pct1812_ts";
 		reg = <0x33>;
 		/*pct1812,reset-gpio = <&tlmm 20 0>;*/
