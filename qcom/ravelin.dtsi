@@ -135,6 +135,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD4>;
 			power-domain-names = "psci";
+			next-level-cache = <&L2_4>;
 			#cooling-cells = <2>;
 			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_4: l2-cache {
