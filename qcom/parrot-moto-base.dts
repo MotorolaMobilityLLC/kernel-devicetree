@@ -6,6 +6,7 @@
 	model = "Qualcomm Technologies, Inc. Parrot SoC";
 	compatible = "qcom,parrot";
 	qcom,board-id = <0 0>;
+	channel-id-map = "";
 /*
  * Some nodes need labels assigned to appear in __symbols__
  */
