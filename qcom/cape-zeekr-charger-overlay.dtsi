@@ -100,6 +100,7 @@
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
 		input-current-limit-microamp = <1200000>;
+		wls-current-limit-microamp = <200000>;
 
 		mmi,ext-usb-psy-name = "usb";
 		mmi,fg-psy-name = "flip_battery";
