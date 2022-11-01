@@ -135,6 +135,8 @@
 		pinctrl-0 = <&ts_spi_active>;
 		pinctrl-1 = <&ts_spi_int_suspend_high>;
 		mmi,usb-charger-detection;
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
 		status = "ok";
 	};
 };
