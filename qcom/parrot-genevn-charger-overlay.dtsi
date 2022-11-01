@@ -10,6 +10,7 @@
 		mmi,hvdcp-power-max = <15000>;
 		mmi,pd-power-max = <20000>;
 		mmi,factory-kill-debounce-ms = <3000>;
+		mmi,heartbeat-discharger-ms = <900000>;
 	};
 
 	qcom,pmic_glink {
