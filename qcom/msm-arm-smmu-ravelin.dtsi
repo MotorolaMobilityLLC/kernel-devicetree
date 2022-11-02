@@ -21,7 +21,7 @@
 
 		qcom,actlr =
 			/* All CBs of GFX: +15 deep PF */
-			<0x0 0x1FFF 0x328>;
+			<0x0 0x1FFF 0x32B>;
 
 		clocks = <&gpucc GPU_CC_CX_GMU_CLK>,
 			<&gpucc GPU_CC_HUB_CX_INT_CLK>,
