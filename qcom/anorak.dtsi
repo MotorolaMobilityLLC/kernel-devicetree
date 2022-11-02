@@ -1590,6 +1590,16 @@
 			qcom,target-dev = <&qcom_ddrqos_dcvs_hw>;
 			qcom,sampling-path = <&ddrqos_dcvs_sp>;
 			qcom,miss-ev = <0x1000>;
+
+			ddrqos_prime_lat: prime {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU2 &CPU3 &CPU4 &CPU5>;
+				qcom,cpufreq-memfreq-tbl =
+					<  300000 0 >,
+					< 2361600 1 >;
+				qcom,sampling-enabled;
+			};
+
 			ddrqos_prime_latfloor: prime-latfloor {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU2 &CPU3 &CPU4 &CPU5>;
