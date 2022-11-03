@@ -13,7 +13,7 @@
 nd50-jiade-5000mah_new {
 	serialnum = "SB18D69209";
 	fcc_design = <5000>;
-	ui_full = <98>;
+	ui_full = <99>;
 	config_profile_info = [5A 00 00 00 00 00 00 00
                                9E C0 C3 C6 B9 B6 AA 6D
                                47 FF D7 9D 82 6A 5B 52
