@@ -1434,10 +1434,23 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+
+		feat_conf12: feat_conf12@0130 {
+			reg = <0x0130 0x4>;
+		};
+
+		feat_conf13: feat_conf13@0134 {
+			reg = <0x0134 0x4>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
+
+		nvmem-cells = <&feat_conf12>,
+				<&feat_conf13>;
+		nvmem-cell-names = "feat_conf12",
+				"feat_conf13";
 	};
 
 	adsp_pas: remoteproc-adsp@03000000 {
