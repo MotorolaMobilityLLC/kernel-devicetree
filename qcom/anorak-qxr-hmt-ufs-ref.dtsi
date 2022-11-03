@@ -1,4 +1,4 @@
-#include "anorak-qxr.dtsi"
+#include "anorak-qxr-hmt.dtsi"
 #include <dt-bindings/clock/qcom,gcc-anorak.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
 
