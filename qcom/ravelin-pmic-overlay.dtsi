@@ -558,3 +558,31 @@
 		};
 	};
 };
+
+&pm6450_pwm_1 {
+	status = "ok";
+};
+
+&pm6450_gpios {
+	lcd_backlight_ctrl {
+		lcd_backlight_pwm_default: lcd_backlight_pwm_default {
+			pins = "gpio7";
+			function = "func1";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <1>;       /* 1.8V */
+			qcom,drive-strength = <2>;
+		};
+
+		lcd_backlight_en_default: lcd_backlight_en_default {
+			pins = "gpio6";
+			function = "normal";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <0>;
+			qcom,drive-strength = <2>;
+		};
+	};
+};
