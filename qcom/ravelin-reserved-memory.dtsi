@@ -59,7 +59,7 @@
 		reg = <0x0 0x80b00000 0x0 0x100000>;
 	};
 
-	wlan_msa_moselle_mem: wlan_msa_moselle_region@82a00000 {
+	wlan_msa_mem: wlan_msa_mem_region@82a00000 {
 		no-map;
 		reg = <0x0 0x82a00000 0x0 0xc00000>;
 	};
