@@ -116,6 +116,8 @@
                 dpdm-supply = <&qusb_phy0>;
 
                 mmi,qc3-support;
+		/* enable dynamic adjust battery voltage */
+		enable_dynamic_adjust_batvol;
                 ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
                 ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
                 ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
