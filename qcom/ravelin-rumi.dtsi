@@ -209,3 +209,11 @@
 &cpufreq_hw {
 	clocks = <&bi_tcxo>, <&gcc GCC_GPLL0>;
 };
+
+&tsens0 {
+	status = "disabled";
+};
+
+&tsens1 {
+	status = "disabled";
+};
