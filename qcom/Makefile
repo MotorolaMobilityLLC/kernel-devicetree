@@ -664,7 +664,13 @@ endif
 ifeq ($(CONFIG_ARCH_RAVELIN), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
 dtb-$(CONFIG_ARCH_QTI_VM) +=  \
-	ravelin-vm-rumi.dtb
+	ravelin-vm-rumi.dtb \
+	ravelin-vm-atp.dtb \
+	ravelin-vm-idp.dtb \
+	ravelin-vm-idp-wcn3988.dtb \
+	ravelin-vm-idp-wcn3950-amoled-rcm.dtb \
+	ravelin-vm-qrd.dtb
+
 endif
 endif
 
