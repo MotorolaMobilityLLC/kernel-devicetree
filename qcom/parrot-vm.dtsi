@@ -4,16 +4,6 @@
 	qcom,msm-id = <537 0x10000>, <583 0x10000>;
 	interrupt-parent = <&vgic>;
 
-	idle-states {
-		CPU_PWR_DWN: c4 {
-			status = "disabled";
-		};
-
-		CLUSTER_PWR_DWN: d4 {
-			status = "disabled";
-		};
-	};
-
 	gunyah-vsock {
 		status = "disabled";
 	};

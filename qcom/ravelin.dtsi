@@ -20,13 +20,24 @@
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	chosen: chosen { };
+	chosen: chosen {
+		bootargs = "cpufreq.default_governor=performance";
+	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	reserved_memory: reserved-memory { };
 
-	aliases {
+	mem-offline {
+		compatible = "qcom,mem-offline";
+		offline-sizes = <0x1 0x40000000 0x0 0x40000000>,
+				<0x1 0xc0000000 0x0 0x80000000>,
+				<0x2 0xc0000000 0x1 0x40000000>;
+		granule = <512>;
+		mboxes = <&qmp_aop 0>;
+	};
+
+	aliases: aliases {
 		serial0 = &qupv3_se2_2uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc0 = &sdhc_1; /*SDC1 eMMC slot*/
@@ -47,7 +58,9 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD0>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -68,7 +81,9 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD1>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L2_1: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -84,7 +99,9 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD2>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			next-level-cache = <&L2_2>;
+			#cooling-cells = <2>;
 			L2_2: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -100,7 +117,9 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD3>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			next-level-cache = <&L2_3>;
+			#cooling-cells = <2>;
 			L2_3: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -116,6 +135,8 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD4>;
 			power-domain-names = "psci";
+			#cooling-cells = <2>;
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			L2_4: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -131,7 +152,9 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD5>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0 6>;
 			next-level-cache = <&L2_5>;
+			#cooling-cells = <2>;
 			L2_5: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -147,7 +170,9 @@
 			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD6>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 1 2>;
 			next-level-cache = <&L2_6>;
+			#cooling-cells = <2>;
 			L2_6: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -163,7 +188,9 @@
 			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD7>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 1 2>;
 			next-level-cache = <&L2_7>;
+			#cooling-cells = <2>;
 			L2_7: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -282,6 +309,8 @@
 #include "ravelin-reserved-memory.dtsi"
 #include "ravelin-dma-heaps.dtsi"
 #include "ravelin-usb.dtsi"
+#include "ravelin-coresight.dtsi"
+#include "ravelin-debug.dtsi"
 
 &reserved_memory {
 	#address-cells = <2>;
@@ -409,6 +438,11 @@
 				  <CONTROL_TCS   0>,
 				  <FAST_PATH_TCS 0>;
 		power-domains = <&CLUSTER_PD>;
+
+		rpmhcc: qcom,rpmhclk {
+			compatible = "qcom,ravelin-rpmh-clk";
+			#clock-cells = <1>;
+		};
 
 		apps_bcm_voter: bcm_voter {
 			compatible = "qcom,bcm-voter";
@@ -761,11 +795,54 @@
 		#reset-cells = <1>;
 	};
 
-	rpmhcc: qcom,rpmhcc {
-		compatible = "qcom,dummycc";
-		clock-output-names = "rmphcc_clocks";
+	apsscc: syscon@17aa0000 {
+		compatible = "syscon";
+		reg = <0x17aa0000 0x1c>;
+	};
+
+	mccc: syscon@190ba000 {
+		compatible = "syscon";
+		reg = <0x190ba000 0x54>;
+	};
+
+	debugcc: debug-clock-controller@0 {
+		compatible = "qcom,ravelin-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,dispcc = <&dispcc>;
+		qcom,camcc = <&camcc>;
+		qcom,gpucc = <&gpucc>;
+		qcom,apsscc = <&apsscc>;
+		qcom,mccc = <&mccc>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&gcc 0>,
+			<&camcc 0>,
+			<&dispcc 0>,
+			<&gpucc 0>;
+		clock-names = "xo_clk_src",
+				"gcc",
+				"camcc",
+				"dispcc",
+				"gpucc";
 		#clock-cells = <1>;
-		#reset-cells = <1>;
+	};
+
+	cpufreq_hw: qcom,cpufreq-hw {
+		compatible = "qcom,cpufreq-hw-epss";
+		reg = <0x17d91000 0x1000>, <0x17d92000 0x1000>;
+		reg-names = "freq-domain0", "freq-domain1";
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_GPLL0>;
+		clock-names = "xo", "alternate";
+		qcom,lut-row-size = <4>;
+		qcom,skip-enable-check;
+		interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "dcvsh0_int", "dcvsh1_int";
+		#freq-domain-cells = <2>;
+	};
+
+	qcom,cpufreq-hw-debug {
+		compatible = "qcom,cpufreq-hw-epss-debug";
+		qcom,freq-hw-domain = <&cpufreq_hw 0>, <&cpufreq_hw 1>;
 	};
 
 	tcsr: syscon@1fc0000 {
@@ -1196,6 +1273,44 @@
 		restrict-access;
 	};
 
+	msm_fastrpc: qcom,msm_fastrpc {
+		compatible = "qcom,msm-fastrpc-compute";
+		qcom,adsp-remoteheap-vmid = <22 37>;
+		qcom,fastrpc-adsp-audio-pdr;
+		qcom,fastrpc-adsp-sensors-pdr;
+		qcom,rpc-latency-us = <235>;
+		qcom,fastrpc-gids = <2908>;
+		qcom,qos-cores = <0 1 2 3 4 5>;
+
+		qcom,msm_fastrpc_compute_cb1 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x1003 0x0>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb2 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x1004 0x0>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb3 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x1005 0x0>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+			shared-cb = <2>;
+		};
+	};
+
 	clk_virt: interconnect@0 {
 		compatible = "qcom,ravelin-clk_virt";
 		#interconnect-cells = <1>;
@@ -1234,7 +1349,7 @@
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
 
-	conc3: interconnect@1510000 {
+	cnoc3: interconnect@1510000 {
 		reg = <0x01510000 0xF200>;
 		compatible = "qcom,ravelin-cnoc3";
 		#interconnect-cells = <1>;
@@ -1337,6 +1452,34 @@
 		qcom,smem-states = <&adsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
 
+		glink_edge: glink-edge {
+			qcom,remote-pid = <2>;
+			transport = "smem";
+			mboxes = <&ipcc_mproc IPCC_CLIENT_LPASS
+				  IPCC_MPROC_SIGNAL_GLINK_QMP>;
+			mbox-names = "adsp_smem";
+			interrupt-parent = <&ipcc_mproc>;
+			interrupts = <IPCC_CLIENT_LPASS
+				      IPCC_MPROC_SIGNAL_GLINK_QMP
+				      IRQ_TYPE_EDGE_RISING>;
+
+			label = "adsp";
+			qcom,glink-label = "lpass";
+
+			qcom,adsp_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+			qcom,msm_fastrpc_rpmsg {
+				compatible = "qcom,msm-fastrpc-rpmsg";
+				qcom,glink-channels = "fastrpcglink-apps-dsp";
+				qcom,intents = <0x64 64>;
+			};
+		};
+
 	};
 
 	modem_pas: remoteproc-mss@04080000 {
@@ -1375,8 +1518,37 @@
 		qcom,smem-states = <&modem_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
 
+		glink-edge {
+			qcom,remote-pid = <1>;
+			transport = "smem";
+			mboxes = <&ipcc_mproc IPCC_CLIENT_MPSS
+				  IPCC_MPROC_SIGNAL_GLINK_QMP>;
+			mbox-names = "mpss_smem";
+			interrupt-parent = <&ipcc_mproc>;
+			interrupts = <IPCC_CLIENT_MPSS
+				      IPCC_MPROC_SIGNAL_GLINK_QMP
+				      IRQ_TYPE_EDGE_RISING>;
+
+			label = "modem";
+			qcom,glink-label = "mpss";
+
+			qcom,modem_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,low-latency;
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+			qcom,modem_ds {
+				qcom,glink-channels = "DS";
+				qcom,intents = <0x4000 0x2>;
+			};
+		};
 	};
 
+	thermal_zones: thermal-zones {
+	};
 };
 
 #include "ravelin-pinctrl.dtsi"
@@ -1464,3 +1636,5 @@
 	sw-reset = <&gpu_cc_gx_sw_reset>;
 	status = "ok";
 };
+
+#include "ravelin-thermal.dtsi"

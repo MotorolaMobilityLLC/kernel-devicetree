@@ -847,6 +847,11 @@
 			reg = <0x87>;
 			#clock-cells = <1>;
 		};
+
+		scmi_shared_rail: protocol@88 {
+			reg = <0x88>;
+			#clock-cells = <1>;
+		};
 	};
 
 	rimps_log: qcom,rimps_log@17d09c00 {

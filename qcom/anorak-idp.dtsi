@@ -96,7 +96,7 @@
 };
 
 &pmxr2230_flash {
-	status = "ok";
+	status = "disabled";
 };
 
 &battery_charger {
