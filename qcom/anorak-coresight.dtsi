@@ -1256,31 +1256,10 @@
 		};
 	};
 
-	tpdm_llm_silver: tpdm@128a0000 {
+	tpdm_llm_gold: tpdm@128a0000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x128a0000 0x1000>;
-		reg-names = "tpdm-base";
-
-		coresight-name = "coresight-tpdm-llm-silver";
-		atid = <66>;
-		clocks = <&aoss_qmp>;
-		clock-names = "apb_pclk";
-
-		out-ports {
-			port {
-				tpdm_llm_silver_out_tpda_apss: endpoint {
-					remote-endpoint =
-					<&tpda_apss_in_tpdm_llm_silver>;
-				};
-			};
-		};
-	};
-
-	tpdm_llm_gold: tpdm@128b0000 {
-		compatible = "arm,primecell";
-		arm,primecell-periphid = <0x000bb968>;
-		reg = <0x128b0000 0x1000>;
 		reg-names = "tpdm-base";
 
 		coresight-name = "coresight-tpdm-llm-gold";
@@ -1293,6 +1272,27 @@
 				tpdm_llm_gold_out_tpda_apss: endpoint {
 					remote-endpoint =
 					<&tpda_apss_in_tpdm_llm_gold>;
+				};
+			};
+		};
+	};
+
+	tpdm_llm_gold_plus: tpdm@128b0000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb968>;
+		reg = <0x128b0000 0x1000>;
+		reg-names = "tpdm-base";
+
+		coresight-name = "coresight-tpdm-llm-gold-plus";
+		atid = <66>;
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+
+		out-ports {
+			port {
+				tpdm_llm_gold_plus_out_tpda_apss: endpoint {
+					remote-endpoint =
+					<&tpda_apss_in_tpdm_llm_gold_plus>;
 				};
 			};
 		};
@@ -1395,6 +1395,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
+		status = "disabled";
 		qcom,cmb-msr-skip;
 		out-ports {
 			port {
@@ -1484,12 +1485,10 @@
 
 		qcom,tpda-atid = <99>;
 
-		qcom,dsb-elem-size = <2 32>;
-		qcom,cmb-elem-size = <0 64>,
-					<1 64>,
-					<2 64>,
-					<3 64>;
-
+		qcom,cmb-elem-size = <0 32>,
+					<1 32>,
+					<2 32>,
+					<3 32>;
 
 		in-ports {
 
@@ -1556,7 +1555,6 @@
 		qcom,tpda-atid = <75>;
 
 		qcom,dsb-elem-size = <2 32>;
-		qcom,cmb-elem-size = <1 32>;
 
 		in-ports {
 
@@ -1646,7 +1644,7 @@
 		qcom,tpda-atid = <85>;
 
 		status = "disabled";
-		qcom,dsb-elem-size = <2 32>;
+		qcom,dsb-elem-size = <1 32>;
 		qcom,cmb-elem-size = <0 32>,
 					<1 32>,
 					<2 64>;
@@ -1708,7 +1706,8 @@
 
 		qcom,dsb-elem-size = <4 32>;
 		qcom,cmb-elem-size = <0 32>,
-					<2 64>;
+					<1 32>,
+					<3 64>;
 
 		in-ports {
 
@@ -1717,17 +1716,17 @@
 
 			port@0 {
 				reg = <0>;
-				tpda_apss_in_tpdm_llm_silver: endpoint {
+				tpda_apss_in_tpdm_llm_gold: endpoint {
 					remote-endpoint =
-					<&tpdm_llm_silver_out_tpda_apss>;
+					<&tpdm_llm_gold_out_tpda_apss>;
 				};
 			};
 
 			port@1 {
 				reg = <1>;
-				tpda_apss_in_tpdm_llm_gold: endpoint {
+				tpda_apss_in_tpdm_llm_gold_plus: endpoint {
 					remote-endpoint =
-					<&tpdm_llm_gold_out_tpda_apss>;
+					<&tpdm_llm_gold_plus_out_tpda_apss>;
 				};
 			};
 
@@ -1773,25 +1772,22 @@
 
 		qcom,tpda-atid = <78>;
 
-		qcom,dsb-elem-size = <0 32>,
-					<4 32>,
+		qcom,dsb-elem-size = <4 32>,
 					<5 32>,
 					<7 32>,
 					<15 32>,
 					<17 32>,
 					<20 32>,
 					<21 32>,
-					<25 32>,
 					<26 32>;
-		qcom,cmb-elem-size = <0 32>,
-					<7 32>,
+
+		qcom,cmb-elem-size = <7 32>,
 					<8 64>,
 					<13 64>,
 					<14 64>,
 					<16 32>,
 					<19 32>,
 					<22 32>,
-					<25 64>,
 					<27 64>;
 
 		in-ports {
@@ -1962,10 +1958,13 @@
 
 		qcom,tpda-atid = <81>;
 
-		qcom,dsb-elem-size = <2 32>;
-		qcom,cmb-elem-size = <0 32>,
+		qcom,dsb-elem-size = <0 32>,
 					<1 32>,
-					<2 64>;
+					<2 32>,
+					<5 32>;
+
+		qcom,cmb-elem-size = <1 32>,
+					<2 32>;
 
 		in-ports {
 
@@ -2030,7 +2029,7 @@
 		qcom,tpda-atid = <97>;
 
 		qcom,dsb-elem-size = <2 32>;
-		qcom,cmb-elem-size = <0 32>;
+		qcom,cmb-elem-size = <1 32>;
 
 		in-ports {
 
@@ -2530,8 +2529,8 @@
 		in-ports {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			port@4 {
-				reg = <4>;
+			port@3 {
+				reg = <3>;
 				funnel_turing_dup_in_turing_etm: endpoint {
 					remote-endpoint =
 					<&turing_etm_out_funnel_turing_dup>;
@@ -2582,8 +2581,8 @@
 				};
 			};
 
-			port@5 {
-				reg = <5>;
+			port@4 {
+				reg = <4>;
 					funnel_turing_in_funnel_turing_dup: endpoint {
 					remote-endpoint =
 					<&funnel_turing_dup_out_funnel_turing>;

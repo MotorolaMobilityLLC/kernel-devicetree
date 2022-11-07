@@ -165,6 +165,7 @@
 			power-domains = <&CPU_PD4>;
 			power-domain-names = "psci";
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
+			next-level-cache = <&L2_4>;
 			#cooling-cells = <2>;
 			L2_4: l2-cache {
 				compatible = "arm,arch-cache";
@@ -2862,6 +2863,7 @@
 		qcom,ipa-hw-mode = <0>;
 		qcom,platform-type = <1>; /* MSM platform */
 		qcom,ee = <0>;
+		qcom,entire-ipa-block-size = <0x200000>;
 		qcom,use-ipa-tethering-bridge;
 		qcom,mhi-event-ring-id-limits = <9 11>; /* start and end */
 		qcom,modem-cfg-emb-pipe-flt;

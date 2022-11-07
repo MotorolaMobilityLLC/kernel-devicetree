@@ -194,3 +194,18 @@
 		<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>,
 		<&gcc GCC_GPU_SNOC_DVM_GFX_CLK>;
 };
+
+&debugcc {
+	clocks = <&bi_tcxo>,
+		<&gcc 0>, <&camcc 0>,
+		<&dispcc 0>, <&gpucc 0>;
+};
+
+&rpmhcc {
+	compatible = "qcom,dummycc";
+	clock-output-names = "rpmhcc_clocks";
+};
+
+&cpufreq_hw {
+	clocks = <&bi_tcxo>, <&gcc GCC_GPLL0>;
+};

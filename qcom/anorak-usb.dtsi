@@ -89,6 +89,7 @@
 		vdda18-supply = <&L10B>;
 		vdda33-supply = <&L15B>;
 		refgen-supply = <&L2F>;
+		qcom,vdd18-max-load-uA = <50000>;
 		qcom,vdd-voltage-level = <0 880000 918750>;
 		qcom,refgen-voltage-level = <0 880000 925000>;
 
