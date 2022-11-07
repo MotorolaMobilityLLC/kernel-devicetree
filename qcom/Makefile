@@ -661,6 +661,13 @@ dtb-$(CONFIG_ARCH_QTI_VM) +=  \
 endif
 endif
 
+ifeq ($(CONFIG_ARCH_RAVELIN), y)
+ifeq ($(CONFIG_ARCH_QTI_VM), y)
+dtb-$(CONFIG_ARCH_QTI_VM) +=  \
+	ravelin-vm-rumi.dtb
+endif
+endif
+
 always-y	:= $(dtb-y)
 subdir-y	:= $(dts-dirs)
 clean-files	:= *.dtb *.dtbo
