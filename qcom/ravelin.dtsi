@@ -1522,15 +1522,21 @@
 		feat_conf13: feat_conf13@0134 {
 			reg = <0x0134 0x4>;
 		};
+
+		boot_config: boot_config@600 {
+			reg = <0x600 0x1>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
 
 		nvmem-cells = <&feat_conf12>,
-				<&feat_conf13>;
+				<&feat_conf13>,
+				<&boot_config>;
 		nvmem-cell-names = "feat_conf12",
-				"feat_conf13";
+				"feat_conf13",
+				"boot_config";
 	};
 
 	adsp_pas: remoteproc-adsp@03000000 {
