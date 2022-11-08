@@ -318,7 +318,19 @@
 
 		usecase4_apps_dma {
 			compatible = "qcom,iommu-debug-usecase";
+			iommus = <&apps_smmu 0x7e1 0>;
+			dma-coherent;
+		};
+
+		usecase5_kgsl_dma {
+			compatible = "qcom,iommu-debug-usecase";
 			iommus = <&kgsl_smmu 0x7 0x400>;
+		};
+
+		usecase6_kgsl_dma {
+			compatible = "qcom,iommu-debug-usecase";
+			iommus = <&kgsl_smmu 0x407 0x400>;
+			dma-coherent;
 		};
 	};
 };
