@@ -123,7 +123,6 @@
 
 	lab-supply = <&lcd_panel_avdd>;
 	ibb-supply = <&lcd_panel_avee>;
-	vddio-supply = <&L13A>;
 
 	qcom,dsi-default-panel = <&dsi_djn_nt36528_hdplus_video>;
 };
