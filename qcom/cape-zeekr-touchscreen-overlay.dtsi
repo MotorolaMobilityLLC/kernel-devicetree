@@ -177,6 +177,6 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,cli-enable-gestures;
-		mmi,cli_supported_gesture_type = <0x06>;
+		mmi,supported_gesture_type = <0x06>;
     };
 };
