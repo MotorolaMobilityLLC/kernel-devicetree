@@ -108,7 +108,7 @@ SoCs:
   compatible = "qcom,anorak"
 
 - RAVELIN
-  compatible = "qcom,ravelin"
+  compatible = "qcom,ravelin", "qcom,ravelinp"
 
 - MONTAGUE
   compatible = "qcom,montague", "qcom,montaguep"
@@ -318,6 +318,9 @@ compatible = "qcom,ravelin-rumi"
 compatible = "qcom,ravelin-atp"
 compatible = "qcom,ravelin-idp"
 compatible = "qcom,ravelin-qrd"
+compatible = "qcom,ravelinp-atp"
+compatible = "qcom,ravelinp-idp"
+compatible = "qcom,ravelinp-qrd"
 compatible = "qcom,montague-rumi"
 compatible = "qcom,montague-idp"
 compatible = "qcom,montague-qrd"
