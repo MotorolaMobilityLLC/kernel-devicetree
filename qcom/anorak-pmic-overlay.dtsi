@@ -544,6 +544,10 @@
 	nvmem = <&pmk8550_sdam_46>;
 };
 
+&pmk8550_pwrkey {
+	qcom,log-kpd-event;
+};
+
 &soc {
 
 	reboot_reason {
