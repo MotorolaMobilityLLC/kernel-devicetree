@@ -1,4 +1,5 @@
 #include "ravelin.dtsi"
+#include "ravelin-low-memory.dtsi"
 / {
 };
 
