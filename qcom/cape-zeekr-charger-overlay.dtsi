@@ -103,6 +103,7 @@
 		wls-current-limit-microamp = <200000>;
 
 		mmi,ext-usb-psy-name = "usb";
+		mmi,ext-wls-psy-name = "wireless";
 		mmi,fg-psy-name = "flip_battery";
 		mmi,chrg-iterm-ma = <100>;
 		mmi,fg-iterm-ma = <100>;
