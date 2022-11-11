@@ -60,6 +60,19 @@
 	ssusb_redriver = <&redriver>;
 };
 
+&pm8550b_eusb2_repeater {
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* Squelch detection threshold */
+		 0x5 0x54
+		/* Tx pre-emphasis tuning */
+		 0x6 0x57>;
+};
+
 &apps_rsc_drv2 {
        rpmh-regulator-ldob4 {
                compatible = "qcom,rpmh-vrm-regulator";
