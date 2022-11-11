@@ -73,6 +73,8 @@
 		sgm,18w_iindpm_comp;
 		/* enable dynamic adjust battery voltage */
 		enable_dynamic_adjust_batvol;
+		/* enable dynamic adjust vindpm */
+		enable_dynamic_adjust_vindpm;
                 enable_sw_jeita;
                 jeita_temp_above_t4_cv = <0>;
                 jeita_temp_t3_to_t4_cv = <4100000>;
@@ -118,6 +120,9 @@
                 mmi,qc3-support;
 		/* enable dynamic adjust battery voltage */
 		enable_dynamic_adjust_batvol;
+		/* enable dynamic adjust vindpm */
+		enable_dynamic_adjust_vindpm;
+
                 ti,bq2589x,vbus-volt-high-level = <8700>;/* tune adapter to output 9v */
                 ti,bq2589x,vbus-volt-low-level = <4400>;/* tune adapter to output 5v */
                 ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
