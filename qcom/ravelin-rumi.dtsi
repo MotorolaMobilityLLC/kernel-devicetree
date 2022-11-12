@@ -87,7 +87,7 @@
 
 };
 
-&qupv3_se2_2uart {
+&qupv3_se7_2uart {
 	qcom,rumi_platform;
 };
 

@@ -41,7 +41,9 @@
 	};
 
 	aliases: aliases {
-		serial0 = &qupv3_se2_2uart;
+		serial0 = &qupv3_se7_2uart; /* Debug UART */
+		serial1 = &qupv3_se0_2uart; /* HST debug UART */
+		hsuart0 = &qupv3_se2_4uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc0 = &sdhc_1; /*SDC1 eMMC slot*/
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
@@ -560,6 +562,32 @@
 			#power-domain-cells = <0>;
 			domain-idle-states = <&CLUSTER_OFF &CX_RET>;
 		};
+	};
+
+	slimbam: bamdma@3304000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0x3304000 0x20000>, <0x326b000 0x1000>;
+		reg-names = "bam", "bam_remote_mem";
+		num-channels  = <31>;
+		interrupts = <0 164 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_msm: slim@3340000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0x3340000 0x2C000>, <0x326a000 0x1000>;
+		reg-names = "ctrl", "slimbus_remote_mem";
+		interrupts = <0 163 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,apps-ch-pipes = <0x0>;
+		qcom,ea-pc = <0x480>;
+		dmas = <&slimbam 3>, <&slimbam 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
 	};
 
 	cluster-device {
@@ -1869,7 +1897,7 @@
 #include "ipcc-test-ravelin.dtsi"
 #include "ravelin-qupv3.dtsi"
 
-&qupv3_se2_2uart {
+&qupv3_se7_2uart {
 	status = "ok";
 };
 
