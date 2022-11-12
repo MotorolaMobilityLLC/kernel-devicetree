@@ -2,5 +2,9 @@
 / {
 };
 
+&mem_client_3_size {
+	qcom,peripheral-size = <0x200000>;
+};
+
 &soc {
 };
