@@ -198,3 +198,59 @@
 &pm7250b_pdphy {
 	status = "disabled";
 };
+
+&pm7250b_gpios {
+	display_panel_supply_ctrl {
+		display_panel_vddio_default: display_panel_vddio_default {
+			pins = "gpio11";
+			function = "normal";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <0>;
+			qcom,drive-strength = <2>;
+		};
+
+		display_panel_extvdd_default: display_panel_extvdd_default {
+			pins = "gpio12";
+			function = "normal";
+			input-disable;
+			output-enable;
+			bias-disable;
+			power-source = <0>;
+			qcom,drive-strength = <2>;
+		};
+	};
+};
+
+&soc {
+	display_panel_vddio: display_gpio_regulator@1 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "display_panel_vddio";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&pm7250b_gpios 11 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&display_panel_vddio>;
+		qcom,proxy-consumer-enable;
+		pinctrl-names = "default";
+		pinctrl-0 = <&display_panel_vddio_default>;
+	};
+
+	display_panel_extvdd: display_gpio_regulator@2 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "display_panel_extvdd";
+		regulator-min-microvolt = <1200000>;
+		regulator-max-microvolt = <1200000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&pm7250b_gpios 12 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&display_panel_extvdd>;
+		qcom,proxy-consumer-enable;
+		pinctrl-names = "default";
+		pinctrl-0 = <&display_panel_extvdd_default>;
+	};
+};
