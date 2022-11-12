@@ -19,6 +19,8 @@
 	};
 
 	qcom,vm-config {
+		iomemory-ranges = <0x0 0xae8f000 0x0 0xae8f000 0x0 0x1000 0x0>;
+
 		vdevices {
 			gvsock-message-queue-pair {
 				status = "disabled";
