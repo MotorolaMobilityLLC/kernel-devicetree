@@ -14,6 +14,14 @@
 	status = "disabled";
 };
 
+&non_secure_display_dma_buf {
+	status = "disabled";
+};
+
+&non_secure_display_memory {
+	status = "disabled";
+};
+
 &soc {
 	qcom,guestvm_loader@e0b00000 {
 		status = "disabled";
