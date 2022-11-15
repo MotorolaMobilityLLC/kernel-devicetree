@@ -4,3 +4,31 @@
 &soc {
 };
 
+&qupv3_se1_spi {
+	status = "ok";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+	qcom,spi-touch-active = "focaltech,fts_ts";
+
+	focaltech@0 {
+		compatible = "focaltech,fts_ts";
+		reg = <0x0>;
+		spi-max-frequency = <6000000>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <91 0x2008>;
+		focaltech,reset-gpio = <&tlmm 90 0x00>;
+		focaltech,irq-gpio = <&tlmm 91 0x2008>;
+		focaltech,display-coords = <0 0 1080 2340>;
+		focaltech,max-touch-number = <5>;
+		focaltech,ic-type = <0x3658D488>;
+		focaltech,touch-type = "primary";
+
+		vdd-supply = <&L4E>;
+
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_spi_active>;
+		pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
+		pinctrl-2 = <&ts_spi_release>;
+	};
+};
