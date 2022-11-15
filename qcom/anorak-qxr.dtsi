@@ -274,8 +274,8 @@
 };
 
 &battery_charger {
-	qcom,wireless-fw-name = "idt9418.bin";
 	qcom,thermal-mitigation-step = <500000>;
+	qcom,wireless-charging-not-supported;
 };
 
 &msm_sdexpress {

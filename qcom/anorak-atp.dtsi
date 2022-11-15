@@ -46,7 +46,7 @@
 };
 
 &battery_charger {
-	qcom,wireless-fw-name = "idt9418.bin";
+	qcom,wireless-charging-not-supported;
 };
 
 &msm_sdexpress {
