@@ -102,7 +102,6 @@ wlan_kiwi: qcom,cnss-kiwi@b0000000 {
 		qcom,wlan;
 		qcom,wlan-rc-num = <0>;
 		qcom,wlan-ramdump-dynamic = <0x780000>;
-		qcom,wlan-cbc-enabled;
 		use-pm-domain;
 		qcom,same-dt-multi-dev;
 		mboxes = <&qmp_aop 0>;
