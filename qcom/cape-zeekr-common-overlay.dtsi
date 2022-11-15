@@ -64,3 +64,52 @@
 &sdhc_2 {
         status = "disabled";
 };
+
+&soc {
+	gpio_keys {
+		status = "disabled";
+	};
+
+	gpio_keys_swap {
+		compatible = "gpio-keys-swap";
+		label = "gpio-keys-swap";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>;
+
+		vol_up {
+			label = "volume_up";
+			gpios = <&pm8350_gpios 6 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_VOLUMEUP>;
+			mmi,key-swap-code = <KEY_VOLUMEDOWN>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+
+	key_swap {
+		compatible = "mmi,key_swap";
+		gpios = <&tlmm 115 0>;
+		key_swap,poll;
+		action-0 {
+			action-type = "swap";
+			code = <KEY_VOLUMEDOWN>;
+			swap = <KEY_VOLUMEUP>;
+		};
+		action-1 {
+			action-type = "swap";
+			swap = <KEY_VOLUMEDOWN>;
+			code = <KEY_VOLUMEUP>;
+		};
+	};
+};
+
+&pmk8350 {
+	pon_hlos@1300 {
+		resin {
+			mmi,key-swap-code = <KEY_VOLUMEUP>;
+		};
+	};
+};
