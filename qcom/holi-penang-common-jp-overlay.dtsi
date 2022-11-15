@@ -441,7 +441,7 @@
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
                 thermal-governor = "user_space";
-                thermal-sensors = <&pmk8350_adc_tm PMK8350_ADC7_AMUX_THM4_100K_PU>;
+                thermal-sensors = <&pm6125_adc_tm_iio ADC5_GPIO2_100K_PU>;
                 wake-capable-sensor;
                 trips {
                         active-config0 {
@@ -483,7 +483,6 @@
         };
 
 };
-
 &qupv3_se8_i2c {
 
 	status = "ok";
