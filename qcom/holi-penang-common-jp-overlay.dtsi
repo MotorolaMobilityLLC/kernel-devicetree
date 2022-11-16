@@ -437,7 +437,7 @@
                 };
         };
 
-        usb_therm {
+        conn_therm {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
                 thermal-governor = "user_space";
