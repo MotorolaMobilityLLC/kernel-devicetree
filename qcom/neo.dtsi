@@ -612,7 +612,7 @@
 		};
 	};
 	cache_controller: cache-controller@19200000 {
-		compatible = "qcom,neo-xr-llcc", "qcom,llcc-v31";
+		compatible = "qcom,neo-llcc", "qcom,llcc-v31";
 		reg = <0x19200000 0x180000>, <0x19A00000 0x80000>,
 		      <0x19AF0000 0x8000>, <0x19CF0000 0x8000>;
 		reg-names = "llcc_base", "llcc_broadcast_base",
