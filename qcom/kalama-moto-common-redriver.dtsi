@@ -2,9 +2,9 @@ redriver:redriver@30{
 	compatible = "parade,ps5169-redriver";
 	reg = <0x30>;
 	vcc-supply = <&L15B>;
-	pinctrl-names = "enable_gpio", "disable_gpio";
+	pinctrl-names = "default";
 	pinctrl-0 = <&redriver_enable>;
-	pinctrl-1 = <&redriver_disable>;
+	redriver,enable-gpio = <&tlmm 22 0x00>;
 	redriver,orientation-gpio = <&tlmm 11 0x00>;
 	config-seq =
 		/* <reg_offset, value, delay_us> */
