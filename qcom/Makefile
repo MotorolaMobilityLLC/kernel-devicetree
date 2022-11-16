@@ -502,13 +502,13 @@ dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	montague-rcm-overlay.dtbo
 
 ravelin-rumi-overlay.dtbo-base := ravelin.dtb
-ravelin-atp-overlay.dtbo-base := ravelin.dtb
-ravelin-idp-overlay.dtbo-base := ravelin.dtb
-ravelin-idp-wcn3988-overlay.dtbo-base := ravelin.dtb
-ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo-base := ravelin.dtb
-ravelin-qrd-overlay.dtbo-base := ravelin.dtb
-ravelin-idp-4gb-overlay.dtbo-base := ravelin-4gb.dtb
-ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb
+ravelin-atp-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
+ravelin-idp-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
+ravelin-idp-wcn3988-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
+ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
+ravelin-qrd-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
+ravelin-idp-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb
+ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-qrd-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
@@ -523,6 +523,13 @@ dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	ravelin-qrd.dtb \
 	ravelin-idp-4gb.dtb \
 	ravelin-qrd-4gb.dtb \
+	ravelinp-atp.dtb \
+	ravelinp-idp.dtb \
+	ravelinp-idp-wcn3988.dtb \
+	ravelinp-idp-wcn3950-amoled-rcm.dtb \
+	ravelinp-qrd.dtb \
+	ravelinp-idp-4gb.dtb \
+	ravelinp-qrd-4gb.dtb \
 	montague-rumi.dtb \
 	montague-qrd.dtb \
 	montague-hsp.dtb \

@@ -1,0 +1,10 @@
+#include "ravelin.dtsi"
+/ {
+	model = "Qualcomm Technologies, Inc. RavelinP";
+	compatible = "qcom,ravelinp";
+	qcom,msm-id = <602 0x10000>;
+};
+
+&ipa_hw {
+	status = "disabled";
+};
