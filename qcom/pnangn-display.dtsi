@@ -267,3 +267,11 @@
                        ocp,lcd-bias-enp-gpio = <&tlmm 86 0>;
         };
 };
+
+&qupv3_se7_i2c_sleep {
+	config {
+		/delete-property/ bias-disable;
+		bias-pull-up;
+		input-enable;
+	};
+};
