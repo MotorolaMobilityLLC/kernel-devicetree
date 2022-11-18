@@ -565,23 +565,29 @@ dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
 		anorak-qxr-overlay.dtbo \
 		anorak-atp-overlay.dtbo \
 		anorak-idp-hmt-overlay.dtbo \
+		anorak-qxr-hmt-ufs-ref-overlay.dtbo \
 		anorak-qxr-hmt-overlay.dtbo \
-		anorak-idp-sd-overlay.dtbo
+		anorak-idp-sd-overlay.dtbo \
+		anorak-idp-top-hmt-overlay.dtbo
 anorak-rumi-overlay.dtbo-base := anorak.dtb
 anorak-idp-overlay.dtbo-base := anorak.dtb
 anorak-qxr-overlay.dtbo-base := anorak.dtb
 anorak-atp-overlay.dtbo-base := anorak.dtb
 anorak-idp-hmt-overlay.dtbo-base := anorak.dtb
+anorak-qxr-hmt-ufs-ref-overlay.dtbo-base := anorak.dtb
 anorak-qxr-hmt-overlay.dtbo-base := anorak.dtb
 anorak-idp-sd-overlay.dtbo-base := anorak.dtb
+anorak-idp-top-hmt-overlay.dtbo-base := anorak.dtb
 else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
 		anorak-idp.dtb \
 		anorak-qxr.dtb \
 		anorak-atp.dtb \
 		anorak-idp-hmt.dtb \
+		anorak-qxr-hmt-ufs-ref.dtb \
 		anorak-qxr-hmt.dtb \
-		anorak-idp-sd.dtb
+		anorak-idp-sd.dtb \
+		anorak-idp-top-hmt.dtb
 endif
 
 ifeq ($(CONFIG_ARCH_LAHAINA), y)
@@ -652,6 +658,19 @@ dtb-$(CONFIG_ARCH_QTI_VM) +=  \
 	parrot-vm-idp-wcn6750-amoled-rcm.dtb \
 	parrot-vm-qrd.dtb \
 	parrot-vm-qrd-wcn6750.dtb
+endif
+endif
+
+ifeq ($(CONFIG_ARCH_RAVELIN), y)
+ifeq ($(CONFIG_ARCH_QTI_VM), y)
+dtb-$(CONFIG_ARCH_QTI_VM) +=  \
+	ravelin-vm-rumi.dtb \
+	ravelin-vm-atp.dtb \
+	ravelin-vm-idp.dtb \
+	ravelin-vm-idp-wcn3988.dtb \
+	ravelin-vm-idp-wcn3950-amoled-rcm.dtb \
+	ravelin-vm-qrd.dtb
+
 endif
 endif
 
