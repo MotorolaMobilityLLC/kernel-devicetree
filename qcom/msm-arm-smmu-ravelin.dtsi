@@ -21,7 +21,7 @@
 
 		qcom,actlr =
 			/* All CBs of GFX: +15 deep PF */
-			<0x0 0x1FFF 0x328>;
+			<0x0 0x1FFF 0x32B>;
 
 		clocks = <&gpucc GPU_CC_CX_GMU_CLK>,
 			<&gpucc GPU_CC_HUB_CX_INT_CLK>,
@@ -318,7 +318,19 @@
 
 		usecase4_apps_dma {
 			compatible = "qcom,iommu-debug-usecase";
+			iommus = <&apps_smmu 0x7e1 0>;
+			dma-coherent;
+		};
+
+		usecase5_kgsl_dma {
+			compatible = "qcom,iommu-debug-usecase";
 			iommus = <&kgsl_smmu 0x7 0x400>;
+		};
+
+		usecase6_kgsl_dma {
+			compatible = "qcom,iommu-debug-usecase";
+			iommus = <&kgsl_smmu 0x407 0x400>;
+			dma-coherent;
 		};
 	};
 };
