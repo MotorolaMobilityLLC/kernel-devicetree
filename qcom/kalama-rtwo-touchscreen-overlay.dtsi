@@ -61,6 +61,7 @@
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
 		goodix,sample-ctrl;
+		mmi,support-liquid-detection;
 	};
 };
 
