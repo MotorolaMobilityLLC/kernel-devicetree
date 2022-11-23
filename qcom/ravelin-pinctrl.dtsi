@@ -1425,5 +1425,20 @@
 				};
 			};
 		};
+
+		usb_phy_ps: usb_phy_ps {
+			usb3phy_portselect_default: usb3phy_portselect_default {
+				mux {
+					pins = "gpio94";
+					function = "usb0_phy_ps";
+				};
+
+				config {
+					pins = "gpio94";
+					bias-disable;
+					drive-strength = <2>;
+				};
+			};
+		};
 	};
 };
