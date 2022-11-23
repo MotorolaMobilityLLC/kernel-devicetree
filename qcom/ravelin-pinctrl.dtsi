@@ -1200,6 +1200,19 @@
 			};
 		};
 
+		trigout_a: trigout_a {
+			mux {
+				pins = "gpio26";
+				function = "qdss_cti";
+			};
+
+			config {
+				pins = "gpio26";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
 		/* touchscreen pins */
 		pmx_ts_active {
 			ts_active: ts_active {
