@@ -6,3 +6,12 @@
 	qcom,msm-id = <581 0x10000>;
 };
 
+&apps_rsc {
+	rpmh-regulator-sf1-vreg-enable {
+		status = "ok";
+	};
+
+	rpmh-regulator-sf1-vreg-mode {
+		status = "ok";
+	};
+};
