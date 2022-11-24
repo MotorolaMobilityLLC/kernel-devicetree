@@ -11,8 +11,12 @@
  */
 
 &pm8550b_haptics {
-	qcom,vmax-mv = <1470>;
-	qcom,lra-period-us = <5880>;
+	qcom,rt-imp-detect;
+	qcom,vmax-mv = <1400>;
+	qcom,lra-period-us = <5714>;
+	moto,lra-period-us-min = <5555>;
+	moto,lra-period-us-max = <6250>;
+	moto,cal_again;
 	status = "ok";
 
 	effect_0 {
