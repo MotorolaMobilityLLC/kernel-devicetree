@@ -14,7 +14,7 @@ pm08-atl-790mah {
 	serialnum = "SB18D64677";
 	fcc_design = <790>;
 	ui_full = <98>;
-	config_profile_info = [46 00 00 00 00 00 00 00
+	config_profile_info = [32 00 00 00 00 00 00 0d
 				a4 be c4 cb b8 ae c7 a5
 				97 ff dc 9c 81 63 52 45
 				3a 30 25 71 4e e1 38 de
@@ -23,5 +23,5 @@ pm08-atl-790mah {
 				80 7d 88 91 a8 9b 58 e6
 				20 00 ab 10 00 82 70 00
 				00 00 64 0d 91 67 00 00
-				00 00 00 00 00 00 00 cc];
+				00 00 00 00 00 00 00 15];
 };
