@@ -197,6 +197,6 @@
 		USB3_DP_PCS_USB3_RXEQTRAINING_DFE_TIME_S2                  0x07
 		USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_L                        0x40
 		USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_H                        0x00
-		USB3_DP_QSERDES_TXA_TX_DRV_LVL                             0x38
-		USB3_DP_QSERDES_TXB_TX_DRV_LVL                             0x38>;
+		USB3_DP_QSERDES_TXA_TX_DRV_LVL                             0x36
+		USB3_DP_QSERDES_TXB_TX_DRV_LVL                             0x36>;
 };
