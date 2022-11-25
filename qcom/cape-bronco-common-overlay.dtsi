@@ -112,6 +112,7 @@
 
 &redriver {
 	status = "ok";
+	redriver,enable-gpio = <&tlmm 54 0x00>;
 };
 
 &usb0 {
