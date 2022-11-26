@@ -14,8 +14,8 @@
 	qcom,rt-imp-detect;
 	qcom,vmax-mv = <1400>;
 	qcom,lra-period-us = <5714>;
-	moto,lra-period-us-min = <5555>;
-	moto,lra-period-us-max = <6250>;
+	moto,lra-period-us-min = <5406>;
+	moto,lra-period-us-max = <6451>;
 	moto,cal_again;
 	status = "ok";
 
