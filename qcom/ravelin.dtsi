@@ -79,7 +79,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD0>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			next-level-cache = <&L2_0>;
 			#cooling-cells = <2>;
 			L2_0: l2-cache {
@@ -104,7 +104,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD1>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			next-level-cache = <&L2_1>;
 			#cooling-cells = <2>;
 			L2_1: l2-cache {
@@ -124,7 +124,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD2>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			next-level-cache = <&L2_2>;
 			#cooling-cells = <2>;
 			L2_2: l2-cache {
@@ -144,7 +144,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD3>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			next-level-cache = <&L2_3>;
 			#cooling-cells = <2>;
 			L2_3: l2-cache {
@@ -166,7 +166,7 @@
 			power-domain-names = "psci";
 			next-level-cache = <&L2_4>;
 			#cooling-cells = <2>;
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			L2_4: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -184,7 +184,7 @@
 			cpu-idle-states = <&SILVER_CPU_OFF &SILVER_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD5>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 0 6>;
+			qcom,freq-domain = <&cpufreq_hw 0 8>;
 			next-level-cache = <&L2_5>;
 			#cooling-cells = <2>;
 			L2_5: l2-cache {
@@ -204,7 +204,7 @@
 			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD6>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 1 2>;
+			qcom,freq-domain = <&cpufreq_hw 1 8>;
 			next-level-cache = <&L2_6>;
 			#cooling-cells = <2>;
 			L2_6: l2-cache {
@@ -224,7 +224,7 @@
 			cpu-idle-states = <&GOLD_CPU_OFF &GOLD_CPU_RAIL_OFF>;
 			power-domains = <&CPU_PD7>;
 			power-domain-names = "psci";
-			qcom,freq-domain = <&cpufreq_hw 1 2>;
+			qcom,freq-domain = <&cpufreq_hw 1 8>;
 			next-level-cache = <&L2_7>;
 			#cooling-cells = <2>;
 			L2_7: l2-cache {
