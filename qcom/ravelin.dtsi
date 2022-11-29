@@ -1633,7 +1633,7 @@
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5>;
 				qcom,cpufreq-memfreq-tbl =
 					<  499200  307200 >,
-					<  672000  566400 >,
+					<  672000  576000 >,
 					<  806400  652800 >,
 					<  921600  825600 >,
 					< 1094400  940800 >,
@@ -1649,7 +1649,7 @@
 				qcom,cpulist = <&CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
 					<  691200  307200 >,
-					<  960000  566400 >,
+					<  960000  576000 >,
 					< 1190400  825600 >,
 					< 1344000  940800 >,
 					< 1651200 1209600 >,
@@ -1664,7 +1664,7 @@
 				qcom,cpulist = <&CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
 					< 2054400  307200 >,
-					< 2361600 1420800 >;
+					< 2361600  1401600 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
 			};
