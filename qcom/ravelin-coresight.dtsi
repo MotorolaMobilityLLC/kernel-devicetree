@@ -633,7 +633,7 @@
 		reg = <0x10ac0000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-dlct2-dsb";
 
 		clocks = <&aoss_qmp>;
@@ -655,7 +655,7 @@
 		reg = <0x10ac1000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-dlct2-cmb";
 
 		clocks = <&aoss_qmp>;
@@ -678,7 +678,7 @@
 		reg = <0x109c0000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-dl-south-dsb";
 
 		clocks = <&aoss_qmp>;
@@ -701,7 +701,7 @@
 		reg = <0x109c1000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-dl-south-cmb";
 
 		clocks = <&aoss_qmp>;
@@ -725,7 +725,7 @@
 		reg = <0x10c00000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-rdpm";
 
 		clocks = <&aoss_qmp>;
@@ -748,7 +748,7 @@
 		reg = <0x10c01000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <78>;
+		atid = <79>;
 		coresight-name = "coresight-tpdm-rdpm-mx";
 
 		clocks = <&aoss_qmp>;
