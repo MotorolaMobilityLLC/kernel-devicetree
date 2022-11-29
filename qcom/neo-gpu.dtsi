@@ -80,6 +80,7 @@
 				qcom,bus-min = <6>;
 				qcom,bus-max = <8>;
 
+				qcom,acd-level = <0xC8285FFD>;
 			};
 		};
 	};
