@@ -421,6 +421,12 @@
 				hysteresis = <1000>;
 				type = "passive";
 			};
+
+			fan_config0: fan-config0 {
+				temperature = <70000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
 		};
 	};
 
@@ -576,6 +582,7 @@
 
 	fancontroller: max31760@50 {
 		compatible = "maxim,max31760";
+		#cooling-cells = <2>;
 		reg = <0x50>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pwr_en_gpio_default
