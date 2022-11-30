@@ -1,6 +1,7 @@
 #include "ravelin-pmic-overlay.dtsi"
 #include "ravelin-pmi632.dtsi"
 #include "ravelin-thermal-overlay.dtsi"
+#include "ravelin-adrastea.dtsi"
 
 &soc {
 };
