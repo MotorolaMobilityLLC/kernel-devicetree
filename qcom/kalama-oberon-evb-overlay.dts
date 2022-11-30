@@ -36,3 +36,9 @@
 		/* Tx pre-emphasis tuning */
 		 0x6 0x57>;
 };
+
+&qupv3_se4_spi {
+	goodix-berlin@0 {
+		status = "disabled";
+	};
+};
