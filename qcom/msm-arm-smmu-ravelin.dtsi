@@ -332,5 +332,12 @@
 			iommus = <&kgsl_smmu 0x407 0x400>;
 			dma-coherent;
 		};
+
+		usecase7_apps_secure {
+			compatible = "qcom,iommu-debug-usecase";
+			iommus = <&apps_smmu 0x7e0 0>;
+			qcom,iommu-dma = "atomic";
+			qcom,iommu-vmid = <0xA>; /* VMID_CP_PIXEL */
+		};
 	};
 };
