@@ -296,6 +296,7 @@
 		pmxr2230_l10: regulator-pmxr2230-l10 {
 			regulator-name = "pmxr2230_l10";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			pmxr2230_l10-parent-supply = <&L1D>;
 			regulator-min-microvolt = <1620000>;
 			regulator-max-microvolt = <1800000>;
 			qcom,init-voltage = <1800000>;
@@ -399,6 +400,7 @@
 		pmxr2230_l15: regulator-pmxr2230-l15 {
 			regulator-name = "pmxr2230_l15";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			pmxr2230_l15-parent-supply = <&L10B>;
 			regulator-min-microvolt = <2700000>;
 			regulator-max-microvolt = <3544000>;
 			qcom,init-voltage = <3072000>;
