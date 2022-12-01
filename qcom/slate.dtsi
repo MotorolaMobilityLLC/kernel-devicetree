@@ -47,6 +47,12 @@
 			qcom,intents = <0x0C 1>;
 		};
 
+		qcom,glink-slatecom-qcli {
+			qcom,glink-channels = "slate-qcli";
+			qcom,intents = <0x0C 1>;
+			status = "ok";
+		};
+
 		qcom,glink-slate-rsb {
 			qcom,glink-channels = "slate-rsb-ctl";
 			qcom,intents = <0x0C 1>;
