@@ -10,10 +10,6 @@
 	status = "ok";
 };
 
-&cache_controller {
-	compatible = "qcom,neo-sg-v2-llcc", "qcom,llcc-v31";
-};
-
 &wlan_kiwi {
 	/delete-property/ vdd-wlan-supply;
 	/delete-property/ qcom,pdc_init_table;

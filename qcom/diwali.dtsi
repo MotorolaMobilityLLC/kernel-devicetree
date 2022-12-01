@@ -579,6 +579,7 @@
 		qcom,bt-reset-gpio = <&tlmm 114 0>; /* BT_EN */
 		qcom,bt-sw-ctrl-gpio = <&tlmm 83 0>; /* SW_CTRL */
 		qcom,wl-reset-gpio = <&tlmm 49 0>; /* WL_EN */
+		tsens = "quiet-therm";
 
 		qcom,bt-vdd-io-supply = <&L18B>;  /* IO */
 		qcom,bt-vdd-aon-supply = <&S7B>;
