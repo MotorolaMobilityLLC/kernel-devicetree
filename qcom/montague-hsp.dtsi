@@ -8,3 +8,11 @@
 &pcie0_msi {
 	status = "ok";
 };
+
+&wlan {
+	status = "ok";
+};
+
+&cnss_wlan_mem {
+	status = "ok";
+};
