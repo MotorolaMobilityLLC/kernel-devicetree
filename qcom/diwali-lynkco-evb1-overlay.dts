@@ -1,0 +1,25 @@
+/* Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include "diwali-lynkco-common-overlay.dtsi"
+
+/ {
+	model = "lynkco";
+	compatible = "qcom,diwali-qrd", "qcom,diwali", "qcom,qrd", "moto,lynkco";
+	qcom,msm-id = <506 0x10000>, <547 0x10000>, <564 0x10000>;
+	qcom,board-id = <0x41 0x9100>;
+	qcom,pmic-id-size = <9>;
+	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x2E>;
+};

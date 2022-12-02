@@ -286,6 +286,12 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+ifeq ($(CONFIG_LYNKCO_DTB),y)
+dtbo-$(CONFIG_ARCH_DIWALI) += \
+	diwali-lynkco-evb1-overlay.dtbo
+
+diwali-lynkco-evb1-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
+endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_DIWALI) += diwali-rumi-overlay.dtbo \
