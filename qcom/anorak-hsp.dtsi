@@ -18,7 +18,6 @@
 		qcom,wlan;
 		qcom,wlan-rc-num = <0>;
 		qcom,wlan-ramdump-dynamic = <0x420000>;
-		qcom,wlan-cbc-enabled;
 		use-pm-domain;
 		cnss-enable-self-recovery;
 		qcom,same-dt-multi-dev;
