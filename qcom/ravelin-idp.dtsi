@@ -129,6 +129,7 @@
                pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
        };
 };
+
 &ufsphy_mem {
 	/*
 	 * Here parrot phy is used for ravelin as it
@@ -183,4 +184,8 @@
 	nvmem-cell-names = "ufs_dev", "boot_conf";
 
 	status = "ok";
+};
+
+&battery_charger {
+	qcom,wireless-charging-not-supported;
 };
