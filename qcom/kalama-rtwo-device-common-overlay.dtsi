@@ -23,6 +23,18 @@
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-rtwo-charger-overlay.dtsi"
 
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+};
+
 &tlmm {
 	redriver_enable: redriver_enable {
 		mux {
