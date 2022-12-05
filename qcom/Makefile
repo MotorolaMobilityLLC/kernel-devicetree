@@ -490,7 +490,6 @@ ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	ravelin-atp-overlay.dtbo \
 	ravelin-idp-overlay.dtbo \
-	ravelin-idp-4gb-overlay.dtbo \
 	ravelin-idp-wcn3988-4gb-overlay.dtbo \
 	ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo \
 	ravelin-qrd-overlay.dtbo \
@@ -507,7 +506,6 @@ ravelin-idp-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
 ravelin-idp-wcn3988-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb
 ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
 ravelin-qrd-overlay.dtbo-base := ravelin.dtb ravelinp.dtb
-ravelin-idp-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb
 ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-qrd-overlay.dtbo-base := montague.dtb montaguep.dtb
@@ -518,14 +516,12 @@ else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	ravelin-atp.dtb \
 	ravelin-idp.dtb \
-	ravelin-idp-4gb.dtb \
 	ravelin-idp-wcn3988-4gb.dtb \
 	ravelin-idp-wcn3950-amoled-rcm.dtb \
 	ravelin-qrd.dtb \
 	ravelin-qrd-4gb.dtb \
 	ravelinp-atp.dtb \
 	ravelinp-idp.dtb \
-	ravelinp-idp-4gb.dtb \
 	ravelinp-idp-wcn3988-4gb.dtb \
 	ravelinp-idp-wcn3950-amoled-rcm.dtb \
 	ravelinp-qrd.dtb \
