@@ -2628,6 +2628,7 @@
 #include "ravelin-qupv3.dtsi"
 #include "ravelin-regulators.dtsi"
 #include "ravelin-pcie.dtsi"
+#include "ravelin-qcx6490-cnss.dtsi"
 
 &qupv3_se7_2uart {
 	status = "ok";
