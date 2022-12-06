@@ -115,6 +115,12 @@
 		<175000 13106400>,
 		/* ddr: 547.2 MHz */
 		<7500 3335200>;
+
+		qcom,pdc_init_table =
+			" {class: wlan_pdc, ss: bb, res: s4f.v, upval: 940}",
+			" {class: wlan_pdc, ss: bb, res: s4f.v, dwnval: 420}",
+			" {class: wlan_pdc, ss: bb, res: pdc, enable: 1}";
+
 	};
 
 	bt_hmt: bt_kiwi {
