@@ -186,6 +186,8 @@
 	};
 };
 
+#include "ravelin-thermal-modem.dtsi"
+
 &thermal_zones {
 	aoss-0 {
 		polling-delay-passive = <0>;
@@ -837,6 +839,13 @@
 				type = "passive";
 			};
 		};
+
+		cooling-maps {
+			wcss_cx_vdd_cdev {
+				trip = <&min_temp_0_trip>;
+				cooling-device = <&cx_cdev 1 1>;
+			};
+		};
 	};
 
 	zeroc-1-step {
@@ -854,6 +863,13 @@
 				temperature = <1>;
 				hysteresis = <1>;
 				type = "passive";
+			};
+		};
+
+		cooling-maps {
+			wcss_cx_vdd_cdev {
+				trip = <&min_temp_1_trip>;
+				cooling-device = <&cx_cdev 1 1>;
 			};
 		};
 	};
