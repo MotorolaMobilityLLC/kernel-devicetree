@@ -147,6 +147,7 @@
 &qti_glink_charger {
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
+	mmi,shutdown-empty-vbat-mv = <3000>;
 };
 
 &bm_adsp_ulog {
