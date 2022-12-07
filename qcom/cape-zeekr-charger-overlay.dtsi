@@ -95,11 +95,11 @@
 		vrechg-millivolt = <200>;
 		iprechg-microamp = <180000>;
 		iterm-microamp = <200000>;
-		ichg-max-microamp = <1200000>;
+		ichg-max-microamp = <1324000>;
 		vchg-max-microvolt = <4600000>;
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
-		input-current-limit-microamp = <1200000>;
+		input-current-limit-microamp = <1324000>;
 		wls-current-limit-microamp = <200000>;
 
 		mmi,ext-usb-psy-name = "usb";
@@ -122,14 +122,14 @@
 		mmi,paired-esr = <5>;
 		mmi,batt-esr = <5>;
 		// delta_ocv ichg map table
-		mmi,paired-ichg-table = <60 1200
+		mmi,paired-ichg-table = <60 1324
 					 90 900
 					 120 600
 					 150 300>;
 		mmi,paired-load-thres = <800 400>;
 		mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
 		mmi,high-load-en-gpio = <&pm8350b_gpios 3 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
-		mmi,thermal-mitigation = <800000 500000 300000>;
+		mmi,thermal-mitigation = <1324000 1000000 800000 500000 300000>;
 	};
 };
 
@@ -140,7 +140,7 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <4000000 3500000 3000000 2500000 2000000 1000000 500000>;
+	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000>;
 	qcom,wireless-fw-name = "cps4019.bin";
 };
 
