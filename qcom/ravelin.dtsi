@@ -1757,6 +1757,22 @@
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 	};
 
+	sdhc1_opp_table: sdhc1-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <1600000 280000>;
+			opp-avg-kBps = <104000 0>;
+		};
+
+		opp-384000000 {
+			opp-hz = /bits/ 64 <384000000>;
+			opp-peak-kBps = <5600000 1500000>;
+			opp-avg-kBps = <400000 0>;
+		};
+	};
+
 	sdhc_1: sdhci@7C4000 {
 		status = "disabled";
 
@@ -1802,6 +1818,11 @@
 		dma-coherent;
 		qcom,iommu-dma = "bypass";
 
+		interconnects = <&aggre2_noc MASTER_SDCC_1 &mc_virt SLAVE_EBI1>,
+			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDC1>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+		operating-points-v2 = <&sdhc1_opp_table>;
+
 		qos0 {
 			mask = <0x03>;
 			vote = <44>;
@@ -1810,6 +1831,22 @@
 		qos1 {
 			mask = <0x3f>;
 			vote = <44>;
+		};
+	};
+
+	sdhc2_opp_table: sdhc2-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <1600000 280000>;
+			opp-avg-kBps = <50000 0>;
+		};
+
+		opp-202000000 {
+			opp-hz = /bits/ 64 <202000000>;
+			opp-peak-kBps = <5600000 1500000>;
+			opp-avg-kBps = <104000 0>;
 		};
 	};
 
@@ -1840,6 +1877,11 @@
 		iommus = <&apps_smmu 0x140 0x0>;
 		dma-coherent;
 		qcom,iommu-dma = "bypass";
+
+		interconnects = <&aggre1_noc MASTER_SDCC_2 &mc_virt SLAVE_EBI1>,
+			      <&gem_noc MASTER_APPSS_PROC &cnoc2 SLAVE_SDCC_2>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+		operating-points-v2 = <&sdhc2_opp_table>;
 
 		qos0 {
 			mask = <0x03>;
