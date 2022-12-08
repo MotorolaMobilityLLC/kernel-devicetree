@@ -2620,6 +2620,15 @@
 		memory-region = <&trust_ui_vm_mem>;
 	};
 
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
+	hyp_core_ctl: qcom,hyp-core-ctl {
+		compatible = "qcom,hyp-core-ctl";
+		status = "ok";
+	};
+
 };
 
 #include "ravelin-pinctrl.dtsi"
