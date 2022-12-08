@@ -24,6 +24,20 @@
 	qcom,board-id = <0x47 0x9000>;
 };
 
+&tlmm {
+	uwb_irq: uwb_irq {
+		mux {
+			pins = "gpio137";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio137";
+			bias-pull-down;
+		};
+	};
+};
+
 &pm8550b_eusb2_repeater {
 	qcom,param-override-seq =
 		/* <value reg_offset> */
@@ -40,5 +54,26 @@
 &qupv3_se4_spi {
 	goodix-berlin@0 {
 		status = "disabled";
+	};
+};
+
+&qupv3_se10_spi {
+	status = "ok";
+	/*pinctrl-0 = <&qupv3_se18_spi_active &qupv3_se18_spi_cs0_active &qupv3_se18_spi_cs1_active>;*/
+	/*pinctrl-1 = <&qupv3_se18_spi_sleep &qupv3_se18_spi_cs0_sleep &qupv3_se18_spi_cs1_sleep>;*/
+	pinctrl-0 = <&qupv3_se10_spi_mosi_active>, <&qupv3_se10_spi_miso_active>,
+		<&qupv3_se10_spi_clk_active>, <&qupv3_se10_spi_cs_active>;
+	pinctrl-1 = <&qupv3_se10_spi_sleep>;
+	sr100@0 {
+		compatible = "nxp,sr100";
+		reg = <0>;
+		nxp,sr100-irq = <&tlmm 137 0x00>;
+		nxp,sr100-ce = <&tlmm 144 0x00>;
+		nxp,sr100-ri = <&tlmm 69 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <137 0>;
+		spi-max-frequency = <20000000>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&uwb_irq>;
 	};
 };
