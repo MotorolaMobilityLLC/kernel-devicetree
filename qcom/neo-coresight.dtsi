@@ -734,7 +734,7 @@
 		};
 	};
 
-	wpss_etm {
+	wpss_etm: wpss_etm {
 		compatible = "qcom,coresight-remote-etm";
 
 		coresight-name = "coresight-wpss-etm0";
