@@ -2508,6 +2508,14 @@
 			#size-cells = <0>;
 			qcom,can-sleep;
 		};
+
+		qcom,pmg1110-debug@6 {
+			compatible = "qcom,spmi-pmic";
+			reg = <6 SPMI_USID>;
+			#address-cells = <2>;
+			#size-cells = <0>;
+			qcom,can-sleep;
+		};
 	};
 
 	qcom,pmic_glink {
