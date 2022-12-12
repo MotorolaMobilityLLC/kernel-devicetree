@@ -18,3 +18,7 @@
 &cnss_wlan_mem {
 	status = "ok";
 };
+
+&bluetooth_qca6490 {
+	status = "ok";
+};
