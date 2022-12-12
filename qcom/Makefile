@@ -525,12 +525,10 @@ dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	ravelinp-qrd.dtb \
 	ravelinp-qrd-4gb.dtb \
 	montague-rumi.dtb \
-	montague-qrd.dtb \
 	montague-hsp.dtb \
 	montague-moselle.dtb \
 	montague-rcm.dtb \
 	montaguep-rumi.dtb \
-	montaguep-qrd.dtb \
 	montaguep-hsp.dtb \
 	montaguep-moselle.dtb \
 	montaguep-rcm.dtb
