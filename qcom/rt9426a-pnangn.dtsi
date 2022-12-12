@@ -9,7 +9,7 @@
 		interrupts-extended = <&tlmm 38 IRQ_TYPE_LEVEL_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&rt9426a_alert>;
-		rt,dtsi_version = <02 1111>;
+		rt,dtsi_version = <03 1208>;
 		rt,para_version = <0x0001>;
 		rt,battery_type = <4400>;
 		rt,volt_source = <1>;		// 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
