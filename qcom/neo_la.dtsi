@@ -433,3 +433,7 @@
 &lsr_1_tbu {
 	status = "disabled";
 };
+
+&wpss_etm {
+	status = "disabled";
+};
