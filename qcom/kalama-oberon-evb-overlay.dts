@@ -15,7 +15,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "kalama-rtwo-device-common-overlay.dtsi"
+#include "kalama-oberon-device-common-overlay.dtsi"
 #include <dt-bindings/leds/common.h>
 
 / {
@@ -78,9 +78,7 @@
 };
 
 &qupv3_se4_spi {
-	goodix-berlin@0 {
-		status = "disabled";
-	};
+	status = "disabled";
 };
 
 &qupv3_se10_spi {
