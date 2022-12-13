@@ -763,4 +763,24 @@
 
 		};
 	};
+
+	rpmh-regulator-sf1-vreg-enable {
+		compatible = "qcom,rpmh-xob-regulator";
+		qcom,resource-name = "gpioi7";
+		status = "disabled";
+		sf1_vreg_enable: regulator-sf1-vreg-enable {
+			regulator-name = "sf1_vreg_enable";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+		};
+	};
+
+	rpmh-regulator-sf1-vreg-mode {
+		compatible = "qcom,rpmh-xob-regulator";
+		qcom,resource-name = "gpioi10";
+		status = "disabled";
+		sf1_vreg_mode: regulator-sf1-vreg-mode {
+			regulator-name = "sf1_vreg_mode";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+		};
+	};
 };
