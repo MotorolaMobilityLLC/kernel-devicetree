@@ -1,0 +1,113 @@
+/* Copyright (c) 2023, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/* This file is only for Oberon device */
+
+#include "kalama-moto-common-overlay-base.dtsi"
+#include "kalama-moto-common-overlay.dtsi"
+#include "kalama-rtwo-haptics-overlay.dtsi"
+/*NOTE: Make sure FPS is not using GPIO 40 before enabling it*/
+/*#include "kalama-rtwo-fingerprint-overlay.dtsi"*/
+#include "kalama-oberon-touchscreen-overlay.dtsi"
+#include "moto-rtwo-wl2868c.dtsi"
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include "kalama-rtwo-evb-sensors-overlay.dtsi"
+#include "kalama-rtwo-thermal-overlay.dtsi"
+#include "kalama-moto-common-charger.dtsi"
+#include "kalama-rtwo-charger-overlay.dtsi"
+
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+
+	qcom,qbt_handler {
+		status = "disabled";
+	};
+};
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&qupv3_hub_i2c2 {
+	status = "ok";
+	#include "kalama-moto-common-redriver.dtsi"
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
+&pm8550b_eusb2_repeater {
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* Squelch detection threshold */
+		 0x5 0x54
+		/* Tx pre-emphasis tuning */
+		 0x6 0x57>;
+};
+
+&apps_rsc_drv2 {
+	rpmh-regulator-ldob4 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldob4";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 10000>;
+
+		L4B: pm_humu_l4: regulator-pm-humu-l4 {
+			regulator-name = "pm_humu_l4";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+			qcom,init-voltage = <1800000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+		};
+	};
+};
