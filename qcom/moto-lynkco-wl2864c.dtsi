@@ -3,19 +3,19 @@
  * to GCC.
  */
 
-// &tlmm{
-//  	cam_pmic_en_default: cam_pmic_en_default {
-//  		mux {
-//  		pins = "gpio3";
-//  		function = "gpio";
-//  		};
-//  		config {
-//  		pins = "gpio3";
-//  		drive-strength = <2>;
-//  		bias-pull-down;
-//  		};
-//  	};
-// };
+&pm8350c_gpios{
+ 	cam_pmic_en_default: cam_pmic_en_default {
+ 		mux {
+ 		pins = "gpio3";
+ 		function = "gpio";
+ 		};
+ 		config {
+ 		pins = "gpio3";
+ 		drive-strength = <2>;
+ 		bias-pull-down;
+ 		};
+ 	};
+};
 
 /*
  * Each QUP device that's a parent to PMIC must be listed as a critical device
@@ -31,9 +31,9 @@
 		compatible = "semi,wl2864c";
 		reg = <0x29>;
 
-		// semi,cs-gpios = <&tlmm 3 0>;
-		// pinctrl-names = "default";
-		// pinctrl-0 = <&cam_pmic_en_default>;
+		semi,cs-gpios = <&pm8350c_gpios 3 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_pmic_en_default>;
 
 		vin1-supply = <&S8B>;
 		vin2-supply = <&BOB>;
