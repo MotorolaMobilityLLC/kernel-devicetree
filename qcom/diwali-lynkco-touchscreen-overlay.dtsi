@@ -1,0 +1,149 @@
+/*
+ * Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+&qupv3_se0_i2c {
+	status = "disabled";
+};
+
+&pm8350c_l3 {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3304000>;
+	qcom,init-voltage = <3300000>;
+};
+
+&qupv3_se0_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+
+		goodix,reset-gpio = <&tlmm 17 0x0>;
+		goodix,irq-gpio = <&tlmm 51 0x2002>;
+		goodix,iovdd-gpio = <&tlmm 146 0x0>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <42240>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-name = "pm8350c_l3";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
+	};
+};
+
+&qupv3_se1_spi {
+	status = "disabled";
+};
+
+/* CLI touchscreen pins */
+&tlmm {
+	cli_pmx_ts_active {
+		cli_ts_active: cli_ts_active {
+			mux {
+				pins = "gpio27", "gpio152";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio27", "gpio152";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	cli_pmx_ts_reset_suspend {
+		cli_ts_reset_suspend: cli_ts_reset_suspend {
+			mux {
+				pins = "gpio27";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio27";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend: cli_ts_int_suspend {
+			mux {
+				pins = "gpio152";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio152";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release: cli_ts_release {
+			mux {
+				pins = "gpio27", "gpio152";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio27", "gpio152";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&qupv3_se1_i2c {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	bt541_ts_device@20 {
+		compatible = "zinitix,bt541_ts_device";
+		reg = <0x20>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <152 0x2008>;
+		zinitix,avdd-name = "pm8350c_l6";
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+
+		zinitix,reset-gpio = <&tlmm 27 0x0>;
+		zinitix,irq-gpio = <&tlmm 152 0x2008>;
+		zinitix,iovdd-gpio = <&tlmm 148 0x0>;
+		zinitix,x_resolution = <194>;
+		zinitix,y_resolution = <368>;
+		zinitix,page_size = <128>;
+		zinitix,orientation = <0>;
+		zinitix,tsp_vdd_supply_type = <1>;
+		zinitix,pname = "SM-G5308W";
+	};
+};
