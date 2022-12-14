@@ -17,6 +17,7 @@
 #include "diwali-moto-common-overlay-base.dtsi"
 #include "diwali-moto-pm7250b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
+#include "moto-lynkco-wl2864c.dtsi"
 
 &soc {
 	usb_nop_phy: usb_nop_phy {
