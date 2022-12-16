@@ -120,6 +120,8 @@
 			0x814C  0x60200030
 			0x816C  0x60200030
 		>;
+		reinit-on-cali;
+
 		status = "ok";
 	};
 };
