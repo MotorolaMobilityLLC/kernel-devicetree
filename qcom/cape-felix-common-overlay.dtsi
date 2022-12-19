@@ -263,7 +263,7 @@
 		aw8692x_trig_config = /bits/ 8 <0 0 0 1 0 2 0 0
 		                                0 0 0 1 0 2 0 0
 		                                0 0 0 1 0 2 0 0>;
-		aw8692x_bst_vol_default = <8500>;
+		aw8692x_bst_vol_default = <10500>;
 	};
 };
 
