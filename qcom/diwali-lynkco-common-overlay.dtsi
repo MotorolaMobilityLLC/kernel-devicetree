@@ -17,7 +17,7 @@
 #include <dt-bindings/interconnect/qcom,diwali.h>
 
 #include "diwali-moto-common-overlay-base.dtsi"
-#include "diwali-moto-pm7250b.dtsi"
+#include "diwali-moto-pm8350b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
 #include "diwali-lynkco-touchscreen-overlay.dtsi"
 #include "moto-lynkco-wl2864c.dtsi"
