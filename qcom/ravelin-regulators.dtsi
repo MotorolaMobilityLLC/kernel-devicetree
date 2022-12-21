@@ -107,7 +107,7 @@
 			regulator-name = "pm6450_s9";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
 			regulator-min-microvolt = <1856000>;
-			regulator-max-microvolt = <1940000>;
+			regulator-max-microvolt = <2040000>;
 			qcom,init-voltage = <1872000>;
 		};
 	};
