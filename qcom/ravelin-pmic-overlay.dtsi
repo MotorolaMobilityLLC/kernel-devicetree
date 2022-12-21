@@ -594,7 +594,7 @@
 				regulator-min-microvolt = <1792000>;
 				regulator-max-microvolt = <1900000>;
 				qcom,hpm-min-load = <0>;
-				qcom,min-dropout-voltage = <120000>;
+				qcom,min-dropout-voltage = <152000>;
 			};
 
 			L6N: pm8010n_l6: regulator@4500 {
