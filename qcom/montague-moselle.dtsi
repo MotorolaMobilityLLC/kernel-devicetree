@@ -1,2 +1,17 @@
 #include "montague-hsp.dtsi"
 
+&pcie0 {
+	status = "disabled";
+};
+
+&pcie0_msi {
+	status = "disabled";
+};
+
+&wlan {
+	status = "disabled";
+};
+
+&cnss_wlan_mem {
+	status = "disabled";
+};
