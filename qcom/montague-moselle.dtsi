@@ -1,5 +1,9 @@
 #include "montague-hsp.dtsi"
 
+&icnss2 {
+	status = "ok";
+};
+
 &pcie0 {
 	status = "disabled";
 };
