@@ -13,7 +13,6 @@
 /dts-v1/;
 
 #include "diwali.dtsi"
-#include "diwali-idp-hsp.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Diwali SoC";
