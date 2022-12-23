@@ -13,6 +13,7 @@
 /dts-v1/;
 
 #include "diwali.dtsi"
+#include "diwali-moto-qca6490-overlay.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Diwali SoC";
