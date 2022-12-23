@@ -69,7 +69,7 @@
 		vdd-wlan-io-supply = <&L21B>;
 		qcom,vdd-wlan-io-config = <1800000 1800000 0 0 1>;
 		vdd-wlan-rfa1-supply = <&S9B>;
-		qcom,vdd-wlan-rfa1-config = <1800000 1856000 0 0 1>;
+		qcom,vdd-wlan-rfa1-config = <1800000 2040000 0 0 1>;
 		vdd-wlan-rfa2-supply = <&S8B>;
 		qcom,vdd-wlan-rfa2-config = <1250000 1352000 0 0 1>;
 		wlan-ant-switch-supply = <&L3E>;
