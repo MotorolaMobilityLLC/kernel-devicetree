@@ -151,7 +151,6 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
-		qcom,disable-mode = <RPMH_REGULATOR_MODE_LPM>;
 		L3B:
 		pmxr2230_l3: regulator-pmxr2230-l3 {
 			regulator-name = "pmxr2230_l3";
