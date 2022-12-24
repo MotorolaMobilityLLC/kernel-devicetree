@@ -249,6 +249,33 @@
 };
 
 &thermal_zones {
+	pm8010e_tz {
+		polling-delay-passive = <100>;
+		polling-delay = <0>;
+		thermal-governor = "step_wise";
+		thermal-sensors = <&pm8010e_tz>;
+
+		trips {
+			trip0 {
+				temperature = <95000>;
+				hysteresis = <0>;
+				type = "passive";
+			};
+
+			trip1 {
+				temperature = <115000>;
+				hysteresis = <0>;
+				type = "passive";
+			};
+
+			trip2 {
+				temperature = <145000>;
+				hysteresis = <0>;
+				type = "critical";
+			};
+		};
+	};
+
 	sys-therm-6 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
