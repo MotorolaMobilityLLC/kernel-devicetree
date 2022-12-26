@@ -22,6 +22,7 @@
 #include "diwali-lynkco-haptics-overlay.dtsi"
 #include "diwali-lynkco-fingerprint-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include "diwali-lynkco-evb-sensor-overlay.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
