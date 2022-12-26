@@ -20,6 +20,7 @@
 #include "diwali-lynkco-touchscreen-overlay.dtsi"
 #include "moto-lynkco-wl2864c.dtsi"
 #include "diwali-lynkco-haptics-overlay.dtsi"
+#include "diwali-lynkco-fingerprint-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 &soc {

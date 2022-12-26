@@ -1,0 +1,93 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+
+	fps {
+		rst_active: rst_active {
+			/* RESET */
+			mux {
+				pins = "gpio43";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio43";
+				drive-strength = <2>; /* 2 MA */
+				bias-disable;
+				output-low;
+			};
+		};
+
+		rst_suspend: rst_suspend{
+			/* RESET */
+			mux {
+				pins = "gpio43";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio43";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down; /* pull down */
+				output-high;
+			};
+		};
+
+		int_active: int_active {
+			/* INTERRUPT */
+			mux {
+				pins = "gpio165";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio165";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down; /* pull down */
+				input-enable;
+			};
+		};
+
+		int_suspend: int_suspend{
+			/* INTERRUPT */
+			mux {
+				pins = "gpio165";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio165";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down; /* pull down */
+				input-enable;
+			};
+		};
+	};
+};
+
+&soc {
+	qcom,qbt_handler {
+		status = "disabled";
+	};
+
+	fpc: fpc_fpc1020 {
+		compatible = "fpc,fpc1020";
+		status = "ok";
+		irq = <&tlmm 165 0>;
+		rst = <&tlmm 43 0>;
+		delay-ctrl-support;
+		fp-gpio-ven = <&tlmm 147 0>;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&int_active &rst_active>;
+		pinctrl-1 = < &int_suspend &rst_suspend>;
+	};
+};
