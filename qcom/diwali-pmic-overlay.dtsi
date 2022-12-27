@@ -338,7 +338,7 @@
 	#size-cells = <0>;
 	status = "ok";
 
-	pm8010i@8 {
+	pm8010i_8: pm8010i@8 {
 		compatible = "qcom,i2c-pmic";
 		reg = <0x8>;
 		#address-cells = <1>;
@@ -362,7 +362,7 @@
 		};
 	};
 
-	pm8010i@9 {
+	pm8010i_9: pm8010i@9 {
 		compatible = "qcom,i2c-pmic";
 		reg = <0x9>;
 		#address-cells = <1>;
@@ -445,7 +445,7 @@
 		};
 	};
 
-	pm8010j@c {
+	pm8010j_c: pm8010j@c {
 		compatible = "qcom,i2c-pmic";
 		reg = <0xc>;
 		#address-cells = <1>;
@@ -469,7 +469,7 @@
 		};
 	};
 
-	pm8010j@d {
+	pm8010j_d: pm8010j@d {
 		compatible = "qcom,i2c-pmic";
 		reg = <0xd>;
 		#address-cells = <1>;
