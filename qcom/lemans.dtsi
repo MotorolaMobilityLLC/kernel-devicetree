@@ -2635,6 +2635,7 @@
 #include "lemans-pcie.dtsi"
 #include "lemans-usb.dtsi"
 #include "lemans-coresight.dtsi"
+#include "lemans-mhi.dtsi"
 
 &cam_cc_titan_top_gdsc {
 	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
