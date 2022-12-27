@@ -5,15 +5,13 @@
 
 &pm8350c_gpios{
  	cam_pmic_en_default: cam_pmic_en_default {
- 		mux {
  		pins = "gpio3";
- 		function = "gpio";
- 		};
- 		config {
- 		pins = "gpio3";
- 		drive-strength = <2>;
- 		bias-pull-down;
- 		};
+		function = "normal";
+		input-disable;
+		output-low;
+		bias-pull-down;
+		power-source = <0>;	/* 1.8V */
+		qcom,drive-strength = <2>;	/* Medium */
  	};
 };
 
