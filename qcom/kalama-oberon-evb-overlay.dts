@@ -152,5 +152,56 @@
 			reg = <3>;
 			color = <LED_COLOR_ID_WHITE>;
 		};
+
+		pattern@1 {
+			/* Pulsing blue pattern
+			 *   Blue:
+			 *     027F: Ramp up 50%
+			 *     027F: Ramp up 50%
+			 *     4600: Wait 100ms
+			 *     02FF: Ramp down 50%
+			 *     02FF: Ramp down 50%
+			 *     4600: Wait 100ms
+			 *     0000: Goto start
+			 */
+			pat-name = "Pulsing Blue";
+			pat-b = [02 7f 02 7f 46 00 02 ff 02 ff 46 00 00 00];
+		};
+
+		pattern@2 {
+			/*
+			 * HSV rainbow
+			 *     40FF: Set PWM 255
+			 *     41FF: Ramp down 50%
+			 *     41FF: Ramp down 50%
+			 *     41FF: Wait 1/2 ramp time
+			 *     41FF: Wait 1/2 ramp time
+			 *     417F: Ramp up 50%
+			 *     417F: Ramp up 50%
+			 *     0000: Goto start
+			 *   Green:
+			 *     4000: Set PWM 0
+			 *     417F: Ramp up 50%
+			 *     417F: Ramp up 50%
+			 *     41FF: Ramp down 50%
+			 *     41FF: Ramp down 50%
+			 *     41FF: Wait 1/2 ramp time
+			 *     41FF: Wait 1/2 ramp time
+			 *     0000: Goto start
+			 *   Blue:
+			 *     4000: Set PWM 0
+			 *     41FF: Wait 1/2 ramp time
+			 *     41FF: Wait 1/2 ramp time
+			 *     417F: Ramp up 50%
+			 *     417F: Ramp up 50%
+			 *     41FF: Ramp down 50%
+			 *     41FF: Ramp down 50%
+			 *     0000: Goto start
+			 */
+			pat-name = "HSV Rainbow";
+			pat-r = [40 ff 41 FF 41 FF 41 FF 41 FF 41 7F 41 7F 00 00];
+			pat-g = [40 00 41 7F 41 7F 41 FF 41 FF 41 FF 41 FF 00 00];
+			pat-b = [40 00 41 FF 41 FF 41 7F 41 7F 41 FF 41 FF 00 00];
+		};
 	};
 };
