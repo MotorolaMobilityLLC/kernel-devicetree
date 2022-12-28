@@ -188,13 +188,12 @@
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 	qcom,bklt-dcs-2bytes-enabled;
-	qcom,mdss-dsi-bl-level-shift-left-1bit;
 
 	qcom,mdss-dsi-bl-min-level = <13>;
 	qcom,mdss-dsi-bl-max-level = <1638>;
 	qcom,mdss-dsi-bl-default-level = <739>;
 	qcom,mdss-brightness-max-level = <1638>;
-	qcom,mdss-dsi-bl-level-align = <2>;
+	qcom,mdss-dsi-bl-level-align = <1>;
 	qcom,platform-reset-gpio-always-on;
 	qcom,mdss-panel-on-rst-pull-down;
 
