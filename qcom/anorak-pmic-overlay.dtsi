@@ -584,10 +584,10 @@
 		compatible = "maxim,max31760";
 		#cooling-cells = <2>;
 		reg = <0x50>;
+		maxim,fan-num = <2>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pwr_en_gpio_default
 			&driver_en_gpio_default>;
-
 		maxim,driver-en-gpio = <&pm8550ve_f_gpios 5 GPIO_ACTIVE_LOW>;
 		maxim,pwr-en-gpio = <&pm8550ve_f_gpios 6 GPIO_ACTIVE_LOW>;
 		status = "ok";
