@@ -71,6 +71,11 @@
 	};
 };
 
+&tlmm {
+	/* reserve FP GPIOs: gpio56,57,58,59 */
+	qcom,gpios-reserved = <32 33 34 35 56 57 58 59>;
+};
+
 &sdhc_2 {
 	status = "ok";
 	vdd-supply = <&L9C>;
