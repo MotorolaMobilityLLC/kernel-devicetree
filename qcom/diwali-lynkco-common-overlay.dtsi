@@ -14,6 +14,8 @@
    This base is original from "diwali-qrd-overlay.dts"
 */
 
+#include <dt-bindings/interconnect/qcom,diwali.h>
+
 #include "diwali-moto-common-overlay-base.dtsi"
 #include "diwali-moto-pm7250b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
@@ -25,6 +27,7 @@
 #include "diwali-lynkco-charger-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "diwali-lynkco-evb-sensor-overlay.dtsi"
+#include "diwali-moto-qca6490-overlay.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
