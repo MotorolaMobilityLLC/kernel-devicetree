@@ -28,6 +28,7 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "diwali-lynkco-evb-sensor-overlay.dtsi"
 #include "diwali-moto-qca6490-overlay.dtsi"
+#include "diwali-lynkco-nfc-overlay.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
