@@ -81,3 +81,11 @@
 		};
 	};
 };
+
+&qupv3_se10_i2c {
+       status = "disabled";
+};
+
+&qupv3_se10_spi {
+       status = "disabled";
+};
