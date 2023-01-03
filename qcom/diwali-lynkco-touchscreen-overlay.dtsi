@@ -55,6 +55,10 @@
 	status = "disabled";
 };
 
+&aliases {
+	spi1 = "/soc/spi@980000";
+};
+
 /* CLI touchscreen pins */
 &tlmm {
 	cli_pmx_ts_active {
