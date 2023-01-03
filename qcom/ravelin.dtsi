@@ -2003,7 +2003,7 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
-		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
+		clocks = <&gcc GCC_SDCC2_AHB_CLK>;
 	};
 
 	aggre2_noc: interconnect@1700000 {
@@ -2013,7 +2013,7 @@
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 		clocks = <&rpmhcc RPMH_IPA_CLK>,
-			<&gcc GCC_SDCC2_AHB_CLK>;
+			<&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
 	};
 
 	cnoc2: interconnect@1500000 {
