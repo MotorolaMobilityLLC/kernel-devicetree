@@ -134,6 +134,9 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <152 0x2008>;
 		zinitix,avdd-name = "pm8350c_l6";
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
+		ic_name = "zinitix,ztw622";
 
 		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
 		pinctrl-0 = <&cli_ts_active>;
@@ -149,5 +152,7 @@
 		zinitix,orientation = <0>;
 		zinitix,tsp_vdd_supply_type = <1>;
 		zinitix,pname = "SM-G5308W";
+
+		mmi,power-off-suspend;
 	};
 };
