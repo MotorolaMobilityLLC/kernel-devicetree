@@ -76,3 +76,8 @@
 		pinctrl-1 = <&nfc_int_suspend &sn110_enable_suspend>;
 	};
 };
+
+&mmi_discrete_charger {
+	mmi,usb-mosfet-supported;
+	mmi,mos-en-gpio = <&tlmm 58 0>;
+};
