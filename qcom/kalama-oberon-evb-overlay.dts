@@ -16,6 +16,7 @@
 /plugin/;
 
 #include "kalama-rtwo-device-common-overlay.dtsi"
+#include <dt-bindings/leds/common.h>
 
 / {
 	model = "oberon";
@@ -34,6 +35,31 @@
 		config {
 			pins = "gpio137";
 			bias-pull-down;
+		};
+	};
+	lp5562_enable: lp5562_enable {
+		mux {
+			pins = "gpio74";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio74";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	lp5562_disable: lp5562_disable {
+		mux {
+			pins = "gpio74";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio74";
+			drive-strength = <2>;
+			output-low;
 		};
 	};
 };
@@ -75,5 +101,56 @@
 		spi-max-frequency = <20000000>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&uwb_irq>;
+	};
+};
+
+&qupv3_hub_i2c2 {
+	redriver@30 {
+		status = "disabled";
+	};
+
+	led-controller@30 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+		compatible = "ti,lp5562";
+		reg = <0x30>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lp5562_enable>;
+		clock-mode = /bits/8 <2>;
+		enable = <&tlmm 74 GPIO_ACTIVE_HIGH>;
+
+		/* RGB led */
+		chan@0 {
+			chan-name = "red_moto";
+			led-cur = /bits/ 8 <0x20>;
+			max-cur = /bits/ 8 <0x60>;
+			reg = <0>;
+			color = <LED_COLOR_ID_RED>;
+		};
+
+		chan@1 {
+			chan-name = "green_moto";
+			led-cur = /bits/ 8 <0x20>;
+			max-cur = /bits/ 8 <0x60>;
+			reg = <1>;
+			color = <LED_COLOR_ID_GREEN>;
+		};
+
+		chan@2 {
+			chan-name = "blue_moto";
+			led-cur = /bits/ 8 <0x20>;
+			max-cur = /bits/ 8 <0x60>;
+			reg = <2>;
+			color = <LED_COLOR_ID_BLUE>;
+		};
+
+		chan@3 {
+			chan-name = "white_moto";
+			led-cur = /bits/ 8 <0x20>;
+			max-cur = /bits/ 8 <0x60>;
+			reg = <3>;
+			color = <LED_COLOR_ID_WHITE>;
+		};
 	};
 };
