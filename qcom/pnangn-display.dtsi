@@ -154,7 +154,7 @@
 
 	qcom,suspend-ulps-enabled;
 
-	//qcom,tp_state_check_enable;
+	qcom,tp_state_check_enable;
 	qcom,platform-need-execute-shutdown;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
@@ -211,7 +211,7 @@
 
 	qcom,suspend-ulps-enabled;
 
-	//qcom,tp_state_check_enable;
+	qcom,tp_state_check_enable;
 	qcom,platform-need-execute-shutdown;
 
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
