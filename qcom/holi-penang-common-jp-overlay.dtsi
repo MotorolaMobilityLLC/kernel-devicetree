@@ -484,11 +484,6 @@
 
 };
 
-&mmi_discrete_charger {
-	mmi,usb-mosfet-supported;
-	mmi,mos-en-gpio = <&tlmm 58 0>;
-};
-
 &qupv3_se8_i2c {
 
 	status = "ok";
