@@ -23,3 +23,57 @@
 	qcom,pmic-id-size = <9>;
 	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x2E>;
 };
+
+&qupv3_se0_spi {
+	goodix-berlin@0 {
+		goodix,reset-gpio = <&tlmm 129 0x0>;
+	};
+};
+
+/* touchscreen pins */
+&tlmm {
+	pmx_ts_active {
+		ts_active: ts_active {
+			mux {
+				pins = "gpio129", "gpio51";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio129", "gpio51";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_reset_suspend {
+		ts_reset_suspend: ts_reset_suspend {
+			mux {
+				pins = "gpio129";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio129";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	pmx_ts_release {
+		ts_release: ts_release {
+			mux {
+				pins = "gpio129", "gpio51";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio129", "gpio51";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
