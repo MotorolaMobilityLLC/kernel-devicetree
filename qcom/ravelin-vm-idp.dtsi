@@ -9,6 +9,8 @@
 		focaltech,display-coords = <0 0 1080 2408>;
 		focaltech,max-touch-number = <5>;
 		focaltech,ic-type = <0x8726081C>;
+		focaltech,reset-gpio-base = <0xF10C000>;
+		focaltech,intr-gpio-base = <0xF10D000>;
 
 		focaltech,trusted-touch-mode = "vm_mode";
 		focaltech,touch-environment = "tvm";
