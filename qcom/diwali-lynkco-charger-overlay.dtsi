@@ -1,12 +1,53 @@
 
+&tlmm {
+	sc760x_irq_default: sc760x_irq_default {
+		mux {
+			pins = "gpio66";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio66";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	sc760x_enable: sc760x_enable {
+		mux {
+			pins = "gpio54";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio54";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	sc760x_disable: sc760x_disable {
+		mux {
+			pins = "gpio54";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio54";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
 &qupv3_se13_spi {
 	status = "disabled";
 };
-/*
+
 &aliases {
-	i2c1 = "/soc/i2c@988000";
+	i2c1 = "/soc/i2c@a94000";
 };
-*/
+
 &qupv3_se13_i2c {
 	status = "ok";
 	cw2217b_flip: cw2217b-battery-flip@64 {
@@ -20,6 +61,64 @@
 		factory_mode_ntc_exist = <1>;
 		#include "bat_setting/CW_PM08-atl-790mah.dtsi"
 	};
+
+	sc760x_balance: sc760x-balance@54{
+		compatible = "southchip,sc7603_master";
+		reg = <0x54>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <66 0>;
+		pinctrl-names = "default", "sc760x_enable", "sc760x_disable";
+		pinctrl-0 = <&sc760x_irq_default>;
+		pinctrl-1 = <&sc760x_enable>;
+		pinctrl-2 = <&sc760x_disable>;
+
+		sc,sc760x,bat-chg-lim-disable = <0>;
+		sc,sc760x,bat-chg-lim = <39>; /*50 + val * 50*/
+		sc,sc760x,pow-lim-disable = <0>;
+		sc,sc760x,ilim-disable = <0>;
+		sc,sc760x,load-switch-disable = <0>;
+		sc,sc760x,low-power-mode-enable = <0>;
+		sc,sc760x,itrichg = <3>; /*12.5 + val * 12.5*/
+		sc,sc760x,iprechg = <2>; /*50 + val * 50*/
+		sc,sc760x,vfc-chg = <2>; /*2800 + val * 50*/
+		sc,sc760x,chg-ovp-disable = <0>;
+		sc,sc760x,chg-ovp = <0>; /*0:5.0V 1:5.6V*/
+		sc,sc760x,bat-ovp-disable = <0>;
+		sc,sc760x,bat-ovp = <10>; /*4000 + val *50*/
+		sc,sc760x,chg-ocp-disable = <0>;
+		sc,sc760x,chg-ocp = <2>; /*10000 + val * 1000*/
+		sc,sc760x,dsg-ocp-disable = <0>;
+		sc,sc760x,dsg-ocp = <2>; /*10000 + val * 1000*/
+		sc,sc760x,tdie-flt-disable = <0>;
+		sc,sc760x,tdie-alm-disable = <1>;
+		sc,sc760x,tdie-alm = <9>; /*80 + val * 5*/
+
+		init-charger-disabled;
+		iterm-microamp = <200000>;
+		ichg-max-microamp = <1324000>;
+		vchg-max-microvolt = <4600000>;
+		ichg-microamp = <700000>;
+		vchg-microvolt = <4400000>;
+
+		mmi,ext-usb-psy-name = "usb";
+		mmi,ext-wls-psy-name = "wireless";
+		mmi,fg-psy-name = "flip_battery";
+		mmi,chrg-iterm-ma = <100>;
+		mmi,fg-iterm-ma = <100>;
+		mmi,max-fv-mv = <4500>;
+		mmi,max-fcc-ma = <1324>;
+		mmi,demo-fv-mv = <4000>;
+		mmi,df-serialnum = "SB18D44720";
+		mmi,mmi-temp-zones = <0 4200 162 0>,
+				<10 4250 405 243>,
+				<15 4250 810 567>,
+				<45 4300 1324 1053>,
+				<45 4350 1053 810>,
+				<60 4200 810 0>;
+
+		mmi,paired-id = <0x00000001>;
+		mmi,thermal-mitigation = <1324000 1000000 800000 500000 300000>;
+    };
 };
 
 &mmi_charger {
