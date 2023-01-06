@@ -1800,7 +1800,10 @@
 
 		iommus = <&apps_smmu 0x560 0x0>;
 		dma-coherent;
-		qcom,iommu-dma = "bypass";
+		qcom,iommu-dma = "fastmap";
+
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
 
 		qos0 {
 			mask = <0x03>;
@@ -1839,7 +1842,10 @@
 
 		iommus = <&apps_smmu 0x140 0x0>;
 		dma-coherent;
-		qcom,iommu-dma = "bypass";
+		qcom,iommu-dma = "fastmap";
+
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
 
 		qos0 {
 			mask = <0x03>;
