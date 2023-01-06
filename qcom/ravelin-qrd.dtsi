@@ -22,7 +22,7 @@
 		focaltech,reset-gpio = <&tlmm 12 0x00>;
 		focaltech,irq-gpio = <&tlmm 13 0x2008>;
 		focaltech,display-coords = <0 0 1080 2408>;
-		focaltech,max-touch-number = <5>;
+		focaltech,max-touch-number = <10>;
 		focaltech,ic-type = <0x8726081C>;
 		focaltech,touch-type = "primary";
 		focaltech,touch-environment = "pvm";
@@ -144,6 +144,17 @@
 	nvmem-cell-names = "ufs_dev", "boot_conf";
 
 	status = "ok";
+};
+
+&usb0 {
+	dwc3@a600000 {
+		usb-phy = <&usb2_phy0>, <&usb_nop_phy>;
+		maximum-speed = "high-speed";
+	};
+};
+
+&usb_qmp_dp_phy {
+	status = "disabled";
 };
 
 &battery_charger {
