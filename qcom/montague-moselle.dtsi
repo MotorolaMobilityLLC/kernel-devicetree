@@ -19,3 +19,15 @@
 &cnss_wlan_mem {
 	status = "disabled";
 };
+
+&bluetooth {
+	status = "disabled";
+};
+
+&bluetooth_qca6490 {
+	status = "disabled";
+};
+
+&bluetooth_wcn6750 {
+	status = "ok";
+};

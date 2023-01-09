@@ -107,5 +107,28 @@
 			interrupt-names = "qcom,smp2p-soc-wake-ack";
 		};
 	};
+
+	bluetooth_wcn6750: bt_wcn6750 {
+		compatible = "qcom,wcn6750-bt";
+		pinctrl-names = "default";
+		pinctrl-0 = <&bt_en_sleep>;
+		qcom,wl-reset-gpio = <&tlmm 43 0>; /* WL_CTRL */
+		qcom,bt-reset-gpio = <&tlmm 39 0>; /* BT_EN */
+		qcom,bt-sw-ctrl-gpio = <&tlmm 56 0>; /* SW_CTRL */
+
+		qcom,bt-vdd-io-supply = <&L21B>;  /* IO */
+		qcom,bt-vdd-aon-supply = <&S7B>;
+		qcom,bt-vdd-dig-supply = <&S7B>; /* BT_CX_MX */
+		qcom,bt-vdd-rfa1-supply = <&S9B>; /* RFA 1p7 */
+		qcom,bt-vdd-rfa2-supply = <&S8B>; /* RFA 1p2 */
+
+		/* Max Voltages are derived from the buck Max Voltage */
+		qcom,bt-vdd-io-config = <1800000 1800000 0 1>;
+		qcom,bt-vdd-aon-config = <850000 1120000 0 1>;
+		qcom,bt-vdd-dig-config = <800000 1120000 0 1>;
+		qcom,bt-vdd-rfa1-config = <1856000 2040000 0 1>;
+		qcom,bt-vdd-rfa2-config = <1250000 1352000 0 1>;
+		status = "disabled";
+	};
 };
 
