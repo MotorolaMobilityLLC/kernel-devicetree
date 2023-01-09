@@ -64,7 +64,7 @@
 			<MHZ_TO_KBPS(1708, 4)>, /* index=6  */
 			<MHZ_TO_KBPS(2092, 4)>, /* index=7  */
 			<MHZ_TO_KBPS(2736, 4)>, /* index=8  */
-			<MHZ_TO_KBPS(3196, 4)>; /* index=9  */
+			<MHZ_TO_KBPS(3867, 4)>; /* index=9  */
 
 		zap-shader {
 			memory-region = <&gpu_microcode_mem>;
