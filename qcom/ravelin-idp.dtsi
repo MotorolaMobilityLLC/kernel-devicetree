@@ -64,7 +64,7 @@
 		focaltech,reset-gpio = <&tlmm 12 0x00>;
 		focaltech,irq-gpio = <&tlmm 13 0x2008>;
 		focaltech,display-coords = <0 0 1080 2408>;
-		focaltech,max-touch-number = <5>;
+		focaltech,max-touch-number = <10>;
 		focaltech,ic-type = <0x8726081C>;
 		focaltech,touch-type = "primary";
 
