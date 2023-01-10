@@ -29,6 +29,7 @@
 #include "diwali-lynkco-evb-sensor-overlay.dtsi"
 #include "diwali-moto-qca6490-overlay.dtsi"
 #include "diwali-lynkco-nfc-overlay.dtsi"
+#include "diwali-lynkco-thermal-overlay.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
