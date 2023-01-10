@@ -276,6 +276,7 @@
 
 &mmi_charger {
 	mmi,upper-limit-capacity = <80>;
+	mmi,ibat-calc-alignment-time = <1000>;
 };
 
 &battery_charger {
