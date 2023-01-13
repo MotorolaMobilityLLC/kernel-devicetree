@@ -46,6 +46,87 @@
 &pm8010j_d {
 	status = "disabled";
 };
+
+&L7C {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3000000>;
+	qcom,init-voltage = <3000000>;
+	regulator-boot-on;
+	regulator-always-on;
+};
+
+&tlmm {
+        laser_xsdn_active: laser_xsdn_active {
+		mux {
+			pins = "gpio168";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio168";
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	laser_xsdn_suspend: laser_xsdn_suspend {
+		mux {
+			pins = "gpio168";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio168";
+			drive-strength = <2>;
+			bias-pull-down; /* PULL DOWN */
+		};
+	};
+
+	laser_int_active: laser_int_active {
+		mux {
+			pins = "gpio169";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio169";
+			drive-strength = <2>;
+			bias-pull-up; /* PULL UP */
+		};
+	};
+
+	laser_int_suspend: laser_int_suspend {
+		mux {
+			pins = "gpio169";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio169";
+			drive-strength = <2>;
+			bias-pull-down; /* PULL DOWN */
+		};
+	};
+};
+
+&qupv3_se9_i2c {
+	status = "okay";
+	qcom,noise-rjct-scl = <3>;
+	qcom,noise-rjct-sda = <3>;
+	stmvl53l1@29 {
+		status = "ok";
+		compatible = "st,stmvl53l1";
+		reg = <0x29>;
+		vdd-vl53l1-supply = <&L7C>;
+		gpios = <&tlmm 168 0>, <&tlmm 169 0>;
+		pinctrl-names = "laser_default", "laser_suspend";
+		pinctrl-0 = <&laser_xsdn_active &laser_int_active>;
+		pinctrl-1 = <&laser_xsdn_suspend &laser_int_suspend>;
+		st,sensorthreshold = <60 65>;
+		st,xtalkval = <0x0 0x0 0x0>;
+	};
+};
+
 &soc {
 	usb_nop_phy: usb_nop_phy {
 		compatible = "usb-nop-xceiv";
