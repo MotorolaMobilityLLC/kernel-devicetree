@@ -438,8 +438,8 @@
         };
 
         conn_therm {
-                polling-delay-passive = <5000>;
-                polling-delay = <20000>;
+                polling-delay-passive = <1000>;
+                polling-delay = <1000>;
                 thermal-governor = "user_space";
                 thermal-sensors = <&pm6125_adc_tm_iio ADC5_GPIO2_100K_PU>;
                 wake-capable-sensor;
