@@ -180,5 +180,6 @@
 		mmi,usb-charger-detection;
 		mmi,cli-enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
+		fts,pocket-mode-ctrl;
     };
 };
