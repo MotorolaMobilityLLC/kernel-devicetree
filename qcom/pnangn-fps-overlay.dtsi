@@ -155,8 +155,6 @@
 		pinctrl-2 = <&egis_irq_active>;
 		pinctrl-3 = <&egis_vcc_high>;
 		pinctrl-4 = <&egis_vcc_low>;
-                panel = <&dsi_ft8057_csot_hdplus_video
-                         &dsi_djn_nt36528_hdplus_video>;
 	};
 	//chipone side fps
 	fingerprint: chipone7318 {
