@@ -15,8 +15,7 @@
 #include "kalama-moto-common-overlay-base.dtsi"
 #include "kalama-moto-common-overlay.dtsi"
 #include "kalama-rtwo-haptics-overlay.dtsi"
-/*NOTE: Make sure FPS is not using GPIO 40 before enabling it*/
-/*#include "kalama-rtwo-fingerprint-overlay.dtsi"*/
+#include "kalama-oberon-fingerprint-overlay.dtsi"
 #include "kalama-oberon-touchscreen-overlay.dtsi"
 #include "moto-rtwo-wl2868c.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
