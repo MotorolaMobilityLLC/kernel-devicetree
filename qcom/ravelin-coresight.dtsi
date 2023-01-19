@@ -189,7 +189,7 @@
 		reg-names = "tpdm-base";
 
 		atid = <71>;
-		coresight-name = "coresight-tpdm-swao";
+		coresight-name = "coresight-tpdm-swao-1";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -731,7 +731,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
-		status = "disabled";
+
 		out-ports {
 			port {
 				tpdm_rdpm_out_funnel_dl_center_1: endpoint {
@@ -754,7 +754,7 @@
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 		qcom,cmb-msr-skip;
-		status = "disabled";
+
 		out-ports {
 			port {
 				tpdm_rdpm_mx_out_funnel_dl_center_1: endpoint {
@@ -974,7 +974,7 @@
 		reg-names = "tpdm-base";
 
 		atid = <85>;
-		coresight-name = "coresight-tpdm-tmess-irq";
+		coresight-name = "coresight-tpdm-tmess-0";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -997,7 +997,7 @@
 		reg-names = "tpdm-base";
 
 		atid = <85>;
-		coresight-name = "coresight-tpdm-tmess-dsb";
+		coresight-name = "coresight-tpdm-tmess-1";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -2102,7 +2102,6 @@
 		qcom,tpda-atid = <79>;
 
 		qcom,dsb-elem-size = <7 32>,
-							 <9 32>,
 							 <17 32>,
 							 <26 32>;
 
