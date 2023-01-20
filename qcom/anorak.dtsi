@@ -2670,15 +2670,22 @@
 		feat_conf11: feat_conf11@12c {
 			reg = <0x12c 0x4>;
 		};
+
+		gpu_speed_bin: gpu_speed_bin@119 {
+			reg = <0x119 0x2>;
+			bits = <7 8>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
 
 		nvmem-cells = <&feat_conf10>,
-				<&feat_conf11>;
+				<&feat_conf11>,
+				<&gpu_speed_bin>;
 		nvmem-cell-names = "feat_conf10",
-				"feat_conf11";
+				"feat_conf11",
+				"gpu_speed_bin";
 	};
 
 	eud: qcom,msm-eud@88e0000 {
