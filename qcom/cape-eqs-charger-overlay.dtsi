@@ -1,6 +1,7 @@
 &soc {
 	mmi,charger {
 		mmi,pd-power-max = <125000>;
+		mmi,ibat-calc-alignment-time = <1000>;
 	};
 };
 
