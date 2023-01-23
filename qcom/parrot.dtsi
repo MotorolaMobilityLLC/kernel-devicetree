@@ -16,7 +16,7 @@
 / {
 	model = "Qualcomm Technologies, Inc. Parrot";
 	compatible = "qcom,parrot";
-	qcom,msm-id = <537 0x10000>;
+	qcom,msm-id = <537 0x10000>, <613 0x10000>;
 	interrupt-parent = <&intc>;
 
 	#address-cells = <2>;
