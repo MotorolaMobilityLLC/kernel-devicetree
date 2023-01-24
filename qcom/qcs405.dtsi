@@ -2,6 +2,8 @@
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
 #include <dt-bindings/clock/qcom,gcc-qcs404.h>
 #include <dt-bindings/clock/qcom,rpmcc.h>
+#include <dt-bindings/interconnect/qcom,icc.h>
+#include <dt-bindings/interconnect/qcom,qcs405.h>
 #include <dt-bindings/gpio/gpio.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
@@ -586,6 +588,37 @@
 
 	thermal_zones: thermal-zones {};
 
+	bimc: interconnect@400000 {
+		reg = <0x400000 0x80000>;
+		compatible = "qcom,qcs405-bimc";
+		qcom,util-factor = <153>;
+		qcom,keepalive;
+		#interconnect-cells = <1>;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_BIMC_CLK>,
+			<&rpmcc RPM_SMD_BIMC_A_CLK>;
+	};
+
+	pc_noc: interconnect@500000 {
+		reg = <0x500000 0x15080>;
+		compatible = "qcom,qcs405-pcnoc";
+		qcom,keepalive;
+		#interconnect-cells = <1>;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_PNOC_CLK>,
+			<&rpmcc RPM_SMD_PNOC_A_CLK>;
+	};
+
+	system_noc: interconnect@580000 {
+		reg = <0x580000 0x23080>;
+		compatible = "qcom,qcs405-snoc";
+		qcom,keepalive;
+		#interconnect-cells = <1>;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_SNOC_CLK>,
+			<&rpmcc RPM_SMD_SNOC_A_CLK>,
+			<&gcc GCC_SYS_NOC_USB3_CLK>;
+	};
 };
 
 &firmware {
