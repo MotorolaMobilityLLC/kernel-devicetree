@@ -1,5 +1,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
+#include <dt-bindings/clock/qcom,gcc-qcs404.h>
+#include <dt-bindings/clock/qcom,rpmcc.h>
 #include <dt-bindings/gpio/gpio.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
@@ -209,6 +211,52 @@
 			reg = <0xb128000 0x1000>;
 			status = "disabled";
 		};
+	};
+
+	clocks {
+		xo_board: xo-board {
+			compatible = "fixed-clock";
+			clock-frequency = <19200000>;
+			clock-output-names = "xo_board";
+			#clock-cells = <0>;
+		};
+
+		pcie_0_pipe_clk: pcie_0_pipe_clk {
+			compatible = "fixed-clock";
+			clock-frequency = <1000>;
+			clock-output-names = "pcie_0_pipe_clk";
+			#clock-cells = <0>;
+		};
+	};
+
+	rpmcc: qcom,rpmcc {
+		compatible = "qcom,rpmcc-qcs404";
+		#clock-cells = <1>;
+	};
+
+	gcc: clock-controller@1800000 {
+		compatible = "qcom,gcc-qcs404", "syscon";
+		reg = <0x1800000 0x80000>;
+		reg-names = "cc_base";
+		vdd_cx-supply = <&VDD_CX_LEVEL>;
+		vdd_sr_pll-supply = <&VDD_SR_PLL_LEVEL>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>, <&pcie_0_pipe_clk>;
+		clock-names = "bi_tcxo", "pcie_0_pipe_clk";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	/* GDSCs in Global CC */
+	gdsc_mdss: qcom,gdsc@184d078 {
+		compatible = "qcom,gdsc";
+		regulator-name = "gdsc_mdss";
+		reg = <0x184d078 0x4>;
+	};
+
+	gdsc_oxili_gx: qcom,gdsc@185901c {
+		compatible = "qcom,gdsc";
+		regulator-name = "gdsc_oxili_gx";
+		reg = <0x185901c 0x4>;
 	};
 
 	restart@4ab000 {
@@ -537,6 +585,7 @@
 	};
 
 	thermal_zones: thermal-zones {};
+
 };
 
 &firmware {
