@@ -203,3 +203,23 @@
 		};
 	};
 };
+
+&pm8550_rgb {
+	red {
+		status = "ok";
+		label = "charging";
+		linux,default-trigger = "sign-of-life";
+	};
+
+	green {
+		status = "ok";
+		label = "charging";
+		linux,default-trigger = "sign-of-life";
+	};
+
+	blue {
+		status = "ok";
+		label = "charging";
+		linux,default-trigger = "sign-of-life";
+	};
+};
