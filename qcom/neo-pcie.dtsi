@@ -377,7 +377,8 @@
 			<&gcc GCC_DDRSS_PCIE_SF_CLK>,
 			<&gcc GCC_AGGRE_NOC_PCIE_1_AXI_CLK>,
 			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>,
-			<&gcc GCC_PCIE_0_PIPE_CLK_SRC>,
+			<&gcc GCC_PCIE_1_PIPE_CLK_SRC>,
+			<&gcc GCC_QMIP_PCIE_AHB_CLK>,
 			<&pcie_1_pipe_clk>;
 		clock-names = "pcie_1_pipe_clk", "pcie_1_ref_clk_src",
 				"pcie_1_aux_clk", "pcie_1_cfg_ahb_clk",
@@ -387,11 +388,11 @@
 				"pcie_ddrss_sf_tbu_clk",
 				"pcie_aggre_noc_1_axi_clk",
 				"gcc_cfg_noc_pcie_anoc_ahb_clk",
-				"pcie_pipe_clk_mux",
+				"pcie_pipe_clk_mux", "pcie_qmip_pcie_ahb_clk",
 				"pcie_pipe_clk_ext_src";
 		max-clock-frequency-hz = <0>, <0>, <19200000>, <0>, <0>, <0>,
 					<0>, <0>, <0>, <0>, <150000000>,
-					<0>, <0>, <0>, <0>;
+					<0>, <0>, <0>, <0>, <0>;
 
 		resets = <&gcc GCC_PCIE_1_BCR>,
 			<&gcc GCC_PCIE_1_PHY_BCR>;
@@ -404,7 +405,7 @@
 			<0x100 &apps_smmu 0x1e01 0x1>;
 
 		qcom,device-vendor-id = <0x011317cb>;
-		qcom,boot-option = <0x1>;
+		qcom,boot-option = <0x2>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
 		qcom,drv-supported;
 		qcom,drv-l1ss-timeout-us = <5000>;
