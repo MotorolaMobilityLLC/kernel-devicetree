@@ -152,8 +152,8 @@
 		};
 
 		pattern@1 {
-			/* Pulsing blue pattern
-			 *   Blue:
+			/* Pulsing white pattern
+			 *   LED:
 			 *     027F: Ramp up 50%
 			 *     027F: Ramp up 50%
 			 *     4600: Wait 100ms
@@ -162,7 +162,10 @@
 			 *     4600: Wait 100ms
 			 *     0000: Goto start
 			 */
-			pat-name = "Pulsing Blue";
+			pat-name = "Pulsing White";
+
+			pat-r = [02 7f 02 7f 46 00 02 ff 02 ff 46 00 00 00];
+			pat-g = [02 7f 02 7f 46 00 02 ff 02 ff 46 00 00 00];
 			pat-b = [02 7f 02 7f 46 00 02 ff 02 ff 46 00 00 00];
 		};
 
@@ -201,6 +204,22 @@
 			pat-g = [40 00 41 7F 41 7F 41 FF 41 FF 41 FF 41 FF 00 00];
 			pat-b = [40 00 41 FF 41 FF 41 7F 41 7F 41 FF 41 FF 00 00];
 		};
+
+		pattern@3 {
+			/* Pulsing blue pattern
+			 *   Blue:
+			 *     027F: Ramp up 50%
+			 *     027F: Ramp up 50%
+			 *     4600: Wait 100ms
+			 *     02FF: Ramp down 50%
+			 *     02FF: Ramp down 50%
+			 *     4600: Wait 100ms
+			 *     0000: Goto start
+			 */
+			pat-name = "Pulsing Blue";
+			pat-b = [02 7f 02 7f 46 00 02 ff 02 ff 46 00 00 00];
+		};
+
 	};
 };
 
