@@ -19,6 +19,10 @@
 	status = "ok";
 };
 
+&bluetooth {
+	status = "disabled";
+};
+
 &bluetooth_qca6490 {
 	status = "ok";
 };
