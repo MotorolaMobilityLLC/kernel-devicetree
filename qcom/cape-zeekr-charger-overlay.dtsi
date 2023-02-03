@@ -129,7 +129,7 @@
 		mmi,paired-load-thres = <800 400>;
 		mmi,low-load-en-gpio = <&pm8350b_gpios 1 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
 		mmi,high-load-en-gpio = <&pm8350b_gpios 3 GPIO_ACTIVE_HIGH>;	//gpio num base on hardware design
-		mmi,thermal-mitigation = <1324000 1000000 800000 500000 300000>;
+		mmi,thermal-mitigation = <1324000 1000000 800000 500000 300000 100000>;
 	};
 };
 
@@ -141,7 +141,7 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000>;
+	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000 100000>;
 	qcom,wireless-fw-name = "cps4019.bin";
 };
 
