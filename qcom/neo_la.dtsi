@@ -260,6 +260,10 @@
 			" {class: wlan_pdc, ss: bb, res: s2a.v, upval: 830}",
 			" {class: wlan_pdc, ss: bb, res: s2a.v, dwnval: 410}",
 			" {class: wlan_pdc, ss: bb, res: pdc, enable: 1}";
+
+		cnss_cdev_apss: qcom,cnss_cdev1 {
+			#cooling-cells = <2>;
+		};
 	};
 
 	bluetooth: bt_wcn6x5x {
