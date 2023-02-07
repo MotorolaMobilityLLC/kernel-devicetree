@@ -146,8 +146,8 @@
 		zinitix,reset-gpio = <&tlmm 27 0x0>;
 		zinitix,irq-gpio = <&tlmm 152 0x2008>;
 		zinitix,iovdd-gpio = <&tlmm 148 0x0>;
-		zinitix,x_resolution = <194>;
-		zinitix,y_resolution = <368>;
+		zinitix,x_resolution = <368>;
+		zinitix,y_resolution = <194>;
 		zinitix,page_size = <128>;
 		zinitix,orientation = <0>;
 		zinitix,tsp_vdd_supply_type = <1>;
