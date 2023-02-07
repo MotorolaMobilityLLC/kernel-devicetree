@@ -1,4 +1,13 @@
-#include "moto_therm_sys_temp.dtsi"
+&soc {
+	sys_temp_support {
+		compatible = "mmi,sys-temp";
+		mmi,temperature-names = "front_temp",
+			"back_temp",
+			"fuse_temp",
+			"front_temp_tmo";
+		status = "ok";
+	};
+};
 
 &socd_trip {
     temperature = <95>;
