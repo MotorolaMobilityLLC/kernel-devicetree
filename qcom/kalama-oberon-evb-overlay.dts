@@ -207,13 +207,13 @@
 &pm8550_rgb {
 	red {
 		status = "ok";
-		label = "charging";
+		label = "charging_low";
 		linux,default-trigger = "sign-of-life";
 	};
 
 	green {
 		status = "ok";
-		label = "charging";
+		label = "charging_full";
 		linux,default-trigger = "sign-of-life";
 	};
 
