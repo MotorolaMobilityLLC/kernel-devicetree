@@ -680,7 +680,9 @@ dtb-$(CONFIG_ARCH_QTI_VM) +=  \
 	ravelin-vm-idp.dtb \
 	ravelin-vm-idp-wcn3988.dtb \
 	ravelin-vm-idp-wcn3950-amoled-rcm.dtb \
-	ravelin-vm-qrd.dtb
+	ravelin-vm-qrd.dtb \
+	montague-vm-moselle.dtb \
+	montague-vm-hsp.dtb
 
 endif
 endif
