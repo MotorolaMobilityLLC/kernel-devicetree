@@ -76,4 +76,47 @@
 			};
 		};
 	};
+
+	cli_pmx_ts_active {
+		cli_ts_active {
+			mux {
+				pins = "gpio27", "gpio125";
+			};
+
+			config {
+				pins = "gpio27", "gpio125";
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend {
+			mux {
+				pins = "gpio125";
+			};
+
+			config {
+				pins = "gpio125";
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release {
+			mux {
+				pins = "gpio27", "gpio125";
+			};
+
+			config {
+				pins = "gpio27", "gpio125";
+			};
+		};
+	};
+};
+
+&qupv3_se1_i2c {
+	bt541_ts_device@20 {
+		interrupts = <125 0x2008>;
+		zinitix,irq-gpio = <&tlmm 125 0x2008>;
+	};
 };
