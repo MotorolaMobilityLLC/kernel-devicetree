@@ -1,70 +1,14 @@
 
-&tlmm {
-	sc760x_irq_default: sc760x_irq_default {
-		mux {
-			pins = "gpio66";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio66";
-			drive-strength = <2>;
-			bias-disable;
-			input-enable;
-		};
-	};
-
-	sc760x_enable: sc760x_enable {
-		mux {
-			pins = "gpio54";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio54";
-			drive-strength = <2>;
-			bias-disable; /* NO PULL */
-			output-high;
-		};
-	};
-	sc760x_disable: sc760x_disable {
-		mux {
-			pins = "gpio54";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio54";
-			drive-strength = <2>;
-			output-low;
-		};
-	};
-};
-&qupv3_se13_spi {
-	status = "disabled";
-};
-
-&aliases {
-	i2c1 = "/soc/i2c@a94000";
+&sc760x_balance {
+	status = "disable";
 };
 
 &qupv3_se13_i2c {
 	status = "ok";
-	cw2217b_flip: cw2217b-battery-flip@64 {
-		compatible = "cellwise,cw2217";
-		reg = <0x64>;
-		sense_r_mohm = <5>;
-		df-serialnum = "SB18D64677";
-		vdd-i2c-supply = <&L18B>;
-		fg-psy-name = "flip_battery";
-		ibat-invert-polority;
-		factory_mode_ntc_exist = <1>;
-		#include "bat_setting/CW_PM08-atl-790mah.dtsi"
-	};
 
-	sc760x_balance: sc760x-balance@52{
+	sc760x_balance_evt: sc760x-balance-evt@54{
 		compatible = "southchip,sc7603_master";
-		reg = <0x52>;
+		reg = <0x54>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <66 0>;
 		pinctrl-names = "default", "sc760x_enable", "sc760x_disable";
@@ -121,24 +65,7 @@
     };
 };
 
-&mmi_charger {
-	mmi,pd-power-max = <30000>;
-	mmi,upper-limit-capacity = <80>;
-	mmi,ibat-calc-alignment-time = <1000>;
-};
-
-&battery_charger {
-	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000>;
-	qcom,wireless-fw-name = "cps4019.bin";
-};
-
 &qti_glink_charger {
-	mmi,max-fv-mv = <4550>;
-	mmi,main-battery-enabled;
-	mmi,paired-id = <0x00010000>;
+	mmi,max-fv-mv = <4300>;
 };
 
-&bm_adsp_ulog {
-	categories = /bits/ 64 <0x1FFFBFFFFF>;
-};
