@@ -2,6 +2,7 @@
 #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
 #include <dt-bindings/iio/qcom,spmi-adc5-gen3-smb139x.h>
 #include <dt-bindings/iio/qcom,spmi-adc5-gen3-pmxr2230.h>
+#include <dt-bindings/iio/qcom,spmi-vadc.h>
 
 #include "pmxr2230.dtsi"
 #include "pm8550b.dtsi"
@@ -255,6 +256,15 @@
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
 		qcom,adc-tm-type = <1>;
+	};
+
+	pmxr2230_pot_res {
+		reg = <PMXR2230_ADC5_GEN3_AMUX_THM5_100K_PU>;
+		label = "pmxr2230_pot_res";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+		qcom,scale-fn-type = <ADC_SCALE_HW_CALIB_RESISTANCE_100K_PU_PM7>;
 	};
 
 	pmxr2230_sd_card_therm {
