@@ -179,7 +179,8 @@
 		reg = <0x75>;
 
 		interrupt-parent = <&tlmm>;
-		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+		/*interrupts = <7 IRQ_TYPE_LEVEL_LOW>;*/
+		interrupts = <0 0>;
 
 		dlg,cs-gpios = <&tlmm 6 0>;
 
