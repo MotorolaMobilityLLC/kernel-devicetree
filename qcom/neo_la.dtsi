@@ -441,3 +441,7 @@
 &wpss_etm {
 	status = "disabled";
 };
+
+&qcom_cedev {
+	status = "disabled";
+};
