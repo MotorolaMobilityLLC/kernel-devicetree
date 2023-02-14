@@ -1670,4 +1670,22 @@
 
 };
 
+&qupv3_se8_i2c {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "ok";
+
+	power-sensor@42 {
+		compatible = "ti,ina234";
+		reg = <0x42>;
+		shunt-resistor = <10000>;
+	};
+
+	power-sensor@43 {
+		compatible = "ti,ina234";
+		reg = <0x43>;
+		shunt-resistor = <10000>;
+	};
+};
+
 #include "cinder-thermal.dtsi"
