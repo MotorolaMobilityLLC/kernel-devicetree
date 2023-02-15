@@ -111,6 +111,10 @@
 		};
 	};
 
+	aliases: aliases {
+		serial0 = &blsp1_uart2_console;
+	};
+
 	soc: soc { };
 
 };
@@ -598,9 +602,13 @@
 
 #include "qcs405-cpu.dtsi"
 #include "qcs405-pinctrl.dtsi"
+#include "qcs405-blsp.dtsi"
 #include "pms405-rpm-regulator.dtsi"
 #include "qcs405-regulator.dtsi"
 #include "qcs405-dma-heaps.dtsi"
 #include "pms405.dtsi"
 #include "qcs405-thermal.dtsi"
 
+&blsp1_uart2_console {
+	status = "ok";
+};
