@@ -158,6 +158,11 @@
 	status = "disabled";
 };
 
+&usb2_phy0 {
+	qcom,param-override-seq =
+		<0x86 0x6c>;
+};
+
 &battery_charger {
 	qcom,wireless-charging-not-supported;
 };
