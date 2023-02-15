@@ -135,7 +135,7 @@
 
 &mmi_charger {
 	mmi,pd-power-max = <30000>;
-	mmi,upper-limit-capacity = <80>;
+	mmi,upper-limit-capacity = <75>;
 	mmi,ibat-calc-alignment-time = <1000>;
 };
 
