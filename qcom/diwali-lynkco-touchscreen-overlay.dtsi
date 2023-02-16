@@ -48,6 +48,15 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
+
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
+		goodix,interpolation-ctrl;
+		goodix,edge-ctrl;
+		goodix,sample-ctrl;
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
+		goodix,gesture-wait-pm;
 	};
 };
 
