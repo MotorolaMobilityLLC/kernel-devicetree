@@ -87,10 +87,14 @@
 		Semtech,button-names = "Moto CapSense Ch1","Moto CapSense Ch3","Moto CapSense Ch5","Moto CapSense Ch6";
 		Semtech,debug-name = "capsense0";
 		Semtech,flip_operation_num = <2>;
-                Semtech,flip-state-change-cal = <0x1>;
+                Semtech,flip_operation_far_num = <2>;
 		Semtech,flip_near_init = <
-			0x80B8 0xB01F
-                        0x8024 0x0800
+                      0x8024 0x087F
+                      0x4280 0xE
+		>;
+                Semtech,flip_far_init = <
+                      0x8024 0x7F00
+                      0x4280 0xE
 		>;
 
 		Semtech,reg-num = <72>;
@@ -158,15 +162,15 @@
 			0x8128 0x300000
 			0x8148 0x2300000
 			0x8168 0x0
-			0x808C 0x18
-			0x80AC 0x18
-			0x80CC 0x18
-			0x80EC 0x18
-			0x810C 0x18
-			0x812C 0x18
-			0x814C 0x18
-			0x816C 0x18
-			0x8024 0x7F00
+			0x808C 0xA0200018
+			0x80AC 0xA0200018
+			0x80CC 0xA0200018
+			0x80EC 0xA0200018
+			0x810C 0xA0200018
+			0x812C 0xA0200018
+			0x814C 0xA0200018
+			0x816C 0xA0200018
+                        0x8024 0x7F00
 		>;
 		status = "ok";
 	};
@@ -194,12 +198,16 @@
 		Semtech,button-flag = <0x15>;
 		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch2","Moto CapSense Ch4";
 		Semtech,debug-name = "capsense1";
-		Semtech,flip_operation_num = <1>;
-                Semtech,flip-state-change-cal = <0x1>;
+		Semtech,flip_operation_num = <2>;
+                Semtech,flip_operation_far_num = <2>;
 		Semtech,flip_near_init = <
-			0x8024 0x0400
+                      0x8024 0x047F
+                      0x4280 0xE   
 		>;
-
+                Semtech,flip_far_init = <
+                      0x8024 0x7F00
+                      0x4280 0xE
+		>;
 		Semtech,reg-num = <72>;
 		Semtech,reg-init = <
 		        0x4004 0x74
@@ -265,15 +273,15 @@
 			0x8128 0x300000
 			0x8148 0x300000
 			0x8168 0x0
-			0x808C 0x18
-			0x80AC 0x18
-			0x80CC 0x18
-			0x80EC 0x18
-			0x810C 0x18
-			0x812C 0x18
-			0x814C 0x18
-			0x816C 0x18
-			0x8024 0x7F00
+			0x808C 0xA0200018
+			0x80AC 0xA0200018
+			0x80CC 0xA0200018
+			0x80EC 0xA0200018
+			0x810C 0xA0200018
+			0x812C 0xA0200018
+			0x814C 0xA0200018
+			0x816C 0xA0200018
+                        0x8024 0x7F00
 
 		>;
 		status = "ok";
