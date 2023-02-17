@@ -15,7 +15,7 @@
 
 #include "diwali-lynkco-common-overlay.dtsi"
 #include "diwali-lynkco-evt-charger-overlay.dtsi"
-
+#include "diwali-lynkco-evb-sensor-overlay.dtsi"
 / {
 	model = "lynkco";
 	compatible = "qcom,diwali-qrd", "qcom,diwali", "qcom,qrd", "moto,lynkco";

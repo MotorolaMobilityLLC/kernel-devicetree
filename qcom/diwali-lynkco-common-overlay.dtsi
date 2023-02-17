@@ -26,7 +26,6 @@
 #include "diwali-moto-common-charger.dtsi"
 #include "diwali-lynkco-charger-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
-#include "diwali-lynkco-evb-sensor-overlay.dtsi"
 #include "diwali-moto-qca6490-overlay.dtsi"
 #include "diwali-lynkco-nfc-overlay.dtsi"
 #include "diwali-lynkco-thermal-overlay.dtsi"
