@@ -10,8 +10,11 @@
 			<0x10900000 0x80000>;
 		reg-names = "kgsl_3d0_reg_memory", "cx_dbgc", "rscc",
 			"cx_misc", "qdss_gfx";
-		interrupts = <0 300 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "kgsl_3d0_irq";
+		interrupts = <0 300 IRQ_TYPE_LEVEL_HIGH>, <0 286 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "kgsl_3d0_irq", "freq_limiter_irq";
+
+		resets = <&gpucc GPUCC_GPU_CC_FREQUENCY_LIMITER_IRQ_CLEAR>;
+		reset-names = "freq_limiter_irq_clear";
 
 		/*
 		 * HLOS1_VOTE_GPU_SMMU_CLK enables GPU_CC_MEMNOC_GFX_CLK and
@@ -65,6 +68,9 @@
 			<MHZ_TO_KBPS(2092, 4)>, /* index=7  */
 			<MHZ_TO_KBPS(2736, 4)>, /* index=8  */
 			<MHZ_TO_KBPS(3867, 4)>; /* index=9  */
+
+		nvmem-cells = <&gpu_speed_bin>;
+		nvmem-cell-names = "speed_bin";
 
 		zap-shader {
 			memory-region = <&gpu_microcode_mem>;
