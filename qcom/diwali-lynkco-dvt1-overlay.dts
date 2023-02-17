@@ -14,7 +14,7 @@
 /plugin/;
 
 #include "diwali-lynkco-common-overlay.dtsi"
-
+#include "diwali-lynkco-dvt-sensor-overlay.dtsi"
 / {
 	model = "lynkco";
 	compatible = "qcom,diwali-qrd", "qcom,diwali", "qcom,qrd", "moto,lynkco";
