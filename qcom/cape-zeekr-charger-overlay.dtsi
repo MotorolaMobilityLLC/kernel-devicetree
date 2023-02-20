@@ -100,7 +100,9 @@
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
 		input-current-limit-microamp = <1324000>;
-		wls-current-limit-microamp = <200000>;
+		input-voltage-limit-microvolt = <4500000>;
+		wls-input-current-limit-microamp = <200000>;
+		wls-input-voltage-limit-microvolt = <3900000>;
 
 		mmi,ext-usb-psy-name = "usb";
 		mmi,ext-wls-psy-name = "wireless";
