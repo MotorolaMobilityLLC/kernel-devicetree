@@ -1,16 +1,6 @@
 #include <dt-bindings/interconnect/qcom,neo.h>
 #include "neo-idp.dtsi"
 
-&icnss2 {
-	status = "disabled";
-	/delete-property/ qcom,wlan-msa-fixed-region;
-};
-
-&wpss_pas {
-	status = "disabled";
-	/delete-property/ memory-region;
-};
-
 &reserved_memory {
 	cnss_wlan_mem: cnss_wlan_region {
 		compatible = "shared-dma-pool";
