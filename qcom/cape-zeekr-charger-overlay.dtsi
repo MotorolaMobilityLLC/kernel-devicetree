@@ -121,8 +121,8 @@
 					<60 4200 810 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,paired-esr = <5>;
-		mmi,batt-esr = <5>;
+		mmi,paired-esr = <50>;
+		mmi,batt-esr = <150>;
 		// delta_ocv ichg map table
 		mmi,paired-ichg-table = <60 1324
 					 90 900
