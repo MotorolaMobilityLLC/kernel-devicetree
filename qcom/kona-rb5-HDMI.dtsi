@@ -468,3 +468,8 @@
 		qcom,hw-settle-time = <200>;
 	};
 };
+
+&pcie2 {
+		status = "ok";
+		qcom,boot-option = <0x0>;
+};
