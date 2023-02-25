@@ -337,7 +337,8 @@
 		lane-channel-swap;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&usb3phy_portselect_gpio>;
+		/*IMU CLKIN GPIO */
+		pinctrl-0 = <&usb3phy_portselect_gpio &imu_clkin_default>;
 		gpios = <&tlmm 160 0>;
 
 		eq = /bits/ 8 <
