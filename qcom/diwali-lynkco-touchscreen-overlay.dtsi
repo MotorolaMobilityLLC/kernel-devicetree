@@ -66,6 +66,7 @@
 
 &aliases {
 	spi1 = "/soc/spi@980000";
+	i2c2 = "/soc/i2c@984000";
 };
 
 /* CLI touchscreen pins */
@@ -163,5 +164,7 @@
 		zinitix,pname = "SM-G5308W";
 
 		mmi,power-off-suspend;
+		mmi,cli-enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
 	};
 };
