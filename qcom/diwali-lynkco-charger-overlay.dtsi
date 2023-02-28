@@ -95,7 +95,7 @@
 
 		init-charger-disabled;
 		iterm-microamp = <200000>;
-		ichg-max-microamp = <1324000>;
+		ichg-max-microamp = <1919000>;
 		vchg-max-microvolt = <4600000>;
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
@@ -106,18 +106,18 @@
 		mmi,chrg-iterm-ma = <100>;
 		mmi,fg-iterm-ma = <100>;
 		mmi,max-fv-mv = <4500>;
-		mmi,max-fcc-ma = <1324>;
+		mmi,max-fcc-ma = <1919>;
 		mmi,demo-fv-mv = <4000>;
-		mmi,df-serialnum = "SB18D44720";
-		mmi,mmi-temp-zones = <0 4200 162 0>,
-				<10 4250 405 243>,
-				<15 4250 810 567>,
-				<45 4300 1324 1053>,
-				<45 4350 1053 810>,
-				<60 4200 810 0>;
+		mmi,df-serialnum = "SB18D80976";
+		mmi,mmi-temp-zones = <0 4200 235 0>,
+				<10 4250 587 352>,
+				<15 4250 1175 821>,
+				<45 4300 1919 1515>,
+				<45 4350 1515 1175>,
+				<60 4200 1175 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,thermal-mitigation = <1324000 1000000 800000 500000 300000>;
+		mmi,thermal-mitigation = <1919000 1500000 1000000 800000 500000 300000>;
     };
 };
 
