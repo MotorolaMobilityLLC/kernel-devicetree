@@ -137,6 +137,7 @@
 	mmi,max-fv-mv = <4550>;
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
+	mmi,partner_psy_name = "charger";
 };
 
 &bm_adsp_ulog {
