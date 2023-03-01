@@ -67,5 +67,6 @@
 
 &qti_glink_charger {
 	mmi,max-fv-mv = <4300>;
+	mmi,partner_psy_name = "charger";
 };
 
