@@ -26,3 +26,7 @@
 &bluetooth_qca6490 {
 	status = "ok";
 };
+
+&wpss_pas {
+	status = "disabled";
+};
