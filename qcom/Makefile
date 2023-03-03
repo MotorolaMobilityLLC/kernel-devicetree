@@ -413,11 +413,13 @@ dtbo-$(CONFIG_ARCH_PARROT) += parrot-rumi-overlay.dtbo \
 	parrot-idp-wcn6750-amoled-overlay.dtbo \
 	parrot-idp-wcn6750-amoled-4gb-overlay.dtbo \
 	parrot-idp-nopmi-overlay.dtbo \
+	parrot-idp-pm8350b-overlay.dtbo \
 	parrot-qrd-overlay.dtbo \
 	parrot-qrd-4gb-overlay.dtbo \
 	parrot-qrd-wcn6750-overlay.dtbo \
 	parrot-qrd-wcn6750-4gb-overlay.dtbo \
-	parrot-qrd-nopmi-overlay.dtbo
+	parrot-qrd-nopmi-overlay.dtbo	\
+	parrot-qrd-pm8350b-overlay.dtbo
 
 parrot-rumi-overlay.dtbo-base := parrot.dtb
 parrot-atp-overlay.dtbo-base := parrot.dtb parrotp.dtb
@@ -432,11 +434,13 @@ parrot-idp-wcn6750-amoled-rcm-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-wcn6750-amoled-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-idp-wcn6750-amoled-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-idp-nopmi-overlay.dtbo-base := parrot.dtb parrotp.dtb
+parrot-idp-pm8350b-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-wcn6750-overlay.dtbo-base := parrot.dtb parrotp.dtb
 parrot-qrd-wcn6750-4gb-overlay.dtbo-base := parrot-4gb.dtb
 parrot-qrd-nopmi-overlay.dtbo-base := parrot.dtb parrotp.dtb
+parrot-qrd-pm8350b-overlay.dtbo-base := parrot.dtb parrotp.dtb
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-atp.dtb \
@@ -449,6 +453,7 @@ dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-idp-wcn6750-amoled.dtb \
 	parrot-idp-wcn6750-amoled-4gb.dtb \
 	parrot-idp-nopmi.dtb \
+	parrot-idp-pm8350b.dtb \
 	parrot-idp-wcn6750-amoled-rcm.dtb \
 	parrot-idp-wcn6750-amoled-rcm-4gb.dtb \
 	parrot-qrd.dtb \
@@ -456,6 +461,7 @@ dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-qrd-wcn6750.dtb \
 	parrot-qrd-wcn6750-4gb.dtb \
 	parrot-qrd-nopmi.dtb \
+	parrot-qrd-pm8350b.dtb \
 	parrotp-atp.dtb \
 	parrotp-idp.dtb \
 	parrotp-idp-wcn3990.dtb \
@@ -463,9 +469,11 @@ dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrotp-idp-wcn6750-amoled.dtb \
 	parrotp-idp-wcn6750-amoled-rcm.dtb \
 	parrotp-idp-nopmi.dtb \
+	parrotp-idp-pm8350b.dtb \
 	parrotp-qrd.dtb \
 	parrotp-qrd-wcn6750.dtb \
-	parrotp-qrd-nopmi.dtb
+	parrotp-qrd-nopmi.dtb	\
+	parrotp-qrd-pm8350b.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
