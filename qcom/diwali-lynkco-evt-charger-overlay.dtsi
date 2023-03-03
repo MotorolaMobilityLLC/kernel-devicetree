@@ -28,7 +28,7 @@
 		sc,sc760x,chg-ovp-disable = <0>;
 		sc,sc760x,chg-ovp = <0>; /*0:5.0V 1:5.6V*/
 		sc,sc760x,bat-ovp-disable = <0>;
-		sc,sc760x,bat-ovp = <10>; /*4000 + val *50*/
+		sc,sc760x,bat-ovp = <20>; /*4000 + val *50*/
 		sc,sc760x,chg-ocp-disable = <0>;
 		sc,sc760x,chg-ocp = <2>; /*10000 + val * 1000*/
 		sc,sc760x,dsg-ocp-disable = <0>;
