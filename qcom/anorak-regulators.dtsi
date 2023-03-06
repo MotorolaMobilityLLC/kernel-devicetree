@@ -96,7 +96,7 @@
 		pmxr2230_s4_level: regulator-pmxr2230-s4-level {
 			regulator-name = "pmxr2230_s4_level";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			pm_v6e_s1_level-parent-supply =
+			pmxr2230_s4_level-parent-supply =
 				<&VDD_CX_MMCX_SUPPLY_LEVEL>;
 			regulator-min-microvolt =
 				<RPMH_REGULATOR_LEVEL_LOW_SVS>;

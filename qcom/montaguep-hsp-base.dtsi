@@ -1,0 +1,4 @@
+#include "montaguep.dtsi"
+
+/ {
+};
