@@ -593,3 +593,16 @@
 		status = "ok";
 	};
 };
+
+&pmk8550_gpios {
+	imu_clk {
+		imu_clkin_default: imu_clkin_default {
+			pins = "gpio3";
+			function = "func1";
+			input-disable;
+			output-enable;
+			power-source = <0>;
+			qcom,drive-strength = <3>;
+		};
+	};
+};
