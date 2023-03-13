@@ -132,6 +132,11 @@
 		reg = <0x152020 0x4>;
 	};
 
+	gcc_apcs_gdsc_sleep_ctrl: syscon@152024 {
+		compatible = "syscon";
+		reg = <0x152024 0x4>;
+	};
+
 	/* GCC GDSCs */
 	gcc_pcie_0_gdsc: qcom,gdsc@16b004 {
 		compatible = "qcom,gdsc";
