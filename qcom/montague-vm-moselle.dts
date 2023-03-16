@@ -1,6 +1,7 @@
 /dts-v1/;
 
 #include "ravelin-vm.dtsi"
+#include "ravelin-vm-qrd.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Montague Moselle QRD";
