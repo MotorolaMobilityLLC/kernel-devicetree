@@ -117,7 +117,7 @@
 				<60 4200 1175 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,thermal-mitigation = <1919000 1500000 1000000 800000 500000 300000>;
+		mmi,thermal-mitigation = <1919000 1500000 1000000 800000 500000 300000 100000>;
     };
 };
 
@@ -129,7 +129,7 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000>;
+	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000 100000>;
 	qcom,wireless-fw-name = "cps4019.bin";
 };
 
