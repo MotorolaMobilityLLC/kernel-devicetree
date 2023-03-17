@@ -166,3 +166,15 @@
 		dma-coherent;
 	};
 };
+
+&msm_gpu {
+	status = "disabled";
+};
+
+&kgsl_msm_iommu {
+	status = "disabled";
+};
+
+&gmu {
+	status = "disabled";
+};
