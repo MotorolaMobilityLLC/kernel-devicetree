@@ -52,6 +52,7 @@
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
 		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,refresh-rate-update;
