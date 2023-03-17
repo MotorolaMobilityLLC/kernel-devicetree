@@ -31,3 +31,7 @@
 &bluetooth_wcn6750 {
 	status = "ok";
 };
+
+&wpss_pas {
+	status = "ok";
+};
