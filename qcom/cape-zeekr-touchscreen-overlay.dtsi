@@ -46,6 +46,7 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
+	qcom,disable-autosuspend;
 	status = "ok";
 
 	goodix-berlin@0 {
@@ -151,6 +152,7 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
+	qcom,disable-autosuspend;
 	status = "ok";
 
 	focaltech@1 {
