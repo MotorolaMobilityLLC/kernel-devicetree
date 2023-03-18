@@ -1,7 +1,0 @@
-/dts-v1/;
-
-#include "waipio-le.dtsi"
-
-/ {
-	model = "Qualcomm Technologies, Inc. Waipio LE";
-};
