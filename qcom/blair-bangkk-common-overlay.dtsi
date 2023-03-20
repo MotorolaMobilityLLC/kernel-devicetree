@@ -20,7 +20,6 @@
 #include "bangkk-display.dtsi"
 #include "bangkk-touchscreen.dtsi"
 #include "bangkk-sensors.dtsi"
-#include "camera/blair-camera-sensor-mot-bangkk-overlay.dtsi"
 #include "bangkk-wl286xx.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 
