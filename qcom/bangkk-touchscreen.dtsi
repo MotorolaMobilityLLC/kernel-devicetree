@@ -86,7 +86,7 @@
 		novatek,usb_charger;
 		novatek,edge_cmd = /bits/ 8 <0x72 0x01 0x00>;
 		novatek,panel-supplier = "tianma","tm","csot";
-		panel = <&dsi_tianma_nt36672e_678_fhdp_120_video_v1 &dsi_tm_nt36672e_678_fhdp_120_video &dsi_csot_nt36672e_678_fhdp_120_video>;
+		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid>;
 		status = "ok";
 	};
 
