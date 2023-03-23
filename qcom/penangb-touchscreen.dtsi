@@ -1,0 +1,138 @@
+/*
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&qupv3_se0_i2c {
+	status = "disabled";
+};
+
+&qupv3_se0_spi_pins {
+	qupv3_se0_spi_active: qupv3_se0_spi_active {
+		mux {
+			pins = "gpio0", "gpio1", "gpio2";
+			function = "qup00";
+		};
+
+		config {
+			pins = "gpio0", "gpio1", "gpio2";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_sleep: qupv3_se0_spi_sleep {
+		mux {
+			pins = "gpio0", "gpio1", "gpio2";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio0", "gpio1", "gpio2";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_cs_active: qupv3_se0_spi_cs_active {
+		mux {
+			pins = "gpio3";
+			function = "qup00";
+		};
+
+		config {
+			pins = "gpio3";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se0_spi_cs_sleep: qupv3_se0_spi_cs_sleep {
+		mux {
+			pins = "gpio3";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio3";
+			drive-strength = <6>;
+			bias-bus-hold;
+		};
+	};
+
+	touch_reset_mux {
+		touch_reset_active: touch_reset_active {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <8>;
+				bias-disable;
+				output-high;
+			};
+		};
+
+		touch_reset_suspend: touch_reset_suspend {
+			mux {
+				pins = "gpio21";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio21";
+				drive-strength = <2>;
+				bias-pull-down;
+				output-low;
+			};
+		};
+	};
+};
+
+&qupv3_se0_spi {
+	status = "ok";
+	pinctrl-0 = <&qupv3_se0_spi_active &qupv3_se0_spi_cs_active>;
+	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
+        focaltech@38{
+                compatible = "focaltech,fts";
+                reg = <0x0>;
+                spi-max-frequency = <9600000>;
+                interrupt-parent = <&tlmm>;
+                interrupts = <22 0x2008>;
+                focaltech,reset-gpio = <&tlmm 21 0x00>;
+                focaltech,irq-gpio = <&tlmm 22 0x2008>;
+                focaltech,max-touch-number = <10>;
+                focaltech,display-coords = <0 0 720 1600>;
+                focaltech,report_gesture_key;
+                focaltech,panel-supplier = "csot";
+                pinctrl-names = "pmx_ts_active", "pmx_ts_suspend",
+                        "pmx_ts_release";
+                pinctrl-0 = <&touch_reset_active>;
+                pinctrl-1 = <&touch_reset_suspend>;
+                pinctrl-2 = <&pmx_ts_release>;
+                panel = <&dsi_ft8057_csot_video>;
+        };
+	novatek@0{
+		compatible = "novatek,NVT-ts-spi";
+		reg = <0x1>;
+		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
+		novatek,reset-gpio = <&tlmm 21 0x00>;
+		novatek,irq-gpio = <&tlmm 22 0x2001>;
+		novatek,def-max-resolution = <720 1600>;
+		novatek,swrst-n8-addr = <0x03F0FE>;
+		novatek,spi-rd-fast-addr = <0x03F310>;
+		novatek,report_gesture_key;
+		novatek,usb_charger;
+		novatek,panel-supplier = "djn";
+		panel = <&dsi_nt36528_djn_video>;
+		status = "ok";
+	};
+};

@@ -1,0 +1,124 @@
+&tlmm {
+
+	fps_int_active: fps_int_active {
+		/* active state */
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fps_int_suspend: fps_int_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fps_rst_high: fps_rst_high {
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			drive-strength = <8>;
+			output-high;
+			bias-pull-up;
+		};
+	};
+
+	fps_rst_low: fps_rst_low {
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio18";
+			drive-strength = <8>;
+			output-low;
+			bias-pull-down;
+		};
+	};
+
+	fps_ldo3_en_active: fps_ldo3_en_active {
+		/* active state */
+		mux {
+			pins = "gpio87";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio87";
+			drive-strength = <2>; /* 2 MA */
+				bias-disable;
+				output-high;
+		};
+	};
+
+	fps_ldo3_en_suspend: fps_ldo3_en_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio87";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio87";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			output-low;
+		};
+	};
+
+};
+
+&soc {
+	fpc: fpc_fpc1020 {
+		compatible = "fpc,fpc1020";
+		status = "ok";
+		irq = <&tlmm 17 0>;
+		rst = <&tlmm 18 0>;
+		fp-gpio-ven = <&tlmm 87 0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0>;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_int_active>;
+		pinctrl-1 = < &fps_int_suspend>;
+	};
+	//chipone side fps
+	fingerprint: chipone7318 {
+		compatible = "qcom,fingerprint-gpio";
+		status = "ok";
+		reg = <0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <17 0x0>;
+		fp-gpio-int = <&tlmm 17 0x0>;
+		fp-gpio-reset = <&tlmm 18 0x0>;
+		fp-gpio-power = <&tlmm 87 0x0>;
+		pinctrl-names = "fps_rst_active","fps_rst_suspend","fps_int_active","fps_ido1p8_en_active","fps_ido1p8_en_suspend";
+
+		pinctrl-0 = <&fps_rst_high>;
+		pinctrl-1 = <&fps_rst_low>;
+		pinctrl-2 = <&fps_int_active>;
+		pinctrl-3 = <&fps_ldo3_en_active>;
+		pinctrl-4 = <&fps_ldo3_en_suspend>;
+	};
+};
+

@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+nd50-jiade-5000mah {
+	serialnum = "SB18D45495";
+	fcc_design = <5000>;
+	ui_full = <99>;
+	config_profile_info = [5A 00 00 00 00 00 00 00
+                               9E C0 C3 C6 B9 B6 AA 6D
+                               47 FF D7 9D 82 6A 5B 52
+                               4D 4D 4C 7D D9 DE 8C D2
+                               CA C9 D1 D5 D4 D2 CF CA
+                               C7 C7 D5 B8 9C 91 89 82
+                               7C 7C 85 95 AB 87 67 73
+                               80 00 57 10 00 A0 6E 00
+                               00 00 64 21 C3 6E 00 00
+                               00 00 00 00 00 00 00 F0 ];
+};
