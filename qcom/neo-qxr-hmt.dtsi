@@ -11,6 +11,10 @@
 	/delete-property/ memory-region;
 };
 
+&wpss_etm {
+	status = "disabled";
+};
+
 &reserved_memory {
 	cnss_wlan_mem: cnss_wlan_region {
 		compatible = "shared-dma-pool";
