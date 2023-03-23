@@ -485,7 +485,16 @@
 	ldo_vib {
 		compatible = "moto,vibrator-ldo";
 		moto,vib-ldo-gpio = <&tlmm 100 0x0>;
-		status = "ok";
+		status = "disabled";
+	};
+
+	qcom,tz_gpio {
+		compatible = "qcom,tz_gpio";
+		tlmm-tz = <0>,
+			<13>,
+			<14>,
+			<15>,
+			<16>;
 	};
 };
 
