@@ -11,6 +11,7 @@
  */
 #include "blair-bangkk-common-overlay.dtsi"
 #include "blair-pm6125-moto-common-overlay.dtsi"
+#include "bangkk-charger.dtsi"
 
 &pm7250b_charger {
 	dpdm-supply = <&usb2_phy0>;
