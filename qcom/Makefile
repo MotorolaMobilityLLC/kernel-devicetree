@@ -519,7 +519,7 @@ ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo-base := ravelin.dtb ravelinp.dtb mon
 ravelin-qrd-overlay.dtbo-base := ravelin.dtb ravelinp.dtb montague.dtb montaguep.dtb
 ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb montague.dtb montaguep.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
-montague-hsp-overlay.dtbo-base := montague-hsp-base.dtb montaguep-hsp-base.dtb
+montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-moselle-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
 else
