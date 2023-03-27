@@ -160,12 +160,11 @@
 &pmxr2230_gpios {
 	flash_default {
 		ext_flash_default: ext_flash_default {
-			pins = "gpio1";
+			pins = "gpio2";
 			function = "normal";
 			input-enable;
 			output-disable;
 			bias-disable;
-			bias-high-impedance;
 			power-source = <1>;
 		};
 	};
