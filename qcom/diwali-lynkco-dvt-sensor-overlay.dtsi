@@ -86,14 +86,16 @@
 		Semtech,button-flag = <0x3a>;
 		Semtech,button-names = "Moto CapSense Ch1","Moto CapSense Ch3","Moto CapSense Ch4","Moto CapSense Ch5";
 		Semtech,debug-name = "capsense0";
-		Semtech,flip_operation_num = <4>;
+		Semtech,flip_operation_num = <2>;
+		Semtech,flip_operation_far_num = <2>;
 		Semtech,flip_near_init = <
-			0x80B8 0xFF21
-			0x8138 0xFF22
-			0x80A8 0x2300000
-			0x8128 0x2300000
+			0x8024 0x0800
+			0x4280 0xE
 		>;
-
+		Semtech,flip_far_init = <
+			0x8024 0x7F00
+			0x4280 0xE
+		>;
 		Semtech,reg-num = <72>;
 		Semtech,reg-init = <
 			0x4004 0x74
@@ -195,14 +197,16 @@
 		Semtech,button-flag = <0x45>;
 		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch2","Moto CapSense Ch6";
 		Semtech,debug-name = "capsense1";
-		Semtech,flip_operation_num = <4>;
+		Semtech,flip_operation_num = <2>;
+		Semtech,flip_operation_far_num = <2>;
 		Semtech,flip_near_init = <
-			0x8098 0xFF27
-			0x8118 0xFF27
-			0x8088 0x2300000
-			0x8108 0x2300000
+			0x8024 0x0400
+			0x4280 0xE
 		>;
-
+		Semtech,flip_far_init = <
+			0x8024 0x7F00
+			0x4280 0xE
+		>;
 		Semtech,reg-num = <72>;
 		Semtech,reg-init = <
 			0x4004 0x74
