@@ -23,6 +23,7 @@
 #include "camera/blair-camera-sensor-mot-bangkk-overlay.dtsi"
 #include "bangkk-wl286xx.dtsi"
 #include "moto_therm_sys_temp.dtsi"
+#include "blair-bangkk-fmr-overlay.dtsi"
 
 &wcd937x_codec {
 	cdc-vdd-rxtx-supply = <&L9A>;
