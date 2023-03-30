@@ -45,7 +45,6 @@
 		cnss-enable-self-recovery;
 		qcom,same-dt-multi-dev;
 		mboxes = <&qmp_aop 0>;
-		qcom,vreg_ipa="s1c";
 
 		vdd-wlan-aon-supply = <&S7B>;
 		qcom,vdd-wlan-aon-config = <950000 952000 0 0 1>;
