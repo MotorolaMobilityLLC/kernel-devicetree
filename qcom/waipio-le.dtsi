@@ -1,0 +1,7 @@
+#include "waipio-v2.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Waipio LE";
+	compatible = "qcom,waipio";
+	qcom,msm-id = <457 0x10000>;
+};

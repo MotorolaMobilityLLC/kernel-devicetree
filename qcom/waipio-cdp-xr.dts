@@ -1,6 +1,7 @@
 /dts-v1/;
 
-#include "waipio-v2.dtsi"
+#include "waipio-le.dtsi"
+#include "waipio-cdp.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Waipio CDP with XR";
