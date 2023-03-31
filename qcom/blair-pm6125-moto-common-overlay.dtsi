@@ -67,11 +67,11 @@
 &tlmm {
 	sar_int_default: sar_int_default {
 			mux {
-				pins = "gpio58";
+				pins = "gpio24";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio58";
+				pins = "gpio24";
 				num-grp-pins = <1>;
 				drive-strength = <2>;
 				bias-pull-up;
@@ -80,11 +80,11 @@
 
 	sar_int_sleep: sar_int_sleep {
 			mux {
-				pins = "gpio58";
+				pins = "gpio24";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio58";
+				pins = "gpio24";
 				num-grp-pins = <1>;
 				drive-strength = <2>;
 				bias-pull-up;
