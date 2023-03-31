@@ -73,12 +73,12 @@
 
 		nfc_enable_active: nfc_enable_active {
 			mux {
-				pins = "gpio101";
+				pins = "gpio48";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio101";
+				pins = "gpio48";
 				drive-strength = <2>; /* 2 MA */
 				bias-disable;
 			};
@@ -86,12 +86,12 @@
 
 		nfc_enable_suspend: nfc_enable_suspend {
 			mux {
-				pins = "gpio101";
+				pins = "gpio48";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio101";
+				pins = "gpio48";
 				drive-strength = <2>; /* 2 MA */
 				bias-disable;
 			};
@@ -280,7 +280,7 @@
 	sec-nfc@27 {
 		compatible = "sec-nfc";
 		reg = <0x27>;
-                sec-nfc,ven-gpio = <&tlmm 101 0x00>;
+                sec-nfc,ven-gpio = <&tlmm 48 0x00>;
                 sec-nfc,firm-gpio = <&tlmm 135 0x00>;
                 sec-nfc,irq-gpio = <&tlmm 9 0x00>;
                 sec-nfc,clk_req-gpio = <&tlmm 7 0x00>;
