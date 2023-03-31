@@ -276,7 +276,7 @@
 	qcom,msm-mbhc-hs-mic-min-threshold-mv = <116>;
 };
 
-&qupv3_se2_i2c {
+&qupv3_se8_i2c {
         status = "ok";
         aw887xx_smartpa_0: aw87xxx_pa@58 {
                 compatible = "awinic,aw87xxx_pa";
