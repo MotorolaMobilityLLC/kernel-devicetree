@@ -422,7 +422,7 @@
 		};
 
 		/* global autoconfigured region for contiguous allocations (32 MB) */
-		linux,cma {
+		system_cma: linux,cma {
 			compatible = "shared-dma-pool";
 			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 			reusable;
@@ -828,3 +828,4 @@
 };
 
 #include "trinket-pinctrl.dtsi"
+#include "trinket-dma-heaps.dtsi"
