@@ -91,6 +91,7 @@
 
 	key_swap {
 		compatible = "mmi,key_swap";
+		status = "disabled";
 		gpios = <&tlmm 115 0>;
 		key_swap,poll;
 		action-0 {
