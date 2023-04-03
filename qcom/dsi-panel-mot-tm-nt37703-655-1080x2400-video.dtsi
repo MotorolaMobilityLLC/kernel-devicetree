@@ -39,6 +39,33 @@
 
 		qcom,mdss-dsi-panel-blackness-level = <3230>;
 
+		qcom,mdss-dsi-dc-off-command = [
+				39 01 00 00 00 00 03 8B 00 00];
+		qcom,mdss-dsi-dc-off-command-state = "dsi_hs_mode";
+		qcom,mdss-dsi-dc-on-command = [
+				39 01 00 00 00 00 03 8B 00 81];
+		qcom,mdss-dsi-dc-on-command-state = "dsi_hs_mode";
+
+		qcom,mdss-dsi-hbm-on-command = [
+				39 00 00 40 00 00 02 87 20
+				39 00 00 40 00 00 02 6F 09
+				39 00 00 40 00 00 03 51 00 00
+				39 01 00 00 00 00 03 51 0F FF];
+		qcom,mdss-dsi-hbm-on-command-state = "dsi_hs_mode";
+
+		qcom,mdss-dsi-hbm-off-command = [
+				39 00 00 40 00 00 02 87 20
+				39 01 00 00 00 00 02 6F 09
+				39 01 00 00 00 00 03 51 00 00];
+		qcom,mdss-dsi-hbm-off-command-state = "dsi_hs_mode";
+
+		qcom,mdss-dsi-hbm-fod;
+		qcom,mdss-dsi-hbm-fod-on-command = [
+				39 00 00 40 00 00 02 87 25
+				39 00 00 40 00 00 02 6F 09
+				39 01 00 00 00 00 03 51 8F FF];
+		qcom,mdss-dsi-hbm-fod-on-command-state = "dsi_hs_mode";
+
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
 				cell-index = <0>;
