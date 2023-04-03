@@ -76,7 +76,7 @@
 	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
 
 	goodix-berlin@0 {
-		compatible = "goodix,gt9916P";
+		compatible = "goodix,gt9916S";
 		reg = <0x0>;
 		spi-max-frequency = <1000000>;
 
@@ -96,10 +96,10 @@
 		goodix,panel-max-w = <255>;
 
 		goodix,panel-max-p = <4096>;
-		goodix,pen-enable;
-		goodix.sleep-enable;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x07>;
 		status = "ok";
 	};
 
