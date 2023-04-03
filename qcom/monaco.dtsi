@@ -2080,7 +2080,7 @@
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,sampling-enabled;
 				qcom,cpufreq-memfreq-tbl =
-					< 614400 547000 >,
+					< 614400 681000 >,
 					< 864000 681000 >,
 					< 1363200 1353000 >,
 					< 1708800 1804000 >;
@@ -2092,7 +2092,7 @@
 				qcom,sampling-enabled;
 				qcom,compute-mon;
 				qcom,cpufreq-memfreq-tbl =
-					< 614400 200000 >,
+					< 614400 547000 >,
 					< 864000 547000 >,
 					< 1363200 681000 >,
 					< 1708800 1353000 >;
