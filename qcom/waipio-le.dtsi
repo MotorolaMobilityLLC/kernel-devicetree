@@ -137,3 +137,12 @@
 &audio_cma_mem {
 	status = "disabled";
 };
+
+&cnss_pci {
+	status = "disabled";
+	/delete-property/ memory-region;
+};
+
+&wlan {
+	status = "disabled";
+};
