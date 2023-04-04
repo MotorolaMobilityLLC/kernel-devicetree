@@ -141,6 +141,7 @@
 	bt541_ts_device@20 {
 		compatible = "zinitix,bt541_ts_device";
 		reg = <0x20>;
+		mmi,status = "/chosen","mmi,panel_name_s","contains","tianma_rm690a0";
 		interrupt-parent = <&tlmm>;
 		interrupts = <152 0x2008>;
 		zinitix,avdd-name = "pm8350c_l6";

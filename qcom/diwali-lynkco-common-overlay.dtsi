@@ -185,3 +185,7 @@
 &qupv3_se10_spi {
        status = "disabled";
 };
+
+&chosen {
+    mmi,dynamic_devices = "/soc/i2c@984000/bt541_ts_device@20";
+};
