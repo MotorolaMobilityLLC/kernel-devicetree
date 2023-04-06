@@ -179,6 +179,8 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo_la-rumi-overlay.dtbo \
 		neo-qxr-mos-overlay.dtbo \
 		neo-qxr-hmt-overlay.dtbo \
+		neo-qxr-e2e-overlay.dtbo \
+		foreseer-qxr-hmt-overlay.dtbo \
 		neo-idp-mos-overlay.dtbo \
 		neo-atp-overlay.dtbo \
 		neo-sg-idp-hmt-overlay.dtbo \
@@ -192,6 +194,8 @@ neo-rumi-overlay.dtbo-base := neo.dtb
 neo_la-rumi-overlay.dtbo-base := neo_la.dtb
 neo-qxr-mos-overlay.dtbo-base := neo.dtb
 neo-qxr-hmt-overlay.dtbo-base := neo.dtb
+neo-qxr-e2e-overlay.dtbo-base := neo.dtb
+foreseer-qxr-hmt-overlay.dtbo-base := neo.dtb
 neo-idp-mos-overlay.dtbo-base := neo.dtb
 neo-atp-overlay.dtbo-base := neo.dtb
 neo-sg-idp-hmt-overlay.dtbo-base := neo_la.dtb
@@ -206,6 +210,8 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo_la-rumi.dtb \
 			neo-qxr-mos.dtb \
 			neo-qxr-hmt.dtb \
+			neo-qxr-e2e.dtb \
+			foreseer-qxr-hmt.dtb \
 			neo-idp-mos.dtb \
 			neo-atp.dtb \
 			neo-sg-idp-hmt.dtb \
@@ -516,8 +522,8 @@ ravelin-idp-wcn3950-amoled-rcm-overlay.dtbo-base := ravelin.dtb ravelinp.dtb mon
 ravelin-qrd-overlay.dtbo-base := ravelin.dtb ravelinp.dtb montague.dtb montaguep.dtb
 ravelin-qrd-4gb-overlay.dtbo-base := ravelin-4gb.dtb ravelinp-4gb.dtb montague.dtb montaguep.dtb
 montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
-montague-hsp-overlay.dtbo-base := montague-hsp-base.dtb montaguep-hsp-base.dtb
-montague-moselle-overlay.dtbo-base := montague.dtb montaguep.dtb
+montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
+montague-moselle-overlay.dtbo-base := montague-4gb.dtb montaguep-4gb.dtb montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
 else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
@@ -540,7 +546,9 @@ dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	montaguep-rumi.dtb \
 	montaguep-hsp.dtb \
 	montaguep-moselle.dtb \
-	montaguep-rcm.dtb
+	montaguep-rcm.dtb \
+	montague-moselle-4gb.dtb \
+	montaguep-moselle-4gb.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -577,7 +585,9 @@ dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
 		anorak-qxr-hmt-overlay.dtbo \
 		anorak-idp-sd-overlay.dtbo \
 		anorak-idp-top-hmt-overlay.dtbo \
-		anorak-idp-top-hsp-overlay.dtbo
+		anorak-idp-top-hsp-overlay.dtbo \
+		anorak-idp-4kdisp-hsp-overlay.dtbo \
+		anorak-idp-4kdisp-hmt-overlay.dtbo
 anorak-rumi-overlay.dtbo-base := anorak.dtb
 anorak-idp-overlay.dtbo-base := anorak.dtb
 anorak-qxr-overlay.dtbo-base := anorak.dtb
@@ -588,6 +598,8 @@ anorak-qxr-hmt-overlay.dtbo-base := anorak.dtb
 anorak-idp-sd-overlay.dtbo-base := anorak.dtb
 anorak-idp-top-hmt-overlay.dtbo-base := anorak.dtb
 anorak-idp-top-hsp-overlay.dtbo-base := anorak.dtb
+anorak-idp-4kdisp-hsp-overlay.dtbo-base := anorak.dtb
+anorak-idp-4kdisp-hmt-overlay.dtbo-base := anorak.dtb
 else
 dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
 		anorak-idp.dtb \
@@ -598,7 +610,9 @@ dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
 		anorak-qxr-hmt.dtb \
 		anorak-idp-sd.dtb \
 		anorak-idp-top-hmt.dtb \
-		anorak-idp-top-hsp.dtb
+		anorak-idp-top-hsp.dtb \
+		anorak-idp-4kdisp-hsp.dtb \
+		anorak-idp-4kdisp-hmt.dtb
 endif
 
 ifeq ($(CONFIG_ARCH_LAHAINA), y)

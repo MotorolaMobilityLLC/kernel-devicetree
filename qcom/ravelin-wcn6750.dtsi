@@ -76,7 +76,7 @@
 		vdd-cx-mx-supply = <&S7B>;
 		qcom,vdd-cx-mx-config = <1010000 1120000 0 0 1>;
 		vdd-1.8-xo-supply = <&S9B>;
-		qcom,vdd-1.8-xo-config = <1856000 1856000 0 0 0>;
+		qcom,vdd-1.8-xo-config = <1856000 2040000 0 0 0>;
 		vdd-1.3-rfa-supply = <&S8B>;
 		qcom,vdd-1.3-rfa-config = <1250000 1352000 0 0 0>;
 
