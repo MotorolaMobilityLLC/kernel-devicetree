@@ -2446,7 +2446,7 @@
 };
 
 &gcc_pcie_0_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	status = "ok";
 	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 3>;
 };
@@ -2458,7 +2458,7 @@
 };
 
 &gcc_pcie_1_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	status = "ok";
 	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 4>;
 };
