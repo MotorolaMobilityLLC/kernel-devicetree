@@ -5,3 +5,7 @@
 	compatible = "qcom,waipio";
 	qcom,msm-id = <457 0x10000>;
 };
+
+&ipa_hw {
+	status = "disabled";
+};
