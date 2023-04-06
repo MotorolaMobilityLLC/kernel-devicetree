@@ -2179,9 +2179,9 @@
 		qcom,disable-shmbridge-support;
 	};
 
-	qcom_qseecom: qseecom@d1800000 {
+	qcom_qseecom: qseecom@d1900000 {
 		compatible = "qcom,qseecom";
-		reg = <0xd1800000 0x3900000>;
+		reg = <0xd1900000 0x3800000>;
 		reg-names = "secapp-region";
 		memory-region = <&qseecom_mem>;
 		#qcom,hlos-num-ce-hw-instances = <1>;
