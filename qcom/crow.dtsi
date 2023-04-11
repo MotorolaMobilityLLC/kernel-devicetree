@@ -1434,6 +1434,10 @@
 		qcom,secure-eud-en;
 		status = "ok";
 	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
 };
 
 &firmware {
