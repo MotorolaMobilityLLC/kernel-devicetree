@@ -1418,6 +1418,10 @@
 		reg = <0xc221000 0x1000>;
 		clock-frequency = <32768>;
 	};
+
+	dload_mode {
+		compatible = "qcom,dload-mode";
+	};
 };
 
 &firmware {
