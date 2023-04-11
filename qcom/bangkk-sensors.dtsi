@@ -169,11 +169,14 @@
 		reg = < 0x12 >;
 		//aw_sar,regulator-power-supply = <1>;
 		sar-num = < 0 >;
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&sar_int_bangkk_default>;
+		pinctrl-1 = <&sar_int_bangkk_sleep>;
 		interrupt-parent = < &tlmm >;
-		interrupts = <58 0>;
-		irq-gpio = <&tlmm 58 0>;
+		interrupts = <58 0x02>;
+		irq-gpio = <&tlmm 58 0x02>;
 		cap_vdd-supply = <&L12A>;
-		channel_use_flag = <0xff>;
+		channel_use_flag = <0x1f>;
 		aw_sar,use_plug_cail;
 		aw_sar,update_fw;
 		/* private node belongs to aw963xx */
