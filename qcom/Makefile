@@ -98,7 +98,9 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-mtp-68disp-pm8008-overlay.dtbo \
 	waipio-mtp-68disp-pm8010-overlay.dtbo \
 	waipio-cdp-xr-overlay.dtbo \
-	waipio-mtp-xr-overlay.dtbo
+	waipio-mtp-xr-overlay.dtbo \
+	waipio-cdp-xr-pcie-overlay.dtbo \
+	waipio-mtp-xr-pcie-overlay.dtbo
 
 waipio-rumi-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
@@ -123,6 +125,8 @@ waipio-kiwi-cdp-pm8008-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.
 waipio-kiwi-cdp-pm8010-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.dtb
 waipio-cdp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
 waipio-mtp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
+waipio-cdp-xr-pcie-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
+waipio-mtp-xr-pcie-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
 else
 dtb-$(CONFIG_ARCH_WAIPIO) += waipio-rumi.dtb \
 	waipio-mtp-pm8008.dtb \
