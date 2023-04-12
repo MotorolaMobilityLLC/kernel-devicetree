@@ -568,12 +568,6 @@
 		size = <0x0 0x400000>;
 	};
 
-	cont_splash_memory: cont_splash_region@9c000000 {
-		reg = <0x0 0x9c000000 0x0 0x02300000>;
-		label = "cont_splash_region";
-	};
-
-
 	dfps_data_memory: dfps_data_region@9e300000 {
 		reg = <0x0 0x9e300000 0x0 0x0100000>;
 		label = "dfps_data_region";
@@ -666,11 +660,6 @@
 	#size-cells = <1>;
 	ranges = <0 0 0 0xffffffff>;
 	compatible = "simple-bus";
-
-	disp_rdump_memory: disp_rdump_region@9c000000 {
-		reg = <0x0 0x9c000000 0x0 0x00800000>;
-		label = "disp_rdump_region";
-	};
 
 	thermal_zones: thermal-zones {
 	};
