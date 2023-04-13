@@ -687,12 +687,6 @@
 			apps_bcm_voter: bcm_voter {
 				compatible = "qcom,bcm-voter";
 			};
-
-			dcvs_fp: qcom,dcvs-fp {
-				compatible = "qcom,dcvs-fp";
-				qcom,ddr-bcm-name = "MC4";
-				qcom,llcc-bcm-name = "SH5";
-			};
 		};
 	};
 
@@ -1337,12 +1331,6 @@
 				interconnects = <&mc_virt MASTER_LLCC
 						 &mc_virt SLAVE_EBI1>;
 			};
-
-			ddr_dcvs_fp: fp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <1>;
-				qcom,fp-voter = <&dcvs_fp>;
-			};
 		};
 
 		qcom_llcc_dcvs_hw: llcc {
@@ -1356,12 +1344,6 @@
 				qcom,dcvs-path-type = <0>;
 				interconnects = <&gem_noc MASTER_APPSS_PROC
 						 &gem_noc SLAVE_LLCC>;
-			};
-
-			llcc_dcvs_fp: fp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <1>;
-				qcom,fp-voter = <&dcvs_fp>;
 			};
 		};
 
@@ -1386,7 +1368,7 @@
 		ddr {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_ddr_dcvs_hw>;
-			qcom,sampling-path = <&ddr_dcvs_fp>;
+			qcom,sampling-path = <&ddr_dcvs_sp>;
 			qcom,miss-ev = <0x1000>;
 
 			gold-0 {
@@ -1425,7 +1407,7 @@
 		llcc {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_llcc_dcvs_hw>;
-			qcom,sampling-path = <&llcc_dcvs_fp>;
+			qcom,sampling-path = <&llcc_dcvs_sp>;
 			qcom,miss-ev = <0x37>;
 
 			gold-0 {
