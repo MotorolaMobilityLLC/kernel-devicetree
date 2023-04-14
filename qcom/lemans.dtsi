@@ -1346,20 +1346,6 @@
 						 &gem_noc SLAVE_LLCC>;
 			};
 		};
-
-		qcom_ddrqos_dcvs_hw: ddrqos {
-			compatible = "qcom,dcvs-hw";
-			qcom,dcvs-hw-type = <3>;
-			qcom,bus-width = <1>;
-			qcom,freq-tbl = <&ddrqos_freq_table>;
-
-			ddrqos_dcvs_sp: sp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <0>;
-				interconnects = <&mc_virt MASTER_LLCC
-						 &mc_virt SLAVE_EBI1>;
-			};
-		};
 	};
 
 	qcom_memlat: qcom,memlat {
@@ -1437,22 +1423,6 @@
 					< 2362000 1066000 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
-			};
-		};
-
-		ddrqos {
-			compatible = "qcom,memlat-grp";
-			qcom,target-dev = <&qcom_ddrqos_dcvs_hw>;
-			qcom,sampling-path = <&ddrqos_dcvs_sp>;
-			qcom,miss-ev = <0x1000>;
-
-			ddrqos_gold_lat: gold {
-				compatible = "qcom,memlat-mon";
-				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5 &CPU6 &CPU7>;
-				qcom,cpufreq-memfreq-tbl =
-					< 1881600 0 >,
-					< 2707200 1 >;
-				qcom,sampling-enabled;
 			};
 		};
 	};
