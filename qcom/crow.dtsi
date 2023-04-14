@@ -1418,6 +1418,31 @@
 		reg = <0xc221000 0x1000>;
 		clock-frequency = <32768>;
 	};
+
+	dload_mode {
+		compatible = "qcom,dload-mode";
+	};
+
+	eud: qcom,msm-eud@88e0000 {
+		compatible = "qcom,msm-eud";
+		interrupt-names = "eud_irq";
+		interrupt-parent = <&pdc>;
+		interrupts = <11 IRQ_TYPE_LEVEL_HIGH>;
+		reg = <0x088E0000 0x2000>,
+			<0x088E2000 0x1000>;
+		reg-names = "eud_base", "eud_mode_mgr2";
+		qcom,secure-eud-en;
+		status = "ok";
+	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
+	};
 };
 
 &firmware {
