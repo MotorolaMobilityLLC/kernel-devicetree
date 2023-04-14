@@ -66,16 +66,6 @@
 	};
 };
 
-&wpss_pas {
-	status = "disabled";
-	/delete-property/ memory-region;
-};
-
-&icnss2 {
-	status = "disabled";
-	/delete-property/ qcom,wlan-msa-fixed-region;
-};
-
 &reserved_memory {
 	cnss_wlan_mem: cnss_wlan_region {
 		compatible = "shared-dma-pool";
