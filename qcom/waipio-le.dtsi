@@ -147,6 +147,14 @@
 	status = "disabled";
 };
 
+&slim_msm {
+	status = "disabled";
+};
+
+&bluetooth {
+	status = "disabled";
+};
+
 &msm_fastrpc {
 	qcom,msm_fastrpc_compute_cb20 {
 		compatible = "qcom,msm-fastrpc-compute-cb";
