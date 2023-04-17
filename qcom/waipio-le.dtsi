@@ -156,6 +156,8 @@
 };
 
 &msm_fastrpc {
+	qcom,unsigned-support-domains = <0x09>;
+
 	qcom,msm_fastrpc_compute_cb20 {
 		compatible = "qcom,msm-fastrpc-compute-cb";
 		label = "adsprpc-smd";
