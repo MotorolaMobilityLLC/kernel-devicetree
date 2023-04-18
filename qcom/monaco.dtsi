@@ -1981,7 +1981,7 @@
 
 	qcom,power-state {
 		compatible = "qcom,power-state";
-		qcom,subsys-name = "adsp", "modem";
+		qcom,subsys-name = "lpass", "mpss";
 		qcom,rproc-handle = <&adsp_pas>, <&modem_pas>;
 	};
 
