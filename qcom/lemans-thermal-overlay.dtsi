@@ -5,7 +5,7 @@
 		cooling-maps {
 			pm8775_1_gpu {
 				trip = <&pm8775_1_trip0>;
-				cooling-device = <&msm_gpu 4 THERMAL_NO_LIMIT>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 		};
 	};
