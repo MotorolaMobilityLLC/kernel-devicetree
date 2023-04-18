@@ -73,6 +73,7 @@
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
+		mmi,enable-palm;
 
 		goodix,gesture-wait-pm;
 		goodix,edge-ctrl;
