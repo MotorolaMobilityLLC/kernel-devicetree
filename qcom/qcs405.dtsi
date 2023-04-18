@@ -6,6 +6,7 @@
 #include <dt-bindings/interconnect/qcom,qcs405.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
+#include <dt-bindings/regulator/qcom,rpm-smd-regulator.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
 #define BW_OPP_ENTRY(mhz, w) opp-mhz {opp-hz = /bits/ 64 <MHZ_TO_MBPS(mhz, w)>;}
@@ -534,6 +535,102 @@
 			qcom,dump-size = <0x9000>;
 			qcom,dump-id = <0x83>;
 		};
+	};
+
+	remoteproc_cdsp: remoteproc@800000 {
+		compatible = "qcom,qcs405-cdsp-pas";
+		reg = <0x800000 0x00100>;
+
+		vdd_cx-supply = <&pms405_s1_level>;
+		reg-names = "vdd_cx";
+
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		clock-names = "xo";
+
+		vdd_cx-uV-uA = <RPM_SMD_REGULATOR_LEVEL_TURBO 100000>;
+
+		/* GPIO inputs from turning */
+		interrupts-extended = <&intc 0 229 1>,
+				<&cdsp_smp2p_in 0 0>,
+				<&cdsp_smp2p_in 2 0>,
+				<&cdsp_smp2p_in 1 0>,
+				<&cdsp_smp2p_in 3 0>,
+				<&cdsp_smp2p_in 7 0>;
+
+		interrupt-names = "wdog",
+				"fatal",
+				"handover",
+				"ready",
+				"stop-ack",
+				"shutdown-ack";
+
+		/* GPIO output to turning */
+		qcom,smem-states = <&cdsp_smp2p_out 0>;
+		qcom,smem-state-names = "stop";
+		memory-region = <&cdsp_fw_mem>;
+	};
+
+	wlan_dsp:remoteproc-wpss@7000000 {
+		compatible = "qcom,qcs405-wlan-dsp";
+		reg = <0x07000000 0x580000>;
+
+		vdd_cx-supply = <&pms405_s1_level>;
+		reg-names = "vdd_cx";
+		vdd_cx-uV-uA = <RPM_SMD_REGULATOR_LEVEL_TURBO 100000>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		clock-names = "xo";
+
+		/* GPIO inputs from wcnss */
+		interrupts-extended =  <&intc 0 153 1>,
+				<&modem_smp2p_in 0 0>,
+				<&modem_smp2p_in 2 0>,
+				<&modem_smp2p_in 1 0>,
+				<&modem_smp2p_in 3 0>,
+				<&modem_smp2p_in 7 0>;
+
+		interrupt-names = "wdog",
+				"fatal",
+				"handover",
+				"ready",
+				"stop-ack",
+				"shutdown-ack";
+
+		/* GPIO output to wcnss */
+		qcom,smem-states = <&modem_smp2p_out 0>;
+		qcom,smem-state-names = "stop";
+		memory-region = <&wlan_fw_mem>;
+	};
+
+	adsp_pas:remoteproc-adsp@c000000 {
+		compatible = "qcom,qcs405-adsp-pas";
+		reg = <0xc000000 0x00100>;
+
+		vdd_cx-supply = <&pms405_s2_level>;
+		reg-names = "vdd_cx";
+		vdd_cx-uV-uA = <RPM_SMD_REGULATOR_LEVEL_TURBO 100000>;
+
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		clock-names = "xo";
+
+		memory-region = <&adsp_fw_mem>;
+
+		/* Inputs from lpass */
+		interrupts-extended = <&intc 0 293 1>,
+				      <&adsp_smp2p_in 0 0>,
+				      <&adsp_smp2p_in 2 0>,
+				      <&adsp_smp2p_in 1 0>,
+				      <&adsp_smp2p_in 3 0>,
+				      <&adsp_smp2p_in 7 0>;
+
+		interrupt-names = "wdog",
+				  "fatal",
+				  "handover",
+				  "ready",
+				  "stop-ack",
+				  "shutdown-ack";
+		/* GPIO output to lpass */
+		qcom,smem-states = <&adsp_smp2p_out 0>;
+		qcom,smem-state-names = "stop";
 	};
 
 	tcsr_mutex_block: syscon@1905000 {
