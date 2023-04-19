@@ -2538,6 +2538,14 @@
 
 	msm_gpu: qcom,kgsl-3d0@3d00000 { };
 
+	qrtr-gunyah-tvm {
+		compatible = "qcom,qrtr-gunyah";
+		qcom,master;
+		gunyah-label = <3>;
+		peer-name = <2>;
+		shared-buffer = <&trust_ui_vm_qrtr>;
+	};
+
 	trust_ui_vm: qcom,trust_ui_vm@0xf78f8000 {
 		reg = <0xf78f8000 0x108000>;
 		vm_name = "trustedvm";

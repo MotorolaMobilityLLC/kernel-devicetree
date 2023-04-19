@@ -185,6 +185,11 @@
 		reg = <0x0 0xf3800000 0x0 0x40ee000>;
 	};
 
+	trust_ui_vm_qrtr: trust_ui_vm_qrtr@0xf78ef000 {
+		no-map;
+		reg = <0x0 0xf78ef000 0x0 0x9000>;
+	};
+
 	trust_ui_vm_vblk0_ring: trust_ui_vm_vblk0_ring@0xf78f8000 {
 		no-map;
 		reg = <0x0 0xf78f8000 0x0 0x4000>;
