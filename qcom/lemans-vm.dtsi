@@ -235,7 +235,8 @@
 		qcom,skip-init;
 		qcom,use-3-lvl-tables;
 		qcom,split-tables;
-		qcom,handoff-smrs = <0x0 0x7f>,<0x80 0x7f>,<0x440 0x0>;
+		qcom,handoff-smrs = <0xffff 0x0>;
+		qcom,multi-match-handoff-smr;
 		#global-interrupts = <2>;
 		#size-cells = <1>;
 		#address-cells = <1>;
