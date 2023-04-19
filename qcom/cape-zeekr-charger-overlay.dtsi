@@ -102,7 +102,7 @@
 		input-current-limit-microamp = <1324000>;
 		input-voltage-limit-microvolt = <4500000>;
 		wls-ichg-limit-microamp = <240000>;
-		wls-input-current-limit-microamp = <300000>;
+		wls-input-current-limit-microamp = <240000>;
 		wls-input-voltage-limit-microvolt = <3900000>;
 
 		mmi,ext-usb-psy-name = "usb";
