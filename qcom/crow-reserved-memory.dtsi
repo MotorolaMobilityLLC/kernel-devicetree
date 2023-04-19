@@ -180,9 +180,27 @@
 		reg = <0x0 0xdfc00000 0x0 0x2140000>;
 	};
 
-	tui_vm_mem: tui_vm_region@f3800000 {
+	trust_ui_vm_mem: trust_ui_vm_region@f3800000 {
 		no-map;
-		reg = <0x0 0xf3800000 0x0 0x4200000>;
+		reg = <0x0 0xf3800000 0x0 0x40ee000>;
+	};
+
+	trust_ui_vm_vblk0_ring: trust_ui_vm_vblk0_ring@0xf78f8000 {
+		no-map;
+		reg = <0x0 0xf78f8000 0x0 0x4000>;
+		gunyah-label = <0x11>;                                  //for persist.img
+	};
+
+	trust_ui_vm_vblk1_ring: trust_ui_vm_vblk1_ring@0xf78fc000 {
+		no-map;
+		reg = <0x0 0xf78fc000 0x0 0x4000>;
+		gunyah-label = <0x10>;                                  //for system.img
+	};
+
+	trust_ui_vm_swiotlb: trust_ui_vm_swiotlb@0xf7900000 {
+		no-map;
+		reg = <0x0 0xf7900000 0x0 0x100000>;
+		gunyah-label = <0x12>;
 	};
 
 	oem_vm_mem: oem_vm_region@f7a00000 {
