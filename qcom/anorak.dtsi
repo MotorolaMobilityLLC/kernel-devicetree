@@ -2201,6 +2201,7 @@
 		qcom,rpc-latency-us = <235>;
 		qcom,fastrpc-gids = <2908>;
 		qcom,qos-cores = <2>; /* its a gold+ cluster */
+		qcom,single-core-latency-vote;
 
 		qcom,msm_fastrpc_compute_cb1 {
 			compatible = "qcom,msm-fastrpc-compute-cb";

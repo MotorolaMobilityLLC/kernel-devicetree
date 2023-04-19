@@ -19,6 +19,8 @@ Optional properties:
 - qcom,fastrpc-adsp-sensors-pdr		:	Flag to enable Sensors PDR
 - qcom,unsigned-support-domains		:	Flag to enable unsigned support property for
 										subsystems
+- qcom,single-core-latency-vote :	Bool for enabling latency voting only for a single-core
+						in platforms without lowest capacity cores
 
 Optional subnodes:
 - qcom,msm_fastrpc_compute_cb	:	Child nodes representing the compute context banks
@@ -41,6 +43,7 @@ Example:
 		qcom,adsp-remoteheap-vmid = <22 37>;
 		qcom,fastrpc-adsp-sensors-pdr;
 		qcom,unsigned-support-domains = <0x09>;
+		qcom,single-core-latency-vote;
 
 		qcom,msm_fastrpc_rpmsg {
 			compatible = "qcom,msm-fastrpc-rpmsg";
