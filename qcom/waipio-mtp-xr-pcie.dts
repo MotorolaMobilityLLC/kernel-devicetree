@@ -4,7 +4,7 @@
 #include "waipio-mtp.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Waipio MTP with XR";
+	model = "Qualcomm Technologies, Inc. Waipio MTP XR with PCIE";
 	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp";
-	qcom,board-id = <0x10008 6>;
+	qcom,board-id = <0x10008 7>;
 };

@@ -4,15 +4,8 @@
 #include "waipio-mtp.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Waipio MTP with XR";
+	model = "Qualcomm Technologies, Inc. Waipio MTP XR with PCIE";
 	compatible = "qcom,waipio-mtp", "qcom,waipio", "qcom,mtp";
 	qcom,msm-id = <457 0x10000>;
-	qcom,board-id = <0x10008 6>;
-};
-
-&soc {
-};
-
-&pcie1 {
-	status = "disabled";
+	qcom,board-id = <0x10008 7>;
 };

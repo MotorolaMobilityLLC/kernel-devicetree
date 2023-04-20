@@ -98,7 +98,9 @@ dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-mtp-68disp-pm8008-overlay.dtbo \
 	waipio-mtp-68disp-pm8010-overlay.dtbo \
 	waipio-cdp-xr-overlay.dtbo \
-	waipio-mtp-xr-overlay.dtbo
+	waipio-mtp-xr-overlay.dtbo \
+	waipio-cdp-xr-pcie-overlay.dtbo \
+	waipio-mtp-xr-pcie-overlay.dtbo
 
 waipio-rumi-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb
 waipio-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
@@ -121,8 +123,10 @@ waipio-kiwi-mtp-pm8008-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.
 waipio-kiwi-mtp-pm8010-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.dtb
 waipio-kiwi-cdp-pm8008-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.dtb
 waipio-kiwi-cdp-pm8010-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-lte.dtb
-waipio-cdp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb
-waipio-mtp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb
+waipio-cdp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
+waipio-mtp-xr-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
+waipio-cdp-xr-pcie-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
+waipio-mtp-xr-pcie-overlay.dtbo-base := waipio.dtb waipio-v2.dtb waipio-le.dtb
 else
 dtb-$(CONFIG_ARCH_WAIPIO) += waipio-rumi.dtb \
 	waipio-mtp-pm8008.dtb \
@@ -186,9 +190,11 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo-sg-idp-hmt-overlay.dtbo \
 		neo-idp-display-overlay.dtbo \
 		neo-idp-hmt-overlay.dtbo \
+		neo-idp-e2e-overlay.dtbo \
 		neo-sg-idp-pm8008-overlay.dtbo \
 		neo_luna-v2-sg-idp-overlay.dtbo \
-		neo_luna-v2-sg-idp-pm8008-overlay.dtbo
+		neo_luna-v2-sg-idp-pm8008-overlay.dtbo \
+		neo_luna-v2-sg-idp-dual-display-overlay.dtbo
 
 neo-rumi-overlay.dtbo-base := neo.dtb
 neo_la-rumi-overlay.dtbo-base := neo_la.dtb
@@ -201,9 +207,11 @@ neo-atp-overlay.dtbo-base := neo.dtb
 neo-sg-idp-hmt-overlay.dtbo-base := neo_la.dtb
 neo-idp-display-overlay.dtbo-base := neo.dtb
 neo-idp-hmt-overlay.dtbo-base := neo.dtb
+neo-idp-e2e-overlay.dtbo-base := neo.dtb
 neo-sg-idp-pm8008-overlay.dtbo-base := neo_la.dtb
 neo_luna-v2-sg-idp-overlay.dtbo-base := neo_luna-v2.dtb
 neo_luna-v2-sg-idp-pm8008-overlay.dtbo-base := neo_luna-v2.dtb
+neo_luna-v2-sg-idp-dual-display-overlay.dtbo-base := neo_luna-v2.dtb
 
 else
 dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
@@ -217,9 +225,11 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo-sg-idp-hmt.dtb \
 			neo-idp-display.dtb \
 			neo-idp-hmt.dtb \
+			neo-idp-e2e.dtb \
 			neo-sg-idp-pm8008.dtb \
 			neo_luna-v2-sg-idp.dtb \
-			neo_luna-v2-sg-idp-pm8008.dtb
+			neo_luna-v2-sg-idp-pm8008.dtb \
+			neo_luna-v2-sg-idp-dual-display.dtb
 
 endif
 
@@ -232,7 +242,8 @@ dtbo-$(CONFIG_ARCH_DIWALI) += diwali-rumi-overlay.dtbo \
 	diwali-idp-usbc-overlay.dtbo \
 	diwali-idp-hsp-overlay.dtbo \
 	diwali-idp-nopmi-overlay.dtbo \
-	diwali-qrd-nopmi-overlay.dtbo
+	diwali-qrd-nopmi-overlay.dtbo \
+	diwali-qrd-pm8350b-overlay.dtbo
 
 diwali-rumi-overlay.dtbo-base := diwali.dtb
 diwali-idp-overlay.dtbo-base := diwali.dtb diwalip.dtb diwali-lte.dtb
@@ -243,6 +254,7 @@ diwali-idp-usbc-overlay.dtbo-base := diwali.dtb diwalip.dtb diwali-lte.dtb
 diwali-idp-hsp-overlay.dtbo-base := diwali-hsp.dtb diwalip.dtb diwali-lte.dtb
 diwali-idp-nopmi-overlay.dtbo-base := diwali.dtb diwalip.dtb diwali-lte.dtb
 diwali-qrd-nopmi-overlay.dtbo-base := diwali.dtb diwalip.dtb diwali-lte.dtb
+diwali-qrd-pm8350b-overlay.dtbo-base := diwali.dtb diwalip.dtb diwali-lte.dtb
 else
 dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 	diwali-idp.dtb \
@@ -253,6 +265,7 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 	diwali-idp-hsp.dtb \
 	diwali-idp-nopmi.dtb \
 	diwali-qrd-nopmi.dtb \
+	diwali-qrd-pm8350b.dtb \
 	diwalip-idp.dtb \
 	diwalip-atp.dtb \
 	diwalip-qrd.dtb \
@@ -261,6 +274,7 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 	diwalip-idp-hsp.dtb \
 	diwalip-idp-nopmi.dtb \
 	diwalip-qrd-nopmi.dtb \
+	diwalip-qrd-pm8350b.dtb \
 	diwali-lte-idp.dtb \
 	diwali-lte-atp.dtb \
 	diwali-lte-qrd.dtb \
@@ -268,7 +282,8 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 	diwali-lte-idp-usbc.dtb \
 	diwali-lte-idp-hsp.dtb \
 	diwali-lte-idp-nopmi.dtb \
-	diwali-lte-qrd-nopmi.dtb
+	diwali-lte-qrd-nopmi.dtbi \
+	diwali-lte-qrd-pm8350b.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
@@ -582,6 +597,7 @@ dtbo-$(CONFIG_ARCH_ANORAK) += anorak-rumi-overlay.dtbo \
 		anorak-atp-overlay.dtbo \
 		anorak-idp-hmt-overlay.dtbo \
 		anorak-qxr-hmt-ufs-ref-overlay.dtbo \
+		anorak-qxr-4kdisp-hmt-ufs-ref-overlay.dtbo \
 		anorak-qxr-hmt-overlay.dtbo \
 		anorak-idp-sd-overlay.dtbo \
 		anorak-idp-top-hmt-overlay.dtbo \
@@ -594,6 +610,7 @@ anorak-qxr-overlay.dtbo-base := anorak.dtb
 anorak-atp-overlay.dtbo-base := anorak.dtb
 anorak-idp-hmt-overlay.dtbo-base := anorak.dtb
 anorak-qxr-hmt-ufs-ref-overlay.dtbo-base := anorak.dtb
+anorak-qxr-4kdisp-hmt-ufs-ref-overlay.dtbo-base := anorak.dtb
 anorak-qxr-hmt-overlay.dtbo-base := anorak.dtb
 anorak-idp-sd-overlay.dtbo-base := anorak.dtb
 anorak-idp-top-hmt-overlay.dtbo-base := anorak.dtb
@@ -607,6 +624,7 @@ dtb-$(CONFIG_ARCH_ANORAK) += anorak-rumi.dtb \
 		anorak-atp.dtb \
 		anorak-idp-hmt.dtb \
 		anorak-qxr-hmt-ufs-ref.dtb \
+		anorak-qxr-4kdisp-hmt-ufs-ref.dtb \
 		anorak-qxr-hmt.dtb \
 		anorak-idp-sd.dtb \
 		anorak-idp-top-hmt.dtb \
