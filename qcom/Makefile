@@ -441,6 +441,13 @@ dtb-y += $(kalama_tuivm-dtb-y)
 endif
 endif
 
+ifeq ($(CONFIG_ARCH_CROW), y)
+ifeq ($(CONFIG_ARCH_QTI_VM), y)
+kalama_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += crow-vm-rumi.dtb
+dtb-y += $(kalama_tuivm-dtb-y)
+endif
+endif
+
 ifeq ($(CONFIG_ARCH_WAIPIO), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
 waipio_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += waipio-vm-mtp.dtb \
