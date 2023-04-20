@@ -145,8 +145,11 @@ KONA_BOARDS += \
 
 
 KONA_LE_BOARDS += \
-		 kona-iot-v2.1-rb5-overlay.dtbo \
-		 kona-iot-v2-rb5-overlay.dtbo
+		 qrb5165-iot-rb5-overlay.dtbo \
+		 qrb3165-iot-rb5-overlay.dtbo \
+		 kona-7230-iot-rb5-overlay.dtbo \
+		 qrb5165n-iot-v2-rb5-overlay.dtbo \
+		 qrb3165n-iot-v2-rb5-overlay.dtbo
 
 kona-dtb-$(CONFIG_ARCH_KONA) += \
         $(call add-overlays, $(KONA_BOARDS) ,$(KONA_BASE_DTB)) \

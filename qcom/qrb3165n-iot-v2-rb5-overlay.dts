@@ -4,7 +4,8 @@
 #include "kona-iot-v2-rb5.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. kona-iot RB5 v2";
+	model = "Qualcomm Technologies, Inc. QRB3165 NON-POP RB5 v2";
 	compatible = "qcom,kona-iot-qrd", "qcom,kona-iot", "qcom,kona-qrd";
+	qcom,msm-id = <599 0x0>;
 	qcom,board-id = <0x305000b 0x0>;
 };
