@@ -863,3 +863,5 @@
 
 #include "trinket-pinctrl.dtsi"
 #include "trinket-dma-heaps.dtsi"
+#include "pm6125-rpm-regulator.dtsi"
+#include "trinket-regulator.dtsi"
