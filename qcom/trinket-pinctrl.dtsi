@@ -2,7 +2,7 @@
 	tlmm: pinctrl@400000 {
 		compatible = "qcom,trinket-pinctrl";
 		reg = <0x400000 0xc00000>;
-		interrupts = <GIC_SPI 227 IRQ_TYPE_NONE>;
+		interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_HIGH>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		interrupt-controller;
