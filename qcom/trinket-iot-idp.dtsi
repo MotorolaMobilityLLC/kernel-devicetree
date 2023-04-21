@@ -2,6 +2,10 @@
 		status = "ok";
 };
 
+&usb0 {
+	extcon = <&pmi632_charger>, <&eud>;
+};
+
 &sdhc_1 {
 	vdd-supply = <&pm6125_l24>;
 	qcom,vdd-voltage-level = <2950000 2950000>;
