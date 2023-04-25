@@ -9,3 +9,7 @@
 &qnand_1 {
 	status = "ok";
 };
+
+&gcc {
+	/delete-property/ protected-clocks;
+};
