@@ -372,6 +372,16 @@
 		status = "okay";
 	};
 
+	dcc: dcc_v2@b2000 {
+		compatible = "qcom,dcc-v2";
+		reg = <0x000b2000 0x1000>,
+		      <0x000bfc00 0x400>;
+
+		reg-names = "dcc-base", "dcc-ram-base";
+		dcc-ram-offset = <0x400>;
+		qcom,curr-link-list = <1>;
+	};
+
 	rpm_bus: qcom,rpm-smd {
 		compatible = "qcom,rpm-smd";
 		rpm-channel-name = "rpm_requests";
