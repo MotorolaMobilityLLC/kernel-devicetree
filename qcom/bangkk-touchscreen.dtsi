@@ -99,6 +99,8 @@
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		mmi,enable-gestures;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
 		mmi,supported_gesture_type = <0x07>;
 		status = "ok";
 	};
@@ -126,6 +128,8 @@
 
 		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid>;
 		mmi,enable-gestures;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
 		mmi,supported_gesture_type = <0x07>;
 		status = "ok";
  	};
