@@ -3,10 +3,9 @@
 
 
 &mot_batterydata {
-	df-serialnum = "SB18D17151";
+	df-serialnum = "SB18D87863";
 	qcom,batt-id-range-pct = <15>;
-	#include "qg-batterydata-ng50-atl-5000mah.dtsi"
-	#include "qg-batterydata-ng50-swd-5000mah.dtsi"
+	#include "qg-batterydata-qb50-swd-5000mah.dtsi"
 };
 
 &pm7250b_charger {
@@ -61,8 +60,8 @@
 			   "charge_full_design",
 			   "time_to_full_now",
 			   "cp_input_voltage_now";
-	qcom,fcc-max-ua = <6000000>;
-	qcom,fv-max-uv = <4480000>;
+	qcom,fcc-max-ua = <4000000>;
+	qcom,fv-max-uv = <4500000>;
 	qcom,dcp-curr-max = <1500000>;
 	qcom,otg-cl-ua = <1000000>;
 	qcom,thermal-mitigation = <3000000 2500000
@@ -82,13 +81,13 @@
 				<35 0 4000 4000>,
 				<45 0 4000 4000>,
 				<60 4200 4000 0>;
-	qcom,mmi-ffc-zones = <4450 243 575>,
-                               <4450 243 575>,
-                               <4450 243 575>,
-                               <4480 575 939>,
-                               <4480 635 1038>,
-                               <4480 661 1086>,
-                               <4450 243 575>;
+	qcom,mmi-ffc-zones = <4500 243 534>,
+                               <4500 243 534>,
+                               <4500 243 534>,
+                               <4530 534 1250>,
+                               <4530 575 1250>,
+                               <4530 731 1250>,
+                               <4500 243 575>;
 
 	qcom,iterm-ma = <243>;
 	mmi,enable-factory-mode-aicl;
@@ -173,7 +172,7 @@
 		mmi,pd-volt-max = <10000000>;
 		mmi,pd-curr-max = <3000000>;
 		mmi,batt-curr-boost = <300000>;
-		mmi,batt-ovp-lmt = <4550000>;
+		mmi,batt-ovp-lmt = <4580000>;
 		mmi,pl-chrg-vbatt-min = <3600000>;
 		mmi,typec-middle-current = <2000000>;
 		mmi,pd-allow-min-current = <1000000>;
@@ -186,11 +185,11 @@
                 /*qc3p end*/
 		mmi,chrg-temp-zones-num = <5>;
 		mmi,mmi-chrg-temp-zones =
-					<0 4200 1000  0 0>,
-					<10 4250 3000 4450 1000>,
-					<15 4450 3000 0 0>,
-					<45 4350 5800 4480 4000>,
-					<60 4200 4000 0 0>;
+					<0 4200 1000  0 0 0 0>,
+					<10 4250 3000 4500 1000 0 0>,
+					<15 4500 3000 0 0 0 0>,
+					<45 4300 5800 4400 5200 4520 4000>,
+					<60 4200 4000 0 0 0 0>;
 		mmi,thermal-mitigation =
 					<5800000>,
 					<5000000>,
