@@ -3641,6 +3641,7 @@
 #include "kalama-usb.dtsi"
 #include "kalama-eva.dtsi"
 #include "kalama-pcie.dtsi"
+#include "kalama-mhi.dtsi"
 #include "msm-rdbg.dtsi"
 #include "kalama-thermal.dtsi"
 #include "kalama-gdsc.dtsi"
