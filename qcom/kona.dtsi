@@ -4096,8 +4096,15 @@
 	};
 
 	msm_gpu: qcom,kgsl-3d0@3d00000 { };
+
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
+	};
+
 };
 
+#include "ipcc-test.dtsi"
 #include "kona-usb.dtsi"
 #include "kona-regulators.dtsi"
 #include "kona-pmic-overlay.dtsi"
