@@ -209,8 +209,8 @@
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_ext_bias>;
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-max-level = <4095>;
-	qcom,mdss-brightness-max-level = <4095>;
+	qcom,mdss-dsi-bl-max-level = <3929>;
+	qcom,mdss-brightness-max-level = <3929>;
 	qcom,mdss-dsi-bl-inverted-dbv;
 
 	qcom,mdss-dsi-no-panel-on-read-support;
@@ -247,8 +247,8 @@
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_ext_bias_nt>;
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
 	qcom,mdss-dsi-bl-min-level = <1>;
-	qcom,mdss-dsi-bl-max-level = <4095>;
-	qcom,mdss-brightness-max-level = <4095>;
+	qcom,mdss-dsi-bl-max-level = <3929>;
+	qcom,mdss-brightness-max-level = <3929>;
 
 	qcom,mdss-dsi-no-panel-on-read-support;
 	qcom,mdss-dsi-bl-is-exponent;
