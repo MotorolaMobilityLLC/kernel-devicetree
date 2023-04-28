@@ -49,6 +49,7 @@ Required properties :
 			"qcom,direwolf-gcc"
 			"qcom,crow-gcc"
 			"qcom,monaco_auto-gcc"
+			"qcom,trinket-gcc"
 
 - reg : shall contain base register location and length
 - vdd_cx-supply: The vdd_cx logic rail supply.
