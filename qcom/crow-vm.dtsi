@@ -267,3 +267,5 @@
 		qcom,block-size = <0x400000>;
 	};
 };
+
+#include "crow-vm-dma-heaps.dtsi"
