@@ -1637,6 +1637,13 @@
 			qcom,glinkpkt-ch-name = "ss_bt_le_data";
 			qcom,glinkpkt-dev-name = "glink_pkt_ss_bt_le_data";
 			};
+
+		qcom,glinkpkt-ss-bt-ssr-data {
+			qcom,glinkpkt-edge = "slate";
+			qcom,glinkpkt-ch-name = "ss_bt_ssr_data";
+			qcom,glinkpkt-dev-name = "glink_pkt_ss_bt_ssr_data";
+			};
+
 	};
 
 	jtag_mm0: jtagmm@9040000 {
