@@ -865,6 +865,14 @@
 		qcom,rtb-size = <0x100000>;
 	};
 
+	qfprom: qfprom@1b40000 {
+		compatible = "qcom,qfprom";
+		reg = <0x1b40000 0x7000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		read-only;
+		ranges;
+	};
 };
 
 #include "trinket-pinctrl.dtsi"
