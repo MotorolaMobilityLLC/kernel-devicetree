@@ -484,6 +484,10 @@
 		gpio = <&pm8775_2_gpios 4 0>;
 	};
 
+	qcom,power-state {
+		compatible = "qcom,power-state";
+	};
+
 };
 
 &regulator {
@@ -611,4 +615,3 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&usb22_vbus_boost_default>;
 };
-
