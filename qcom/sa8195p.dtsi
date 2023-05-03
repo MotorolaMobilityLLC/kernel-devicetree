@@ -163,9 +163,9 @@
 &ufshc_mem {
 	vdd-hba-supply = <&ufs_phy_gdsc>;
 	vdd-hba-fixed-regulator;
-	vcc-supply = <&pm8195_3_l10>;
-	vccq-supply = <&pm8195_1_l11>;
-	vccq2-supply = <&pm8195_3_l7>;
+	vcc-supply = <&pm8195_1_l17>;
+	vccq-supply = <&pm8195_2_l5>;
+	//vccq2-supply = <&pm8195_s4>;
 	vcc-max-microamp = <750000>;
 	vccq-max-microamp = <750000>;
 	vccq2-max-microamp = <750000>;

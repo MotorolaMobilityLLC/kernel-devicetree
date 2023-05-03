@@ -34,6 +34,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_0>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -53,6 +54,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_1>;
+			#cooling-cells = <2>;
 			L2_1: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -67,6 +69,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_2>;
+			#cooling-cells = <2>;
 			L2_2: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -81,6 +84,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_3>;
+			#cooling-cells = <2>;
 			L2_3: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -95,6 +99,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_4>;
+			#cooling-cells = <2>;
 			L2_4: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -114,6 +119,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_5>;
+			#cooling-cells = <2>;
 			L2_5: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -128,6 +134,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_6>;
+			#cooling-cells = <2>;
 			L2_6: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -142,6 +149,7 @@
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0xc0000000>;
 			next-level-cache = <&L2_7>;
+			#cooling-cells = <2>;
 			L2_7: l2-cache {
 			      compatible = "arm,arch-cache";
 			      cache-level = <2>;
@@ -434,8 +442,12 @@
 			#interrupt-cells = <2>;
 		};
 	};
+
+	thermal_zones: thermal-zones {
+	};
 };
 
 #include "monaco_auto-pinctrl.dtsi"
 #include "monaco_auto-stub-regulators.dtsi"
 #include "msm-arm-smmu-monaco_auto.dtsi"
+#include "monaco_auto-thermal.dtsi"

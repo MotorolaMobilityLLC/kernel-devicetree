@@ -509,14 +509,6 @@
 		alignment = <0x0 0x400000>;
 	};
 
-	secure_display_memory: secure_display_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		reusable;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0xA000000>;
-	};
-
 	user_contig_mem: user_contig_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -694,12 +686,6 @@
 
 			apps_bcm_voter: bcm_voter {
 				compatible = "qcom,bcm-voter";
-			};
-
-			dcvs_fp: qcom,dcvs-fp {
-				compatible = "qcom,dcvs-fp";
-				qcom,ddr-bcm-name = "MC4";
-				qcom,llcc-bcm-name = "SH5";
 			};
 		};
 	};
@@ -1345,12 +1331,6 @@
 				interconnects = <&mc_virt MASTER_LLCC
 						 &mc_virt SLAVE_EBI1>;
 			};
-
-			ddr_dcvs_fp: fp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <1>;
-				qcom,fp-voter = <&dcvs_fp>;
-			};
 		};
 
 		qcom_llcc_dcvs_hw: llcc {
@@ -1365,26 +1345,6 @@
 				interconnects = <&gem_noc MASTER_APPSS_PROC
 						 &gem_noc SLAVE_LLCC>;
 			};
-
-			llcc_dcvs_fp: fp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <1>;
-				qcom,fp-voter = <&dcvs_fp>;
-			};
-		};
-
-		qcom_ddrqos_dcvs_hw: ddrqos {
-			compatible = "qcom,dcvs-hw";
-			qcom,dcvs-hw-type = <3>;
-			qcom,bus-width = <1>;
-			qcom,freq-tbl = <&ddrqos_freq_table>;
-
-			ddrqos_dcvs_sp: sp {
-				compatible = "qcom,dcvs-path";
-				qcom,dcvs-path-type = <0>;
-				interconnects = <&mc_virt MASTER_LLCC
-						 &mc_virt SLAVE_EBI1>;
-			};
 		};
 	};
 
@@ -1394,7 +1354,7 @@
 		ddr {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_ddr_dcvs_hw>;
-			qcom,sampling-path = <&ddr_dcvs_fp>;
+			qcom,sampling-path = <&ddr_dcvs_sp>;
 			qcom,miss-ev = <0x1000>;
 
 			gold-0 {
@@ -1433,7 +1393,7 @@
 		llcc {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_llcc_dcvs_hw>;
-			qcom,sampling-path = <&llcc_dcvs_fp>;
+			qcom,sampling-path = <&llcc_dcvs_sp>;
 			qcom,miss-ev = <0x37>;
 
 			gold-0 {
@@ -1463,22 +1423,6 @@
 					< 2362000 1066000 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
-			};
-		};
-
-		ddrqos {
-			compatible = "qcom,memlat-grp";
-			qcom,target-dev = <&qcom_ddrqos_dcvs_hw>;
-			qcom,sampling-path = <&ddrqos_dcvs_sp>;
-			qcom,miss-ev = <0x1000>;
-
-			ddrqos_gold_lat: gold {
-				compatible = "qcom,memlat-mon";
-				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5 &CPU6 &CPU7>;
-				qcom,cpufreq-memfreq-tbl =
-					< 1881600 0 >,
-					< 2707200 1 >;
-				qcom,sampling-enabled;
 			};
 		};
 	};
@@ -2179,9 +2123,9 @@
 		qcom,disable-shmbridge-support;
 	};
 
-	qcom_qseecom: qseecom@d1800000 {
+	qcom_qseecom: qseecom@d1900000 {
 		compatible = "qcom,qseecom";
-		reg = <0xd1800000 0x3900000>;
+		reg = <0xd1900000 0x3800000>;
 		reg-names = "secapp-region";
 		memory-region = <&qseecom_mem>;
 		#qcom,hlos-num-ce-hw-instances = <1>;

@@ -1621,6 +1621,12 @@
 			qcom,glinkpkt-ch-name = "ss_bt_data";
 			qcom,glinkpkt-dev-name = "glink_pkt_ss_bt_data";
 			};
+
+		qcom,glinkpkt-ss-bt-le-data {
+			qcom,glinkpkt-edge = "slate";
+			qcom,glinkpkt-ch-name = "ss_bt_le_data";
+			qcom,glinkpkt-dev-name = "glink_pkt_ss_bt_le_data";
+			};
 	};
 
 	jtag_mm0: jtagmm@9040000 {
@@ -1975,7 +1981,7 @@
 
 	qcom,power-state {
 		compatible = "qcom,power-state";
-		qcom,subsys-name = "adsp", "modem";
+		qcom,subsys-name = "lpass", "mpss";
 		qcom,rproc-handle = <&adsp_pas>, <&modem_pas>;
 	};
 
@@ -2074,7 +2080,7 @@
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,sampling-enabled;
 				qcom,cpufreq-memfreq-tbl =
-					< 614400 547000 >,
+					< 614400 681000 >,
 					< 864000 681000 >,
 					< 1363200 1353000 >,
 					< 1708800 1804000 >;
@@ -2086,7 +2092,7 @@
 				qcom,sampling-enabled;
 				qcom,compute-mon;
 				qcom,cpufreq-memfreq-tbl =
-					< 614400 200000 >,
+					< 614400 547000 >,
 					< 864000 547000 >,
 					< 1363200 681000 >,
 					< 1708800 1353000 >;

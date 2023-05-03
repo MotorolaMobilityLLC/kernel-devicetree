@@ -181,6 +181,11 @@
 			qcom,intents = <0x1000 10>;
 		};
 
+		qcom,glink-ss-bt-le-data {
+			qcom,glink-channels = "ss_bt_le_data";
+			qcom,intents = <0x1000 10>;
+		};
+
 	};
 
 	qcom,slatecom-rpmsg {
