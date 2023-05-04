@@ -767,6 +767,13 @@
 		mbox-desc-offset = <0x0>;
 		#mbox-cells = <1>;
 	};
+	com,tmecom-qmp-client {
+		compatible = "qcom,tmecom-qmp-client";
+		mboxes = <&qmp_tme 0>;
+		mbox-names = "tmecom";
+		label = "tmecom";
+		depends-on-supply = <&qmp_tme>;
+	};
 
 	tcsr_mutex_block: syscon@1f40000 {
 		compatible = "syscon";
