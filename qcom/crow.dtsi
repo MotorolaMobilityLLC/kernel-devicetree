@@ -452,6 +452,11 @@
 				compatible = "qcom,bcm-voter";
 			};
 
+			rpmhcc: clock-controller {
+				compatible = "qcom,crow-rpmh-clk";
+				#clock-cells = <1>;
+			};
+
 		dcvs_fp: qcom,dcvs-fp {
 				compatible = "qcom,dcvs-fp";
 				qcom,ddr-bcm-name = "MC4";
@@ -1379,13 +1384,6 @@
 		clock-output-names = "bi_tcxo_ao";
 	};
 
-	rpmhcc: clock-controller {
-		compatible = "fixed-clock";
-		clock-output-names = "rpmh_clocks";
-		clock-frequency = <19200000>;
-		#clock-cells = <1>;
-	};
-
 	camcc: clock-controller@adb0000 {
 		compatible = "qcom,crow-camcc", "syscon";
 		reg = <0xadb0000 0x40000>;
@@ -1406,8 +1404,19 @@
 	};
 
 	dispcc: clock-controller@af00000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "dispcc_clocks";
+		compatible = "qcom,crow-dispcc", "syscon";
+		reg = <0xaf00000 0x20000>;
+		reg-name = "cc_base";
+		vdd_cx-supply = <&VDD_CX_LEVEL>;
+		vdd_mxa-supply = <&VDD_MXA_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			<&rpmhcc RPMH_CXO_CLK_A>,
+			<&sleep_clk>,
+			<&gcc GCC_DISP_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "bi_tcxo_ao",
+			      "sleep_clk",
+			      "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -1461,8 +1470,9 @@
 	};
 
 	tcsrcc: clock-controller@1fc0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "tcsrcc_clocks";
+		compatible = "qcom,kalama-tcsrcc", "syscon";
+		reg = <0x1fc0000 0x30000>;
+		reg-name = "cc_base";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -2644,12 +2654,16 @@
 };
 
 &disp_cc_mdss_core_gdsc {
-	compatible = "qcom,stub-regulator";
+	clocks = <&gcc GCC_DISP_AHB_CLK>;
+	clock-names = "ahb_clk";
+	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 };
 
 &disp_cc_mdss_core_int2_gdsc {
-	compatible = "qcom,stub-regulator";
+	clocks = <&gcc GCC_DISP_AHB_CLK>;
+	clock-names = "ahb_clk";
+	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 };
 
@@ -2660,7 +2674,7 @@
 };
 
 &gcc_pcie_0_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 2>;
 	status = "ok";
 };
@@ -2672,7 +2686,7 @@
 };
 
 &gcc_pcie_1_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 4>;
 	status = "ok";
 };
