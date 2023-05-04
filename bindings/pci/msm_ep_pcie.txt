@@ -27,8 +27,8 @@ Required properties:
   - clkreq-gpio: CLKREQ GPIO specified by PCIe spec.
   - <supply-name>-supply: phandle to the regulator device tree node.
     Refer to the schematics for the corresponding voltage regulators.
-    vreg-1.8-supply: phandle to the analog supply for the PCIe controller.
-    vreg-0.9-supply: phandle to the analog supply for the PCIe controller.
+    vreg-1p2-supply: phandle to the analog supply for the PCIe controller.
+    vreg-0p9-supply: phandle to the analog supply for the PCIe controller.
 
 Optional Properties:
   - qcom,<supply-name>-voltage-level: specifies voltage levels for supply.
