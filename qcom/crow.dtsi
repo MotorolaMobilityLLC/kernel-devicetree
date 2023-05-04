@@ -69,6 +69,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -92,6 +93,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 		};
 
 		CPU2: cpu@200 {
@@ -106,6 +108,7 @@
 			next-level-cache = <&L2_2>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 			L2_2: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -125,6 +128,7 @@
 			next-level-cache = <&L2_2>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			#cooling-cells = <2>;
 		};
 
 		CPU4: cpu@400 {
@@ -139,6 +143,7 @@
 			next-level-cache = <&L2_4>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
+			#cooling-cells = <2>;
 			L2_4: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -158,6 +163,7 @@
 			next-level-cache = <&L2_5>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
+			#cooling-cells = <2>;
 			L2_5: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -177,6 +183,7 @@
 			next-level-cache = <&L2_6>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
+			#cooling-cells = <2>;
 			L2_6: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -196,6 +203,7 @@
 			next-level-cache = <&L2_7>;
 			capacity-dmips-mhz = <1853>;
 			dynamic-power-coefficient = <245>;
+			#cooling-cells = <2>;
 			L2_7: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -2600,6 +2608,9 @@
 		qcom,count-unit = <0x10000>;
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 	};
+
+	thermal_zones: thermal-zones {
+	};
 };
 
 &firmware {
@@ -2726,3 +2737,5 @@
 	parent-supply = <&VDD_MXC_LEVEL>;
 	status = "ok";
 };
+
+#include "crow-thermal.dtsi"
