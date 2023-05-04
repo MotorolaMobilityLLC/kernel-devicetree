@@ -98,6 +98,7 @@
 		goodix,panel-max-p = <4096>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
+		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
 		status = "ok";
@@ -125,6 +126,7 @@
 		pinctrl-2 = <&pmx_ts_release>;
 
 		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid>;
+		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
 		status = "ok";
