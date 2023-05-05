@@ -98,6 +98,7 @@
 		goodix,panel-max-p = <4096>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
+		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
