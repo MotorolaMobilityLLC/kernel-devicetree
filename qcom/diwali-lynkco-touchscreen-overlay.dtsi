@@ -57,6 +57,7 @@
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
 		goodix,gesture-wait-pm;
+		mmi,enable-palm;
 	};
 };
 
