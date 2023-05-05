@@ -211,6 +211,7 @@
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <3929>;
 	qcom,mdss-brightness-max-level = <3929>;
+	qcom,mdss-dsi-bl-default-level = <1757>;
 	qcom,mdss-dsi-bl-inverted-dbv;
 
 	qcom,mdss-dsi-no-panel-on-read-support;
@@ -249,6 +250,7 @@
 	qcom,mdss-dsi-bl-min-level = <1>;
 	qcom,mdss-dsi-bl-max-level = <3929>;
 	qcom,mdss-brightness-max-level = <3929>;
+	qcom,mdss-dsi-bl-default-level = <1757>;
 
 	qcom,mdss-dsi-no-panel-on-read-support;
 	qcom,mdss-dsi-bl-is-exponent;
