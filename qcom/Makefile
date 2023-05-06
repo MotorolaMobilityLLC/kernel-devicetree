@@ -57,6 +57,7 @@ KALAMA_BOARDS += kalama-rtwo-evb1-overlay.dtbo \
                  kalama-rtwo-na-vzw-evt2-overlay.dtbo
 endif
 
+
 ifeq ($(CONFIG_OBERON_DTB),y)
 KALAMA_BOARDS += kalama-oberon-evb-overlay.dtbo
 endif
@@ -112,6 +113,16 @@ kalama-dtb-$(CONFIG_ARCH_CROW) += \
 kalama-overlays-dtb-$(CONFIG_ARCH_CROW) += $(CROW_BOARDS) $(CROW_BASE_DTB)
 dtb-y += $(kalama-dtb-y)
 
+#remove useless qcom device tree in moto build
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_RHODE_DTB),y)
+KHAJE_BASE_DTB += khaje-moto-base.dtb
+KHAJE_BOARDS += khaje-rhode-evt-overlay.dtbo
+endif
+
+else 
+
 KHAJE_BASE_DTB += khaje.dtb khajep.dtb khajeq.dtb khajeg.dtb
 
 KHAJE_BOARDS += \
@@ -155,6 +166,7 @@ KHAJE_BOARDS += \
 		 khajeg-idp-usbc-overlay.dtbo \
 		 khajeg-idp-pm8010-overlay.dtbo \
 		 khajeg-idps-display-90hz-overlay.dtbo
+endif
 
 bengal-dtb-$(CONFIG_ARCH_KHAJE) += \
         $(call add-overlays, $(KHAJE_BOARDS) ,$(KHAJE_BASE_DTB))
