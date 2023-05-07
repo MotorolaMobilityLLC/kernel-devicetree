@@ -173,7 +173,7 @@
 
 		qcom,glink-ss-bt-ctrl {
 			qcom,glink-channels = "ss_bt_ctrl";
-			qcom,intents = <0x500 10>;
+			qcom,intents = <0x1000 10>;
 		};
 
 		qcom,glink-ss-bt-data {
