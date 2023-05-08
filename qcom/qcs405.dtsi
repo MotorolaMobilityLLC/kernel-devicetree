@@ -271,6 +271,37 @@
 		#reset-cells = <1>;
 	};
 
+	cmn_blk_pll: qcom,cmn_blk_pll@2f780 {
+		compatible = "qcom,cmn_blk_pll";
+		reg = <0x2f780 0x4>;
+		reg-names = "cmn_blk";
+		clocks = <&gcc GCC_BIAS_PLL_MISC_RESET_CLK>,
+			 <&gcc GCC_BIAS_PLL_AHB_CLK>,
+			 <&gcc GCC_BIAS_PLL_AON_CLK>,
+			 <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		clock-names = "misc_reset_clk",
+			      "ahb_clk",
+			      "aon_clk",
+			      "bi_tcxo";
+		resets = <&gcc GCC_BIAS_PLL_BCR>;
+		reset-names = "cmn_blk_pll_reset";
+		#clock-cells = <1>;
+	};
+
+	cpucc: syscon@b01101c {
+		compatible = "syscon";
+		reg = <0xb01101c 0x4>;
+	};
+
+	debugcc: debug-clock-controller@0 {
+		compatible = "qcom,qcs404-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,cpucc = <&cpucc>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		clock-names = "xo_clk_src";
+		#clock-cells = <1>;
+	};
+
 	/* GDSCs in Global CC */
 	gdsc_mdss: qcom,gdsc@184d078 {
 		compatible = "qcom,gdsc";
