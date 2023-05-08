@@ -1,7 +1,7 @@
 &mdss_mdp {
 	mot_tm_nt37703_655_1080x2400_dsc_vid: qcom,mdss_dsi_mot_tm_nt37703_655_1080x2400_dsc_vid {
 		qcom,mdss-dsi-panel-name =
-			"mipi_moto_vid_tm_1080p_dsc_nt37703";
+			"mipi_moto_vid_tm_1080p_dsc_655";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
 		qcom,mdss-dsi-panel-physical-type = "oled";
 		qcom,mdss-dsi-virtual-channel-id = <0>;
