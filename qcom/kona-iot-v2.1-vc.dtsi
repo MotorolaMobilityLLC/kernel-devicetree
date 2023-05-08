@@ -1,9 +1,5 @@
 #include "kona-iot-vc.dtsi"
 
-&dwc1 {
-	dr_mode = "host";
-};
-
 &pcie2 {
 	qcom,boot-option = <0x0>;
 };
@@ -17,4 +13,8 @@
 		io-channel-names = "typec_mode";
 		qcom,use-power-supply = <1>;
 	};
+};
+
+&usb1 {
+	qcom,default-mode-host;
 };
