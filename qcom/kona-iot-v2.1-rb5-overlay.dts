@@ -6,5 +6,6 @@
 / {
 	model = "Qualcomm Technologies, Inc. kona-iot RB5";
 	compatible = "qcom,kona-iot-qrd", "qcom,kona-iot", "qcom,kona-qrd";
+	qcom,msm-id = <481 0x0>, <481 0x10000>, <481 0x20000>, <481 0x20001>;
 	qcom,board-id = <0x301000b 0x0>;
 };
