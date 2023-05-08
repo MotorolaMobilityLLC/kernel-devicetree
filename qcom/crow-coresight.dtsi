@@ -259,7 +259,6 @@
 		atid = <102>;
 		coresight-name = "coresight-tpdm-dlmnq-dsb";
 
-		status = "disabled";
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
@@ -1185,7 +1184,6 @@
 
 		qcom,tpda-atid = <102>;
 
-		qcom,dsb-elem-size = <26 32>;
 		qcom,cmb-elem-size = <0 32>,
 					 <23 32>;
 
@@ -1234,8 +1232,16 @@
 	};
 
 	funnel_dl_mnq: funnel@10ac4000 {
-		compatible = "arm,coresight-static-funnel";
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb908>;
+
+		reg = <0x10ac4000 0x1000>;
+		reg-names = "funnel-base";
+
 		coresight-name = "coresight-funnel-dl-mnq";
+
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
 
 		in-ports {
 			#address-cells = <1>;
