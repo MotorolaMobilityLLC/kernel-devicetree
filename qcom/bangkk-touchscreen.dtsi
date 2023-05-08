@@ -78,7 +78,7 @@
 	goodix-berlin@0 {
 		compatible = "goodix,gt9916S";
 		reg = <0x0>;
-		spi-max-frequency = <1000000>;
+		spi-max-frequency = <9600000>;
 
 		mmi,status = "/chosen","mmi,panel_name","contains","nt37703";
 		//goodix,avdd-name = "avdd";
@@ -110,7 +110,7 @@
 		reg = <0x1>;
 		//mmi,status = "/chosen","vtdr6115";
 		mmi,status = "/chosen","mmi,panel_name","contains","vtdr6115";
-		spi-max-frequency = <6000000>;
+		spi-max-frequency = <9600000>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <22 0x2008>;
 		focaltech,vdd-gpio = <&tlmm 11 0x00>;
