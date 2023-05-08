@@ -115,6 +115,8 @@
 
 	aliases: aliases {
 		serial0 = &blsp1_uart2_console;
+		mmc0 = &sdhc_1; /*SDC1 eMMC slot*/
+		mmc1 = &sdhc_2; /*SDC2 SD Card slot*/
 	};
 
 	soc: soc { };
@@ -632,6 +634,151 @@
 		clocks = <&rpmcc RPM_SMD_SNOC_CLK>,
 			<&rpmcc RPM_SMD_SNOC_A_CLK>,
 			<&gcc GCC_SYS_NOC_USB3_CLK>;
+	};
+
+	sdhc1_opp_table: sdhc1-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <500000 200000>;
+			opp-avg-kBps = <104000 0>;
+		};
+
+		opp-384000000 {
+			opp-hz = /bits/ 64 <384000000>;
+			opp-peak-kBps = <2500000 1000000>;
+			opp-avg-kBps = <400000 0>;
+		};
+	};
+
+	sdhc2_opp_table: sdhc2-opp-table {
+		compatible = "operating-points-v2";
+
+		opp-100000000 {
+			opp-hz = /bits/ 64 <100000000>;
+			opp-peak-kBps = <1600000 280000>;
+			opp-avg-kBps = <50000 0>;
+		};
+
+		opp-202000000 {
+			opp-hz = /bits/ 64 <202000000>;
+			opp-peak-kBps = <5600000 1500000>;
+			opp-avg-kBps = <104000 0>;
+		};
+	};
+
+	sdhc_1: sdhci@7804000 {
+		status = "ok";
+		compatible = "qcom,sdhci-msm-v5";
+		reg = <0x7804000 0x1000>, <0x7805000 0x1000>;
+		reg-names = "hc", "cqhci";
+
+		interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "hc_irq", "pwr_irq";
+
+		clocks = <&gcc GCC_SDCC1_APPS_CLK>,
+			<&gcc GCC_SDCC1_AHB_CLK>,
+			<&gcc GCC_SDCC1_ICE_CORE_CLK>;
+		clock-names = "core", "iface", "ice_core";
+
+		qcom,ice-clk-rates = <300000000 100000000>;
+
+		operating-points-v2 = <&sdhc1_opp_table>;
+
+		interconnects = <&pc_noc MASTER_SDCC_1 &bimc SLAVE_EBI_CH0>,
+			<&bimc MASTER_AMPSS_M0 &pc_noc SLAVE_SDCC_1>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+
+		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+		qcom,dll-hsr-list = <0x000F6400 0x0 0x01 0x2c010800 0x80240874>;
+
+		qcom,restore-after-cx-collapse;
+
+		mmc-ddr-1_8v;
+		mmc-hs200-1_8v;
+		mmc-hs400-1_8v;
+		mmc-hs400-enhanced-strobe;
+
+		no-sd;
+		no-sdio;
+
+		bus-width = <8>;
+		non-removable;
+		supports-cqe;
+
+		cap-mmc-hw-reset;
+
+		/* VDD external regulator is enabled/disabled by pms405_l6 */
+		vdd-supply = <&pms405_l6>;
+		qcom,vdd-always-on;
+		qcom,vdd-lpm-sup;
+		qcom,vdd-voltage-level = <1800000 1800000>;
+		qcom,vdd-current-level = <0 325000>;
+
+		vdd-io-supply = <&pms405_l6>;
+		qcom,vdd-io-always-on;
+		qcom,vdd-io-lpm-sup;
+		qcom,vdd-io-voltage-level = <1800000 1800000>;
+		qcom,vdd-io-current-level = <0 325000>;
+
+		pinctrl-names = "active", "sleep";
+		pinctrl-0 = <&sdc1_on>;
+		pinctrl-1 = <&sdc1_off>;
+
+		qos0 {
+			mask = <0x0f>;
+			vote = <135>;
+		};
+	};
+
+	sdhc_2: sdhci@7844000 {
+		status = "disabled";
+		compatible = "qcom,sdhci-msm-v5";
+		reg = <0x7844000 0x1000>;
+		reg-names = "hc";
+
+		interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 221 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "hc_irq", "pwr_irq";
+
+		clocks = <&gcc GCC_SDCC2_AHB_CLK>,
+			<&gcc GCC_SDCC2_APPS_CLK>;
+		clock-names = "iface", "core";
+
+		operating-points-v2 = <&sdhc2_opp_table>;
+
+		bus-width = <4>;
+		no-sdio;
+		no-mmc;
+		qcom,restore-after-cx-collapse;
+
+		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
+		qcom,dll-hsr-list = <0x000F6400 0x0 0x01 0x2c010800 0x00040874>;
+
+		interconnects = <&pc_noc MASTER_SDCC_2 &bimc SLAVE_EBI_CH0>,
+			<&bimc MASTER_AMPSS_M0 &pc_noc SLAVE_SDCC_2>;
+		interconnect-names = "sdhc-ddr","cpu-sdhc";
+
+
+		/* VDD is an external regulator eLDO5 */
+		vdd-supply = <&pms405_l11>;
+		qcom,vdd-voltage-level = <1800000 2950000>;
+		qcom,vdd-current-level = <0 24200>;
+
+		vdd-io-supply = <&pms405_l11>;
+		qcom,vdd-io-voltage-level = <1800000 2950000>;
+		qcom,vdd-io-current-level = <0 24200>;
+
+		pinctrl-names = "active", "sleep";
+		pinctrl-0 = <&sdc2_on>;
+		pinctrl-1 = <&sdc2_off>;
+
+		qos0 {
+			mask = <0x0f>;
+			vote = <651>;
+		};
 	};
 };
 
