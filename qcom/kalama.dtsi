@@ -3770,12 +3770,10 @@
 
 &gcc_usb30_prim_gdsc {
 	clocks = <&gcc 0>;
-	regulator-name = "gcc_usb30_prim_gdsc";
 	status = "ok";
 };
 
 &gcc_usb3_phy_gdsc {
-	regulator-name = "gcc_usb3_phy_gdsc";
 	clocks = <&gcc 0>;
 	parent-supply = <&VDD_MXA_LEVEL>;
 	status = "ok";
