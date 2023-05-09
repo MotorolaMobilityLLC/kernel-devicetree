@@ -1015,6 +1015,7 @@
 				      <&adsp_smp2p_in 2 0>,
 				      <&adsp_smp2p_in 1 0>,
 				      <&adsp_smp2p_in 3 0>,
+				      <&adsp_smp2p_in 7 0>,
 				      <&adsp_smp2p_in 9 0>;
 
 		interrupt-names = "wdog",
@@ -1022,7 +1023,8 @@
 				  "handover",
 				  "ready",
 				  "stop-ack",
-				  "shutdown-ack";
+				  "shutdown-ack",
+				  "dsentry-ack";
 
 		/* Outputs to lpass */
 		qcom,smem-states = <&adsp_smp2p_out 0>;
