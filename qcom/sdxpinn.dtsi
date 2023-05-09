@@ -746,7 +746,7 @@
 		compatible = "qcom,gdsc";
 		reg = <0xd6004 0x4>;
 		regulator-name = "gcc_pcie_1_phy_gdsc";
-		parent-supply = <&VDD_CX_LEVEL>;
+		parent-supply = <&VDD_MXA_LEVEL>;
 		qcom,retain-regs;
 		qcom,support-hw-trigger;
 	};
@@ -764,7 +764,7 @@
 		compatible = "qcom,gdsc";
 		reg = <0xee004 0x4>;
 		regulator-name = "gcc_pcie_2_phy_gdsc";
-		parent-supply = <&VDD_CX_LEVEL>;
+		parent-supply = <&VDD_MXA_LEVEL>;
 		qcom,retain-regs;
 		qcom,support-hw-trigger;
 	};
@@ -782,7 +782,7 @@
 		compatible = "qcom,gdsc";
 		reg = <0xd4004 0x4>;
 		regulator-name = "gcc_pcie_phy_gdsc";
-		parent-supply = <&VDD_CX_LEVEL>;
+		parent-supply = <&VDD_MXA_LEVEL>;
 		qcom,retain-regs;
 		qcom,support-hw-trigger;
 	};
