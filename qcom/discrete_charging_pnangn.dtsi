@@ -71,6 +71,7 @@
 
                 dpdm-supply = <&qusb_phy0>;
                 mmi,qc3-support;
+                mmi,i2c-err-wa-dis;
                 enable_sw_jeita;
                 jeita_temp_above_t4_cv = <0>;
                 jeita_temp_t3_to_t4_cv = <4100000>;
