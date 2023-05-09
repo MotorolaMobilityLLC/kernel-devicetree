@@ -13,7 +13,7 @@
 ln110x-atl-1165mah {
 	serialnum = "SB18D80976";
 	fcc_design = <1165>;
-	ui_full = <85>;
+	ui_full = <98>;
 	config_profile_info = [46 00 00 00 00 00 00 00
 				94 c3 b4 ca b5 b1 c7 a8
 				9e ff f1 c3 88 71 57 49
