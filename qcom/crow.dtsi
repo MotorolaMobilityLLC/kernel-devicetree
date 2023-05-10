@@ -358,6 +358,13 @@
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x2800000>;
 	};
+
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
+	};
 };
 
 &soc {
@@ -2013,6 +2020,17 @@
 		reg-names = "llcc_base", "llcc_broadcast_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
+	};
+
+	mini_dump_node {
+		compatible = "qcom,minidump";
+		status = "ok";
+	};
+
+	va_mini_dump {
+		compatible = "qcom,va-minidump";
+		memory-region = <&va_md_mem>;
+		status = "ok";
 	};
 };
 
