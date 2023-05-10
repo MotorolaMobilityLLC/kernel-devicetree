@@ -3276,12 +3276,12 @@
 		qcom,blk-size = <1>;
 	};
 
-	qc_cti: cti@10010000 {
+	qdss_cti: cti@10010000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x10010000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-qc_cti";
+		coresight-name = "coresight-cti-qdss_cti";
 
 		qcom,extended_cti;
 		clocks = <&aoss_qmp>;
@@ -3312,12 +3312,12 @@
 		clock-names = "apb_pclk";
 	};
 
-	lpass_dl_cti: cti@10845000 {
+	lpass_dl_cti0: cti@10845000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x10845000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-lpass_dl_cti";
+		coresight-name = "coresight-cti-lpass_dl_cti0";
 
 		qcom,extended_cti;
 		clocks = <&aoss_qmp>;
@@ -3420,37 +3420,25 @@
 		clock-names = "apb_pclk";
 	};
 
-	cortex_m3: cti@10b13000 {
+	aoss_ucm3: cti@10b13000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x10b13000 0x1000>;
 
 		status = "disabled";
 		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-cortex_m3";
+		coresight-name = "coresight-cti-aoss_ucm3";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 	};
 
-	lpass_lpi_cti1: cti@10b41000 {
+	lpass_lpi_cti: cti@10b41000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x10b41000 0x1000>;
 
 		status = "disabled";
 		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-lpass_lpi_cti1";
-
-		clocks = <&aoss_qmp>;
-		clock-names = "apb_pclk";
-	};
-
-	lpass_lpi_cti3: cti@10b51000 {
-		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x10b51000 0x1000>;
-
-		status = "disabled";
-		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-lpass_lpi_cti3";
+		coresight-name = "coresight-cti-lpass_lpi_cti";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -3463,18 +3451,6 @@
 		status = "disabled";
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-lpass_q6_cti";
-
-		clocks = <&aoss_qmp>;
-		clock-names = "apb_pclk";
-	};
-
-	lpass_ssc_sdc_cti: cti@10b42000 {
-		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x10b42000 0x1000>;
-
-		status = "disabled";
-		arm,primecell-periphid = <0x000bb922>;
-		coresight-name = "coresight-cti-lpass_ssc_sdc_cti";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -3634,6 +3610,57 @@
 		clock-names = "apb_pclk";
 	};
 
+	wpss_cti0: cti@109a2000 {
+		compatible = "arm,coresight-cti", "arm,primecell";
+		reg = <0x109a2000 0x1000>;
+
+		status = "disabled";
+		arm,primecell-periphid = <0x000bb922>;
+		coresight-name = "coresight-cti-wpss_cti0";
+
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
+	dl_lpass_cti0: cti@109c1000 {
+		compatible = "arm,coresight-cti", "arm,primecell";
+		reg = <0x109c1000 0x1000>;
+
+		status = "disabled";
+		arm,primecell-periphid = <0x000bb922>;
+		coresight-name = "coresight-cti-dl_lpass_cti0";
+
+		qcom,extended_cti;
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
+	dl_mnq_cti0: cti@10ac2000 {
+		compatible = "arm,coresight-cti", "arm,primecell";
+		reg = <0x10ac2000 0x1000>;
+
+		status = "disabled";
+		arm,primecell-periphid = <0x000bb922>;
+		coresight-name = "coresight-cti-dl_mnq_cti0";
+
+		qcom,extended_cti;
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
+	ddr_ch01_dl1_cti0: cti@10d21000 {
+		compatible = "arm,coresight-cti", "arm,primecell";
+		reg = <0x10d21000 0x1000>;
+
+		status = "disabled";
+		arm,primecell-periphid = <0x000bb922>;
+		coresight-name = "coresight-cti-ddr_ch01_dl1_cti_0";
+
+		qcom,extended_cti;
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+	};
+
 	cpu0: cti@12010000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x12010000 0x1000>;
@@ -3719,7 +3746,7 @@
 		};
 	};
 
-	cpu5: cti@112060000 {
+	cpu5: cti@12060000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
 		reg = <0x12060000 0x1000>;
 
