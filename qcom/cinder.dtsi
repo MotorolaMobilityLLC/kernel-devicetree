@@ -869,8 +869,10 @@
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
-		qcom,threshold-arr = <0x17800058 0x17810058 0x17820058 0x17830058>;
-		qcom,config-arr = <0x17800060 0x17810060 0x17820060 0x17830060>;
+		qcom,chd-percpu-info = <&CPU0 0x17800058 0x17800060>,
+					<&CPU1 0x17810058 0x17810060>,
+					<&CPU2 0x17820058 0x17820060>,
+					<&CPU3 0x17830058 0x17830060>;
 	};
 
 	cluster-device {
