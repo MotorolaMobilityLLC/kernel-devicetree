@@ -148,6 +148,8 @@
 				qcom,bus-freq = <11>;
 				qcom,bus-min = <10>;
 				qcom,bus-max = <11>;
+
+				qcom,acd-level = <0xA82E5FFD>;
 			};
 
 			/* TURBO */
@@ -158,6 +160,8 @@
 				qcom,bus-freq = <10>;
 				qcom,bus-min = <9>;
 				qcom,bus-max = <11>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* NOM */
@@ -168,6 +172,8 @@
 				qcom,bus-freq = <9>;
 				qcom,bus-min = <7>;
 				qcom,bus-max = <11>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* SVS_L1 */
@@ -178,6 +184,8 @@
 				qcom,bus-freq = <7>;
 				qcom,bus-min = <5>;
 				qcom,bus-max = <10>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* SVS */
@@ -188,6 +196,8 @@
 				qcom,bus-freq = <6>;
 				qcom,bus-min = <3>;
 				qcom,bus-max = <8>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* LOW SVS */
@@ -228,6 +238,8 @@
 				qcom,bus-freq = <11>;
 				qcom,bus-min = <8>;
 				qcom,bus-max = <11>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* SVS_L1 */
@@ -238,6 +250,8 @@
 				qcom,bus-freq = <7>;
 				qcom,bus-min = <5>;
 				qcom,bus-max = <10>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* SVS */
@@ -248,6 +262,8 @@
 				qcom,bus-freq = <6>;
 				qcom,bus-min = <3>;
 				qcom,bus-max = <8>;
+
+				qcom,acd-level = <0xC0285FFD>;
 			};
 
 			/* LOW SVS */

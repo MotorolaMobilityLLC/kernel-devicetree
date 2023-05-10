@@ -9,3 +9,25 @@
 	qcom,msm-id = <457 0x10000>;
 	qcom,board-id = <0x10008 7>;
 };
+
+&soc {
+	mhi_net_device: qcom,mhi_net_dev {
+		compatible = "qcom,msm-mhi-dev-net";
+	};
+};
+
+&pcie1 {
+	status = "disabled";
+};
+
+&pcie1_edma {
+	status = "ok";
+};
+
+&pcie_ep {
+	status = "ok";
+};
+
+&mhi_device {
+	status = "ok";
+};

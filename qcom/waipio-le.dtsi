@@ -147,7 +147,17 @@
 	status = "disabled";
 };
 
+&slim_msm {
+	status = "disabled";
+};
+
+&bluetooth {
+	status = "disabled";
+};
+
 &msm_fastrpc {
+	qcom,unsigned-support-domains = <0x09>;
+
 	qcom,msm_fastrpc_compute_cb20 {
 		compatible = "qcom,msm-fastrpc-compute-cb";
 		label = "adsprpc-smd";
@@ -165,4 +175,16 @@
 		qcom,iommu-faults = "stall-disable", "HUPCF";
 		dma-coherent;
 	};
+};
+
+&msm_gpu {
+	status = "disabled";
+};
+
+&kgsl_msm_iommu {
+	status = "disabled";
+};
+
+&gmu {
+	status = "disabled";
 };

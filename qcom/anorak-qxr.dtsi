@@ -345,8 +345,7 @@
 		lane-channel-swap;
 
 		pinctrl-names = "default";
-		/*IMU CLKIN GPIO */
-		pinctrl-0 = <&usb3phy_portselect_gpio &imu_clkin_default>;
+		pinctrl-0 = <&usb3phy_portselect_gpio>;
 		gpios = <&tlmm 160 0>;
 
 		eq = /bits/ 8 <
@@ -604,4 +603,16 @@
 	periph-d43-supply = <&L4N>;
 	periph-d44-supply = <&L5N>;
 	periph-d46-supply = <&L7N>;
+};
+
+&qupv3_se2_i2c {
+	k09973: k09973@10 {
+		compatible = "qcom,ipd";
+		reg = <0x10>;
+
+		#io-channel-cells = <1>;
+		io-channel-ranges;
+		io-channels = <&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM5_100K_PU>;
+		io-channel-names = "ipd";
+	};
 };

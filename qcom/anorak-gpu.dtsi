@@ -85,7 +85,7 @@
 
 			qcom,gpu-pwrlevel@0 {
 				reg = <0>;
-				qcom,gpu-freq = <681000000>;
+				qcom,gpu-freq = <690000000>;
 				qcom,level = <RPMH_REGULATOR_LEVEL_NOM>;
 
 				qcom,bus-freq = <9>;

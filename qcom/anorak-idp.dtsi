@@ -55,11 +55,9 @@
 		label = "gpio-keys";
 
 		pinctrl-names = "default";
-		/*IMU CLKIN GPIO */
 		pinctrl-0 = <&key_vol_up_default
 			     &key_confirm_default
-			     &key_back_default
-			     &imu_clkin_default>;
+			     &key_back_default>;
 
 		confirm_key {
 			label = "confirm_key";
