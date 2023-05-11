@@ -140,6 +140,17 @@
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
 				qcom,mdss-dsc-novateck-ic;
+				qcom,mdss-dsi-dfps-60-command = [
+                                               39 01 00 00 00 00 02 2F 03];
+				qcom,mdss-dsi-dfps-60-command-state = "dsi_hs_mode";
+
+				qcom,mdss-dsi-dfps-90-command = [
+                                               39 01 00 00 00 00 02 2F 02];
+				qcom,mdss-dsi-dfps-90-command-state = "dsi_hs_mode";
+
+				qcom,mdss-dsi-dfps-120-command = [
+				               39 01 00 00 00 00 02 2F 01];
+				qcom,mdss-dsi-dfps-120-command-state = "dsi_hs_mode";
 			};
 		};
 	};
