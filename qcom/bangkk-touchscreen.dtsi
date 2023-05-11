@@ -15,6 +15,13 @@
 	status = "disabled";
 };
 
+&L13A {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+	status = "okay";
+};
+
 &qupv3_se0_spi_pins {
 	qupv3_se0_spi_active: qupv3_se0_spi_active {
 		mux {
