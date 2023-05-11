@@ -390,6 +390,25 @@
 				qcom,mdss-dsc-bit-per-component = <10>;
 				qcom,mdss-dsc-bit-per-pixel = <8>;
 				qcom,mdss-dsc-block-prediction-enable;
+
+				qcom,mdss-dsi-dfps-60-command = [
+                                               39 00 00 40 00 00 02 6C 00
+                                               39 00 00 40 00 00 02 62 00];
+				qcom,mdss-dsi-dfps-60-command-state = "dsi_hs_mode";
+
+				qcom,mdss-dsi-dfps-90-command = [
+                                               39 00 00 40 00 00 02 6c 01
+                                               39 00 00 40 00 00 02 62 01
+                                               39 00 00 40 00 00 03 F0 AA 10
+                                               39 00 00 40 00 00 0E B1 01 57 00 0C 0D 74 00 01 57 00 0C 05 D4];
+				qcom,mdss-dsi-dfps-90-command-state = "dsi_hs_mode";
+
+				qcom,mdss-dsi-dfps-120-command = [
+				               39 00 00 40 00 00 02 6c 01
+                                               39 00 00 40 00 00 02 62 00
+                                               39 00 00 40 00 00 03 F0 AA 10
+                                               39 00 00 40 00 00 0E B1 01 57 00 0C 0D 74 00 01 57 00 0C 02 04];
+				qcom,mdss-dsi-dfps-120-command-state = "dsi_hs_mode";
 			};
 		};
 	};
