@@ -105,6 +105,8 @@
 		goodix,panel-max-p = <4096>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
@@ -126,6 +128,8 @@
 		vcc_i2c-supply = <&L13A>;
 		focaltech,max-touch-number = <10>;
 		focaltech,display-coords =  <0 0 17280 38400>;
+		focaltech,edge-ctrl;
+		focaltech,interpolation-ctrl;
 
 		pinctrl-names = "pmx_ts_active","pmx_ts_suspend",
 						"pmx_ts_release";
