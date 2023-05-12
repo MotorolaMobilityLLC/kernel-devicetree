@@ -2059,6 +2059,14 @@
 		compatible = "qcom,scm";
 	};
 
+	android {
+		compatible = "android,firmware";
+		vbmeta {
+			compatible = "android,vbmeta";
+			parts = "vbmeta,boot,system,vendor,dtbo,recovery";
+		};
+	};
+
 	qcom_smcinvoke {
 		compatible = "qcom,smcinvoke";
 	};
