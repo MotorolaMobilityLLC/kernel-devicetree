@@ -38,6 +38,19 @@
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 	};
 
+	sram: sram@17D09400 {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		compatible = "mmio-sram";
+		reg = <0x0 0x17D09400 0x0 0x400>;
+		ranges = <0x0 0x0 0x0 0x17D09400 0x0 0x400>;
+
+		cpu_scp_lpri: scmi-shmem@0 {
+			compatible = "arm,scmi-shmem";
+			reg = <0x0 0x0 0x0 0x400>;
+		};
+	};
+
 	cpus {
 		#address-cells = <2>;
 		#size-cells = <0>;
@@ -565,6 +578,42 @@
 			reg = <0x1742d000 0x1000>;
 			status = "disabled";
 		};
+	};
+
+	rimps: qcom,rimps@17400000 {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		compatible = "qcom,rimps";
+		reg =   <0x17400000 0x10>,
+			<0x17d90000 0x2000>;
+		#mbox-cells = <1>;
+		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	scmi: qcom,scmi {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "arm,scmi";
+		mboxes = <&rimps 0>;
+		mbox-names = "tx";
+		shmem = <&cpu_scp_lpri>;
+
+		scmi_cpufreqstat: protocol@84 {
+			reg = <0x84>;
+			#clock-cells = <1>;
+		};
+
+		scmi_c1dcvs: protocol@87 {
+			reg = <0x87>;
+			#clock-cells = <1>;
+		};
+
+	};
+
+	rimps_log: qcom,rimps_log@d8140000 {
+		compatible = "qcom,rimps-log";
+		reg = <0xd8140000 0x10000>, <0xd8150000 0x10000>;
+		mboxes = <&rimps 1>;
 	};
 
 	ipcc_mproc: qcom,ipcc@408000 {
