@@ -2078,7 +2078,7 @@
 
 #include "crow-pinctrl.dtsi"
 #include "crow-usb.dtsi"
-#include "crow-stub-regulators.dtsi"
+#include "crow-regulators.dtsi"
 #include "kalama-gdsc.dtsi"
 #include "crow-qupv3.dtsi"
 #include "msm-rdbg.dtsi"
