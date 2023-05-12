@@ -158,6 +158,27 @@
 	};
 };
 
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			/* override x0 */
+			0x47 0x6c
+			/* override x1 */
+			0xcb 0x70
+			/* override x2 */
+			0x16 0x74
+			/* override x3 */
+			0x03 0x78>;
+	qcom,host-param-override-seq = <
+			/* override x0 */
+			0x47 0x6c
+			/* override x1 */
+			0xcb 0x70
+			/* override x2 */
+			0x16 0x74
+			/* override x3 */
+			0x03 0x78>;
+};
+
 &apps_rsc {
 	rpmh-regulator-ldod1 {
 		compatible = "qcom,rpmh-vrm-regulator";
