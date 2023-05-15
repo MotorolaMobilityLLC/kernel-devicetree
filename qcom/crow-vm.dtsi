@@ -268,4 +268,5 @@
 	};
 };
 
+#include "msm-arm-smmu-crow-vm.dtsi"
 #include "crow-vm-dma-heaps.dtsi"
