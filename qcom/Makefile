@@ -78,7 +78,13 @@ dtb-y += $(kalama-dtb-y)
 CROW_BASE_DTB += crow.dtb
 
 CROW_BOARDS += \
-		crow-rumi-overlay.dtbo
+		crow-rumi-overlay.dtbo \
+		crow-atp-overlay.dtbo \
+		crow-idp-overlay.dtbo \
+		crow-idp-wcd9395-wcd-dmic-overlay.dtbo \
+		crow-idp-wcd9395-dmic-overlay.dtbo \
+		crow-idp-wcd9395-aatc-overlay.dtbo \
+		crow-qrd-overlay.dtbo
 
 kalama-dtb-$(CONFIG_ARCH_CROW) += \
 	$(call add-overlays, $(CROW_BOARDS) ,$(CROW_BASE_DTB))
