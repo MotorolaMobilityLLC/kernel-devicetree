@@ -28,6 +28,8 @@
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
+	ddr-regions { };
+
 	reserved_memory: reserved-memory { };
 
 	firmware: firmware {};
