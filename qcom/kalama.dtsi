@@ -2025,6 +2025,9 @@
 		qcom,iommu-dma = "fastmap";
 		dma-coherent;
 
+		/* skip pbl wa as we have got this fixed in pbl */
+		qcom,bypass-pbl-rst-wa;
+
 		shared-ice-cfg = <&ice_cfg>;
 		qcom,vccq-lpm-uV = <1180000>;
 
