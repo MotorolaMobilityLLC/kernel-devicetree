@@ -528,3 +528,20 @@
 	qcom,boot-option = <0x2>;
 	qcom,apss-based-l1ss-sleep;
 };
+&thermal_zones {
+	skin-msm-therm {
+		status = "disabled";
+	};
+
+	cam-flash-therm {
+		status = "disabled";
+	};
+
+	wlan-therm {
+		status = "disabled";
+	};
+
+	rear-tof-therm {
+		status = "disabled";
+	};
+};
