@@ -190,9 +190,11 @@ cinder-dtb-$(CONFIG_ARCH_CINDER) += cinder-ru-rumi.dtb \
 	cinder-ru-idp-2gb.dtb \
 	cinder-du-idp.dtb \
 	cinder-du-x100.dtb \
+	cinder-du-idp-4gb.dtb \
 	cinder-v2-ru-idp.dtb \
 	cinder-v2-ru-idp-2gb.dtb \
 	cinder-v2-du-idp.dtb \
+	cinder-v2-du-idp-4gb.dtb \
 	cinder-v2-du-x100.dtb \
 	cinder-v2-ru-rumi.dtb \
 	cinder-v2-du-rumi.dtb
