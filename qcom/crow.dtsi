@@ -36,6 +36,7 @@
 		serial0 = &qupv3_se5_2uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
+		hsuart0 = &qupv3_se10_4uart;
 	};
 
 	sram: sram@17D09400 {
