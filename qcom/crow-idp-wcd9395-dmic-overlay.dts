@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "crow-idp-wcd9395-dmic.dtsi"
+#include "crow-idp-pm7550ba.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Crow IDP + WCD9395 DMIC";
