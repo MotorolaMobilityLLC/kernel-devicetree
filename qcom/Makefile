@@ -443,7 +443,13 @@ endif
 
 ifeq ($(CONFIG_ARCH_CROW), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
-kalama_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += crow-vm-rumi.dtb
+kalama_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += crow-vm-rumi.dtb \
+	crow-vm-atp.dtb \
+	crow-vm-idp-wcd9395-aatc.dtb \
+	crow-vm-idp-wcd9395-dmic.dtb \
+	crow-vm-idp-wcd9395-wcd-dmic.dtb \
+	crow-vm-idp.dtb \
+	crow-vm-qrd.dtb
 dtb-y += $(kalama_tuivm-dtb-y)
 endif
 endif
