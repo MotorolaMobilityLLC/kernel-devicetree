@@ -91,12 +91,12 @@
 		Semtech,flip_near_init = <
 			0x8024 0x0800
 			0x4280 0xE
-                        0x80F8, 0x8130
+                        0x80F8 0x8130
 		>;
 		Semtech,flip_far_init = <
 			0x8024 0x7F00
 			0x4280 0xE
-                        0x80F8, 0x8830
+                        0x80F8 0x8830
 		>;
 		Semtech,reg-num = <72>;
 		Semtech,reg-init = <
