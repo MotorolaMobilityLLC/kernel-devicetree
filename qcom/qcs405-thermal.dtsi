@@ -379,7 +379,7 @@
 	xo-therm {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
-		thermal-sensors = <&pms405_adc_tm_iio ADC5_XO_THERM_100K_PU>;
+		thermal-sensors = <&pms405_adc_tm_iio 0>;
 
 		trips {
 			active-config0 {
@@ -393,7 +393,7 @@
 	pa-therm1 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
-		thermal-sensors = <&pms405_adc_tm_iio ADC5_AMUX_THM1_100K_PU>;
+		thermal-sensors = <&pms405_adc_tm_iio 1>;
 
 		trips {
 			active-config0 {
@@ -407,7 +407,7 @@
 	pa-therm3 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
-		thermal-sensors = <&pms405_adc_tm_iio ADC5_AMUX_THM3_100K_PU>;
+		thermal-sensors = <&pms405_adc_tm_iio 2>;
 
 		trips {
 			active-config0 {
