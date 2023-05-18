@@ -11,7 +11,7 @@
 		gpio-ranges = <&tlmm 0 0 120>;
 		gpio-controller;
 		#gpio-cells = <2>;
-		wakeup-parent = <&wakegic>;
+		wakeup-parent = <&mpm>;
 
 		blsp1_uart2_console {
 			blsp_uart_tx_a2_active: blsp_uart_tx_a2_active {

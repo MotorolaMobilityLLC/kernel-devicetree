@@ -139,12 +139,13 @@
 		      <0x0b002000 0x1000>;
 	};
 
-	wakegic: wake-gic {
+	mpm: interrupt-controller@601b8 {
 		compatible = "qcom,mpm-qcs405", "qcom,mpm";
 		interrupts = <GIC_SPI 171 IRQ_TYPE_EDGE_RISING>;
 		reg = <0x601b8 0x1000>,
-			<0xb011008 0x4>;  /* MSM_APCS_GCC_BASE 4K */
-		reg-names = "vmpm", "ipc";
+		      <0xb011008 0x4>,  /* MSM_APCS_GCC_BASE 4K */
+		      <0xb121000 0x1000>;
+		reg-names = "vmpm", "ipc", "timer";
 		qcom,num-mpm-irqs = <96>;
 		interrupt-controller;
 		interrupt-parent = <&intc>;
@@ -358,7 +359,7 @@
 			<0x200a000 0x2100>;
 		reg-names = "core", "chnls", "obsrvr", "intr", "cnfg";
 		interrupt-names = "periph_irq";
-		interrupts-extended = <&wakegic 62 IRQ_TYPE_LEVEL_HIGH>;
+		interrupts-extended = <&mpm 62 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,ee = <0>;
 		qcom,channel = <0>;
 		#address-cells = <2>;
