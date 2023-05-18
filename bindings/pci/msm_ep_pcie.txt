@@ -83,6 +83,7 @@ Optional Properties:
 	Will work only when host_bypass is 1 bit in boot_config.
   - qcom,fast-boot-values: fast_boot values to check against boot_config based value for confirming
 	that host-interface is PCIe.
+  - qcom,no-path-from-ipa-to-pcie: boolean type; No direct path from the IPA to PCIe.
 
 Example:
 
