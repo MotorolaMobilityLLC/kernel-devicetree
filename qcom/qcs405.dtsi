@@ -800,6 +800,7 @@
 #include "qcs405-dma-heaps.dtsi"
 #include "pms405.dtsi"
 #include "qcs405-thermal.dtsi"
+#include "qcs405-usb.dtsi"
 
 &blsp1_uart2_console {
 	status = "ok";
