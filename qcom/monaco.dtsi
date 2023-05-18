@@ -1782,6 +1782,11 @@
 		ss-name = "modem", "adsp", "adsp_island", "cdsp", "apss";
 	};
 
+	subsystem-sleep-stats@4690000 {
+		compatible = "qcom,subsystem-sleep-stats-v2";
+		reg = <0x4690000 0x400>;
+	};
+
 	qcom,rpm-master-stats@45f0150 {
 		compatible = "qcom,rpm-master-stats";
 		reg = <0x45f0150 0x5000>;
