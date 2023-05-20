@@ -21,7 +21,7 @@
 #include "rhodec-display.dtsi"
 #include "rhodec-touchscreen.dtsi"
 #include "rhodec-fmr-overlay.dtsi"
-#include "camera/holi-camera-sensor-mot-rhodec-overlay.dtsi"
+#include "camera-legacy/rhodec/holi-camera-sensor-mot-rhodec-overlay.dtsi"
 #include "discrete_charging_holi.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 
