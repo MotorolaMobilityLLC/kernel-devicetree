@@ -1221,7 +1221,7 @@
 		qcom,freq-hw-domain = <&cpufreq_hw 0>;
 	};
 
-	tsc@1da0000 {
+	tsc: tsc@1da0000 {
 		compatible = "qcom,tsc";
 		reg = <0x1da0000 0x2000>, <0x01db0000 0x10000>;
 		reg-names = "tsc", "etu";
