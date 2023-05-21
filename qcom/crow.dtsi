@@ -2677,6 +2677,14 @@
 		memory-region = <&cpusys_vm_mem>;
 	};
 
+	dmesg-dump {
+		compatible = "qcom,dmesg-dump";
+		qcom,primary-vm;
+		gunyah-label = <7>;
+		peer-name = <2>;
+		shared-buffer = <&trust_ui_vm_dump>;
+	};
+
 	bwmon_llcc: qcom,bwmon-llcc@240B6300 {
 		compatible = "qcom,bwmon4";
 		reg = <0x240B6400 0x300>, <0x240B6300 0x200>;
