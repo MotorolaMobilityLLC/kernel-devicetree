@@ -23,7 +23,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = "console=ttyMSM0,115200n8 loglevel=6 kpti=0 loop.max_part=7 allow_mismatched_32bit_el0 log_buf_len=256K kernel.panic_on_rcu_stall=1 service_locator.enable=1 msm_rtb.filter=0x237 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops printk.console_no_auto_verbose=1 kasan=off can.stats_timer=0 pcie_ports=compat";
+		bootargs = "console=ttyMSM0,115200n8 loglevel=6 kpti=0 loop.max_part=7 allow_mismatched_32bit_el0 log_buf_len=256K kernel.panic_on_rcu_stall=1 service_locator.enable=1 msm_rtb.filter=0x237 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops printk.console_no_auto_verbose=1 kasan=off can.stats_timer=0 pcie_ports=compat cpufreq.default_governor=performance";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -65,6 +65,7 @@
 			cpu-idle-states = <&SILVER_OFF &SILVER_RAIL_OFF>;
 			power-domains = <&CPU_PD0>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
@@ -87,6 +88,7 @@
 			cpu-idle-states = <&SILVER_OFF &SILVER_RAIL_OFF>;
 			power-domains = <&CPU_PD1>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
@@ -100,6 +102,7 @@
 			cpu-idle-states = <&SILVER_OFF &SILVER_RAIL_OFF>;
 			power-domains = <&CPU_PD2>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			next-level-cache = <&L2_2>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
@@ -118,6 +121,7 @@
 			cpu-idle-states = <&SILVER_OFF &SILVER_RAIL_OFF>;
 			power-domains = <&CPU_PD3>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			next-level-cache = <&L2_2>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
@@ -131,6 +135,7 @@
 			cpu-idle-states = <&GOLD_OFF &GOLD_RAIL_OFF>;
 			power-domains = <&CPU_PD4>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 1>;
 			next-level-cache = <&L2_4>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
@@ -149,6 +154,7 @@
 			cpu-idle-states = <&GOLD_OFF &GOLD_RAIL_OFF>;
 			power-domains = <&CPU_PD5>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 1>;
 			next-level-cache = <&L2_5>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
@@ -167,6 +173,7 @@
 			cpu-idle-states = <&GOLD_OFF &GOLD_RAIL_OFF>;
 			power-domains = <&CPU_PD6>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 1>;
 			next-level-cache = <&L2_6>;
 			capacity-dmips-mhz = <1843>;
 			dynamic-power-coefficient = <226>;
@@ -185,6 +192,7 @@
 			cpu-idle-states = <&GOLD_PLUS_OFF &GOLD_PLUS_RAIL_OFF>;
 			power-domains = <&CPU_PD7>;
 			power-domain-names = "psci";
+			qcom,freq-domain = <&cpufreq_hw 2>;
 			next-level-cache = <&L2_7>;
 			capacity-dmips-mhz = <1853>;
 			dynamic-power-coefficient = <245>;
@@ -1475,6 +1483,32 @@
 			      "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	cpufreq_hw: qcom,cpufreq-hw {
+		compatible = "qcom,cpufreq-epss";
+		reg = <0x17D91000 0x1000>,
+		      <0x17D92000 0x1000>,
+		      <0x17D93000 0x1000>;
+		reg-names = "freq-domain0",
+			    "freq-domain1",
+			    "freq-domain2";
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_GPLL0>;
+		clock-names = "xo", "alternate";
+		interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "dcvsh0_int",
+				  "dcvsh1_int",
+				  "dcvsh2_int";
+		#freq-domain-cells = <1>;
+	};
+
+	qcom,cpufreq-hw-debug {
+		compatible = "qcom,cpufreq-hw-epss-debug";
+		qcom,freq-hw-domain = <&cpufreq_hw 0>,
+				      <&cpufreq_hw 1>,
+				      <&cpufreq_hw 2>;
 	};
 
 	qcom_qseecom: qseecom@c1700000 {
