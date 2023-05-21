@@ -34,7 +34,7 @@
 
 	firmware: firmware {};
 
-	aliases {
+	aliases: aliases {
 		serial0 = &qupv3_se5_2uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
@@ -1963,10 +1963,18 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+
+		adsp_variant: adsp_variant@128 {
+			reg = <0x131 0x1>;
+			bits = <1 6>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
+
+		nvmem-cells = <&adsp_variant>;
+		nvmem-cell-names = "adsp_variant";
 	};
 
 	wpss_pas: remoteproc-wpss@9f700000 {
@@ -2828,6 +2836,14 @@
 
 &qupv3_se5_2uart {
 	status = "ok";
+};
+
+&qupv3_se13_i2c {
+	status = "ok";
+	fsa4480: fsa4480@42 {
+		compatible = "qcom,fsa4480-i2c";
+		reg = <0x42>;
+	};
 };
 
 &cam_cc_camss_top_gdsc {
