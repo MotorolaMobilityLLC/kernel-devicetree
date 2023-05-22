@@ -211,7 +211,7 @@
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
-	status = "ok";
+	status = "disabled";
 	qcom,touch-active = "goodix,gt9916S";
 	qcom,la-vm;
 
