@@ -359,6 +359,12 @@
 		mem-type = <2>;
 	};
 
+	kinfo_mem: debug_kinfo_region {
+		alloc-ranges = <0x0 0x00000000 0xffffffff 0xffffffff>;
+		size = <0x0 0x1000>;
+		no-map;
+	};
+
 	user_contig_mem: user_contig_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
@@ -2573,6 +2579,11 @@
 		qcom,hw-timer-hz = <19200000>;
 		qcom,count-unit = <0x10000>;
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
+	};
+
+	google,debug-kinfo {
+		compatible = "google,debug-kinfo";
+		memory-region = <&kinfo_mem>;
 	};
 };
 
