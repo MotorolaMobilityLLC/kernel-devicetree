@@ -64,6 +64,11 @@
 				39 01 00 00 00 00 03 51 8F FF];
 		qcom,mdss-dsi-hbm-fod-on-command-state = "dsi_hs_mode";
 
+		qcom,mdss-dsi-panel-lhbm-wait-fps-valid;
+		qcom,mdss-dsi-panel-local-hbm-wait-fps-count = <30>;
+		qcom,mdss-dsi-panel-local-hbm-wait-fps-interval = <1>;
+		qcom,mdss-dsi-panel-lhbm-not-allowed-fps-list = <60 90>;
+
 		qcom,mdss-dsi-display-timings {
 			timing@0 {
 				cell-index = <0>;
