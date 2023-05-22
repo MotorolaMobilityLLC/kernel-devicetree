@@ -614,6 +614,11 @@
 		mbox-names = "tx";
 		shmem = <&cpu_scp_lpri>;
 
+		scmi_plh: protocol@81 {
+			reg = <0x81>;
+			#clock-cells = <1>;
+		};
+
 		scmi_cpufreqstat: protocol@84 {
 			reg = <0x84>;
 			#clock-cells = <1>;
@@ -2258,6 +2263,10 @@
 						 &mc_virt SLAVE_EBI1>;
 			};
 		};
+	};
+
+	qcom_scmi_plh: qcom,scmi_plh {
+		compatible = "qcom,scmi_plh";
 	};
 
 	qcom_memlat: qcom,memlat {
