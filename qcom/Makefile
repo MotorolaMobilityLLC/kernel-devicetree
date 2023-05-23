@@ -535,7 +535,9 @@ dtbo-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi-overlay.dtbo \
 	montague-rumi-overlay.dtbo \
 	montague-hsp-overlay.dtbo \
 	montague-moselle-overlay.dtbo \
-	montague-rcm-overlay.dtbo
+	montague-rcm-overlay.dtbo \
+	montague-wsa-overlay.dtbo \
+	montague-wsd-overlay.dtbo
 
 ravelin-rumi-overlay.dtbo-base := ravelin.dtb montague.dtb
 ravelin-atp-overlay.dtbo-base := ravelin.dtb ravelinp.dtb montague.dtb montaguep.dtb
@@ -548,6 +550,8 @@ montague-rumi-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-hsp-overlay.dtbo-base := montague.dtb montaguep.dtb
 montague-moselle-overlay.dtbo-base := montague-4gb.dtb montaguep-4gb.dtb montague.dtb montaguep.dtb
 montague-rcm-overlay.dtbo-base := montague.dtb montaguep.dtb
+montague-wsa-overlay.dtbo-base := montague.dtb montaguep.dtb
+montague-wsd-overlay.dtbo-base := montague.dtb montaguep.dtb
 else
 dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	ravelin-atp.dtb \
@@ -571,7 +575,11 @@ dtb-$(CONFIG_ARCH_RAVELIN) += ravelin-rumi.dtb \
 	montaguep-moselle.dtb \
 	montaguep-rcm.dtb \
 	montague-moselle-4gb.dtb \
-	montaguep-moselle-4gb.dtb
+	montaguep-moselle-4gb.dtb \
+	montague-wsa.dtb \
+	montague-wsd.dtb \
+	montaguep-wsa.dtb \
+	montaguep-wsd.dtb
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
