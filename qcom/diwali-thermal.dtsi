@@ -633,7 +633,7 @@
 
 			gpu0_fs1_cdev0 {
 				trip = <&gpu0_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			gpu0_fs1_cdev1 {
@@ -708,7 +708,7 @@
 
 			gpu1_fs1_cdev0 {
 				trip = <&gpu1_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			gpu1_fs1_cdev1 {
@@ -766,7 +766,7 @@
 		cooling-maps {
 			camera0_fs1_cdev0 {
 				trip = <&camera0_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			camera0_fs1_cdev1 {
@@ -824,7 +824,7 @@
 		cooling-maps {
 			camera1_fs1_cdev0 {
 				trip = <&camera1_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			camera1_fs1_cdev1 {
@@ -1071,7 +1071,7 @@
 
 			nspss0_fs1_cdev0 {
 				trip = <&nspss0_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			nspss0_fs1_cdev1 {
@@ -1147,7 +1147,7 @@
 
 			nspss1_fs1_cdev0 {
 				trip = <&nspss1_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			nspss1_fs1_cdev1 {
@@ -1223,7 +1223,7 @@
 
 			nspss2_fs1_cdev0 {
 				trip = <&nspss2_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			nspss2_fs1_cdev1 {
@@ -1281,7 +1281,7 @@
 		cooling-maps {
 			video_fs1_cdev0 {
 				trip = <&video_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			video_fs1_cdev1 {
@@ -1383,7 +1383,7 @@
 		cooling-maps {
 			mdmss0_fs1_cdev0 {
 				trip = <&mdmss0_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			mdmss0_fs1_cdev1 {
@@ -1441,7 +1441,7 @@
 		cooling-maps {
 			mdmss1_fs1_cdev0 {
 				trip = <&mdmss1_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			mdmss1_fs1_cdev1 {
@@ -1499,7 +1499,7 @@
 		cooling-maps {
 			mdmss2_fs1_cdev0 {
 				trip = <&mdmss2_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			mdmss2_fs1_cdev1 {
@@ -1557,7 +1557,7 @@
 		cooling-maps {
 			mdmss3_fs1_cdev0 {
 				trip = <&mdmss3_fail_safe1>;
-				cooling-device = <&msm_gpu 5 5>;
+				cooling-device = <&msm_gpu 2 THERMAL_NO_LIMIT>;
 			};
 
 			mdmss3_fs1_cdev1 {
