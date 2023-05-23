@@ -139,6 +139,11 @@
 			qcom,dump-size = <0x1000>;
 			qcom,dump-id = <0x102>;
 		};
+
+		etf_swao {
+			qcom,dump-size = <0x10000>;
+			qcom,dump-id = <0xf1>;
+		};
 	};
 };
 
