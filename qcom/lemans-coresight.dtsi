@@ -447,7 +447,7 @@
 
 	funnel_apss: funnel@06810000 {
 		compatible = "arm,primecell";
-		arm,primecell-periphid = <0x0003b908>;
+		arm,primecell-periphid = <0x000bb908>;
 
 		reg = <0x06810000 0x1000>;
 		reg-names = "funnel-base";
@@ -577,7 +577,7 @@
 
 	funnel_in1: funnel@04042000 {
 		compatible = "arm,primecell";
-		arm,primecell-periphid = <0x0003b908>;
+		arm,primecell-periphid = <0x000bb908>;
 
 		reg = <0x04042000 0x1000>;
 		reg-names = "funnel-base";
