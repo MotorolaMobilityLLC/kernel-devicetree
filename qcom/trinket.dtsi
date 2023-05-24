@@ -41,6 +41,8 @@
 			i-cache-size = <0x8000>;
 			d-cache-size = <0x8000>;
 			next-level-cache = <&L2_0>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
+			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
 			L2_0: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -70,6 +72,8 @@
 			i-cache-size = <0x8000>;
 			d-cache-size = <0x8000>;
 			next-level-cache = <&L2_0>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
+			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
 
 			L1_I_1: l1-icache {
@@ -94,6 +98,8 @@
 			d-cache-size = <0x8000>;
 			i-cache-size = <0x8000>;
 			next-level-cache = <&L2_0>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
+			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
 
 			L1_I_2: l1-icache {
@@ -118,6 +124,8 @@
 			d-cache-size = <0x8000>;
 			i-cache-size = <0x8000>;
 			next-level-cache = <&L2_0>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
+			qcom,lmh-dcvs = <&lmh_dcvs0>;
 			#cooling-cells = <2>;
 
 			L1_I_3: l1-icache {
@@ -142,6 +150,8 @@
 			d-cache-size = <0x10000>;
 			i-cache-size = <0x10000>;
 			next-level-cache = <&L2_1>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
+			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
 			L2_1: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -171,6 +181,8 @@
 			d-cache-size = <0x10000>;
 			i-cache-size = <0x10000>;
 			next-level-cache = <&L2_1>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
+			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
 
 			L1_I_101: l1-icache {
@@ -195,6 +207,8 @@
 			d-cache-size = <0x10000>;
 			i-cache-size = <0x10000>;
 			next-level-cache = <&L2_1>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
+			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
 
 			L1_I_102: l1-icache {
@@ -219,6 +233,8 @@
 			d-cache-size = <0x10000>;
 			i-cache-size = <0x10000>;
 			next-level-cache = <&L2_1>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
+			qcom,lmh-dcvs = <&lmh_dcvs1>;
 			#cooling-cells = <2>;
 
 			L1_I_103: l1-icache {
@@ -1314,6 +1330,20 @@
 		};
 	};
 
+	cpufreq_hw: qcom,cpufreq-hw {
+		compatible = "qcom,cpufreq-hw";
+		/* TODO: As per ipcat size of both reg is 0x1400 but In 4.14
+		 * size has been used is 0x1000, Check during bringup
+		 */
+		reg = <0xf521000 0x1400>, <0xf523000 0x1400>;
+		reg-names = "freq-domain0", "freq-domain1";
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>, <&gcc GPLL0>;
+		clock-names = "xo", "alternate";
+		qcom,no-accumulative-counter;
+		qcom,max-lut-entries = <12>;
+		#freq-domain-cells = <1>;
+	};
+
 	mini_dump_mode {
 		compatible = "qcom,minidump";
 		status = "ok";
@@ -1840,6 +1870,129 @@
 
 	msm_gpu: qcom,kgsl-3d0@5900000 { };
 
+	qcom_pmu: qcom,pmu {
+		compatible = "qcom,pmu";
+		qcom,pmu-events-tbl =
+		/*
+		 ***********************PMU events************************
+		 * https://developer.arm.com/documentation/ddi0500/j/Performance-Monitor-Unit/Events?lang=en#BIIHJJHJ
+		 *********************************************************
+		 * Event Number | Mnemonic | Event name |
+		 *--------------------------------------------------------
+		 *	0x08	|	INST_RETIRED	|	Instruction architecturally executed
+		 *---------------------------------------------------------
+		 *	0x11	|	CPU_CYCLES	|	CPU Cycles
+		 *---------------------------------------------------------
+		 *	0x17	|	L2D_CACHE_REFILL|	L2 Data cache refill
+		 *---------------------------------------------------------
+		 */
+			< 0x0008 0xFF 0xFF 0xFF >,
+			< 0x0011 0xFF 0xFF 0xFF >,
+			< 0x0017 0xFF 0xFF 0xFF >;
+	};
+
+	ddr_freq_table: ddr-freq-table {
+		qcom,freq-tbl =
+			< 200000 >,
+			< 300000 >,
+			< 451000 >,
+			< 547000 >,
+			< 681000 >,
+			< 768000 >,
+			< 1017000 >,
+			< 1353000 >,
+			< 1555000 >,
+			< 1804000 >;
+	};
+
+	qcom_dcvs: qcom,dcvs {
+		compatible = "qcom,dcvs";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		qcom_ddr_dcvs_hw: ddr {
+			compatible = "qcom,dcvs-hw";
+			qcom,dcvs-hw-type = <0>;
+			qcom,bus-width = <8>;
+			qcom,freq-tbl = <&ddr_freq_table>;
+
+			ddr_dcvs_sp: sp {
+				compatible = "qcom,dcvs-path";
+				qcom,dcvs-path-type = <0>;
+				interconnects = <&bimc MASTER_AMPSS_M0 &bimc SLAVE_EBI_CH0>;
+			};
+		};
+	};
+
+	bwmon_ddr: qcom,bwmon-ddr@01b8e200 {
+		compatible = "qcom,bwmon4";
+		reg = <0x01b8e200 0x100>, <0x01b8e100 0x100>;
+		reg-names = "base", "global_base";
+		interrupts = <GIC_SPI 421 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,mport = <0>;
+		qcom,hw-timer-hz = <19200000>;
+		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
+		qcom,count-unit = <0x10000>;
+	};
+
+	qcom_memlat: qcom,memlat {
+		compatible = "qcom,memlat";
+		ddr {
+			compatible = "qcom,memlat-grp";
+			qcom,target-dev = <&qcom_ddr_dcvs_hw>;
+			qcom,sampling-path = <&ddr_dcvs_sp>;
+			qcom,miss-ev = <0x17>;
+
+			silver {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
+				qcom,sampling-enabled;
+				qcom,cpufreq-memfreq-tbl =
+					< 864000   300000 >,
+					< 1305600  547000 >,
+					< 1420000  768000 >,
+					< 1804800 1017000 >;
+			};
+
+			gold {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
+				qcom,sampling-enabled;
+				qcom,cpufreq-memfreq-tbl =
+					< 902400   451000 >,
+					< 1401600 1017000 >,
+					< 1804800 1555000 >,
+					< 2016000 1804000 >;
+			};
+
+			silver-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
+				qcom,cpufreq-memfreq-tbl =
+					< 614400  300000 >,
+					< 1017600 451000 >,
+					< 1420000 547000 >,
+					< 1804800 768000 >;
+			};
+
+			gold-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
+				qcom,cpufreq-memfreq-tbl =
+					< 902400   300000 >,
+					< 1056000  547000 >,
+					< 1401680  768000 >,
+					< 1804800 1017000 >,
+					< 2016000 1804000 >;
+			};
+
+		};
+	};
 };
 
 #include "trinket-pinctrl.dtsi"
@@ -2111,3 +2264,76 @@
 		qcom,hw-settle-time = <200>;
 	};
 };
+
+&qupv3_se1_i2c {
+	status="ok";
+	#include "pm8008.dtsi"
+};
+
+&tlmm {
+	pm8008_active: pm8008_active {
+		mux {
+			pins = "gpio49";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio49";
+			bias-pull-up;
+			output-high;
+			drive-strength = <2>;
+		};
+	};
+};
+
+&pm8008_chip {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pm8008_active>;
+};
+
+&pm8008_regulators {
+	vdd_l1_l2-supply = <&S6A>;
+};
+
+&pm8008_9 {
+	/* GPIO1 pinctrl config */
+	pinctrl-names = "default";
+	pinctrl-0 = <&pm8008_gpio1_active>;
+};
+
+&L1P {
+	regulator-max-microvolt = <1200000>;
+	qcom,min-dropout-voltage = <100000>;
+};
+
+&L2P {
+	regulator-max-microvolt = <1104000>;
+	qcom,min-dropout-voltage = <100000>;
+};
+
+&L3P {
+	regulator-min-microvolt = <2800000>;
+	regulator-max-microvolt = <2800000>;
+};
+
+&L4P {
+	regulator-min-microvolt = <2800000>;
+	regulator-max-microvolt = <2800000>;
+};
+
+&L5P {
+	regulator-min-microvolt = <2800000>;
+	regulator-max-microvolt = <2800000>;
+};
+
+&L6P {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3000000>;
+};
+
+&L7P {
+	regulator-min-microvolt = <3000000>;
+	regulator-max-microvolt = <3000000>;
+};
+
+#include "trinket-thermal.dtsi"
