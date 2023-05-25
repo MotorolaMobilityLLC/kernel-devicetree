@@ -2,7 +2,9 @@
 
 &soc {
 
+		VDD_MM_LEVEL:
 		VDD_MMCX_LEVEL:
+		VDD_MM_MXC_VOTER_LEVEL:
 		S5A_LEVEL:
 		pm7255_a_s5_level: regulator-pm7255_a-s5-level {
 			compatible = "qcom,stub-regulator";
@@ -123,6 +125,7 @@
 		};
 
 		VDD_GFX_LEVEL:
+		VDD_GFX_MXC_VOTER_LEVEL:
 		S4C_LEVEL:
 		pm7255_c_s4_level: regulator-pm7255_c-s4-level {
 			compatible = "qcom,stub-regulator";
