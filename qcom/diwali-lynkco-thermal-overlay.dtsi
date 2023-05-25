@@ -10,7 +10,7 @@
 };
 
 &socd_trip {
-    temperature = <95>;
+    temperature = <98>;
 };
 
 /*
