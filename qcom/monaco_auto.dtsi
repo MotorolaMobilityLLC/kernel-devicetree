@@ -992,7 +992,7 @@
 };
 
 #include "monaco_auto-pinctrl.dtsi"
-#include "monaco_auto-stub-regulators.dtsi"
+#include "monaco_auto-regulators.dtsi"
 #include "msm-arm-smmu-monaco_auto.dtsi"
 #include "monaco_auto-thermal.dtsi"
 #include "lemans-gdsc.dtsi"
