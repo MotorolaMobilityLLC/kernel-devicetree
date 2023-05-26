@@ -148,6 +148,24 @@
 		};
 	};
 
+	gpdsp0_etm0: gpdsp0_etm0 {
+		compatible = "qcom,coresight-remote-etm";
+
+		coresight-name = "coresight-gpdsp-etm0";
+		qcom,inst-id = <13>;
+
+		atid = <51 52>;
+
+		out-ports {
+			port {
+				gpdsp0_etm0_out_funnel_turing_gdsp0_2: endpoint {
+					remote-endpoint =
+					<&funnel_turing_gdsp0_2_in_gpdsp0_etm0>;
+				};
+			};
+		};
+	};
+
 	tpdm_dcc: tpdm@0x4003000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
@@ -733,6 +751,117 @@
 		};
 	};
 
+	funnel_turing_gdsp0: funnel@04983000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb908>;
+
+		reg = <0x04984000 0x1000>,
+			<0x04983000 0x1000>;
+		reg-names = "funnel-base-dummy", "funnel-base-real";
+
+		coresight-name = "coresight-funnel-turing_gdsp0";
+
+		qcom,duplicate-funnel;
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+
+		in-ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			port@2 {
+				reg = <2>;
+				funnel_turing_gdsp0_2_in_gpdsp0_etm0: endpoint {
+					remote-endpoint =
+					<&gpdsp0_etm0_out_funnel_turing_gdsp0_2>;
+				};
+			};
+		};
+
+		out-ports {
+			port {
+				funnel_turing_gdsp0_out_funnel_dl_gdsp_3: endpoint {
+					remote-endpoint =
+					<&funnel_dl_gdsp_3_in_funnel_turing_gdsp0>;
+				};
+			};
+
+		};
+	};
+
+	funnel_dl_gdsp: funnel@04864000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb908>;
+
+		reg = <0x04864000 0x1000>;
+		reg-names = "funnel-base";
+
+		coresight-name = "coresight-funnel-dl_gdsp";
+
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+
+		in-ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			port@3 {
+				reg = <3>;
+				funnel_dl_gdsp_3_in_funnel_turing_gdsp0: endpoint {
+					remote-endpoint =
+					<&funnel_turing_gdsp0_out_funnel_dl_gdsp_3>;
+				};
+			};
+		};
+
+		out-ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			port@2 {
+				reg = <2>;
+				funnel_dl_gdsp_out_funnel_dl_channel_5: endpoint {
+					remote-endpoint =
+					<&funnel_dl_channel_5_in_funnel_dl_gdsp>;
+				};
+			};
+		};
+	};
+
+	funnel_dl_channel: funnel@04c44000 {
+		compatible = "arm,primecell";
+		arm,primecell-periphid = <0x000bb908>;
+
+		reg = <0x04c44000 0x1000>;
+		reg-names = "funnel-base";
+
+		coresight-name = "coresight-funnel-dl_channel";
+
+		clocks = <&aoss_qmp>;
+		clock-names = "apb_pclk";
+
+		in-ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			port@5 {
+				reg = <5>;
+				funnel_dl_channel_5_in_funnel_dl_gdsp: endpoint {
+					remote-endpoint =
+					<&funnel_dl_gdsp_out_funnel_dl_channel_5>;
+				};
+			};
+		};
+
+		out-ports {
+			port {
+				funnel_dl_channel_out_funnel_in1_6: endpoint {
+					remote-endpoint =
+					<&funnel_in1_6_in_funnel_dl_channel>;
+				};
+			};
+		};
+	};
+
 	funnel_in0: funnel@04041000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb908>;
@@ -807,6 +936,14 @@
 				funnel_in1_5_in_funnel_dl_center: endpoint {
 					remote-endpoint =
 					<&funnel_dl_center_out_funnel_in1_5>;
+				};
+			};
+
+			port@6 {
+				reg = <6>;
+				funnel_in1_6_in_funnel_dl_channel: endpoint {
+					remote-endpoint =
+					<&funnel_dl_channel_out_funnel_in1_6>;
 				};
 			};
 
