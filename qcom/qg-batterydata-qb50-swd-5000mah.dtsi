@@ -4,8 +4,8 @@ qcom,qb50-swd-5000mah {
     /* 6559013_Heyuan_P562A_5000mAH_PM7250B_averaged_MasterSlave_Apr24th2023 */
     serialnum = "SB18D87863";
     qcom,sdam-magic-number = <0x18D87863>;
-    qcom,max-voltage-uv = <4510000>;
-    qcom,fg-cc-cv-threshold-uv = <4500000>;
+    qcom,max-voltage-uv = <4520000>;
+    qcom,fg-cc-cv-threshold-uv = <4510000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <3440>;
