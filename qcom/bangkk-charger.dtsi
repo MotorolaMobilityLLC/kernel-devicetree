@@ -61,7 +61,7 @@
 			   "time_to_full_now",
 			   "cp_input_voltage_now";
 	qcom,fcc-max-ua = <4000000>;
-	qcom,fv-max-uv = <4510000>;
+	qcom,fv-max-uv = <4520000>;
 	qcom,dcp-curr-max = <1500000>;
 	qcom,otg-cl-ua = <1000000>;
 	qcom,thermal-mitigation = <3000000 2500000
@@ -81,20 +81,20 @@
 				<35 0 4000 4000>,
 				<45 0 4000 4000>,
 				<60 4200 4000 0>;
-	qcom,mmi-ffc-zones = <4480 260 534>,
-                               <4480 260 534>,
-                               <4480 260 534>,
-                               <4510 560 960>,
-                               <4510 610 960>,
-                               <4510 760 960>,
-                               <4480 260 575>;
+	qcom,mmi-ffc-zones = <4200 260 534>,
+                               <4500 260 534>,
+                               <4500 260 534>,
+                               <4520 550 960>,
+                               <4520 600 1010>,
+                               <4520 750 1160>,
+                               <4200 260 575>;
 
 	qcom,iterm-ma = <260>;
 	mmi,enable-factory-mode-aicl;
 	qcom,noffc-chg-iterm = <260>;
 	qcom,noffc-chg-iterm-45c = <390>;
 	qcom,noffc-qg-iterm = <500>;
-	qcom,noffc-max-fv = <4480>;
+	qcom,noffc-max-fv = <4500>;
 };
 
 &pm7250b_qg {
@@ -189,11 +189,11 @@
                 /*qc3p end*/
 		mmi,chrg-temp-zones-num = <5>;
 		mmi,mmi-chrg-temp-zones =
-					<0 4180 1000  0 0 0 0>,
-					<10 4230 3000 4480 1000 0 0>,
-					<15 4480 3000 0 0 0 0>,
-					<45 4300 5800 4400 5200 4510 4000>,
-					<60 4180 4000 0 0 0 0>;
+					<0 4200 1000  0 0 0 0>,
+					<10 4250 3000 4500 1000 0 0>,
+					<15 4500 3000 0 0 0 0>,
+					<45 4300 5800 4400 5200 4520 4000>,
+					<60 4200 4000 0 0 0 0>;
 		mmi,thermal-mitigation =
 					<5800000>,
 					<5000000>,
