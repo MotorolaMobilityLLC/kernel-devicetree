@@ -1590,6 +1590,43 @@
 				      <&cpufreq_hw 2>;
 	};
 
+	apsscc: syscon@17a80000 {
+		compatible = "syscon";
+		reg = <0x17a80000 0x21000>;
+	};
+
+	mccc: syscon@240ba000 {
+		compatible = "syscon";
+		reg = <0x240ba000 0x54>;
+	};
+
+	debugcc: clock-controller@0 {
+		compatible = "qcom,crow-debugcc";
+		qcom,apsscc = <&apsscc>;
+		qcom,camcc = <&camcc>;
+		qcom,dispcc = <&dispcc>;
+		qcom,gcc = <&gcc>;
+		qcom,gpucc = <&gpucc>;
+		qcom,mccc = <&mccc>;
+		qcom,tcsrcc = <&tcsrcc>;
+		qcom,videocc = <&videocc>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&camcc 0>,
+			 <&dispcc 0>,
+			 <&gcc 0>,
+			 <&gpucc 0>,
+			 <&tcsrcc 0>,
+			 <&videocc 0>;
+		clock-names = "xo_clk_src",
+			      "camcc",
+			      "dispcc",
+			      "gcc",
+			      "gpucc",
+			      "tcsrcc",
+			      "videocc";
+		#clock-cells = <1>;
+	};
+
 	qcom_qseecom: qseecom@c1700000 {
 		compatible = "qcom,qseecom";
 		memory-region = <&qseecom_mem>;
