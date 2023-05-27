@@ -1280,8 +1280,8 @@
 				<0x01c00000 0x4000>,
 				<0x01c10000 0x10000>,
 				<0x01c04000 0x1000>,
-				<0x01fcb000 0x1000>,
-				<0xc2f1000 0x4>,
+				<0x01fc6000 0x1000>,
+				<0xc2fa000 0x4>,
 				<0x48030000 0x100>;
 			reg-names = "msi", "dm_core", "dm_core_vf", "elbi", "iatu",
 					"msix_table", "msix_pba", "parf",
@@ -1359,11 +1359,14 @@
 			qcom,pcie-active-config;
 			qcom,pcie-aggregated-irq;
 			qcom,pcie-mhi-a7-irq;
-			qcom,tcsr-not-supported;
 			qcom,phy-status-reg2 = <0x1214>;
 			qcom,mhi-soc-reset-offset = <0xb001b8>;
 			qcom,aux-clk = <0x11>;
 			qcom,sriov-mask = <0x1E0>;
+			qcom,tcsr-perst-separation-enable-offset= <0x14>;
+			qcom,tcsr-reset-separation-offset = <0x4>;
+			qcom,tcsr-perst-enable-offset = <0x8>;
+			qcom,perst-raw-rst-status-b = <0>;
 
 			qcom,phy-init = <0x9040 0x01 0x0
 				0x8030 0x0a 0x0
