@@ -756,6 +756,8 @@
 		qcom,mhi-ifc-id = <0x011a17cb>;
 		qcom,mhi-interrupt;
 		qcom,no-m0-timeout;
+		dummy-supply = <&pcie_ep>;
+
 		status = "disabled";
 	};
 
