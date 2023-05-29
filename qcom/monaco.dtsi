@@ -1597,6 +1597,12 @@
 			qcom,glinkpkt-dev-name = "glink_pkt_slate_ux_ctl";
 		};
 
+		qcom,glinkpkt-slate-qcli {
+			qcom,glinkpkt-edge = "slate";
+			qcom,glinkpkt-ch-name = "slate-qcli";
+			qcom,glinkpkt-dev-name = "glink_pkt_slate_qcli";
+		};
+
 		qcom,glinkpkt-slate-bt-ctrl {
 			qcom,glinkpkt-edge = "slate";
 			qcom,glinkpkt-ch-name = "slate_bt_ctrl";
