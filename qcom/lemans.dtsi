@@ -1947,8 +1947,7 @@
 		resets = <&gcc GCC_UFS_PHY_BCR>;
 		reset-names = "rst";
 		iommus = <&apps_smmu 0x100 0x0>;
-		qcom,iommu-dma = "fastmap";
-		dma-coherent;
+		qcom,iommu-dma = "bypass";
 
 		status = "disabled";
 
@@ -2089,8 +2088,7 @@
 		resets = <&gcc GCC_UFS_CARD_BCR>;
 		reset-names = "rst";
 		iommus = <&apps_smmu 0x420 0x0>;
-		qcom,iommu-dma = "fastmap";
-		dma-coherent;
+		qcom,iommu-dma = "bypass";
 
 		secondary-storage;
 
