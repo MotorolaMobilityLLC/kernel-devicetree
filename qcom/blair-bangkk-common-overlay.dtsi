@@ -472,6 +472,12 @@
 			};
 		};
 	};
+	soc_usr {
+		polling-delay-passive = <1000>;
+		polling-delay = <0>;
+		thermal-governor = "user_space";
+		thermal-sensors = <&bcl_soc>;
+	};
 };
 
 &soc {
