@@ -2759,6 +2759,18 @@
 		shared-buffer = <&trust_ui_vm_dump>;
 	};
 
+	tlmm-vm-mem-access {
+		compatible = "qcom,tlmm-vm-mem-access";
+		qcom,master;
+		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 127 0>;
+	};
+
+	tlmm-vm-test {
+		compatible = "qcom,tlmm-vm-test";
+		qcom,master;
+		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 127 0>;
+	};
+
 	qcom,test-dbl {
 		compatible = "qcom,gh-dbl";
 		qcom,label = <0x4>;
