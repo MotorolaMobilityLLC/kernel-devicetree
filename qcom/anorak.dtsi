@@ -1702,6 +1702,11 @@
 			#clock-cells = <1>;
 		};
 
+		scmi_cpufreqstat: protocol@84 {
+			reg = <0x84>;
+			#clock-cells = <1>;
+		};
+
 		scmi_pmu: protocol@86 {
 			reg = <0x86>;
 			#clock-cells = <1>;
@@ -2374,6 +2379,11 @@
 		};
 	};
 
+	qcom,hdcp {
+		compatible = "qcom,hdcp";
+		qcom,use-smcinvoke = <1>;
+	};
+
 	qcom,mem-buf-msgq {
 		compatible = "qcom,mem-buf-msgq";
 	};
@@ -2997,7 +3007,7 @@
 		clock-names =  "pdm_ahb_clk", "pwm_core_clk";
 		assigned-clocks = <&gcc GCC_PWM0_XO512_CLK>;
 		assigned-clock-rates = <19200000>;
-		#pwm-cells = <2>;
+		#pwm-cells = <3>;
 
 		pwm@0 {
 			frame-index = <0>;

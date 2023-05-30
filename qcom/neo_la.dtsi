@@ -140,19 +140,6 @@
 			bias-pull-down;
 		};
 	};
-
-	cnss_dev_sol_default: cnss_dev_sol_default {
-		mux {
-			pins = "gpio112";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio112";
-			drive-strength = <4>;
-			bias-pull-down;
-		};
-	};
 };
 
 &soc {
@@ -161,12 +148,9 @@
 		reg = <0xb0000000 0x10000>;
 		reg-names = "smmu_iova_ipa";
 		wlan-en-gpio = <&tlmm 45 0>;
-		wlan-dev-sol-gpio = <&tlmm 112 0>;
-		pinctrl-names = "wlan_en_active", "wlan_en_sleep",
-				"sol_default";
+		pinctrl-names = "wlan_en_active", "wlan_en_sleep";
 		pinctrl-0 = <&cnss_wlan_en_active>;
 		pinctrl-1 = <&cnss_wlan_en_sleep>;
-		pinctrl-2 = <&cnss_dev_sol_default>;
 		qcom,wlan;
 		qcom,wlan-rc-num = <0>;
 		qcom,wlan-ramdump-dynamic = <0x780000>;
