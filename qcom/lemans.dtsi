@@ -1354,6 +1354,20 @@
 		#size-cells = <1>;
 		ranges;
 
+		qcom_l3_dcvs_hw: l3 {
+			compatible = "qcom,dcvs-hw";
+			qcom,dcvs-hw-type = <2>;
+			qcom,bus-width = <32>;
+			reg = <0x18590000 0x4000>, <0x18590100 0xa0>;
+			reg-names = "l3-base", "l3tbl-base";
+
+			l3_dcvs_sp: sp {
+				compatible = "qcom,dcvs-path";
+				qcom,dcvs-path-type = <0>;
+				qcom,shared-offset = <0x0090>;
+			};
+		};
+
 		qcom_ddr_dcvs_hw: ddr {
 			compatible = "qcom,dcvs-hw";
 			qcom,dcvs-hw-type = <0>;
@@ -1449,6 +1463,41 @@
 				qcom,sampling-enabled;
 			};
 
+
+			gold-compute {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5 &CPU6 &CPU7>;
+				qcom,cpufreq-memfreq-tbl =
+					< 2112000  933000 >,
+					< 2362000 1066000 >;
+				qcom,sampling-enabled;
+				qcom,compute-mon;
+			};
+		};
+
+		l3 {
+			compatible = "qcom,memlat-grp";
+			qcom,target-dev = <&qcom_l3_dcvs_hw>;
+			qcom,sampling-path = <&l3_dcvs_sp>;
+			qcom,miss-ev = <0x17>;
+
+			gold {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
+				qcom,cpufreq-memfreq-tbl =
+					< 2112000  933000 >,
+					< 2362000 1066000 >;
+				qcom,sampling-enabled;
+			};
+
+			gold-1 {
+				compatible = "qcom,memlat-mon";
+				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
+				qcom,cpufreq-memfreq-tbl =
+					< 2112000  933000 >,
+					< 2362000 1066000 >;
+				qcom,sampling-enabled;
+			};
 
 			gold-compute {
 				compatible = "qcom,memlat-mon";
