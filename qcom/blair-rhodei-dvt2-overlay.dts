@@ -14,7 +14,7 @@
 /plugin/;
 
 #include "blair-rhodei-common-overlay.dtsi"
-#include "camera/blair-camera-sensor-mot-rhodei-dvt2-overlay.dtsi"
+#include "camera-legacy/rhodei/blair-camera-sensor-mot-rhodei-dvt2-overlay.dtsi"
 
 / {
 	model = "rhodei";
