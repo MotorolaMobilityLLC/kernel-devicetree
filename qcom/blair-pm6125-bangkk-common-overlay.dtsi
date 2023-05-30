@@ -9,8 +9,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "blair-bangkk-common-overlay.dtsi"
 #include "blair-pm6125-moto-common-overlay.dtsi"
+#include "blair-bangkk-common-overlay.dtsi"
 #include "bangkk-charger.dtsi"
 
 &pm7250b_charger {
