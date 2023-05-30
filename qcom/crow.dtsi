@@ -3009,6 +3009,7 @@
 			depends-on-supply = <&spmi1_bus>;
 
 			/* Primary SPMI bus */
+			glink_debug_spmi0:
 			spmi@0 {
 				reg = <0>;
 				#address-cells = <2>;
