@@ -265,7 +265,7 @@
 };
 
 &qupv3_hub_i2c2 {
-	status = "ok";
+	status = "disabled";
 
 	#address-cells = <1>;
 	#size-cells = <0>;
