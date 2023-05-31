@@ -76,6 +76,11 @@
 
 &qupv3_se8_i2c {
 	status = "okay";
+
+	sx937x@2c {
+		status = "disabled";
+	};
+
 	Semtech_sx937x@2c {
 			compatible = "Semtech,sx937x";
 			reg = <0x2c>;
