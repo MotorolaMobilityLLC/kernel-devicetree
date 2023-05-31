@@ -353,6 +353,22 @@
 	qcom,thermal-mitigation-step = <500000>;
 };
 
+&apps_rsc_drv2 {
+	rpmh-regulator-ldob11 {
+		/delete-property/ proxy-supply;
+		L11B: pm_humu_l11: regulator-pm-humu-l11 {
+			/delete-property/ qcom,proxy-consumer-enable;
+		};
+	};
+
+	rpmh-regulator-ldob12 {
+		/delete-property/ proxy-supply;
+		L12B: pm_humu_l12: regulator-pm-humu-l12 {
+			/delete-property/ qcom,proxy-consumer-enable;
+		};
+	};
+};
+
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
 	periph-1c2-supply = <&L2B>;
@@ -362,8 +378,6 @@
 	periph-1c8-supply = <&L8B>;
 	periph-1c9-supply = <&L9B>;
 	periph-1ca-supply = <&L10B>;
-	periph-1cb-supply = <&L11B>;
-	periph-1cc-supply = <&L12B>;
 	periph-1cd-supply = <&L13B>;
 	periph-1ce-supply = <&L14B>;
 	periph-1cf-supply = <&L15B>;
