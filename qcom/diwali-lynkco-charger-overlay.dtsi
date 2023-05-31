@@ -141,6 +141,7 @@
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
 	mmi,partner_psy_name = "charger";
+	mmi,shutdown-empty-vbat-mv = <3000>;
 };
 
 &bm_adsp_ulog {
