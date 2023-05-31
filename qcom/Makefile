@@ -291,14 +291,20 @@ dtbo-$(CONFIG_ARCH_DIWALI) += \
 	diwali-lynkco-evb1-overlay.dtbo \
 	diwali-lynkco-evt1-overlay.dtbo \
 	diwali-lynkco-dvt1-overlay.dtbo \
+	diwali-lynkco-row-dvt2-overlay.dtbo \
 	diwali-lynkco-dvt2c-overlay.dtbo \
-	diwali-lynkco-pvt-overlay.dtbo
+	diwali-lynkco-row-dvt2c-overlay.dtbo \
+	diwali-lynkco-pvt-overlay.dtbo \
+	diwali-lynkco-row-pvt-overlay.dtbo
 
 diwali-lynkco-evb1-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 diwali-lynkco-evt1-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 diwali-lynkco-dvt1-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
+diwali-lynkco-row-dvt2-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 diwali-lynkco-dvt2c-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
+diwali-lynkco-row-dvt2c-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 diwali-lynkco-pvt-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
+diwali-lynkco-row-pvt-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
