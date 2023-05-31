@@ -3289,6 +3289,10 @@
 		qcom,extended_cti;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
+
+		qcom,cti-gpio-trigout = <20>;
+		pinctrl-names = "cti-trigout-pctrl";
+		pinctrl-0 = <&trigout_a>;
 	};
 
 	cti0: cti@10c32000 {
