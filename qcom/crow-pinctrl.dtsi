@@ -1960,4 +1960,19 @@
 			output-low;
 		};
 	};
+
+	usb_phy_ps: usb_phy_ps {
+		usb3phy_portselect_default: usb3phy_portselect_default {
+			mux {
+				pins = "gpio83";
+				function = "usb0_phy_ps";
+			};
+
+			config {
+				pins = "gpio83";
+				bias-pull-down;
+				drive-strength = <2>;
+			};
+		};
+	};
 };
