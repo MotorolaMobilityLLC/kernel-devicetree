@@ -93,7 +93,7 @@
 		goodix,avdd-gpio = <&tlmm 11 0x0>;
 		iovdd-supply = <&L13A>;
 
-		panel = <&mot_tm_nt37703_655_1080x2400_dsc_vid>;
+		panel = <&mot_tm_nt37703_655_1080x2400_dsc_vid &mot_tm_u8_nt37703_655_1080x2400_dsc_vid>;
 
 		goodix,reset-gpio = <&tlmm 21 0x0>;
 		goodix,irq-gpio = <&tlmm 22 0x0>;
