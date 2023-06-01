@@ -2,3 +2,4 @@
 qcom/camera
 qcom/display
 bindings/display/qcom
+qcom/camera-legacy
