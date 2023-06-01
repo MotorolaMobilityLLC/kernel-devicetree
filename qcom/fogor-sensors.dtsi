@@ -1,0 +1,188 @@
+/*
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+	pen_int_default: pen_int_default {
+			mux {
+				pins = "gpio84";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio84";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+
+	pen_int_sleep: pen_int_sleep {
+			mux {
+				pins = "gpio84";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio84";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-no-pull;
+			};
+	};
+	sar_int_fogor_default: sar_int_fogor_default {
+			mux {
+				pins = "gpio58";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio58";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	sar_int_fogor_sleep: sar_int_fogor_sleep {
+			mux {
+				pins = "gpio58";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio58";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+};
+
+&soc {
+	pen_detect{
+		compatible = "rohm,bu520xx_pen_detect";
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&pen_int_default>;
+		pinctrl-1 = <&pen_int_sleep>;
+		rohm,nirq-gpio=<&tlmm 84 0x02>;
+	};
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+	Semtech_sx937x@2c {
+			compatible = "Semtech,sx937x";
+			reg = <0x2c>;
+			Semtech,power-supply-type = <1>;
+			cap_vdd-supply = <&L12A>;
+			pinctrl-names = "default","sleep";
+			pinctrl-0 = <&sar_int_fogor_default>;
+			pinctrl-1 = <&sar_int_fogor_sleep>;
+			interrupt-parent = <&tlmm>;
+			interrupts = <58 0x02>;
+			interrupt-names = "sx937x_irq";
+			Semtech,nirq-gpio = <&tlmm 58 0x02>;
+			/*use PH5/6 as the reference sensor
+			set it to 0xff if the ref-phases-x is not used*/
+			Semtech,ref-phases-a = <5>;
+			Semtech,ref-phases-b = <6>;
+			Semtech,ref-phases-c = <0xff>;
+			Semtech,button-flag = <0x1f>;
+                        reinit-on-i2c-failure = <1>;
+			Semtech,reg-num = <66>;
+			Semtech,reg-init = <
+				0x4004 0x78
+				0x4008 0x8
+				0x8020 0x32
+				0x8028 0x45F
+				0x8034 0x45F
+				0x8040 0x45F
+				0x804C 0x45F
+				0x8058 0x45F
+				0x8064 0x45E
+				0x8070 0x45E
+				0x807C 0x45E
+				0x8030 0x924925
+				0x803C 0xB24924
+				0x8048 0x924964
+				0x8054 0x925924
+				0x8060 0x964924
+				0x806C 0x92492C
+				0x8078 0x92C924
+				0x8084 0x924924
+				0x8098 0x685A
+				0x80B8 0x2D23
+				0x80D8 0x4D40
+				0x80F8 0x5A47
+				0x8118 0x4637
+				0x8138 0xFF
+				0x8158 0xFF
+				0x8178 0xFF
+				0x80A0 0x20200001
+				0x80C0 0x1A1A0002
+				0x80E0 0x20200001
+				0x8100 0x0
+				0x8120 0x20200002
+				0x8140 0x0
+				0x8160 0x0
+				0x8180 0x0
+				0x8188 0x8000015
+				0x818C 0x8000016
+				0x8190 0x0
+				0x8194 0x0
+				0x8090 0x7C845200
+				0x80B0 0x7C845102
+				0x80D0 0x7C845200
+				0x80F0 0x7C845100
+				0x8110 0x7C845100
+				0x8130 0x54AC5300
+				0x8150 0x54AC5300
+				0x8170 0x54AC5300
+				0x8088 0x300000
+				0x80A8 0x300000
+				0x80C8 0x300000
+				0x80E8 0x300000
+				0x8108 0x300000
+				0x8128 0x300000
+				0x8148 0x300000
+				0x8168 0x300000
+				0x808C 0x60200020
+				0x80AC 0x60200010
+				0x80CC 0x60200020
+				0x80EC 0x60200010
+				0x810C 0x60200010
+				0x812C 0x60200031
+				0x814C 0x60200031
+				0x816C 0x60200031
+				0x8024 0x7F7F
+				0x8274 0x2E040000
+				0x4280 0x0E
+			>;
+	};
+	awinic_sar@12 {
+		/* common node */
+		compatible = "awinic,aw_sar";
+		reg = < 0x12 >;
+		//aw_sar,regulator-power-supply = <1>;
+		sar-num = < 0 >;
+		interrupt-parent = < &tlmm >;
+		interrupts = <58 0x02>;
+		interrupt-names = "awinic_irq";
+		irq-gpio = <&tlmm 58 0x02>;
+		//vcc0-supply = <&L12A>;
+		channel_use_flag = <0x1f>;
+		aw_sar,use_plug_cail;
+		aw_sar,update_fw;
+		/* private node belongs to aw963xx */
+		start-mode = < 1 >; // 0: start in rom  1: start in ram
+		irq-mux = < 2 >; // set csx as irq pin. config this field when connect to aw96308/aw96310
+		status = "okay";
+	};
+};
+
