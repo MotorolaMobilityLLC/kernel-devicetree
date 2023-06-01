@@ -14,6 +14,7 @@
 		spi-max-frequency = <1000000>;
 
 		goodix,avdd-name = "avdd";
+		goodix,iovdd-name = "iovdd";
 		avdd-supply = <&L22B>;
 		iovdd-supply = <&L9B>;
 
