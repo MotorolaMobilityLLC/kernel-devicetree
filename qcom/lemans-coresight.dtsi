@@ -814,11 +814,7 @@
 		};
 
 		out-ports {
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			port@2 {
-				reg = <2>;
+			port {
 				funnel_dl_gdsp_out_funnel_dl_channel_5: endpoint {
 					remote-endpoint =
 					<&funnel_dl_channel_5_in_funnel_dl_gdsp>;
