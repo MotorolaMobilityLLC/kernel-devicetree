@@ -45,28 +45,21 @@
 		qcom,mdss-dsi-dc-on-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-hbm-on-command = [
-				39 00 00 40 00 00 02 87 20
-				39 00 00 40 00 00 02 6F 09
-				39 00 00 40 00 00 03 51 00 00
-				39 01 00 00 00 00 03 51 0F FF];
+				39 01 00 00 00 00 0E A9 01 00 51 09 0A 00 00 01 00 87 00 00 20];
 		qcom,mdss-dsi-hbm-on-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-hbm-off-command = [
-				39 00 00 40 00 00 02 87 20
-				39 01 00 00 00 00 02 6F 09
-				39 01 00 00 00 00 03 51 00 00];
+				39 01 00 00 00 00 0E A9 01 00 51 09 0A 00 00 01 00 87 00 00 20];
 		qcom,mdss-dsi-hbm-off-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-hbm-fod;
 		qcom,mdss-dsi-hbm-fod-on-command = [
-				39 00 00 40 00 00 02 87 25
-				39 00 00 40 00 00 02 6F 09
-				39 01 00 00 00 00 03 51 8F FF];
+				39 01 00 00 00 00 0E A9 01 00 51 09 0A 8F FF 01 00 87 00 00 25];
 		qcom,mdss-dsi-hbm-fod-on-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-panel-lhbm-wait-fps-valid;
-		qcom,mdss-dsi-panel-local-hbm-wait-fps-count = <30>;
-		qcom,mdss-dsi-panel-local-hbm-wait-fps-interval = <1>;
+		qcom,mdss-dsi-panel-local-hbm-wait-fps-count = <68>;
+		qcom,mdss-dsi-panel-local-hbm-wait-fps-interval = <2>;
 		qcom,mdss-dsi-panel-lhbm-not-allowed-fps-list = <60 90>;
 
 		qcom,mdss-dsi-display-timings {
@@ -146,15 +139,15 @@
 				qcom,mdss-dsc-block-prediction-enable;
 				qcom,mdss-dsc-novateck-ic;
 				qcom,mdss-dsi-dfps-60-command = [
-                                               39 01 00 00 00 00 02 2F 03];
+					39 01 00 00 00 00 02 2F 03];
 				qcom,mdss-dsi-dfps-60-command-state = "dsi_hs_mode";
 
 				qcom,mdss-dsi-dfps-90-command = [
-                                               39 01 00 00 00 00 02 2F 02];
+					39 01 00 00 00 00 02 2F 02];
 				qcom,mdss-dsi-dfps-90-command-state = "dsi_hs_mode";
 
 				qcom,mdss-dsi-dfps-120-command = [
-				               39 01 00 00 00 00 02 2F 01];
+					39 01 00 00 00 00 02 2F 01];
 				qcom,mdss-dsi-dfps-120-command-state = "dsi_hs_mode";
 			};
 		};
