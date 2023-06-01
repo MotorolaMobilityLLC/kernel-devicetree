@@ -1388,6 +1388,8 @@
 		ranges;
 
 		qcom,mem_support;
+		qcom,sw-usb;
+		dma-coherent;
 		arm,buffer-size = <0x400000>;
 		coresight-name = "coresight-tmc-etr1";
 		coresight-ctis = <&cti0 &cti0>;
