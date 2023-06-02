@@ -47,6 +47,8 @@
 		pci-domain1 = &pcie1; /* PCIe1 domain */
 		pci-domain2 = &pcie2; /* PCIe2 domain */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
+		usb0 = &dwc0; /*usb0 child node*/
+		usb1 = &dwc1; /*usb1 child node*/
 	};
 
 	cpus {
