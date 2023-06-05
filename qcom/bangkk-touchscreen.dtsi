@@ -107,6 +107,7 @@
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		goodix,gesture-wait-pm;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
