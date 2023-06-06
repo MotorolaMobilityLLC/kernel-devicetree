@@ -14,7 +14,7 @@
 /plugin/;
 
 #include "diwali-lynkco-common-overlay.dtsi"
-#include "diwali-lynkco-dvt-sensor-overlay.dtsi"
+#include "diwali-lynkco-row-dvt-sensor-overlay.dtsi"
 
 #define LYNKCO_RADIO_ROW 2
 / {
