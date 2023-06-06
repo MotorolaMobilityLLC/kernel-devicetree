@@ -47,6 +47,28 @@
 			linux,can-disable;
 		};
 	};
+
+	clk40M: can_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <40000000>;
+	};
+};
+
+&qupv3_se11_spi {
+	status = "ok";
+	can@0 {
+		compatible = "microchip,mcp2518fd";
+		reg = <0>;
+		clocks = <&clk40M>;
+		interrupts-extended = <&tlmm 55 IRQ_TYPE_LEVEL_LOW>;
+		interrupt-names = "can_irq";
+		spi-max-frequency = <10000000>;
+		gpio-controller;
+		vdd-supply = <&L14B>;
+		xceiver-supply = <&L14B>;
+		status = "ok";
+	};
 };
 
 &pm8550b_haptics {
