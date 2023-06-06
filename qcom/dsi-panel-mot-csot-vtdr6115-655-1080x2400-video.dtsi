@@ -26,7 +26,6 @@
 		qcom,mdss-dsi-border-color = <0>;
 
 		qcom,mdss-dsi-traffic-mode = "non_burst_sync_event";
-		//qcom,mdss-dsi-lane-map = "lane_map_0123";
 		qcom,mdss-dsi-bllp-eof-power-mode;
 		qcom,mdss-dsi-bllp-power-mode;
 		qcom,mdss-dsi-lp11-init;
@@ -53,10 +52,12 @@
 		qcom,mdss-dsi-dc-on-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-hbm-on-command = [
+				39 00 00 00 00 00 03 51 0F FF
 				39 00 00 00 00 00 02 62 00
 				39 00 00 00 00 00 03 F0 AA 13
 				39 01 00 00 00 00 02 C6 00];
 		qcom,mdss-dsi-hbm-off-command = [
+				39 00 00 00 00 00 03 51 0F FF
 				39 00 00 00 00 00 02 62 00
 				39 00 00 00 00 00 03 F0 AA 13
 				39 01 00 00 00 00 02 C6 00];
@@ -66,6 +67,7 @@
 				39 00 00 00 00 00 03 F0 AA 13
 				39 00 00 00 00 00 02 C6 01
 				39 00 00 00 00 00 03 63 03 FF
+				39 00 00 00 00 00 03 51 05 2A
 				39 01 00 00 00 00 02 62 03];
 
 		qcom,mdss-dsi-panel-lhbm-wait-fps-valid;
@@ -74,7 +76,7 @@
 		qcom,mdss-dsi-panel-lhbm-not-allowed-fps-list = <60 90>;
 
 		qcom,mdss-dsi-panel-local-hbm-enabled;
-		qcom,mdss-dsi-panel-local-hbm-DC-HYBIRD-THRESHOLD-BL = <1679>; //0x068f
+		qcom,mdss-dsi-panel-local-hbm-DC-HYBIRD-THRESHOLD-BL = <1321>; //0x0529
 		qcom,mdss-dsi-panel-local-hbm-alpha-register = <0x63>;
 		qcom,mdss-dsi-panel-local-hbm-alpha-size = <4096>;
 		qcom,mdss-dsi-panel-local-hbm-alpha-table = <
