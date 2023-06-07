@@ -20,6 +20,7 @@
 #include "fogor-display.dtsi"
 #include "fogor-touchscreen.dtsi"
 #include "fogor-sensors.dtsi"
+#include "camera/blair-camera-sensor-mot-fogor-overlay.dtsi"
 #include "fogor-wl286xx.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 #include "blair-fogor-fmr-overlay.dtsi"
