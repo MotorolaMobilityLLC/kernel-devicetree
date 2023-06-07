@@ -1,6 +1,7 @@
 #include <dt-bindings/clock/qcom,gcc-crow.h>
 #include <dt-bindings/gpio/gpio.h>
 #include "crow-pmic-overlay.dtsi"
+#include "crow-thermal-overlay.dtsi"
 
 &soc {
 	gpio_key {
