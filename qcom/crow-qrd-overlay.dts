@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "crow-qrd.dtsi"
+#include "crow-qrd-pm7550ba.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Crow QRD";
