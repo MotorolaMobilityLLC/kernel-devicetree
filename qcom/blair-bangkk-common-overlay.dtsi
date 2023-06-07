@@ -115,7 +115,7 @@
 			config {
 				pins = "gpio7";
 				drive-strength = <2>; /* 2 MA */
-				bias-disable;
+				bias-pull-down;
 				input-enable;
 			};
 		};
@@ -131,7 +131,7 @@
 			config {
 				pins = "gpio7";
 				drive-strength = <2>; /* 2 MA */
-				bias-disable;
+				bias-pull-down;
 				input-enable;
 			};
 		};
