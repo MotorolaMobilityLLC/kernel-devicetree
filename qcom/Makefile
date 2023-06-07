@@ -84,6 +84,7 @@ CROW_BOARDS += \
 		crow-idp-wcd9395-wcd-dmic-overlay.dtbo \
 		crow-idp-wcd9395-dmic-overlay.dtbo \
 		crow-idp-wcd9395-aatc-overlay.dtbo \
+		crow-idp-rcm-overlay.dtbo \
 		crow-qrd-overlay.dtbo
 
 kalama-dtb-$(CONFIG_ARCH_CROW) += \
@@ -449,6 +450,7 @@ kalama_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += crow-vm-rumi.dtb \
 	crow-vm-idp-wcd9395-dmic.dtb \
 	crow-vm-idp-wcd9395-wcd-dmic.dtb \
 	crow-vm-idp.dtb \
+	crow-vm-idp-rcm.dtb \
 	crow-vm-qrd.dtb
 dtb-y += $(kalama_tuivm-dtb-y)
 endif
