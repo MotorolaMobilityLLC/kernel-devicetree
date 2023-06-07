@@ -1,4 +1,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 
 / {
 	#address-cells = <0x2>;
@@ -22,6 +24,22 @@
 			alignment = <0x0 0x400000>;
 			size = <0x0 0x2000000>;
 			linux,cma-default;
+		};
+
+		qseecom_mem: qseecom_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1400000>;
+		};
+
+		qseecom_ta_mem: qseecom_ta_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1000000>;
 		};
 	};
 
@@ -404,6 +422,10 @@
 			compatible = "qcom,scm";
 		};
 
+		qcom_smcinvoke {
+			compatible = "qcom,smcinvoke";
+		};
+
 		android {
 			compatible = "android,firmware";
 			boot_devices = "20001000.virtio-mmio,20002000.virtio-mmio,20003000.virtio-mmio,20004000.virtio-mmio,20005000.virtio-mmio";
@@ -443,6 +465,12 @@
 		#reset-cells = <1>;
 	};
 
+	dummycc: qcom,dummycc {
+		compatible = "qcom,dummycc";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
 	psci {
 		compatible = "arm,psci-1.0";
 		method = "smc";
@@ -470,6 +498,18 @@
 
 	qcom_dma_heaps: qcom,dma-heaps {
 		compatible = "qcom,dma-heaps";
+
+		qcom,qseecom {
+			qcom,dma-heap-name = "qcom,qseecom";
+			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
+			memory-region = <&qseecom_mem>;
+		};
+
+		qcom,qseecom_ta {
+			qcom,dma-heap-name = "qcom,qseecom-ta";
+			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
+			memory-region = <&qseecom_ta_mem>;
+		};
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -480,6 +520,21 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
+	};
+
+	qcom_rng_ee3: qrng@10dc000 {
+		compatible = "qcom,msm-rng";
+		reg = <0x10dc000 0x1000>;
+		qcom,no-qrng-config;
+		clocks = <&dummycc RPMH_HWKM_CLK>;
+		clock-names = "km_clk_src";
+		status = "ok";
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		//qcom,support-hypervisor;
+		qcom,disable-shmbridge-support;
 	};
 };
 
