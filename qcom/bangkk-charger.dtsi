@@ -62,7 +62,7 @@
 			   "cp_input_voltage_now";
 	qcom,fcc-max-ua = <4000000>;
 	qcom,fv-max-uv = <4520000>;
-	qcom,dcp-curr-max = <1500000>;
+	qcom,dcp-curr-max = <2000000>;
 	qcom,otg-cl-ua = <1000000>;
 	qcom,thermal-mitigation = <3000000 2500000
 			2000000 1500000
