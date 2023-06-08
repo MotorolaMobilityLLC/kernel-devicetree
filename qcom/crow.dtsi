@@ -1995,13 +1995,19 @@
 			reg = <0x131 0x1>;
 			bits = <1 6>;
 		};
+
+		feat_conf13: feat_conf13@0134 {
+			reg = <0x0134 0x4>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
 
-		nvmem-cells = <&adsp_variant>;
-		nvmem-cell-names = "adsp_variant";
+		nvmem-cells = <&adsp_variant>,
+				<&feat_conf13>;
+		nvmem-cell-names = "adsp_variant",
+				"feat_conf13";
 	};
 
 	wpss_pas: remoteproc-wpss@9f700000 {
