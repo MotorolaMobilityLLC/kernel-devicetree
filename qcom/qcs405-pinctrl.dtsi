@@ -11,17 +11,46 @@
 		gpio-ranges = <&tlmm 0 0 120>;
 		gpio-controller;
 		#gpio-cells = <2>;
-		wakeup-parent = <&wakegic>;
+		wakeup-parent = <&mpm>;
 
-		blsp1_uart2_default: blsp1-uart2-default {
-			rx {
-				pins = "gpio18";
-				function = "blsp_uart_rx_a2";
+		blsp1_uart2_console {
+			blsp_uart_tx_a2_active: blsp_uart_tx_a2_active {
+				mux {
+					pins = "gpio17";
+					function = "blsp_uart_tx_a2";
 			};
 
-			tx {
-				pins = "gpio17";
-				function = "blsp_uart_tx_a2";
+				config {
+					pins = "gpio17";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+
+			blsp_uart_rx_a2_active: blsp_uart_rx_a2_active {
+				mux {
+					pins = "gpio18";
+					function = "blsp_uart_rx_a2";
+				};
+
+				config {
+					pins = "gpio18";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+
+			blsp_uart_tx_rx_a2_sleep: blsp_uart_tx_rx_a2_sleep {
+				mux {
+					pins = "gpio17", "gpio18";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio17", "gpio18";
+					drive-strength = <2>;
+					bias-disable;
+				};
 			};
 		};
 

@@ -2144,10 +2144,14 @@
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
-		qcom,threshold-arr = <0x0f1880b0 0x0f1980b0 0x0f1a80b0 0x0f1b80b0
-				0x0f0880b0 0x0f0980b0 0x0f0a80b0 0x0f0b80b0>;
-		qcom,config-arr = <0x0f1880b8 0x0f1980b8 0x0f1a80b8 0x0f1b80b8
-				0x0f0880b8 0x0f0980b8 0x0f0a80b8 0x0f0b80b8>;
+		qcom,chd-percpu-info = <&CPU0 0x0f1880b0 0x0f1880b8>,
+					<&CPU1 0x0f1980b0 0x0f1980b8>,
+					<&CPU2 0x0f1a80b0 0x0f1a80b8>,
+					<&CPU3 0x0f1b80b0 0x0f1b80b8>,
+					<&CPU4 0x0f0880b0 0x0f0880b8>,
+					<&CPU5 0x0f0980b0 0x0f0980b8>,
+					<&CPU6 0x0f0a80b0 0x0f0a80b8>,
+					<&CPU7 0x0f0b80b0 0x0f0b80b8>;
 	};
 
 	cluster-device0 {

@@ -92,37 +92,27 @@
 
 	mpss_mem: mpss_region@8a800000 {
 		no-map;
-		reg = <0x0 0x8a800000 0x0 0x10800000>;
+		reg = <0x0 0x8a800000 0x0 0x11800000>;
 	};
 
-	q6_mpss_dtb_mem: q6_mpss_dtb_region@9b000000 {
+	q6_mpss_dtb_mem: q6_mpss_dtb_region@9c000000 {
 		no-map;
-		reg = <0x0 0x9b000000 0x0 0x80000>;
+		reg = <0x0 0x9c000000 0x0 0x80000>;
 	};
 
-	ipa_fw_mem: ipa_fw_region@9b080000 {
+	ipa_fw_mem: ipa_fw_region@9c080000 {
 		no-map;
-		reg = <0x0 0x9b080000 0x0 0x10000>;
+		reg = <0x0 0x9c080000 0x0 0x10000>;
 	};
 
-	ipa_gsi_mem: ipa_gsi_region@9b090000 {
+	ipa_gsi_mem: ipa_gsi_region@9c090000 {
 		no-map;
-		reg = <0x0 0x9b090000 0x0 0xa000>;
+		reg = <0x0 0x9c090000 0x0 0xa000>;
 	};
 
-	gpu_microcode_mem: gpu_microcode_region@9b09a000 {
+	gpu_microcode_mem: gpu_microcode_region@9c09a000 {
 		no-map;
-		reg = <0x0 0x9b09a000 0x0 0x2000>;
-	};
-
-	cdsp_mem: cdsp_region@9b800000 {
-		no-map;
-		reg = <0x0 0x9b800000 0x0 0xf00000>;
-	};
-
-	q6_cdsp_dtb_mem: q6_cdsp_dtb_region@9c700000 {
-		no-map;
-		reg = <0x0 0x9c700000 0x0 0x80000>;
+		reg = <0x0 0x9c09a000 0x0 0x2000>;
 	};
 
 	q6_adsp_dtb_mem: q6_adsp_dtb_region@9c780000 {
@@ -148,6 +138,16 @@
 	camera_mem: camera_region@a1000000 {
 		no-map;
 		reg = <0x0 0xa1000000 0x0 0x800000>;
+	};
+
+	cdsp_mem: cdsp_region@a1800000 {
+		no-map;
+		reg = <0x0 0xa1800000 0x0 0xf00000>;
+	};
+
+	q6_cdsp_dtb_mem: q6_cdsp_dtb_region@a2700000 {
+		no-map;
+		reg = <0x0 0xa2700000 0x0 0x80000>;
 	};
 
 	tz_reserved_mem: tz_reserved_region@d8000000 {
@@ -180,9 +180,37 @@
 		reg = <0x0 0xdfc00000 0x0 0x2140000>;
 	};
 
-	tui_vm_mem: tui_vm_region@f3800000 {
+	trust_ui_vm_mem: trust_ui_vm_region@f3800000 {
 		no-map;
-		reg = <0x0 0xf3800000 0x0 0x4200000>;
+		reg = <0x0 0xf3800000 0x0 0x40ee000>;
+	};
+
+	trust_ui_vm_dump: trust_ui_vm_dump@0xf78ee000 {
+		no-map;
+		reg = <0x0 0xf78ee000 0x0 0x1000>;
+	};
+
+	trust_ui_vm_qrtr: trust_ui_vm_qrtr@0xf78ef000 {
+		no-map;
+		reg = <0x0 0xf78ef000 0x0 0x9000>;
+	};
+
+	trust_ui_vm_vblk0_ring: trust_ui_vm_vblk0_ring@0xf78f8000 {
+		no-map;
+		reg = <0x0 0xf78f8000 0x0 0x4000>;
+		gunyah-label = <0x11>;                                  //for persist.img
+	};
+
+	trust_ui_vm_vblk1_ring: trust_ui_vm_vblk1_ring@0xf78fc000 {
+		no-map;
+		reg = <0x0 0xf78fc000 0x0 0x4000>;
+		gunyah-label = <0x10>;                                  //for system.img
+	};
+
+	trust_ui_vm_swiotlb: trust_ui_vm_swiotlb@0xf7900000 {
+		no-map;
+		reg = <0x0 0xf7900000 0x0 0x100000>;
+		gunyah-label = <0x12>;
 	};
 
 	oem_vm_mem: oem_vm_region@f7a00000 {

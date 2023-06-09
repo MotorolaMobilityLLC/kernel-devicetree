@@ -13,7 +13,7 @@
 		reg = <0x8 0x0 0x0 0x40000000>;
 	};
 
-	tenx_sp_buffer_mem: tenx_sp_buffer_region@880000000 {
+	tenx_sp_buffer_mem: tenx_sp_buffer_region@840000000 {
 		no-map;
 		reg = <0x8 0x40000000 0x0 0x27100000>;
 	};

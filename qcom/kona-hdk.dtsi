@@ -395,18 +395,22 @@
 };
 
 &usb1 {
-	/delete-property/ qcom,default-mode-none;
-	dwc3@a800000 {
-		dr_mode = "host";
-	};
-};
-
-&usb2_phy0 {
-	qcom,param-override-seq = <0x43 0x70>;
+	qcom,default-mode-host;
 };
 
 &pcie2 {
 		status = "ok";
 		qcom,boot-option = <0x0>;
 		qcom,core-preset = <0x77777777>;
+};
+
+&qupv3_se15_i2c {
+	status = "ok";
+	fsa4480: fsa4480@43 {
+		compatible = "qcom,fsa4480-i2c";
+		reg = <0x43>;
+		io-channels = <&pm8150b_charger PSY_IIO_TYPEC_ACCESSORY_MODE>;
+		io-channel-names = "typec_mode";
+		qcom,use-power-supply = <1>;
+	};
 };

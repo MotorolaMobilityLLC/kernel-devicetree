@@ -235,6 +235,10 @@
 	ssusb_redriver = <&redriver>;
 };
 
+&usb1 {
+	qcom,default-mode-host;
+};
+
 &smb1390 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&smb_stat_default>;
@@ -446,17 +450,6 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 	};
-};
-
-&usb1 {
-	/delete-property/ qcom,default-mode-none;
-	dwc3@a800000 {
-		dr_mode = "host";
-	};
-};
-
-&usb2_phy0 {
-	qcom,param-override-seq = <0x43 0x70>;
 };
 
 &qupv3_se1_i2c {

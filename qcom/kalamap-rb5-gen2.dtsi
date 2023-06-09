@@ -211,7 +211,7 @@
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
-	status = "ok";
+	status = "disabled";
 	qcom,touch-active = "goodix,gt9916S";
 	qcom,la-vm;
 
@@ -265,7 +265,7 @@
 };
 
 &qupv3_hub_i2c2 {
-	status = "ok";
+	status = "disabled";
 
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -527,4 +527,21 @@
 &pcie1 {
 	qcom,boot-option = <0x2>;
 	qcom,apss-based-l1ss-sleep;
+};
+&thermal_zones {
+	skin-msm-therm {
+		status = "disabled";
+	};
+
+	cam-flash-therm {
+		status = "disabled";
+	};
+
+	wlan-therm {
+		status = "disabled";
+	};
+
+	rear-tof-therm {
+		status = "disabled";
+	};
 };

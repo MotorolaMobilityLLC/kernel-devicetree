@@ -8,5 +8,6 @@
 		interrupt-controller;
 		#interrupt-cells = <2>;
 		wakeup-parent = <&mpm>;
+		qcom,gpios-reserved = <0 1 2 3 30 31 32 33>;
 	};
 };

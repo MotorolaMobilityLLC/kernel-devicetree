@@ -27,8 +27,8 @@ Required properties:
   - clkreq-gpio: CLKREQ GPIO specified by PCIe spec.
   - <supply-name>-supply: phandle to the regulator device tree node.
     Refer to the schematics for the corresponding voltage regulators.
-    vreg-1.8-supply: phandle to the analog supply for the PCIe controller.
-    vreg-0.9-supply: phandle to the analog supply for the PCIe controller.
+    vreg-1p2-supply: phandle to the analog supply for the PCIe controller.
+    vreg-0p9-supply: phandle to the analog supply for the PCIe controller.
 
 Optional Properties:
   - qcom,<supply-name>-voltage-level: specifies voltage levels for supply.
@@ -47,6 +47,10 @@ Optional Properties:
   - reset-names: reset signal names sorted in the same order as the property
     of resets.
   - qcom,pcie-phy-ver: version of PCIe PHY.
+  - qcom,tcsr-perst-separation-enable-offset: Offset for TCSR perst seperation enable.
+  - qcom,tcsr-reset-separation-offset: Offset for TCSR reset seperation.
+  - qcom,tcsr-perst-enable-offset: Offset for TCSR perst enable.
+  - qcom,perst-raw-rst-status-b: Bit for perset raw reset status.
   - qcom,phy-init: The initialization sequence to bring up the PCIe PHY.
     Should be specified in groups (offset, value, delay, direction).
   - qcom,phy-status-reg: Register offset for PHY status.
@@ -83,6 +87,7 @@ Optional Properties:
 	Will work only when host_bypass is 1 bit in boot_config.
   - qcom,fast-boot-values: fast_boot values to check against boot_config based value for confirming
 	that host-interface is PCIe.
+  - qcom,no-path-from-ipa-to-pcie: boolean type; No direct path from the IPA to PCIe.
 
 Example:
 
