@@ -7,7 +7,7 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
-		qcom,gpios-reserved = <24 25 26 27>;
+		qcom,gpios-reserved = <24 25 26 27 111 112>;
 		wakeup-parent = <&pdc>;
 
 		sdc2_on: sdc2_on {
