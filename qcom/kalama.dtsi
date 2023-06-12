@@ -1528,7 +1528,7 @@
 			label = "modem";
 		};
 
-		qcom,client_3 {
+		mem_client_3: qcom,client_3 {
 			compatible = "qcom,memshare-peripheral";
 			qcom,peripheral-size = <0x500000>;
 			qcom,client-id = <1>;
@@ -1536,7 +1536,7 @@
 			label = "modem";
 		};
 
-		qcom,client_4 {
+		mem_client_4: qcom,client_4 {
 			compatible = "qcom,memshare-peripheral";
 			qcom,peripheral-size = <0x1000000>;
 			qcom,client-id = <5>;
@@ -1546,7 +1546,7 @@
 			label = "modem";
 		};
 
-		qcom,client_5 {
+		mem_client_5: qcom,client_5 {
 			compatible = "qcom,memshare-peripheral";
 			qcom,peripheral-size = <0x400000>;
 			qcom,client-id = <6>;
