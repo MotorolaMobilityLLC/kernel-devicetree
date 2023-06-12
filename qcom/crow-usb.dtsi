@@ -31,6 +31,9 @@
 		interrupt-names = "pwr_event_irq", "dp_hs_phy_irq",
 				"dm_hs_phy_irq", "ss_phy_irq";
 
+		qcom,use-pdc-interrupts;
+		qcom,use-eusb2-phy;
+
 		qcom,core-clk-rate = <200000000>;
 		qcom,core-clk-rate-hs = <66666667>;
 		qcom,core-clk-rate-disconnected = <133333333>;
@@ -58,6 +61,7 @@
 			dma-coherent;
 
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
+			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x0>;
 			snps,is-utmi-l1-suspend;
@@ -90,6 +94,11 @@
 
 		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
 		reset-names = "phy_reset";
+	};
+
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
 	};
 
 	/* USB port related QMP USB DP Combo PHY */
