@@ -809,7 +809,7 @@
 		compatible = "qcom,smp2p";
 		qcom,smem = <435>, <428>;
 		interrupts = <GIC_SPI 158 IRQ_TYPE_EDGE_RISING>;
-		mboxes = <&apcs 18>;
+		mboxes = <&apcs_glb 18>;
 		qcom,local-pid = <0>;
 		qcom,remote-pid = <1>;
 
@@ -829,7 +829,7 @@
 		compatible = "qcom,smp2p";
 		qcom,smem = <443>, <429>;
 		interrupts = <GIC_SPI 291 IRQ_TYPE_EDGE_RISING>;
-		mboxes = <&apcs 10>;
+		mboxes = <&apcs_glb 10>;
 		qcom,local-pid = <0>;
 		qcom,remote-pid = <2>;
 
@@ -854,7 +854,7 @@
 		compatible = "qcom,smp2p";
 		qcom,smem = <94>, <432>;
 		interrupts = <GIC_SPI 143 IRQ_TYPE_EDGE_RISING>;
-		mboxes = <&apcs 14>;
+		mboxes = <&apcs_glb 14>;
 		qcom,local-pid = <0>;
 		qcom,remote-pid = <5>;
 
