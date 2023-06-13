@@ -138,7 +138,7 @@
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&pmx_ts_release>;
 
-		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid>;
+		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid &mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid>;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
