@@ -6,6 +6,8 @@
 	df-serialnum = "SB18D87863";
 	qcom,batt-id-range-pct = <15>;
 	#include "qg-batterydata-qb50-swd-5000mah.dtsi"
+	#include "qg-batterydata-qb50-gy-5000mah.dtsi"
+	#include "qg-batterydata-qb50-gy-icm-5000mah.dtsi"
 };
 
 &pm7250b_charger {
