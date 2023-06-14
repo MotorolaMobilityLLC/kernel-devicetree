@@ -9,8 +9,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "blair-fogor-common-overlay.dtsi"
 #include "blair-pm6125-moto-common-overlay.dtsi"
+#include "blair-fogor-common-overlay.dtsi"
 #include "fogor-charger.dtsi"
 
 &pm7250b_charger {
