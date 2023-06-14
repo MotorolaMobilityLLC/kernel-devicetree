@@ -369,6 +369,10 @@
 	};
 };
 
+&L14B {
+	regulator-always-on;
+};
+
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
 	periph-1c2-supply = <&L2B>;
