@@ -144,7 +144,7 @@
 
 /* Dummy LDO reference */
 &sdhc_1 {
-	status = "ok";
+	status = "disable";
 
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&sdc1_on>;
@@ -482,6 +482,14 @@
 		thermal-governor = "user_space";
 		thermal-sensors = <&bcl_soc>;
 	};
+};
+
+&pm8008_8 {
+	status = "disabled";
+};
+
+&pm8008_9 {
+	status = "disabled";
 };
 
 &soc {
