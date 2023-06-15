@@ -93,7 +93,7 @@
 		goodix,avdd-gpio = <&tlmm 11 0x0>;
 		iovdd-supply = <&L13A>;
 
-		panel = <&mot_tm_nt37703_655_1080x2400_dsc_vid>;
+		panel = <&dsi_icnl9916c_hd_plus_120_video>;
 
 		goodix,reset-gpio = <&tlmm 21 0x0>;
 		goodix,irq-gpio = <&tlmm 22 0x0>;
@@ -137,7 +137,7 @@
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&pmx_ts_release>;
 
-		panel = <&mot_csot_vtdr6115_655_1080x2400_dsc_vid>;
+		panel = <&dsi_icnl9916c_hd_plus_120_video>;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
