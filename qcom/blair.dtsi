@@ -1639,6 +1639,7 @@
 	};
 
 	qcom_crypto: qcrypto@1b20000 {
+		status = "disabled";
 		compatible = "qcom,qcrypto";
 		reg = <0x1b20000 0x20000>,
 			<0x1b04000 0x24000>;
