@@ -757,6 +757,12 @@
 		};
 	};
 
+	qcom,power-state {
+		compatible = "qcom,power-state";
+		qcom,subsys-name = "lpass", "cdsp", "mpss";
+		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>, <&modem_pas>;
+	};
+
 	slimbam: bamdma@6C04000 {
 		compatible = "qcom,bam-v1.7.0";
 		qcom,controlled-remotely;
