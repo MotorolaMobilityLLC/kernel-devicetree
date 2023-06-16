@@ -2,6 +2,7 @@
 #include "dsi-panel-mot-csot-vtdr6115-655-1080x2400-video.dtsi"
 #include "dsi-panel-mot-tm-nt37703-655-1080x2400-video.dtsi"
 #include "dsi-panel-mot-tm-u8-nt37703-655-1080x2400-video.dtsi"
+#include "dsi-panel-mot-csot-c7-vtdr6115-655-1080x2400-video-v0.dtsi"
 #include "dsi-panel-mot-csot-c7-vtdr6115-655-1080x2400-video.dtsi"
 
 &display_panel_avdd {
@@ -331,6 +332,51 @@
 		timing@0 {
 			qcom,mdss-dsi-panel-phy-timings = [00 1D 07 07 17 22 07
 								07 08 02 04 00 19 0C];
+			qcom,display-topology = <1 1 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
+&mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid_v0{
+	qcom,platform-te-gpio = <&tlmm 23 0>;
+	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
+
+	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,mdss-dsi-pan-enable-dynamic-fps;
+	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+	qcom,mdss-dsi-pan-dfps-send-command;
+	qcom,mdss-dsi-pan-on-fps = <60>;
+
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_ext_bias>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-min-level = <1>;
+	qcom,mdss-dsi-bl-max-level = <3929>;
+	qcom,mdss-brightness-max-level = <3929>;
+	qcom,mdss-dsi-bl-default-level = <1757>;
+	qcom,mdss-dsi-bl-inverted-dbv;
+
+	qcom,mdss-dsi-no-panel-on-read-support;
+	qcom,mdss-dsi-bl-is-exponent;
+
+	qcom,mdss-dsi-panel-hdr-enable;
+	qcom,mdss-dsi-panel-hdr-color-primaries = <14950 15750 34000
+					16000 13000 35500 7000 2500>;
+	qcom,mdss-dsi-panel-peak-brightness = <5000000>;
+	qcom,mdss-dsi-panel-blackness-level = <100>;
+
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 66];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-panel-status-value = <0 0 0>;
+	qcom,mdss-dsi-panel-status-read-length = <3>;
+
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 1E 08 07 18 22 08
+								08 08 02 04 00 1A 0D];
 			qcom,display-topology = <1 1 1>;
 			qcom,default-topology-index = <0>;
 		};
