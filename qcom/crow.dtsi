@@ -1450,24 +1450,6 @@
 		};
 	};
 
-	cxo: bi_tcxo {
-		compatible = "fixed-factor-clock";
-		clocks = <&xo_board>;
-		clock-mult = <1>;
-		clock-div = <1>;
-		#clock-cells = <0>;
-		clock-output-names = "bi_tcxo";
-	};
-
-	cxo_a: bi_tcxo_ao {
-		compatible = "fixed-factor-clock";
-		clocks = <&xo_board>;
-		clock-mult = <1>;
-		clock-div = <1>;
-		#clock-cells = <0>;
-		clock-output-names = "bi_tcxo_ao";
-	};
-
 	camcc: clock-controller@adb0000 {
 		compatible = "qcom,crow-camcc", "syscon";
 		reg = <0xadb0000 0x40000>;
