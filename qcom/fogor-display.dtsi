@@ -8,6 +8,19 @@
 };
 
 &tlmm {
+	lcd_panel_vddio_default: lcd_panel_vddio_default {
+		mux {
+			pins = "gpio11";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio11";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
+		};
+	};
 	lcd_panel_avdd_default: lcd_panel_avdd_default {
 		mux {
 			pins = "gpio84";
@@ -38,6 +51,21 @@
 };
 
 &soc {
+	lcd_panel_vddio: lcd_gpio_regulator@0 {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "lcd_panel_vddio";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		gpio = <&tlmm 11 0>;
+		enable-active-high;
+		regulator-boot-on;
+		proxy-supply = <&lcd_panel_vddio>;
+		qcom,proxy-consumer-enable;
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_panel_vddio_default>;
+	};
+
 	lcd_panel_avdd: lcd_gpio_regulator@1 {
 		compatible = "qti-regulator-fixed";
 		regulator-name = "lcd_panel_avdd";
@@ -113,7 +141,7 @@
 
 	lab-supply = <&lcd_panel_avdd>;
 	ibb-supply = <&lcd_panel_avee>;
-	vddio-supply = <&L13A>;
+	vddio-supply = <&lcd_panel_vddio>;
 
 	qcom,dsi-default-panel = <&dsi_icnl9916c_hd_plus_120_video>;
 };
@@ -214,7 +242,6 @@
 		};
 	};
 };
-
 
 &mot_dummy_vid_qhd {
 	qcom,platform-te-gpio = <&tlmm 23 0>;
