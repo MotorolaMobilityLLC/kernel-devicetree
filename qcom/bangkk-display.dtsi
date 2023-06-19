@@ -3,7 +3,7 @@
 #include "dsi-panel-mot-tm-nt37703-655-1080x2400-video.dtsi"
 #include "dsi-panel-mot-tm-u8-nt37703-655-1080x2400-video.dtsi"
 #include "dsi-panel-mot-csot-c7-vtdr6115-655-1080x2400-video-v0.dtsi"
-#include "dsi-panel-mot-csot-c7-vtdr6115-655-1080x2400-video.dtsi"
+#include "dsi-panel-mot-csot-c7-vtdr6115-655-1080x2400-video-v1.dtsi"
 
 &display_panel_avdd {
 	/delete-property/ gpio;
@@ -383,7 +383,7 @@
 	};
 };
 
-&mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid{
+&mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid_v1{
         qcom,platform-te-gpio = <&tlmm 23 0>;
         qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
