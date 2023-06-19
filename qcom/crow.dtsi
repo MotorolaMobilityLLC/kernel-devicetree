@@ -1806,7 +1806,7 @@
 		interconnect-names = "ufs-ddr", "cpu-ufs";
 
 		qcom,ufs-bus-bw,name = "ufshc_mem";
-		qcom,ufs-bus-bw,num-cases = <26>;
+		qcom,ufs-bus-bw,num-cases = <28>;
 		qcom,ufs-bus-bw,num-paths = <2>;
 		qcom,ufs-bus-bw,vectors-KBps =
 		/*
