@@ -33,8 +33,7 @@
 		      <&pm7250b_qg PSY_IIO_CHARGE_COUNTER>,
 		      <&pm7250b_qg PSY_IIO_CYCLE_COUNT>,
 		      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>,
-		      <&pm7250b_qg PSY_IIO_TIME_TO_FULL_NOW>,
-                      <&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>;
+		      <&pm7250b_qg PSY_IIO_TIME_TO_FULL_NOW>;
 	io-channel-names = "usb_in_voltage",
 			   "usb_in_current",
 			   "chg_temp",
@@ -58,17 +57,15 @@
 			   "charge_counter",
 			   "cycle_count",
 			   "charge_full_design",
-			   "time_to_full_now",
-			   "cp_input_voltage_now";
+			   "time_to_full_now";
 	qcom,fcc-max-ua = <4000000>;
 	qcom,fv-max-uv = <4520000>;
-	qcom,dcp-curr-max = <1500000>;
-	qcom,otg-cl-ua = <1000000>;
+	qcom,dcp-curr-max = <2000000>;
+	qcom,otg-cl-ua = <1500000>;
 	qcom,thermal-mitigation = <3000000 2500000
 			2000000 1500000
 			1200000 900000
 			600000>;
-	mmi,qc3p-support;
 	/delete-property/ qcom,fcc-stepping-enable;
 
 };
@@ -104,114 +101,13 @@
 		      <&pm7250b_charger PSY_IIO_INPUT_CURRENT_LIMITED>,
 		      <&pm7250b_charger PSY_IIO_RECHARGE_SOC>,
 		      <&pm7250b_charger PSY_IIO_FORCE_RECHARGE>,
-		      <&pm7250b_charger PSY_IIO_CHARGE_DONE>,
-		      <&mmi_chrg PSY_IIO_CP_ENABLE>;
+		      <&pm7250b_charger PSY_IIO_CHARGE_DONE>;
 	io-channel-names = "batt-therm",
 			   "batt-id",
 			   "input_current_limited",
 			   "recharge_soc",
 			   "force_recharge",
-			   "charge_done",
-			   "cp_charging_enabled";
-	mmi,cp-use-internal-qg;
+			   "charge_done";
 	qcom,qg-iterm-ma = <500>;
-};
-
-&qupv3_se10_i2c {
-	status = "okay";
-	bq25960_standalone:bq25960-standalone@6A {
-		status = "okay";
-		compatible = "ti,bq25960-standalone";
-		reg = <0x6A>;
-		sc8541-addr = <0x6A>;
-		sc8541-name = "sc8541-master";
-		#io-channel-cells = <1>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <12 IRQ_TYPE_LEVEL_HIGH>;
-		irq-gpio = <&tlmm 12 0>;
-	};
-};
-
-&soc {
-	mmi_chrg: mmi_chrg_manager {
-		compatible = "mmi,chrg-manager";
-		#io-channel-cells = <1>;
-		io-channels = <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>,
-				<&pm7250b_charger PSY_IIO_CHARGING_ENABLED>,
-				<&pm7250b_charger PSY_IIO_TYPEC_MODE>,
-				<&pm7250b_charger PSY_IIO_USB_INPUT_CURRENT_SETTLED>,
-				<&pm7250b_charger PSY_IIO_PD_ACTIVE>,
-				/*qc3p start*/
-                               <&pm7250b_charger PSY_IIO_USB_REAL_TYPE>,
-                               <&pm7250b_charger PSY_IIO_DP_DM>,
-                               <&pm7250b_charger PSY_IIO_MMI_QC3P_POWER>,
-                               /*qc3p end*/
-				<&bq25960_standalone PSY_IIO_CP_ENABLE>,
-				<&bq25960_standalone PSY_IIO_MMI_CP_INPUT_CURRENT_NOW>,
-				<&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
-				<&bq25960_standalone PSY_IIO_CP_STATUS1>,
-				<&bq25960_standalone PSY_IIO_CP_CLEAR_ERROR>,
-				<&pm7250b_mmi PSY_IIO_CP_ENABLE>;
-
-		io-channel-names = "usb_hw_current_max",
-					"charging_enabled",
-					"usb_typec_mode",
-					"usb_input_current_settled",
-					"usb_pd_active",
-					/*qc3p start*/
-                                        "usb_real_type",
-                                        "battery_dp_dm",
-                                        "usb_qc3p_power",
-                                        /*qc3p end*/
-					"cp_enable",
-					"cp_input_current_now",
-					"cp_input_voltage_now",
-					"cp_status1",
-					"cp_clear_error",
-					"mmi_cp_enabled_status";
-
-		qcom,usbpd-phandle = <&pm7250b_pdphy>;
-		mmi,pps-volt-steps = <20000>;
-		mmi,pps-curr-steps = <100000>;
-		mmi,pd-volt-max = <10000000>;
-		mmi,pd-curr-max = <3000000>;
-		mmi,batt-curr-boost = <300000>;
-		mmi,batt-ovp-lmt = <4580000>;
-		mmi,pl-chrg-vbatt-min = <3000000>;
-		mmi,typec-middle-current = <2000000>;
-		mmi,pd-allow-min-current = <1000000>;
-		mmi,step-first-current-comp = <0>;
-		mmi,dont-rerun-aicl;
-		/*qc3p start*/
-		mmi,qc3p-max-ibus-ma = <3000>;
-                mmi,qc3p-volt-steps = <20000>;
-                mmi,qc3p-volt-max = <10000000>;
-                /*qc3p end*/
-		mmi,chrg-temp-zones-num = <5>;
-		mmi,mmi-chrg-temp-zones =
-					<0 4200 1000  0 0 0 0>,
-					<10 4250 3000 4500 1000 0 0>,
-					<15 4500 3000 0 0 0 0>,
-					<45 4300 5800 4400 5200 4520 4000>,
-					<60 4200 4000 0 0 0 0>;
-		mmi,thermal-mitigation =
-					<5800000>,
-					<5000000>,
-					<4000000>,
-					<3500000>,
-					<3000000>,
-					<2000000>,
-					<1000000>;
-		charger_device_0 {
-			chrg-name = "pmic-sw";
-			psy-name = "battery";
-			charging-curr-limited = <500000>;
-		};
-		charger_device_1 {
-			chrg-name = "cp-master";
-			psy-name = "bq25960-standalone";
-			charging-curr-min = <2000000>;
-		};
-	};
 };
 
