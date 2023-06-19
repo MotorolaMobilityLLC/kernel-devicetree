@@ -116,6 +116,7 @@
 			   "charge_done",
 			   "cp_charging_enabled";
 	mmi,cp-use-internal-qg;
+	mmi,cp-chrg-soc-limit = <90>;
 	qcom,qg-iterm-ma = <500>;
 };
 
