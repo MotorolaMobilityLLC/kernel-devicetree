@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  */
 &mdss_mdp {
-	mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid: qcom,mdss_dsi_mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid {
+	mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid_v1: qcom,mdss_dsi_mot_csot_c7_vtdr6115_655_1080x2400_dsc_vid_v1 {
 		qcom,mdss-dsi-panel-name =
 			"mipi_moto_vid_csot_1080p_dsc_655";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
