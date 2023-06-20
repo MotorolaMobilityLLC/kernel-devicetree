@@ -1,4 +1,5 @@
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
+#include "dsi-panel-mot-visionox-vtdr6110c-fhd-video.dtsi"
 #include "dsi-panel-mot-tianma-icnl9916c-652-720x1600-video.dtsi"
 #include "dsi-panel-mot-tongxingda-ili9883c-652-720x1600-video.dtsi"
 
@@ -236,6 +237,54 @@
 		timing@0 {
 			qcom,mdss-dsi-panel-phy-timings = [00 27 0A 0A 1B 19 0A
 				0B 0A 02 04 00 20 0F];
+
+			qcom,display-topology = <1 0 1>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
+&dsi_vtdr6110c_visionox_video{
+	qcom,platform-te-gpio = <&tlmm 23 0>;
+	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
+
+	/*qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,mdss-dsi-pan-enable-dynamic-fps;
+	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+	qcom,mdss-dsi-pan-dfps-send-command;
+	qcom,mdss-dsi-pan-dfps-send-command-with-te-async;
+	qcom,mdss-dsi-pan-on-fps = <60>;*/
+
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_fogor>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
+	qcom,mdss-dsi-bl-min-level = <1>;
+	qcom,mdss-dsi-bl-max-level = <2047>;
+	qcom,mdss-brightness-max-level = <2047>;
+	qcom,mdss-dsi-bl-default-level = <1757>;
+	/*qcom,mdss-dsi-bl-inverted-dbv;*/
+	qcom,bklt-dcs-2bytes-enabled;
+
+	qcom,mdss-dsi-no-panel-on-read-support;
+
+/*	qcom,mdss-dsi-panel-hdr-enable;
+	qcom,mdss-dsi-panel-hdr-color-primaries = <14950 15750 34000
+					16000 13000 35500 7000 2500>;
+	qcom,mdss-dsi-panel-peak-brightness = <5000000>;
+	qcom,mdss-dsi-panel-blackness-level = <100>;
+
+	qcom,esd-check-enabled;
+	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
+	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 66];
+	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
+	qcom,mdss-dsi-panel-status-value = <0 0 0>;
+	qcom,mdss-dsi-panel-status-read-length = <3>;
+*/
+	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
+
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 24 0A 0A 26 24 0A
+				0A 09 02 04 00 1F 1A];
 
 			qcom,display-topology = <1 0 1>;
 			qcom,default-topology-index = <0>;
