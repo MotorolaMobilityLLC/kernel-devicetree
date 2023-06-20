@@ -420,6 +420,7 @@
 };
 
 &pcie0 {
+	qcom,boot-option = <0x0>;
 	 qcom,pcie-phy-ver = <102>;
 			qcom,phy-sequence = <0x0240 0x03 0x0
 					0x00c0 0x01 0x0
@@ -539,7 +540,7 @@
 };
 
 &pcie1 {
-	qcom,boot-option = <0x2>;
+	qcom,boot-option = <0x0>;
 	qcom,apss-based-l1ss-sleep;
 };
 &thermal_zones {
