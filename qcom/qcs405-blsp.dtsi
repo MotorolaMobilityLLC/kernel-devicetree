@@ -362,7 +362,7 @@
 		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
 		#address-cells = <0>;
 		interrupt-parent = <&blsp1_uart1_hs>;
-		interrupts = <0 1 2>;
+		interrupts = <0 1 4>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc 0 107 0
@@ -397,7 +397,7 @@
 		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
 		#address-cells = <0>;
 		interrupt-parent = <&blsp1_uart2_hs>;
-		interrupts = <0 1 2>;
+		interrupts = <0 1 4>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc 0 108 0
@@ -432,7 +432,7 @@
 		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
 		#address-cells = <0>;
 		interrupt-parent = <&blsp1_uart3_hs>;
-		interrupts = <0 1 2>;
+		interrupts = <0 1 4>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc 0 118 0
@@ -467,7 +467,7 @@
 		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
 		#address-cells = <0>;
 		interrupt-parent = <&blsp1_uart4_hs>;
-		interrupts = <0 1 2>;
+		interrupts = <0 1 4>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc 0 119 0
@@ -504,7 +504,7 @@
 		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
 		#address-cells = <0>;
 		interrupt-parent = <&blsp2_uart1_hs>;
-		interrupts = <0 1 2>;
+		interrupts = <0 1 4>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc 0 297 0
