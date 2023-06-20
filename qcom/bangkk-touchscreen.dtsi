@@ -107,6 +107,7 @@
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
 		goodix,gesture-wait-pm;
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
@@ -131,7 +132,7 @@
 		focaltech,display-coords =  <0 0 17280 38400>;
 		focaltech,edge-ctrl;
 		focaltech,interpolation-ctrl;
-
+		focaltech,sample-ctrl;
 		pinctrl-names = "pmx_ts_active","pmx_ts_suspend",
 						"pmx_ts_release";
 		pinctrl-0 = <&ts_active>;
