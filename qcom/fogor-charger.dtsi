@@ -59,10 +59,11 @@
 			   "charge_full_design",
 			   "time_to_full_now";
 	qcom,fcc-max-ua = <4000000>;
-	qcom,fv-max-uv = <4520000>;
+	qcom,fv-max-uv = <4530000>;
 	qcom,dcp-curr-max = <2000000>;
 	qcom,otg-cl-ua = <1500000>;
-	qcom,thermal-mitigation = <3000000 2500000
+	qcom,thermal-mitigation = <4000000 3500000
+			3000000 2500000
 			2000000 1500000
 			1200000 900000
 			600000>;
@@ -78,21 +79,22 @@
 				<35 0 4000 4000>,
 				<45 0 4000 4000>,
 				<60 4200 4000 0>;
-	qcom,mmi-ffc-zones = <4200 260 534>,
-                               <4500 260 534>,
-                               <4500 260 534>,
-                               <4520 550 960>,
-                               <4520 600 1010>,
-                               <4520 750 1160>,
-                               <4200 260 575>;
+	qcom,mmi-ffc-zones = <4200 243 534>,
+                               <4500 243 534>,
+                               <4500 243 534>,
+                               <4530 506 960>,
+                               <4530 560 1010>,
+                               <4530 965 1160>,
+                               <4200 243 575>;
 
-	qcom,iterm-ma = <260>;
+	qcom,iterm-ma = <243>;
 	qcom,hvdcp-power-max = <18000>;
 	mmi,enable-factory-mode-aicl;
-	qcom,noffc-chg-iterm = <260>;
-	qcom,noffc-chg-iterm-45c = <390>;
+	qcom,noffc-chg-iterm = <243>;
+	qcom,noffc-chg-iterm-45c = <670>;
 	qcom,noffc-qg-iterm = <500>;
 	qcom,noffc-max-fv = <4500>;
+
 };
 
 &pm7250b_qg {
