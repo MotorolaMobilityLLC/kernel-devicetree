@@ -37,6 +37,18 @@
 	};
 };
 
+&mem_client_3 {
+	qcom,peripheral-size = <0x0>;
+};
+
+&mem_client_4 {
+	qcom,peripheral-size = <0x0>;
+};
+
+&mem_client_5 {
+	qcom,peripheral-size = <0x0>;
+};
+
 &soc {
 	qcom,msm_gsi {
 		compatible = "qcom,msm_gsi";
