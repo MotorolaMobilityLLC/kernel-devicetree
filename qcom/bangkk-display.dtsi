@@ -209,7 +209,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,mdss-dsi-pan-dfps-send-command;
@@ -254,7 +254,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,mdss-dsi-pan-dfps-send-command;
@@ -298,7 +298,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,mdss-dsi-pan-dfps-send-command;
@@ -342,7 +342,7 @@
 	qcom,platform-te-gpio = <&tlmm 23 0>;
 	qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-	qcom,dsi-supported-dfps-list = <120 90 60>;
+	qcom,dsi-supported-dfps-list = <60 90 120>;
 	qcom,mdss-dsi-pan-enable-dynamic-fps;
 	qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
 	qcom,mdss-dsi-pan-dfps-send-command;
@@ -387,7 +387,7 @@
         qcom,platform-te-gpio = <&tlmm 23 0>;
         qcom,platform-reset-gpio = <&pmr735a_gpios 2 0>;
 
-        qcom,dsi-supported-dfps-list = <120 90 60>;
+        qcom,dsi-supported-dfps-list = <60 90 120>;
         qcom,mdss-dsi-pan-enable-dynamic-fps;
         qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
         qcom,mdss-dsi-pan-dfps-send-command;
