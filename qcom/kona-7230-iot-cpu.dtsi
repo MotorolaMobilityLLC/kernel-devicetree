@@ -354,9 +354,18 @@
 	/delete-node/ cpufreq_cdev;
 	cpufreq_cdev: qcom,cpufreq-cdev {
 		compatible = "qcom,cpufreq-cdev";
-		qcom,cpus = <&CPU0 &CPU2 &CPU5>;
-	};
+		cpu-cluster0 {
+			qcom,cpus = <&CPU0 &CPU1>;
+		};
 
+		cpu-cluster1 {
+			qcom,cpus = <&CPU2 &CPU3 &CPU4>;
+		};
+
+		cpu-cluster2 {
+			qcom,cpus = <&CPU5>;
+		};
+	};
 };
 
 &thermal_zones {
