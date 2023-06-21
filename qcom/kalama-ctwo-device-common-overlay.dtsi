@@ -13,3 +13,79 @@
 /* This file is only for rtwo device */
 
 #include "kalama-ctwo-products-common-overlay.dtsi"
+#include "kalama-moto-common-charger.dtsi"
+#include "kalama-ctwo-charger-overlay.dtsi"
+
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+};
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio22";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio22";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&qupv3_hub_i2c2 {
+	status = "ok";
+	#include "kalama-moto-common-redriver.dtsi"
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xb 0x51
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* Squelch detection threshold */
+		 0x6 0x54
+		/* Tx pre-emphasis tuning */
+		 0x6 0x57>;
+
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* Squelch detection threshold */
+		 0x5 0x54
+		/* Tx pre-emphasis tuning */
+		 0x6 0x57>;
+};
+
