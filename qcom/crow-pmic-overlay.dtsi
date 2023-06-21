@@ -289,6 +289,13 @@
 	};
 };
 
+&pmk8550_sdam_1 {
+	ufs_dev: ufs_dev@ad {
+		reg = <0xad 0x1>;
+		bits = <0 0>;
+	};
+};
+
 &soc {
 	reboot_reason {
 		compatible = "qcom,reboot-reason";
