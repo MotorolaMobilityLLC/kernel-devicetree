@@ -669,6 +669,7 @@
 		atid = <78>;
 		coresight-name = "coresight-tpdm-rdpm-cx";
 
+		status = "disabled";
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
@@ -691,6 +692,7 @@
 		atid = <78>;
 		coresight-name = "coresight-tpdm-rdpm-mx";
 
+		status = "disabled";
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
