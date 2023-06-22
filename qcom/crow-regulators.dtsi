@@ -369,25 +369,6 @@
 		};
 	};
 
-	rpmh-regulator-ldob6 {
-		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "ldob6";
-		qcom,regulator-type = "pmic5-ldo";
-		qcom,supported-modes =
-			<RPMH_REGULATOR_MODE_LPM
-			RPMH_REGULATOR_MODE_HPM>;
-		qcom,mode-threshold-currents = <0 30000>;
-		L6B:
-		pm7550_l6: regulator-pm7550-l6 {
-			regulator-name = "pm7550_l6";
-			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <1170000>;
-			regulator-max-microvolt = <1370000>;
-			qcom,init-voltage = <1256000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-	};
-
 	rpmh-regulator-ldob7 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldob7";
@@ -700,12 +681,14 @@
 		};
 	};
 
-	rpmh-regulator-bob {
+	rpmh-regulator-bobb1 {
 		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "bob";
+		qcom,resource-name = "bobb1";
 
-		BOB: pm7550_bob: regulator-pm7550-bob {
-			regulator-name = "pm7550_bob";
+		BOB:
+		BOB1:
+		pm7550_bob1: regulator-pm7550-bob1 {
+			regulator-name = "pm7550_bob1";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
 			regulator-min-microvolt = <3008000>;
 			regulator-max-microvolt = <3960000>;
