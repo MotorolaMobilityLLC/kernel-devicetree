@@ -3052,14 +3052,6 @@
 	status = "ok";
 };
 
-&qupv3_se13_i2c {
-	status = "ok";
-	fsa4480: fsa4480@42 {
-		compatible = "qcom,fsa4480-i2c";
-		reg = <0x42>;
-	};
-};
-
 &cam_cc_camss_top_gdsc {
 	parent-supply = <&VDD_MXC_LEVEL>;
 	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
