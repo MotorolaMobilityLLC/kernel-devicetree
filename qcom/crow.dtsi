@@ -2628,7 +2628,7 @@
 			prime-latfloor {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
-				com,cpufreq-memfreq-tbl =
+				qcom,cpufreq-memfreq-tbl =
 					< 2284800   300000 >,
 					< 2592000  1066000 >;
 				qcom,sampling-enabled;
