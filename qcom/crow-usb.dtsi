@@ -76,6 +76,12 @@
 			maximum-speed = "super-speed-plus";
 			usb-role-switch;
 		};
+
+		port {
+			usb_port0: endpoint {
+				remote-endpoint = <&usb_port0_connector>;
+			};
+		};
 	};
 
 	/* USB port related High Speed PHY */
