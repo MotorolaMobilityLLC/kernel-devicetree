@@ -26,7 +26,7 @@
 		qcom,mdss-dsi-dma-trigger = "trigger_sw";
 		qcom,mdss-dsi-mdp-trigger = "none";
 		qcom,mdss-dsi-dma-schedule-line = <15>;
-		qcom,mdss-dsi-reset-sequence = <1 10>, <0 10>, <1 10>;
+		qcom,mdss-dsi-reset-sequence = <1 1>, <0 1>, <1 10>;
 
 		qcom,bklt-dcs-2bytes-enabled;
 
@@ -120,8 +120,8 @@
 					39 01 00 00 00 00 06 F0 55 AA 52 08 00
 					39 01 00 00 00 00 02 6F 34
 					39 01 00 00 00 00 02 DF 27
-					05 01 00 00 78 00 01 11
-					05 01 00 00 14 00 01 29
+					05 01 00 00 50 00 01 11
+					05 01 00 00 00 00 01 29
 				];
 
 				qcom,mdss-dsi-off-command = [
