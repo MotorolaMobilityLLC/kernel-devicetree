@@ -15,6 +15,7 @@
 #include "kalama-ctwo-products-common-overlay.dtsi"
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-ctwo-charger-overlay.dtsi"
+#include "kalama-ctwo-haptics-overlay.dtsi"
 
 &soc {
 	mmi_relay {
