@@ -2505,14 +2505,14 @@
 				ddr4-tbl {
 					qcom,ddr-type = <7>;
 					qcom,cpufreq-memfreq-tbl =
-						< 1555200  547000 >,
+						< 1555200  547200 >,
 						< 1804800  768000 >;
 				};
 
 				ddr5-tbl {
 					qcom,ddr-type = <8>;
 					qcom,cpufreq-memfreq-tbl =
-						< 1555200  547000 >,
+						< 1555200  547200 >,
 						< 1804800  768000 >;
 				};
 			};
@@ -2668,7 +2668,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 1516800  307200 >,
+					< 1516800  384000 >,
 					< 2400000 1286400 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
