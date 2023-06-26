@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "crow-idp-rcm.dtsi"
+#include "crow-idp-pm7550ba.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Crow IDP RCM";
