@@ -33,6 +33,8 @@
 
 		qcom,use-pdc-interrupts;
 		qcom,use-eusb2-phy;
+		extcon = <&eud>;
+		usb-role-switch;
 
 		qcom,core-clk-rate = <200000000>;
 		qcom,core-clk-rate-hs = <66666667>;
@@ -71,6 +73,7 @@
 			snps,ssp-u3-u0-quirk;
 			dr_mode = "peripheral";
 			maximum-speed = "super-speed-plus";
+			usb-role-switch;
 		};
 	};
 
