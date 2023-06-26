@@ -1975,8 +1975,8 @@
 		ranges;
 
 		adsp_variant: adsp_variant@128 {
-			reg = <0x131 0x1>;
-			bits = <1 6>;
+			reg = <0x128 0x4>;
+			bits = <25 6>;
 		};
 
 		feat_conf13: feat_conf13@0134 {
