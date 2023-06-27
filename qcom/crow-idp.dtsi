@@ -76,6 +76,14 @@
 
 		goodix,touch-type = "primary";
 		goodix,qts_en;
+		qts,trusted-touch-mode = "vm_mode";
+		qts,touch-environment = "pvm";
+		qts,trusted-touch-type = "primary";
+		qts,trusted-touch-spi-irq = <666>;
+		qts,trusted-touch-io-bases = <0x880000 0x810000>;
+		qts,trusted-touch-io-sizes = <0x1000 0x4000>;
+		qts,trusted-touch-vm-gpio-list = <&tlmm 0 0 &tlmm 1 0 &tlmm 2 0
+						&tlmm 3 0 &tlmm 28 0 &tlmm 21 0x2008>;
 	};
 };
 
