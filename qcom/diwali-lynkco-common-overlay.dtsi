@@ -211,3 +211,7 @@
 &chosen {
     mmi,dynamic_devices = "/soc/i2c@984000/bt541_ts_device@20";
 };
+
+&sdhc_2 {
+	status = "disabled";
+};
