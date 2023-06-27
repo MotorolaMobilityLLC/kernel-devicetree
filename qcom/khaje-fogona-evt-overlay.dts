@@ -13,13 +13,12 @@
 /dts-v1/;
 /plugin/;
 
-#include "khaje-rhode-common-overlay.dtsi"
-//#include "khaje-rhode-audio-overlay.dtsi"
+#include "khaje-fogona-common-overlay.dtsi"
 / {
-	model = "rhode";
-    compatible = "qcom,khaje-idp", "qcom,khaje", "qcom,idp", "mot.rhode";
+	model = "fogona";
+    compatible = "qcom,khaje-idp", "qcom,khaje", "qcom,idp", "mot.fogona";
     qcom,msm-id = <518 0x10000>, <585 0x10000>, <586 0x10000>;
 	qcom,board-id = <0x41 0xA000>;
-	qcom,pmic-id = <0x2D 0x0 0x0 0x0>;
+//	qcom,pmic-id = <0x2D 0x0 0x0 0x0>;
 };
 

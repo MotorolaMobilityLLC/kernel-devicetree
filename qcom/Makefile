@@ -121,6 +121,11 @@ KHAJE_BASE_DTB += khaje-moto-base.dtb
 KHAJE_BOARDS += khaje-rhode-evt-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_FOGONA_DTB),y)
+KHAJE_BASE_DTB += khaje-moto-base.dtb
+KHAJE_BOARDS += khaje-fogona-evt-overlay.dtbo
+endif
+
 else 
 
 KHAJE_BASE_DTB += khaje.dtb khajep.dtb khajeq.dtb khajeg.dtb
