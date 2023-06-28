@@ -609,6 +609,15 @@ dtbo-$(CONFIG_ARCH_PARROT) += \
 parrot-genevn-evb-overlay.dtbo-base := parrot-moto-base.dtb
 parrot-genevn-dvt1-overlay.dtbo-base := parrot-moto-base.dtb
 endif
+
+ifeq ($(CONFIG_AVATRN_DTB),y)
+dtbo-$(CONFIG_ARCH_PARROT) += \
+        parrot-avatrn-evb-overlay.dtbo \
+        parrot-avatrn-dvt1-overlay.dtbo
+
+parrot-avatrn-evb-overlay.dtbo-base := parrot-moto-base.dtb
+parrot-avatrn-dvt1-overlay.dtbo-base := parrot-moto-base.dtb
+endif
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
 	parrot-atp.dtb \

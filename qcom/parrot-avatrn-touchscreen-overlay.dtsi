@@ -1,0 +1,143 @@
+&qupv3_se9_i2c {
+        status = "disabled";
+};
+
+&qupv3_se9_spi_pins {
+	qupv3_se9_spi_miso_active: qupv3_se9_spi_miso_active {
+		mux {
+			pins = "gpio10";
+			function = "qup1_se3_l0";
+		};
+
+		config {
+			pins = "gpio10";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se9_spi_mosi_active: qupv3_se9_spi_mosi_active {
+		mux {
+			pins = "gpio11";
+			function = "qup1_se3_l1";
+		};
+
+		config {
+			pins = "gpio11";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se9_spi_clk_active: qupv3_se9_spi_clk_active {
+		mux {
+			pins = "gpio12";
+			function = "qup1_se3_l2";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se9_spi_cs_active: qupv3_se9_spi_cs_active {
+		mux {
+			pins = "gpio13";
+			function = "qup1_se3_l3";
+		};
+
+		config {
+			pins = "gpio13";
+			drive-strength = <6>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se9_spi_sleep: qupv3_se9_spi_sleep {
+		mux {
+			pins = "gpio10", "gpio11",
+				"gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio10", "gpio11",
+				"gpio12";
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
+
+	qupv3_se9_spi_cs_sleep: qupv3_se9_spi_cs_sleep {
+		mux {
+			pins = "gpio13";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio13";
+			drive-strength = <2>;
+			bias-bus-hold;
+		};
+	};
+};
+
+&tlmm{
+	pmx_ts_spi_int_suspend_high {
+		ts_spi_int_suspend_high: ts_spi_int_suspend_high {
+			mux {
+				pins = "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio65";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&qupv3_se9_spi {
+	status = "ok";
+	pinctrl-0 = <&qupv3_se9_spi_mosi_active &qupv3_se9_spi_miso_active &qupv3_se9_spi_clk_active &qupv3_se9_spi_cs_active>;
+	pinctrl-1 = <&qupv3_se9_spi_sleep &qupv3_se9_spi_cs_sleep>;
+	novatek@1{
+		compatible = "novatek,NVT-ts-spi";
+		reg = <0x1>;
+		mmi,status = "/chosen","mmi,panel_name","contains","nt36672c";
+		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
+		novatek,reset-gpio = <&tlmm 64 0x00>;
+		novatek,irq-gpio = <&tlmm 65 0x2001>;
+		novatek,def-max-resolution = <1080 2400>;
+		novatek,swrst-n8-addr = <0x03F0FE>;
+		novatek,spi-rd-fast-addr = <0x03F310>;
+		novatek,panel-supplier = "csot";
+		novatek,gesture-wait-pm;
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x06>;
+		status = "ok";
+	};
+
+	ilitek@2 {
+		compatible = "tchip,ilitek";
+		reg = <0x2>;
+		spi-max-frequency = <6000000>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <65 0x2001>;
+		mmi,status = "/chosen","mmi,panel_name","contains","ili7807s";
+		touch,reset-gpio = <&tlmm 64 0x00>;
+		touch,irq-gpio = <&tlmm 65 0x2001>;
+		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
+		pinctrl-0 = <&ts_spi_active>;
+		pinctrl-1 = <&ts_spi_int_suspend_high>;
+		mmi,usb-charger-detection;
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
+		status = "ok";
+	};
+};
