@@ -52,12 +52,12 @@
 		qcom,mdss-dsi-dc-on-command-state = "dsi_hs_mode";
 
 		qcom,mdss-dsi-hbm-on-command = [
-				39 00 00 00 00 00 03 51 0F FF
+				39 00 00 00 00 00 03 51 0F 59
 				39 00 00 00 00 00 02 62 00
 				39 00 00 00 00 00 03 F0 AA 13
 				39 01 00 00 00 00 02 C6 00];
 		qcom,mdss-dsi-hbm-off-command = [
-				39 00 00 00 00 00 03 51 0F FF
+				39 00 00 00 00 00 03 51 0D BA
 				39 00 00 00 00 00 02 62 00
 				39 00 00 00 00 00 03 F0 AA 13
 				39 01 00 00 00 00 02 C6 00];
