@@ -110,6 +110,11 @@ dtbo-$(CONFIG_FOGOR_DTB) += \
 
 blair-fogor-evb-overlay.dtbo-base := blair-moto-fogor-base.dtb
 
+dtbo-$(CONFIG_FOGO_DTB) += \
+        blair-fogo-evb-overlay.dtbo
+
+blair-fogo-evb-overlay.dtbo-base := blair-moto-fogo-base.dtb
+
 
 dtbo-$(CONFIG_PENANG_DTB) += \
         holi-penang-dvt2-jp-overlay.dtbo \
