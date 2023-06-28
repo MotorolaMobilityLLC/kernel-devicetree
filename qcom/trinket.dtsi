@@ -17,6 +17,10 @@
 	#size-cells = <2>;
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
+	aliases {
+		serial0 = &qupv3_se4_2uart;
+	};
+
 	cpus {
 		#address-cells = <2>;
 		#size-cells = <0>;
@@ -1369,3 +1373,5 @@
 	parent-supply = <&VDD_CX_LEVEL>;
 	status = "ok";
 };
+
+#include "trinket-qupv3.dtsi"
