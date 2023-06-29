@@ -17,7 +17,7 @@
 #include "parrot-genevn-touchscreen-overlay.dtsi"
 #include "parrot-genevn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
-#include "moto-genevn-wl2864c.dtsi"
+#include "moto-avatrn-wl2864c.dtsi"
 #include "parrot-genevn-nfc-overlay.dtsi"
 
 
