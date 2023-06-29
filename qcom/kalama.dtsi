@@ -372,6 +372,11 @@
 		reg = <0x0 0x81c80000 0x0 0x74000>;
 	};
 
+	chipinfo_mem: chipinfo_region@81cf4000 {
+		no-map;
+		reg = <0x0 0x81cf4000 0x0 0x1000>;
+	};
+
 	/* secdata region can be reused by apps */
 
 	smem_mem: smem_region@81d00000 {
@@ -755,6 +760,12 @@
 			#power-domain-cells = <0>;
 			domain-idle-states = <&CLUSTER_PWR_DN &APSS_OFF>;
 		};
+	};
+
+	qcom,power-state {
+		compatible = "qcom,power-state";
+		qcom,subsys-name = "lpass", "cdsp", "mpss";
+		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>, <&modem_pas>;
 	};
 
 	slimbam: bamdma@6C04000 {

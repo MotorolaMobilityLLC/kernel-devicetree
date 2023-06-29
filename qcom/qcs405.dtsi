@@ -5,6 +5,7 @@
 #include <dt-bindings/interconnect/qcom,icc.h>
 #include <dt-bindings/interconnect/qcom,qcs405.h>
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
 #define BW_OPP_ENTRY(mhz, w) opp-mhz {opp-hz = /bits/ 64 <MHZ_TO_MBPS(mhz, w)>;}
@@ -289,6 +290,11 @@
 		reg = <0x4ab000 0x4>,
 			<0x193d100 0x4>;
 		reg-names = "pshold-base", "tcsr-boot-misc-detect";
+	};
+
+	qcom,sps {
+		compatible = "qcom,msm-sps-4k";
+		qcom,pipe-attr-ee;
 	};
 
 	qcom,msm-rtb {
@@ -795,6 +801,54 @@
 		qos0 {
 			mask = <0x0f>;
 			vote = <651>;
+		};
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		label = "gpio-keys";
+		input-name = "gpio-keys";
+		pinctrl-names = "default";
+		pinctrl-0 = <&tlmm_gpio_key_active>;
+
+		vol_mute {
+			label = "vol_mute";
+			gpios = <&tlmm 21 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_MUTE>;
+			debounce-interval = <15>;
+			gpio-key,wakeup;
+			linux,can-disable;
+		};
+
+		vol_down {
+			label = "vol_down";
+			gpios = <&tlmm 54 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_VOLUMEDOWN>;
+			debounce-interval = <15>;
+			gpio-key,wakeup;
+			linux,can-disable;
+		};
+
+		vol_up {
+			label = "vol_up";
+			gpios = <&tlmm 52 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_VOLUMEUP>;
+			debounce-interval = <15>;
+			gpio-key,wakeup;
+			linux,can-disable;
+		};
+
+		home {
+			label = "action";
+			gpios = <&tlmm 115 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_HOME>;
+			debounce-interval = <15>;
+			gpio-key,wakeup;
+			linux,can-disable;
 		};
 	};
 };

@@ -1403,7 +1403,7 @@
 		reg = <0x10c43000 0x1000>;
 		reg-names = "tpda-base";
 
-		qcom,tpda-atid = <65>;
+		qcom,tpda-atid = <79>;
 		coresight-name = "coresight-tpda-dlct2";
 
 		clocks = <&aoss_qmp>;

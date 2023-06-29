@@ -67,6 +67,7 @@ Optional Properties:
   - qcom,pcie-edma: boolean type; edma usage for PCIe.
   - qcom,pcie-aggregated-irq: boolean type; interrupts are aggregated.
   - qcom,pcie-mhi-a7-irq: boolean type; MHI a7 has separate irq.
+  - qcom,pcie-cesta-clkreq-offset: Offset from PCIe PARF base to PCIe CESTA CLKREQ register
   - qcom,pcie-perst-enum: Link enumeration will be triggered by PERST
     deassertion.
   - qcom,tcsr-not-supported: TCSR pcie perst is not supported.
