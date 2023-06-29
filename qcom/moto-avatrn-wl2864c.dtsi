@@ -3,17 +3,15 @@
  * to GCC.
  */
 
-&tlmm{
+&pm6150l_gpios{
  	cam_pmic_en_default: cam_pmic_en_default {
- 		mux {
- 		pins = "gpio58";
- 		function = "gpio";
- 		};
- 		config {
- 		pins = "gpio58";
- 		drive-strength = <2>;
- 		bias-pull-down;
- 		};
+ 		pins = "gpio11";
+		function = "normal";
+		input-disable;
+		output-low;
+		bias-pull-down;
+		power-source = <0>;
+		qcom,drive-strength = <2>;	/* Medium */
  	};
 };
 
@@ -31,7 +29,7 @@
 		compatible = "semi,wl2864c";
 		reg = <0x29>;
 
-		semi,cs-gpios = <&tlmm 58 0>;
+		semi,cs-gpios = <&pm6150l_gpios 11 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_pmic_en_default>;
 
