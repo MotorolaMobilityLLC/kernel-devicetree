@@ -13,6 +13,7 @@
 #include <dt-bindings/interconnect/qcom,kona.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/soc/qcom,dcc_v2.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. kona";
@@ -2120,7 +2121,7 @@
 
 		llcc-perfmon {
 			compatible = "qcom,llcc-perfmon";
-			clocks = <&aoss_qmp>;
+			clocks = <&aoss_qmp QDSS_CLK>;
 			clock-names = "qdss_clk";
 		};
 	};
