@@ -337,12 +337,13 @@
 		interrupt-controller;
 		#interrupt-cells = <2>;
 		/* Valid pins */
-		gpios = /bits/ 16 <21 28 122 29>;
+		gpios = /bits/ 16 <0 1 2 3 21 28 122 29>;
 	};
 
 	tlmm-vm-mem-access {
 		compatible = "qcom,tlmm-vm-mem-access";
-		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
+		tlmm-vm-gpio-list = <&tlmm 0 0 &tlmm 1 0 &tlmm 2 0 &tlmm 3 0
+				&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
 	};
 
 	tlmm-vm-test {
@@ -350,7 +351,8 @@
 		pinctrl-names = "active", "sleep";
 		pinctrl-0 = <&qupv3_se0_7i2c_active>;
 		pinctrl-1 = <&qupv3_se0_7i2c_sleep>;
-		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
+		tlmm-vm-gpio-list = <&tlmm 0 0 &tlmm 1 0 &tlmm 2 0 &tlmm 3 0
+				&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
 	};
 
 	pinctrl@f000000 {
