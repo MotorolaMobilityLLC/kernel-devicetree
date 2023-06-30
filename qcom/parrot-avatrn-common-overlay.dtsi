@@ -25,7 +25,7 @@
 };
 
 &sdhc_2 {
-	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
+	status = "disabled";
 };
 
 &usb2_phy0 {
