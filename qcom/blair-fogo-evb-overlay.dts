@@ -19,6 +19,6 @@
 	model = "fogo";
 	compatible = "qcom,blair-fogo", "qcom,blair-moto", "qcom,blair";
 	qcom,msm-id = <507 0x10000>, <578 0x10000>;
-	qcom,board-id = <0x47 0xA100>, <0x48 0xA100>;
+	qcom,board-id = <0x4E 0xA100>;
 };
 
