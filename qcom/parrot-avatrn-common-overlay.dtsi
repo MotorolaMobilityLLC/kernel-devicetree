@@ -9,11 +9,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "parrot-moto-common-overlay-base.dtsi"
+#include "parrot-moto-common-overlay-base-pm8350b.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-wcn6750.dtsi"
 #include "parrot-genevn-charger-overlay.dtsi"
-#include "parrot-genevn-thermal-overlay.dtsi"
+//#include "parrot-genevn-thermal-overlay.dtsi"
 #include "parrot-genevn-touchscreen-overlay.dtsi"
 #include "parrot-genevn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
@@ -35,13 +35,6 @@
 			0xc3 0x70
 			0xc7 0x74
 			0x03 0x78>;
-};
-
-&pm7250b_vib {
-	qcom,vib-ldo-volt-uv = <2900000>;
-	qcom,vib-dis-short-long;
-	qcom,vib-dis-short-long-val = <80>;
-	qcom,vib-ldo-volt-uv-long = <2900000>;
 };
 
 &socd_trip {
