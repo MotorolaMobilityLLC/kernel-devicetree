@@ -20,7 +20,7 @@
 
 #include "khaje-moto-common-overlay.dtsi"
 
-
+#include "khaje-fogona-fps-overlay.dtsi"
 &firmware {
 	android {
 		vbmeta {
