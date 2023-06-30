@@ -34,10 +34,12 @@
 		qcom,use-pdc-interrupts;
 		qcom,use-eusb2-phy;
 
+		qcom,dis-sending-cm-l1-quirk;
 		qcom,core-clk-rate = <200000000>;
 		qcom,core-clk-rate-hs = <66666667>;
 		qcom,core-clk-rate-disconnected = <133333333>;
 		qcom,pm-qos-latency = <2>;
+		qcom,num-gsi-evt-buffs = <0x3>;
 		qcom,gsi-reg-offset =
 			<0x0fc /* GSI_GENERAL_CFG */
 			0x110 /* GSI_DBL_ADDR_L */
@@ -62,15 +64,23 @@
 
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x0>;
 			snps,is-utmi-l1-suspend;
+			snps,usb3_lpm_capable;
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			dr_mode = "peripheral";
 			maximum-speed = "super-speed-plus";
+		};
+
+		port {
+			usb_port0: endpoint {
+				remote-endpoint = <&usb_port0_connector>;
+			};
 		};
 	};
 
@@ -128,6 +138,8 @@
 			<&gcc GCC_USB3_PHY_PRIM_BCR>;
 		reset-names = "global_phy_reset", "phy_reset";
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb3phy_portselect_default>;
 		qcom,qmp-phy-reg-offset =
 			<USB3_DP_PCS_PCS_STATUS1
 			 USB3_DP_PCS_USB3_AUTONOMOUS_MODE_CTRL
