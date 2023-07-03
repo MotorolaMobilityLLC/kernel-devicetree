@@ -120,6 +120,10 @@
 	qcom,qg-iterm-ma = <500>;
 };
 
+&socd_trip {
+	temperature = <98>;
+};
+
 &qupv3_se10_i2c {
 	status = "okay";
 	bq25960_standalone:bq25960-standalone@6A {
