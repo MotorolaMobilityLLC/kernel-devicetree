@@ -1105,6 +1105,56 @@
 			linux,can-disable;
 		};
 	};
+
+	slimbam_aud: bamdma@C184000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0xC184000 0x2A000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <0 180 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_aud: slim@C1C0000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0xC1C0000 0x2C000>;
+		reg-names = "ctrl";
+		interrupts = <0 163 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,apps-ch-pipes = <0x0>;
+		qcom,ea-pc = <0x2e0>;
+		dmas = <&slimbam_aud 3>, <&slimbam_aud 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
+
+	slimbam_qca: bamdma@C204000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0xC204000 0x20000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <0 63 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_qca: slim@C240000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0xC240000 0x2C000>;
+		reg-names = "ctrl";
+		interrupts = <0 191 IRQ_TYPE_LEVEL_HIGH>;
+		dmas = <&slimbam_qca 3>, <&slimbam_qca 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
 };
 
 &firmware {
