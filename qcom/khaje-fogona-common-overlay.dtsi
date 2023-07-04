@@ -24,6 +24,8 @@
 #include "discrete_charging.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
+#include "khaje-fogona-sar-sensor-overlay.dtsi"
+
 #include "khaje-fogona-fps-overlay.dtsi"
 &firmware {
 	android {
