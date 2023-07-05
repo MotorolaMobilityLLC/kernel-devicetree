@@ -1468,12 +1468,12 @@
 			qcom,sampling-path = <&l3_dcvs_sp>;
 			qcom,miss-ev = <0x17>;
 
-			gold {
+			gold-0 {
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2112000  933000 >,
-					< 2362000 1066000 >;
+					< 2112000  921600 >,
+					< 2362000 1612800 >;
 				qcom,sampling-enabled;
 			};
 
@@ -1481,8 +1481,8 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2112000  933000 >,
-					< 2362000 1066000 >;
+					< 2112000  921600 >,
+					< 2362000 1612800 >;
 				qcom,sampling-enabled;
 			};
 
@@ -1490,8 +1490,8 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2112000  933000 >,
-					< 2362000 1066000 >;
+					< 2112000  921600 >,
+					< 2362000 1612800 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
 			};
