@@ -70,12 +70,10 @@
 	};
 };*/
 
-&qupv3_se0_i2c {
+&qupv3_se2_i2c {
 	#address-cells = <1>;
 	#size-cells = <0>;
 	status = "okay";
-	pinctrl-0 = <&qupv3_se0_i2c_act>;
-	pinctrl-1 = <&qupv3_se0_i2c_sle>;
 
 	cw2217@64 {
 		compatible = "cellwise,cw2217";
@@ -90,7 +88,7 @@
 		#include "CW_ng50-BA-ATL-5000mah-rhode.dtsi"
 		#include "CW_ng50-IN-ATL-5000mah-rhode.dtsi"
 	};
-/*
+
 	sm5602@71 {
 		compatible = "sm,sm5602";
 		reg = <0x71>;
@@ -121,7 +119,7 @@
 		df-serialnum = "SB18D38324";
 		#include "SM5602_NE50_ATL_Rhode.dtsi"
 		#include "SM5602_NE50_SWD_Rhode.dtsi"
-	};*/
+	};
 };
 
 &qupv3_se1_i2c {
@@ -150,8 +148,8 @@
 //				   "qc3p_start_policy";
 
 		interrupt-parent = <&tlmm>;
-		interrupts = <96 0>;            //irq num base on hardware design
-		sgm,irq-gpio = <&tlmm 96 0>;     //irq num base on hardware design
+		interrupts = <28 0>;            //irq num base on hardware design
+		sgm,irq-gpio = <&tlmm 28 0>;     //irq num base on hardware design
 //		sgm,chg-en-gpio = <&tlmm 36 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
 		dpdm-supply = <&usb2_phy0>;
@@ -217,12 +215,12 @@
 &tlmm{
         sgm4154x_gpio_pins: sgm4154x_gpio_pins {
                 mux {
-                        pins = "gpio96";
+                        pins = "gpio28";
                         function = "gpio";
                 };
 
                 config {
-                        pins = "gpio96";
+                        pins = "gpio28";
                         drive-strength = <2>;
                         bias-pull-up;
                         input-enable;
