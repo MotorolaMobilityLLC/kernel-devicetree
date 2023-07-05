@@ -111,7 +111,8 @@
 		vm-guid = "598085da-c516-5b25-a9c1-927a02819770";
 		qcom,sensitive;
 
-		iomemory-ranges = <0x0 0xae8f000 0x0 0xae8f000 0x0 0x1000 0x0>;
+		iomemory-ranges = <0x0 0xae8f000 0x0 0xae8f000 0x0 0x1000 0x0
+				0x0 0x824000 0x0 0x824000 0x0 0x4000 0x0>;
 
 		/* For LEVM pored usecases is SE0, for SE0 we use gpii5
 		 * and irq no is 625.
@@ -433,6 +434,82 @@
 		/* Must be memory_block_size_bytes() aligned */
 		reg = <0x60000000 0x10000000>;
 		qcom,block-size = <0x400000>;
+	};
+
+	qup_iommu_group: qup_common_iommu_group {
+			qcom,iommu-dma-addr-pool = <0x00020000 0xfffe0000>;
+	};
+
+	/* GPI Instance */
+	gpi_dma0: qcom,gpi-dma@800000  {
+		compatible = "qcom,gpi-dma";
+		#dma-cells = <5>;
+		reg = <0x800000  0x60000>;
+		reg-names = "gpi-top";
+		iommus = <&apps_smmu 0x438 0x0>;
+		qcom,iommu-group = <&qup_iommu_group>;
+		dma-coherent;
+		interrupts = <GIC_SPI 588 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 589 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 590 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 591 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 592 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 593 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 594 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 595 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 596 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 597 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 598 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 599 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,max-num-gpii = <12>;
+		qcom,static-gpii-mask = <0x20>;
+		qcom,gpii-mask = <0x0>;
+		qcom,ev-factor = <2>;
+		qcom,gpi-ee-offset = <0x10000>;
+		status = "ok";
+	};
+
+	/* QUPv3_0  wrapper  instance */
+	qupv3_0: qcom,qupv3_0_geni_se@8c0000 {
+		compatible = "qcom,geni-se-qup";
+		reg = <0x8c0000 0x2000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		clock-names = "m-ahb", "s-ahb";
+		clocks = <&gcc GCC_QUPV3_WRAP_0_M_AHB_CLK>,
+			<&gcc GCC_QUPV3_WRAP_0_S_AHB_CLK>;
+		iommus = <&apps_smmu 0x438 0x0>;
+		qcom,iommu-group = <&qup_iommu_group>;
+		dma-coherent;
+		ranges;
+		status = "ok";
+
+		/* Legacy Touch over I2C */
+		qupv3_se0_i2c: i2c@880000 {
+			compatible = "qcom,i2c-geni";
+			reg = <0x880000 0x4000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			dmas = <&gpi_dma0 0 0 3 64 0xc>,
+				<&gpi_dma0 1 0 3 64 0xc>;
+			dma-names = "tx", "rx";
+			qcom,le-vm;
+			status = "disabled";
+		};
+
+		qupv3_se0_spi: spi@880000 {
+			compatible = "qcom,spi-geni";
+			reg = <0x880000 0x4000>;
+			reg-names = "se_phys";
+			#address-cells = <1>;
+			#size-cells = <0>;
+			dmas = <&gpi_dma0 0 0 1 64 0xc>,
+				<&gpi_dma0 1 0 1 64 0xc>;
+			dma-names = "tx", "rx";
+			spi-max-frequency = <50000000>;
+			qcom,le-vm;
+			status = "disabled";
+		};
 	};
 };
 
