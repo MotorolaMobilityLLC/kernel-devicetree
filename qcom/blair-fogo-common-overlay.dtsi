@@ -20,6 +20,7 @@
 #include "fogo-display.dtsi"
 #include "fogo-touchscreen.dtsi"
 #include "fogo-sensors.dtsi"
+#include "camera/blair-camera-sensor-mot-fogo-overlay.dtsi"
 #include "fogo-wl286xx.dtsi"
 #include "moto_therm_sys_temp.dtsi"
 #include "blair-fogo-fmr-overlay.dtsi"
