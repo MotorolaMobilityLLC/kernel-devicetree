@@ -153,7 +153,7 @@
 //		sgm,chg-en-gpio = <&tlmm 36 0>;   //gpio num base on hardware design  1.MTK parent node name is pio  2.QUALCOMM parent node name is tlmm or other
 
 		dpdm-supply = <&usb2_phy0>;
-	//	mmi,qc3-support;
+		mmi,qc3-support;
 		enable_sw_jeita;
 		jeita_temp_above_t4_cv = <0>;
 		jeita_temp_t3_to_t4_cv = <4100000>;
