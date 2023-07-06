@@ -3122,7 +3122,7 @@
 };
 
 &gcc_ufs_mem_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	status = "ok";
 };
 
@@ -3137,7 +3137,7 @@
 };
 
 &gcc_usb3_phy_gdsc {
-	parent-supply = <&VDD_CX_LEVEL>;
+	parent-supply = <&VDD_MXA_LEVEL>;
 	status = "ok";
 };
 
