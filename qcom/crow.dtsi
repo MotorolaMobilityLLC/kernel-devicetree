@@ -24,7 +24,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = "console=ttyMSM0,115200n8 loglevel=6 kpti=0 loop.max_part=7 allow_mismatched_32bit_el0 log_buf_len=256K kernel.panic_on_rcu_stall=1 service_locator.enable=1 msm_rtb.filter=0x237 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops printk.console_no_auto_verbose=1 kasan=off can.stats_timer=0 pcie_ports=compat cpufreq.default_governor=performance cgroup.memory=nokmem,nosocket swiotlb=noforce disable_dma32=on page_poison=on";
+		bootargs = "console=ttyMSM0,115200n8 loglevel=6 kpti=0 loop.max_part=7 allow_mismatched_32bit_el0 log_buf_len=256K kernel.panic_on_rcu_stall=1 service_locator.enable=1 msm_rtb.filter=0x237 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 ftrace_dump_on_oops printk.console_no_auto_verbose=1 kasan=off can.stats_timer=0 pcie_ports=compat cpufreq.default_governor=performance cgroup.memory=nokmem,nosocket swiotlb=noforce disable_dma32=on page_poison=on android_kmalloc_64_create";
 		stdout-path = "/soc/qcom,qupv3_0_geni_se@8c0000/qcom,qup_uart@894000";
 	};
 
