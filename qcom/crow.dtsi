@@ -392,20 +392,12 @@
 		no-map;
 	};
 
-	user_contig_mem: user_contig_region {
-		compatible = "shared-dma-pool";
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		reusable;
-		alignment = <0x0 0x400000>;
-		size = <0x0 0x1000000>;
-	};
-
 	qseecom_mem: qseecom_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 		reusable;
 		alignment = <0x0 0x400000>;
-		size = <0x0 0x1400000>;
+		size = <0x0 0xC00000>;
 	};
 
 	qseecom_ta_mem: qseecom_ta_region {
@@ -413,7 +405,7 @@
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 		reusable;
 		alignment = <0x0 0x400000>;
-		size = <0x0 0x1000000>;
+		size = <0x0 0xC00000>;
 	};
 
 	adsp_mem_heap: adsp_heap_region {
@@ -1624,22 +1616,6 @@
 		#clock-cells = <1>;
 	};
 
-	qcom_qseecom: qseecom@c1700000 {
-		compatible = "qcom,qseecom";
-		memory-region = <&qseecom_mem>;
-		qseecom_mem = <&qseecom_mem>;
-		qseecom_ta_mem = <&qseecom_ta_mem>;
-		user_contig_mem = <&user_contig_mem>;
-		qcom,hlos-num-ce-hw-instances = <1>;
-		qcom,hlos-ce-hw-instance = <0>;
-		qcom,qsee-ce-hw-instance = <0>;
-		qcom,disk-encrypt-pipe-pair = <2>;
-		qcom,no-clock-support;
-		qcom,appsbl-qseecom-support;
-		qcom,commonlib64-loaded-by-uefi;
-		qcom,qsee-reentrancy-support = <2>;
-	};
-
 	qcom_tzlog: tz-log@146AA720 {
 		compatible = "qcom,tz-log";
 		reg = <0x146AA720 0x3000>;
@@ -2511,14 +2487,14 @@
 				ddr4-tbl {
 					qcom,ddr-type = <7>;
 					qcom,cpufreq-memfreq-tbl =
-						< 1555200  547000 >,
+						< 1555200  547200 >,
 						< 1804800  768000 >;
 				};
 
 				ddr5-tbl {
 					qcom,ddr-type = <8>;
 					qcom,cpufreq-memfreq-tbl =
-						< 1555200  547000 >,
+						< 1555200  547200 >,
 						< 1804800  768000 >;
 				};
 			};
@@ -2674,7 +2650,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 1516800  307200 >,
+					< 1516800  384000 >,
 					< 2400000 1286400 >;
 				qcom,sampling-enabled;
 				qcom,compute-mon;
@@ -2789,13 +2765,13 @@
 	tlmm-vm-mem-access {
 		compatible = "qcom,tlmm-vm-mem-access";
 		qcom,master;
-		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 127 0>;
+		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
 	};
 
 	tlmm-vm-test {
 		compatible = "qcom,tlmm-vm-test";
 		qcom,master;
-		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 127 0>;
+		tlmm-vm-gpio-list = <&tlmm 21 0 &tlmm 28 0 &tlmm 122 0 &tlmm 29 0>;
 	};
 
 	qcom,test-dbl {

@@ -20,7 +20,7 @@
 	pinctrl-0 = <&sdc2_on>, <&sd_card_det_default>;
 	pinctrl-1 = <&sdc2_off>, <&sd_card_det_default>;
 
-	cd-gpios = <&pm8550_gpios 12 GPIO_ACTIVE_HIGH>;
+	cd-gpios = <&pm8550_gpios 12 GPIO_ACTIVE_LOW>;
 
 	resets = <&gcc GCC_SDCC2_BCR>;
 	reset-names = "core_reset";
@@ -369,6 +369,10 @@
 	};
 };
 
+&L14B {
+	regulator-always-on;
+};
+
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
 	periph-1c2-supply = <&L2B>;
@@ -420,6 +424,7 @@
 };
 
 &pcie0 {
+	qcom,boot-option = <0x0>;
 	 qcom,pcie-phy-ver = <102>;
 			qcom,phy-sequence = <0x0240 0x03 0x0
 					0x00c0 0x01 0x0
@@ -539,7 +544,7 @@
 };
 
 &pcie1 {
-	qcom,boot-option = <0x2>;
+	qcom,boot-option = <0x0>;
 	qcom,apss-based-l1ss-sleep;
 };
 &thermal_zones {

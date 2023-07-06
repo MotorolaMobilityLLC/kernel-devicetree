@@ -16,12 +16,6 @@
 			memory-region = <&qseecom_ta_mem>;
 		};
 
-		qcom,user_contig {
-			qcom,dma-heap-name = "qcom,user-contig";
-			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
-			memory-region = <&user_contig_mem>;
-		};
-
 		qcom,secure_cdsp {
 			qcom,dma-heap-name = "qcom,cma-secure-cdsp";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
