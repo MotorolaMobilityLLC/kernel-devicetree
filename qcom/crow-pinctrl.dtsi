@@ -1975,4 +1975,17 @@
 			};
 		};
 	};
+
+	trigout_a: trigout_a {
+		mux {
+			pins = "gpio91";
+			function = "qdss_cti";
+		};
+
+		config {
+			pins = "gpio91";
+			drive-strength = <2>;
+			bias-disable;
+		};
+	};
 };
