@@ -1974,6 +1974,20 @@
 				drive-strength = <2>;
 			};
 		};
+
+		usb3phy_portselect_gpio: usb3phy_portselect_gpio {
+			mux {
+				pins = "gpio83";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio83";
+				drive-strength = <2>;
+				bias-pull-down;
+				input-enable;
+			};
+		};
 	};
 
 	trigout_a: trigout_a {
