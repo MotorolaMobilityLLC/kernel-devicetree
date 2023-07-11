@@ -181,7 +181,7 @@
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-panel-status-value = <0x9C>;
 	qcom,mdss-dsi-panel-status-read-length = <1>;
-
+	qcom,suspend-ulps-enabled;
 	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
@@ -236,7 +236,7 @@
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-panel-status-value = <0x9C>;
 	qcom,mdss-dsi-panel-status-read-length = <1>;
-
+	qcom,suspend-ulps-enabled;
 	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
@@ -273,4 +273,12 @@
 			qcom,default-topology-index = <0>;
 		};
 	};
+};
+
+&qupv3_se10_i2c_sleep {
+    config {
+        /delete-property/ bias-disable;
+        bias-pull-up;
+        input-enable;
+    };
 };
