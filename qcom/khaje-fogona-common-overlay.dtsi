@@ -27,6 +27,7 @@
 #include "khaje-fogona-sar-sensor-overlay.dtsi"
 
 #include "khaje-fogona-fps-overlay.dtsi"
+#include "khaje-fogona-booster.dtsi"
 &firmware {
 	android {
 		vbmeta {
