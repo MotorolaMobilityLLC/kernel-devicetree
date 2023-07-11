@@ -1,0 +1,96 @@
+&tlmm {
+		tps61280a_active {
+			tps61280a_en_active: tps61280a_en_active {
+				mux {
+					pins = "gpio60";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio60";
+					drive-strength = <8>;
+					bias-disable;
+				};
+			};
+			tps61280a_vsel_active: tps61280a_vsel_active {
+				mux {
+					pins = "gpio52";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio52";
+					drive-strength = <8>;
+					bias-disable;
+				};
+			};
+			tps61280a_rst_active: tps61280a_rst_active {
+				mux {
+					pins = "gpio59";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio59";
+					drive-strength = <8>;
+					bias-disable;
+				};
+			};
+		};
+
+		tps61280a_suspend {
+			tps61280a_en_suspend: tps61280a_en_suspend {
+				mux {
+					pins = "gpio60";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio60";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+
+			tps61280a_vsel_suspend: tps61280a_vsel_suspend {
+				mux {
+					pins = "gpio52";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio52";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+			tps61280a_rst_suspend: tps61280a_rst_suspend {
+				mux {
+					pins = "gpio59";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio59";
+					drive-strength = <2>;
+					bias-disable;
+				};
+			};
+		};
+};
+
+&qupv3_se1_i2c {
+	status = "ok";
+	tps61280a@75 {
+		compatible = "ti,tps61280a";
+		reg = <0x75>;
+		tps61280a,en-gpio = <&tlmm 60 0x00>;
+		tps61280a,vsel-gpio = <&tlmm 52 0x00>;
+		tps61280a,rst-gpio = <&tlmm 59 0x00>;
+		pinctrl-names = "tps61280a_active","tps61280a_suspend";
+		pinctrl-0 = <&tps61280a_en_active &tps61280a_vsel_active
+				&tps61280a_rst_active>;
+		pinctrl-1 =<&tps61280a_en_suspend &tps61280a_vsel_suspend
+				&tps61280a_rst_suspend>;
+	};
+};
