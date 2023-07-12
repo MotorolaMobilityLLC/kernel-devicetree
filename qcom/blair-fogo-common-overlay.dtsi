@@ -42,7 +42,7 @@
 	qcom,vib-ldo-volt-uv = <3000000>;
 	qcom,vib-dis-short-long;
 	qcom,vib-dis-short-long-val = <70>;
-	qcom,vib-ldo-volt-uv-long = <2600000>;
+	qcom,vib-ldo-volt-uv-long = <3000000>;
 };
 
 &tlmm {
@@ -497,12 +497,6 @@
 			debounce-interval = <15>;
 			linux,can-disable;
 		};
-	};
-
-	ldo_vib {
-		compatible = "moto,vibrator-ldo";
-		moto,vib-ldo-gpio = <&tlmm 100 0x0>;
-		status = "disabled";
 	};
 
 	qcom,tz_gpio {
