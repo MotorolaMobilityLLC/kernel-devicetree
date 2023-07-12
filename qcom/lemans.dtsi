@@ -2367,6 +2367,11 @@
 		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
+	qcom,msm-rtb {
+		compatible = "qcom,msm-rtb";
+		qcom,rtb-size = <0x100000>;
+	};
+
 	llcc_pmu: llcc-pmu@9095000 {
 		compatible = "qcom,llcc-pmu-ver2";
 		reg = <0x09095000 0x300>;
