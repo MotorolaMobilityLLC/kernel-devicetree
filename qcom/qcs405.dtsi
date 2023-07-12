@@ -789,11 +789,6 @@
 		#mbox-cells = <1>;
 	};
 
-	smp2p_sleepstate: qcom,smp2p_sleepstate {
-		compatible = "qcom,smp2p-sleepstate";
-		qcom,smem-states = <&sleepstate_smp2p_out 0>;
-	};
-
 	rpm-glink {
 		compatible = "qcom,glink-rpm";
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
@@ -848,6 +843,20 @@
 			qcom,entry-name = "sleepstate";
 			#qcom,smem-state-cells = <1>;
 		};
+
+		sleepstate_smp2p_in: qcom,sleepstate-in {
+			qcom,entry-name = "sleepstate_see";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	smp2p_sleepstate: qcom,smp2p_sleepstate {
+		compatible = "qcom,smp2p-sleepstate";
+		qcom,smem-states = <&sleepstate_smp2p_out 0>;
+		interrupt-parent = <&sleepstate_smp2p_in>;
+		interrupts = <0 0>;
+		interrupt-names = "smp2p-sleepstate-in";
 	};
 
 	qcom,smp2p-cdsp {
