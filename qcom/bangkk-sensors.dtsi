@@ -102,7 +102,7 @@
                         reinit-on-i2c-failure = <1>;
 			Semtech,reg-num = <66>;
 			Semtech,reg-init = <
-				0x4004 0x78
+				0x4004 0x70
 				0x4008 0x8
 				0x8020 0x32
 				0x8028 0x45F
