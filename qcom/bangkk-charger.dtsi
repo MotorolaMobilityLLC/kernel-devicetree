@@ -69,7 +69,7 @@
 	qcom,thermal-mitigation = <3000000 2500000
 			2000000 1500000
 			1200000 900000
-			600000>;
+			500000>;
 	mmi,qc3p-support;
 	/delete-property/ qcom,fcc-stepping-enable;
 
