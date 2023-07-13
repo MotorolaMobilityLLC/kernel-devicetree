@@ -194,7 +194,8 @@ dtbo-$(CONFIG_ARCH_NEO) += neo-rumi-overlay.dtbo \
 		neo-sg-idp-pm8008-overlay.dtbo \
 		neo_luna-v2-sg-idp-overlay.dtbo \
 		neo_luna-v2-sg-idp-pm8008-overlay.dtbo \
-		neo_luna-v2-sg-idp-dual-display-overlay.dtbo
+		neo_luna-v2-sg-idp-dual-display-overlay.dtbo \
+		neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo
 
 neo-rumi-overlay.dtbo-base := neo.dtb
 neo_la-rumi-overlay.dtbo-base := neo_la.dtb
@@ -212,6 +213,7 @@ neo-sg-idp-pm8008-overlay.dtbo-base := neo_la.dtb
 neo_luna-v2-sg-idp-overlay.dtbo-base := neo_luna-v2.dtb
 neo_luna-v2-sg-idp-pm8008-overlay.dtbo-base := neo_luna-v2.dtb
 neo_luna-v2-sg-idp-dual-display-overlay.dtbo-base := neo_luna-v2.dtb
+neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo-base := neo_luna-v2.dtb
 
 else
 dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
@@ -229,7 +231,8 @@ dtb-$(CONFIG_ARCH_NEO) += neo-rumi.dtb \
 			neo-sg-idp-pm8008.dtb \
 			neo_luna-v2-sg-idp.dtb \
 			neo_luna-v2-sg-idp-pm8008.dtb \
-			neo_luna-v2-sg-idp-dual-display.dtb
+			neo_luna-v2-sg-idp-dual-display.dtb \
+			neo_luna-v2-sg-idp-dual-display-camera.dtb
 
 endif
 
