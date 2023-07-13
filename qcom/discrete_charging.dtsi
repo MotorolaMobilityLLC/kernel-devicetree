@@ -83,10 +83,7 @@
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
 		df-serialnum = "SB18D38323";
-		#include "CW_ng50-ATL-5000mah-rhode.dtsi"
-		#include "CW_ng50-SWD-5000mah-rhode.dtsi"
-		#include "CW_ng50-BA-ATL-5000mah-rhode.dtsi"
-		#include "CW_ng50-IN-ATL-5000mah-rhode.dtsi"
+		#include "CW_pc50-ATL-5000mah-sample.dtsi"
 	};
 
 	sm5602@71 {
@@ -120,6 +117,32 @@
 		#include "SM5602_NE50_ATL_Rhode.dtsi"
 		#include "SM5602_NE50_SWD_Rhode.dtsi"
 	};
+
+	rt9426a: rt9426a@55 {
+
+                compatible = "richtek,rt9426a";
+                reg = <0x55>;
+                status = "okay";
+                interrupts-extended = <&tlmm 96 IRQ_TYPE_LEVEL_LOW>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&rt9426a_alert>;
+                rt,dtsi_version = <01 1012>;
+                rt,para_version = <0x0001>;
+                rt,battery_type = <4352>;
+                rt,volt_source = <1>;           // 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
+                rt,temp_source = <1>;           // 0:AP 1:FG_TEMP 2:FG_INTT; 3:FG_AT
+                rt,curr_source = <1>;           // 0:AP 1:FG_CURR 2:FG_AI
+                rt,offset_interpolation_order = <2 2>;
+                rt,soc_offset_size = <2 1>;
+                rt,soc_offset_data = <0 250 0 1000 250 0>;
+                rt,rs_ic_setting = <1000>;
+                rt,rs_schematic = <1000>;
+
+                rt,smooth_soc_en = <0>;
+
+                df-serialnum = "SB18D33989";
+                #include "RT_md50-amperex-5000mah.dtsi"
+        };
 };
 
 &qupv3_se1_i2c {
@@ -255,6 +278,19 @@
 			};
 		};
 	};
+
+	rt9426a_alert: rt9426a_alert {
+                mux {
+                        pins = "gpio96";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio96";
+                        drive-strength = <2>;
+                        bias-pull-up;
+                };
+        };
 };
 /*
 &tlmm {
