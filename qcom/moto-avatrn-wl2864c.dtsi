@@ -2,7 +2,7 @@
  * Each QUP device that's a parent to PMIC must be listed as a critical device
  * to GCC.
  */
-
+/*
 &pm6150l_gpios{
  	cam_pmic_en_default: cam_pmic_en_default {
  		pins = "gpio11";
@@ -11,9 +11,9 @@
 		output-low;
 		bias-pull-down;
 		power-source = <0>;
-		qcom,drive-strength = <2>;	/* Medium */
+		qcom,drive-strength = <2>;
  	};
-};
+};*/
 
 /*
  * Each QUP device that's a parent to PMIC must be listed as a critical device
@@ -29,9 +29,9 @@
 		compatible = "semi,wl2864c";
 		reg = <0x29>;
 
-		semi,cs-gpios = <&pm6150l_gpios 11 0>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&cam_pmic_en_default>;
+//		semi,cs-gpios = <&pm6150l_gpios 11 0>;
+//		pinctrl-names = "default";
+//		pinctrl-0 = <&cam_pmic_en_default>;
 
 		vin1-supply = <&S8B>;
 		vin2-supply = <&BOB>;
