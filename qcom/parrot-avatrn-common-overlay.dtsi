@@ -41,4 +41,7 @@
     temperature = <95>;
 };
 
+ &usb0 {
+       qcom,force-adb-enable;
+ };
 
