@@ -119,6 +119,13 @@
         };
 };
 
+
+&qupv3_se2_i2c_sleep {
+        config {
+                input-enable;
+        };
+};
+
 &pm6125_gpios {
 	pa_therm2 {
 		pa_therm2_default: pa_therm2_default {
