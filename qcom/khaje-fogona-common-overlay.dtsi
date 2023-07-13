@@ -37,6 +37,28 @@
 	};
 };
 
+&pm6125_gpios {
+	vib_ldo_en {
+		vib_ldo_en_default:vib_ldo_en_default {
+			pins = "gpio9";
+			function = "normal";
+			input-disable;
+			power-source = <0>;
+			bias-disable;
+			output-high;
+			qcom,drive-strength = <2>;
+		};
+                vib_ldo_en_suspend:vib_ldo_en_suspend {
+                        pins = "gpio9";
+                        function = "normal";
+                        input-disable;
+                        power-source = <0>;
+                        bias-disable;
+                        output-low;
+                        qcom,drive-strength = <2>;
+                };
+	};
+};
 
 &soc {
     qcom,tz_gpio {
@@ -49,7 +71,7 @@
 
 	ldo_vib {
 		compatible = "moto,vibrator-ldo";
-		moto,vib-ldo-gpio = <&tlmm 25 0x0>;
+		moto,vib-ldo-gpio = <&pm6125_gpios 9 GPIO_ACTIVE_HIGH>;
 		status = "ok";
 	};
 };
