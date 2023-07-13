@@ -1,0 +1,29 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+ng50-ATL-5000mah-rhode {
+	serialnum = "SB18D38323";
+	fcc_design = <5000>;
+	ui_full = <97>;
+	config_profile_info = [
+		5A 00 00 00 00 00 00 00
+		A1 B8 C2 B8 A2 9C E7 D8
+		D0 FF F5 A1 8B 71 5F 54
+		4E 4B 47 B3 A4 DC 4B E1
+		D7 D5 D4 D2 D0 CC CA C8
+		BF C3 C8 AB 92 87 78 6A
+		5F 5A 6C 8B A4 8F 5F 54
+		20 00 AB 10 02 A0 5D 00
+		00 00 64 21 C3 52 00 00
+		00 00 00 00 00 00 00 39
+	];
+};
