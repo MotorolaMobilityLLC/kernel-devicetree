@@ -1,0 +1,87 @@
+&tlmm {
+	fps_rst_active: fps_rst_active {
+                /* active state */
+                mux {
+                        pins = "gpio42";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio42";
+                        drive-strength = <2>; /* 2 MA */
+                        output-low;
+                };
+        };
+
+        fps_rst_suspend: fps_rst_suspend {
+                /* sleep state */
+                mux {
+                        pins = "gpio42";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio42";
+                        drive-strength = <2>; /* 2 MA */
+                };
+        };
+
+        fps_int_active: fps_int_active {
+                /* active state */
+                mux {
+                        pins = "gpio40";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio40";
+                        drive-strength = <2>; /* 2 MA */
+                        bias-disable;
+                        input-enable;
+                };
+        };
+
+        fps_int_suspend: fps_int_suspend {
+                /* sleep state */
+                mux {
+                        pins = "gpio40";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio40";
+                        drive-strength = <2>; /* 2 MA */
+                        bias-disable;
+                        input-enable;
+                };
+        };
+};
+
+&L14B {
+	regulator-max-microvolt = <3300000>;
+	qcom,init-voltage = <3300000>;
+	status = "ok";
+};
+
+&soc {
+	qcom,qbt_handler {
+        status = "disabled";
+	};
+
+	goodix_fingerprint {
+		compatible = "goodix,fingerprint";
+		status = "ok";
+		rgltr-ctrl-support;
+		fp,vdd-supply = <&L14B>;
+		fp,voltage-range = <3300000 3300000>;
+		fp-gpio-reset = <&tlmm 42 0x00>;
+		fp-gpio-irq = <&tlmm 40 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <40 0>;
+		interrupt-controller;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_rst_active &fps_int_active>;
+		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+	};
+};
+

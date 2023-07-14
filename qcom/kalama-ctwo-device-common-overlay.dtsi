@@ -16,6 +16,7 @@
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-ctwo-charger-overlay.dtsi"
 #include "kalama-ctwo-haptics-overlay.dtsi"
+#include "kalama-ctwo-fingerprint-overlay.dtsi"
 #include "kalama-moto-common-st-nfc.dtsi"
 #include "moto-ctwo-wl2868c.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
