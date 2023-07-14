@@ -18,7 +18,7 @@
 //#include "parrot-genevn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
 #include "moto-avatrn-wl2864c.dtsi"
-//#include "parrot-genevn-nfc-overlay.dtsi"
+#include "parrot-avatrn-nfc-overlay.dtsi"
 
 
 &tlmm {
