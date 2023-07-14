@@ -21,7 +21,7 @@
 #include "khaje-moto-common-overlay.dtsi"
 
 #include "sgm7220.dtsi"
-#include "discrete_charging.dtsi"
+#include "discrete_charging_fogona.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
 #include "khaje-fogona-sar-sensor-overlay.dtsi"
