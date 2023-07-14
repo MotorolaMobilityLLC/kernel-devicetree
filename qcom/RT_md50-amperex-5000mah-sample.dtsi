@@ -1,0 +1,45 @@
+/*
+ * Copyright (C) 2021 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+md50-amperex-5000mah {
+        serialnum = "SB18D33989";
+	/* add for aging cv */
+	rt,fcc_design = <5000>;
+	rt,fcc = <5000>;
+	rt,fg_fc_vth = <0xAc>;
+	rt,fg_extreg_table = [80 80 34 6E B6 E2 58 02 D0 98 60 3A 88 80 00 00
+				40 34 20 00 FB 3E 00 20 7F 0A 1D 32 12 07 28 3C
+				00 83 00 02 00 02 00 40 00 40 88 13 88 13 04 24
+				64 00 5F 0B 64 00 5F 0B FF 00 00 14 00 00 50 B7
+				15 0E 48 44 AC 43 05 41 19 05 B5 12 23 32 10 00
+				13 88 24 82 77 AD 04 73 12 A3 52 68 57 64 32 0C
+				24 14 04 04 04 04 01 01 00 00 02 02 02 00 00 FE
+				FC F8 F8 F8 F8 F8 F0 E9 F8 F8 F8 DF DF B9 94 00
+				76 02 C0 48 0A 09 00 00 00 00 00 00 00 00 37 73
+				2D 19 05 FB 00 00 B9 36 96 33 0F 07 0F 05 0B A9
+				32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
+				32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
+				32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88
+				32 32 88 88 32 32 88 88 32 32 88 88 32 32 88 88 ];
+	rt,fg_ocv_table0 = <0x0013 0x4A40 0x5000 0x57C4 0x5B5D 0x5C13 0x5CFC 0x5E4B
+				0x602D 0x614E 0x6285 0x63A5 0x64B3 0x67AE 0x6A13 0x6B87
+				0x6CB1 0x6D86 0x6ECD 0x706D 0x1700 0x07C4 0x02C4 0x00BF
+				0x003C 0x0046 0x003C 0x0044 0x0073 0x009C 0x009A 0x0097
+				0x0096 0x0098 0x008E 0x005F 0x005F 0x00A6 0x0013 0xFF80
+				0x0000 0x0200 0x049A 0x0680 0x0E4D 0x17E6 0x281A 0x309A
+				0x3600 0x39B3 0x3D33 0x474D 0x4F80 0x5466 0x589A 0x5D1A
+				0x6400 0x6900 0x000B 0x0021 0x005D 0x0157 0x0445 0x03AD
+				0x044C 0x03C4 0x0239 0x01A5 0x01A9 0x01B2 0x01B6 0x01AF
+				0x01CF 0x02B4 0x02B4 0x018A 0xC97B 0x0000 0x0000 0x0000>;
+
+};
+
