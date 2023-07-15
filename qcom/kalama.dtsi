@@ -1935,8 +1935,7 @@
 		phy-names = "ufsphy";
 		#reset-cells = <1>;
 
-		qcom,prime-mask = <0x80>;
-		qcom,silver-mask = <0x0f>;
+		qcom,dynamic-irq-affinity;
 		lanes-per-direction = <2>;
 		dev-ref-clk-freq = <0>; /* 19.2 MHz */
 		clock-names =
@@ -2047,13 +2046,11 @@
 
 		status = "disabled";
 		qos0 {
-			mask = <0xf0>;
 			vote = <44>;
 			perf;
 		};
 
 		qos1 {
-			mask = <0x0f>;
 			vote = <44>;
 		};
 	};
