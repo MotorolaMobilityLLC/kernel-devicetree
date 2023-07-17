@@ -3,14 +3,7 @@ The file is original from qcom/parrot-moto-common-overlay-base.dtsi
 */
 
 #include "parrot-qrd.dtsi"
-
-&pm6150a_amoled {
-       /delete-node/ oledb@e000;
-       /delete-node/ ab@de00;
-       /delete-node/ ibb@dc00;
-};
-
-#include "pm8350b.dtsi"
+#include "parrot-qrd-pm8350b.dtsi"
 
 &usb0 {
 	qcom,disable-host-ssphy-powerdown;
