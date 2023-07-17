@@ -4,6 +4,11 @@
 	vdd18-supply = <&L7B>;
 	vdd3-supply = <&L17B>;
 	status = "ok";
+
+	qcom,param-override-seq =
+		<0xf 0x51
+		 0x0 0x54
+		 0x5 0x57>;
 };
 
 &eusb2_phy0 {
