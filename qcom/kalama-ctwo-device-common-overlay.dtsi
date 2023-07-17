@@ -20,6 +20,7 @@
 #include "moto-ctwo-wl2868c.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "kalama-ctwo-touchscreen-overlay.dtsi"
+#include "kalama-ctwo-evb-sensors-overlay.dtsi"
 
 &soc {
 	mmi_relay {
