@@ -111,9 +111,9 @@ dtbo-$(CONFIG_FOGOR_DTB) += \
 blair-fogor-evb-overlay.dtbo-base := blair-moto-fogor-base.dtb
 
 dtbo-$(CONFIG_FOGOS_DTB) += \
-        blair-fogos-evb-overlay.dtbo
+        blair-fogos-evt-overlay.dtbo
 
-blair-fogos-evb-overlay.dtbo-base := blair-moto-fogos-base.dtb
+blair-fogos-evt-overlay.dtbo-base := blair-moto-fogos-base.dtb
 
 dtbo-$(CONFIG_FOGO_DTB) += \
         blair-fogo-evb-overlay.dtbo
