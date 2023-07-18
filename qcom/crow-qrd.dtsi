@@ -44,6 +44,27 @@
 	qcom,thermal-mitigation = <3000000 1500000 1000000 500000>;
 };
 
+&pmic_glink_debug {
+	i2c@109 {
+		reg = <0x109>; /* I2C instance 9 in ADSP */
+		#address-cells = <1>;
+		#size-cells = <0>;
+		qcom,bus-type = "i2c";
+
+		qcom,smb1502@68 {
+			compatible = "qcom,i2c-pmic";
+			reg = <0x68>;
+			qcom,can-sleep;
+		};
+
+		qcom,smb1502@69 {
+			compatible = "qcom,i2c-pmic";
+			reg = <0x69>;
+			qcom,can-sleep;
+		};
+	};
+};
+
 &pmic_glink_adc {
 	status = "ok";
 
