@@ -816,6 +816,7 @@
 #include "pms405.dtsi"
 #include "qcs405-thermal.dtsi"
 #include "qcs405-usb.dtsi"
+#include "qcs405-coresight.dtsi"
 
 &blsp1_uart2_console {
 	status = "ok";
