@@ -35,6 +35,20 @@
 		mmi,mitigate-mode-cfg = <3>;
 		mmi,default-mitigate-mode-cfg = <1>;
 	};
+
+	gpio_keys {
+		pinctrl-0 = <&key_vol_up_default &google_key_default>;
+
+		google_key {
+			label = "google_key";
+			gpios = <&tlmm 41 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
 };
 
 &tlmm {
@@ -61,6 +75,19 @@
 			pins = "gpio22";
 			drive-strength = <2>;
 			output-low;
+		};
+	};
+
+	google_key_default: google_key_default {
+		mux {
+			pins = "gpio41";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio41";
+			drive-strength = <2>;
+			bias-pull-up;
 		};
 	};
 };
