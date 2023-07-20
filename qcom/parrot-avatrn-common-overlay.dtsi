@@ -20,6 +20,9 @@
 #include "moto-avatrn-wl2864c.dtsi"
 #include "parrot-avatrn-nfc-overlay.dtsi"
 
+&display_panel_avdd {
+         status = "disabled";
+};
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
