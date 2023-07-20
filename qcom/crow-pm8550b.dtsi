@@ -65,9 +65,9 @@
 		qcom,pre-scaling = <1 1>;
 	};
 
-	pm8550b_sys_therm_7 {
+	pm8550b_sys_therm_8 {
 		reg = <PM8550B_ADC5_GEN3_AMUX_THM4_USB_THERM_100K_PU>;
-		label = "pm8550b_sys_therm_7";
+		label = "pm8550b_sys_therm_8";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
@@ -105,7 +105,7 @@
 		};
 	};
 
-	sys-therm-7 {
+	sys-therm-8 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
 		thermal-sensors = <&pmk8550_vadc PM8550B_ADC5_GEN3_AMUX_THM4_USB_THERM_100K_PU>;
