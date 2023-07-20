@@ -69,6 +69,10 @@
 	regulator-always-on;
 };
 
+&L1D {
+	qcom,init-voltage = <1260000>;
+};
+
 &tlmm {
         laser_xsdn_active: laser_xsdn_active {
 		mux {
@@ -178,26 +182,6 @@
 			0x16 0x74
 			/* override x3 */
 			0x03 0x78>;
-};
-
-&apps_rsc {
-	rpmh-regulator-ldod1 {
-		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "ldod1";
-		qcom,regulator-type = "pmic5-ldo";
-		qcom,supported-modes =
-			<RPMH_REGULATOR_MODE_LPM
-			 RPMH_REGULATOR_MODE_HPM>;
-		qcom,mode-threshold-currents = <0 30000>;
-		L1D: pm8350b_l1: regulator-pm8350b-l1 {
-			regulator-name = "pm8350b_l1";
-			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <1200000>;
-			regulator-max-microvolt = <1296000>;
-			qcom,init-voltage = <1260000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
-		};
-	};
 };
 
 &qupv3_se10_i2c {
