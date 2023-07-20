@@ -299,7 +299,76 @@
 	};
 };
 
+&pm6125_vadc {
+	pinctrl-0 = <
+			&pa_therm2_default
+			&msm_therm_default
+			&cam_flash_therm_default
+			&spk_therm_default>;
+
+	/delete-node/ rfc_cam_therm;
+	/delete-node/ rear_cam_flash_therm;
+
+	cam_flash_therm {
+		reg = <ADC5_GPIO2_100K_PU>;
+		label = "cam_flash_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+	};
+
+	spk_therm {
+		reg = <ADC5_GPIO3_100K_PU>;
+		label = "spk_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+	};
+};
+
+&pm6125_gpios {
+	/delete-node/ rfc_cam_therm;
+	/delete-node/ rear_cam_flash_therm;
+
+	cam_flash_therm {
+		cam_flash_therm_default: cam_flash_therm_default {
+			pins = "gpio4";
+			bias-high-impedance;
+		};
+	};
+
+	spk_therm {
+		spk_therm_default: spk_therm_default {
+			pins = "gpio6";
+			bias-high-impedance;
+		};
+	};
+};
+
+&pm6125_adc_tm {
+	/delete-node/ rear_cam_flash_therm;
+
+	spk_therm {
+		reg = <ADC5_GPIO3_100K_PU>;
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+	};
+};
+
+&pm6125_adc_tm_iio {
+	/delete-node/ rfc_cam_therm;
+
+	cam_flash_therm {
+		reg = <ADC5_GPIO2_100K_PU>;
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+	};
+};
+
 &thermal_zones {
+	/delete-node/ sdm-skin-therm-usr;
+	/delete-node/ rear-cam-therm-usr;
+	/delete-node/ camera-therm-usr;
 	sdm-skin-therm-usr {
 		status = "disabled";
 	};
