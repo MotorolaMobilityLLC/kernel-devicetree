@@ -13,7 +13,7 @@
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-wcn6750.dtsi"
 #include "parrot-avatrn-charger-overlay.dtsi"
-//#include "parrot-genevn-thermal-overlay.dtsi"
+#include "parrot-avatrn-thermal-overlay.dtsi"
 #include "parrot-avatrn-touchscreen-overlay.dtsi"
 //#include "parrot-genevn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
@@ -38,10 +38,6 @@
 			0xc3 0x70
 			0xc7 0x74
 			0x03 0x78>;
-};
-
-&socd_trip {
-    temperature = <95>;
 };
 
  &usb0 {
