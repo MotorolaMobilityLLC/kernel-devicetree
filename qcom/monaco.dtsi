@@ -1875,6 +1875,7 @@
 		qcom,scaling-lower-bus-speed-mode = "DDR52";
 
 		cap-mmc-hw-reset;
+		mmc-rst-n-disable;
 
 		/* Add dt entry for gcc hw reset */
 		resets = <&gcc GCC_SDCC1_BCR>;
@@ -2110,17 +2111,6 @@
 			qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 			qcom,sampling-path = <&ddr_dcvs_sp>;
 			qcom,miss-ev = <0x17>;
-
-			silver {
-				compatible = "qcom,memlat-mon";
-				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3>;
-				qcom,sampling-enabled;
-				qcom,cpufreq-memfreq-tbl =
-					< 614400 681000 >,
-					< 864000 681000 >,
-					< 1363200 1353000 >,
-					< 1708800 1804000 >;
-			};
 
 			silver-compute {
 				compatible = "qcom,memlat-mon";

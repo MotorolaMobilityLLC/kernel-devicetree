@@ -51,7 +51,7 @@
 		vreg-cx-supply = <&VDD_CX_LEVEL>;
 		vreg-mx-supply = <&VDD_MXC_LEVEL>;
 
-		qcom,vreg-1p2-voltage-level = <1200000 1200000 25800>;
+		qcom,vreg-1p2-voltage-level = <1200000 1200000 33300>;
 		qcom,vreg-0p9-voltage-level = <880000 880000 186000>;
 		qcom,vreg-cx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
 						RPMH_REGULATOR_LEVEL_NOM 0>;
@@ -372,7 +372,7 @@
 		vreg-mx-supply = <&VDD_MXC_LEVEL>;
 
 		qcom,vreg-1p2-voltage-level = <1200000 1200000 33300>;
-		qcom,vreg-0p9-voltage-level = <880000 880000 439000>;
+		qcom,vreg-0p9-voltage-level = <880000 880000 186000>;
 		qcom,vreg-cx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
 						RPMH_REGULATOR_LEVEL_NOM 0>;
 		qcom,vreg-mx-voltage-level = <RPMH_REGULATOR_LEVEL_MAX
