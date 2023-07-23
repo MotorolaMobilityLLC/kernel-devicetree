@@ -916,6 +916,7 @@
 				0 0 0 2 &intc GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH
 				0 0 0 3 &intc GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH
 				0 0 0 4 &intc GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH>;
+		iommu-map = <0x0 &virt_smmuv3 0x60000 0x10000>;
 
 		msi-parent = <&pcie4_msi_snps>;
 		qcom,target-link-speed = <0x3>;
