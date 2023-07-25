@@ -331,9 +331,24 @@
 				dma-coherent;
 				dma_base = <0x0 0x248000>;
 				memory {
-					qcom,label = <0x1e>;		/* Reserved devices */
+					qcom,label = <0x1e>;			/* SCMI device */
 					#address-cells = <0x2>;
 					base = <0x0 0xd5348000>;
+				};
+			};
+
+			virtio-mmio@14 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				dma-coherent;
+				dma_base = <0x0 0x250000>;
+				memory {
+					qcom,label = <0x1f>;		/* Reserved devices */
+					#address-cells = <0x2>;
+					base = <0x0 0xd5350000>;
 				};
 			};
 
