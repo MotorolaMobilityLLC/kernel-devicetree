@@ -1849,6 +1849,9 @@
 		qcom,iommu-dma = "fastmap";
 		dma-coherent;
 
+		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
+		qcom,iommu-geometry = <0x40000000 0x40000000>;
+
 		status = "disabled";
 
 		qos0 {
