@@ -113,6 +113,7 @@
 &redriver {
 	status = "ok";
 	redriver,enable-gpio = <&tlmm 54 0x00>;
+	redriver,config-dp-eq;
 	config-seq =
 		/* <reg_offset, value, delay_us> */
 		<0x9d 0x80 10000
