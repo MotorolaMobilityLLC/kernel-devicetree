@@ -175,8 +175,8 @@
 		spi-cpol;
 		chipone,rst-gpio = <&tlmm 21 0x00>;
 		chipone,irq-gpio = <&tlmm 22 0x2001>;
-		chipone,x-res = <720>;
-		chipone,y-res = <1600>;
+		chipone,x-res = <2880>;
+		chipone,y-res = <6400>;
 		chipone,def-build-id = <0x0101>;
 		chipone,def-config-id = <0x0001>;
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
@@ -184,6 +184,13 @@
 		pinctrl-4 = <&ts_int_suspend_high>;
 		panel = <&dsi_icnl9916c_hd_plus_120_video>;
 		mmi,status = "/chosen","mmi,panel_name","contains","icnl9916c";
+		chipone,supported_gesture_type = <0x06>;
+		chipone,rst-pull-flag;
+		chipone,touch-charger-detect-enable;
+		chipone,touch-charger-detect-type = "notify";
+		chipone,touch-charger-detect-psy-name = "charger";
+		chipone,touch-charger-detect-psp = "POWER_SUPPLY_PROP_ONLINE";
+		chipone,touch-charger-detect-psp-poll-interval = <1000>;
 		status = "ok";
 	};
 	ilitek@1 {
@@ -200,6 +207,8 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend_high>;
 		ilitek,report_gesture_key;
+		ilitek,supported_gesture_type = <0x06>;
+		ilitek,rst-pull-flag;
 		status = "ok";
 	};
 };
