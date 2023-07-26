@@ -1,0 +1,34 @@
+&qupv3_se1_i2c {
+	aw35616: aw35616@60 {
+                status = "okay";
+
+                compatible = "awinic,usb_type_c_aw35616";
+
+                reg = <0x60>;
+                aw35616,irq-gpio = <&tlmm 84 0x0>;
+                aw35616-tcpc,name = "type_c_port0";
+                aw35616-tcpc,role_def = <5>;
+                aw35616,rp_level = <0>;
+                aw35616-tcpc,notifier_supply_num = <3>;
+                aw35616_acc_support = <0>;
+                aw35616_toggle_cycle = <0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&aw35616_int_n>;
+        };
+};
+
+&tlmm {
+	aw35616_int_n: aw35616_int_n {
+		mux {
+			pins = "gpio84";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio84";
+			drive-strength = <2>;
+			bias-pull-up;
+			input-enable;
+		};
+	};
+};
