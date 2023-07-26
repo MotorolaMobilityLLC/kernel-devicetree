@@ -21,6 +21,7 @@
 #include "khaje-moto-common-overlay.dtsi"
 
 #include "sgm7220.dtsi"
+#include "aw35616.dtsi"
 #include "discrete_charging_fogona.dtsi"
 #include "discrete-rt-pd-manger.dtsi"
 
