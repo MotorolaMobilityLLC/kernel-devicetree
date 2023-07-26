@@ -629,6 +629,7 @@
 		regulator-name = "ldoa5";
 		regulator-min-microvolt = <870000>;
 		regulator-max-microvolt = <950000>;
+		regulator-allow-set-load;
 	};
 
 	L7A: pm8775_a_l7: regulator-pm8775_a-l7 {
