@@ -15,7 +15,7 @@
 #include "parrot-avatrn-charger-overlay.dtsi"
 #include "parrot-avatrn-thermal-overlay.dtsi"
 #include "parrot-avatrn-touchscreen-overlay.dtsi"
-//#include "parrot-genevn-sensor-overlay.dtsi"
+#include "parrot-avatrn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
 #include "moto-avatrn-wl2864c.dtsi"
 #include "parrot-avatrn-nfc-overlay.dtsi"
