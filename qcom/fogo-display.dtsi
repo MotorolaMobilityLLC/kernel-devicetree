@@ -1,5 +1,5 @@
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
-#include "dsi-panel-mot-boe-ili9883c-656-720x1600-video.dtsi"
+#include "dsi-panel-mot-boe-ili9883c-656-720x1612-video.dtsi"
 #include "dsi-panel-mot-tongxingda-ili9883c-652-720x1600-video.dtsi"
 
 &display_panel_avdd {
