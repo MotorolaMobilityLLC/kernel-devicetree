@@ -19,6 +19,7 @@
 #include "parrot-genevn-fps-overlay.dtsi"
 #include "moto-avatrn-wl2864c.dtsi"
 #include "parrot-avatrn-nfc-overlay.dtsi"
+#include "parrot-avatrn-haptics-overlay.dtsi"
 
 &display_panel_avdd {
          status = "disabled";
