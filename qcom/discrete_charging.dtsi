@@ -212,7 +212,7 @@
 		pinctrl-0 = <&sgm4154x_gpio_pins &gpio6_adc_default>;
 		#io-channel-cells = <1>;
 	};*/
-
+/*
 	bq25890: bq25890@6A {
 		status = "okay";
 		compatible = "ti,bq2589x-1";
@@ -232,7 +232,7 @@
 		ti,bq2589x,enable-ico;
 		ti,bq2589x,use-absolute-vindpm;
 	};
-
+*/
 };
 
 &tlmm{
@@ -372,23 +372,23 @@
 		};
 	};
 };*/
-
+/*
 &tlmm {
 	bq2589x_irq: bq2589x_irq {
 		mux {
-			pins = "gpio28";
+			pins = "gpio96";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio28";
+			pins = "gpio96";
 			drive-strength = <2>;
 			bias-pull-up;
 			input-enable;
 		};
 	};
 };
-
+*/
 
 &soc {
 	mmi_charger: mmi,charger {
