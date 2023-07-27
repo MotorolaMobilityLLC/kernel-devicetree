@@ -1,5 +1,5 @@
 &qupv3_se1_i2c {
-	aw35616: aw35616@60 {
+	aw35616:usb_type_c_aw35616@60 {
                 status = "okay";
 
                 compatible = "awinic,usb_type_c_aw35616";
