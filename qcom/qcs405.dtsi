@@ -1225,6 +1225,17 @@
 		#size-cells = <0>;
 		status = "disabled";
 	};
+
+	msm_cpufreq: qcom,msm-cpufreq {
+		compatible = "qcom,msm-cpufreq";
+		clock-names = "cpu0_clk";
+		clocks = <&apsscc APCS_MUX_CLK>;
+
+		qcom,cpufreq-table =
+			< 1094400 >,
+			< 1248000 >,
+			< 1401600 >;
+	};
 };
 
 &firmware {
