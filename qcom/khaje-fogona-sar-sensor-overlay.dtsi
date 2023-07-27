@@ -25,10 +25,48 @@
 				bias-pull-up;
 			};
 	};
+
+	capsense_sar_gpio_pins: capsense_sar_gpio_pins {
+			mux {
+				pins = "gpio106";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio106";
+				drive-strength = <2>;
+				bias-pull-up;
+				input-enable;
+			};
+	};
+
 };
 
 &qupv3_se2_i2c {
 	status = "ok";
+	aw9610x_sar@12 {
+		compatible = "awinic,aw9610x_sar_0";
+		reg = <0x12>;
+		sar-gpio-vcc-enable;
+		sar-gpio_3v0_en = <&tlmm 67 0x00>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&capsense_sar_gpio_pins>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <106 0x02>;
+		irq-gpio = <&tlmm 106 0x02>;
+		chip_name = "AW96105";
+		sar-num = <0>;
+		aw9610x,channel_number = <0x5>;
+		ch0_name = "Ch0capsense_bottom";
+		ch1_name = "Ch1capsense_reference";
+		ch2_name = "Ch2capsense_reference";
+		ch3_name = "Ch3capsense_top_left";
+		ch4_name = "Ch4capsense_top_right";
+		ref_channel = <0x6>;
+		hardware_version = <1>;
+		aw9610x,using-firmware;
+		aw9610x,firmware_name = "aw9610x_0";
+	};
 
 	sx933x@28 { /* SAR sensor */
 		compatible = "Semtech,sx933x";
