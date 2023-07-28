@@ -6,6 +6,19 @@
 	model = "Qualcomm Technologies, Inc. Lemans ADP";
 	compatible =  "qcom,lemans", "qcom,adp";
 	qcom,board-id = <25 0>;
+
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		key_sleep {
+			label = "sleep";
+			linux,code = <KEY_SLEEP>;
+			gpios = <&tlmm 6 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			debounce-interval = <0>;
+			wakeup-source;
+		};
+	};
 };
 
 &thermal_zones {
