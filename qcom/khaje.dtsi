@@ -2693,9 +2693,7 @@
 		phys = <&ufsphy_mem>;
 		phy-names = "ufsphy";
 
-		qcom,prime-mask = <0x80>;
-		qcom,silver-mask = <0x0f>;
-
+		qcom,dynamic-irq-affinity;
 		limit-rx-hs-gear = <3>;
 		limit-tx-hs-gear = <3>;
 		lanes-per-direction = <2>;
@@ -2801,12 +2799,10 @@
 		qcom,iommu-geometry = <0x40000000 0x10000000>;
 
 		qos0 {
-			mask = <0xf0>;
 			vote = <26>;
 			perf;
 		};
 		qos1 {
-			mask = <0x0f>;
 			vote = <26>;
 		};
 
