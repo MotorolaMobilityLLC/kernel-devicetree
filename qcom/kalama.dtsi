@@ -1872,12 +1872,11 @@
 		operating-points-v2 = <&sdhc2_opp_table>;
 
 		qos0 {
-			mask = <0xf0>;
+			perf;
 			vote = <44>;
 		};
 
 		qos1 {
-			mask = <0x0f>;
 			vote = <44>;
 		};
 	};
