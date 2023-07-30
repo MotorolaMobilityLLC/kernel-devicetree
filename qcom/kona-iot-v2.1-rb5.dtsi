@@ -45,6 +45,16 @@
 		status = "ok";
 };
 
+&qupv3_se13_4uart {
+        status = "ok";
+        qrc:qrc@100 {
+                compatible = "qcom,qrc-uart";
+                status = "ok";
+                qcom,qrc-reset-gpio = <&tlmm 149 0>;
+                qcom,qrc-boot-gpio = <&tlmm 109 0>;
+        };
+};
+
 &ufsphy_mem {
 		compatible = "qcom,ufs-phy-qmp-v4-kona";
 		vdda-phy-supply = <&pm8150_l5>;
