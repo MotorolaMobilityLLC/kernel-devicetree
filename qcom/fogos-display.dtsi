@@ -102,7 +102,7 @@
 			reg = <0>;
 			qcom,supply-name = "vddio";
 			qcom,supply-min-voltage = <1800000>;
-			qcom,supply-max-voltage = <1904000>;
+			qcom,supply-max-voltage = <1800000>;
 			qcom,supply-enable-load = <32000>;
 			qcom,supply-disable-load = <80>;
 			qcom,supply-pre-off-sleep = <2>;
@@ -125,8 +125,10 @@
 			qcom,supply-max-voltage = <6000000>;
 			qcom,supply-enable-load = <100000>;
 			qcom,supply-disable-load = <100>;
-			qcom,supply-pre-off-sleep = <3>;
+			qcom,supply-pre-on-sleep = <3>;
+			qcom,supply-pre-off-sleep = <30>;
 			qcom,supply-post-on-sleep = <3>;
+			qcom,supply-post-off-sleep = <3>;
 		};
 
 	};
@@ -215,10 +217,10 @@
 	qcom,panel-supply-entries = <&dsi_panel_pwr_supply_fogos>;
 
 	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_dcs";
-	qcom,mdss-dsi-bl-min-level = <13>;
-	qcom,mdss-dsi-bl-max-level = <1650>;
+	qcom,mdss-dsi-bl-min-level = <11>;
+	qcom,mdss-dsi-bl-max-level = <1430>;
 	qcom,mdss-dsi-bl-default-level = <745>;
-	qcom,mdss-brightness-max-level = <1650>;
+	qcom,mdss-brightness-max-level = <1430>;
 	qcom,bklt-dcs-2bytes-enabled;
 
 	qcom,mdss-dsi-no-panel-on-read-support;
@@ -239,9 +241,9 @@
 	qcom,suspend-ulps-enabled;
 	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
-	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
+	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 06 F9];
 	qcom,mdss-dsi-hbm-on-command-state =  "dsi_lp_mode";
-	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 06 66];
+	qcom,mdss-dsi-hbm-off-command = [39 01 00 00 00 00 03 51 05 96];
 	qcom,mdss-dsi-hbm-off-command-state =  "dsi_lp_mode";
 
 	qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
