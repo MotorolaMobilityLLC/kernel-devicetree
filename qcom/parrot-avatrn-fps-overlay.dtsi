@@ -1,0 +1,74 @@
+&tlmm {
+	fps_rst_active: fps_rst_active {
+                /* active state */
+                mux {
+                        pins = "gpio101";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio101";
+                        drive-strength = <2>; /* 2 MA */
+                        output-low;
+                };
+        };
+
+        fps_rst_suspend: fps_rst_suspend {
+                /* sleep state */
+                mux {
+                        pins = "gpio101";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio101";
+                        drive-strength = <2>; /* 2 MA */
+                };
+        };
+
+        fps_int_active: fps_int_active {
+                /* active state */
+                mux {
+                        pins = "gpio111";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio111";
+                        drive-strength = <2>; /* 2 MA */
+                        bias-disable;
+                        input-enable;
+                };
+        };
+
+        fps_int_suspend: fps_int_suspend {
+                /* sleep state */
+                mux {
+                        pins = "gpio111";
+                        function = "gpio";
+                };
+
+                config {
+                        pins = "gpio111";
+                        drive-strength = <2>; /* 2 MA */
+                        bias-disable;
+                        input-enable;
+                };
+        };
+};
+
+&soc {
+	goodix_fingerprint {
+		compatible = "goodix,fingerprint";
+		status = "ok";
+		fp-gpio-reset = <&tlmm 101 0x00>;
+		fp-gpio-irq = <&tlmm 111 0x00>;
+		fp-gpio-ven = <&tlmm 132 0x00>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <111 0>;
+		interrupt-controller;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_rst_active &fps_int_active>;
+		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+	};
+};
