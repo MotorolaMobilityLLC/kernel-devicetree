@@ -161,31 +161,25 @@
 
 &qupv3_se0_spi {
 	status = "ok";
-
 	pinctrl-0 = <&qupv3_se0_spi_active &qupv3_se0_spi_cs_active>;
 	pinctrl-1 = <&qupv3_se0_spi_sleep &qupv3_se0_spi_cs_sleep>;
 
-	chipone_tddi@0 {
-		compatible = "chipone-tddi";
+	novatek@0 {
+		compatible = "novatek,NVT-ts-spi";
 		reg = <0x0>;
-		spi-max-frequency = <8000000>;
+
+		spi-max-frequency = <9600000>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <22 0x2001>;
-		spi-cpha;
-		spi-cpol;
-		chipone,rst-gpio = <&tlmm 21 0x00>;
-		chipone,irq-gpio = <&tlmm 22 0x2001>;
-		chipone,x-res = <720>;
-		chipone,y-res = <1600>;
-		chipone,def-build-id = <0x0101>;
-		chipone,def-config-id = <0x0001>;
-		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
-		pinctrl-3 = <&ts_active>;
-		pinctrl-4 = <&ts_int_suspend_high>;
-		panel = <&dsi_boe_ili9883c_656_hd_plus_120_video>;
-		mmi,status = "/chosen","mmi,panel_name","contains","icnl9916c";
+		novatek,reset-gpio = <&tlmm 21 0x00>;
+		novatek,irq-gpio = <&tlmm 22 0x2001>;
+		novatek,def-max-resolution = <720 1612>;
+		panel = <&dsi_txd_nt36528_656_hd_plus_120_video>;
+		novatek,swrst-n8-addr = <0x03F0FE>;
+		novatek,spi-rd-fast-addr = <0x03F310>;
 		status = "ok";
 	};
+
 	ilitek@1 {
 		compatible = "tchip,ilitek";
 		reg = <0x1>;
