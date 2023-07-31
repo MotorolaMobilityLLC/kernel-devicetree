@@ -55,7 +55,6 @@ KALAMA_BOARDS += \
 		 kalama-cdp-nfc-overlay.dtbo \
 		 kalama-atp-overlay.dtbo \
 		 kalama-rcm-overlay.dtbo \
-		 kalamap-rcm-overlay.dtbo \
 		 kalama-qrd-overlay.dtbo \
 		 kalama-sg-hhg-overlay.dtbo \
 		 kalamap-hdk-overlay.dtbo \
