@@ -192,7 +192,7 @@
 		spi-max-frequency = <8000000>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <22 0x2001>;
-		panel = <&dsi_ili9883c_hd_plus_120_video>;
+		panel = <&dsi_boe_ili9883c_656_hd_plus_120_video>;
 		mmi,status = "/chosen","mmi,panel_name","contains","ili9883c";
 		touch,reset-gpio = <&tlmm 21 0x00>;
 		touch,irq-gpio = <&tlmm 22 0x2001>;
