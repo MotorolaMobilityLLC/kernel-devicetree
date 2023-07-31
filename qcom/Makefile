@@ -149,6 +149,7 @@ KONA_BOARDS += \
                  kona-hdk-overlay.dtbo \
                  kona-rb5-HDMI-overlay.dtbo \
                  kona-iot-v2.1-vc-overlay.dtbo \
+		 kona-7230-iot-rb5-overlay.dtbo \
 		 kona-rb5-overlay.dtbo
 
 
