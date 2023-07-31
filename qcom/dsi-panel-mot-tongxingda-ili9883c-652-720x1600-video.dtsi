@@ -1,5 +1,5 @@
 &mdss_mdp {
-	dsi_ili9883c_hd_plus_120_video: qcom,mdss_dsi_txd_ili9883c_6528_fh_plus_120_video {
+	dsi_ili9883c_hd_plus_120_video: qcom,mdss_dsi_txd_ili9883c_6528_hd_plus_120_video {
 		qcom,mdss-dsi-panel-name =
 			"mipi_mot_vid_txd_ili9883c_hdp_652_120";
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
