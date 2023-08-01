@@ -60,6 +60,38 @@
 			enable-method = "psci";
 			cpu-idle-states = <&CPU_PWR_DWN>;
 		};
+
+		CPU4: cpu@10000 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU5: cpu@10100 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10100>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU6: cpu@10200 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10200>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU7: cpu@10300 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10300>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
 	};
 
 	idle-states {
@@ -107,7 +139,7 @@
 		vcpus {
 			config = "/cpus";
 			affinity = "static";
-			affinity-map = <0x4 0x5 0x6 0x7>;
+			affinity-map = <0x7 0x6 0x5 0x4 0x3 0x2 0x1 0x0>;
 			sched-priority = <0>;       /* relative to PVM */
 			sched-timeslice = <5000>;   /* in ms */
 		};
