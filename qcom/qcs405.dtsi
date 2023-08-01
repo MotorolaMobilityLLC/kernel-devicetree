@@ -450,6 +450,25 @@
 		rpm-channel-name = "rpm_requests";
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
 		rpm-channel-type = <15>; /* SMD_APPS_RPM */
+		power-domains = <&CLUSTER_PD>;
+	};
+
+	cluster-device {
+		compatible = "qcom,lpm-cluster-dev";
+		power-domains = <&CLUSTER_PD>;
+	};
+
+	rpm-sleep-stats@290000 {
+		compatible = "qcom,rpm-sleep-stats";
+		reg = <0x290000 0x1000>;
+	};
+
+	qcom,rpm-master-stats@60150 {
+		compatible = "qcom,rpm-master-stats";
+		reg = <0x60150 0x5000>;
+		qcom,masters = "APSS", "MPSS", "ADSP", "CDSP", "TZ";
+		qcom,master-stats-version = <2>;
+		qcom,master-offset = <4096>;
 	};
 
 	mem_dump {
