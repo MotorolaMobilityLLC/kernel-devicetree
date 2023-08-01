@@ -295,13 +295,22 @@
 			arm,psci-suspend-param = <0x41000044>;
 		};
 
-		APSS_OFF: cluster-e3 { /* E3 */
+		APSS_RSC_PC: cluster-e1 { /* E1 */
 			compatible = "domain-idle-state";
-			idle-state-name = "llcc-off";
+			idle-state-name = "rsc-off";
 			entry-latency-us = <3263>;
 			exit-latency-us = <6562>;
 			min-residency-us = <9987>;
 			arm,psci-suspend-param = <0x42000144>;
+		};
+
+		APSS_OFF: cluster-e3 { /* E3 */
+			compatible = "domain-idle-state";
+			idle-state-name = "llcc-off";
+			entry-latency-us = <4294967295>;
+			exit-latency-us = <4294967295>;
+			min-residency-us = <4294967295>;
+			arm,psci-suspend-param = <0x4200C344>;
 		};
 	};
 };
@@ -606,7 +615,7 @@
 
 		CLUSTER_PD2: cluster-pd2 {
 			#power-domain-cells = <0>;
-			domain-idle-states = <&APSS_OFF>;
+			domain-idle-states = <&APSS_RSC_PC &APSS_OFF>;
 		};
 	};
 
