@@ -1148,6 +1148,35 @@
 		/* Outputs to mss */
 		qcom,smem-states = <&modem_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		glink-edge {
+			qcom,remote-pid = <1>;
+			transport = "smem";
+			mboxes = <&apcs_glb 12>;
+			mbox-names = "mpss_smem";
+			interrupts = <GIC_SPI 68 IRQ_TYPE_EDGE_RISING>;
+
+			label = "modem";
+			qcom,glink-label = "mpss";
+
+			qcom,modem_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+			qcom,msm_fastrpc_rpmsg {
+				compatible = "qcom,msm-fastrpc-rpmsg";
+				qcom,glink-channels = "fastrpcglink-apps-dsp";
+				qcom,intents = <0x64 64>;
+			};
+
+			qcom,modem_ds {
+				qcom,glink-channels = "DS";
+				qcom,intents = <0x4000 2>;
+			};
+		};
 	};
 
 	adsp_pas:remoteproc-adsp@ab00000  {
@@ -1183,6 +1212,31 @@
 		/* Outputs to lpass */
 		qcom,smem-states = <&adsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		glink_edge: glink-edge {
+			qcom,remote-pid = <2>;
+			transport = "smem";
+			mboxes = <&apcs_glb 8>;
+			mbox-names = "adsp_smem";
+			interrupts = <GIC_SPI 391 IRQ_TYPE_EDGE_RISING>;
+
+			label = "adsp";
+			qcom,glink-label = "lpass";
+
+			qcom,adsp_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+				qcom,no-wake-svc = <0x190>;
+			};
+
+			qcom,msm_fastrpc_rpmsg {
+				compatible = "qcom,msm-fastrpc-rpmsg";
+				qcom,glink-channels = "fastrpcglink-apps-dsp";
+				qcom,intents = <0x64 64>;
+			};
+		};
 	};
 
 	cdsp_pas: remoteproc-cdsp@b300000 {
@@ -1216,6 +1270,48 @@
 		/* Outputs to turing */
 		qcom,smem-states = <&cdsp_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
+
+		glink-edge {
+			qcom,remote-pid = <5>;
+			transport = "smem";
+			mboxes = <&apcs_glb 28>;
+			mbox-names = "cdsp_smem";
+			interrupts = <GIC_SPI 261 IRQ_TYPE_EDGE_RISING>;
+
+			label = "cdsp";
+			qcom,glink-label = "cdsp";
+
+			qcom,cdsp_qrtr {
+				qcom,glink-channels = "IPCRTR";
+				qcom,intents = <0x800  5
+						0x2000 3
+						0x4400 2>;
+			};
+
+			qcom,msm_fastrpc_rpmsg {
+				compatible = "qcom,msm-fastrpc-rpmsg";
+				qcom,glink-channels = "fastrpcglink-apps-dsp";
+				qcom,intents = <0x64 64>;
+			};
+
+			qcom,msm_cdsprm_rpmsg {
+				compatible = "qcom,msm-cdsprm-rpmsg";
+				qcom,glink-channels = "cdsprmglink-apps-dsp";
+				qcom,intents = <0x20 12>;
+
+				msm_cdsp_rm: qcom,msm_cdsp_rm {
+					compatible = "qcom,msm-cdsp-rm";
+					qcom,qos-latency-us = <44>;
+					qcom,qos-maxhold-ms = <20>;
+					#cooling-cells = <2>;
+				};
+
+				msm_hvx_rm: qcom,msm_hvx_rm {
+					compatible = "qcom,msm-hvx-rm";
+					#cooling-cells = <2>;
+				};
+			};
+		};
 	};
 
 	mini_dump_mode {
