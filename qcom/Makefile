@@ -476,7 +476,14 @@ kalama_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += crow-vm-rumi.dtb \
 	crow-vm-idp-wcd9395-wcd-dmic.dtb \
 	crow-vm-idp.dtb \
 	crow-vm-idp-rcm.dtb \
-	crow-vm-qrd.dtb
+	crow-vm-qrd.dtb \
+	crow-oemvm-atp.dtb \
+	crow-oemvm-idp-wcd9395-aatc.dtb \
+	crow-oemvm-idp-wcd9395-dmic.dtb \
+	crow-oemvm-idp-wcd9395-wcd-dmic.dtb \
+	crow-oemvm-idp.dtb \
+	crow-oemvm-idp-rcm.dtb \
+	crow-oemvm-qrd.dtb
 dtb-y += $(kalama_tuivm-dtb-y)
 endif
 endif
