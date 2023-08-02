@@ -1984,6 +1984,7 @@
 		reset-names = "rst";
 		iommus = <&apps_smmu 0x100 0x0>;
 		qcom,iommu-dma = "bypass";
+		dma-coherent;
 
 		status = "disabled";
 
@@ -2125,6 +2126,7 @@
 		reset-names = "rst";
 		iommus = <&apps_smmu 0x420 0x0>;
 		qcom,iommu-dma = "bypass";
+		dma-coherent;
 
 		secondary-storage;
 
