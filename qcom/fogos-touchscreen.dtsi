@@ -191,6 +191,7 @@
 		chipone,touch-charger-detect-psy-name = "charger";
 		chipone,touch-charger-detect-psp = "POWER_SUPPLY_PROP_ONLINE";
 		chipone,touch-charger-detect-psp-poll-interval = <1000>;
+		chipone,gesture-wait-pm;
 		status = "ok";
 	};
 	ilitek@1 {
