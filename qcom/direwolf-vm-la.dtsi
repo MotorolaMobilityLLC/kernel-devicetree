@@ -61,6 +61,10 @@
 	status = "okay";
 };
 
+&qupv3_se6_4uart {
+	status = "okay";
+};
+
 &ufs2phy_mem {
 	status = "okay";
 };
