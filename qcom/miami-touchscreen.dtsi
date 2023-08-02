@@ -92,6 +92,7 @@
 		goodix,panel-max-p = <4096>;
 		goodix,sample-ctrl;
 		goodix,edge-ctrl;
+		goodix,gesture-wait-pm;
 		panel = <&mot_csot_nt37701_628_1080x2400_dsc_cmd_v0
 						&mot_csot_nt37701_655_1080x2400_dsc_cmd_v1
                                                 &mot_csot_nt37701_628_1080x2400_dsc_cmd_v1>;
