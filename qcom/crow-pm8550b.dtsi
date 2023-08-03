@@ -36,6 +36,11 @@
 	};
 };
 
+&pm8550b_bcl {
+	nvmem-cells = <&sm1510_present>;
+	nvmem-cell-names = "sm1510_present";
+};
+
 &pmk8550_vadc {
 	pinctrl-names = "default";
 	pinctrl-0 = <&sys_therm_2_gpio7_default &sys_therm_6_gpio10_default>;
@@ -137,22 +142,6 @@
 
 
 &thermal_zones {
-	pm8550b-ibat-lvl0 {
-		trips {
-			ibat-lvl0 {
-				temperature = <7000>;
-			};
-		};
-	};
-
-	pm8550b-ibat-lvl1 {
-		trips {
-			ibat-lvl1 {
-				temperature = <9000>;
-			};
-		};
-	};
-
 	socd {
 		cooling-maps {
 			socd_apc1 {
@@ -168,6 +157,34 @@
 			socd_gpu0 {
 				trip = <&socd_trip>;
 				cooling-device = <&msm_gpu 4 4>;
+			};
+		};
+	};
+
+	pm8550b-2s-ibat-lvl0 {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&pm8550b_bcl 8>;
+
+		trips {
+			ibat_2s_lvl0: ibat-2s-lvl0 {
+				temperature = <5000>;
+				hysteresis = <200>;
+				type = "passive";
+			};
+		};
+	};
+
+	pm8550b-2s-ibat-lvl1 {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&pm8550b_bcl 9>;
+
+		trips {
+			ibat_2s_lvl1: ibat-2s-lvl1 {
+				temperature = <7000>;
+				hysteresis = <200>;
+				type = "passive";
 			};
 		};
 	};

@@ -42,6 +42,11 @@
 			#address-cells = <1>;
 			#size-cells = <1>;
 
+			sm1510_present: sm1510_present@5d {
+				reg = <0x5d 0x1>;
+				bits = <5 5>;
+			};
+
 			ocp_log: ocp-log@76 {
 				reg = <0x76 0x6>;
 			};
