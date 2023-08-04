@@ -1,0 +1,31 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+SUNWODA-5000mah-fogona {
+	serialnum = "SB18D99898";
+	fcc_design = <5000>;
+	ui_full = <97>;
+	config_profile_info = [
+		5A 00 00 00 00 00 00 00
+		A9 BA B7 B2 A5 9F E3 C9
+		C0 FF E3 BB 9C 73 61 56
+		4E 4E 4D C3 A1 E3 99 FF
+		FD CA D1 D6 DB D9 D6 D2
+		CC C9 CE CD A7 98 8C 84
+		77 72 80 96 AD 90 80 C5
+		20 00 AB 10 03 A0 56 00
+		00 00 64 23 C3 47 00 00
+		00 00 00 00 00 00 00 30
+	];
+};
+
+

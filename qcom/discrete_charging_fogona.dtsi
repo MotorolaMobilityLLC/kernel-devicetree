@@ -82,8 +82,9 @@
 
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
-		df-serialnum = "SB18D38323";
-		#include "CW_pc50-ATL-5000mah-sample.dtsi"
+		df-serialnum = "SB18D99898";
+		#include "CW_lq290x-sunwoda-5000mah-fogona.dtsi"
+		#include "CW_lq280x-scud-5000mah-fogona.dtsi"
 	};
 
 	sm5602@71 {
@@ -234,7 +235,7 @@
 		ti,bq2589x,vbus-volt-high-level = <8700>;
 		ti,bq2589x,vbus-volt-low-level = <4400>;
 		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
-		ti,bq2589x,charge-voltage = <4450>;
+		ti,bq2589x,charge-voltage = <4500>;
 		ti,bq2589x,charge-current = <3000>;
 		ti,bq2589x,term-current = <256>;
 		ti,bq2589x,enable-auto-dpdm;
@@ -421,7 +422,7 @@
 
 		mmi,chrg-iterm-ma = <243>;
 		mmi,fg-iterm-ma = <500>;
-		mmi,max-fv-mv = <4450>;
+		mmi,max-fv-mv = <4500>;
 		mmi,max-fcc-ma = <4000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,otg-cl-ua = <1200000>;
