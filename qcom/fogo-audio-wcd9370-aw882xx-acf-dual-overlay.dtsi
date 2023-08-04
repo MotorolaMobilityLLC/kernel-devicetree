@@ -28,6 +28,18 @@
 			bias-pull-up;
 		};
 	};
+
+	aw8838_rst_default: aw8838_rst_default {
+		mux {
+			pins = "gpio58";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio58";
+			drive-strength = <2>; /* 2 MA */
+			bias-pull-up;
+		};
+	};
 };
 
 &cdc_dmic01_gpios {
@@ -307,9 +319,9 @@
 	qcom,msm-mbhc-hphl-swh = <1>;
 	qcom,msm-mbhc-gnd-swh = <1>;
 	asoc-codec  = <&stub_codec>, <&bolero>,
-		      <&wcd937x_codec>,<&aw882xxacf>,<&aw882xxacf_recv>;
+		      <&wcd937x_codec>,<&aw882xxacf>,<&aw882xxacf_recv>,<&aw8838_i2c_37>;
 	asoc-codec-names = "msm-stub-codec.1", "bolero_codec",
-			   "wcd937x_codec", "aw882xxacf_smartpa.2-0034", "aw882xxacf_smartpa.2-0035";
+			   "wcd937x_codec", "aw882xxacf_smartpa.2-0034", "aw882xxacf_smartpa.2-0035", "aw8838_smartpa";
 	qcom,msm_audio_ssr_devs = <&audio_apr>, <&q6core>, <&lpi_tlmm>,
 				  <&bolero>;
 	qcom,msm-mbhc-hs-mic-max-threshold-mv = <2700>;
@@ -349,6 +361,15 @@
 		skt-prof-mode = <1>;
 		status = "okay";
         };
+	aw8838_i2c_37: aw8838_smartpa@37 {
+		compatible = "awinic,aw8838_smartpa";
+		reg = <0x37>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&aw8838_rst_default>;
+		reset-gpio = <&tlmm 58 0>;
+		rename-flag = <1>;
+		status = "okay";
+	};
 };
 
 &va_cdc_dma_0_tx {
