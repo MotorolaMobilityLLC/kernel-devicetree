@@ -82,9 +82,8 @@
 
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
-		df-serialnum = "SB18D99898";
-		#include "CW_lq290x-sunwoda-5000mah-fogona.dtsi"
-		#include "CW_lq280x-scud-5000mah-fogona.dtsi"
+		df-serialnum = "SB18D38323";
+		#include "CW_pc50-ATL-5000mah-sample.dtsi"
 	};
 
 	sm5602@71 {
