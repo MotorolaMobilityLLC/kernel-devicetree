@@ -164,6 +164,7 @@
 		zinitix,orientation = <0>;
 		zinitix,tsp_vdd_supply_type = <1>;
 		zinitix,pname = "SM-G5308W";
+		zinitix,stow-mode-ctrl;
 
 		mmi,power-off-suspend;
 		mmi,cli-enable-gestures;
