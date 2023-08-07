@@ -2579,6 +2579,7 @@
 		snps,ptp-req-clk-rate = <96000000>;
 		interrupts-extended = <&intc 0 946 4>;
 		qcom,arm-smmu;
+		gdsc-off-on-suspend;
 
 		interrupt-names = "macirq";
 
