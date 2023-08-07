@@ -213,8 +213,22 @@
 		gunyah-label = <0x12>;
 	};
 
-	oem_vm_mem: oem_vm_region@f7a00000 {
+	oem_vm_vblk0_ring: oem_vm_vblk0_ring@f7afc000 {
 		no-map;
-		reg = <0x0 0xf7a00000 0x0 0x4a00000>;
+		reg = <0x0 0xf7afc000 0x0 0x4000>;
+		gunyah-label = <0x13>;
+	};
+
+	oem_vm_swiotlb: oem_vm_swiotlb@f7b00000 {
+		no-map;
+		reg = <0x0 0xf7b00000 0x0 0x100000>;
+		gunyah-label = <0x14>;
+	};
+
+	oem_vm_mem: oem_vm_region@f7c00000 {
+		compatible = "shared-dma-pool";
+		reg = <0x0 0xf7c00000 0x0 0x4800000>;
+		reusable;
+		alignment = <0x0 0x400000>;
 	};
 };
