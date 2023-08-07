@@ -242,7 +242,7 @@
 		ti,bq2589x,vbat-min-volt-to-tuneup = <3000>;
 		ti,bq2589x,charge-voltage = <4500>;
 		ti,bq2589x,charge-current = <3000>;
-		ti,bq2589x,term-current = <256>;
+		ti,bq2589x,term-current = <243>;
 		ti,bq2589x,enable-auto-dpdm;
 		ti,bq2589x,enable-termination;
 		ti,bq2589x,enable-ico;
@@ -432,6 +432,7 @@
 		supplied-from = "mmi_battery";
 
 		mmi,chrg-iterm-ma = <243>;
+		mmi,chrg-iterm-ma-noffc-35-45c = <487>;
 		mmi,fg-iterm-ma = <500>;
 		mmi,max-fv-mv = <4500>;
 		mmi,max-fcc-ma = <4000>;
@@ -442,7 +443,7 @@
 				<10 4250 3000 1000>,
 				<15 0 3000 3000>,
 				<45 0 4000 4000>,
-				<60 4200 3000 0>;
+				<60 4200 4000 0>;
 		mmi,thermal-mitigation = <4000000 3500000
 				3000000 2500000
 				2000000 1500000
