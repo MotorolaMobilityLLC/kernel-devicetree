@@ -356,7 +356,7 @@
 
 	removed_mem: removed_region@c0000000 {
 		no-map;
-		reg = <0x0 0xc0000000 0x0 0x5100000>;
+		reg = <0x0 0xc0000000 0x0 0x7100000>;
 	};
 
 	secure_display_memory: secure_display_region {
@@ -430,7 +430,7 @@
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 		reusable;
 		alignment = <0x0 0x400000>;
-		size = <0x0 0x1000000>;
+		size = <0x0 0x3000000>;
 	};
 
 	memshare_mem: memshare_region {
