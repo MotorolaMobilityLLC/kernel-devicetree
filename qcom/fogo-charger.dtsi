@@ -88,7 +88,7 @@
                                <4200 243 575>;
 
 	qcom,iterm-ma = <243>;
-	qcom,hvdcp-power-max = <18000>;
+	qcom,hvdcp-power-max = <15000>;
 	mmi,enable-factory-mode-aicl;
 	qcom,noffc-chg-iterm = <243>;
 	qcom,noffc-chg-iterm-45c = <670>;

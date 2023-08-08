@@ -72,6 +72,7 @@
 };
 
 &pm7250b_mmi {
+	/delete-property/ qcom,force-hvdcp-5v;
 	qcom,mmi-temp-zones = <0 4200 1000 0>,
 				<10 4250 3000 1000>,
 				<15 0 3000 3000>,
