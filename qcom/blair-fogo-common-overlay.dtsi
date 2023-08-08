@@ -599,7 +599,7 @@
 
 	qcom,host-param-override-seq =
 	<0xa7 0x6c	/* override_x0 */
-	 0x8f 0x70	/* override_x1 */
+	 0x88 0x70	/* override_x1 */
 	 0x16 0x74>;	/* override_x2 */
 };
 
