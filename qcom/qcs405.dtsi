@@ -1256,7 +1256,7 @@
 #include "qcs405-thermal.dtsi"
 #include "qcs405-usb.dtsi"
 #include "qcs405-coresight.dtsi"
-
+#include "msm-arm-smmu-qcs405.dtsi"
 &blsp1_uart2_console {
 	status = "ok";
 };
