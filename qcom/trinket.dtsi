@@ -1568,6 +1568,9 @@
 			vote = <40>;
 		};
 	};
+
+	msm_gpu: qcom,kgsl-3d0@5900000 { };
+
 };
 
 #include "trinket-pinctrl.dtsi"
