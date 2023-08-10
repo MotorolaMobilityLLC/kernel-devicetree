@@ -90,6 +90,7 @@
 
 	qcom,iterm-ma = <243>;
 	qcom,hvdcp-power-max = <18000>;
+	mmi,hvdcp2-force-9v;
 	mmi,enable-factory-mode-aicl;
 	qcom,noffc-chg-iterm = <243>;
 	qcom,noffc-chg-iterm-45c = <670>;
