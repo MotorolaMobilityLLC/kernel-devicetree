@@ -74,7 +74,7 @@
 			reg = <0>;
 			qcom,supply-name = "vddio";
 			qcom,supply-min-voltage = <1800000>;
-			qcom,supply-max-voltage = <1904000>;
+			qcom,supply-max-voltage = <1800000>;
 			qcom,supply-enable-load = <32000>;
 			qcom,supply-disable-load = <80>;
 			qcom,supply-pre-off-sleep = <2>;
@@ -97,8 +97,10 @@
 			qcom,supply-max-voltage = <6000000>;
 			qcom,supply-enable-load = <100000>;
 			qcom,supply-disable-load = <100>;
-			qcom,supply-pre-off-sleep = <3>;
+			qcom,supply-pre-on-sleep = <3>;
+			qcom,supply-pre-off-sleep = <30>;
 			qcom,supply-post-on-sleep = <3>;
+			qcom,supply-post-off-sleep = <3>;
 		};
 
 	};
@@ -145,13 +147,15 @@
 	qcom,mdss-dsi-panel-peak-brightness = <5000000>;
 	qcom,mdss-dsi-panel-blackness-level = <100>;
 */
+	qcom,tp_state_check_enable;
+	qcom,platform-need-execute-shutdown;
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0A];
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-panel-status-value = <0x9C>;
 	qcom,mdss-dsi-panel-status-read-length = <1>;
-
+	qcom,suspend-ulps-enabled;
 	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
@@ -198,13 +202,15 @@
 	qcom,mdss-dsi-panel-peak-brightness = <5000000>;
 	qcom,mdss-dsi-panel-blackness-level = <100>;
 */
+	qcom,tp_state_check_enable;
+	qcom,platform-need-execute-shutdown;
 	qcom,esd-check-enabled;
 	qcom,mdss-dsi-panel-status-check-mode = "reg_read";
 	qcom,mdss-dsi-panel-status-command = [06 01 00 01 00 00 01 0A];
 	qcom,mdss-dsi-panel-status-command-state = "dsi_lp_mode";
 	qcom,mdss-dsi-panel-status-value = <0x9C>;
 	qcom,mdss-dsi-panel-status-read-length = <1>;
-
+	qcom,suspend-ulps-enabled;
 	qcom,mdss-dsi-panel-hbm-is-51cmd;
 	qcom,mdss-dsi-hbm-type = "lcd-dcs-wled";
 	qcom,mdss-dsi-hbm-on-command = [39 01 00 00 00 00 03 51 07 FF];
@@ -216,8 +222,8 @@
 
 	qcom,mdss-dsi-display-timings {
 		timing@0 {
-			qcom,mdss-dsi-panel-phy-timings = [00 27 0A 0A 1B 19 0A
-				0B 0A 02 04 00 20 0F];
+			qcom,mdss-dsi-panel-phy-timings = [00 25 0A 0A 1B 1B 0A
+				0A 0A 02 04 00 1F 0F];
 
 			qcom,display-topology = <1 0 1>;
 			qcom,default-topology-index = <0>;
@@ -241,4 +247,12 @@
 			qcom,default-topology-index = <0>;
 		};
 	};
+};
+
+&qupv3_se10_i2c_sleep {
+    config {
+        /delete-property/ bias-disable;
+        bias-pull-up;
+        input-enable;
+    };
 };
