@@ -180,6 +180,9 @@
 	vccq2-supply = <&L2D>;
 	vccq2-max-microamp = <750000>;
 
+	qcom,vccq-shutdown-supply = <&L2D>;
+	qcom,vccq-shutdown-max-microamp = <750000>;
+
 	/* VDD_PX10 is voted for the ufs_reset_n */
 	qcom,vddp-ref-clk-supply = <&L5B>;
 	qcom,vddp-ref-clk-max-microamp = <100>;
