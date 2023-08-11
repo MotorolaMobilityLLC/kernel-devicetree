@@ -72,7 +72,6 @@
 		df-serialnum = "SB18D64677";
 		vdd-i2c-supply = <&S10B>;
 		fg-psy-name = "flip_battery";
-		ibat-invert-polority;
 		factory_mode_ntc_exist = <1>;
 		#include "bat_setting/CW_PM08-atl-790mah.dtsi"
 	};
@@ -106,6 +105,7 @@
 		wls-input-current-limit-microamp = <300000>;
 		wls-input-voltage-limit-microvolt = <3900000>;
 
+		mmi,ichg-invert-polority;
 		mmi,ext-usb-psy-name = "usb";
 		mmi,ext-wls-psy-name = "wireless";
 		mmi,fg-psy-name = "flip_battery";
