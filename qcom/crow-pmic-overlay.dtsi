@@ -27,6 +27,10 @@
 	status  = "disabled";
 };
 
+&pmr735d_l_temp_alarm {
+	status  = "disabled";
+};
+
 /* Set SID from 0x4 to 0x5 for pmr735d */
 &pmr735a {
 	reg = <0x5 SPMI_USID>;
