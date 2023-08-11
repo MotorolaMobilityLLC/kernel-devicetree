@@ -529,6 +529,26 @@
 			qcom,dump-id = <0x101>;
 		};
 
+		c0_context {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x0>;
+		};
+
+		c1_context {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x1>;
+		};
+
+		c2_context {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x2>;
+		};
+
+		c3_context {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x3>;
+		};
+
 		l2_dump1 {
 			qcom,dump-size = <0x0>;
 			qcom,dump-id = <0xC1>;
