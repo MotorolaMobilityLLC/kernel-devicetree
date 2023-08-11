@@ -1,6 +1,6 @@
 #include "dsi-panel-mot-dummy-qhd-video.dtsi"
 #include "dsi-panel-mot-tianma-icnl9916c-652-720x1600-video.dtsi"
-#include "dsi-panel-mot-tongxingda-ili9883c-652-720x1600-video.dtsi"
+#include "dsi-panel-mot-txd-ili9883c-652-720x1600-video.dtsi"
 
 &display_panel_avdd {
 	/delete-property/ gpio;
