@@ -147,7 +147,10 @@ KONA_LE_BASE_DTB += kona-7230-iot-v2.1.dtb qrb5165-iot.dtb qrb5165n-iot.dtb qrb3
 KONA_BOARDS += \
                  kona-hdk-overlay.dtbo \
                  kona-rb5-HDMI-overlay.dtbo \
+                 kona-rb5-HDMI-overlay-new.dtbo \
+                 kona-rb5-overlay-new.dtbo \
                  kona-iot-v2.1-vc-overlay.dtbo \
+		 kona-7230-iot-rb5-overlay.dtbo \
 		 kona-rb5-overlay.dtbo
 
 

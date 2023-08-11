@@ -545,7 +545,8 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
-		clocks = <&gcc GCC_SYS_NOC_USB_SF_AXI_CLK>;
+		clocks = <&gcc GCC_SYS_NOC_USB_SF_AXI_CLK>,
+			<&rpmhcc RPMH_IPA_CLK>;
 	};
 
 	cnoc_main: interconnect@1580000 {
@@ -586,6 +587,7 @@
 		#interconnect-cells = <1>;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&rpmhcc RPMH_IPA_CLK>;
 	};
 
 	qcom,sps {

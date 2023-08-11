@@ -44,6 +44,61 @@
 	qcom,thermal-mitigation = <3000000 1500000 1000000 500000>;
 };
 
+&pmic_glink_debug {
+	i2c@109 {
+		reg = <0x109>; /* I2C instance 9 in ADSP */
+		#address-cells = <1>;
+		#size-cells = <0>;
+		qcom,bus-type = "i2c";
+
+		qcom,smb1502@68 {
+			compatible = "qcom,i2c-pmic";
+			reg = <0x68>;
+			qcom,can-sleep;
+		};
+
+		qcom,smb1502@69 {
+			compatible = "qcom,i2c-pmic";
+			reg = <0x69>;
+			qcom,can-sleep;
+		};
+	};
+};
+
+&pmic_glink_adc {
+	status = "ok";
+
+	smb1502_1_iin {
+		reg = <0x1096801>;
+		label = "smb1502_1_iin";
+	};
+
+	smb1502_1_ichg {
+		reg = <0x1096802>;
+		label = "smb1502_1_ichg";
+	};
+
+	smb1502_1_die_temp {
+		reg = <0x1096803>;
+		label = "smb1502_1_die_temp";
+	};
+
+	smb1502_2_iin {
+		reg = <0x1096901>;
+		label = "smb1502_2_iin";
+	};
+
+	smb1502_2_ichg {
+		reg = <0x1096902>;
+		label = "smb1502_2_ichg";
+	};
+
+	smb1502_2_die_temp {
+		reg = <0x1096903>;
+		label = "smb1502_2_die_temp";
+	};
+};
+
 &qupv3_se0_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -80,6 +135,14 @@
 
 		goodix,touch-type = "primary";
 		goodix,qts_en;
+		qts,trusted-touch-mode = "vm_mode";
+		qts,touch-environment = "pvm";
+		qts,trusted-touch-type = "primary";
+		qts,trusted-touch-spi-irq = <666>;
+		qts,trusted-touch-io-bases = <0x880000 0x810000>;
+		qts,trusted-touch-io-sizes = <0x1000 0x4000>;
+		qts,trusted-touch-vm-gpio-list = <&tlmm 0 0 &tlmm 1 0 &tlmm 2 0
+						&tlmm 3 0 &tlmm 28 0 &tlmm 21 0x2008>;
 	};
 };
 

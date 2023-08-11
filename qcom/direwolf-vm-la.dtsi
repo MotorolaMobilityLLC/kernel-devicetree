@@ -48,15 +48,8 @@
 	status = "okay";
 };
 
-&pcie0 {
-	status = "okay";
-};
-
-&pcie2a_msi_snps {
-	status = "okay";
-};
-
 &pcie4 {
+	/delete-property/ iommu-map;
 	status = "okay";
 };
 
@@ -65,6 +58,10 @@
 };
 
 &qupv3_se2_4uart {
+	status = "okay";
+};
+
+&qupv3_se6_4uart {
 	status = "okay";
 };
 

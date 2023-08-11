@@ -115,6 +115,9 @@
 	scm {
 		compatible = "qcom,scm";
 	};
+	qcom_smcinvoke {
+		compatible = "qcom,smcinvoke";
+	};
 };
 
 &soc {
@@ -483,6 +486,16 @@
 			interrupt-controller;
 	};
 
+	ptp_virtual {
+		compatible = "qcom,ptp_virtual";
+		reg = <0xeb600000 0x1000>,
+			<0x23047000 0x1000>,
+			<0x17c23000 0x1000>;
+		reg-names = "ptp_carveout_mem",
+				"ptp_reg",
+				"qtimer_reg";
+	};
+
 	qcom_rng_ee3: qrng@10d3000 {
 		compatible = "qcom,msm-rng";
 		reg = <0x10d3000 0x1000>;
@@ -626,6 +639,7 @@
 		regulator-name = "ldoa5";
 		regulator-min-microvolt = <870000>;
 		regulator-max-microvolt = <950000>;
+		regulator-allow-set-load;
 	};
 
 	L7A: pm8775_a_l7: regulator-pm8775_a-l7 {

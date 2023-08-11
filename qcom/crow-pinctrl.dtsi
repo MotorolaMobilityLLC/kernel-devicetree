@@ -1659,7 +1659,7 @@
 		qupv3_se15_i2c_scl_active: qupv3_se15_i2c_scl_active {
 			mux {
 				pins = "gpio129";
-				function = "qup1_se5_l1";
+				function = "qup1_se7_l1";
 			};
 
 			config {
@@ -1700,7 +1700,7 @@
 		qupv3_se15_spi_mosi_active: qupv3_se15_spi_mosi_active {
 			mux {
 				pins = "gpio129";
-				function = "qup1_se5_l1";
+				function = "qup1_se7_l1";
 			};
 
 			config {

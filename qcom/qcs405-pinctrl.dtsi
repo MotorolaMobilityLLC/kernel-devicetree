@@ -339,7 +339,7 @@
 				config {
 					pins = "gpio82";
 					drive-strength = <2>;
-					bias-disable;
+					bias-pull-up;
 				};
 			};
 
@@ -378,7 +378,7 @@
 				config {
 					pins = "gpio83", "gpio84";
 					drive-strength = <2>;
-					bias-no-pull;
+					bias-pull-down;
 				};
 			};
 
@@ -391,7 +391,7 @@
 				config {
 					pins = "gpio85";
 					drive-strength = <2>;
-					bias-disable;
+					bias-pull-down;
 				};
 			};
 
@@ -404,7 +404,7 @@
 				config {
 					pins = "gpio85";
 					drive-strength = <2>;
-					bias-no-pull;
+					bias-pull-down;
 				};
 			};
 		};

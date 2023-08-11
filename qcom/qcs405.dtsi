@@ -1,5 +1,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/iio/qcom,spmi-vadc.h>
+#include <dt-bindings/clock/qcom,apsscc-sdxlemur.h>
 #include <dt-bindings/clock/qcom,gcc-qcs404.h>
 #include <dt-bindings/clock/qcom,rpmcc.h>
 #include <dt-bindings/interconnect/qcom,icc.h>
@@ -304,6 +305,24 @@
 		#clock-cells = <1>;
 	};
 
+	apsscc: clock-controller@0b011050 {
+		compatible = "qcom,qcs404-apsscc";
+		clocks = <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
+			<&gcc GCC_GPLL0_AO_OUT_MAIN>;
+		clock-names = "bi_tcxo_ao", "gpll0_out_even";
+		reg = <0xb011050 0x16>, <0xb016000 0x34>;
+		reg-names = "apcs_cmd" , "apcs_pll";
+		cpu-vdd-supply = <&apc_vreg_corner>;
+		vdd_dig_ao-supply = <&pms405_s1_level_ao>;
+		vdd_hf_pll-supply = <&pms405_l5_ao>;
+		qcom,speed0-bin-v0 =
+			< 0         0>,
+			< 1094400000 1>,
+			< 1248000000 2>,
+			< 1401600000 3>;
+		#clock-cells = <1>;
+	};
+
 	/* GDSCs in Global CC */
 	gdsc_mdss: qcom,gdsc@184d078 {
 		compatible = "qcom,gdsc";
@@ -450,6 +469,25 @@
 		rpm-channel-name = "rpm_requests";
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
 		rpm-channel-type = <15>; /* SMD_APPS_RPM */
+		power-domains = <&CLUSTER_PD>;
+	};
+
+	cluster-device {
+		compatible = "qcom,lpm-cluster-dev";
+		power-domains = <&CLUSTER_PD>;
+	};
+
+	rpm-sleep-stats@290000 {
+		compatible = "qcom,rpm-sleep-stats";
+		reg = <0x290000 0x1000>;
+	};
+
+	qcom,rpm-master-stats@60150 {
+		compatible = "qcom,rpm-master-stats";
+		reg = <0x60150 0x5000>;
+		qcom,masters = "APSS", "MPSS", "ADSP", "CDSP", "TZ";
+		qcom,master-stats-version = <2>;
+		qcom,master-offset = <4096>;
 	};
 
 	mem_dump {
@@ -879,7 +917,39 @@
 		};
 	};
 
+	qcom_tzlog: tz-log@8600720 {
+		compatible = "qcom,tz-log";
+		reg = <0x08600720 0x2000>;
+	};
+
 	thermal_zones: thermal-zones {};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		qcom,disable-shmbridge-support;
+	};
+
+	qcom_qseecom: qseecom@85900000 {
+		compatible = "qcom,qseecom";
+		reg = <0x85900000 0x500000>;
+		reg-names = "secapp-region";
+		memory-region = <&qseecom_mem>;
+		qseecom_mem = <&qseecom_mem>;
+		qseecom_ta_mem = <&qseecom_ta_mem>;
+		qcom,hlos-num-ce-hw-instances = <1>;
+		qcom,hlos-ce-hw-instance = <0>;
+		qcom,qsee-ce-hw-instance = <0>;
+		qcom,disk-encrypt-pipe-pair = <2>;
+		qcom,support-fde;
+		qcom,fde-key-size;
+		qcom,no-clock-support;
+		qcom,appsbl-qseecom-support;
+		qcom,msm-bus,name = "qseecom-noc";
+		qcom,msm-bus,num-cases = <4>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,ce-opp-freq = <171430000>;
+		qcom,qsee-reentrancy-support = <2>;
+	};
 
 	bimc: interconnect@400000 {
 		reg = <0x400000 0x80000>;
@@ -1105,6 +1175,56 @@
 			linux,can-disable;
 		};
 	};
+
+	slimbam_aud: bamdma@C184000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0xC184000 0x2A000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <0 180 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_aud: slim@C1C0000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0xC1C0000 0x2C000>;
+		reg-names = "ctrl";
+		interrupts = <0 163 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,apps-ch-pipes = <0x0>;
+		qcom,ea-pc = <0x2e0>;
+		dmas = <&slimbam_aud 3>, <&slimbam_aud 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
+
+	slimbam_qca: bamdma@C204000 {
+		compatible = "qcom,bam-v1.7.0";
+		qcom,controlled-remotely;
+		reg = <0xC204000 0x20000>;
+		reg-names = "bam";
+		num-channels  = <31>;
+		interrupts = <0 63 IRQ_TYPE_LEVEL_HIGH>;
+		#dma-cells = <1>;
+		qcom,ee = <1>;
+		qcom,num-ees = <2>;
+	};
+
+	slim_qca: slim@C240000 {
+		compatible = "qcom,slim-ngd-v1.5.0";
+		reg = <0xC240000 0x2C000>;
+		reg-names = "ctrl";
+		interrupts = <0 191 IRQ_TYPE_LEVEL_HIGH>;
+		dmas = <&slimbam_qca 3>, <&slimbam_qca 4>;
+		dma-names = "rx", "tx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "disabled";
+	};
 };
 
 &firmware {
@@ -1124,6 +1244,7 @@
 #include "pms405.dtsi"
 #include "qcs405-thermal.dtsi"
 #include "qcs405-usb.dtsi"
+#include "qcs405-coresight.dtsi"
 
 &blsp1_uart2_console {
 	status = "ok";
