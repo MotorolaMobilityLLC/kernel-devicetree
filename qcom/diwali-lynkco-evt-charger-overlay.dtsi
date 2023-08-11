@@ -37,6 +37,7 @@
 		sc,sc760x,tdie-alm-disable = <1>;
 		sc,sc760x,tdie-alm = <9>; /*80 + val * 5*/
 
+		mmi,ichg-invert-polority;
 		init-charger-disabled;
 		iterm-microamp = <200000>;
 		ichg-max-microamp = <1700000>;
