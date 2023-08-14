@@ -843,8 +843,11 @@
 
 	qcom,power-state {
 		compatible = "qcom,power-state";
-		qcom,subsys-name = "adsp", "cdsp", "cdsp1", "gpdsp0", "gpdsp1";
+		qcom,subsys-name = "lpass", "cdsp", "cdsp1", "gpdsp0", "gpdsp1";
 		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>, <&cdsp1_pas>, <&gpdsp0_pas>, <&gpdsp1_pas>;
+		qcom,qmp = <&aoss_qmp>;
+		label = "aop";
+		#mbox-cells = <1>;
 	};
 
 	sys-pm-vx@c320000 {
