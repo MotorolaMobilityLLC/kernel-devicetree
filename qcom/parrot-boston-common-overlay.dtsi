@@ -1,0 +1,57 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include "parrot-moto-common-overlay-base.dtsi"
+#include "parrot-moto-common-overlay.dtsi"
+#include "parrot-wcn3990.dtsi"
+#include "parrot-genevn-charger-overlay.dtsi"
+#include "parrot-genevn-thermal-overlay.dtsi"
+#include "parrot-genevn-touchscreen-overlay.dtsi"
+#include "parrot-genevn-sensor-overlay.dtsi"
+#include "parrot-genevn-fps-overlay.dtsi"
+#include "moto-genevn-wl2864c.dtsi"
+#include "parrot-genevn-nfc-overlay.dtsi"
+
+
+&tlmm {
+	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
+};
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
+};
+
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			0x83 0x6c
+			0xc3 0x70
+			0xc7 0x74
+			0x03 0x78>;
+};
+
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <2900000>;
+	qcom,vib-dis-short-long;
+	qcom,vib-dis-short-long-val = <80>;
+	qcom,vib-ldo-volt-uv-long = <2900000>;
+};
+
+&socd_trip {
+    temperature = <95>;
+};
+
+&mpss_mem {
+	/*MMI_STOPSHIP <dts>: IKSWU-2172: increase mpss size to fix
+	modem not booting on Geneva5G NA.
+	Waiting for Qualcomm to confirm the correct size*/
+	reg = <0x0 0x8bc00000 0x0 0xf000000>;
+};
+
