@@ -1,0 +1,31 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-genevn-common-overlay.dtsi"
+
+/ {
+	model = "genevn";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,genevn";
+	qcom,msm-id = <537 0x10000>;
+	qcom,board-id = <0x41 0x9000>;
+	qcom,pmic-id-size = <9>;
+	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
+};
+
+&pm6150l_gpios {
+        sdcard_irq_temp {
+               sdcard_irq_temp_default: sdcard_irq_temp_default {
+			pins = "gpio8";
+			function = "normal";
+			bias-disable;
+			power-source = <0>;
+			input-enable;
+                };
+        };
+};
+
+&sdhc_2 {
+	tempirq-gpios = <&pm6150l_gpios 8 GPIO_ACTIVE_HIGH>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&sdcard_irq_temp_default>;
+};
