@@ -80,21 +80,22 @@
 				<35 0 4000 4000>,
 				<45 0 4000 4000>,
 				<60 4200 4000 0>;
-	qcom,mmi-ffc-zones = <4200 243 534>,
-                               <4500 243 534>,
-                               <4500 243 534>,
-                               <4530 506 960>,
-                               <4530 560 1010>,
-                               <4530 965 1160>,
-                               <4200 243 575>;
+	qcom,mmi-ffc-zones = <4200 243 407>,
+                               <4500 243 407>,
+                               <4500 243 407>,
+                               <4530 523 659>,
+                               <4530 590 751>,
+                               <4530 871 1035>,
+                               <4200 243 407>;
 
 	qcom,iterm-ma = <243>;
 	qcom,hvdcp-power-max = <18000>;
 	mmi,hvdcp2-force-9v;
 	mmi,enable-factory-mode-aicl;
 	qcom,noffc-chg-iterm = <243>;
-	qcom,noffc-chg-iterm-45c = <670>;
-	qcom,noffc-qg-iterm = <500>;
+	qcom,noffc-chg-iterm-45c = <487>;
+	qcom,noffc-qg-iterm = <407>;
+	qcom,noffc-qg-iterm-45c = <642>;
 	qcom,noffc-max-fv = <4500>;
 
 };
@@ -113,6 +114,6 @@
 			   "recharge_soc",
 			   "force_recharge",
 			   "charge_done";
-	qcom,qg-iterm-ma = <500>;
+	qcom,qg-iterm-ma = <407>;
 };
 
