@@ -3,9 +3,9 @@
 
 
 &mot_batterydata {
-	df-serialnum = "SB18D87863";
+	df-serialnum = "SB18D96852";
 	qcom,batt-id-range-pct = <15>;
-	#include "qg-batterydata-qb50-swd-5000mah.dtsi"
+	#include "qg-batterydata-qf50-atl-5000mah.dtsi"
 };
 
 &pm7250b_charger {
