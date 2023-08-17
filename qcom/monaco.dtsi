@@ -1605,6 +1605,7 @@
 			qcom,glinkpkt-edge = "slate";
 			qcom,glinkpkt-ch-name = "slate-qcli";
 			qcom,glinkpkt-dev-name = "glink_pkt_slate_qcli";
+			qcom,glinkpkt-fragmented-read;
 		};
 
 		qcom,glinkpkt-slate-bt-ctrl {
