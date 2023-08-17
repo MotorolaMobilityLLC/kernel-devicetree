@@ -55,9 +55,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_0>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_0: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -82,9 +84,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_1>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_1: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -103,9 +107,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_2>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_2: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -124,9 +130,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_3>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_3: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -146,8 +154,10 @@
 			enable-method = "psci";
 			cache-size = <0x20000>;
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_4>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_4: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -172,9 +182,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_5>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_5: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -193,9 +205,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_6>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_6: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -214,9 +228,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_7>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_7: l2-cache {
 			      compatible = "arm,arch-cache";
