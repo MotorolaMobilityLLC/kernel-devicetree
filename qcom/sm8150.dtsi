@@ -718,6 +718,11 @@
 			compatible = "qcom,pil-reloc-info";
 			reg = <0x94c 0xc8>;
 		};
+
+		pil@6dc {
+			compatible = "qcom,msm-imem-pil-disable-timeout";
+			reg = <0x6dc 0x4>;
+		};
 	};
 
 	cpu_pmu: cpu-pmu {
