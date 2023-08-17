@@ -448,6 +448,11 @@
 
 &pcie0 {
 	qcom,boot-option = <0x2>;
+
+	pcie-usb-hub-power-1p05-gpio = <&tlmm 179 0>;
+	pcie-usb-hub-power-3p3-gpio = <&tlmm 13 0>;
+	pcie-usb-hub-ponreset-gpio = <&tlmm 182 0>;
+
 	 qcom,pcie-phy-ver = <102>;
 			qcom,phy-sequence = <0x0240 0x03 0x0
 					0x00c0 0x01 0x0
