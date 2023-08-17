@@ -564,7 +564,7 @@
 		};
 
 		/* cont_splash_memory (15 MB) */
-		cont_splash_memory: cont_splash_region@5c000000 {
+		cont_splash_memory: splash_region@5c000000 {
 			reg = <0x0 0x5c000000 0x0 0x00f00000>;
 			label = "cont_splash_region";
 		};
