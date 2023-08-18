@@ -1,13 +1,13 @@
 /dts-v1/;
 /plugin/;
 
-#include "parrot-genevn-common-overlay.dtsi"
+#include "parrot-boston-common-overlay.dtsi"
 
 / {
-	model = "genevn";
-	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,genevn";
+	model = "boston";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,boston";
 	qcom,msm-id = <537 0x10000>;
-	qcom,board-id = <0x41 0x9000>;
+	qcom,board-id = <0x44 0x9000>;
 	qcom,pmic-id-size = <9>;
 	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
 };
