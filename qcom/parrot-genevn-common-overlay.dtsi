@@ -49,9 +49,6 @@
 };
 
 &mpss_mem {
-	/*MMI_STOPSHIP <dts>: IKSWU-2172: increase mpss size to fix
-	modem not booting on Geneva5G NA.
-	Waiting for Qualcomm to confirm the correct size*/
 	reg = <0x0 0x8bc00000 0x0 0xf000000>;
 };
 
