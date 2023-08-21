@@ -177,6 +177,8 @@
 		panel = <&dsi_txd_nt36528_656_hd_plus_120_video>;
 		novatek,swrst-n8-addr = <0x03F0FE>;
 		novatek,spi-rd-fast-addr = <0x03F310>;
+		novatek,supported_gesture_type = <0x06>;
+		novatek,report_gesture_key;
 		novatek,usb_charger;
 		status = "ok";
 	};
@@ -194,7 +196,9 @@
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend_high>;
+		ilitek,supported_gesture_type = <0x06>;
 		ilitek,report_gesture_key;
+		ilitek,rst-pull-flag;
 		status = "ok";
 	};
 };
