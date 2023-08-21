@@ -18,6 +18,7 @@
 #include "kalama-ctwo-haptics-overlay.dtsi"
 #include "kalama-ctwo-fingerprint-overlay.dtsi"
 #include "kalama-moto-common-st-nfc.dtsi"
+#include "kalama-moto-velar-qorvo-uwb.dtsi"
 #include "moto-ctwo-wl2868c.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "kalama-ctwo-touchscreen-overlay.dtsi"
