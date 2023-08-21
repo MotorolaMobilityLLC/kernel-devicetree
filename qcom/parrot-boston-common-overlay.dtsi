@@ -55,3 +55,6 @@
 	reg = <0x0 0x8bc00000 0x0 0xf000000>;
 };
 
+&usb0 {
+	qcom,force-adb-enable;
+};
