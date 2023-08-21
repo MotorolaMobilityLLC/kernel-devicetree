@@ -3076,6 +3076,8 @@
 		qcom,vdd-wlan-rfa2-config = <1350000 2040000 0 0 1>;
 		wlan-ant-switch-supply = <&L7E>;
 		qcom,wlan-ant-switch-config = <2800000 2800000 0 0 1>;
+		vdd-wlan-ipa-supply = <&S3E>;
+		qcom,vdd-wlan-ipa-config = <2200000 2200000 0 0 0>;
 
 		interconnects =
 		<&pcie_noc MASTER_PCIE_0 &pcie_noc SLAVE_ANOC_PCIE_GEM_NOC>,
