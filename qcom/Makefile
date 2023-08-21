@@ -104,8 +104,17 @@ kalama-overlays-dtb-$(CONFIG_ARCH_KALAMA) += $(KALAMA_BOARDS) $(NOAPQ_KALAMA_BOA
 kalama_le-overlays-dtb-$(CONFIG_ARCH_KALAMA) += $(KALAMA_BOARDS) $(NOAPQ_KALAMA_BOARDS) $(KALAMA_BASE_DTB) $(KALAMA_APQ_BASE_DTB)
 dtb-y += $(kalama-dtb-y)
 
-CROW_BASE_DTB += crow.dtb
+#remove useless qcom device tree in moto build
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 
+ifeq ($(CONFIG_EQE_DTB),y)
+CROW_BASE_DTB += crow-eqe-base.dtb
+CROW_BOARDS += crow-eqe-evb1-overlay.dtbo
+endif
+
+else
+
+CROW_BASE_DTB += crow.dtb
 CROW_BOARDS += \
 		crow-rumi-overlay.dtbo \
 		crow-atp-overlay.dtbo \
@@ -116,6 +125,7 @@ CROW_BOARDS += \
 		crow-idp-rcm-overlay.dtbo \
 		crow-qrd-overlay.dtbo
 
+endif
 kalama-dtb-$(CONFIG_ARCH_CROW) += \
 	$(call add-overlays, $(CROW_BOARDS) ,$(CROW_BASE_DTB))
 kalama-overlays-dtb-$(CONFIG_ARCH_CROW) += $(CROW_BOARDS) $(CROW_BASE_DTB)

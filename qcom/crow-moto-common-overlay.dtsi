@@ -1,0 +1,67 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+#include "carrier-channel-ids.dtsi"
+
+&utags {
+	compatible = "mmi,utags";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
+	mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+};
+
+&hw {
+	compatible = "mmi,utags";
+	mmi,dir-name = "hw";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+};
+
+&pmk8550_sdam_2 {
+	extra_restart_reason:restart@a0 {
+		reg = <0xa0 0x1>;
+		bit = <0 7>;
+	};
+};
+
+&reserved_memory {
+	ramoops_region {
+		compatible = "ramoops";
+		no-map;
+		reg = <0x0 0xae000000 0x0 0x60000>;
+		console-size = <0x40000>;
+		record-size = <0x20000>;
+	};
+
+	mmi_annotate_mem: mmi_annotate_mem_region {
+		no-map;
+		reg = <0x0 0xadfff000 0x0 0x1000>;
+	};
+};
+
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x2000>;
+		persist_unsupported;
+	};
+
+	reboot_reason {
+		nvmem-cells = <&restart_reason>, <&extra_restart_reason>;
+		nvmem-cell-names = "restart_reason", "extra_restart_reason";
+	};
+};
+
+&soc {
+	mmi,suspend_dbg {
+		compatible = "mmi,suspend_dbg";
+	};
+};
