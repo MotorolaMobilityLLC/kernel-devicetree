@@ -1,143 +1,55 @@
+/*
+ * Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
 &qupv3_se9_i2c {
         status = "disabled";
 };
 
-&qupv3_se9_spi_pins {
-	qupv3_se9_spi_miso_active: qupv3_se9_spi_miso_active {
-		mux {
-			pins = "gpio10";
-			function = "qup1_se3_l0";
-		};
-
-		config {
-			pins = "gpio10";
-			drive-strength = <6>;
-			bias-disable;
-		};
-	};
-
-	qupv3_se9_spi_mosi_active: qupv3_se9_spi_mosi_active {
-		mux {
-			pins = "gpio11";
-			function = "qup1_se3_l1";
-		};
-
-		config {
-			pins = "gpio11";
-			drive-strength = <6>;
-			bias-disable;
-		};
-	};
-
-	qupv3_se9_spi_clk_active: qupv3_se9_spi_clk_active {
-		mux {
-			pins = "gpio12";
-			function = "qup1_se3_l2";
-		};
-
-		config {
-			pins = "gpio12";
-			drive-strength = <6>;
-			bias-disable;
-		};
-	};
-
-	qupv3_se9_spi_cs_active: qupv3_se9_spi_cs_active {
-		mux {
-			pins = "gpio13";
-			function = "qup1_se3_l3";
-		};
-
-		config {
-			pins = "gpio13";
-			drive-strength = <6>;
-			bias-disable;
-		};
-	};
-
-	qupv3_se9_spi_sleep: qupv3_se9_spi_sleep {
-		mux {
-			pins = "gpio10", "gpio11",
-				"gpio12";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio10", "gpio11",
-				"gpio12";
-			drive-strength = <2>;
-			bias-disable;
-		};
-	};
-
-	qupv3_se9_spi_cs_sleep: qupv3_se9_spi_cs_sleep {
-		mux {
-			pins = "gpio13";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio13";
-			drive-strength = <2>;
-			bias-bus-hold;
-		};
-	};
-};
-
-&tlmm{
-	pmx_ts_spi_int_suspend_high {
-		ts_spi_int_suspend_high: ts_spi_int_suspend_high {
-			mux {
-				pins = "gpio65";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio65";
-				drive-strength = <2>;
-				bias-disable;
-			};
-		};
-	};
-};
-
 &qupv3_se9_spi {
-	status = "ok";
-	pinctrl-0 = <&qupv3_se9_spi_mosi_active &qupv3_se9_spi_miso_active &qupv3_se9_spi_clk_active &qupv3_se9_spi_cs_active>;
-	pinctrl-1 = <&qupv3_se9_spi_sleep &qupv3_se9_spi_cs_sleep>;
-	novatek@1{
-		compatible = "novatek,NVT-ts-spi";
-		reg = <0x1>;
-		mmi,status = "/chosen","mmi,panel_name","contains","nt36672c";
-		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
-		novatek,reset-gpio = <&tlmm 64 0x00>;
-		novatek,irq-gpio = <&tlmm 65 0x2001>;
-		novatek,def-max-resolution = <1080 2400>;
-		novatek,swrst-n8-addr = <0x03F0FE>;
-		novatek,spi-rd-fast-addr = <0x03F310>;
-		novatek,panel-supplier = "csot";
-		novatek,gesture-wait-pm;
-		mmi,enable-gestures;
-		mmi,usb-charger-detection;
-		mmi,supported_gesture_type = <0x06>;
-		status = "ok";
-	};
+	#address-cells = <1>;
+	#size-cells = <0>;
 
-	ilitek@2 {
-		compatible = "tchip,ilitek";
-		reg = <0x2>;
-		spi-max-frequency = <6000000>;
-		interrupt-parent = <&tlmm>;
-		interrupts = <65 0x2001>;
-		mmi,status = "/chosen","mmi,panel_name","contains","ili7807s";
-		touch,reset-gpio = <&tlmm 64 0x00>;
-		touch,irq-gpio = <&tlmm 65 0x2001>;
-		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
-		pinctrl-0 = <&ts_spi_active>;
-		pinctrl-1 = <&ts_spi_int_suspend_high>;
-		mmi,usb-charger-detection;
-		mmi,enable-gestures;
-		mmi,supported_gesture_type = <0x06>;
+	status = "ok";
+
+	goodix-berlin@0 {
 		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+
+		mmi,status = "/chosen","mmi,panel_name","contains","tm_vtdr6115";
+		spi-max-frequency = <9600000>;  /* 4800000,9600000,15000000,19200000 */
+		goodix,reset-gpio = <&tlmm 131 0x0>;
+		goodix,irq-gpio = <&tlmm 65 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>; /* 1080*16 */
+		goodix,panel-max-y = <38400>; /* 2400*16 */
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,iovdd-gpio = <&tlmm 126 0x0>;
+		goodix,avdd-name = "avdd";
+		avdd-supply = <&L28B>;
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_spi_active>;
+		pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
+		pinctrl-2 = <&ts_spi_release>;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,gesture-wait-pm;
+		goodix,sample-ctrl;
+		mmi,power-off-suspend;
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x07>;
 	};
 };
