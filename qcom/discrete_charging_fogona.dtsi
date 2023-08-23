@@ -418,6 +418,7 @@
 		status = "ok";
 		compatible = "mmi,mmi-charger";
 		mmi,enable-charging-limit;
+		mmi,factory-syspoweroff-wait;
 		mmi,upper-limit-capacity = <65>;
 		mmi,lower-limit-capacity = <60>;
 		mmi,heartbeat-interval = <5000>;
