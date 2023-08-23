@@ -707,7 +707,7 @@
 	ranges = <0 0 0 0xffffffff>;
 	compatible = "simple-bus";
 
-	disp_rdump_region {
+	disp_rdump_region@b8000000 {
 	};
 
 	dsi_pll_codes {
