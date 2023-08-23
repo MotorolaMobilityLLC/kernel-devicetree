@@ -275,8 +275,8 @@
 	};
 
 	chg_therm  {
-		polling-delay-passive = <0>;
-		polling-delay = <0>;
+		polling-delay-passive = <5000>;
+		polling-delay = <20000>;
 		thermal-governor = "user_space";
 		thermal-sensors = <&pm6125_adc_tm_iio 1>;
 		wake-capable-sensor;
