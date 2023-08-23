@@ -298,3 +298,11 @@
 		<0x26 0x70>,  /* override_x1 */
 		<0x1a 0x74>;  /* override_x2 */
 };
+
+&pm8008_8 {
+	status = "disabled";
+};
+
+&pm8008_9 {
+	status = "disabled";
+};
