@@ -147,6 +147,9 @@
 	mmi,combo-batt-psy = <&mmi_charger>;
 	qcom,thermal-mitigation = <4675000 4000000 3500000 3000000 2500000 2000000 1000000 500000 100000>;
 	qcom,wireless-fw-name = "cps4019.bin";
+	qcom,tbatt-filter-en;
+	qcom,tbatt-filter-interval-ms = <10000>;
+	qcom,tbatt-filter-offset-degree = <50>;
 };
 
 &qti_glink_charger {
