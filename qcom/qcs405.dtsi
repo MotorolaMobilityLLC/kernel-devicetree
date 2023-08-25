@@ -1593,6 +1593,8 @@
 			};
 		};
 	};
+
+	msm_gpu: qcom,kgsl-3d0@1c00000 { };
 };
 
 &firmware {
