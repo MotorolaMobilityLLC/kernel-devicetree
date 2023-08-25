@@ -877,7 +877,7 @@
 		compatible = "qcom,rpmh-sleep-stats";
 		reg = <0xc3f0000 0x400>;
 		qcom,drv-max = <0x14>;
-		ss-name = "adsp", "cdsp", "apss";
+		ss-name = "adsp", "cdsp", "apss", "cdsp1", "gpdsp0", "gpdsp1";
 		mboxes = <&qmp_aop 0>;
 		mbox-names = "aop";
 		ddr-freq-update;
