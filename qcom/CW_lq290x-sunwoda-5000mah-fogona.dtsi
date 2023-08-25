@@ -11,7 +11,7 @@
  * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
  */
 SUNWODA-5000mah-fogona {
-	serialnum = "SB18D99898";
+	serialnum = "SB18D96854";
 	fcc_design = <5000>;
 	ui_full = <97>;
 	config_profile_info = [
