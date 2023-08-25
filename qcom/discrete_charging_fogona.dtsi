@@ -82,7 +82,7 @@
 
 		sense_r_mohm = <5>;
 		factory_mode_ntc_exist = <0>;
-		df-serialnum = "SB18D99898";
+		df-serialnum = "SB18D96854";
 		#include "CW_lq290x-sunwoda-5000mah-fogona.dtsi"
 		#include "CW_lq280x-scud-5000mah-fogona.dtsi"
 	};
@@ -141,8 +141,9 @@
 
                 rt,smooth_soc_en = <0>;
 
-                df-serialnum = "SB18D33989";
-                #include "RT_md50-amperex-5000mah-sample.dtsi"
+                df-serialnum = "SB18D96854";
+                #include "RT_md50-sunwoda-5000mah-fogona.dtsi"
+                #include "RT_md50-scud-5000mah-fogona.dtsi"
         };
 };
 
