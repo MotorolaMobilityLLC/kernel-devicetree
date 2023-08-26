@@ -323,7 +323,7 @@
 	ranges = <0 0 0 0xffffffff>;
 	compatible = "simple-bus";
 
-	disp_rdump_region {
+	disp_rdump_region@e3940000 {
 	};
 
 	psci {
@@ -685,7 +685,7 @@
 		interrupt-controller;
 		#interrupt-cells = <2>;
 		wakeup-parent = <&pdc>;
-		qcom,gpios-reserved = <36 37 38 39>;
+		qcom,gpios-reserved = <36 37 38 39 74>;
 	};
 
 	show_resume_irqs@17100000 {
@@ -949,6 +949,11 @@
 			compatible = "qcom,msm-imem-diag-dload";
 			reg = <0xc8 0xc8>;
 		};
+
+		modem_dsm@c98 {
+			compatible = "qcom,msm-imem-mss-dsm";
+			reg = <0xc98 0x10>;
+		};
 	};
 
 	/* PIL spss node - for loading Secure Processor */
@@ -1168,7 +1173,7 @@
 	};
 
 	sram@c3f0000 {
-		compatible = "qcom,rpmh-stats-v3";
+		compatible = "qcom,rpmh-stats-v4";
 		reg = <0x0c3f0000 0x400>;
 		qcom,qmp = <&aoss_qmp>;
 		ss-name = "modem", "adsp", "adsp_island",
@@ -1456,8 +1461,9 @@
 		compatible = "qcom,ufshc";
 		reg = <0x1d84000 0x3000>,
 		      <0x1d88000 0x8000>,
-		      <0x1d90000 0x9000>;
-		reg-names = "ufs_mem", "ufs_ice", "ufs_ice_hwkm";
+		      <0x1d90000 0x9000>,
+		      <0x1da5000 0x2000>, <0x1da4000 0x10>;
+		reg-names = "ufs_mem", "ufs_ice", "ufs_ice_hwkm", "mcq_sqd", "mcq_vs";
 		interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
 		phys = <&ufsphy_mem>;
 		phy-names = "ufsphy";
@@ -1567,10 +1573,14 @@
 
 		iommus = <&apps_smmu 0x60 0x0>;
 		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma-addr-pool = <0x1000 0xFFFFF000>;
+		qcom,iommu-msi-size = <0x1000>;
 		shared-ice-cfg = <&ice_cfg>;
 		dma-coherent;
 
 		qcom,bypass-pbl-rst-wa;
+
+		msi-parent = <&gic_its 0x60>;
 
 		status = "disabled";
 
@@ -2535,7 +2545,7 @@
 		qcom,rm-affinity-default = <0>;
 	};
 
-	gh-secure-vm-loader@0 {
+	gh_secure_vm_loader0: gh-secure-vm-loader@0 {
 		compatible = "qcom,gh-secure-vm-loader";
 		qcom,pas-id = <28>;
 		qcom,vmid = <45>;
@@ -2578,9 +2588,14 @@
 		restrict-access;
 	};
 
-	qcom,test-dbl {
+	qcom,test-dbl-tuivm {
 		compatible = "qcom,gh-dbl";
 		qcom,label = <0x4>;
+	};
+
+	qcom,test-dbl-oemvm {
+		compatible = "qcom,gh-dbl";
+		qcom,label = <0x5>;
 	};
 
 	qcom,pmic_glink {
@@ -2727,6 +2742,10 @@
 
 	qcom_mpam: qcom,mpam {
 		compatible = "qcom,mpam";
+	};
+
+	qcom_dynpf: qcom,dynpf {
+		compatible = "qcom,dynpf";
 	};
 
 	qcom_cpufreq_stats: qcom,cpufreq_stats {

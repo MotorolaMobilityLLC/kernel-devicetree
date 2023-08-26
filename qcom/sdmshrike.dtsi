@@ -33,6 +33,8 @@
 		ufshc2 = &ufshc2_mem; /* Embedded 2nd UFS slot */
 		mmc1 = &sdhc_2; /* SDC2 SD Card slot */
 		serial0 = &qupv3_se12_2uart;
+		hsuart0 = &qupv3_se17_4uart;
+		hsuart1 = &qupv3_se9_2uart;
 		spi22 = &qupv3_se22_spi;
 		i2c7 = &qupv3_se20_i2c;
 	};
@@ -868,8 +870,9 @@
 		reg = <0xaf00000 0x20000>;
 		reg-names = "cc_base";
 		vdd_mm-supply = <&VDD_MMCX_LEVEL>;
-		clocks = <&gcc GCC_DISP_AHB_CLK>, <&rpmhcc RPMH_CXO_CLK>, <&sleep_clk>;
-		clock-names = "cfg_ahb_clk", "bi_tcxo", "sleep_clk";
+		clocks = <&gcc GCC_DISP_AHB_CLK>, <&rpmhcc RPMH_CXO_CLK>,
+			<&rpmhcc RPMH_CXO_CLK_A>, <&sleep_clk>;
+		clock-names = "cfg_ahb_clk", "bi_tcxo", "bi_tcxo_ao", "sleep_clk";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -1391,7 +1394,8 @@
 						<  672000  768000 >,
 						<  864000  960000 >,
 						< 1171200 1228800 >,
-						< 1267200 1344000 >;
+						< 1267200 1344000 >,
+						< 1766400 1651200 >;
 				qcom,sampling-enabled;
 			};
 
@@ -1404,7 +1408,8 @@
 						<  768000  768000 >,
 						<  960000  960000 >,
 						< 1248000 1228800 >,
-						< 1593600 1344000 >;
+						< 1593600 1344000 >,
+						< 2841600 1651200 >;
 				qcom,sampling-enabled;
 			};
 		};
@@ -2383,3 +2388,15 @@
 #include "sa8195-thermal.dtsi"
 #include "sa8195-qupv3.dtsi"
 #include "sa8195-ssc-qupv3.dtsi"
+
+&qupv3_se12_2uart {
+	status = "ok";
+};
+
+&qupv3_se17_4uart {
+	status = "ok";
+};
+
+&qupv3_se9_2uart {
+	status = "ok";
+};

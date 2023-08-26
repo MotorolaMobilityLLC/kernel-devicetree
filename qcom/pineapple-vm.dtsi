@@ -6,7 +6,7 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <557 0x10000>;
+	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
 	interrupt-parent = <&vgic>;
 
 	chosen {
@@ -82,7 +82,7 @@
 				0xd7 0x61 0x84 0x11 0xca 0x2d 0x22 0xb3 0x29 0x02 0x03 0x01 0x00 0x01>;
 	};
 
-	qcom,vm-config {
+	qcom_vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
 		boot-config = "fdt,unified";
@@ -285,16 +285,16 @@
 				qcom,label = <0x3>;
 			};
 
-			test-dbl {
+			test-dbl-tuivm {
 				vdevice-type = "doorbell";
-				generate = "/hypervisor/test-dbl";
+				generate = "/hypervisor/test-dbl-tuivm";
 				qcom,label = <0x4>;
 				peer-default;
 			};
 
-			test-dbl-source {
+			test-dbl-tuivm-source {
 				vdevice-type = "doorbell-source";
-				generate = "/hypervisor/test-dbl-source";
+				generate = "/hypervisor/test-dbl-tuivm-source";
 				qcom,label = <0x4>;
 				peer-default;
 			};
@@ -486,6 +486,7 @@
 		qcom,gpii-mask = <0x0>;
 		qcom,ev-factor = <2>;
 		qcom,gpi-ee-offset = <0x10000>;
+		qcom,le-vm;
 		status = "ok";
 	};
 
@@ -568,7 +569,7 @@
 		msgq-label = <3>;
 	};
 
-	qcom,test-dbl {
+	qcom,test-dbl-tuivm {
 		compatible = "qcom,gh-dbl";
 		qcom,label = <0x4>;
 	};

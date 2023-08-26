@@ -1,4 +1,11 @@
+#include <dt-bindings/clock/qcom,dispcc-holi.h>
+#include <dt-bindings/clock/qcom,gcc-holi.h>
+#include <dt-bindings/clock/qcom,gpucc-holi.h>
+#include <dt-bindings/clock/qcom,rpmcc.h>
+#include <dt-bindings/interconnect/qcom,icc.h>
+#include <dt-bindings/interconnect/qcom,holi.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Holi";
@@ -14,6 +21,10 @@
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
+
+	reserved_memory: reserved-memory { };
+
+	firmware: firmware { };
 
 	cpus {
 		#address-cells = <2>;
@@ -212,6 +223,124 @@
 	soc: soc { };
 };
 
+&reserved_memory {
+	#address-cells = <2>;
+	#size-cells = <2>;
+	ranges;
+
+	hyp_mem: hyp_region@80000000 {
+		no-map;
+		reg = <0x0 0x80000000 0x0 0x600000>;
+	};
+
+	/* only reserve part of XBL BOOT */
+	xblboot_mem: xblboot_region@80700000 {
+		no-map;
+		reg = <0x0 0x80700000 0x0 0x100000>;
+	};
+
+	reserved_mem: reserved_region@80880000 {
+		no-map;
+		reg = <0x0 0x80880000 0x0 0x4000>;
+	};
+
+	minidump_uefixbl_mem: minidump_uefixbl_region@80884000 {
+		no-map;
+		reg = <0x0 0x80884000 0x0 0x10000>;
+	};
+
+	/* secdata can be reused by apps */
+
+	smem_mem: smem_region@80900000 {
+		compatible = "qcom,smem";
+		reg = <0x0 0x80900000 0x0 0x200000>;
+		hwlocks = <&tcsr_mutex 3>;
+		no-map;
+	};
+
+	cpucp_fw_mem: cpucp_fw_region@80b00000 {
+		no-map;
+		reg = <0x0 0x80b00000 0x0 0x100000>;
+	};
+
+	cdsp_secure_heap_mem: cdsp_secure_heap_region@80c00000 {
+		no-map;
+		reg = <0x0 0x80c00000 0x0 0x1e00000>;
+	};
+
+	pil_wlan_mem: wlan_region@86500000 {
+		no-map;
+		reg = <0x0 0x86500000 0x0 0x200000>;
+	};
+
+	pil_adsp_mem: adsp_region@86700000 {
+		no-map;
+		reg = <0x0 0x86700000 0x0 0x2000000>;
+	};
+
+	pil_cdsp_mem: cdsp_region@88700000 {
+		no-map;
+		reg = <0x0 0x88700000 0x0 0x1e00000>;
+	};
+
+	pil_video_mem: video_region@8a500000 {
+		no-map;
+		reg = <0x0 0x8a500000 0x0 0x700000>;
+	};
+
+	pil_ipa_fw_mem: ipa_fw_region@8ac00000 {
+		no-map;
+		reg = <0x0 0x8ac00000 0x0 0x10000>;
+	};
+
+	pil_ipa_gsi_mem: ipa_gsi_region@8ac10000 {
+		no-map;
+		reg = <0x0 0x8ac10000 0x0 0xa000>;
+	};
+
+	pil_gpu_microcode_mem: gpu_microcode_region@8ac1a000 {
+		no-map;
+		reg = <0x0 0x8ac1a000 0x0 0x2000>;
+	};
+
+	pil_mpss_wlan_mem: mpsswlan_region@8b800000 {
+		no-map;
+		reg = <0x0 0x8b800000 0x0 0x10000000>;
+	};
+
+	tz_stat_mem: tz_stat_region@c0000000 {
+		no-map;
+		reg = <0x0 0xc0000000 0x0 0x100000>;
+	};
+
+	tags_mem: tags_region@c0100000 {
+		no-map;
+		reg = <0x0 0xc0100000 0x0 0x1200000>;
+	};
+
+	qtee_mem: qtee_region@c1300000 {
+		no-map;
+		reg = <0x0 0xc1300000 0x0 0x500000>;
+	};
+
+	trusted_apps_mem: trusted_apps_region@c1800000 {
+		no-map;
+		reg = <0x0 0xc1800000 0x0 0x3900000>;
+	};
+
+	/* global autoconfigured region for contiguous allocations */
+	system_cma: linux,cma {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x2000000>;
+		linux,cma-default;
+	};
+};
+
+#include "msm-arm-smmu-holi.dtsi"
+
 &soc {
 	#address-cells = <1>;
 	#size-cells = <1>;
@@ -232,6 +361,29 @@
 		reg = <0xf200000 0x10000>,     /* GICD */
 		      <0xf240000 0x100000>;    /* GICR * 8 */
 		interrupts = <GIC_PPI 8 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	rpm_bus: qcom,rpm-smd {
+		compatible = "qcom,rpm-smd";
+		rpm-channel-name = "rpm_requests";
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_AOP
+			      IPCC_MPROC_SIGNAL_GLINK_QMP
+			      IRQ_TYPE_EDGE_RISING>;
+		rpm-channel-type = <15>; /* SMD_APPS_RPM */
+	};
+
+	mpm: interrupt-controller@45f01b8 {
+		compatible = "qcom,mpm-holi", "qcom,mpm";
+		reg = <0x45f01b8 0x1000>,
+		      <0x0f40000c 0x4>,  /* MSM_APCS_GCC_BASE 4K */
+		      <0xf421000 0x1000>;
+		reg-names = "vmpm", "ipc", "timer";
+		interrupts = <GIC_SPI 197 IRQ_TYPE_EDGE_RISING>;
+		qcom,num-mpm-irqs = <96>;
+		interrupt-controller;
+		interrupt-parent = <&intc>;
+		#interrupt-cells = <2>;
 	};
 
 	arch_timer: timer {
@@ -308,6 +460,15 @@
 		interrupts = <GIC_PPI 5 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
+	load_mode {
+		compatible = "qcom,dload-mode";
+	};
+
+	tcsr: syscon@3c0000 {
+		compatible = "syscon";
+		reg = <0x3c0000 0x40000>;
+	};
+
 	qcom,msm-imem@c125000 {
 		compatible = "qcom,msm-imem";
 		reg = <0xc125000 0x1000>;
@@ -357,6 +518,30 @@
 		reg-names = "pshold-base", "tcsr-boot-misc-detect";
 	};
 
+	eud: qcom,msm-eud@1628000 {
+		compatible = "qcom,msm-eud";
+		interrupt-names = "eud_irq";
+		interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH>;
+		reg = <0x1628000 0x2000>,
+			<0x162A000 0x1000>,
+			<0x3E5018 0x4>;
+		reg-names = "eud_base", "eud_mode_mgr2",
+					"eud_tcsr_check_reg";
+		qcom,secure-eud-en;
+		qcom,eud-tcsr-check-enable;
+		status = "ok";
+	};
+
+	qcom,mpm2-sleep-counter@0x4403000 {
+		compatible = "qcom,mpm2-sleep-counter";
+		reg = <0x4403000 0x1000>;
+		clock-frequency = <32768>;
+	};
+
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
 	wdog: qcom,wdt@f410000 {
 		compatible = "qcom,msm-watchdog";
 		reg = <0xf410000 0x1000>;
@@ -378,6 +563,63 @@
 		#mbox-cells = <2>;
 	};
 
+	adsp_pas: remoteproc-adsp@a400000 {
+		compatible = "qcom,holi-adsp-pas";
+		reg = <0xa400000 0x00100>;
+		status = "ok";
+
+		interrupts-extended = <&intc GIC_SPI 282 IRQ_TYPE_LEVEL_HIGH>;
+
+		interrupt-names = "wdog";
+	};
+
+	cdsp_pas: remoteproc-cdsp@b000000 {
+		compatible = "qcom,holi-cdsp-pas";
+		reg = <0xb000000 0x100000>;
+		status = "ok";
+
+		interrupts-extended = <&intc GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
+
+		interrupt-names = "wdog";
+	};
+
+	modem_pas: remoteproc-mss@06000000 {
+		compatible = "qcom,holi-modem-pas";
+		reg = <0x06000000 0x100>;
+		status = "ok";
+
+		interrupts-extended = <&intc GIC_SPI 307 IRQ_TYPE_LEVEL_HIGH>;
+
+		interrupt-names = "wdog";
+	};
+
+	tcsr_mutex_block: syscon@340000 {
+		compatible = "syscon";
+		reg = <0x340000 0x20000>;
+	};
+
+	tcsr_mutex: hwlock {
+		compatible = "qcom,tcsr-mutex";
+		syscon = <&tcsr_mutex_block 0 0x1000>;
+		#hwlock-cells = <1>;
+	};
+
+	rpm_msg_ram: memory@045f0000 {
+		compatible = "qcom,rpm-msg-ram";
+		reg = <0x45f0000 0x7000>;
+	};
+
+	rpm-glink {
+		compatible = "qcom,glink-rpm";
+		qcom,rpm-msg-ram = <&rpm_msg_ram>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_AOP
+			  IPCC_MPROC_SIGNAL_GLINK_QMP>;
+		mbox-names = "rpm_smem";
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_AOP
+			      IPCC_MPROC_SIGNAL_GLINK_QMP
+			      IRQ_TYPE_EDGE_RISING>;
+	};
 
 	qcom_pmu: qcom,pmu {
 		compatible = "qcom,pmu";
@@ -532,6 +774,24 @@
 		};
 	};
 
+	qfprom: qfprom@1b40000 {
+		compatible = "qcom,qfprom";
+		reg = <0x1b40000 0x7000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ready-only;
+		ranges;
+
+		adsp_variant: adsp_variant@1E6 {
+			reg = <0x1E6 0x2>;
+			bits = <6 4>;
+		};
+
+		boot_config: boot_config@6070 {
+			reg = <0x6070 0x4>;
+		};
+	};
+
 	bwmon_ddr: qcom,bwmon-ddr@4520300 {
 		compatible = "qcom,bwmon4";
 		reg = <0x4520300 0x300>, <0x4520200 0x200>;
@@ -542,6 +802,226 @@
 		qcom,count-unit = <0x10000>;
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 	};
+
+	clk_virt: interconnect {
+		compatible = "qcom,holi-clk_virt";
+		#interconnect-cells = <1>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_QUP_CLK>,
+			<&rpmcc RPM_SMD_QUP_A_CLK>;
+	};
+
+	mmnrt_virt: interconnect@0 {
+		compatible = "qcom,holi-mmnrt_virt";
+		#interconnect-cells = <1>;
+		qcom,util-factor = <142>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_MMNRT_CLK>,
+			<&rpmcc RPM_SMD_MMNRT_A_CLK>;
+	};
+
+	mmrt_virt: interconnect@1 {
+		compatible = "qcom,holi-mmrt_virt";
+		#interconnect-cells = <1>;
+		qcom,util-factor = <142>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_MMRT_CLK>,
+			<&rpmcc RPM_SMD_MMRT_A_CLK>;
+	};
+
+	system_noc: interconnect@1880000 {
+		reg = <0x01880000 0x5f080>;
+		compatible = "qcom,holi-system_noc";
+		#interconnect-cells = <1>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_SNOC_CLK>,
+			<&rpmcc RPM_SMD_SNOC_A_CLK>;
+	};
+
+	config_noc: interconnect@1900000 {
+		reg = <0x01900000 0x6200>;
+		compatible = "qcom,holi-config_noc";
+		#interconnect-cells = <1>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_CNOC_CLK>,
+			<&rpmcc RPM_SMD_CNOC_A_CLK>;
+	};
+
+	bimc: interconnect@4480000 {
+		reg = <0x04480000 0x80000>;
+		compatible = "qcom,holi-bimc";
+		#interconnect-cells = <1>;
+		qcom,util-factor = <151>;
+		qcom,keepalive;
+		clock-names = "bus", "bus_a";
+		clocks = <&rpmcc RPM_SMD_BIMC_CLK>,
+			<&rpmcc RPM_SMD_BIMC_A_CLK>;
+	};
+
+	clocks {
+		xo_board: xo-board {
+			compatible = "fixed-clock";
+			clock-frequency = <38400000>;
+			clock-output-names = "xo_board";
+			#clock-cells = <0>;
+		};
+
+		sleep_clk: sleep-clk {
+			compatible = "fixed-clock";
+			clock-frequency = <32000>;
+			clock-output-names = "sleep_clk";
+			#clock-cells = <0>;
+		};
+	};
+
+	rpmcc: clock-controller {
+		compatible = "qcom,rpmcc-holi";
+		qcom,bimc-log-stop;
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	gcc: clock-controller@1400000 {
+		compatible = "qcom,holi-gcc", "syscon";
+		reg = <0x1400000 0x1f0000>;
+		reg_names = "cc_base";
+		vdd_cx-supply = <&S1E_LEVEL>;
+		vdd_mx-supply = <&S5A_LEVEL>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
+			 <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
+			 <&sleep_clk>;
+		clock-names = "bi_tcxo", "bi_tcxo_ao", "sleep_clk";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	dispcc: clock-controller@5f00000 {
+		compatible = "qcom,holi-dispcc", "syscon";
+		reg = <0x5f00000 0x20000>;
+		reg-names = "cc_base";
+		vdd_cx-supply = <&S1E_LEVEL>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
+			 <&gcc GCC_DISP_GPLL0_DIV_CLK_SRC>;
+		clock-names = "bi_tcxo", "gcc_disp_gpll0_clk";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	gpucc: clock-controller@5990000 {
+		compatible = "qcom,holi-gpucc", "syscon";
+		reg = <0x5990000 0x9000>;
+		reg-names = "cc_base";
+		vdd_cx-supply = <&S1E_LEVEL>;
+		vdd_mx-supply = <&S5A_LEVEL>;
+		vdd_gx-supply = <&S3A_LEVEL>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>, <&gcc GCC_GPU_GPLL0_CLK_SRC>,
+			<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>,
+			<&gcc GCC_GPU_SNOC_DVM_GFX_CLK>;
+		clock-names = "bi_tcxo", "gcc_gpu_gpll0_clk_src",
+				"gcc_gpu_gpll0_div_clk_src",
+				"gcc_gpu_snoc_dvm_gfx_clk";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	cpucc: syscon@faa0018 {
+		compatible = "syscon";
+		reg = <0x0faa0018 0x4>;
+	};
+
+	mccc: syscon@0447d200 {
+		compatible = "syscon";
+		reg = <0x0447d200 0x100>;
+	};
+
+	debugcc: clock-controller@0 {
+		compatible = "qcom,holi-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,dispcc = <&dispcc>;
+		qcom,gpucc = <&gpucc>;
+		qcom,cpucc = <&cpucc>;
+		qcom,mccc = <&mccc>;
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
+			<&gcc 0>, <&gpucc 0>, <&dispcc 0>;
+		clock-names = "xo_clk_src", "gcc",
+			"gpucc", "dispcc";
+		#clock-cells = <1>;
+	};
+
+};
+
+&firmware {
+	qcom_scm {
+		compatible = "qcom,scm";
+		qcom,dload-mode = <&tcsr 0x13000>;
+	};
 };
 
 #include "holi-pinctrl.dtsi"
+#include "pm6350-rpm-regulator.dtsi"
+#include "pm6150l-rpm-regulator.dtsi"
+#include "blair-regulators-pm6350.dtsi"
+#include "holi-gdsc.dtsi"
+
+&gcc_camss_top_gdsc {
+	status = "ok";
+};
+
+&gcc_ufs_phy_gdsc {
+	status = "ok";
+};
+
+&gcc_usb30_prim_gdsc {
+	status = "ok";
+};
+
+&gcc_vcodec0_gdsc {
+	qcom,support-hw-trigger;
+	status = "ok";
+};
+
+&gcc_venus_gdsc {
+	status = "ok";
+};
+
+&hlos1_vote_mm_snoc_mmu_tbu_rt_gdsc {
+	status = "ok";
+};
+
+&hlos1_vote_mm_snoc_mmu_tbu_nrt_gdsc {
+	status = "ok";
+};
+
+&hlos1_vote_turing_mmu_tbu1_gdsc {
+	status = "ok";
+};
+
+&hlos1_vote_turing_mmu_tbu0_gdsc {
+	status = "ok";
+};
+
+&mdss_core_gdsc {
+	clocks = <&gcc GCC_DISP_AHB_CLK>;
+	clock-names = "ahb_clk";
+	qcom,support-hw-trigger;
+	status = "ok";
+};
+
+&gpu_cx_gdsc {
+	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
+	clock-names = "ahb_clk";
+	parent-supply = <&S1E_LEVEL>;
+	status = "ok";
+};
+
+&gpu_gx_gdsc {
+	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
+	clock-names = "ahb_clk";
+	parent-supply = <&S3A_LEVEL>;
+	status = "ok";
+};
