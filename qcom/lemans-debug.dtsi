@@ -20,7 +20,7 @@
 		reg-names = "dcc-base", "dcc-ram-base";
 		qcom,transaction_timeout = <0>;
 		dcc-ram-offset = <0x38800>;
-
+		dcc-mem-map-ver = <2>;
 		status = "okay";
 	};
 
