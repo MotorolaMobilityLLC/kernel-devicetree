@@ -13,8 +13,8 @@
 /* This file is only for rtwo device */
 
 #include "crow-eqe-products-common-overlay.dtsi"
-
 #include "crow-eqe-fingerprint-overlay.dtsi"
+#include "crow-eqe-sensors-overlay.dtsi"
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
