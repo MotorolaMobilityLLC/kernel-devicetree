@@ -935,7 +935,7 @@
 		compatible = "qcom,lemans-llcc", "qcom,llcc-v31";
 		reg = <0x9200000 0x580000> , <0x9a00000 0x80000>;
 		reg-names = "llcc_base", "llcc_broadcast_base";
-		interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH>;
+		interrupts = <GIC_SPI 580 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
 
 		llcc-perfmon {
