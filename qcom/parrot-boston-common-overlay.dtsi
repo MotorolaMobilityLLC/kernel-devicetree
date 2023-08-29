@@ -18,8 +18,7 @@
 #include "parrot-genevn-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
 #include "moto-boston-wl2864c.dtsi"
-#include "parrot-genevn-nfc-overlay.dtsi"
-
+#include "parrot-avatrn-nfc-overlay.dtsi"
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
