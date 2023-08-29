@@ -62,6 +62,7 @@
 
 		coresight-name = "coresight-tmc-etr";
 		qcom,mem_support;
+		usb_bam_support;
 		coresight-ctis = <&cti0>;
 		coresight-csr = <&csr>;
 
