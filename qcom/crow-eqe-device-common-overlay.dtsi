@@ -19,6 +19,7 @@
 #include "crow-moto-common-charger.dtsi"
 #include "crow-eqe-charger-overlay.dtsi"
 #include "crow-eqe-thermal-overlay.dtsi"
+#include "moto-eqe-external-camera-pmic.dtsi"
 
 &soc {
 	mmi_relay {
