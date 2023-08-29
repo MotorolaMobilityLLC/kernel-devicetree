@@ -12,8 +12,8 @@
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-wcn3990.dtsi"
-#include "parrot-genevn-charger-overlay.dtsi"
-#include "parrot-genevn-thermal-overlay.dtsi"
+#include "parrot-boston-charger-overlay.dtsi"
+#include "parrot-boston-thermal-overlay.dtsi"
 #include "parrot-boston-touchscreen-overlay.dtsi"
 #include "parrot-boston-sensor-overlay.dtsi"
 #include "parrot-genevn-fps-overlay.dtsi"
@@ -41,10 +41,6 @@
 	qcom,vib-dis-short-long;
 	qcom,vib-dis-short-long-val = <80>;
 	qcom,vib-ldo-volt-uv-long = <2900000>;
-};
-
-&socd_trip {
-    temperature = <95>;
 };
 
 &mpss_mem {

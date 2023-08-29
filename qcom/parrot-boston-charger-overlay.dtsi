@@ -1,0 +1,46 @@
+&soc {
+	mmi_charger: mmi,charger {
+		compatible = "mmi,mmi-charger";
+		mmi,enable-charging-limit;
+		mmi,upper-limit-capacity = <75>;
+		mmi,lower-limit-capacity = <65>;
+		mmi,heartbeat-interval = <10000>;
+		mmi,dcp-power-max = <10000>;
+		mmi,hvdcp-power-max = <15000>;
+		mmi,factory-kill-debounce-ms = <3000>;
+		mmi,pd-power-max = <30000>;
+	};
+
+	qcom,pmic_glink {
+		status = "ok";
+		qti_glink_charger: mmi,qti-glink-charger {
+			compatible = "mmi,qti-glink-charger";
+			mmi,chrg-iterm-ma = <450>;
+			mmi,fg-iterm-ma = <500>;
+			mmi,max-fv-mv = <4500>;
+			mmi,max-fcc-ma = <4000>;
+			mmi,demo-fv-mv = <4000>;
+			mmi,df-serialnum = "SB18D97317";
+			profile-ids-map = "107000", "SB18E04682","38000","SB18E06876";
+		};
+	};
+
+	qcom,pmic_glink_log {
+		qcom,charger_ulog_glink {
+			status = "disabled";
+		};
+		bm_adsp_ulog: qcom,bm_adsp_ulog {
+			compatible = "qcom,bm-adsp-ulog";
+			categories = /bits/ 64 <0x1FFFBFFFFF>;
+			level = <4>;
+			init-log-enabled;
+		};
+	};
+};
+
+
+&battery_charger {
+	qcom,thermal-mitigation = <6000000 5000000 4000000 3500000 3000000 2000000 1500000 1000000 500000>;
+	qcom,wireless-fw-name = "cps4038.bin";
+	qcom,wireless-fw-size_min = <0x2000>;
+};
