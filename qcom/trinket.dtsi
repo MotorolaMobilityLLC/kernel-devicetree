@@ -1856,6 +1856,7 @@
 #include "trinket-regulator.dtsi"
 #include "trinket-gdsc.dtsi"
 #include "msm-arm-smmu-trinket.dtsi"
+#include "trinket-coresight.dtsi"
 
 &mdss_core_gdsc {
 	parent-supply = <&VDD_CX_LEVEL>;
