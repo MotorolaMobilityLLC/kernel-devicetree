@@ -66,6 +66,11 @@ ifeq ($(CONFIG_OBERON_DTB),y)
 KALAMA_BOARDS += kalama-oberon-evb-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_ARC_DTB),y)
+KALAMA_BASE_DTB += kalama-arc-base.dtb kalama-v2-arc-base.dtb
+KALAMA_BOARDS += kalama-arc-evb-overlay.dtbo
+endif
+
 else
 KALAMA_BASE_DTB += kalama.dtb kalama-v2.dtb kalama-sg.dtb kalama-qcm.dtb
 KALAMA_APQ_BASE_DTB += kalamap.dtb kalamap-v2.dtb kalamap-sg.dtb kalamap-qcs.dtb
