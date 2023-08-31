@@ -24,7 +24,7 @@
 		qcom,adjust-timer-wakeup-ms = <1>;
 
 		qcom,mdss-pan-physical-width-dimension = <68>;
-		qcom,mdss-pan-physical-height-dimension = <151>;
+		qcom,mdss-pan-physical-height-dimension = <152>;
 
 		qcom,mdss-dsi-cabc-mv-command = [15 00 00 00 00 00 02 55 03];
 		qcom,mdss-dsi-cabc-mv-command-state =  "dsi_hs_mode";
