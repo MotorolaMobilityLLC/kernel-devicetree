@@ -2003,8 +2003,18 @@
 			bits = <25 6>;
 		};
 
+		gpu_gaming_bin: gpu_gaming_bin@133 {
+			reg = <0x133 0x1>;
+			bits = <7 1>;
+		};
+
 		feat_conf13: feat_conf13@0134 {
 			reg = <0x0134 0x4>;
+		};
+
+		gpu_speed_bin: gpu_speed_bin@13a {
+			reg = <0x13a 0x2>;
+			bits = <2 9>;
 		};
 	};
 
@@ -2339,7 +2349,8 @@
 			< 0x0011 0xFF 0x01 0xFF >,
 			< 0x0017 0xFF 0xFF 0xFF >,
 			< 0x0037 0xFF 0xFF 0xFF >,
-			< 0x1000 0xFF 0xFF 0xFF >;
+			< 0x1000 0xFF 0xFF 0xFF >,
+			< 0x4005 0xFF 0x03 0xFF >;
 	};
 
 	ddr_freq_table: ddr-freq-table {
@@ -2466,6 +2477,7 @@
 
 	qcom_memlat: qcom,memlat {
 		compatible = "qcom,memlat";
+		qcom,be-stall-ev = <0x4005>;
 		ddr {
 			compatible = "qcom,memlat-grp";
 			qcom,target-dev = <&qcom_ddr_dcvs_hw>;

@@ -55,9 +55,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_0>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_0: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -82,9 +84,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_1>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_1: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -103,9 +107,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_2>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_2: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -124,9 +130,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 0 4>;
 			next-level-cache = <&L2_3>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_3: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -146,8 +154,10 @@
 			enable-method = "psci";
 			cache-size = <0x20000>;
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_4>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_4: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -172,9 +182,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_5>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_5: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -193,9 +205,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_6>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_6: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -214,9 +228,11 @@
 			power-domain-names = "psci";
 			enable-method = "psci";
 			cpu-release-addr = <0x0 0x90000000>;
+			capacity-dmips-mhz = <1024>;
 			cache-size = <0x20000>;
 			qcom,freq-domain = <&cpufreq_hw 1 4>;
 			next-level-cache = <&L2_7>;
+			dynamic-power-coefficient = <100>;
 			#cooling-cells = <2>;
 			L2_7: l2-cache {
 			      compatible = "arm,arch-cache";
@@ -295,13 +311,22 @@
 			arm,psci-suspend-param = <0x41000044>;
 		};
 
-		APSS_OFF: cluster-e3 { /* E3 */
+		APSS_RSC_PC: cluster-e1 { /* E1 */
 			compatible = "domain-idle-state";
-			idle-state-name = "llcc-off";
+			idle-state-name = "rsc-off";
 			entry-latency-us = <3263>;
 			exit-latency-us = <6562>;
 			min-residency-us = <9987>;
 			arm,psci-suspend-param = <0x42000144>;
+		};
+
+		APSS_OFF: cluster-e3 { /* E3 */
+			compatible = "domain-idle-state";
+			idle-state-name = "llcc-off";
+			entry-latency-us = <4294967295>;
+			exit-latency-us = <4294967295>;
+			min-residency-us = <4294967295>;
+			arm,psci-suspend-param = <0x4200C344>;
 		};
 	};
 };
@@ -606,7 +631,7 @@
 
 		CLUSTER_PD2: cluster-pd2 {
 			#power-domain-cells = <0>;
-			domain-idle-states = <&APSS_OFF>;
+			domain-idle-states = <&APSS_RSC_PC &APSS_OFF>;
 		};
 	};
 
@@ -834,8 +859,11 @@
 
 	qcom,power-state {
 		compatible = "qcom,power-state";
-		qcom,subsys-name = "adsp", "cdsp", "cdsp1", "gpdsp0", "gpdsp1";
+		qcom,subsys-name = "lpass", "cdsp", "cdsp1", "gpdsp0", "gpdsp1";
 		qcom,rproc-handle = <&adsp_pas>, <&cdsp_pas>, <&cdsp1_pas>, <&gpdsp0_pas>, <&gpdsp1_pas>;
+		qcom,qmp = <&aoss_qmp>;
+		label = "aop";
+		#mbox-cells = <1>;
 	};
 
 	sys-pm-vx@c320000 {
@@ -1536,7 +1564,7 @@
 		reg-names = "cx","mx";
 
 		/* Inputs from lpass */
-		interrupts-extended = <&intc GIC_SPI 486 IRQ_TYPE_LEVEL_HIGH>,
+		interrupts-extended = <&intc GIC_SPI 486 IRQ_TYPE_EDGE_RISING>,
 				<&adsp_smp2p_in 0 0>,
 				<&adsp_smp2p_in 2 0>,
 				<&adsp_smp2p_in 1 0>,
@@ -2579,6 +2607,7 @@
 		snps,ptp-req-clk-rate = <96000000>;
 		interrupts-extended = <&intc 0 946 4>;
 		qcom,arm-smmu;
+		gdsc-off-on-suspend;
 
 		interrupt-names = "macirq";
 

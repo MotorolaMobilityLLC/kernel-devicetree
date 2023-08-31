@@ -166,11 +166,6 @@
 				qcom,label = <0x3>;
 			};
 
-			vsock-gunyah {
-				compatible = "qcom,gunyah-vsock";
-				msgq-label = <3>;
-			};
-
 			vcpu-sched-test-msgq {
 				vdevice-type = "message-queue-pair";
 				generate = "/hypervisor/sched-test-msgq-pair";
@@ -239,6 +234,11 @@
 	qrtr-gunyah {
 		compatible = "qcom,qrtr-gunyah";
 		gunyah-label = <8>;
+	};
+
+	vsock-gunyah {
+		compatible = "qcom,gunyah-vsock";
+		msgq-label = <3>;
 	};
 
 	qtee_shmbridge {

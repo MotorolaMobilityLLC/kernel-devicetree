@@ -276,7 +276,7 @@
 };
 
 &usb_qmp_dp_phy {
-	pinctrl-names = "default";
+	pinctrl-names = "unused";
 
 	qcom,qmp-phy-override-seq =
 		/* <reg_offset,		value> */
@@ -287,20 +287,21 @@
 };
 
 &qupv3_hub_i2c2 {
-	status = "disabled";
+	status = "ok";
 
 	#address-cells = <1>;
 	#size-cells = <0>;
 	redriver: redriver@1c {
 		compatible = "onnn,redriver";
 		reg = <0x1c>;
-		status = "disabled";
 
 		lane-channel-swap;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&usb3phy_portselect_gpio>;
 		gpios = <&tlmm 11 0>;
+		set-aux;
+		aux-orientation-violate-usb;
 
 		eq = /bits/ 8 <
 				/* Parameters for USB */
@@ -447,6 +448,11 @@
 
 &pcie0 {
 	qcom,boot-option = <0x2>;
+
+	pcie-usb-hub-power-1p05-gpio = <&tlmm 179 0>;
+	pcie-usb-hub-power-3p3-gpio = <&tlmm 13 0>;
+	pcie-usb-hub-ponreset-gpio = <&tlmm 182 0>;
+
 	 qcom,pcie-phy-ver = <102>;
 			qcom,phy-sequence = <0x0240 0x03 0x0
 					0x00c0 0x01 0x0

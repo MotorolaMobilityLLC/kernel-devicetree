@@ -87,6 +87,12 @@
 					0x3E8  2>;
 		};
 
+		qcom,glinkpkt-slate-location-ctrl {
+			qcom,glink-channels = "location_ctrl";
+			qcom,intents = <0x1000 2
+					0x3E8  2>;
+		};
+
 		qcom,glinkpkt-slate-ssc-test-0 {
 			qcom,glink-channels = "ssc_test_0";
 			qcom,intents = <0x2710 2
