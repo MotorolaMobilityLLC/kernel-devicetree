@@ -270,7 +270,7 @@
 };
 
 &holi_snd {
-	qcom,model = "holi-9370_aw882xx-snd-card";
+	qcom,model = "holi-fogo5gna-snd-card";
 	qcom,msm-mi2s-master = <1>, <1>, <1>, <1>;
 	qcom,wcn-btfm = <1>;
 	qcom,tdm-max-slots = <4>;
