@@ -38,38 +38,45 @@
 	};
 	pen_int_default: pen_int_default {
 			mux {
-				pins = "gpio31";
+				pins = "gpio31", "gpio103";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio31";
-				num-grp-pins = <1>;
+				pins = "gpio31", "gpio103";
 				drive-strength = <2>;
-				bias-no-pull;
+				bias-disable;
 			};
 	};
 
 	pen_int_sleep: pen_int_sleep {
 			mux {
-				pins = "gpio31";
+				pins = "gpio31", "gpio103";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio31";
-				num-grp-pins = <1>;
+				pins = "gpio31", "gpio103";
 				drive-strength = <2>;
-				bias-no-pull;
+				bias-disable;
 			};
 	};
 };
 
 &soc {
 	pen_detect{
-		compatible = "rohm,bu520xx_pen_detect";
+		compatible = "hall_pen_detect";
 		pinctrl-names = "default","sleep";
 		pinctrl-0 = <&pen_int_default>;
 		pinctrl-1 = <&pen_int_sleep>;
-		rohm,nirq-gpio=<&tlmm 31 0x02>;
+		hall,factory-class-name = "hall_16";
+		hall,input-dev-name = "pen_hall_effect_sensor";
+		hall_vdd-supply = <&L8E>;
+		hall,nirq-gpio-num = <2>;
+		hall,nirq-gpio_0 = <&tlmm 31 0x02>;
+		hall,nirq-gpio-high-val_0 = <0>;
+		hall,nirq-gpio-low-val_0 = <1>;
+		hall,nirq-gpio_1 = <&tlmm 103 0x02>;
+		hall,nirq-gpio-high-val_1 = <0>;
+		hall,nirq-gpio-low-val_1 = <2>;
 	};
 };
 
