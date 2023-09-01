@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2022 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+pm08-atl-790mah {
+	serialnum = "SB18D64677";
+	fcc_design = <790>;
+	ui_full = <85>;
+	config_profile_info = [32 00 00 00 00 00 00 0d
+				a4 be c4 cb b8 ae c7 a5
+				97 ff dc 9c 81 63 52 45
+				3a 30 25 71 4e e1 38 de
+				ce c7 ce d5 da d9 d6 d2
+				cd cc d3 cc a9 98 90 87
+				80 7d 88 91 a8 9b 58 e6
+				20 00 ab 10 00 82 70 00
+				00 00 64 0d 91 67 00 00
+				00 00 00 00 00 00 00 15];
+};
