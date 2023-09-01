@@ -2746,17 +2746,8 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6 &CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					<  300000 0 >,
+					< 1881600 0 >,
 					< 2400000 1 >;
-				qcom,sampling-enabled;
-			};
-
-			ddrqos_prime_lat: prime {
-				compatible = "qcom,memlat-mon";
-				qcom,cpulist = <&CPU7>;
-				qcom,cpufreq-memfreq-tbl =
-					< 2054400 0 >,
-					< 2592000 1 >;
 				qcom,sampling-enabled;
 			};
 
@@ -2764,7 +2755,7 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					< 2284800 0 >,
+					< 2054400 0 >,
 					< 2592000 1 >;
 				qcom,sampling-enabled;
 			};
