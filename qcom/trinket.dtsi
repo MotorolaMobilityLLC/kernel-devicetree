@@ -20,6 +20,7 @@
 
 	aliases: aliases {
 		serial0 = &qupv3_se4_2uart;
+		hsuart0 = &qupv3_se9_4uart;
 		mmc0 = &sdhc_1; /* SDC1 eMMC slot */
 		mmc1 = &sdhc_2; /* SDC2 SD Card slot */
 	};
