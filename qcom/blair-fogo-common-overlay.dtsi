@@ -588,6 +588,11 @@
 			<15>,
 			<16>;
 	};
+
+	sys_temp_support {
+		mmi,need-uevent-sensors = "back_temp";
+		mmi,uevent-temp-threshold = <40000>;
+	};
 };
 
 /* Primary USB port related QUSB2 PHY */
