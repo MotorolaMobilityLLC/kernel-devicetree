@@ -14,10 +14,24 @@
 
 #include "crow-eqe-products-common-overlay.dtsi"
 
+#include "crow-eqe-fingerprint-overlay.dtsi"
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
 	};
 
+};
+
+&qseecom_mem {
+	size = <0x0 0x1800000>;
+};
+
+&qseecom_ta_mem {
+	size = <0x0 0x2000000>;
+};
+
+&tlmm {
+	/* reserve FP GPIOs: gpio12,13,14,15 24 25 26 27 for NFC 111 112 for WLAN*/
+	qcom,gpios-reserved = <12 13 14 15 24 25 26 27 111 112>;
 };
 
