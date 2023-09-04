@@ -24,7 +24,99 @@
         reg = <0x42>;
     };
 };
-
+&qupv3_se13_i2c {
+  status = "ok";
+  haptic_nv@5A{
+		compatible = "awinic,haptic_nv";
+		reg = < 0x5A >;
+		aw862xx_i2c_addr = < 0x58 >;
+		/* aw8624x_no_reset; */
+		reset-gpio = <&tlmm 20 0>;
+		irq-gpio = <&tlmm 144 0>;
+/****************************** aw862x ******************************/
+		aw862x_vib_lk_f0_cali = < 0 >;
+		aw862x_vib_mode = < 2 >; /* mode: RAM -> 2; CONT -> 3 */
+		aw862x_vib_f0_pre = < 2350 >;
+		aw862x_vib_f0_cali_percen = < 7 >;
+		aw862x_vib_cont_drv_lev = < 125 >;
+		aw862x_vib_cont_drv_lvl_ov = < 155 >;
+		aw862x_vib_cont_td = < 0xF06C >;
+		aw862x_vib_cont_zc_thr = < 0x08F8 >;
+		aw862x_vib_cont_num_brk = < 3 >;
+		aw862x_vib_f0_coeff = < 260 >; /* Don't modify it */
+		aw862x_vib_brake_cont_config = < 1 1 90 42 20 5 2 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 >;
+		aw862x_vib_f0_trace_parameter = < 0x05 0x03 0x02 0x0F >;
+		aw862x_vib_bemf_config = < 0x10 0x08 0x23 0xF8 >;
+		aw862x_vib_sw_brake = < 0x2C 0x08 >; /* cont brake, other brake */
+		aw862x_vib_trig_config = < 0 1 0 1 1 >;
+		aw862x_vib_tset = < 0x11 >;
+		aw862x_vib_duration_time = < 20 30 60 >;
+/***************************** aw862xx ******************************/
+		aw862xx_gain_bypass = < 1 >;
+		aw862xx_vib_lk_f0_cali = < 0 >;
+		aw862xx_vib_mode = < 2 >; /* mode: RAM -> 2; CONT -> 3 */
+		aw862xx_vib_f0_pre = < 2350 >;
+		aw862xx_vib_f0_cali_percen = < 7 >;
+		aw862xx_vib_cont_drv1_lvl = < 0x7F >;
+		aw862xx_vib_lra_vrms = < 1000 >; /* Motor rated voltage, mV */
+		aw862xx_vib_cont_brk_time = < 0x06 >;
+		aw862xx_vib_cont_brk_gain = < 0x08 >;
+		aw862xx_vib_cont_drv1_time = < 0x04 >;
+		aw862xx_vib_cont_drv2_time = < 0x14 >;
+		aw862xx_vib_cont_track_margin = < 0x0F >;
+		aw862xx_vib_d2s_gain = < 0x05 >;
+		aw862xx_vib_trig_config = < 0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0 >;
+		aw862xx_vib_duration_time = < 20 30 60 >;
+		aw862xx_vib_is_enabled_track_en;
+		/* aw862xx_vib_is_enabled_auto_brk; */
+/***************************** aw8623x ******************************/
+		aw8623x_gain_bypass = < 1 >;
+		aw8623x_vib_lk_f0_cali = < 0 >;
+		aw8623x_vib_mode = < 2 >; /* mode: RAM -> 2; CONT -> 3 */
+		aw8623x_vib_f0_pre = < 2350 >;
+		aw8623x_vib_f0_cali_percen = < 7 >;
+		aw8623x_vib_cont_drv1_lvl = < 0x7F >;
+		aw8623x_vib_lra_vrms = < 1000 >; /* Motor rated voltage, mV */
+		aw8623x_vib_cont_brk_time = < 0x06 >;
+		aw8623x_vib_cont_brk_gain = < 0x08 >;
+		aw8623x_vib_cont_drv1_time = < 0x04 >;
+		aw8623x_vib_cont_drv2_time = < 0x14 >;
+		aw8623x_vib_cont_track_margin = < 0x0F >;
+		aw8623x_vib_d2s_gain = < 0x05 >;
+		aw8623x_vib_trig_config = < 0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0 >;
+		aw8623x_vib_duration_time = < 20 30 60 >;
+		aw8623x_vib_is_enabled_track_en;
+		/* aw8623x_vib_is_enabled_auto_brk; */
+/***************************** aw8624x ******************************/
+		aw8624x_gain_bypass = < 1 >;
+		aw8624x_vib_lk_f0_cali = < 0 >;
+		aw8624x_vib_mode = < 2 >; /* mode: RAM -> 2; CONT -> 3 */
+		aw8624x_vib_f0_pre = < 2350 >;
+		aw8624x_vib_f0_cali_percen = < 15 >;
+		aw8624x_vib_cont_drv1_lvl = < 0x7F >;
+		aw8624x_vib_lra_vrms = < 1000 >; /* Motor rated voltage, mV */
+		aw8624x_vib_cont_brk_time = < 0x06 >;
+		aw8624x_vib_cont_brk_gain = < 0x08 >;
+		aw8624x_vib_cont_drv1_time = < 0x04 >;
+		aw8624x_vib_cont_drv2_time = < 0x14 >;
+		aw8624x_vib_cont_track_margin = < 0x0F >;
+		aw8624x_vib_d2s_gain = < 0x05 >;
+		aw8624x_vib_f0_d2s_gain = < 0x01 >;
+		aw8624x_vib_trig_config = < 0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0
+					    0 0 0 1 0 2 0 >;
+		aw8624x_vib_duration_time = < 20 30 60 >;
+		aw8624x_vib_is_enabled_track_en;
+		aw8624x_vib_is_enabled_smart_loop;
+		aw8624x_vib_is_enabled_inter_brake;
+		/* aw8624x_vib_is_enabled_auto_brk; */
+		status = "okay";
+	};
+};
 &soc {
         qcom,pmic_glink_log {
                 qcom,charger_ulog_glink {
