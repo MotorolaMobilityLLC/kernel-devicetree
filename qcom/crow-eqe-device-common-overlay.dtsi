@@ -18,6 +18,7 @@
 #include "crow-moto-common-st-nfc.dtsi"
 #include "crow-moto-common-charger.dtsi"
 #include "crow-eqe-charger-overlay.dtsi"
+#include "crow-eqe-thermal-overlay.dtsi"
 
 &soc {
 	mmi_relay {
