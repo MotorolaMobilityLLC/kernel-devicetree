@@ -135,6 +135,7 @@
 		label = "pm8775_1_ufs0_therm";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
 		qcom,pre-scaling = <1 1>;
 	};
 
@@ -143,6 +144,7 @@
 		label = "pm8775_1_soc_therm";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
 		qcom,pre-scaling = <1 1>;
 	};
 };
@@ -153,6 +155,7 @@
 		label = "pm8775_3_sdram_therm1";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
 		qcom,pre-scaling = <1 1>;
 	};
 };

@@ -10,6 +10,10 @@
 	status = "okay";
 };
 
+&pm7550ba_amoled_ecm {
+	status = "okay";
+};
+
 &pm7550ba_gpios {
 	sys_therm_6_gpio6 {
 		sys_therm_6_gpio6_default: sys_therm_6_gpio6_default {

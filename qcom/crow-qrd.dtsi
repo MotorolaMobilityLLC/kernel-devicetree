@@ -42,6 +42,7 @@
 
 &battery_charger {
 	qcom,thermal-mitigation-step = <500000>;
+	#cooling-cells = <2>;
 };
 
 &pmic_glink_debug {

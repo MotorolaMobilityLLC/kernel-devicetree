@@ -1,13 +1,16 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/clock/qcom,gcc-lemans.h>
+#include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
 	qcom,msm-id = <532 0x10000>, <533 0x10000>, <534 0x10000>, <619 0x10000>, <532 0x20000>, <533 0x20000>, <534 0x20000>, <619 0x20000>;
-	interrupt-parent = <&vgic>;
+	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M console=hvc0 loglevel=8 androidboot.first_stage_console=1 androidboot.hardware=qcom androidboot.slot_suffix=_a androidboot.selinux=permissive";
+		bootargs = "nokaslr log_buf_len=1M console=hvc0 loglevel=8 androidboot.first_stage_console=1 androidboot.hardware=qcom androidboot.slot_suffix=_a androidboot.selinux=enforcing";
 	};
 
 	reserved_memory: reserved-memory {
@@ -22,6 +25,22 @@
 			alignment = <0x0 0x400000>;
 			size = <0x0 0x2000000>;
 			linux,cma-default;
+		};
+
+		qseecom_mem: qseecom_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1400000>;
+		};
+
+		qseecom_ta_mem: qseecom_ta_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+			reusable;
+			alignment = <0x0 0x400000>;
+			size = <0x0 0x1000000>;
 		};
 	};
 
@@ -120,7 +139,20 @@
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "crash-fatal";
 
-		iomemory-ranges = <0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0>; /* TLMM Region */
+		/* Pass through regions */
+		/* TLMM region */
+		/* QUPv3 Tile 1 read-only region */
+		/* QUPv3 Tile 2 read-only region */
+		/* QUPv3 SE17 region */
+		iomemory-ranges = <0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
+				0x0 0xAC0000 0x0 0xAC0000 0x0 0x6000 0x1
+				0x0 0x8C0000 0x0 0x8C0000 0x0 0x6000 0x1
+				0x0 0x88C000 0x0 0x88C000 0x0 0x4000 0x0
+				>;
+
+		/* Pass through IRQs */
+		/* QUPv3 SE17 GIC IRQ */
+		gic-irq-ranges = <617 617>;
 
 		memory {
 			#address-cells = <0x2>;
@@ -145,7 +177,7 @@
 		};
 
 		interrupts {
-			config = &vgic;
+			config = &intc;
 		};
 
 		vdevices {
@@ -396,12 +428,24 @@
 					base = <0x0 0xd5400000>;
 				};
 			};
+
+			vsmmu@15000000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15000000>;
+				num-cbs = <0x4>;
+				num-smrs = <0x4>;
+				patch = "/soc/apps-smmu@15000000";
+			};
 		};
 	};
 
 	firmware: firmware {
 		scm {
 			compatible = "qcom,scm";
+		};
+
+		qcom_smcinvoke {
+			compatible = "qcom,smcinvoke";
 		};
 
 		android {
@@ -443,12 +487,18 @@
 		#reset-cells = <1>;
 	};
 
+	dummycc: qcom,dummycc {
+		compatible = "qcom,dummycc";
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
 	psci {
 		compatible = "arm,psci-1.0";
 		method = "smc";
 	};
 
-	vgic: interrupt-controller@17a00000 {
+	intc: interrupt-controller@17a00000 {
 		compatible = "arm,gic-v3";
 		interrupt-controller;
 		#interrupt-cells = <0x3>;
@@ -470,6 +520,18 @@
 
 	qcom_dma_heaps: qcom,dma-heaps {
 		compatible = "qcom,dma-heaps";
+
+		qcom,qseecom {
+			qcom,dma-heap-name = "qcom,qseecom";
+			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
+			memory-region = <&qseecom_mem>;
+		};
+
+		qcom,qseecom_ta {
+			qcom,dma-heap-name = "qcom,qseecom-ta";
+			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
+			memory-region = <&qseecom_ta_mem>;
+		};
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -480,6 +542,32 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
+	};
+
+	qcom_rng_ee3: qrng@10dc000 {
+		compatible = "qcom,msm-rng";
+		reg = <0x10dc000 0x1000>;
+		qcom,no-qrng-config;
+		clocks = <&dummycc RPMH_HWKM_CLK>;
+		clock-names = "km_clk_src";
+		status = "ok";
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		//qcom,support-hypervisor;
+		qcom,disable-shmbridge-support;
+	};
+
+	apps_smmu: apps-smmu@15000000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
 	};
 };
 
@@ -492,4 +580,17 @@
 			rename-dev = "super", "userdata", "metadata", "persist", "misc";
 		};
 	};
+};
+
+#include "lemans-pinctrl.dtsi"
+#include "lemans-vm-qupv3.dtsi"
+
+&qupv3_1 {
+	iommus = <&apps_smmu 0x458 0x0>;
+	qcom,iommu-dma = "default";
+};
+
+&qupv3_2 {
+	iommus = <&apps_smmu 0x5b8 0x0>;
+	qcom,iommu-dma = "default";
 };
