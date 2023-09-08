@@ -13,6 +13,7 @@
 #include "kalama-arc-products-common-overlay.dtsi"
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-arc-charger-overlay.dtsi"
+#include "kalama-arc-haptics-overlay.dtsi"
 
 &soc {
 	mmi_relay {
