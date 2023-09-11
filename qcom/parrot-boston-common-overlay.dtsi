@@ -16,7 +16,7 @@
 #include "parrot-boston-thermal-overlay.dtsi"
 #include "parrot-boston-touchscreen-overlay.dtsi"
 #include "parrot-boston-sensor-overlay.dtsi"
-#include "parrot-genevn-fps-overlay.dtsi"
+#include "parrot-boston-fps-overlay.dtsi"
 #include "moto-boston-wl2864c.dtsi"
 #include "parrot-avatrn-nfc-overlay.dtsi"
 #include "parrot-boston-wlan-antenna-control.dtsi"
