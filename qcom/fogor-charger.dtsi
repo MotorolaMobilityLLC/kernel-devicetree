@@ -70,6 +70,7 @@
 			1200000 900000
 			600000>;
 	/delete-property/ qcom,fcc-stepping-enable;
+	qcom,lpd-disable;
 
 };
 
