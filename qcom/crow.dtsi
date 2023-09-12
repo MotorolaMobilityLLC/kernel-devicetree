@@ -2973,6 +2973,7 @@
 		#address-cells = <2>;
 		#size-cells = <0>;
 		depends-on-supply = <&spmi1_bus>;
+		depends-on2-supply = <&smb1394_glink_debug>;
 
 		qcom,pmk8550-debug@0 {
 			compatible = "qcom,spmi-pmic";
@@ -3099,6 +3100,30 @@
 				};
 			};
 
+			/* Secondary SPMI bus */
+			spmi@1 {
+				reg = <1>;
+				#address-cells = <2>;
+				#size-cells = <0>;
+
+				smb1394_glink_debug: qcom,smb1394-debug@9 {
+					compatible = "qcom,spmi-pmic";
+					reg = <9 SPMI_USID>;
+					qcom,can-sleep;
+				};
+
+				qcom,smb1394-debug@b {
+					compatible = "qcom,spmi-pmic";
+					reg = <11 SPMI_USID>;
+					qcom,can-sleep;
+				};
+
+				qcom,smb1398-debug@d {
+					compatible = "qcom,spmi-pmic";
+					reg = <13 SPMI_USID>;
+					qcom,can-sleep;
+				};
+			};
 		};
 
 		pmic_glink_adc: qcom,glink-adc {
