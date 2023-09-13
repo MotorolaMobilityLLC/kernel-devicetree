@@ -101,6 +101,7 @@
 	qcom,noffc-qg-iterm = <407>;
 	qcom,noffc-qg-iterm-45c = <642>;
 	qcom,noffc-max-fv = <4500>;
+	mmi,enable-dcp-ffc;
 
 };
 
