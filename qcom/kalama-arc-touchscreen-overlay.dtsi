@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2023, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+
+		goodix,reset-gpio = <&tlmm 24 0x0>;
+		goodix,irq-gpio = <&tlmm 25 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <42240>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-name = "pm_humu_l13";
+		goodix,iovdd-name = "pm_humu_l12";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x06>;
+		mmi,enable-gestures;
+		goodix,gesture-wait-pm;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
+	};
+};
+

@@ -15,6 +15,7 @@
 #include "kalama-arc-charger-overlay.dtsi"
 #include "kalama-arc-haptics-overlay.dtsi"
 #include "kalama-moto-common-st-nfc.dtsi"
+#include "kalama-arc-touchscreen-overlay.dtsi"
 
 &soc {
 	mmi_relay {
