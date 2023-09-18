@@ -70,6 +70,7 @@
 			600000>;
 	/delete-property/ qcom,fcc-stepping-enable;
 	qcom,lpd-disable;
+	qcom,typec-legacy-rp-icl;
 
 };
 
