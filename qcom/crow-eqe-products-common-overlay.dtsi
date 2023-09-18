@@ -24,3 +24,17 @@
         reg = <0x42>;
     };
 };
+
+&soc {
+        qcom,pmic_glink_log {
+                qcom,charger_ulog_glink {
+                        status = "disabled";
+                };
+                bm_adsp_ulog: qcom,bm_adsp_ulog {
+                        compatible = "qcom,bm-adsp-ulog";
+                        categories = <0xFFBFFFFF>;
+                        level = <4>;
+                        init-log-enabled;
+                };
+        };
+};

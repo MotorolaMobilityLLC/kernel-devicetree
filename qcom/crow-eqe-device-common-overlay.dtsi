@@ -16,6 +16,8 @@
 #include "crow-eqe-fingerprint-overlay.dtsi"
 #include "crow-eqe-sensors-overlay.dtsi"
 #include "crow-moto-common-st-nfc.dtsi"
+#include "crow-moto-common-charger.dtsi"
+#include "crow-eqe-charger-overlay.dtsi"
 
 &soc {
 	mmi_relay {
