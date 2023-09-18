@@ -44,6 +44,13 @@
 	};
 };
 
+&ufshc_mem {
+        limit-tx-hs-gear = <4>;
+        limit-rx-hs-gear = <4>;
+        limit-rate = <1>; /* HS Rate-A */
+        status = "ok";
+};
+
 &pm8550b_eusb2_repeater {
 	qcom,param-override-seq =
 		/* <value reg_offset> */
