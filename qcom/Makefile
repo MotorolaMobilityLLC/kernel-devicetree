@@ -109,7 +109,8 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 
 ifeq ($(CONFIG_EQE_DTB),y)
 CROW_BASE_DTB += crow-eqe-base.dtb
-CROW_BOARDS += crow-eqe-evb1-overlay.dtbo
+CROW_BOARDS += crow-eqe-evb1-overlay.dtbo \
+               crow-eqe-evt1-overlay.dtbo
 endif
 
 else
