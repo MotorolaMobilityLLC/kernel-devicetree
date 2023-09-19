@@ -1,0 +1,160 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+	sar_int_default: sar_int_default {
+			mux {
+				pins = "gpio62";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio62";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	sar_int_sleep: sar_int_sleep {
+			mux {
+				pins = "gpio62";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio62";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+	pen_int_default: pen_int_default {
+			mux {
+				pins = "gpio31", "gpio103";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio31", "gpio103";
+				drive-strength = <2>;
+				bias-disable;
+			};
+	};
+
+	pen_int_sleep: pen_int_sleep {
+			mux {
+				pins = "gpio31", "gpio103";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio31", "gpio103";
+				drive-strength = <2>;
+				bias-disable;
+			};
+	};
+};
+
+&soc {
+	pen_detect{
+		compatible = "hall_pen_detect";
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&pen_int_default>;
+		pinctrl-1 = <&pen_int_sleep>;
+		hall,factory-class-name = "hall_16";
+		hall,input-dev-name = "pen_hall_effect_sensor";
+		hall_vdd-supply = <&L8E>;
+		hall,nirq-gpio-num = <2>;
+		hall,nirq-gpio_0 = <&tlmm 31 0x02>;
+		hall,nirq-gpio-high-val_0 = <0>;
+		hall,nirq-gpio-low-val_0 = <1>;
+		hall,nirq-gpio_1 = <&tlmm 103 0x02>;
+		hall,nirq-gpio-high-val_1 = <0>;
+		hall,nirq-gpio-low-val_1 = <2>;
+	};
+};
+
+&qupv3_se4_i2c {
+	status = "ok";
+	sx937x@2c { /* SAR sensor */
+		compatible = "Semtech,sx937x";
+		reg = <0x2c>;
+		Semtech,power-supply-type = <0>;
+		cap_vdd-supply = <&L21B>;
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&sar_int_default>;
+		pinctrl-1 = <&sar_int_sleep>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <62 0x02>;
+		interrupt-names = "sx937x_irq";
+		Semtech,nirq-gpio= <&tlmm 62 0x02>;
+		/*use PH4/5/6 as the reference sensor
+		set it to 0xff if the ref-phases-x is not used*/
+		Semtech,ref-phases-a = <5>;
+		Semtech,ref-phases-b = <6>;
+		Semtech,ref-phases-c = <0xff>;
+		Semtech,button-flag = <0x1f>;
+		Semtech,reg-num = <52>;
+		Semtech,reg-init = <
+			0x8024 0x7F00
+			0x4004 0x70
+			0x4008 0x8
+			0x8020 0x32
+			0x8028 0x85E
+			0x8034 0x85E
+			0x8040 0x85E
+			0x804C 0x85E
+			0x8058 0x85E
+			0x8064 0x85E
+			0x8070 0x85E
+			0x807C 0x85E
+			0x8030 0xFFF9FD
+			0x803C 0xBFF9FF
+			0x8048 0xFEF9FF
+			0x8054 0xFFD9FF
+			0x8060 0xF7F9FF
+			0x806C 0xFFF9EF
+			0x8078 0xFFF97F
+			0x8084 0xFFF9FF
+			0x8098 0x5A40
+			0x80B8 0x5A40
+			0x80D8 0x5A5A
+			0x80F8 0x5A5A
+			0x8118 0x5A5A
+			0x8138 0x5A40
+			0x8158 0x5A40
+			0x8178 0x5A40
+			0x8090 0x54AC5000
+			0x80B0 0x54AC5000
+			0x80D0 0x54AC5000
+			0x80F0 0x54AC5000
+			0x8110 0x54AC5000
+			0x8130 0x54AC5000
+			0x8150 0x54AC5000
+			0x8170 0x54AC5000
+			0x8088 0x300000
+			0x80A8 0x300000
+			0x80C8 0x300000
+			0x80E8 0x300000
+			0x8108 0x300000
+			0x8128 0x300000
+			0x8148 0x300000
+			0x8168 0x300000
+			0x808C 0x60200030
+			0x80AC 0x60200030
+			0x80CC 0x60200030
+			0x80EC 0x60200030
+			0x810C 0x60200030
+			0x812C 0x60200030
+			0x814C 0x60200030
+			0x816C 0x60200030
+		>;
+		status = "ok";
+	};
+};
