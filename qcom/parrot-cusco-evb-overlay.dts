@@ -1,0 +1,14 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-cusco-common-overlay.dtsi"
+
+/ {
+	model = "cusco";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,cusco";
+	qcom,msm-id = <537 0x10000>;
+	qcom,board-id = <0x44 0x9000>;
+	qcom,pmic-id-size = <9>;
+	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
+};
+
