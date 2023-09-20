@@ -46,6 +46,10 @@
 				qcom,mdss-dsi-v-pulse-width = <2>;
 				qcom,mdss-dsi-panel-framerate = <120>;
 				qcom,mdss-dsi-on-command = [
+				39 00 00 00 00 00 04 ff 98 83 06
+				39 00 00 00 00 00 02 3E E2
+				39 00 00 00 00 00 04 ff 98 83 03
+				39 00 00 00 00 00 02 AF 18
 				39 00 00 00 00 00 04 ff 98 83 00
 				39 00 00 00 00 00 03 51 00 00
 				39 00 00 00 00 00 02 35 00
