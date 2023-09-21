@@ -13,7 +13,7 @@
 SUNWODA-5000mah-fogona {
 	serialnum = "SB18D96854";
 	fcc_design = <5000>;
-	ui_full = <97>;
+	ui_full = <99>;
 	config_profile_info = [
 		5A 00 00 00 00 00 00 00
 		A8 BA AD BF A5 A0 DE C9

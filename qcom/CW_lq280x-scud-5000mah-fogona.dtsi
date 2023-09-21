@@ -13,7 +13,7 @@
 SCUD-5000mah-fogona {
 	serialnum = "SB18D96853";
 	fcc_design = <5000>;
-	ui_full = <97>;
+	ui_full = <99>;
 	config_profile_info = [
 		5A 00 00 00 00 00 00 00
 		AF AA A7 C3 A6 A7 CE B1
