@@ -73,7 +73,7 @@
 	firmware: firmware {
 		android {
 			compatible = "android,firmware";
-			boot_devices = "vdevs/1c140000.virtio_blk,vdevs/1c0b0000.virtio_blk,vdevs/1c0f0000.virtio_blk,vdevs/1c160000.virtio_blk,vdevs/1c130000.virtio_blk,vdevs/1c0e0000.virtio_blk,vdevs/1c100000.virtio_blk,vdevs/1c170000.virtio_blk,vdevs/1c180000.virtio_blk,vdevs/1c110000.virtio_blk,vdevs/1c120000.virtio_blk,vdevs/1c210000.virtio_blk,vdevs/1c220000.virtio_blk,vdevs/1c230000.virtio_blk,vdevs/1c240000.virtio_blk,vdevs/1c250000.virtio_blk,vdevs/1c260000.virtio_blk,vdevs/1c280000.virtio_blk,vdevs/1c290000.virtio_blk,vdevs/1c310000.virtio_blk,vdevs/1c320000.virtio_blk";
+			boot_devices = "vdevs/1c140000.virtio_blk,vdevs/1c0b0000.virtio_blk,vdevs/1c0f0000.virtio_blk,vdevs/1c410000.virtio_blk,vdevs/1c130000.virtio_blk,vdevs/1c0e0000.virtio_blk,vdevs/1c100000.virtio_blk,vdevs/1c170000.virtio_blk,vdevs/1c180000.virtio_blk,vdevs/1c110000.virtio_blk,vdevs/1c120000.virtio_blk,vdevs/1c210000.virtio_blk,vdevs/1c220000.virtio_blk,vdevs/1c230000.virtio_blk,vdevs/1c240000.virtio_blk,vdevs/1c250000.virtio_blk,vdevs/1c260000.virtio_blk,vdevs/1c280000.virtio_blk,vdevs/1c290000.virtio_blk,vdevs/1c310000.virtio_blk,vdevs/1c320000.virtio_blk";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -158,8 +158,8 @@
 		interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
 
 		regulator: virtio_regulator_device {
-			compatible = "virtio,device31", "virtio,device49153";
-					/* VIRTIO_ID_BC: 0x1F, VIRTIO_ID: 0xC001 */
+			compatible = "virtio,device49153";
+					/* VIRTIO_ID: 0xC001 */
 		};
 	};
 
@@ -310,8 +310,8 @@
 		status = "okay";
 
 		spmi_bus: virt_spmi {
-			compatible = "virtio,device33", "virtio,device49155";
-					/* VIRTIO_ID_BC: 0x21, VIRTIO_ID: 0xC003 */
+			compatible = "virtio,device49155";
+					/* VIRTIO_ID: 0xC003 */
 		};
 	};
 

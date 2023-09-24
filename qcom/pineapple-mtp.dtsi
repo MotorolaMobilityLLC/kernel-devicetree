@@ -53,6 +53,11 @@
 	/* VDDA_UFS_CORE */
 	vdda-phy-supply = <&pm_v6d_l1>;
 	vdda-phy-max-microamp = <211000>;
+	/*
+	 * Platforms supporting Gear 5 && Rate B require a different
+	 * voltage supply. Check the Power Grid document.
+	 */
+	vdda-phy-min-microvolt = <912000>;
 
 	/* VDDA_UFS_0_1P2 */
 	vdda-pll-supply = <&pm_v8_l3>;
@@ -313,4 +318,12 @@
 	periph-d44-supply = <&L5N>;
 	periph-d45-supply = <&L6N>;
 	periph-d46-supply = <&L7N>;
+};
+
+&wcd_usbss {
+	interrupt-parent = <&spmi_bus>;
+	interrupts = <0x0 0xb6 0x1 IRQ_TYPE_EDGE_BOTH>;
+	interrupt-names = "usb_wcd";
+	nvmem-cells = <&usb_mode>;
+	nvmem-cell-names = "usb_mode";
 };

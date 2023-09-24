@@ -17,7 +17,7 @@
 	#address-cells = <2>;
 	#size-cells = <2>;
 	chosen {
-		bootargs = "loglevel=6 log_buf_len=256K swiotlb=noforce kernel.panic_on_rcu_stall=1 rcupdate.rcu_expedited=1 fw_devlink.strict=1 service_locator.enable=1 rcu_nocbs=0-7 kpti=off irqaffinity=0-1 nosoftlockup cpufreq.default_governor=performance sysctl.kernel.sched_pelt_multiplier=4 no-steal-acc cgroup.memory=nokmem,nosocket printk.console_no_auto_verbose=1 kasan=off loop.max_part=7 can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image pcie_ports=compat disable_dma32=on";
+		bootargs = "loglevel=6 log_buf_len=256K swiotlb=noforce kernel.panic_on_rcu_stall=1 rcupdate.rcu_expedited=1 fw_devlink.strict=1 service_locator.enable=1 rcu_nocbs=0-7 kpti=off irqaffinity=0-1 nosoftlockup cpufreq.default_governor=performance sysctl.kernel.sched_pelt_multiplier=4 no-steal-acc cgroup.memory=nokmem,nosocket printk.console_no_auto_verbose=1 kasan=off loop.max_part=7 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image pcie_ports=compat disable_dma32=on";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -423,6 +423,13 @@
 		no-map;
 	};
 
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
+	};
+
 	qcom: ramoops {
 		compatible = "ramoops";
 		reg = <0x0 0xd0000000 0x0 0x200000>;
@@ -725,6 +732,12 @@
 		status = "ok";
 	};
 
+	va_mini_dump {
+		compatible = "qcom,va-minidump";
+		memory-region = <&va_md_mem>;
+		status = "ok";
+	};
+
 	google,debug-kinfo {
 		compatible = "google,debug-kinfo";
 		memory-region = <&kinfo_mem>;
@@ -857,6 +870,17 @@
 			interrupt-controller;
 			#interrupt-cells = <2>;
 		};
+
+		smp2p_rdbg2_out: qcom,smp2p-rdbg2-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg2_in: qcom,smp2p-rdbg2-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
 	};
 
 	qcom,smp2p-cdsp {
@@ -877,6 +901,17 @@
 
 		cdsp_smp2p_in: slave-kernel {
 			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg5_out: qcom,smp2p-rdbg5-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg5_in: qcom,smp2p-rdbg5-in {
+			qcom,entry-name = "rdbg";
 			interrupt-controller;
 			#interrupt-cells = <2>;
 		};
@@ -1456,7 +1491,6 @@
 
 	qcom_pmu: qcom,pmu {
 		compatible = "qcom,pmu";
-		qcom,long-counter;
 		qcom,pmu-events-tbl =
 			< 0x0008 0xFF 0xFF 0xFF >,
 			< 0x0011 0xFF 0xFF 0xFF >,
@@ -1846,9 +1880,6 @@
 		iommus = <&apps_smmu 0x60 0x0>;
 		qcom,iommu-dma = "fastmap";
 
-		spm-level = <5>;
-		rpm-level = <3>;
-
 		status = "disabled";
 
 		qos0 {
@@ -2053,6 +2084,7 @@
 	};
 };
 
+#include "ipcc-test.dtsi"
 #include "blair-pinctrl.dtsi"
 #include "pm6125-rpm-regulator.dtsi"
 #include "blair-usb.dtsi"
@@ -2152,3 +2184,4 @@
 
 #include "blair-debug.dtsi"
 #include "blair-coresight.dtsi"
+#include "msm-rdbg.dtsi"
