@@ -19,6 +19,8 @@
 #include "kalama-arc-fingerprint-overlay.dtsi"
 #include "kalama-arc-evb-sensors-overlay.dtsi"
 
+#include "kalama-arc-thermal-overlay.dtsi"
+
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
