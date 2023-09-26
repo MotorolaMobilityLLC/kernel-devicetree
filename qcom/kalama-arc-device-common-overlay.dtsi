@@ -17,6 +17,7 @@
 #include "kalama-moto-common-st-nfc.dtsi"
 #include "kalama-arc-touchscreen-overlay.dtsi"
 #include "kalama-arc-fingerprint-overlay.dtsi"
+#include "kalama-arc-evb-sensors-overlay.dtsi"
 
 &soc {
 	mmi_relay {
