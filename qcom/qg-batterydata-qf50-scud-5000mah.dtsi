@@ -14,8 +14,8 @@ qcom,qf50-scud-5000mah {
     /* 6691233_Ontim_SQ432_SCUD_5000mAH_PM7250B_averaged_MasterSlave_Sep6th2023 */
     serialnum = "SB18D96853";
     qcom,sdam-magic-number = <0x18D96853>;
-    qcom,max-voltage-uv = <4530000>;
-    qcom,fg-cc-cv-threshold-uv = <4520000>;
+    qcom,max-voltage-uv = <4520000>;
+    qcom,fg-cc-cv-threshold-uv = <4510000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <4250>;

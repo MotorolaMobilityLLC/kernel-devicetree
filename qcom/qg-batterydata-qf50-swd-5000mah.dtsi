@@ -3,8 +3,8 @@ qcom,qf50-swd-5000mah {
     /* SWD_5000mAH_averaged_MasterSlave_Aug25th2023 */
     serialnum = "SB18D99898";
     qcom,sdam-magic-number = <0x18D99898>;
-    qcom,max-voltage-uv = <4530000>;
-    qcom,fg-cc-cv-threshold-uv = <4520000>;
+    qcom,max-voltage-uv = <4520000>;
+    qcom,fg-cc-cv-threshold-uv = <4510000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <4250>;

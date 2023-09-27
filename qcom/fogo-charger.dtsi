@@ -60,7 +60,7 @@
 			   "charge_full_design",
 			   "time_to_full_now";
 	qcom,fcc-max-ua = <4000000>;
-	qcom,fv-max-uv = <4530000>;
+	qcom,fv-max-uv = <4520000>;
 	qcom,dcp-curr-max = <2000000>;
 	qcom,otg-cl-ua = <1500000>;
 	qcom,thermal-mitigation = <4000000 3500000
@@ -83,11 +83,11 @@
 				<45 0 4000 4000>,
 				<60 4200 4000 0>;
 	qcom,mmi-ffc-zones = <4200 243 407>,
-                               <4500 243 407>,
-                               <4500 243 407>,
-                               <4530 523 659>,
-                               <4530 590 751>,
-                               <4530 871 1035>,
+                               <4490 243 407>,
+                               <4490 243 407>,
+                               <4520 523 659>,
+                               <4520 590 751>,
+                               <4520 871 1035>,
                                <4200 243 407>;
 
 	qcom,iterm-ma = <243>;
@@ -98,7 +98,7 @@
 	qcom,noffc-chg-iterm-45c = <487>;
 	qcom,noffc-qg-iterm = <407>;
 	qcom,noffc-qg-iterm-45c = <642>;
-	qcom,noffc-max-fv = <4500>;
+	qcom,noffc-max-fv = <4490>;
 	mmi,enable-dcp-ffc;
 
 };
