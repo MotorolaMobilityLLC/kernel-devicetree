@@ -20,6 +20,7 @@
 #include "kalama-arc-evb-sensors-overlay.dtsi"
 
 #include "kalama-arc-thermal-overlay.dtsi"
+#include "moto-arc-wl2868c.dtsi"
 
 &soc {
 	mmi_relay {
