@@ -10,6 +10,7 @@
  * GNU General Public License for more details.
  */
 
+#include <dt-bindings/clock/qcom,rpmh.h>
 #include "kalama-arc-products-common-overlay.dtsi"
 #include "kalama-moto-common-charger.dtsi"
 #include "kalama-arc-charger-overlay.dtsi"
@@ -78,4 +79,11 @@
 		 0x5 0x54
 		/* Tx pre-emphasis tuning */
 		 0x6 0x57>;
+};
+
+&BOB2 {
+	regulator-min-microvolt = <2704000>;
+	regulator-max-microvolt = <3208000>;
+	qcom,init-voltage = <3100000>;
+	regulator-boot-on;
 };
