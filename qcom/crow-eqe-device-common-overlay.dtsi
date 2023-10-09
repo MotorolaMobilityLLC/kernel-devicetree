@@ -80,7 +80,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&redriver_enable>;
 		redriver,enable-gpio = <&tlmm 55 0x00>;
-		/*redriver,orientation-gpio = <&tlmm 11 0x00>;*/
+		redriver,orientation-gpio = <&tlmm 83 0x00>;
 		config-seq =
 			/* <reg_offset, value, delay_us> */
 			<0x9d 0x80 10000
