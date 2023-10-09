@@ -129,8 +129,8 @@
                 pinctrl-0 = <&rt9426a_alert>;
                 rt,dtsi_version = <00 0713>;
                 rt,para_version = <0x0000>;
-		rt,fc_vth-fc_ith = <0x4CAC 0x97AC 0x4C70
-					0xA2B2 0xB6B2 0xFFB2>;
+		rt,fc_vth-fc_ith = <0x4CAC 0x97AC 0x4CAC
+					0xA2B2 0xC5B2 0xFFB2>;
                 rt,battery_type = <4400>;
                 rt,volt_source = <1>;           // 0:AP 1:FG_VBAT 2:FG_OCV; 3:FG_AV
                 rt,temp_source = <1>;           // 0:AP 1:FG_TEMP 2:FG_INTT; 3:FG_AT
