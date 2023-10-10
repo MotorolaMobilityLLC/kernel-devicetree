@@ -68,7 +68,7 @@
 		pinctrl-0 = <&pen_int_default>;
 		pinctrl-1 = <&pen_int_sleep>;
 		hall,factory-class-name = "hall_16";
-		hall,input-dev-name = "pen_hall_effect_sensor";
+		hall,input-dev-name = "pen_detect";
 		hall_vdd-supply = <&L8E>;
 		hall,nirq-gpio-num = <2>;
 		hall,nirq-gpio_0 = <&tlmm 31 0x02>;
