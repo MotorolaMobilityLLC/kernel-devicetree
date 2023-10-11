@@ -159,6 +159,8 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&sgm4154x_gpio_pins &gpio6_adc_default>;
 
+		enable_dynamic_adjust_batvol;
+
 		#io-channel-cells = <1>;
                 io-channels = <&pm6125_vadc 0x94>;//,
 //				<&wt6670 PSY_IIO_QC3P_REAL_TYPE>,
