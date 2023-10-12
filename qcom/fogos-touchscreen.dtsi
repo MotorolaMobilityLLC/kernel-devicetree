@@ -209,7 +209,6 @@
 		pinctrl-1 = <&ts_int_suspend_high>;
 		ilitek,report_gesture_key;
 		ilitek,supported_gesture_type = <0x06>;
-		ilitek,rst-pull-flag;
 		status = "ok";
 	};
 };
