@@ -182,40 +182,12 @@ _platform_map = {
     },
     "pineapple": {
         "dtb_list": [
-            {"name": "pineapple-v2.dtb"},
-            {
-                "name": "pineapplep-v2.dtb",
-                "apq": True,
-            },
-            {
-                "name": "pineapplep-sg-v2.dtb",
-                "apq": True,
-            },
-            {"name": "pineapple-qcm.dtb"},
-            {
-                "name": "pineapplep-qcs.dtb",
-                "apq": True,
-            },
-            {
-                "name": "pineappleq-v2.dtb",
-                "apq": True,
-            },
+            {"name": "pineapple-arcf-base.dtb"},
+            {"name": "pineapple-v2-arcf-base.dtb"},
         ],
         "dtbo_list": [
-            {"name": "pineapple-atp-overlay.dtbo"},
-            {"name": "pineapple-cdp-nfc-overlay.dtbo"},
-            {"name": "pineapple-cdp-overlay.dtbo"},
-            {"name": "pineapple-mtp-nfc-overlay.dtbo"},
-            {"name": "pineapple-mtp-overlay.dtbo"},
-            {"name": "pineapple-qrd-overlay.dtbo"},
-            {"name": "pineapple-qrd-sku2-overlay.dtbo"},
-            {"name": "pineapple-rcm-overlay.dtbo"},
-            {"name": "pineapplep-hdk-overlay.dtbo"},
-            {"name": "pineapple-dpm-overlay.dtbo"},
-            {"name": "pineapplep-aim500-overlay.dtbo"},
-            {"name": "pineapplep-aim500-v2-overlay.dtbo"},
+            {"name": "pineapple-arcf-evt1a-overlay.dtbo"},
         ],
-        "binary_compatible_with": ["cliffs", "volcano"],
     },
     "pineapple-le": {
         "dtb_list": [
