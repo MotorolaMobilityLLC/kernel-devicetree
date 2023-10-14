@@ -184,9 +184,12 @@ _platform_map = {
         "dtb_list": [
             {"name": "pineapple-arcf-base.dtb"},
             {"name": "pineapple-v2-arcf-base.dtb"},
+            {"name": "pineapple-ctwov-base.dtb"},
+            {"name": "pineapple-v2-ctwov-base.dtb"},
         ],
         "dtbo_list": [
             {"name": "pineapple-arcf-evt1a-overlay.dtbo"},
+            {"name": "pineapple-ctwov-evt1a-overlay.dtbo"},
         ],
     },
     "pineapple-le": {

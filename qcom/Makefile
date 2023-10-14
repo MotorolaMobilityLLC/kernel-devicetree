@@ -20,6 +20,11 @@ PINEAPPLE_BASE_DTB += pineapple-arcf-base.dtb pineapple-v2-arcf-base.dtb
 PINEAPPLE_BOARDS += pineapple-arcf-evt1a-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_CTWOV_DTB),y)
+PINEAPPLE_BASE_DTB += pineapple-ctwov-base.dtb pineapple-v2-ctwov-base.dtb
+PINEAPPLE_BOARDS += pineapple-ctwov-evb-overlay.dtbo
+endif
+
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 	$(call add-overlays, $(PINEAPPLE_BOARDS), $(PINEAPPLE_BASE_DTB))
 
