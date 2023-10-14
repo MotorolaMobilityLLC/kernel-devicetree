@@ -1,6 +1,3 @@
-load("//msm-kernel/arch/arm64/boot/dts/vendor:qcom/platform_dtb_list.bzl", "mmi_dtb_list")
-load("//msm-kernel/arch/arm64/boot/dts/vendor:qcom/platform_dtbo_list.bzl", "mmi_dtbo_list")
-
 _platform_map = {
     "autogvm": {
         "dtb_list": [
@@ -702,15 +699,9 @@ def _get_dtb_lists(target, dt_overlay_supported):
     }
 
     for dtb_node in [target] + _platform_map[target].get("binary_compatible_with", []):
-        if len (mmi_dtb_list) > 0:
-            ret["dtb_list"].extend(mmi_dtb_list)
-        else:
-            ret["dtb_list"].extend(_platform_map[dtb_node].get("dtb_list", []))
+        ret["dtb_list"].extend(_platform_map[dtb_node].get("dtb_list", []))
         if dt_overlay_supported:
-            if len (mmi_dtbo_list) > 0:
-                ret["dtbo_list"].extend(mmi_dtbo_list)
-            else:
-                ret["dtbo_list"].extend(_platform_map[dtb_node].get("dtbo_list", []))
+            ret["dtbo_list"].extend(_platform_map[dtb_node].get("dtbo_list", []))
         else:
             # Translate the dtbo list into dtbs we can append to main dtb_list
             for dtb in _platform_map[dtb_node].get("dtb_list", []):
