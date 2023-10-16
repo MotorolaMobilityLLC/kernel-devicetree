@@ -14,3 +14,64 @@
 
 #include "pineapple-ctwov-products-common-overlay.dtsi"
 #include "pineapple-moto-common-st-nfc.dtsi"
+
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
+	};
+};
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio9";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio9";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio9";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio9";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&qupv3_se6_i2c {
+	status = "ok";
+	#include "pineapple-moto-common-redriver.dtsi"
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 29 0>;
+	ssusb_redriver = <&redriver>;
+	qcom,wcd_usbss = <&wcd_usbss>;
+};
