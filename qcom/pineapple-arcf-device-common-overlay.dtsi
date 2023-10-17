@@ -13,3 +13,11 @@
 /* This file is only for arcf device */
 
 #include "pineapple-arcf-products-common-overlay.dtsi"
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+&BOB2 {
+	regulator-min-microvolt = <2704000>;
+	regulator-max-microvolt = <3208000>;
+	qcom,init-voltage = <3100000>;
+	regulator-boot-on;
+};
