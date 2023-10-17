@@ -13,6 +13,7 @@
 /* This file is only for arcf device */
 
 #include "pineapple-arcf-products-common-overlay.dtsi"
+#include "pineapple-moto-common-st-nfc.dtsi"
 #include <dt-bindings/clock/qcom,rpmh.h>
 
 &BOB2 {

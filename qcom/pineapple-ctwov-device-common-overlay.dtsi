@@ -13,3 +13,4 @@
 /* This file is only for ctwov device */
 
 #include "pineapple-ctwov-products-common-overlay.dtsi"
+#include "pineapple-moto-common-st-nfc.dtsi"
