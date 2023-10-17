@@ -105,6 +105,8 @@
 &usb0 {
 	dwc3@4e00000 {
 		dr_mode = "otg";
+		snps,usb2-lpm-disable;
+		snps,usb2-gadget-lpm-disable;
 	};
 };
 
