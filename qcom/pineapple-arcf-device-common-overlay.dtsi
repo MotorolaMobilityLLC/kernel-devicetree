@@ -14,11 +14,3 @@
 
 #include "pineapple-arcf-products-common-overlay.dtsi"
 #include "pineapple-moto-common-st-nfc.dtsi"
-#include <dt-bindings/clock/qcom,rpmh.h>
-
-&BOB2 {
-	regulator-min-microvolt = <2704000>;
-	regulator-max-microvolt = <3208000>;
-	qcom,init-voltage = <3100000>;
-	regulator-boot-on;
-};
