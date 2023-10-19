@@ -19,6 +19,7 @@
 #include "pineapple-ctwov-haptics-overlay.dtsi"
 #include "pineapple-ctwov-evb-sensor-overlay.dtsi"
 #include "pineapple-ctwov-charger-overlay.dtsi"
+#include "moto-ctwov-wl2868c.dtsi"
 
 &soc {
 	mmi_relay {
