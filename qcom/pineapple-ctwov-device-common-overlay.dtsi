@@ -14,3 +14,4 @@
 
 #include "pineapple-ctwov-products-common-overlay.dtsi"
 #include "pineapple-moto-common-st-nfc.dtsi"
+#include "pineapple-ctwov-touchscreen-overlay.dtsi"
