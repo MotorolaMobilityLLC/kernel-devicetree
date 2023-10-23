@@ -4,8 +4,8 @@
 #include "pineapple-arcf-device-common-overlay.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Pineapple MTP";
-	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp";
+	model = "arcf";
+	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,pineapplep-mtp", "qcom,pineapplep", "qcom,mtp", "qcom,moto";
 	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
-	qcom,board-id = <8 0>;
+	qcom,board-id = <0x43 0xA1A0>;
 };
