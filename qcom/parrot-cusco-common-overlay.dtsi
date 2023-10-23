@@ -19,7 +19,6 @@
 #include "parrot-cusco-fps-overlay.dtsi"
 #include "moto-cusco-wl2864c.dtsi"
 #include "parrot-avatrn-nfc-overlay.dtsi"
-#include "parrot-cusco-wlan-antenna-control.dtsi"
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
