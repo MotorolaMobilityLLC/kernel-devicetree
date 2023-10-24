@@ -34,7 +34,7 @@
 		goodix,panel-max-id = <10>;
 		goodix,panel-max-x = <17280>; /* 1080*16 */
 		goodix,panel-max-y = <38400>; /* 2400*16 */
-		goodix,panel-max-w = <255>;
+		goodix,panel-max-w = <1000>;
 		goodix,panel-max-p = <4096>;
 		goodix,iovdd-gpio = <&tlmm 126 0x0>;
 		goodix,avdd-name = "avdd";
