@@ -14,3 +14,32 @@
 
 #include "pineapple-arcf-products-common-overlay.dtsi"
 #include "pineapple-moto-common-st-nfc.dtsi"
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
+	};
+};
+
+&usb_qmp_dp_phy {
+	status = "disabled";
+};
+
+&usb0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 29 0>;
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
+		maximum-speed = "high-speed";
+	};
+};
