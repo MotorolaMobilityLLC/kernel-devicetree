@@ -15,6 +15,7 @@
 #include "pineapple-arcf-products-common-overlay.dtsi"
 #include "pineapple-moto-common-st-nfc.dtsi"
 #include "pineapple-arcf-haptics-overlay.dtsi"
+#include "pineapple-arcf-touchscreen-overlay.dtsi"
 
 &soc {
 	mmi_relay {
