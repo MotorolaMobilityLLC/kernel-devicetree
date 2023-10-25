@@ -24,3 +24,10 @@
 	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
 };
 
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x2000>;
+	};
+};
