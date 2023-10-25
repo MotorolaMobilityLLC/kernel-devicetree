@@ -46,3 +46,17 @@
 &mpss_mem {
 	reg = <0x0 0x8bc00000 0x0 0xf000000>;
 };
+&fsa4480 {
+	status = "disabled";
+};
+&pmr735a_debug {
+	status = "disabled";
+};
+
+&pmr735a_spmi {
+	status = "disabled";
+};
+
+&pmr735a_temp_alarm {
+	status = "disabled";
+};
