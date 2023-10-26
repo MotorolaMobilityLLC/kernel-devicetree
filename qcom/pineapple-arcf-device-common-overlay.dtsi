@@ -17,6 +17,7 @@
 #include "pineapple-arcf-haptics-overlay.dtsi"
 #include "pineapple-arcf-touchscreen-overlay.dtsi"
 #include "moto-arcf-wl2868c.dtsi"
+#include "pineapple-arcf-charger-overlay.dtsi"
 
 &soc {
 	mmi_relay {

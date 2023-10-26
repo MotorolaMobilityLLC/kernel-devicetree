@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2023 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+ln110x-atl-1165mah {
+	serialnum = "SB18D80976";
+	fcc_design = <1165>;
+	ui_full = <98>;
+	config_profile_info = [46 00 00 00 00 00 00 00
+				94 c3 b4 ca b5 b1 c7 a8
+				9e ff f1 c3 88 71 57 49
+				3e 32 25 84 62 e1 a3 f9
+				ca c6 cf d5 da d8 d5 d2
+				cd ca d2 cd a7 9a 8e 86
+				7d 7b 87 91 a7 9b 57 cf
+				20 00 ab 10 00 80 75 00
+				00 00 64 0e a3 7b 00 00
+				00 00 00 00 00 00 00 5d];
+};
