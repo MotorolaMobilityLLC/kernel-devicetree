@@ -23,7 +23,7 @@
 	status = "ok";
 
 	goodix-berlin@0 {
-		status = "disabled";
+		status = "ok";
 		compatible = "goodix,gt9916P";
 		reg = <0>;
 		spi-max-frequency = <15000000>;
