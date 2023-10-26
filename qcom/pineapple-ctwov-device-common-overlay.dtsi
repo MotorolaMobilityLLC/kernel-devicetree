@@ -18,6 +18,7 @@
 #include "pineapple-ctwov-touchscreen-overlay.dtsi"
 #include "pineapple-ctwov-haptics-overlay.dtsi"
 #include "pineapple-ctwov-evb-sensor-overlay.dtsi"
+#include "pineapple-ctwov-charger-overlay.dtsi"
 
 &soc {
 	mmi_relay {
