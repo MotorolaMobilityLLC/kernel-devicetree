@@ -7,6 +7,7 @@
 #include <dt-bindings/clock/qcom,gcc-pineapple.h>
 #include "pineapple-pmic-overlay.dtsi"
 #include "pineapple-thermal-overlay.dtsi"
+#include "pineapple-moto-common-charger.dtsi"
 
 &sdhc_2 {
 	status = "disabled";
@@ -56,7 +57,7 @@
 		};
 		bm_adsp_ulog: qcom,bm_adsp_ulog {
 			compatible = "qcom,bm-adsp-ulog";
-			categories = <0xFFBFFFFF>;
+			categories = /bits/ 64 <0x1FFFBFFFFF>;
 			level = <4>;
 			init-log-enabled;
 		};
