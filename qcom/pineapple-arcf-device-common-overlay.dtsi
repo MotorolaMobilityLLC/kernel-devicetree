@@ -18,6 +18,7 @@
 #include "pineapple-arcf-touchscreen-overlay.dtsi"
 #include "moto-arcf-wl2868c.dtsi"
 #include "pineapple-arcf-charger-overlay.dtsi"
+#include <dt-bindings/clock/qcom,rpmh.h>
 
 &soc {
 	mmi_relay {
@@ -47,4 +48,11 @@
 		usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
 		maximum-speed = "high-speed";
 	};
+};
+
+&BOB2 {
+	regulator-min-microvolt = <2704000>;
+	regulator-max-microvolt = <3600000>;
+	qcom,init-voltage = <3100000>;
+	regulator-boot-on;
 };
