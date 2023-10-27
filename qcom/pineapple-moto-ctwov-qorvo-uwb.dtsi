@@ -23,6 +23,7 @@
 		reg = <0>;
 		spi-max-frequency = <20000000>;
 		reset-gpios = <&tlmm 74 GPIO_ACTIVE_LOW>;
+		ss-irq-gpios = <&tlmm 46 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		ss-ready-gpios = <&tlmm 45 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		wakeup-gpios = <&tlmm 153 GPIO_ACTIVE_HIGH>;
 		csn-gpios = <&tlmm 23 GPIO_ACTIVE_LOW>;
