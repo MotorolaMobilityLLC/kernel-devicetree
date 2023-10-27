@@ -16,6 +16,7 @@
 #include "pineapple-moto-common-st-nfc.dtsi"
 #include "pineapple-arcf-haptics-overlay.dtsi"
 #include "pineapple-arcf-touchscreen-overlay.dtsi"
+#include "pineapple-arcf-fingerprint-overlay.dtsi"
 #include "moto-arcf-wl2868c.dtsi"
 #include "pineapple-arcf-charger-overlay.dtsi"
 #include "pineapple-arcf-evb-sensor-overlay.dtsi"
