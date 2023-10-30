@@ -19,6 +19,7 @@
 #include "moto-arcf-wl2868c.dtsi"
 #include "pineapple-arcf-charger-overlay.dtsi"
 #include "pineapple-arcf-evb-sensor-overlay.dtsi"
+#include "pineapple-arcf-thermal-overlay.dtsi"
 #include <dt-bindings/clock/qcom,rpmh.h>
 
 &soc {
