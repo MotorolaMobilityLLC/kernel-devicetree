@@ -38,11 +38,11 @@
 	};
 	pen_int_default: pen_int_default {
 			mux {
-				pins = "gpio31", "gpio103";
+				pins = "gpio31";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio31", "gpio103";
+				pins = "gpio31";
 				drive-strength = <2>;
 				bias-disable;
 			};
@@ -50,11 +50,11 @@
 
 	pen_int_sleep: pen_int_sleep {
 			mux {
-				pins = "gpio31", "gpio103";
+				pins = "gpio31";
 				function =  "gpio";
 			};
 			config {
-				pins = "gpio31", "gpio103";
+				pins = "gpio31";
 				drive-strength = <2>;
 				bias-disable;
 			};
@@ -70,13 +70,10 @@
 		hall,factory-class-name = "hall_16";
 		hall,input-dev-name = "pen_detect";
 		hall_vdd-supply = <&L8E>;
-		hall,nirq-gpio-num = <2>;
+		hall,nirq-gpio-num = <1>;
 		hall,nirq-gpio_0 = <&tlmm 31 0x02>;
 		hall,nirq-gpio-high-val_0 = <0>;
 		hall,nirq-gpio-low-val_0 = <1>;
-		hall,nirq-gpio_1 = <&tlmm 103 0x02>;
-		hall,nirq-gpio-high-val_1 = <0>;
-		hall,nirq-gpio-low-val_1 = <2>;
 	};
 };
 
