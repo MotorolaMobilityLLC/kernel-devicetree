@@ -20,6 +20,7 @@
 #include "pineapple-ctwov-evb-sensor-overlay.dtsi"
 #include "pineapple-ctwov-charger-overlay.dtsi"
 #include "moto-ctwov-wl2868c.dtsi"
+#include "pineapple-ctwov-thermal-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 
