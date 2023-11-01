@@ -41,10 +41,6 @@
 			0x03 0x78>;
 };
 
- &usb0 {
-       qcom,force-adb-enable;
- };
-
 &tlmm {
 	google_key_default: google_key_default {
 		mux {
