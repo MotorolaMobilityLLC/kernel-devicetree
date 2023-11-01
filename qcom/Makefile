@@ -612,9 +612,11 @@ endif
 
 ifeq ($(CONFIG_BOSTON_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += \
-        parrot-boston-evb-overlay.dtbo
+        parrot-boston-evb-overlay.dtbo \
+        parrot-boston-dvt1-overlay.dtbo
 
 parrot-boston-evb-overlay.dtbo-base := parrot-moto-base.dtb
+parrot-boston-dvt1-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 
 ifeq ($(CONFIG_CUSCO_DTB),y)
