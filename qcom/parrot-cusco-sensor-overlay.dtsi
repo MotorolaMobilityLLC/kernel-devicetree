@@ -53,7 +53,7 @@
 		interrupts = <62 0x02>;
 		interrupt-names = "sx937x_irq";
 		Semtech,nirq-gpio= <&tlmm 62 0x02>;
-		/*use PH4/5/6 as the reference sensor
+		/*use PH5/6 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
 		Semtech,ref-phases-a = <5>;
 		Semtech,ref-phases-b = <6>;
