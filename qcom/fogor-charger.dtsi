@@ -104,6 +104,7 @@
 	qcom,noffc-qg-iterm-45c = <642>;
 	qcom,noffc-max-fv = <4490>;
 	mmi,enable-dcp-ffc;
+	mmi,enable-fcc-large-qg-iterm;
 
 };
 
