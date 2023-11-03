@@ -1,0 +1,14 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-avatrn-common-overlay.dtsi"
+
+/ {
+	model = "avatrn";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,avatrn";
+	qcom,msm-id = <613 0x10000>;
+	qcom,board-id = <0x41 0xA300>;
+	qcom,pmic-id-size = <9>;
+	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
+};
+

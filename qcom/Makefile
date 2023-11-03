@@ -628,9 +628,11 @@ endif
 
 ifeq ($(CONFIG_AVATRN_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += \
-        parrot-avatrn-evt1-overlay.dtbo
+        parrot-avatrn-evt1-overlay.dtbo \
+        parrot-avatrn-evt3-overlay.dtbo
 
 parrot-avatrn-evt1-overlay.dtbo-base := parrot-moto-base.dtb
+parrot-avatrn-evt3-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 else
 dtb-$(CONFIG_ARCH_PARROT) += parrot-rumi.dtb \
