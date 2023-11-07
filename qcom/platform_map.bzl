@@ -187,6 +187,7 @@ _platform_map = {
             { "name": "pineapple-v2-ctwov-base.dtb", "product": "ctwov", },
         ],
         "dtbo_list": [
+            {"name": "pineapple-dpm-overlay.dtbo"},
             {"name": "pineapple-arcf-evt1a-overlay.dtbo", "product": "arcf", },
             {"name": "pineapple-ctwov-evb-overlay.dtbo", "product": "ctwov", },
         ],
