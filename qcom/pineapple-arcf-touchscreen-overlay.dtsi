@@ -79,5 +79,7 @@
 		avdd-supply = <&pm_humu_l9>;
 		goodix,iovdd-name = "iovdd";
 		iovdd-supply = <&pm_humu_l10>;
+		goodix,firmware-name = "gdx_firmware.bin";
+		goodix,config-name = "gdx_cfg_group.bin";
 	};
 };
