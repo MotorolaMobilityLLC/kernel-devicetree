@@ -12,3 +12,12 @@
 	qcom,pmic-id = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
 };
 
+
+&goodix_fingerprint {
+	/delete-property/ fp-gpio-ven;
+	rgltr-ctrl-support;
+	fp,vdd-supply=<&L10E>;
+	fp,voltage-range = <3300000 3300000>;
+};
+
+
