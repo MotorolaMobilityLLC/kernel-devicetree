@@ -17,7 +17,7 @@
 #include "parrot-cusco-touchscreen-overlay.dtsi"
 #include "parrot-cusco-sensor-overlay.dtsi"
 #include "parrot-cusco-fps-overlay.dtsi"
-#include "moto-cusco-wl2864c.dtsi"
+#include "moto-cusco-wl2866d.dtsi"
 #include "parrot-cusco-nfc-overlay.dtsi"
 
 &tlmm {
