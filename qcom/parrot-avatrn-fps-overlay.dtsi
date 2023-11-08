@@ -58,7 +58,7 @@
 };
 
 &soc {
-	goodix_fingerprint {
+	goodix_fingerprint:goodix_fingerprint {
 		compatible = "goodix,fingerprint";
 		status = "ok";
 		fp-gpio-reset = <&tlmm 101 0x00>;
