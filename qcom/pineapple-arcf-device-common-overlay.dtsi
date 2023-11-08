@@ -22,6 +22,7 @@
 #include "pineapple-arcf-evb-sensor-overlay.dtsi"
 #include "pineapple-arcf-thermal-overlay.dtsi"
 #include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
 
 &soc {
 	mmi_relay {
