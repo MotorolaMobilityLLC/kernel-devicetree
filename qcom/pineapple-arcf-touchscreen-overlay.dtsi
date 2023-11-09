@@ -57,6 +57,69 @@
     status = "disabled";
 };
 
+/* CLI touchscreen pins */
+&tlmm {
+	cli_pmx_ts_active {
+		cli_ts_active: cli_ts_active {
+			mux {
+				pins = "gpio14", "gpio112";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14", "gpio112";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	cli_pmx_ts_reset_suspend {
+		cli_ts_reset_suspend: cli_ts_reset_suspend {
+			mux {
+				pins = "gpio14";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend: cli_ts_int_suspend {
+			mux {
+				pins = "gpio112";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio112";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release: cli_ts_release {
+			mux {
+				pins = "gpio14", "gpio112";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14", "gpio112";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
 &qupv3_se7_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -68,9 +131,11 @@
 		compatible = "goodix,marseille";
 		reg = <0>;
 		spi-max-frequency = <15000000>;
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
 
 		goodix,reset-gpio = <&tlmm 14 0x0>;
-		goodix,irq-gpio = <&tlmm 112 0x0>;
+		goodix,irq-gpio = <&tlmm 112 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
 		goodix,panel-max-x = <17280>;
 		goodix,panel-max-y = <20352>;
@@ -81,5 +146,11 @@
 		iovdd-supply = <&pm_humu_l10>;
 		goodix,firmware-name = "gdx_firmware.bin";
 		goodix,config-name = "gdx_cfg_group.bin";
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+		mmi,power-off-suspend;
 	};
 };
