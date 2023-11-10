@@ -72,6 +72,9 @@
 
 	ldo_vib {
 		compatible = "moto,vibrator-ldo";
+		pinctrl-names = "default","sleep";
+		pintrl-0 = <&vib_ldo_en_default>;
+		pintrl-1 = <&vib_ldo_en_suspend>;
 		moto,vib-ldo-gpio = <&pm6125_gpios 9 GPIO_ACTIVE_HIGH>;
 		status = "ok";
 	};
