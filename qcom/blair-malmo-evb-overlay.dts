@@ -1,0 +1,13 @@
+/dts-v1/;
+/plugin/;
+
+#include "blair-malmo-device-common-overlay.dtsi"
+
+/ {
+    model = "malmo";
+    compatible = "qcom,blair-mtp", "qcom,blair", "qcom,mtp", "qcom,moto";
+    qcom,msm-id = <507 0x10000>, <578 0x10000>;
+    qcom,board-id = <0x43 0x9000>;
+    qcom,pmic-id-size = <4>;
+    qcom,pmic-id = <0x2D 0x0 0x2E 0x0>;
+};

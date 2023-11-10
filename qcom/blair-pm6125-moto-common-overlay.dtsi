@@ -1,0 +1,331 @@
+/* Copyright (c) 2020, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include "holi-mtp-pm7250b.dtsi"
+
+#include "carrier-channel-ids.dtsi"
+#include <dt-bindings/moto/moto-mem-reserve.h>
+
+&utags {
+	compatible = "mmi,utags";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
+	mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+};
+
+&hw {
+	compatible = "mmi,utags";
+	mmi,dir-name = "hw";
+	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+};
+
+&reserved_memory {
+	ramoops_mem {
+		compatible = "ramoops";
+		no-map;
+		reg = <0x0 RAMOOPS_BASE_ADDR 0x0 RAMOOPS_SIZE>;
+		console-size = <RAMOOPS_CONSOLE_SIZE>;
+		pmsg-size = <RAMOOPS_PMSG_SIZE>;
+		record-size = <RAMOOPS_RECORD_SIZE>;
+		no-dump-oops;
+	};
+
+	wdog_cpuctx_mem: wdog_cpuctx_region {
+		no-map;
+		reg = <0x0 WDOG_CPUCTX_BASE
+				0x0 WDOG_CPUCTX_SIZE>;
+	};
+
+	tzlog_dump_mem: tzlog_dump_mem_region {
+		no-map;
+		reg = <0x0  TZLOG_BCK_BASE
+				0x0 TZLOG_BCK_SIZE>;
+	};
+
+	mmi_annotate_mem: mmi_annotate_mem_region {
+		no-map;
+		reg = <0x0  MMI_ANNOTATE_BASE
+				0x0 MMI_ANNOTATE_SIZE>;
+	};
+};
+
+&soc {
+	mmi_annotate {
+		compatible = "mmi,annotate";
+		memory-region = <&mmi_annotate_mem>;
+		mem-size = <0x20000>;
+	};
+};
+
+&tlmm {
+	sar_int_default: sar_int_default {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	sar_int_sleep: sar_int_sleep {
+			mux {
+				pins = "gpio24";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio24";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+};
+
+&pm6125_l12 {
+	regulator-always-on;
+	qcom,init-voltage = <1800000>;
+};
+
+&qupv3_se8_i2c {
+	status = "okay";
+
+	sx937x:sx937x@2c {
+		compatible = "Semtech,sx937x";
+		reg = <0x2c>;
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&sar_int_default>;
+		pinctrl-1 = <&sar_int_sleep>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <24 0x02>;
+		interrupt-names = "sx937x_irq";
+		Semtech,nirq-gpio = <&tlmm 24 0x02>;
+		cap_vdd-supply = <&pm6125_l12>;
+		/*use PH5/6 as the reference sensor
+		set it to 0xff if the ref-phases-x is not used*/
+		Semtech,ref-phases-a = <5>;
+		Semtech,ref-phases-b = <6>;
+		Semtech,ref-phases-c = <0xff>;
+		Semtech,button-flag = <0x1f>;
+		Semtech,reg-num = <75>;
+		Semtech,reg-init = <
+			0x8024  0x7F00 		/*PHEN, Disable all Phases*/
+			0x4004  0x70 		/*irq mask*/
+			0x8008  0x0
+			0x4280  0x0
+			0x8020  0x32
+			0x8028  0x25E 		/*AFE_PARAM_PH0*/
+			0x8034  0x25E 		/*AFE_PARAM_PH1*/
+			0x8040  0x25E 		/*AFE_PARAM_PH2*/
+			0x804C  0x25E    	/*AFE_PARAM_PH3*/
+			0x8058  0x25E 		/*AFE_PARAM_PH4*/
+			0x8064  0x25E 		/*AFE_PARAM_PH5*/
+			0x8070  0x25E 		/*AFE_PARAM_PH6*/
+			0x807C  0x25E  		/*AFE_PARAM_PH7*/
+			/*set CS3 to hiz, because it used as IRQ pin*/
+			0x8030  0xFFF9FD 	/*REG_AFEPH_PH0, CS0, ANT0, Bottom center*/
+			0x803C  0xBFF9FF 	/*REG_AFEPH_PH1, CS7, ANT6, Top Left*/
+			0x8048  0xFFF97F 	/*REG_AFEPH_PH2, CS2, ANT1, Bottom Right*/
+			0x8054  0xFFD9FF	/*REG_AFEPH_PH3, CS4, ANT4, Right*/
+			0x8060  0xF7F9FF 	/*REG_AFEPH_PH4, CS6, ANT5, Back center*/
+			0x806C  0xFFF9EF 	/*REG_AFEPH_PH5, CS1, REF*/
+			0x8078  0xFEF9FF 	/*REG_AFEPH_PH6, CS5, REF*/
+			0x8084  0xFFF9FF 	/*REG_AFEPH_PH7, NOT USE*/
+			0x802C  0x0
+			0x8038  0x0
+			0x8044  0x0
+			0x8050  0x0
+			0x805C  0x0
+			0x8068  0x0
+			0x8074  0x0
+			0x8080  0x0
+			0x8098  0xC8644D2C
+			0x80B8  0xC8644D2C
+			0x80D8  0xC8644D2C
+			0x80F8  0xC8644D2C
+			0x8118  0xC8644D2C
+			0x8138  0xC8644D2C
+			0x8158  0xC8644D2C
+			0x8178  0xC8644D2C
+			0x80A0  0x0
+			0x80C0  0x0
+			0x80E0  0x0
+			0x8100  0x0
+			0x8120  0x0
+			0x8140  0x0
+			0x8160  0x0
+			0x8180  0x0
+			0x8188  0x0
+			0x818C  0x0
+			0x8190  0x0
+			0x8194  0x0
+			0x8090  0x2AD67000
+			0x80B0  0x2AD67000
+			0x80D0  0x2AD67000
+			0x80F0  0x2AD67000
+			0x8110  0x2AD67000
+			0x8130  0x2AD67000
+			0x8150  0x2AD67000
+			0x8170  0x2AD67000
+			0x8088  0x300000
+			0x80A8  0x300000
+			0x80C8  0x300000
+			0x80E8  0x300000
+			0x8108  0x300000
+			0x8128  0x300000
+			0x8148  0x300000
+			0x8168  0x300000
+			0x808C  0x60200018
+			0x80AC  0x60200018
+			0x80CC  0x60200018
+			0x80EC  0x60200018
+			0x810C  0x60200018
+			0x812C  0x60200018
+			0x814C  0x60200018
+			0x816C  0x60200018
+			0x8024  0x7F7F
+			0x4280  0xe
+		>;
+
+		status = "ok";
+	};
+};
+
+&soc {
+	mot_batterydata: qcom,battery-data {
+		df-serialnum = "SB18D00294";
+		qcom,batt-id-range-pct = <15>;
+		#include "qg-batterydata-md50-amperex-5000mah.dtsi"
+	};
+};
+
+&pm7250b_charger {
+	status = "ok";
+	qcom,battery-data = <&mot_batterydata>;
+	qcom,sec-charger-config = <0>;
+	qcom,auto-recharge-soc = <98>;
+	qcom,charger-temp-max = <800>;
+	qcom,smb-temp-max = <800>;
+	qcom,suspend-input-on-debug-batt;
+	qcom,hvdcp3-standalone-config;
+	qcom,fcc-max-ua = <4000000>;
+	qcom,fv-max-uv = <4450000>;
+	qcom,usb-icl-ua = <3000000>;
+	qcom,hvdcp2-max-icl-ua = <1500000>;
+	qcom,thermal-mitigation = <4000000 3500000
+			3000000 2500000
+			2000000 1500000
+			1200000 900000
+			600000 300000>;
+	qcom,pd-voltage-max-uv = <9000000>;
+	qcom,usbpd-phandle = <&pm7250b_pdphy>;
+};
+
+&spmi_bus {
+	qcom,pm7250b@2 {
+		pm7250b_mmi: qcom,qpnp-smb5-mmi {
+			status = "ok";
+			compatible = "qcom,mmi-pm7250b-smb5";
+			#io-channel-cells = <1>;
+			io-channels = <&pm7250b_charger PSY_IIO_CTM_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_TYPEC_MODE>,
+				      <&pm7250b_charger PSY_IIO_DP_DM>,
+				      <&pm7250b_charger PSY_IIO_PD_ACTIVE>,
+				      <&pm7250b_charger PSY_IIO_USB_REAL_TYPE>,
+				      <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>,
+				      <&pm7250b_charger PSY_IIO_USB_INPUT_CURRENT_SETTLED>,
+				      <&pm7250b_charger PSY_IIO_RERUN_AICL>,
+				      <&pm7250b_charger PSY_IIO_SW_JEITA_ENABLED>,
+				      <&pm7250b_charger PSY_IIO_PD_CURRENT_MAX>,
+				      <&pm7250b_qg PSY_IIO_VOLTAGE_NOW>,
+				      <&pm7250b_qg PSY_IIO_CURRENT_NOW>,
+				      <&pm7250b_qg PSY_IIO_TEMP>,
+				      <&pm7250b_qg PSY_IIO_CAPACITY>,
+				      <&pm7250b_qg PSY_IIO_CHARGE_FULL>,
+				      <&pm7250b_qg PSY_IIO_BATT_FULL_CURRENT>,
+				      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>;
+			io-channel-names = "usb_ctm_current_max",
+					   "main_current_max",
+					   "usb_typec_mode",
+					   "battery_dp_dm",
+					   "usb_pd_active",
+					   "usb_real_type",
+					   "usb_hw_current_max",
+					   "usb_input_current_settled",
+					   "battery_rerun_aicl",
+					   "battery_sw_jeita_enabled",
+					   "usb_pd_current_max",
+					   "voltage_now",
+					   "current_now",
+					   "temp",
+					   "capacity",
+					   "charge_full",
+					   "batt_full_current",
+					   "charge_full_design";
+			qcom,enable-charging-limit;
+			qcom,upper-limit-capacity = <65>;
+			qcom,lower-limit-capacity = <60>;
+			qcom,mmi-temp-zones = <0 4200 970 0>,
+						<10 4200 2500 970>,
+						<15 0 2500 2500>,
+						<45 0 4000 4000>,
+						<60 4200 2500 0>;
+			qcom,iterm-ma = <242>;
+			qcom,force-hvdcp-5v;
+			qcom,usbpd-phandle = <&pm7250b_pdphy>;
+		};
+	};
+};
+
+&pm7250b_qg {
+	status = "ok";
+	qcom,battery-data = <&mot_batterydata>;
+	qcom,qg-iterm-ma = <150>;
+	qcom,hold-soc-while-full;
+	qcom,linearize-soc;
+	qcom,vbatt-cutoff-mv = <3400>;
+	qcom,vbatt-low-mv = <3500>;
+	qcom,vbatt-empty-mv = <3200>;
+	qcom,vbatt-empty-cold-mv = <3200>;
+	qcom,cl-feedback-on;
+	qcom,cl-min-start-soc = <0>;
+	qcom,cl-max-start-soc = <5>;
+	qcom,cl-min-temp = <150>;
+	qcom,cl-max-temp = <450>;
+	qcom,cl-max-increment = <5>;
+	qcom,cl-max-decrement = <10>;
+	qcom,cl-min-limit = <200>;
+	qcom,cl-max-limit = <30>;
+	qcom,s3-entry-ibat-ua = <35000>;
+	qcom,s3-exit-ibat-ua = <50000>;
+};
+
+&pm7250b_pdphy {
+	qcom,default-sink-caps = <5000 3000>, /*5V @ 3A*/
+				 <9000 2000>; /*9V @ 2A*/
+};
+
+&bcl_soc {
+	io-channels = <&pm7250b_charger PSY_IIO_HW_CURRENT_MAX>;
+	io-channel-names = "usb_hw_current_max";
+	qcom,bcl-not-mitigate-icl = <2500>;
+};
+
+&socd_trip {
+       temperature = <95>;
+};
+
+&ufshc_mem {
+	spm-level = <3>;
+};

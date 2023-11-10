@@ -161,6 +161,20 @@ niobe-dtb-$(CONFIG_ARCH_NIOBE) += \
 niobe-overlays-dtb-$(CONFIG_ARCH_NIOBE) += $(NIOBE_BOARDS) $(NOAPQ_NIOBE_BOARDS) $(NIOBE_BASE_DTB) $(NIOBE_APQ_BASE_DTB)
 dtb-y += $(niobe-dtb-y)
 
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_MALMO_DTB),y)
+BLAIR_BASE_DTB += blair-malmo-base.dtb
+BLAIR_BOARDS += blair-malmo-evb-overlay.dtbo
+endif
+
+blair-dtb-$(CONFIG_ARCH_BLAIR) += \
+    $(call add-overlays, $(BLAIR_BOARDS),$(BLAIR_BASE_DTB))
+blair-overlays-dtb-$(CONFIG_ARCH_BLAIR) += $(BLAIR_BOARDS) $(BLAIR_BASE_DTB)
+
+dtb-y += $(blair-dtb-y)
+else
+
 BLAIR_BASE_DTB += blair.dtb
 BLAIR_APQ_BASE_DTB += blairp.dtb
 
@@ -209,6 +223,7 @@ holi-dtb-$(CONFIG_ARCH_HOLI) += \
 	$(call add-overlays, $(HOLI_BOARDS),$(HOLI_BASE_DTB))
 holi-overlays-dtb-$(CONFIG_ARCH_HOLI) += $(HOLI_BOARDS) $(HOLI_BASE_DTB)
 dtb-y += $(holi-dtb-y)
+endif # end of CONFIG_MMI_DEVICE_DTBS
 
 # pitti-dtb
 PITTI_BASE_DTB += pitti.dtb pitti-3gb.dtb pitti-4gb.dtb
