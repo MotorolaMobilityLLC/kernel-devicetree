@@ -1,0 +1,27 @@
+/*
+ * Copyright (C) 2023 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+qr10-atl-1050mah {
+    serialnum = "SB18E07970";
+    fcc_design = <1050>;
+    ui_full = <98>;
+    config_profile_info = [28 00 00 00 00 00 00 00
+                b7 b9 c3 c8 b6 ad c7 a8
+                9a ff d7 96 87 6c 59 4e
+                44 3e 32 7a 57 e1 b3 fd
+                c7 cb ce d5 d9 d7 d7 db
+                d7 cf ca b3 ac ab ad b3
+                b4 9f ce ce d2 fb ff cc
+                20 00 ab 10 00 81 1e 00
+                00 00 64 05 90 4b 00 00
+                00 00 00 00 00 00 00 b7];
+};
