@@ -191,6 +191,7 @@ _platform_map = {
             {"name": "pineapple-arcf-evt1a-overlay.dtbo", "product": "arcf", },
             {"name": "pineapple-ctwov-evb-overlay.dtbo", "product": "ctwov", },
         ],
+        "binary_compatible_with": ["cliffs"],
     },
     "pineapple-le": {
         "dtb_list": [
@@ -337,33 +338,10 @@ _platform_map = {
     },
     "cliffs": {
         "dtb_list": [
-            {"name": "cliffs.dtb"},
-            {"name": "cliffs7.dtb"},
-            {
-                "name": "cliffsp.dtb",
-                "apq": True,
-            },
-            {
-                "name": "cliffs7p.dtb",
-                "apq": True,
-            },
+            { "name": "cliffs-ctwo-base.dtb", "product": "ctwo", },
         ],
         "dtbo_list": [
-            {"name": "cliffs-atp-overlay.dtbo"},
-            {"name": "cliffs-cdp-overlay.dtbo"},
-            {"name": "cliffs-mtp-overlay.dtbo"},
-            {"name": "cliffs-qrd-overlay.dtbo"},
-            {"name": "cliffs-rcm-overlay.dtbo"},
-            {"name": "cliffs-mtp-kiwi-2s-nfc-wcd9395-overlay.dtbo"},
-            {"name": "cliffs-mtp-peach-2s-nfc-wcd9395-overlay.dtbo"},
-            {"name": "cliffs-mtp-pm8550b-overlay.dtbo"},
-            {"name": "cliffs-mtp-kiwi-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
-            {"name": "cliffs-mtp-peach-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
-            {"name": "cliffs-rcm-qhdp-overlay.dtbo"},
-            {"name": "cliffs-rcm-fhdp-kiwi-overlay.dtbo"},
-            {"name": "cliffs-rcm-qhdp-kiwi-overlay.dtbo"},
-            {"name": "cliffs-mtp-kiwi-overlay.dtbo"},
-            {"name": "cliffs-mtp-peach-overlay.dtbo"},
+            {"name": "cliffs-ctwo-evb3-overlay.dtbo", "product": "ctwo", },
         ],
     },
     "pineapple-tuivm": {

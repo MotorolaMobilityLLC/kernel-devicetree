@@ -25,6 +25,12 @@ PINEAPPLE_BASE_DTB += pineapple-ctwov-base.dtb pineapple-v2-ctwov-base.dtb
 PINEAPPLE_BOARDS += pineapple-ctwov-evb-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_CTWO_DTB),y)
+PINEAPPLE_BASE_DTB += cliffs-ctwo-base.dtb
+PINEAPPLE_BOARDS += cliffs-ctwo-evb3-overlay.dtbo
+endif
+
+
 PINEAPPLE_BOARDS += pineapple-dpm-overlay.dtbo
 
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
