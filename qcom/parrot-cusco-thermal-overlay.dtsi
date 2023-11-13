@@ -333,7 +333,7 @@
 	sys-therm-6 {
 		status = "disabled";
 	};
-	schg-therm  {
+	chg-therm  {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM1_100K_PU>;
