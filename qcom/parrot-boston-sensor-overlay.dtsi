@@ -62,7 +62,7 @@
 };
 
 &soc {
-	pen_detect{
+	pen_detect:pen_detect{
 		compatible = "hall_pen_detect";
 		pinctrl-names = "default","sleep";
 		pinctrl-0 = <&pen_int_default>;
