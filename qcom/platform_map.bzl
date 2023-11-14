@@ -339,9 +339,11 @@ _platform_map = {
     "cliffs": {
         "dtb_list": [
             { "name": "cliffs-ctwo-base.dtb", "product": "ctwo", },
+            { "name": "cliffs-arcfox-base.dtb", "product": "arcfox", },
         ],
         "dtbo_list": [
             {"name": "cliffs-ctwo-evb3-overlay.dtbo", "product": "ctwo", },
+            {"name": "cliffs-arcfox-evt3-overlay.dtbo", "product": "arcfox", },
         ],
     },
     "pineapple-tuivm": {
