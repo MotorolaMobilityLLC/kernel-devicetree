@@ -19,6 +19,7 @@
 	status = "ok";
 	qm35@0 {
 		status = "ok";
+		mmi,status = "/chosen", "mmi,uwb", "qorvo";
 		compatible = "qorvo,qm35";
 		reg = <0>;
 		spi-max-frequency = <20000000>;
