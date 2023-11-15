@@ -44,20 +44,7 @@
 			pins = "gpio9";
 			function = "normal";
 			input-disable;
-			power-source = <0>;
-			bias-disable;
-			output-high;
-			qcom,drive-strength = <2>;
 		};
-                vib_ldo_en_suspend:vib_ldo_en_suspend {
-                        pins = "gpio9";
-                        function = "normal";
-                        input-disable;
-                        power-source = <0>;
-                        bias-disable;
-                        output-low;
-                        qcom,drive-strength = <2>;
-                };
 	};
 };
 
@@ -72,9 +59,8 @@
 
 	ldo_vib {
 		compatible = "moto,vibrator-ldo";
-		pinctrl-names = "default","sleep";
-		pintrl-0 = <&vib_ldo_en_default>;
-		pintrl-1 = <&vib_ldo_en_suspend>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vib_ldo_en_default>;
 		moto,vib-ldo-gpio = <&pm6125_gpios 9 GPIO_ACTIVE_HIGH>;
 		status = "ok";
 	};
