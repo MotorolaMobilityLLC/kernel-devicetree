@@ -59,7 +59,6 @@
 		vdd-i2c-supply = <&L15B>;
 		fg-psy-name = "flip_battery";
 		factory_mode_ntc_exist = <1>;
-		ibat-invert-polority;
 		#include "bat_setting/CW_QR10-atl-1050mah.dtsi"
 	};
 
