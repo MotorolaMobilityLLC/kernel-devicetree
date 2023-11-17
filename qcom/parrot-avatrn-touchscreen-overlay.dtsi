@@ -49,6 +49,7 @@
 		goodix,interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
+		goodix,stowed-mode-ctrl;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
@@ -75,6 +76,7 @@
 		focaltech,edge-ctrl;
 		focaltech,sample-ctrl;
 		focaltech,interpolation-ctrl;
+		focaltech,stowed-mode-ctrl;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
