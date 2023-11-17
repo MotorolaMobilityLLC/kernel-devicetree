@@ -229,7 +229,7 @@
                         };
                 };
         };
-	rear-cam-therm {
+	sub-therm {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
                 thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO3_100K_PU>;
@@ -267,7 +267,7 @@
 	sys-therm-4 {
 		status = "disabled";
 	};
-	pa-therm1 {
+	pa-therm2 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM1_100K_PU>;
@@ -288,7 +288,7 @@
 	sys-therm-5 {
 		status = "disabled";
 	};
-	pa-therm0 {
+	pa-therm1 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM3_100K_PU>;
