@@ -16,4 +16,5 @@
 
 #include "cliffs-moto-common-overlay-base.dtsi"
 #include "cliffs-moto-common-overlay.dtsi"
+#include "cliffs-pm8550b.dtsi"
 
