@@ -14,3 +14,84 @@
 
 #include "cliffs-arcfox-products-common-overlay.dtsi"
 #include "cliffs-arcfox-haptics-overlay.dtsi"
+
+&soc {
+	mmi_relay {
+		compatible = "mmi,sys-relay";
+	};
+
+	lpd_mitigate: mmi,lpd-mitigate {
+		compatible = "mmi,lpd-mitigate";
+		mmi,mitigate-mode-cfg = <3>;
+		mmi,default-mitigate-mode-cfg = <1>;
+	};
+};
+
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xd 0x51
+		/* Squelch detection threshold */
+		 0x2 0x54
+		/* Tx pre-emphasis tuning */
+		 0x7 0x57
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* slew rate */
+		 0x00 0x59>;
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xd 0x51
+		/* Squelch detection threshold */
+		 0x2 0x54
+		/* Tx pre-emphasis tuning */
+		 0x7 0x57
+		/* HS disconnect threshold */
+		 0x6 0x53
+		/* slew rate */
+		 0x00 0x59>;
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pm8550b_eusb2_repeater>;
+	usb-repeater = <&pm8550b_eusb2_repeater>;
+};
+
+&usb0 {
+	usb-role-switch;
+	port {
+		usb_port0: endpoint {
+			remote-endpoint = <&usb_port0_connector>;
+		};
+	};
+
+	dwc3@a600000 {
+		snps,usb2-gadget-lpm-disable;
+	};
+};
+
+&ucsi {
+	connector {
+		port {
+			usb_port0_connector: endpoint {
+				remote-endpoint = <&usb_port0>;
+			};
+		};
+	};
+};
+
+&usb_qmp_dp_phy {
+	status = "disabled";
+};
+
+&usb0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 122 0>;
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
+		maximum-speed = "high-speed";
+	};
+};

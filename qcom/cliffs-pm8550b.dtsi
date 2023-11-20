@@ -79,6 +79,12 @@
 	};
 };
 
+&pm8550b_eusb2_repeater {
+	status = "ok";
+	vdd18-supply = <&L7B>;
+	vdd3-supply = <&L17B>;
+};
+
 &thermal_zones {
 	sys-therm-7 {
 		polling-delay-passive = <0>;
