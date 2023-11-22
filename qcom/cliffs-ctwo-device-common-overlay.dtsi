@@ -13,3 +13,4 @@
 /* This file is only for ctwo device */
 
 #include "cliffs-ctwo-products-common-overlay.dtsi"
+#include "cliffs-ctwo-haptics-overlay.dtsi"

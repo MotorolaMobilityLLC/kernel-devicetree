@@ -13,3 +13,4 @@
 /* This file is only for arcfox device */
 
 #include "cliffs-arcfox-products-common-overlay.dtsi"
+#include "cliffs-arcfox-haptics-overlay.dtsi"
