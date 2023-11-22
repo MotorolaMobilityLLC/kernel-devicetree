@@ -189,6 +189,7 @@ _platform_map = {
         "dtbo_list": [
             {"name": "pineapple-dpm-overlay.dtbo"},
             {"name": "pineapple-arcf-evt1a-overlay.dtbo", "product": "arcf", },
+            {"name": "pineapple-arcf-evt2-overlay.dtbo", "product": "arcf", },
             {"name": "pineapple-ctwov-evb-overlay.dtbo", "product": "ctwov", },
         ],
         "binary_compatible_with": ["cliffs"],
