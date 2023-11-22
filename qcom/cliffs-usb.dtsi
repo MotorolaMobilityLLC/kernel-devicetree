@@ -29,6 +29,8 @@
 				"dm_hs_phy_irq", "ss_phy_irq";
 		qcom,use-pdc-interrupts;
 
+		extcon = <&eud>;
+		qcom,use-eusb2-phy;
 		qcom,dis-sending-cm-l1-quirk;
 		qcom,core-clk-rate = <200000000>;
 		qcom,core-clk-rate-hs = <66666667>;
@@ -49,6 +51,8 @@
 				<&aggre1_noc MASTER_USB3_0 &cnoc_cfg SLAVE_IPA_CFG>,
 				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_0>;
 
+		usb-role-switch;
+
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
 			reg = <0xa600000 0xd93c>;
@@ -59,7 +63,7 @@
 			dma-coherent;
 
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
-			usb-phy = <&usb_nop_phy>, <&usb_qmp_dp_phy>;
+			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x0>;
@@ -69,7 +73,7 @@
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
-			dr_mode = "peripheral";
+			dr_mode = "otg";
 			maximum-speed = "super-speed-plus";
 			usb-role-switch;
 		};
@@ -77,6 +81,31 @@
 
 	usb_nop_phy: usb_nop_phy {
 		compatible = "usb-nop-xceiv";
+	};
+
+	/* USB port related High Speed PHY */
+	eusb2_phy0: hsphy@88e3000 {
+		compatible = "qcom,usb-snps-eusb2-phy";
+		reg = <0x88e3000 0x154>,
+			<0x088e2000 0x4>,
+			<0x0c278000 0x4>;
+		reg-names = "eusb2_phy_base",
+			"eud_enable_reg",
+			"eud_detect_reg";
+
+		vdd-supply = <&L2B>;
+		qcom,vdd-voltage-level = <0 880000 950000>;
+		vdda12-supply = <&L4B>;
+
+		clocks = <&rpmhcc RPMH_CXO_PAD_CLK>,
+			<&tcsrcc TCSR_USB2_CLKREF_EN>;
+		clock-names = "ref_clk_src", "ref_clk";
+
+		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
+		reset-names = "phy_reset";
+		qcom,param-override-seq =
+			<0x00 0x58>; /* eUSB2 HPG version 1.0.2 update */
+
 	};
 
 	/* USB port related QMP USB DP Combo PHY */
@@ -105,6 +134,9 @@
 		resets = <&gcc GCC_USB3_DP_PHY_PRIM_BCR>,
 			<&gcc GCC_USB3_PHY_PRIM_BCR>;
 		reset-names = "global_phy_reset", "phy_reset";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb3phy_portselect_default>;
 
 		qcom,qmp-phy-reg-offset =
 			<USB3_DP_PCS_PCS_STATUS1
@@ -288,5 +320,13 @@
 			USB3_DP_PCS_USB3_RXEQTRAINING_DFE_TIME_S2 0x07
 			USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_L 0x40
 			USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_H 0x00>;
+	};
+
+	usb_audio_qmi_dev {
+		compatible = "qcom,usb-audio-qmi-dev";
+		iommus = <&apps_smmu 0x100b 0x0>;
+		qcom,iommu-dma = "disabled";
+		qcom,usb-audio-stream-id = <0xb>;
+		qcom,usb-audio-intr-num = <2>;
 	};
 };

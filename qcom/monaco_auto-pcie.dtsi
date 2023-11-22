@@ -75,6 +75,10 @@
 				RPMH_REGULATOR_LEVEL_NOM
 				100000000>;
 
+		qcom,no-l0s-supported;
+		qcom,no-l1-supported;
+		qcom,no-l1ss-supported;
+
 		interconnect-names = "icc_path";
 		interconnects = <&pcie_anoc MASTER_PCIE_0 &mc_virt SLAVE_EBI1>;
 
@@ -115,6 +119,7 @@
 				"pcie_0_phy_reset";
 
 		dma-coherent;
+		msi-parent = <&pcie0_msi_snps>;
 		msi-map = <0x0 &gic_its 0x5000 0x1>,
 			<0x100 &gic_its 0x5001 0x1>;
 
@@ -579,6 +584,15 @@
 		pcie1_rp: pcie1_rp {
 			reg = <0 0 0 0 0>;
 		};
+	};
+	pcie0_msi_snps: qcom,pcie0_msi@a0000000 {
+		compatible = "qcom,pci-msi";
+		msi-controller;
+		reg = <0xa0000000 0x0>;
+		interrupt-parent = <&intc>;
+		interrupts = <GIC_SPI 307 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,snps;
+		status = "disabled";
 	};
 };
 

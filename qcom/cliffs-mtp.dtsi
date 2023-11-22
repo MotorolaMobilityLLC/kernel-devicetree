@@ -3,6 +3,8 @@
 #include "cliffs-thermal-overlay.dtsi"
 
 &sdhc_2 {
+	status = "ok";
+
 	vdd-supply = <&L13B>;
 	qcom,vdd-voltage-level = <2960000 2960000>;
 	qcom,vdd-current-level = <0 800000>;
@@ -194,7 +196,6 @@
 	periph-49e-supply = <&S2E>;
 	periph-4a1-supply = <&S3E>;
 	periph-89b-supply = <&S1I_LEVEL>;
-	periph-99b-supply = <&S1J>;
 	periph-c40-supply = <&L1M>;
 	periph-c41-supply = <&L2M>;
 	periph-c42-supply = <&L3M>;

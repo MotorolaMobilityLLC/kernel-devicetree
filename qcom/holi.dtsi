@@ -636,8 +636,6 @@
 		cell-index = <0>;
 	};
 
-	thermal_zones: thermal-zones {};
-
 	arch_timer: timer {
 		compatible = "arm,armv8-timer";
 		interrupts = <GIC_PPI 1 (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
@@ -814,10 +812,14 @@
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
-		qcom,threshold-arr = <0x0F800058 0x0F810058 0x0F820058 0x0F830058
-			0x0F840058 0x0F850058 0x0F860058 0x0F870058>;
-		qcom,config-arr = <0x0F800060 0x0F810060 0x0F820060 0x0F830060
-			0x0F840060 0x0F850060 0x0F860060 0x0F870060>;
+		qcom,chd-percpu-info = <&CPU0 0x0F800058 0x0F800060>,
+					<&CPU1 0x0F810058 0x0F810060>,
+					<&CPU2 0x0F820058 0x0F820060>,
+					<&CPU3 0x0F830058 0x0F830060>,
+					<&CPU4 0x0F840058 0x0F840060>,
+					<&CPU5 0x0F850058 0x0F850060>,
+					<&CPU6 0x0F860058 0x0F860060>,
+					<&CPU7 0x0F870058 0x0F870060>;
 	};
 
 	vendor_hooks: qcom,cpu-vendor-hooks {
@@ -1233,7 +1235,6 @@
 
 	qcom_pmu: qcom,pmu {
 		compatible = "qcom,pmu";
-		qcom,long-counter;
 		qcom,pmu-events-tbl =
 			< 0x0008 0xFF 0xFF 0xFF >,
 			< 0x0011 0xFF 0xFF 0xFF >,
@@ -1279,13 +1280,13 @@
 			compatible = "qcom,dcvs-hw";
 			qcom,dcvs-hw-type = <2>;
 			qcom,bus-width = <32>;
-			reg = <0xFD90000 0x4000>, <0xFD90100 0xa0>;
+			reg = <0xFD90000 0x1000>, <0xFD90100 0xa0>;
 			reg-names = "l3-base", "l3tbl-base";
 
 			l3_dcvs_sp: sp {
 				compatible = "qcom,dcvs-path";
 				qcom,dcvs-path-type = <0>;
-				qcom,shared-offset = <0x0090>;
+				qcom,shared-offset = <0x0320>;
 			};
 		};
 	};
@@ -1658,9 +1659,6 @@
 		phy-names = "ufsphy";
 		#reset-cells = <1>;
 
-		qcom,prime-mask = <0xc0>;
-		qcom,silver-mask = <0x3f>;
-
 		limit-phy-submode = <0>;
 		lanes-per-direction = <1>;
 		nvmem-cells = <&boot_config>;
@@ -1734,8 +1732,8 @@
 
 		iommus = <&apps_smmu 0x60 0x0>;
 		qcom,iommu-dma = "fastmap";
-		qcom,iommu-dma-addr-pool = <0x40000000 0x20000000>;
-		qcom,iommu-geometry = <0x40000000 0x20000000>;
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
 
 		reset-gpios = <&tlmm 156 GPIO_ACTIVE_LOW>;
 		resets = <&gcc GCC_UFS_PHY_BCR>;
@@ -1830,6 +1828,9 @@
 		nvmem-cells = <&boot_config>;
 		nvmem-cell-names = "boot_conf";
 		boot_device_type = <0x3>;
+
+		qcom,devfreq,freq-table = <50000000 200000000>;
+		qcom,scaling-lower-bus-speed-mode = "DDR52";
 
 		cap-mmc-hw-reset;
 
@@ -2007,6 +2008,7 @@
 		hyplog-size-offset = <0x414>;
 	};
 
+	thermal_zones: thermal-zones {};
 };
 
 
@@ -2036,6 +2038,7 @@
 #include "holi-usb.dtsi"
 #include "blair-coresight.dtsi"
 #include "blair-debug.dtsi"
+#include "holi-thermal.dtsi"
 
 &gcc_camss_top_gdsc {
 	status = "ok";

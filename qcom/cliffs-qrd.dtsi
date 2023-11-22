@@ -3,6 +3,8 @@
 #include "cliffs-thermal-overlay.dtsi"
 
 &sdhc_2 {
+	status = "ok";
+
 	vdd-supply = <&L13B>;
 	qcom,vdd-voltage-level = <2960000 2960000>;
 	qcom,vdd-current-level = <0 800000>;
@@ -207,7 +209,6 @@
 	periph-49e-supply = <&S2E>;
 	periph-4a1-supply = <&S3E>;
 	periph-89b-supply = <&S1I_LEVEL>;
-	periph-99b-supply = <&S1J>;
 	periph-c40-supply = <&L1M>;
 	periph-c41-supply = <&L2M>;
 	periph-c42-supply = <&L3M>;
@@ -276,4 +277,59 @@
 		reg = <0x1016903>;
 		label = "smb1501_2_die_temp";
 	};
+};
+
+&wcd_usbss {
+	interrupt-parent = <&spmi_bus>;
+	interrupts = <0x0 0xb6 0x1 IRQ_TYPE_EDGE_BOTH>;
+	interrupt-names = "usb_wcd";
+	nvmem-cells = <&usb_mode>;
+	nvmem-cell-names = "usb_mode";
+};
+
+&qupv3_se0_i2c {
+	status = "ok";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+	redriver: redriver@1c {
+		compatible = "onnn,redriver";
+		reg = <0x1c>;
+
+		lane-channel-swap;
+
+		eq = /bits/ 8 <
+				/* Parameters for USB */
+				0x4 0x6 0x6 0x4
+				/* Parameters for DP */
+				0x5 0x7 0x7 0x5>;
+		flat-gain = /bits/ 8 <
+				/* Parameters for USB */
+				0x3 0x3 0x3 0x3
+				/* Parameters for DP */
+				0x0 0x3 0x3 0x0>;
+		output-comp = /bits/ 8 <
+				/* Parameters for USB */
+				0x3 0x3 0x3 0x3
+				/* Parameters for DP */
+				0x3 0x3 0x3 0x3>;
+		loss-match = /bits/ 8 <
+				/* Parameters for USB */
+				0x1 0x3 0x3 0x1
+				/* Parameters for DP */
+				0x2 0x2 0x2 0x2>;
+	};
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 122 0>;
+
+	ssusb_redriver = <&redriver>;
+	qcom,wcd_usbss = <&wcd_usbss>;
 };

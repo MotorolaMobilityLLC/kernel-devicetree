@@ -60,6 +60,10 @@
 		#size-cells = <1>;
 		read-only;
 		ranges;
+		gpu_speed_bin: gpu_speed_bin@2 {
+			reg = <0x2 0x2>;
+			bits = <4 8>;
+			};
 	};
 
 hsi2s: qcom,hsi2s {
@@ -363,6 +367,8 @@ hsi2s: qcom,hsi2s {
 };
 
 &thermal_zones {
+	/delete-node/ qcom,cpu-pause;
+
 	gpuss-0 {
 		trips {
 			reset-mon-cfg {
@@ -438,6 +444,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu00_cdev {
+				cooling-device = <&cpu0_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-0-1 {
@@ -448,6 +460,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu01-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu01_cdev {
+				cooling-device = <&cpu1_hotplug 1 1>;
 			};
 		};
 	};
@@ -462,6 +480,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu02_cdev {
+				cooling-device = <&cpu2_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-0-3 {
@@ -472,6 +496,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu03-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu03_cdev {
+				cooling-device = <&cpu3_hotplug 1 1>;
 			};
 		};
 	};
@@ -486,6 +516,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu10_cdev {
+				cooling-device = <&cpu4_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-1-1 {
@@ -496,6 +532,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu11-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu11_cdev {
+				cooling-device = <&cpu5_hotplug 1 1>;
 			};
 		};
 	};
@@ -510,6 +552,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu12_cdev {
+				cooling-device = <&cpu6_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-1-3 {
@@ -520,6 +568,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu13-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu13_cdev {
+				cooling-device = <&cpu7_hotplug 1 1>;
 			};
 		};
 	};
@@ -534,6 +588,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu14_cdev {
+				cooling-device = <&cpu4_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-1-5 {
@@ -544,6 +604,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu15-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu15_cdev {
+				cooling-device = <&cpu5_hotplug 1 1>;
 			};
 		};
 	};
@@ -558,6 +624,12 @@ hsi2s: qcom,hsi2s {
 				temperature = <115000>;
 			};
 		};
+
+		cooling-maps {
+			cpu16_cdev {
+				cooling-device = <&cpu6_hotplug 1 1>;
+			};
+		};
 	};
 
 	cpu-1-7 {
@@ -568,6 +640,12 @@ hsi2s: qcom,hsi2s {
 
 			cpu17-config {
 				temperature = <115000>;
+			};
+		};
+
+		cooling-maps {
+			cpu17_cdev {
+				cooling-device = <&cpu7_hotplug 1 1>;
 			};
 		};
 	};

@@ -1231,10 +1231,14 @@
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
-		qcom,threshold-arr = <0x0F800058 0x0F810058 0x0F820058 0x0F830058
-			0x0F840058 0x0F850058 0x0F860058 0x0F870058>;
-		qcom,config-arr = <0x0F800060 0x0F810060 0x0F820060 0x0F830060
-			0x0F840060 0x0F850060 0x0F860060 0x0F870060>;
+		qcom,chd-percpu-info = <&CPU0 0x0F800058 0x0F800060>,
+					<&CPU1 0x0F810058 0x0F810060>,
+					<&CPU2 0x0F820058 0x0F820060>,
+					<&CPU3 0x0F830058 0x0F830060>,
+					<&CPU4 0x0F840058 0x0F840060>,
+					<&CPU5 0x0F850058 0x0F850060>,
+					<&CPU6 0x0F860058 0x0F860060>,
+					<&CPU7 0x0F870058 0x0F870060>;
 	};
 
 	vendor_hooks: qcom,cpu-vendor-hooks {
@@ -1536,13 +1540,13 @@
 			compatible = "qcom,dcvs-hw";
 			qcom,dcvs-hw-type = <2>;
 			qcom,bus-width = <32>;
-			reg = <0xFD91000 0x4000>, <0xFD90100 0xa0>;
+			reg = <0xFD90000 0x1000>, <0xFD90100 0xa0>;
 			reg-names = "l3-base", "l3tbl-base";
 
 			l3_dcvs_sp: sp {
 				compatible = "qcom,dcvs-path";
 				qcom,dcvs-path-type = <0>;
-				qcom,shared-offset = <0x0090>;
+				qcom,shared-offset = <0x0320>;
 			};
 		};
 	};
@@ -1806,9 +1810,6 @@
 		lanes-per-direction = <1>;
 		dev-ref-clk-freq = <0>; /* 19.2 MHz */
 
-		qcom,prime-mask = <0xc0>;
-		qcom,silver-mask = <0x3f>;
-
 		nvmem-cells = <&boot_config>;
 		nvmem-cell-names = "boot_conf";
 		boot_device_type = <0x0>;
@@ -1878,8 +1879,8 @@
 		"HS_RB_G1_L1", "HS_RB_G2_L1", "HS_RB_G3_L1",
 		"MAX";
 
-		qcom,iommu-dma-addr-pool = <0x40000000 0x40000000>;
-		qcom,iommu-geometry = <0x40000000 0x40000000>;
+		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
+		qcom,iommu-geometry = <0x40000000 0x10000000>;
 		iommus = <&apps_smmu 0x60 0x0>;
 		qcom,iommu-dma = "fastmap";
 

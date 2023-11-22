@@ -36,6 +36,8 @@
 		serial0 = &qupv3_se7_2uart;
 		ufshc1 = &ufshc_mem; /* Embedded UFS slot */
 		hsuart0 = &qupv3_se2_4uart;
+		i2c18 = &qupv3_se8_i2c;
+		hsuart1 = &qupv3_se12_2uart;
 	};
 
 	cpus {
@@ -2198,5 +2200,13 @@
 	qcom,vddp-ref-clk-supply = <&L4C>;
 	qcom,vddp-ref-clk-max-microamp = <100>;
 
+	status = "ok";
+};
+
+&pcie0 {
+	status = "ok";
+};
+
+&pcie0_msi_snps {
 	status = "ok";
 };

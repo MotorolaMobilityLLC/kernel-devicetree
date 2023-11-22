@@ -154,12 +154,13 @@ _platform_map = {
             {"name": "pineapple-rcm-overlay.dtbo"},
             {"name": "pineapplep-hdk-overlay.dtbo"},
             {"name": "pineapple-dpm-overlay.dtbo"},
+            {"name": "pineapplep-aim500-overlay.dtbo"},
             {
                 "name": "pineapple-rumi-overlay.dtbo",
                 "apq": False,
             },
         ],
-        "binary_compatible_with": ["cliffs"],
+        "binary_compatible_with": ["cliffs", "volcano"],
     },
     "niobe": {
         "dtb_list": [
@@ -189,6 +190,7 @@ _platform_map = {
             {"name": "cliffs-mtp-hmt-2s-nfc-wcd9395-overlay.dtbo"},
             {"name": "cliffs-mtp-pm8550b-overlay.dtbo"},
             {"name": "cliffs-mtp-hmt-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
+            {"name": "cliffs-rcm-qhdp-overlay.dtbo"},
         ],
     },
     "pineapple-tuivm": {
@@ -302,6 +304,17 @@ _platform_map = {
         ],
         "dtbo_list": [
             {"name": "pitti-rumi-overlay.dtbo"},
+        ],
+    },
+    "volcano": {
+        "dtb_list": [
+            {"name": "volcano.dtb"},
+        ],
+        "dtbo_list": [
+            {
+                "name": "volcano-rumi-overlay.dtbo",
+                "apq": False,
+            },
         ],
     },
 }

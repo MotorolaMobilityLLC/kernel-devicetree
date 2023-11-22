@@ -13,6 +13,8 @@
 #include <dt-bindings/interconnect/qcom,cliffs.h>
 #include <dt-bindings/spmi/spmi.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/power/qcom-aoss-qmp.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Cliffs";
@@ -25,7 +27,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 pcie_ports=compat ufshcd-core.use_mcq_mode=0 irqaffinity=0-2 cpufreq.default_governor=performance kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
+		bootargs = "loglevel=6 kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat irqaffinity=0-2 cpufreq.default_governor=performance kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on kernel.panic_on_rcu_stall=1 fw_devlink.strict=1 service_locator.enable=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-7 no-steal-acc printk.console_no_auto_verbose=1 can.stats_timer=0 ftrace_dump_on_oops firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware_mnt/image/kiwi,/vendor/vm-system/oemvm/boot,/vendor/vm-system/trustedvm/boot,/vendor/firmware,/vendor/firmware/wlan/qca_cld/kiwi_v2";
 		stdout-path = "/soc/qcom,qupv3_0_geni_se@ac0000/qcom,qup_uart@a94000:115200n8";
 	};
 
@@ -538,6 +540,12 @@
 		reg-names = "llcc_base", "llcc_broadcast_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
+
+		llcc-perfmon {
+			compatible = "qcom,llcc-perfmon";
+			clocks = <&aoss_qmp QDSS_CLK>;
+			clock-names = "qdss_clk";
+		};
 	};
 
 	cluster-device {
@@ -557,6 +565,7 @@
 		interrupts = <GIC_SPI 368 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 369 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 370 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&camcc CAM_CC_DRV_AHB_CLK>;
 
 		cam_rsc_drv0: drv@0 {
 			qcom,drv-id = <0>;
@@ -655,6 +664,7 @@
 		reg-names = "drv-0";
 		qcom,drv-count = <1>;
 		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&dispcc DISP_CC_MDSS_RSCC_AHB_CLK>;
 
 		disp_rsc_drv0: drv@0 {
 			qcom,drv-id = <0>;
@@ -703,7 +713,7 @@
 		reg = <0x0c3f0000 0x400>;
 		qcom,qmp = <&aoss_qmp>;
 		ss-name = "modem", "adsp", "adsp_island",
-			  "cdsp", "apss";
+			  "cdsp", "apss", "wpss";
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -915,10 +925,14 @@
 	qcom,chd {
 		compatible = "qcom,core-hang-detect";
 		label = "core";
-		qcom,threshold-arr = <0x17800058 0x17810058 0x17820058 0x17830058
-			0x17840058 0x17850058 0x17860058 0x17870058>;
-		qcom,config-arr = <0x17800060 0x17810060 0x17820060 0x17830060
-			0x17840060 0x17850060 0x17860060 0x17870060>;
+		qcom,chd-percpu-info = <&CPU0 0x17800058 0x17800060>,
+					<&CPU1 0x17810058 0x17810060>,
+					<&CPU2 0x17820058 0x17820060>,
+					<&CPU3 0x17830058 0x17830060>,
+					<&CPU4 0x17840058 0x17840060>,
+					<&CPU5 0x17850058 0x17850060>,
+					<&CPU6 0x17860058 0x17860060>,
+					<&CPU7 0x17870058 0x17870060>;
 	};
 
 	trust_ui_vm_vblk0_ring: trust_ui_vm_vblk0_ring {
@@ -974,6 +988,8 @@
 		qcom,vmid = <50>;
 		qcom,firmware-name = "cpusys_vm";
 		memory-region = <&cpusys_vm_mem>;
+		ext-region = <&chipinfo_mem>;
+		ext-label = <0x7>;
 	};
 
 	oem_vm_vblk0_ring: oem_vm_vblk0_ring {
@@ -1047,6 +1063,37 @@
 				     &tlmm 44 0 &tlmm 45 0 &tlmm 46 0 &tlmm 47 0
 				     &tlmm 128 0 &tlmm 129 0 &tlmm 131 0 &tlmm 29 0
 				     &tlmm 177 0 &tlmm 54 0 &tlmm 77 0 &tlmm 78 0>;
+	};
+
+	qcom,test-dbl-tuivm {
+		compatible = "qcom,gh-dbl";
+		qcom,label = <0x4>;
+	};
+
+	qcom,test-dbl-oemvm {
+		compatible = "qcom,gh-dbl";
+		qcom,label = <0x5>;
+	};
+
+	qcom,test-msgq-tuivm {
+		compatible = "qcom,gh-msgq-test";
+		gunyah-label = <4>;
+		qcom,primary;
+	};
+
+	qcom,test-msgq-oemvm {
+		compatible = "qcom,gh-msgq-test";
+		gunyah-label = <5>;
+		qcom,primary;
+	};
+
+	qcom,gh-qtimer@17425000 {
+		compatible = "qcom,gh-qtmr";
+		reg = <0x17425000 0x1000>;
+		reg-names = "qtmr-base";
+		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "qcom,qtmr-intr";
+		qcom,primary;
 	};
 
 	clocks {
@@ -2143,16 +2190,41 @@
 		status = "disabled";
 	};
 
+	ice_cfg: shared_ice {
+		alg1 {
+			alg-name = "alg1";
+			rx-alloc-percent = <60>;
+			status = "disabled";
+		};
+
+		alg2 {
+			alg-name = "alg2";
+			status = "disabled";
+
+		};
+
+		alg3 {
+			alg-name = "alg3";
+			num-core = <28 28 15 13>;
+			status = "ok";
+		};
+	};
+
 	ufshc_mem: ufshc@1d84000 {
 		compatible = "qcom,ufshc";
 		reg = <0x1d84000 0x3000>,
 			<0x1d88000 0x8000>,
-			<0x1d90000 0x9000>;
-		reg-names = "ufs_mem", "ufs_ice", "ufs_ice_hwkm";
+			<0x1d90000 0x9000>,
+			<0x1da5000 0x2000>, <0x1da4000 0x10>;
+		reg-names = "ufs_mem", "ufs_ice", "ufs_ice_hwkm", "mcq_sqd", "mcq_vs";
 		interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
 		phys = <&ufsphy_mem>;
 		phy-names = "ufsphy";
 		#reset-cells = <1>;
+
+		qcom,prime-mask = <0x80>;
+		qcom,silver-mask = <0x07>;
+		qcom,esi-affinity-mask = <0xf8>;
 
 		lanes-per-direction = <2>;
 		clock-names =
@@ -2252,8 +2324,10 @@
 		"MAX";
 
 		iommus = <&apps_smmu 0x60 0x0>;
-		/* TO DO: set to fastmap after UFS bringup */
-		qcom,iommu-dma = "bypass";
+		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma-addr-pool = <0x1000 0xFFFFF000>;
+		qcom,iommu-msi-size = <0x1000>;
+		shared-ice-cfg = <&ice_cfg>;
 		dma-coherent;
 
 		/* skip pbl wa as we have got this fixed in pbl */
@@ -2263,12 +2337,28 @@
 		resets = <&gcc GCC_UFS_PHY_BCR>;
 		reset-names = "rst";
 
+		msi-parent = <&gic_its 0x60>;
+		qcom,broken-ahit-wa;
+
 		status = "disabled";
+
+		qos0 {
+			mask = <0xf8>;
+			vote = <44>;
+			perf;
+			cpu_freq_vote = <3 7>;
+		};
+
+		qos1 {
+			mask = <0x07>;
+			vote = <44>;
+			cpu_freq_vote = <0>;
+		};
 	};
 
 	qcom,rmtfs_sharedmem@0 {
 		compatible = "qcom,sharedmem-uio";
-		reg = <0x0 0x280000>;
+		reg = <0x0 0x400000>;
 		reg-names = "rmtfs";
 		qcom,client-id = <0x00000001>;
 	};
@@ -2283,33 +2373,41 @@
 	mc_virt: interconnect@1 {
 		compatible = "qcom,cliffs-mc_virt";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos";
-		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,bcm-voter-names = "hlos",
+				       "disp",
+				       "cam_ife_0",
+				       "cam_ife_1",
+				       "cam_ife_2";
+		qcom,bcm-voters = <&apps_bcm_voter>,
+				  <&disp_bcm_voter>,
+				  <&cam_bcm_voter0>,
+				  <&cam_bcm_voter1>,
+				  <&cam_bcm_voter2>;
 	};
 
 	aggre1_noc: interconnect@16E0000 {
 		compatible = "qcom,cliffs-aggre1_noc";
 		reg = <0x016E0000 0x19180>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks =  <&gcc GCC_AGGRE_UFS_PHY_AXI_CLK>,
+			 <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
 	};
 
 	aggre2_noc: interconnect@1700000 {
 		compatible = "qcom,cliffs-aggre2_noc";
 		reg = <0x01700000 0x1E500>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&rpmhcc RPMH_IPA_CLK>;
 	};
 
 	cnoc_cfg: interconnect@1600000 {
 		compatible = "qcom,cliffs-cnoc_cfg";
 		reg = <0x01600000 0x6900>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2318,7 +2416,6 @@
 		compatible = "qcom,cliffs-cnoc_main";
 		reg = <0x01500000 0x14400>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2327,16 +2424,22 @@
 		compatible = "qcom,cliffs-gem_noc";
 		reg = <0x24100000 0xC3080>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
-		qcom,bcm-voter-names = "hlos";
-		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,bcm-voter-names = "hlos",
+				       "disp",
+				       "cam_ife_0",
+				       "cam_ife_1",
+				       "cam_ife_2";
+		qcom,bcm-voters = <&apps_bcm_voter>,
+				  <&disp_bcm_voter>,
+				  <&cam_bcm_voter0>,
+				  <&cam_bcm_voter1>,
+				  <&cam_bcm_voter2>;
 	};
 
 	lpass_ag_noc: interconnect@7E40000 {
 		compatible = "qcom,cliffs-lpass_ag_noc";
 		reg = <0x07E40000 0xE080>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2345,7 +2448,6 @@
 		compatible = "qcom,cliffs-lpass_lpiaon_noc";
 		reg = <0x07400000 0x19080>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2354,7 +2456,6 @@
 		compatible = "qcom,cliffs-lpass_lpicx_noc";
 		reg = <0x07430000 0x3A200>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2363,16 +2464,22 @@
 		compatible = "qcom,cliffs-mmss_noc";
 		reg = <0x1400000 0xDC000>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
-		qcom,bcm-voter-names = "hlos";
-		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,bcm-voter-names = "hlos",
+				       "disp",
+				       "cam_ife_0",
+				       "cam_ife_1",
+				       "cam_ife_2";
+		qcom,bcm-voters = <&apps_bcm_voter>,
+				  <&disp_bcm_voter>,
+				  <&cam_bcm_voter0>,
+				  <&cam_bcm_voter1>,
+				  <&cam_bcm_voter2>;
 	};
 
 	nsp_noc: interconnect@320C0000 {
 		compatible = "qcom,cliffs-nsp_noc";
 		reg = <0x320C0000 0xE080>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -2381,16 +2488,16 @@
 		compatible = "qcom,cliffs-pcie_anoc";
 		reg = <0x016C0000 0x12400>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
+		clocks = <&gcc GCC_AGGRE_NOC_PCIE_AXI_CLK>,
+			 <&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>;
 	};
 
 	system_noc: interconnect@1680000 {
 		compatible = "qcom,cliffs-system_noc";
 		reg = <0x01680000 0x40000>;
 		#interconnect-cells = <1>;
-		qcom,skip-qos;
 		qcom,bcm-voter-names = "hlos";
 		qcom,bcm-voters = <&apps_bcm_voter>;
 	};
@@ -3048,13 +3155,12 @@
 
 &gcc_pcie_0_gdsc {
 	parent-supply = <&VDD_CX_LEVEL>;
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 0>;
 	status = "ok";
 };
 
 &gcc_pcie_0_phy_gdsc {
 	parent-supply = <&VDD_MXA_LEVEL>;
-	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl &gcc_apcs_gdsc_sleep_ctrl 1>;
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl 1>;
 	status = "ok";
 };
 
