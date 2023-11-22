@@ -18,6 +18,7 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 ifeq ($(CONFIG_ARCF_DTB),y)
 PINEAPPLE_BASE_DTB += pineapple-arcf-base.dtb pineapple-v2-arcf-base.dtb
 PINEAPPLE_BOARDS += pineapple-arcf-evt1a-overlay.dtbo
+PINEAPPLE_BOARDS += pineapple-arcf-evt2-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_ARCFOX_DTB),y)
