@@ -31,14 +31,16 @@
 		mem-size = <0x2000>;
 	};
 
-	reboot_reason {
-		nvmem-cells = <&restart_reason>, <&extra_restart_reason>;
-		nvmem-cell-names = "restart_reason", "extra_restart_reason";
-	};
-
 	mmi,suspend_dbg {
 		compatible = "mmi,suspend_dbg";
 	};
+
+    moto_reboot_reason {
+		compatible = "moto,reboot-reason";
+		nvmem-cells = <&extra_restart_reason>;
+		nvmem-cell-names = "extra_restart_reason";
+	};
+
 };
 
 &pmk8550_sdam_2 {
