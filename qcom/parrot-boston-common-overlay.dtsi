@@ -47,3 +47,11 @@
 &mpss_mem {
 	reg = <0x0 0x8bc00000 0x0 0xf000000>;
 };
+
+&soc {
+	mmi_stow {
+		compatible = "moto,mmi_stow";
+		mmi,stow-gpio = <&tlmm 124 0x0>;
+	};
+
+};
