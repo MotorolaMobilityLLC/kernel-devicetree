@@ -1,0 +1,16 @@
+&mmi_charger {
+	mmi,upper-limit-capacity = <70>;
+	mmi,pd-power-max = <125000>;
+	mmi,heartbeat-interval = <10000>;
+	mmi,wls-power-max = <50000>;
+};
+
+&qti_glink_charger {
+	profile-ids-map = "107000", "SB18D58448";
+	mmi,switched-nums = <2>;
+};
+
+&battery_charger {
+	qcom,thermal-mitigation = <23000000 18000000 16000000 12000000 10000000 8000000 6000000 4000000 3000000 1500000 1000000 300000>;
+	qcom,wireless-fw-name = "cps4041.bin";
+};
