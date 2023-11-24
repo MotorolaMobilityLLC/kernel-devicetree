@@ -1,6 +1,7 @@
 #include <dt-bindings/gpio/gpio.h>
 #include "cliffs-pmic-overlay.dtsi"
 #include "cliffs-thermal-overlay.dtsi"
+#include "cliffs-moto-common-charger.dtsi"
 
 &sdhc_2 {
 	vdd-supply = <&L13B>;
