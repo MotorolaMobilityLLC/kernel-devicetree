@@ -16,6 +16,7 @@
 #include "cliffs-arcfox-haptics-overlay.dtsi"
 #include "cliffs-arcfox-charger-overlay.dtsi"
 #include "cliffs-moto-common-st-nfc.dtsi"
+#include "moto-arcfox-wl2868c.dtsi"
 
 &soc {
 	mmi_relay {
