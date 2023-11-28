@@ -4,6 +4,7 @@
 #include "cliffs-moto-common-charger.dtsi"
 
 &sdhc_2 {
+	status = "disabled";
 	vdd-supply = <&L13B>;
 	qcom,vdd-voltage-level = <2960000 2960000>;
 	qcom,vdd-current-level = <0 800000>;
@@ -136,7 +137,7 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	status = "ok";
+	status = "disabled";
 	qcom,touch-active = "goodix,gt9916S";
 	qcom,la-vm;
 

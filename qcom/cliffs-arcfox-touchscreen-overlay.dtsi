@@ -1,0 +1,185 @@
+/*
+ * Copyright (c) 2023, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+
+		goodix,reset-gpio = <&tlmm 128 0x0>;
+		goodix,irq-gpio = <&tlmm 129 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <42240>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-name = "pmxr2230_l22";
+		goodix,iovdd-name = "pmxr2230_l8";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x06>;
+		mmi,enable-gestures;
+		goodix,gesture-wait-pm;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
+	};
+};
+
+&qupv3_se11_i2c {
+	status = "disabled";
+};
+
+/* CLI touchscreen pins */
+&tlmm {
+	cli_pmx_ts_active {
+		cli_ts_active: cli_ts_active {
+			mux {
+				pins = "gpio20", "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio20", "gpio162";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	cli_pmx_ts_reset_suspend {
+		cli_ts_reset_suspend: cli_ts_reset_suspend {
+			mux {
+				pins = "gpio20";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio20";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend: cli_ts_int_suspend {
+			mux {
+				pins = "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio162";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release: cli_ts_release {
+			mux {
+				pins = "gpio20", "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio20", "gpio162";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&L23B {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+};
+
+&apps_rsc_drv2 {
+		rpmh-regulator-ldob14 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldob14";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 10000>;
+
+		L14B:
+		pmxr2230_l14: regulator-pmxr2230-l14 {
+			regulator-name = "pmxr2230_l14";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <2800000>;
+			regulator-max-microvolt = <2800000>;
+			qcom,init-voltage = <2800000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+		};
+	};
+};
+
+&qupv3_se11_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "disabled";
+
+	gdx-cli@0 {
+		status = "disabled";
+		compatible = "goodix,marseille";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
+
+		goodix,reset-gpio = <&tlmm 20 0x0>;
+		goodix,irq-gpio = <&tlmm 162 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <20352>;
+		goodix,panel-max-w = <256>;
+		goodix,avdd-name = "avdd";
+		avdd-supply = <&L14B>;
+		goodix,iovdd-name = "iovdd";
+		iovdd-supply = <&L23B>;
+		goodix,firmware-name = "gdx_firmware.bin";
+		goodix,config-name = "gdx_cfg_group.bin";
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+		mmi,power-off-suspend;
+	};
+};
