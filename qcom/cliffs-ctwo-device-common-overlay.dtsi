@@ -20,6 +20,7 @@
 #include "cliffs-moto-ctwo-qorvo-uwb.dtsi"
 #include "cliffs-moto-common-st-nfc.dtsi"
 #include "cliffs-ctwo-touchscreen-overlay.dtsi"
+#include "moto-ctwo-wl2868c.dtsi"
 
 &soc {
 	mmi_relay {
