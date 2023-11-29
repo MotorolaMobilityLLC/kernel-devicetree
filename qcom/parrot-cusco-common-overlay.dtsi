@@ -60,3 +60,11 @@
 &pmr735a_temp_alarm {
 	status = "disabled";
 };
+&qupv3_se2_i2c {
+	pm8010i@8 {
+		status = "disabled";
+	};
+	pm8010j@c {
+		status = "disabled";
+	};
+};
