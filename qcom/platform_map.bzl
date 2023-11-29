@@ -84,6 +84,17 @@ _platform_map = {
             {"name": "monaco_auto-rumi-overlay.dtbo"},
         ],
     },
+    "mdm9607": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "mdm9607-cdp.dtb"},
+            {"name": "mdm9607-mtp.dtb"},
+            {"name": "mdm9607-rcm.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+        ],
+    },
     "sdmsteppeauto": {
         "dtb_list": [
             #keep sorted
