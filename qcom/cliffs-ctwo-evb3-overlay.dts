@@ -6,5 +6,6 @@
 / {
 	model = "ctwo";
 	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp", "qcom,moto";
+	qcom,msm-id = <614 0x10000>, <632 0x10000>;
 	qcom,board-id = <0x41 0x9300>;
 };
