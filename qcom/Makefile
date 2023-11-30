@@ -419,6 +419,16 @@ dtb-y += $(kalama_tuivm-dtb-y)
 endif
 endif
 
+ifeq ($(CONFIG_ARCH_MDM9607), y)
+mdm9607-dtb-$(CONFIG_ARCH_MDM9607) += mdm9607-rumi.dtb \
+	mdm9607-cdp.dtb \
+	mdm9607-mtp.dtb \
+	mdm9607-rcm.dtb \
+	mdm9607-mtp-sdcard.dtb \
+	mdm9607-ttp.dtb
+dtb-y += $(mdm9607-dtb-y)
+endif
+
 LEMANS_LA_GVM_BASE_DTB += lemans-vm-la.dtb
 
 LEMANS_LA_GVM_BOARDS += \
