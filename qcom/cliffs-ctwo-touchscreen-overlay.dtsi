@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2023, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+&L22B {
+	regulator-min-microvolt = <2960000>;
+	regulator-max-microvolt = <3008000>;
+	qcom,init-voltage = <3008000>;
+};
+
+&L23B {
+	qcom,init-voltage = <1800000>;
+};
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+
+		goodix,reset-gpio = <&tlmm 128 0x0>;
+		goodix,irq-gpio = <&tlmm 129 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <19520>;
+		goodix,panel-max-y = <43392>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-name = "pmxr2230_l22";
+		goodix,iovdd-name = "pmxr2230_l23";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x07>;
+		mmi,enable-gestures;
+		goodix,gesture-wait-pm;
+		mmi,fod_coords = <610 2067>;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,sample-ctrl;
+		goodix,stowed-mode-ctrl;
+		mmi,resolution_boost = <16>;
+	};
+};
+
