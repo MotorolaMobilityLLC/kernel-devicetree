@@ -17,6 +17,7 @@
 #include "cliffs-ctwo-charger-overlay.dtsi"
 #include "cliffs-moto-ctwo-qorvo-uwb.dtsi"
 #include "cliffs-moto-common-st-nfc.dtsi"
+#include "cliffs-ctwo-touchscreen-overlay.dtsi"
 
 &soc {
 	mmi_relay {
