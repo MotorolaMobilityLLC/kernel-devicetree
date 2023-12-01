@@ -153,10 +153,10 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	status = "disabled";
+	status = "ok";
 
 	gdx-cli@0 {
-		status = "disabled";
+		status = "ok";
 		compatible = "goodix,marseille";
 		reg = <0>;
 		spi-max-frequency = <15000000>;
