@@ -14,6 +14,7 @@
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 &qupv3_se11_spi {
 	status = "ok";
@@ -26,7 +27,7 @@
 		reset-gpios = <&tlmm 48 GPIO_ACTIVE_LOW>;
 		ss-irq-gpios = <&tlmm 112 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		ss-ready-gpios = <&tlmm 50 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
-		exton-gpios = <&tlmm 62 GPIO_ACTIVE_HIGH>;
+	//	exton-gpios = <&tlmm 62 GPIO_ACTIVE_HIGH>;
 		wakeup-gpios = <&tlmm 51 GPIO_ACTIVE_HIGH>;
 		csn-gpios = <&tlmm 47 GPIO_ACTIVE_LOW>;
 		interrupt-parent = <&tlmm>;
@@ -40,4 +41,26 @@
 		// qm35-vdd3-supply = <&reg_ls1_31>;
 		// qm35-vdd4-supply = <&reg_ls1_32>;
 	};
+};
+
+&apps_rsc_drv2 {
+        rpmh-regulator-ldob14 {
+                compatible = "qcom,rpmh-vrm-regulator";
+                qcom,resource-name = "ldob14";
+                qcom,regulator-type = "pmic5-ldo";
+                qcom,supported-modes =
+                        <RPMH_REGULATOR_MODE_LPM
+                        RPMH_REGULATOR_MODE_HPM>;
+                qcom,mode-threshold-currents = <0 10000>;
+
+                L14B:
+                pmxr2230_l14: regulator-pmxr2230-l14 {
+                        regulator-name = "pmxr2230_l14";
+                        qcom,set = <RPMH_REGULATOR_SET_ALL>;
+                        regulator-min-microvolt = <2800000>;
+                        regulator-max-microvolt = <2800000>;
+                        qcom,init-voltage = <2800000>;
+                        qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+                };
+        };
 };
