@@ -21,6 +21,8 @@
 #include "cliffs-arcfox-touchscreen-overlay.dtsi"
 #include "cliffs-arcfox-evb-sensor-overlay.dtsi"
 
+#include "cliffs-arcfox-thermal-overlay.dtsi"
+
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
