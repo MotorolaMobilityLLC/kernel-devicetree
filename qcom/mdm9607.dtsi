@@ -199,6 +199,122 @@
 		compatible = "qcom,msm-rtb";
 		qcom,rtb-size = <0x100000>;
 	};
+
+	tcsr_mutex_regs: syscon@1905000 {
+		compatible = "syscon";
+		reg = <0x1905000 0x20000>;
+	};
+
+	tcsr_mutex: hwlock {
+		compatible = "qcom,tcsr-mutex";
+		syscon = <&tcsr_mutex_regs 0 0x1000>;
+		#hwlock-cells = <1>;
+	};
+
+	qcom,ipc-spinlock@1905000 {
+		compatible = "qcom,ipc-spinlock-sfpb";
+		reg = <0x1905000 0x8000>;
+		qcom,num-locks = <8>;
+	};
+
+	smem {
+		compatible = "qcom,smem";
+		memory-region = <&smem_mem>;
+		qcom,rpm-msg-ram = <&rpm_msg_ram>;
+		hwlocks = <&tcsr_mutex 3>;
+	};
+
+	rpm_msg_ram: memory@60000 {
+		compatible = "qcom,rpm-msg-ram";
+		reg = <0x60000 0x6000>;
+	};
+
+	apcs_glb: mailbox@b011008 {
+		compatible = "qcom,sdxnightjar-apcs-gcc";
+		reg = <0xb011008 0x4>;
+		#mbox-cells = <1>;
+	};
+
+	qcom,smd {
+		compatible = "qcom,smd";
+
+		modem {
+			qcom,smd-edge = <0>;
+			mboxes = <&apcs_glb 12>;
+			qcom,remote-pid = <1>;
+			mbox-names = "mpss_smem";
+			interrupts = <GIC_SPI 25 IRQ_TYPE_EDGE_RISING>;
+			label = "mpss";
+
+			qcom,smd-channels = "IPCRTR";
+			qcom,modem_qrtr {
+			qcom,low-latency;
+			};
+
+			qcom,apr_tal_rpmsg {
+			qcom,glink-channels = "apr_audio_svc";
+			};
+		};
+
+		rpm {
+			qcom,smd-edge = <15>;
+			mboxes = <&apcs_glb 0>;
+			interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
+			label = "rpm";
+
+			rpm_requests: rpm_requests@0 {
+				compatible = "qcom,rpm-smd";
+				qcom,smd-channels = "rpm_requests";
+			};
+		};
+	};
+
+	qcom,smp2p-modem {
+		compatible = "qcom,smp2p";
+		qcom,smem = <435>, <428>;
+		interrupts = <GIC_SPI 27 IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&apcs_glb 14>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <1>;
+
+		modem_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		modem_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	apcs: syscon@0b011008 {
+		compatible = "syscon";
+		reg = <0x0b011008 0x04>;
+	};
+
+	qcom,smsm {
+		compatible = "qcom,smsm";
+
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		qcom,ipc-1 = <&apcs 0 13>;
+
+		apps_smsm_out: apps@0 {
+			reg = <0>;
+			#qcom,smem-state-cells = <1>;
+		};
+
+		modem_smsm_in: modem@1 {
+			reg = <1>;
+			interrupts = <GIC_SPI 26 IRQ_TYPE_EDGE_RISING>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
