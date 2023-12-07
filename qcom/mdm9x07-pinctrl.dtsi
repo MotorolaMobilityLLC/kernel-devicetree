@@ -1,0 +1,13 @@
+&soc {
+	tlmm: pinctrl@0x1000000 {
+		compatible = "qcom,mdm9x07-tlmm";
+		reg = <0x1000000 0x300000>;
+		reg-names = "pinctrl";
+		interrupts = <0 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		interrupt-parent = <&intc>;
+		#interrupt-cells = <2>;
+	};
+};
