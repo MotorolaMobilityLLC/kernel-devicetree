@@ -37,7 +37,7 @@
 
 		// Uncomment to bind regulators to qm35-vddX
 		// qm35-vdd1-supply = <&reg_ls1_29>;
-		// qm35-vdd2-supply = <&reg_ls1_30>;
+		qm35-vdd2-supply = <&L14B>;
 		// qm35-vdd3-supply = <&reg_ls1_31>;
 		// qm35-vdd4-supply = <&reg_ls1_32>;
 	};
