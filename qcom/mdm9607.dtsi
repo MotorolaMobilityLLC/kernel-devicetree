@@ -440,6 +440,7 @@
 #include "pm8019-rpm-regulator.dtsi"
 #include "mdm9607-regulator.dtsi"
 #include "mdm9607-blsp.dtsi"
+#include "pm8019.dtsi"
 
 &blsp1_uart5 {
 	status = "ok";
