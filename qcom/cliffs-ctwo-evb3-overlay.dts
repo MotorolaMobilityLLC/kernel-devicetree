@@ -9,3 +9,7 @@
 	qcom,msm-id = <614 0x10000>, <632 0x10000>;
 	qcom,board-id = <0x41 0x9300>;
 };
+
+&redriver {
+	vio-supply = <&L11B>;
+};
