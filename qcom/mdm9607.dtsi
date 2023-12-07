@@ -24,6 +24,7 @@
 	chosen: chosen { };
 
 	aliases {
+		qpic_nand1 = &qnand_1;
 	};
 
 	reserved_mem: reserved-memory {
@@ -407,6 +408,31 @@
 		clock-names = "xo", "sleep_clk";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	qnand_1: nand@7980000 {
+		compatible = "qcom,msm-nand";
+		reg = <0x07980000 0x1000>,
+			<0x07984000 0x1a000>;
+		reg-names = "nand_phys",
+				"bam_phys";
+		qcom,reg-adjustment-offset = <0x4000>;
+
+		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "bam_irq";
+
+		qcom,msm-bus,name = "qpic_nand";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+
+		qcom,msm-bus,vectors-KBps =
+			<0 0>,
+		/* Voting for max b/w on PNOC bus for now */
+			<400000 400000>;
+
+		clock-names = "core_clk";
+		clocks = <&rpmcc RPM_SMD_QPIC_CLK>;
+		status = "ok";
 	};
 };
 
