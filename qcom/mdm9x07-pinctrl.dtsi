@@ -9,5 +9,6 @@
 		interrupt-controller;
 		interrupt-parent = <&intc>;
 		#interrupt-cells = <2>;
+		wakeup-parent = <&wakegic>;
 	};
 };

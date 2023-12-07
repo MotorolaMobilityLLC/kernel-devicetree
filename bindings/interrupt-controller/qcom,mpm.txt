@@ -26,6 +26,7 @@ Properties:
 		- "qcom,mpm-blair"
                 - "qcom,mpm-holi"
                 - "qcom,mpm-pitti"
+                - "qcom,mpm-gic-mdm9607"
 
 - interrupts:
 	Usage: required
