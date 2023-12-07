@@ -3,6 +3,15 @@
 
 #include "cliffs-ctwo-device-common-overlay.dtsi"
 
+&L11B {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+	regulator-boot-on;
+	regulator-always-on;
+};
+
+
 / {
 	model = "ctwo";
 	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp", "qcom,moto";
