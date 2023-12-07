@@ -632,6 +632,13 @@ dtbo-$(CONFIG_ARCH_PARROT) += \
 parrot-cusco-evb-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 
+ifeq ($(CONFIG_CUSCO_DTB),y)
+dtbo-$(CONFIG_ARCH_PARROT) += \
+        parrot-cuscoi-evb-overlay.dtbo
+
+parrot-cuscoi-evb-overlay.dtbo-base := parrot-moto-base.dtb
+endif
+
 ifeq ($(CONFIG_AVATRN_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += \
         parrot-avatrn-evt1-overlay.dtbo \
