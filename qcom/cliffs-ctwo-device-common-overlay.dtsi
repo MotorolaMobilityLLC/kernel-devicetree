@@ -22,6 +22,8 @@
 #include "cliffs-ctwo-touchscreen-overlay.dtsi"
 #include "moto-ctwo-wl2868c.dtsi"
 
+#include "cliffs-ctwo-thermal-overlay.dtsi"
+
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
