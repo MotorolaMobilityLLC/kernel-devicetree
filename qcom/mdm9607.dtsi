@@ -1,4 +1,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpm-smd-regulator.h>
+#include <dt-bindings/spmi/spmi.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
 #define BW_OPP_ENTRY(mhz, w) opp-mhz {opp-hz = /bits/ 64 <MHZ_TO_MBPS(mhz, w)>;}
@@ -322,6 +324,28 @@
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
 		rpm-channel-type = <15>; /* SMD_APPS_RPM */
 	};
+
+	spmi_bus: qcom,spmi@200f000 {
+		compatible = "qcom,spmi-pmic-arb";
+		 reg = <0x200f000 0x1000>,
+			<0x2400000 0x800000>,
+			<0x2c00000 0x800000>,
+			<0x3800000 0x200000>,
+			<0x200a000 0x2100>;
+		reg-names = "core", "chnls",
+			"obsrvr", "intr", "cnfg";
+		interrupt-names = "periph_irq";
+		interrupts-extended = <&intc GIC_SPI 190 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,ee = <0>;
+		qcom,channel = <0>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		cell-index = <0>;
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
+#include "pm8019-rpm-regulator.dtsi"
+#include "mdm9607-regulator.dtsi"
