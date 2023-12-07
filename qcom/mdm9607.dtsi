@@ -532,6 +532,21 @@
 			};
 		};
 	};
+
+	qcom,bam_dmux@4044000 {
+		compatible = "qcom,bam_dmux";
+		reg = <0x4044000 0x19000>;
+		qcom,rx-ring-size = <32>;
+		qcom,max-rx-mtu = <4096>;
+		qcom,fast-shutdown;
+		qcom,smem-states = <&apps_smsm_out 1>, <&apps_smsm_out 11>;
+		qcom,smem-state-names = "pwrctrl", "pwrctrlack";
+		interrupts-extended =
+				<&intc GIC_SPI 29 IRQ_TYPE_EDGE_RISING>,
+				<&modem_smsm_in 1 IRQ_TYPE_EDGE_BOTH>,
+				<&modem_smsm_in 11 IRQ_TYPE_EDGE_BOTH>;
+		interrupt-names = "dmux", "ctrl", "ack";
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
