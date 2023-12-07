@@ -408,3 +408,8 @@
 #include "mdm9x07-pinctrl.dtsi"
 #include "pm8019-rpm-regulator.dtsi"
 #include "mdm9607-regulator.dtsi"
+#include "mdm9607-blsp.dtsi"
+
+&blsp1_uart5 {
+	status = "ok";
+};
