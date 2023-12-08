@@ -345,6 +345,7 @@ _platform_map = {
         "dtbo_list": [
             {"name": "cliffs-ctwo-evb3-overlay.dtbo", "product": "ctwo", },
             {"name": "cliffs-arcfox-evt3-overlay.dtbo", "product": "arcfox", },
+            {"name": "cliffs-arcfox-dvt1b-overlay.dtbo", "product": "arcfox", },
         ],
     },
     "pineapple-tuivm": {
