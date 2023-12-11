@@ -22,7 +22,7 @@
 #include "moto-ctwo-wl2868c.dtsi"
 
 #include "cliffs-ctwo-thermal-overlay.dtsi"
-
+#include "cliffs-ctwo-evb-sensor-overlay.dtsi"
 &soc {
 	mmi_relay {
 		compatible = "mmi,sys-relay";
