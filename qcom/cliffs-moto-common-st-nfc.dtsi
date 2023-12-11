@@ -28,6 +28,8 @@
                 interrupt-parent = <&tlmm>;
                 interrupts = <61 0>;
                 interrupt-names = "nfc_irq";
+                clocks = <&rpmhcc RPMH_LN_BB_CLK2>;
+                clock-names = "nfc_ref_clk";
                 pinctrl-names = "nfc_active", "nfc_suspend";
                 pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
                 pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
