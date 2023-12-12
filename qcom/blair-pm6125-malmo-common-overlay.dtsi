@@ -15,3 +15,11 @@
 &pm7250b_charger {
 	dpdm-supply = <&usb2_phy0>;
 };
+&fsa4480{
+	io-channels = <&pm7250b_charger PSY_IIO_TYPEC_ACCESSORY_MODE>;
+	io-channel-names = "typec_mode";
+	qcom,use-power-supply = <1>;
+};
+&smb1394 {
+	status = "disabled";
+};
