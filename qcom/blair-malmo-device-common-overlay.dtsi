@@ -14,3 +14,4 @@
 
 #include "blair-malmo-products-common-overlay.dtsi"
 #include "blair-pm6125-malmo-common-overlay.dtsi"
+#include "blair-malmo-vibrator-overlay.dtsi"

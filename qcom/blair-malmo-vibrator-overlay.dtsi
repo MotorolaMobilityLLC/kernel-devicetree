@@ -1,0 +1,65 @@
+
+&tlmm {
+    vib_int_def: vib_int_def {
+        mux {
+            pins = "gpio88";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio88";
+            drive-strength = <2>;
+            bias-pull-up;
+            input-enable;
+            qcom,apps;
+        };
+    };
+    vib_rst_def: vib_rst_def {
+        mux {
+            pins = "gpio89";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio89";
+            drive-strength = <2>;
+            bias-pull-up;
+            //bias-disable;           /* NO PULL */
+            output-high;
+            qcom,apps;
+        };
+    };
+};
+
+&qupv3_se8_i2c {
+    status = "okay";
+    haptic_hv_tmp@5A {
+        compatible = "awinic,haptic_hv";
+        reg = < 0x5A >;
+        irq-gpio = < &tlmm 88 0 >;
+        reset-gpio = < &tlmm 89 0 >;
+        //pinctrl-names = "irq_active";
+        pinctrl-names = "default";
+        pinctrl-0 = < &vib_rst_def &vib_int_def >;
+        f0_pre = < 2050 >;
+        mode = /bits/ 8 < 5 >;
+        aw8692x_f0_cali_percent = /bits/ 8 < 7 >;
+        aw8692x_gain_bypass = /bits/ 8 < 1 >;
+        aw8692x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
+        aw8692x_cont_lra_vrms = < 1800 >; //Motor rated voltage, mV. If use 0812, 0512, 0412 or 0825, please select ram get f0
+        aw8692x_cont_drv1_time = /bits/ 8 < 0x04 >;
+        aw8692x_cont_drv2_time = /bits/ 8 < 0x14 >;
+        aw8692x_cont_track_margin = /bits/ 8 < 0x0F >;
+        aw8692x_cont_brk_gain = /bits/ 8 < 0x08 >;
+        aw8692x_cont_brk_time = /bits/ 8 < 0x08 >;
+        aw8692x_duration_time = /bits/ 8 < 20 30 60 >;
+        aw8692x_d2s_gain = /bits/ 8 < 0x04 >;
+        aw8692x_trig_config = /bits/ 8 < 0 0 0 1 0 2 0 0
+                                         0 0 0 1 0 2 0 0
+                                         0 0 0 1 0 2 0 0 >;
+        aw8692x_bst_vol_default = < 8500 >;
+        aw8692x_is_enabled_track_en;
+        //aw8692x_is_enabled_auto_bst;
+        //aw8692x_is_enabled_one_wire;
+        status = "okay";
+     };
+};
+
