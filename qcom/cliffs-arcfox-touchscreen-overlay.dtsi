@@ -17,6 +17,11 @@
 	status = "disabled";
 };
 
+&aliases {
+	spi0 = "/soc/spi@a90000";
+	spi1 = "/soc/spi@88c000";
+};
+
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -174,8 +179,6 @@
 		avdd-supply = <&L14B>;
 		goodix,iovdd-name = "iovdd";
 		iovdd-supply = <&L23B>;
-		goodix,firmware-name = "gdx_firmware.bin";
-		goodix,config-name = "gdx_cfg_group.bin";
 
 		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
 		pinctrl-0 = <&cli_ts_active>;
