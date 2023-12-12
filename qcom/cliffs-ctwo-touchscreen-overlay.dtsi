@@ -26,6 +26,10 @@
 	status = "disabled";
 };
 
+&aliases {
+    spi0 = "/soc/spi@a90000";
+};
+
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
