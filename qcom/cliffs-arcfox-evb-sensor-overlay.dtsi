@@ -84,8 +84,8 @@
 		Semtech,ref-phases-a = <4>;
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
-		Semtech,button-flag = <0x3a>;
-		Semtech,button-names = "Moto CapSense Ch1","Moto CapSense Ch3","Moto CapSense Ch4","Moto CapSense Ch5";
+		Semtech,button-flag = <0xba>;
+		Semtech,button-names = "Moto CapSense Ch1","Moto CapSense Ch3","Moto CapSense Ch4","Moto CapSense Ch5","Moto_Top_Approach_Det";
 		Semtech,debug-name = "capsense0";
 		Semtech,flip_operation_num = <3>;
 		Semtech,flip_operation_far_num = <3>;
@@ -174,7 +174,7 @@
 			0x812C 0xE0202506
 			0x814C 0xE0202506
 			0x816C 0xE0202506
-			0x8024 0x7F00
+			0x8024 0xFF00
 		>;
 		status = "ok";
 	};
