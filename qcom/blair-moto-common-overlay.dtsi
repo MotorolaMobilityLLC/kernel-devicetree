@@ -78,9 +78,9 @@
 };
 
 &qseecom_mem {
-	size = <0x0 0x2000000>;
+	size = <0x0 0x4000000>;
 };
 
 &qseecom_ta_mem{
-	size = <0x0 0x3000000>;
+	size = <0x0 0x5000000>;
 };
