@@ -1,3 +1,6 @@
+&pm7250b_vib {
+   status = "disabled";
+};
 
 &tlmm {
     vib_int_def: vib_int_def {
