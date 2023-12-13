@@ -17,3 +17,65 @@
 #include "diwali-moto-common-overlay-base.dtsi"
 #include "diwali-moto-pm8350b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio50";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio50";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio50";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio50";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+	#include "diwali-moto-common-redriver.dtsi"
+};
+
+&redriver {
+	status = "ok";
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			/* override x0 */
+			0x47 0x6c
+			/* override x1 */
+			0xcb 0x70
+			/* override x2 */
+			0x16 0x74
+			/* override x3 */
+			0x03 0x78>;
+	qcom,host-param-override-seq = <
+			/* override x0 */
+			0x47 0x6c
+			/* override x1 */
+			0xcb 0x70
+			/* override x2 */
+			0x16 0x74
+			/* override x3 */
+			0x03 0x78>;
+};
