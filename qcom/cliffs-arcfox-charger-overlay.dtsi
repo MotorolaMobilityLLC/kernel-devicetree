@@ -100,7 +100,7 @@
 		irq-dis-cfg;
 		init-charger-disabled;
 		iterm-microamp = <200000>;
-		ichg-max-microamp = <1700000>;
+		ichg-max-microamp = <2100000>;
 		vchg-max-microvolt = <4600000>;
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
@@ -127,9 +127,9 @@
 				<60 4200 814 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,thermal-mitigation = <1700000 1500000 1000000 800000 500000 300000 100000>;
+		mmi,thermal-mitigation = <2100000 1500000 1000000 800000 500000 300000 100000>;
 		/* the thermal-ratio is nums * step, and the step is 0.5 */
-		mmi,thermal-ratio-nums = <5>;
+		mmi,thermal-ratio-nums = <4>;
     };
 };
 
@@ -143,14 +143,17 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <4675000 4000000 3000000 2000000 1000000 300000 100000>;
+	qcom,thermal-mitigation = <5895000 4000000 3000000 2000000 1000000 300000 100000>;
 	qcom,wireless-fw-name = "cps4041.bin";
 };
 
 &qti_glink_charger {
 	mmi,max-fv-mv = <4550>;
+	mmi,max-fcc-ma = <5000>;
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
 	mmi,partner_psy_name = "charger";
+	mmi,thermal-primary-mitigation = <3000000 2500000 2000000 1000000 500000 300000 100000>;
+	mmi,thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1000000 500000 100000>;
 	//mmi,shutdown-empty-vbat-mv = <3000>;
 };

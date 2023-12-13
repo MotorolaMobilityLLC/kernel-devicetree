@@ -13,7 +13,7 @@
 qr10-atl-1050mah {
     serialnum = "SB18E07970";
     fcc_design = <1050>;
-    ui_full = <98>;
+    ui_full = <95>;
     config_profile_info = [28 00 00 00 00 00 00 00
                 ac b8 b7 ce b7 b2 b9 99
                 7e ff f9 c3 9c 86 6e 5a
