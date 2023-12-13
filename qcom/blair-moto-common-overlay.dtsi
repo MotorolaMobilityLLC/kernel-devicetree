@@ -61,6 +61,10 @@
 		memory-region = <&mmi_annotate_mem>;
 		mem-size = <0x20000>;
 	};
+
+	mmi,suspend_dbg {
+		compatible = "mmi,suspend_dbg";
+	};
 };
 
 /* bootargs originally copied from blair.dtsi by removing <loglevel=6 log_buf_len=256K> */
