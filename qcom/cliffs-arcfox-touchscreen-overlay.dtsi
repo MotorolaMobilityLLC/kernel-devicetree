@@ -190,5 +190,6 @@
 		mmi,supported_gesture_type = <0x06>;
 		goodix,gesture-wait-pm;
 		mmi,resolution_boost = <16>;
+		mmi,usb-charger-detection;
 	};
 };
