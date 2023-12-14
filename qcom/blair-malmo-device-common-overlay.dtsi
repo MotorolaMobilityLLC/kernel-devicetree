@@ -17,3 +17,8 @@
 #include "blair-malmo-vibrator-overlay.dtsi"
 #include "blair-malmo-fps-overlay.dtsi"
 
+&sdhc_2 {
+        status = "ok";
+
+        cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
+};
