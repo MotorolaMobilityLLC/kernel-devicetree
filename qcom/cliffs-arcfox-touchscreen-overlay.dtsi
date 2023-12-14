@@ -184,6 +184,11 @@
 		pinctrl-0 = <&cli_ts_active>;
 		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
 		pinctrl-2 = <&cli_ts_release>;
+
 		mmi,power-off-suspend;
+		mmi,cli-enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
+		goodix,gesture-wait-pm;
+		mmi,resolution_boost = <16>;
 	};
 };
