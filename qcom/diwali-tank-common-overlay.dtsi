@@ -17,6 +17,7 @@
 #include "diwali-moto-common-overlay-base.dtsi"
 #include "diwali-moto-pm8350b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
+#include "diwali-tank-nfc-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
