@@ -17,6 +17,7 @@
 #include "blair-malmo-vibrator-overlay.dtsi"
 #include "blair-malmo-fps-overlay.dtsi"
 #include "blair-malmo-sensor.dtsi"
+#include "blair-malmo-thermal-overlay.dtsi"
 
 &sdhc_2 {
         status = "ok";
