@@ -20,6 +20,7 @@
 #include "diwali-tank-nfc-overlay.dtsi"
 #include "diwali-tank-se-overlay.dtsi"
 #include "diwali-tank-haptics-overlay.dtsi"
+#include "diwali-tank-touchscreen-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
