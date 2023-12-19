@@ -199,3 +199,10 @@
 &sdhc_2 {
 	status = "disabled";
 };
+
+&CPU7 {
+	moto,max_freq = <2400000>;
+	moto,carrier-key = "androidboot.carrier=";
+	moto,prop = "mmi,bootconfig";
+	moto,effective-carrier = "softbank";
+};
