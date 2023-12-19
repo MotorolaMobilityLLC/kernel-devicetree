@@ -17,6 +17,8 @@
 #include "diwali-moto-common-overlay-base.dtsi"
 #include "diwali-moto-pm8350b.dtsi"
 #include "diwali-moto-common-overlay.dtsi"
+#include "diwali-moto-common-charger.dtsi"
+#include "diwali-tank-charger-overlay.dtsi"
 #include "diwali-tank-nfc-overlay.dtsi"
 #include "diwali-tank-se-overlay.dtsi"
 #include "diwali-tank-haptics-overlay.dtsi"
