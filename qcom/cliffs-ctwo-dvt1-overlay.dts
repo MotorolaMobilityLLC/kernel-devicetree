@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+#include "cliffs-ctwo-device-common-overlay.dtsi"
+#include "cliffs-moto-ctwo-qorvo-uwb-evt.dtsi"
+
+/ {
+	model = "ctwo";
+	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp", "qcom,moto";
+	qcom,msm-id = <614 0x10000>, <632 0x10000>;
+	qcom,board-id = <0x41 0xB100>;
+};
+
+&redriver {
+	vio-supply = <&L11B>;
+};
