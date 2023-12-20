@@ -1,0 +1,129 @@
+&pm8350c_gpios{
+    cam_pmic_en_default: cam_pmic_en_default {
+        pins = "gpio3";
+        function = "normal";
+        input-disable;
+        output-high;
+        bias-pull-down;
+        power-source = <0>;           /* 1.8V */
+        qcom,drive-strength = <2>;    /* Medium */
+    };
+};
+
+/*
+ * Each QUP device that's a parent to PMIC must be listed as a critical device
+ * to GCC.
+ */
+&gcc {
+    qcom,critical-devices = <&qupv3_se2_i2c>;
+};
+
+&qupv3_se2_i2c {
+    status = "ok";
+
+    cam_dio_pmic: dio8018@35{
+        compatible = "semi,dio8018";
+        reg = <0x35>;
+        semi,cs-gpios = <&pm8350c_gpios 3 1>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&cam_pmic_en_default>;
+        vin1-supply = <&S8B>;
+        vin2-supply = <&BOB>;
+        // vin3_supply = <&S1B>;
+
+        regulators {
+            cam_dio_ldo1: ldo1 {
+                regulator-name = "ldo1_dio";
+                regulator-min-microvolt = <504000>;
+                regulator-max-microvolt = <1504000>;
+            };
+
+            cam_dio_ldo2: ldo2 {
+                regulator-name = "ldo2_dio";
+                regulator-min-microvolt = <504000>;
+                regulator-max-microvolt = <1504000>;
+            };
+
+            cam_dio_ldo3: ldo3 {
+                regulator-name = "ldo3_dio";
+                regulator-min-microvolt = <1500000>;
+                regulator-max-microvolt = <3412000>;
+            };
+
+            cam_dio_ldo4: ldo4 {
+                regulator-name = "ldo4_dio";
+                regulator-min-microvolt = <1500000>;
+                regulator-max-microvolt = <3412000>;
+            };
+
+            cam_dio_ldo5: ldo5 {
+                regulator-name = "ldo5_dio";
+                regulator-min-microvolt = <1500000>;
+                regulator-max-microvolt = <3412000>;
+            };
+
+            cam_dio_ldo6: ldo6 {
+                regulator-name = "ldo6_dio";
+                regulator-min-microvolt = <1500000>;
+                regulator-max-microvolt = <3412000>;
+            };
+
+            cam_dio_ldo7: ldo7 {
+                regulator-name = "ldo7_dio";
+                regulator-min-microvolt = <1500000>;
+                regulator-max-microvolt = <3412000>;
+            };
+        };
+    };
+
+    cam_64c_pmic: wl2864c@29{
+        compatible = "semi,wl2864c";
+        reg = <0x29>;
+        vin1-supply = <&S8B>;
+        vin2-supply = <&BOB>;
+
+        regulators {
+            cam_64c_ldo1: ldo1 {
+                regulator-name = "ldo1_64c";
+                regulator-min-microvolt = <600000>;
+                regulator-max-microvolt = <1800000>;
+            };
+
+            cam_64c_ldo2: ldo2 {
+                regulator-name = "ldo2_64c";
+                regulator-min-microvolt = <600000>;
+                regulator-max-microvolt = <1800000>;
+            };
+
+            cam_64c_ldo3: ldo3 {
+                regulator-name = "ldo3_64c";
+                regulator-min-microvolt = <1200000>;
+                regulator-max-microvolt = <4300000>;
+            };
+
+            cam_64c_ldo4: ldo4 {
+                regulator-name = "ldo4_64c";
+                regulator-min-microvolt = <1200000>;
+                regulator-max-microvolt = <4300000>;
+            };
+
+            cam_64c_ldo5: ldo5 {
+                regulator-name = "ldo5_64c";
+                regulator-min-microvolt = <1200000>;
+                regulator-max-microvolt = <4300000>;
+            };
+
+            cam_64c_ldo6: ldo6 {
+                regulator-name = "ldo6_64c";
+                regulator-min-microvolt = <1200000>;
+                regulator-max-microvolt = <4300000>;
+            };
+
+            cam_64c_ldo7: ldo7 {
+                regulator-name = "ldo7_64c";
+                regulator-min-microvolt = <1200000>;
+                regulator-max-microvolt = <4300000>;
+            };
+        };
+    };
+};
