@@ -8,7 +8,7 @@
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <15000>;
 		mmi,factory-kill-debounce-ms = <3000>;
-		mmi,pd-power-max = <30000>;
+		mmi,pd-power-max = <68000>;
 	};
 
 	qcom,pmic_glink {
