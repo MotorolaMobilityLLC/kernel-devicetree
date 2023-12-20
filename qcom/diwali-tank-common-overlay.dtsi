@@ -24,6 +24,23 @@
 #include "diwali-tank-haptics-overlay.dtsi"
 #include "diwali-tank-touchscreen-overlay.dtsi"
 #include "diwali-tank-bt-overlay.dtsi"
+#include "moto-tank-external-camera-pmic.dtsi"
+
+&pm8010i_8 {
+	status = "disabled";
+};
+
+&pm8010i_9 {
+	status = "disabled";
+};
+
+&pm8010j_c {
+	status = "disabled";
+};
+
+&pm8010j_d {
+	status = "disabled";
+};
 
 &tlmm {
 	redriver_enable: redriver_enable {
