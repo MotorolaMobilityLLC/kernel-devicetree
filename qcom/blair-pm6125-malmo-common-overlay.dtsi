@@ -9,6 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+#include <dt-bindings/input/qcom,qpnp-power-on.h>
 #include "blair-malmo-charger-overlay.dtsi"
 #include "malmo-charger.dtsi"
 
@@ -22,4 +23,31 @@
 };
 &smb1394 {
 	status = "disabled";
+};
+
+&pm6125_0 {
+	/delete-node/ qcom,power-on@800;
+	pm6125_pon: qcom,power-on@800 {
+		compatible = "qcom,qpnp-power-on";
+		reg = <0x800>;
+		interrupts = <0x0 0x8 0x0 IRQ_TYPE_EDGE_BOTH>,
+			     <0x0 0x8 0x1 IRQ_TYPE_EDGE_BOTH>;
+		interrupt-names = "kpdpwr", "resin";
+		qcom,pon-dbc-delay = <15625>;
+		qcom,kpdpwr-sw-debounce;
+		qcom,system-reset;
+		qcom,store-hard-reset-reason;
+
+		qcom,pon_1 {
+			qcom,pon-type = <PON_POWER_ON_TYPE_KPDPWR>;
+			qcom,pull-up;
+			linux,code = <KEY_POWER>;
+		};
+
+		qcom,pon_2 {
+			qcom,pon-type = <PON_POWER_ON_TYPE_RESIN>;
+			qcom,pull-up;
+			linux,code = <KEY_VOLUMEDOWN>;
+		};
+	};
 };

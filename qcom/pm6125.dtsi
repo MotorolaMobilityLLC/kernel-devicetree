@@ -6,7 +6,7 @@
 #include <dt-bindings/clock/qcom,rpmcc.h>
 
 &spmi_bus {
-	qcom,pm6125@0 {
+	pm6125_0: qcom,pm6125@0 {
 		compatible = "qcom,spmi-pmic";
 		reg = <0x0 0x0>;
 		#address-cells = <1>;
