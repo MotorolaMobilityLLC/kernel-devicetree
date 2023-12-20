@@ -23,6 +23,7 @@
 #include "diwali-tank-se-overlay.dtsi"
 #include "diwali-tank-haptics-overlay.dtsi"
 #include "diwali-tank-touchscreen-overlay.dtsi"
+#include "diwali-tank-fingerprint-overlay.dtsi"
 #include "diwali-tank-bt-overlay.dtsi"
 #include "moto-tank-external-camera-pmic.dtsi"
 
