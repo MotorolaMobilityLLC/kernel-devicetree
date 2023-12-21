@@ -587,6 +587,23 @@
 		    <0x193d100 0x4>;
 		reg-names = "pshold-base", "tcsr-boot-misc-detect";
 	};
+
+	usb_hsusb: hsusb@78d9000 {
+		compatible = "qcom,msm-hsusb";
+		reg = <0x78d9000 0x400>;
+		reg-names = "core";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
+
+		hsusb_vdd_dig-supply = <&mdm9607_l9>;
+		HSUSB_1p8-supply = <&mdm9607_l2>;
+		HSUSB_3p3-supply = <&mdm9607_l4>;
+		qcom,usbid-gpio = <&pm8019_mpps 1 0>;
+		pinctrl-0 = <&usb_id_default>;
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
