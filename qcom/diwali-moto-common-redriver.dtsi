@@ -1,6 +1,6 @@
 redriver:redriver@30{
 	compatible = "parade,ps5169-redriver";
-	reg = <0x60>;
+	reg = <0x30>;
 	vcc-supply = <&L18B>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&redriver_enable>;
