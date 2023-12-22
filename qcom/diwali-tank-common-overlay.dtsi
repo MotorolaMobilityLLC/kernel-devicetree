@@ -26,6 +26,7 @@
 #include "diwali-tank-fingerprint-overlay.dtsi"
 #include "diwali-tank-bt-overlay.dtsi"
 #include "moto-tank-external-camera-pmic.dtsi"
+#include "diwali-tank-evb-sensor-overlay.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
