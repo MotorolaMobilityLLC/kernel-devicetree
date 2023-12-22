@@ -2,7 +2,7 @@
 /plugin/;
 
 #include "cliffs-ctwo-device-common-overlay.dtsi"
-#include "cliffs-moto-ctwo-qorvo-uwb-evt.dtsi"
+#include "cliffs-moto-ctwo-qorvo-uwb.dtsi"
 
 / {
 	model = "ctwo";

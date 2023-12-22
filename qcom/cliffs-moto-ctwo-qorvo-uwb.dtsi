@@ -1,0 +1,66 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/* This file is used for velar device which use qorvo UWB chipst */
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&qupv3_se11_spi {
+	status = "ok";
+	qm35@0 {
+		status = "ok";
+		mmi,status = "/chosen", "mmi,uwb", "qorvo";
+		compatible = "qorvo,qm35";
+		reg = <0>;
+		spi-max-frequency = <10000000>;
+		reset-gpios = <&tlmm 48 GPIO_ACTIVE_LOW>;
+		ss-irq-gpios = <&tlmm 112 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+		ss-ready-gpios = <&tlmm 51 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+	//	exton-gpios = <&tlmm 62 GPIO_ACTIVE_HIGH>;
+		wakeup-gpios = <&tlmm 50 GPIO_ACTIVE_HIGH>;
+		csn-gpios = <&tlmm 47 GPIO_ACTIVE_LOW>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <112 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&rpmhcc RPMH_RF_CLK5>;
+		clock-names = "uwb_rf_clk5";
+
+		// Uncomment to bind regulators to qm35-vddX
+		// qm35-vdd1-supply = <&reg_ls1_29>;
+		qm35-vdd2-supply = <&L14B>;
+		// qm35-vdd3-supply = <&reg_ls1_31>;
+		// qm35-vdd4-supply = <&reg_ls1_32>;
+	};
+};
+
+&apps_rsc_drv2 {
+        rpmh-regulator-ldob14 {
+                compatible = "qcom,rpmh-vrm-regulator";
+                qcom,resource-name = "ldob14";
+                qcom,regulator-type = "pmic5-ldo";
+                qcom,supported-modes =
+                        <RPMH_REGULATOR_MODE_LPM
+                        RPMH_REGULATOR_MODE_HPM>;
+                qcom,mode-threshold-currents = <0 10000>;
+
+                L14B:
+                pmxr2230_l14: regulator-pmxr2230-l14 {
+                        regulator-name = "pmxr2230_l14";
+                        qcom,set = <RPMH_REGULATOR_SET_ALL>;
+                        regulator-min-microvolt = <2800000>;
+                        regulator-max-microvolt = <2800000>;
+                        qcom,init-voltage = <2800000>;
+                        qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+                };
+        };
+};
