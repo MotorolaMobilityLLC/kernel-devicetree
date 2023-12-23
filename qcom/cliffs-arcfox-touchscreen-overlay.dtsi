@@ -191,5 +191,6 @@
 		goodix,gesture-wait-pm;
 		mmi,resolution_boost = <16>;
 		mmi,usb-charger-detection;
+		goodix,stowed-mode-ctrl;
 	};
 };
