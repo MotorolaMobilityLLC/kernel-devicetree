@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  */
 #include <dt-bindings/input/qcom,qpnp-power-on.h>
-#include "blair-malmo-charger-overlay.dtsi"
+#include "blair-pm7250b-moto-common-overlay.dtsi"
 #include "malmo-charger.dtsi"
 
 &pm7250b_charger {
@@ -50,4 +50,8 @@
 			linux,code = <KEY_VOLUMEDOWN>;
 		};
 	};
+};
+
+&smb1394_div2_cp_primary {
+	status = "disabled";
 };

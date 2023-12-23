@@ -36,7 +36,7 @@
 		      <&pm7250b_qg PSY_IIO_CYCLE_COUNT>,
 		      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>,
 		      <&pm7250b_qg PSY_IIO_TIME_TO_FULL_NOW>,
-                      <&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>;
+		      <&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>;
 	io-channel-names = "usb_in_voltage",
 			   "usb_in_current",
 			   "chg_temp",
@@ -72,6 +72,7 @@
 			1200000 900000
 			500000>;
 	mmi,qc3p-support;
+	qcom,sec-charger-config = <0>;
 	/delete-property/ qcom,fcc-stepping-enable;
 
 };
@@ -131,8 +132,8 @@
 		status = "okay";
 		compatible = "ti,bq25960-standalone";
 		reg = <0x6A>;
-		sc8541-addr = <0x6A>;
-		sc8541-name = "sc8541-master";
+		nu2115-addr = <0x6D>;
+		nu2115-name = "nu2115-master";
 		#io-channel-cells = <1>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <12 IRQ_TYPE_LEVEL_HIGH>;
