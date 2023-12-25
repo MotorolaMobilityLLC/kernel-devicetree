@@ -137,6 +137,7 @@
 	mmi,pd-power-max = <45000>;
 	mmi,dcp-power-max = <7500>;
 	mmi,wls-power-max = <15000>;
+	mmi,heartbeat-interval = <10000>;
 	mmi,upper-limit-capacity = <75>;
 	mmi,ibat-calc-alignment-time = <1000>;
 };
