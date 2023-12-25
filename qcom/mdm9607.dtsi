@@ -604,6 +604,51 @@
 		qcom,usbid-gpio = <&pm8019_mpps 1 0>;
 		pinctrl-0 = <&usb_id_default>;
 	};
+
+	qcom_qseecom: qseecom@88000000 {
+		compatible = "qcom,qseecom";
+		reg = <0x88000000 0x500000>;
+		reg-names = "secapp-region";
+		memory-region = <&qseecom_mem>;
+		qcom,hlos-ce-hw-instance = <0>;
+		qcom,qsee-ce-hw-instance = <0>;
+		qcom,msm-bus,name = "qseecom-noc";
+		qcom,msm-bus,num-cases = <4>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,support-bus-scaling;
+		qcom,msm-bus,vectors-KBps =
+				<47 512 0 0>,
+				<47 512 0 0>,
+				<47 512 120000 1200000>,
+				<47 512 393600 3936000>;
+		clocks = <&gcc CRYPTO_CLK_SRC>,
+			<&gcc GCC_CRYPTO_CLK>,
+			<&gcc GCC_CRYPTO_AHB_CLK>,
+			<&gcc GCC_CRYPTO_AXI_CLK>;
+		clock-names = "core_clk_src", "core_clk",
+				"iface_clk", "bus_clk";
+		qcom,ce-opp-freq = <100000000>;
+		status = "ok";
+	};
+
+	qcom_smcinvoke: smcinvoke@88000000 {
+		compatible = "qcom,smcinvoke";
+		reg = <0x88000000 0x500000>;
+		qcom,support-legacy_smc;
+		qcom,clock-support;
+		status = "ok";
+	};
+
+	qcom_tzlog: tz-log@8600720 {
+		compatible = "qcom,tz-log";
+		reg = <0x08600720 0x2000>;
+		status = "ok";
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		qcom,disable-shmbridge-support;
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
@@ -614,4 +659,10 @@
 
 &blsp1_uart5 {
 	status = "ok";
+};
+
+&firmware {
+	scm {
+		compatible = "qcom,scm";
+	};
 };
