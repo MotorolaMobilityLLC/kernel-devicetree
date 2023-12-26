@@ -36,7 +36,6 @@
 
 		goodix,reset-gpio = <&tlmm 129 0x0>;
 		goodix,irq-gpio = <&tlmm 51 0x2002>;
-		goodix,iovdd-gpio = <&tlmm 46 0x0>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
 		goodix,panel-max-id = <10>;
 		goodix,panel-max-x = <19520>;
