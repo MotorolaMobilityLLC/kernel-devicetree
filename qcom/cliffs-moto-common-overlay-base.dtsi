@@ -222,18 +222,4 @@
 	periph-49e-supply = <&S2E>;
 	periph-4a1-supply = <&S3E>;
 	periph-89b-supply = <&S1I_LEVEL>;
-	periph-99b-supply = <&S1J>;
-	periph-c40-supply = <&L1M>;
-	periph-c41-supply = <&L2M>;
-	periph-c42-supply = <&L3M>;
-	periph-c43-supply = <&L4M>;
-	periph-c45-supply = <&L6M>;
-	periph-c46-supply = <&L7M>;
-	periph-d40-supply = <&L1N>;
-	periph-d41-supply = <&L2N>;
-	periph-d42-supply = <&L3N>;
-	periph-d43-supply = <&L4N>;
-	periph-d44-supply = <&L5N>;
-	periph-d45-supply = <&L6N>;
-	periph-d46-supply = <&L7N>;
 };
