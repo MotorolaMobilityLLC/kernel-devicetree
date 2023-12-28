@@ -308,7 +308,8 @@ diwali-lynkco-row-pvt-overlay.dtbo-base := diwali-moto-lynkco-base.dtb
 endif
 ifeq ($(CONFIG_TANK_DTB),y)
 dtbo-$(CONFIG_ARCH_DIWALI) += \
-	diwali-tank-evb1-overlay.dtbo
+	diwali-tank-evb1-overlay.dtbo \
+	diwali-tank-evt1-overlay.dtbo
 
 diwali-tank-evb1-overlay.dtbo-base := diwali-moto-tank-base.dtb
 endif
