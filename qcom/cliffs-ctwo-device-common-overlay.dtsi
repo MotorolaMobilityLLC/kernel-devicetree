@@ -74,31 +74,9 @@
 		 0x00 0x59>;
 };
 
-&eusb2_phy0 {
-	dummy-supply = <&pm8550b_eusb2_repeater>;
-	usb-repeater = <&pm8550b_eusb2_repeater>;
-};
-
 &usb0 {
-	usb-role-switch;
-	port {
-		usb_port0: endpoint {
-			remote-endpoint = <&usb_port0_connector>;
-		};
-	};
-
 	dwc3@a600000 {
 		snps,usb2-gadget-lpm-disable;
-	};
-};
-
-&ucsi {
-	connector {
-		port {
-			usb_port0_connector: endpoint {
-				remote-endpoint = <&usb_port0>;
-			};
-		};
 	};
 };
 
