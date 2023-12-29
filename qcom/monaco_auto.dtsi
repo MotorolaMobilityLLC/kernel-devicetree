@@ -38,6 +38,7 @@
 		hsuart0 = &qupv3_se2_4uart;
 		i2c18 = &qupv3_se8_i2c;
 		hsuart1 = &qupv3_se12_2uart;
+		i2c15 = &qupv3_se15_i2c;
 	};
 
 	cpus {
@@ -927,6 +928,15 @@
 		compatible = "qcom,ipcc";
 		reg = <0x408000 0x1000>;
 		interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+	};
+
+	ipcc_computeL1: qcom,ipcc@488000 {
+		compatible = "qcom,ipcc";
+		reg = <0x488000 0x1000>;
+		interrupts = <GIC_SPI 231 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-controller;
 		#interrupt-cells = <3>;
 		#mbox-cells = <2>;
@@ -2043,6 +2053,172 @@
 		compatible = "qcom,llcc-pmu-ver2";
 		reg = <0x09095000 0x300>;
 		reg-names = "lagg-base";
+	};
+
+	hsi2s: qcom,hsi2s@3B40000 {
+		compatible = "qcom,sa7255-hsi2s", "qcom,hsi2s";
+		reg = <0x3B40000 0x29000>,
+			<0x3942000 0x6000>;
+		reg-names = "lpa_if", "lpass_core_cc_hs_if";
+		interrupts = <GIC_SPI 719 IRQ_TYPE_LEVEL_HIGH>;
+		number-of-rate-detectors = <2>;
+		rate-detector-interfaces = <0 1>;
+		number-of-interfaces = <5>;
+		qcom,smmu-version = <2>;
+		qcom,smmu-enabled;
+		iommus = <&apps_smmu 0x203c 0x1>,
+			<&apps_smmu 0x203a 0x4>,
+			<&apps_smmu 0x203b 0x0>;
+		qcom,iommu-dma-addr-pool = <0x0 0xFFFFFFFF>;
+		dma-coherent;
+
+		sdr4: qcom,hs4_i2s {
+			compatible = "qcom,hsi2s-interface";
+			minor-number = <4>;
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&tert_tdm_sck_active
+				     &tert_tdm_ws_active &tert_tdm_din_active
+				     &tert_tdm_dout_active>;
+			pinctrl-1 = <&tert_tdm_sck_sleep
+				     &tert_tdm_ws_sleep &tert_tdm_din_sleep
+				     &tert_tdm_dout_sleep>;
+			bit-clock-hz = <12288000>;
+			data-buffer-ms = <10>;
+			bit-depth = <32>;
+			spkr-channel-count = <2>;
+			mic-channel-count = <2>;
+			pcm-rate = <2>;
+			pcm-sync-src = <0>;
+			aux-mode = <0>;
+			rpcm-width = <1>;
+			tpcm-width = <1>;
+			enable-tdm = <1>;
+			tdm-rate = <32>;
+			tdm-rpcm-width = <16>;
+			tdm-tpcm-width = <16>;
+			tdm-sync-delay = <2>;
+			tdm-inv-sync = <0>;
+			pcm-lane-config = <1>;
+		};
+	};
+
+	qcom,msm-cdsp-loader {
+		compatible = "qcom,cdsp-loader";
+		qcom,proc-img-to-load = "cdsp";
+		qcom,rproc-handle = <&cdsp_pas>;
+	};
+
+	qcom,msm-adsprpc-mem {
+		compatible = "qcom,msm-adsprpc-mem-region";
+		memory-region = <&adsp_mem>;
+	};
+
+	msm_fastrpc: qcom,msm_fastrpc {
+		compatible = "qcom,msm-fastrpc-compute";
+		qcom,adsp-remoteheap-vmid = <22 37>;
+		qcom,fastrpc-adsp-audio-pdr;
+		qcom,rpc-latency-us = <235>;
+		qcom,fastrpc-gids = <2908>;
+		qcom,qos-cores = <0 1 2 3>;
+
+		qcom,msm_fastrpc_compute_cb0_1 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1981 0x0440>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_2 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1982 0x0440>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_3 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1983 0x0440>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_4 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1984 0x0440>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_5 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1961 0x0400>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_6 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1962 0x0400>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_7 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1963 0x0400>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_cb0_8 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "cdsprpc-smd";
+			iommus = <&apps_smmu 0x1964 0x0400>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_adsp_cb1 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x2003 0x0000>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_adsp_cb2 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x2004 0x0000>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
+
+		qcom,msm_fastrpc_compute_adsp_cb3 {
+			compatible = "qcom,msm-fastrpc-compute-cb";
+			label = "adsprpc-smd";
+			iommus = <&apps_smmu 0x2005 0x0000>;
+			qcom,iommu-dma-addr-pool = <0x80000000 0x78000000>;
+			qcom,iommu-faults = "stall-disable", "HUPCF";
+			dma-coherent;
+		};
 	};
 };
 

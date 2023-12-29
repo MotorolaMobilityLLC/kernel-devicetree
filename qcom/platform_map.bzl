@@ -13,6 +13,7 @@ _platform_map = {
             {"name": "sa8195-vm-la.dtb"},
             {"name": "monaco-vm-la.dtb"},
             {"name": "monaco-vm-lv.dtb"},
+            {"name": "sa6155p-vm-la.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -27,6 +28,21 @@ _platform_map = {
             {"name": "sa8195-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-lv-overlay.dtbo"},
+            {"name": "sa6155p-vm-la-overlay.dtbo"},
+        ],
+    },
+    "autoghgvm": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "lemans-gunyah-vm-cob.dtb"},
+            {"name": "lemans-gunyah-vm-qam.dtb"},
+            {"name": "lemans-gunyah-vm-vp.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "lemans-gunyah-vm-cob-overlay.dtbo"},
+            {"name": "lemans-gunyah-vm-qam-overlay.dtbo"},
+            {"name": "lemans-gunyah-vm-vp-overlay.dtbo"},
         ],
     },
     "gen3auto": {
@@ -187,10 +203,12 @@ _platform_map = {
             {"name": "cliffs-mtp-overlay.dtbo"},
             {"name": "cliffs-qrd-overlay.dtbo"},
             {"name": "cliffs-rcm-overlay.dtbo"},
-            {"name": "cliffs-mtp-hmt-2s-nfc-wcd9395-overlay.dtbo"},
+            {"name": "cliffs-mtp-kiwi-2s-nfc-wcd9395-overlay.dtbo"},
             {"name": "cliffs-mtp-pm8550b-overlay.dtbo"},
-            {"name": "cliffs-mtp-hmt-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
+            {"name": "cliffs-mtp-kiwi-2s-nfc-wcd9395-pm8550b-overlay.dtbo"},
             {"name": "cliffs-rcm-qhdp-overlay.dtbo"},
+            {"name": "cliffs-rcm-fhdp-kiwi-overlay.dtbo"},
+            {"name": "cliffs-rcm-qhdp-kiwi-overlay.dtbo"},
         ],
     },
     "pineapple-tuivm": {
@@ -235,12 +253,20 @@ _platform_map = {
             {"name": "cliffs-vm-mtp.dtb"},
             {"name": "cliffs-vm-qrd.dtb"},
             {"name": "cliffs-vm-rcm.dtb"},
+            {"name": "cliffs-vm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp.dtb"},
+            {"name": "cliffs-vm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
             {"name": "cliffs-oemvm-rumi.dtb"},
             {"name": "cliffs-oemvm-atp.dtb"},
             {"name": "cliffs-oemvm-cdp.dtb"},
             {"name": "cliffs-oemvm-mtp.dtb"},
             {"name": "cliffs-oemvm-qrd.dtb"},
             {"name": "cliffs-oemvm-rcm.dtb"},
+            {"name": "cliffs-oemvm-rcm-fhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp.dtb"},
+            {"name": "cliffs-oemvm-rcm-qhdp-kiwi.dtb"},
+            {"name": "cliffs-oemvm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
         ],
     },
     "cliffs-oemvm": {
@@ -301,9 +327,24 @@ _platform_map = {
     "pitti": {
         "dtb_list": [
             {"name": "pitti.dtb"},
+            {"name": "pitti-3gb.dtb"},
+            {"name": "pitti-4gb.dtb"},
         ],
         "dtbo_list": [
-            {"name": "pitti-rumi-overlay.dtbo"},
+            {"name": "pitti-atp-overlay.dtbo"},
+            {"name": "pitti-idp-overlay.dtbo"},
+            {"name": "pitti-qrd-overlay.dtbo"},
+            {"name": "pitti-idp-apache-overlay.dtbo"},
+            {"name": "pitti-idp-amoled-overlay.dtbo"},
+            {"name": "pitti-idp-3gb-overlay.dtbo"},
+            {"name": "pitti-qrd-3gb-overlay.dtbo"},
+            {"name": "pitti-atp-4gb-overlay.dtbo"},
+            {"name": "pitti-idp-4gb-overlay.dtbo"},
+            {"name": "pitti-qrd-4gb-overlay.dtbo"},
+            {
+                "name": "pitti-rumi-overlay.dtbo",
+                "apq": False,
+            },
         ],
     },
     "volcano": {
