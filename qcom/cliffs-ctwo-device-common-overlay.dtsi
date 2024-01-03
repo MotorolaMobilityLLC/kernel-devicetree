@@ -53,9 +53,11 @@
 		/* Adjust HS trasmit amplitude */
 		<0xb 0x51
 		/* Squelch detection threshold */
-		 0x2 0x54
+		 0x3 0x54
+		/* USB2 Tx slew rate */
+		 0x5 0x55
 		/* Tx pre-emphasis tuning */
-		 0x7 0x57
+		 0x5 0x57
 		/* HS disconnect threshold */
 		 0x3 0x53
 		/* slew rate */
@@ -65,9 +67,11 @@
 		/* Adjust HS trasmit amplitude */
 		<0xb 0x51
 		/* Squelch detection threshold */
-		 0x2 0x54
+		 0x3 0x54
+		/*USB2 Tx slew rate */
+		 0x2 0x55
 		/* Tx pre-emphasis tuning */
-		 0x7 0x57
+		 0x5 0x57
 		/* HS disconnect threshold */
 		 0x3 0x53
 		/* slew rate */
