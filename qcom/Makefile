@@ -37,6 +37,7 @@ ifeq ($(CONFIG_CTWO_DTB),y)
 PINEAPPLE_BASE_DTB += cliffs-ctwo-base.dtb
 PINEAPPLE_BOARDS += cliffs-ctwo-evb3-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-ctwo-dvt1-overlay.dtbo
+PINEAPPLE_BOARDS += cliffs-ctwo-dvt1b-overlay.dtbo
 endif
 
 
