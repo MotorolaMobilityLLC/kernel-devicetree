@@ -69,3 +69,7 @@
 		status = "disabled";
 	};
 };
+&L21B{
+	regulator-always-on;
+	status = "okay";
+};

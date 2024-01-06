@@ -44,7 +44,7 @@
 	sx937x@2c { /* SAR sensor */
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
-		Semtech,power-supply-type = <0>;
+		Semtech,power-supply-type = <1>;
 		cap_vdd-supply = <&L21B>;
 		pinctrl-names = "default","sleep";
 		pinctrl-0 = <&sar_int_default>;
@@ -128,15 +128,15 @@
 		status = "ok";
 	};
 
-        aw9610x_sar@12 {
+        aw96308_sar@12 {
                 /* common node */
                 compatible = "awinic,aw_sar";
                 reg = <0x12>;
                 sar-num = <0>;
-                cap_vdd-supply = <&L21B>;
-                pinctrl-names = "default","sleep";
-                pinctrl-0 = <&sar_int_default>;
-                pinctrl-1 = <&sar_int_sleep>;
+                //cap_vdd-supply = <&L21B>;
+                //pinctrl-names = "default","sleep";
+                //pinctrl-0 = <&sar_int_default>;
+                //pinctrl-1 = <&sar_int_sleep>;
                 interrupt-parent = <&tlmm>;
                 interrupts = <62 0x02>;
                 interrupt-names = "awinic_irq";
