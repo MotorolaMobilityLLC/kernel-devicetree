@@ -20,6 +20,7 @@
 #include "cliffs-moto-common-st-nfc.dtsi"
 #include "cliffs-ctwo-touchscreen-overlay.dtsi"
 #include "moto-ctwo-wl2868c.dtsi"
+#include "cliffs-moto-wcn7851-s3e-overlay.dtsi"
 
 #include "cliffs-ctwo-thermal-overlay.dtsi"
 #include "cliffs-ctwo-evb-sensor-overlay.dtsi"

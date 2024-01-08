@@ -1,0 +1,7 @@
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&S3E {
+    regulator-min-microvolt = <940000>;
+	regulator-max-microvolt = <1030000>;
+	qcom,init-voltage = <940000>;
+};

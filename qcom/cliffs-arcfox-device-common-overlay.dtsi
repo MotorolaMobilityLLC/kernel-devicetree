@@ -21,6 +21,7 @@
 #include "moto-arcfox-wl2868c.dtsi"
 #include "cliffs-arcfox-touchscreen-overlay.dtsi"
 #include "cliffs-arcfox-evb-sensor-overlay.dtsi"
+#include "cliffs-moto-wcn7851-s3e-overlay.dtsi"
 
 #include "cliffs-arcfox-thermal-overlay.dtsi"
 
