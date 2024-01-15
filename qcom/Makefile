@@ -312,6 +312,7 @@ dtbo-$(CONFIG_ARCH_DIWALI) += \
 	diwali-tank-evt1-overlay.dtbo
 
 diwali-tank-evb1-overlay.dtbo-base := diwali-moto-tank-base.dtb
+diwali-tank-evt1-overlay.dtbo-base := diwali-moto-tank-base.dtb
 endif
 #remove useless diwali device tree in moto build
 ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
