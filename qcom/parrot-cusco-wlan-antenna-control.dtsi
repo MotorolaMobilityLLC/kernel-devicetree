@@ -43,6 +43,7 @@
 	wlan_antenna: wlan_antenna {
 		status = "ok";
 		compatible = "moto,wlan_antenna";
+		qcom,wlan_antenna-gpio = <&tlmm 34 0>;
 		pinctrl-names = "default", "antenna_active", "antenna_suspend";
 		pinctrl-0 = <&wlan_antenna_default>;
 		pinctrl-1 = <&wlan_antenna_active>;
