@@ -67,6 +67,7 @@
 		goodix,sample-ctrl;
 		goodix,stowed-mode-ctrl;
 		mmi,resolution_boost = <16>;
+		goodix,pocket-mode-ctrl;
 	};
 };
 
