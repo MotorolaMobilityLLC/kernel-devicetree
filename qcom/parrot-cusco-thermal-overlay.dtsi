@@ -46,7 +46,7 @@
 };
 
 &pm6150l_vadc {
-	pinctrl-0 = <&ufs_therm_default &cam_therm_default &wide_rfc_therm_default>;
+	pinctrl-0 = <&spkr_therm_default &cam_therm_default &wide_rfc_therm_default>;
 
 	msm_therm {
 		reg = <ADC5_AMUX_THM2_100K_PU>;
@@ -62,9 +62,9 @@
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
 	};
-	ufs_therm {
+	spkr_therm {
                 reg = <ADC5_GPIO1_100K_PU>;
-                label = "ufs_therm";
+                label = "spkr_therm";
                 qcom,ratiometric;
                 qcom,hw-settle-time = <200>;
                 qcom,pre-scaling = <1 1>;
@@ -118,8 +118,8 @@
 			bias-high-impedance;
 		};
 	};
-	ufs_therm {
-                ufs_therm_default: ufs_therm_default {
+	spkr_therm {
+                spkr_therm_default: spkr_therm_default {
                         pins = "gpio5";
                         bias-high-impedance;
                 };
@@ -182,7 +182,7 @@
 				qcom,ratiometric;
 				qcom,hw-settle-time = <200>;
 			};
-			ufs_therm {
+			spkr_therm {
                                 reg = <ADC5_GPIO1_100K_PU>;
                                 qcom,ratiometric;
                                 qcom,hw-settle-time = <200>;
@@ -217,7 +217,7 @@
 			};
 		};
 	};
-	ufs-therm {
+	spkr-therm {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
                 thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO1_100K_PU>;
