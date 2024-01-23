@@ -37,7 +37,9 @@
 		      <&pm7250b_qg PSY_IIO_CYCLE_COUNT>,
 		      <&pm7250b_qg PSY_IIO_CHARGE_FULL_DESIGN>,
 		      <&pm7250b_qg PSY_IIO_TIME_TO_FULL_NOW>,
-		      <&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>;
+		      <&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
+		      <&bq25960_standalone PSY_IIO_MMI_OTG_ENABLE>,
+		      <&bq25960_standalone PSY_IIO_MMI_CP_CHIP_ID>;
 	io-channel-names = "usb_in_voltage",
 			   "usb_in_current",
 			   "chg_temp",
@@ -62,7 +64,9 @@
 			   "cycle_count",
 			   "charge_full_design",
 			   "time_to_full_now",
-			   "cp_input_voltage_now";
+			   "cp_input_voltage_now",
+			   "cp_otg_enable",
+			   "cp_chip_id";
 	qcom,fcc-max-ua = <4000000>;
 	qcom,fv-max-uv = <4520000>;
 	qcom,dcp-curr-max = <2000000>;
@@ -161,7 +165,9 @@
 				<&bq25960_standalone PSY_IIO_MMI_CP_INPUT_VOLTAGE_NOW>,
 				<&bq25960_standalone PSY_IIO_CP_STATUS1>,
 				<&bq25960_standalone PSY_IIO_CP_CLEAR_ERROR>,
-				<&pm7250b_mmi PSY_IIO_CP_ENABLE>;
+				<&pm7250b_mmi PSY_IIO_CP_ENABLE>,
+				<&bq25960_standalone PSY_IIO_MMI_OTG_ENABLE>,
+				<&bq25960_standalone PSY_IIO_MMI_CP_CHIP_ID>;
 
 		io-channel-names = "usb_hw_current_max",
 					"charging_enabled",
@@ -178,7 +184,9 @@
 					"cp_input_voltage_now",
 					"cp_status1",
 					"cp_clear_error",
-					"mmi_cp_enabled_status";
+					"mmi_cp_enabled_status",
+					"cp_otg_enable",
+					"cp_chip_id";
 
 		qcom,usbpd-phandle = <&pm7250b_pdphy>;
 		mmi,pps-volt-steps = <20000>;
