@@ -125,7 +125,8 @@ endif
 
 ifeq ($(CONFIG_FOGONA_DTB),y)
 KHAJE_BASE_DTB += khaje-moto-base.dtb
-KHAJE_BOARDS += khaje-fogona-evt-overlay.dtbo
+KHAJE_BOARDS += khaje-fogona-evt-overlay.dtbo \
+		khaje-fogona-att.dtbo
 endif
 
 else 
