@@ -3,12 +3,10 @@
 
 
 &mot_batterydata {
-	df-serialnum = "SB18D87863";
+	df-serialnum = "SB18E14178";
 	qcom,batt-id-range-pct = <15>;
+	#include "qg-batterydata-qe50-scud-5000mah.dtsi"
 	#include "qg-batterydata-qf50-swd-temporary-5000mah.dtsi"
-	//#include "qg-batterydata-qb50-swd-5000mah.dtsi"
-	//#include "qg-batterydata-qb50-gy-5000mah.dtsi"
-	//#include "qg-batterydata-qb50-gy-icm-5000mah.dtsi"
 };
 
 &pm7250b_charger {
@@ -68,7 +66,7 @@
 			   "cp_otg_enable",
 			   "cp_chip_id";
 	qcom,fcc-max-ua = <4000000>;
-	qcom,fv-max-uv = <4520000>;
+	qcom,fv-max-uv = <4500000>;
 	qcom,dcp-curr-max = <2000000>;
 	qcom,hvdcp2-max-icl-ua = <2000000>;
 	qcom,otg-cl-ua = <1000000>;
@@ -85,24 +83,24 @@
 &pm7250b_mmi {
 	qcom,mmi-temp-zones = <0 4200 1000 0>,
 				<10 4250 3000 1000>,
-				<15 0 3000 3000>,
-				<25 0 4000 4000>,
-				<35 0 4000 4000>,
-				<45 0 4000 4000>,
+				<15 4500 3000 3000>,
+				<25 4530 6000 4000>,
+				<35 4530 6000 4000>,
+				<45 4530 6000 4000>,
 				<60 4200 4000 0>;
-	qcom,mmi-ffc-zones = <4200 260 534>,
-                               <4500 260 534>,
-                               <4500 260 534>,
-                               <4520 550 820>,
-                               <4520 600 960>,
-                               <4520 750 1110>,
-                               <4200 260 575>;
+	qcom,mmi-ffc-zones = <4200 243 534>,
+                               <4500 243 534>,
+                               <4500 540 534>,
+                               <4530 540 820>,
+                               <4530 583 960>,
+                               <4530 828 1110>,
+                               <4200 243 543>;
 
-	qcom,iterm-ma = <260>;
+	qcom,iterm-ma = <243>;
 	mmi,enable-factory-mode-aicl;
-	qcom,noffc-chg-iterm = <260>;
-	qcom,noffc-chg-iterm-45c = <390>;
-	qcom,noffc-qg-iterm = <500>;
+	qcom,noffc-chg-iterm = <243>;
+	qcom,noffc-chg-iterm-45c = <487>;
+	qcom,noffc-qg-iterm = <534>;
 	qcom,noffc-max-fv = <4500>;
 };
 
@@ -124,7 +122,7 @@
 			   "cp_charging_enabled";
 	mmi,cp-use-internal-qg;
 	mmi,cp-chrg-soc-limit = <90>;
-	qcom,qg-iterm-ma = <500>;
+	qcom,qg-iterm-ma = <1000>;
 };
 
 &socd_trip {
@@ -210,7 +208,7 @@
 					<0 4200 1000  0 0 0 0>,
 					<10 4250 3000 4500 1000 0 0>,
 					<15 4500 3000 0 0 0 0>,
-					<45 4320 5800 4420 5150 4520 3900>,
+					<45 4320 6000 4450 5200 4530 4000>,
 					<60 4200 4000 0 0 0 0>;
 		mmi,thermal-mitigation =
 					<5800000>,
