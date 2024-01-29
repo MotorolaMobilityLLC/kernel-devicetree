@@ -85,6 +85,7 @@
 		df-serialnum = "SB18D96854";
 		#include "CW_lq290x-sunwoda-5000mah-fogona.dtsi"
 		#include "CW_lq280x-scud-5000mah-fogona.dtsi"
+		#include "CW_lq280x-scud-2-5000mah-fogona.dtsi"
 	};
 
 	sm5602@71 {
@@ -146,6 +147,7 @@
                 df-serialnum = "SB18D96854";
                 #include "RT_md50-sunwoda-5000mah-fogona.dtsi"
                 #include "RT_md50-scud-5000mah-fogona.dtsi"
+                #include "RT_md50-scud-2-5000mah-fogona.dtsi"
         };
 };
 

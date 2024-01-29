@@ -1,0 +1,30 @@
+/*
+ * Copyright (C) 2021 Motorola Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+SCUD-2-5000mah-fogona {
+        serialnum = "SB18E18191";
+        fcc_design = <5000>;
+        ui_full = <99>;
+        config_profile_info = [
+                5A 00 00 00 00 00 00 00
+                AF AA A7 C3 A6 A7 CE B1
+                9E FF FF E0 A0 89 63 55
+                50 50 4F CE A1 E1 C0 FF
+                D1 C1 CB D5 D9 D9 D5 D1
+                CE CC CF C9 A9 99 8F 86
+                80 7B 81 94 A7 90 78 B0
+                20 00 AB 10 02 A0 4D 00
+                00 00 64 25 C3 38 00 00
+                00 00 00 00 00 00 00 45
+        ];
+};
+
