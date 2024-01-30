@@ -31,11 +31,11 @@
 		status = "disabled";
 	};
 
-	chg-skin-therm-usr {
+	chg-skin-therm {
 		status = "disabled";
 	};
 
-	conn-therm-usr {
+	conn-therm {
 		status = "disabled";
 	};
 
