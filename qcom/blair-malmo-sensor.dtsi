@@ -43,6 +43,7 @@
                 //interrupt-names = "sx937x_irq";
                 Semtech,nirq-gpio = <&tlmm 60 0x02>;
                 //cap_vdd-supply = <&pm6125_l12>;
+                esd-reinit-on = <1>;
                 /*use PH5/6 as the reference sensor
                 set it to 0xff if the ref-phases-x is not used*/
                 Semtech,ref-phases-a = <5>;
