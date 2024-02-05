@@ -26,7 +26,9 @@
 
 		df-serialnum = "SB18D69208";
 		#include "bat_setting/RT_nh50-atl-4850mah-5mohm.dtsi"
+		#include "bat_setting/RT_nh50-atl-4850mah-new-5mohm.dtsi"
 		#include "bat_setting/RT_nh50-scud-4850mah-5mohm.dtsi"
+		#include "bat_setting/RT_nh50-scud-4850mah-new-5mohm.dtsi"
 
 	};
 };

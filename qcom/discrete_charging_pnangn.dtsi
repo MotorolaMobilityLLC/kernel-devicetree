@@ -47,7 +47,9 @@
 		//#include "bat_setting/CW_nd50-jiade-4850mah.dtsi"
 		//#include "bat_setting/CW_nd50-local-4850mah.dtsi"
 		#include "bat_setting/CW_nh50-atl-4850mah-5mohm.dtsi"
+		#include "bat_setting/CW_nh50-atl-4850mah-new-5mohm.dtsi"
 		#include "bat_setting/CW_nh50-scud-4850mah-5mohm.dtsi"
+		#include "bat_setting/CW_nh50-scud-4850mah-new-5mohm.dtsi"
 	};
 };
 
