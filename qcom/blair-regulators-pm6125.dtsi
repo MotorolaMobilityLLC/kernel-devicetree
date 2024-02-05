@@ -477,6 +477,8 @@
 			qcom,init-voltage = <1232000>;
 			qcom,proxy-consumer-enable;
 			proxy-supply = <&pm6125_l4>;
+			qcom,proxy-consumer-voltage = <1200000 1300000>;
+			qcom,proxy-consumer-current = <21800>;
 			status = "okay";
 		};
 	};
@@ -507,6 +509,10 @@
 			regulator-min-microvolt = <788000>;
 			regulator-max-microvolt = <1050000>;
 			qcom,init-voltage = <880000>;
+			qcom,proxy-consumer-enable;
+			proxy-supply = <&pm6125_l7>;
+			qcom,proxy-consumer-voltage = <880000 1050000>;
+			qcom,proxy-consumer-current = <97800>;
 			status = "okay";
 		};
 	};
