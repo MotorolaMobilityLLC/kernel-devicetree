@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "pitti-idp-3gb.dtsi"
+#include "pitti-pm7250b.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Pitti IDP 3GB DDR";

@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "pitti-idp-apache.dtsi"
+#include "pitti-pm7250b.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Pitti IDP APACHE attachment";

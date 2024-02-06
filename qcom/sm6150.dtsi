@@ -1018,7 +1018,6 @@
 
 	qcom,pmu {
 		compatible = "qcom,pmu";
-		qcom,long-counter;
 		qcom,pmu-events-tbl =
 			< 0x0008 0xFF 0xFF 0xFF >,
 			< 0x0011 0xFF 0xFF 0xFF >,
@@ -1254,6 +1253,11 @@
 		clock-frequency = <32768>;
 	};
 
+	show_resume_irqs@17a00000 {
+		compatible = "qcom,show-resume-irqs";
+		reg = <0x17a00000 0x290000>;
+	};
+
 	thermal_zones: thermal-zones {
 	};
 
@@ -1272,6 +1276,11 @@
 		compatible = "qcom,smem";
 		memory-region = <&smem_region>;
 		hwlocks = <&tcsr_mutex 3>;
+	};
+	ddr_bwprofiler {
+		compatible = "qcom,ddr_bwprofiler";
+		clocks = <&aoss_qmp QDSS_CLK>;
+		clock-names = "qdss_clk";
 	};
 
 	apcs: syscon@17c0000c {

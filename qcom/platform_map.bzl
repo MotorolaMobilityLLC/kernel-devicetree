@@ -171,6 +171,7 @@ _platform_map = {
             {"name": "pineapplep-hdk-overlay.dtbo"},
             {"name": "pineapple-dpm-overlay.dtbo"},
             {"name": "pineapplep-aim500-overlay.dtbo"},
+            {"name": "pineapplep-aim500-v2-overlay.dtbo"},
             {
                 "name": "pineapple-rumi-overlay.dtbo",
                 "apq": False,
@@ -192,6 +193,14 @@ _platform_map = {
         "dtb_list": [
             {"name": "cliffs.dtb"},
             {"name": "cliffs7.dtb"},
+            {
+                "name": "cliffsp.dtb",
+                "apq": True,
+            },
+            {
+                "name": "cliffs7p.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
             {
@@ -335,10 +344,14 @@ _platform_map = {
             {"name": "pitti-idp-overlay.dtbo"},
             {"name": "pitti-qrd-overlay.dtbo"},
             {"name": "pitti-idp-apache-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-apache-overlay.dtbo"},
             {"name": "pitti-idp-amoled-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-overlay.dtbo"},
             {"name": "pitti-idp-3gb-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-3gb-overlay.dtbo"},
             {"name": "pitti-qrd-3gb-overlay.dtbo"},
             {"name": "pitti-atp-4gb-overlay.dtbo"},
+            {"name": "pitti-idp-pmiv0104-4gb-overlay.dtbo"},
             {"name": "pitti-idp-4gb-overlay.dtbo"},
             {"name": "pitti-qrd-4gb-overlay.dtbo"},
             {

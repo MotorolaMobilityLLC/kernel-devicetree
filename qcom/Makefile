@@ -27,7 +27,8 @@ PINEAPPLE_BOARDS += \
 		 pineapple-atp-overlay.dtbo \
 		 pineapplep-hdk-overlay.dtbo \
 		 pineapple-dpm-overlay.dtbo \
-		 pineapplep-aim500-overlay.dtbo
+		 pineapplep-aim500-overlay.dtbo \
+		 pineapplep-aim500-v2-overlay.dtbo
 
 NOAPQ_PINEAPPLE_BOARDS += \
 		 pineapple-rumi-overlay.dtbo
@@ -38,9 +39,9 @@ pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 pineapple-overlays-dtb-$(CONFIG_ARCH_PINEAPPLE) += $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS) $(PINEAPPLE_BASE_DTB) $(PINEAPPLE_APQ_BASE_DTB)
 
 CLIFFS_BASE_DTB += cliffs.dtb cliffs7.dtb
+CLIFFS_APQ_BASE_DTB += cliffsp.dtb cliffs7p.dtb
 
-NOAPQ_CLIFFS_BOARDS += \
-		 cliffs-rumi-overlay.dtbo \
+CLIFFS_BOARDS += \
 		 cliffs-atp-overlay.dtbo \
 		 cliffs-cdp-overlay.dtbo \
 		 cliffs-mtp-overlay.dtbo \
@@ -53,9 +54,13 @@ NOAPQ_CLIFFS_BOARDS += \
 		 cliffs-rcm-fhdp-kiwi-overlay.dtbo \
 		 cliffs-rcm-qhdp-kiwi-overlay.dtbo
 
+NOAPQ_CLIFFS_BOARDS += \
+		 cliffs-rumi-overlay.dtbo
+
 pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
-	$(call add-overlays, $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))
-pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB)
+	$(call add-overlays, $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))\
+	$(call add-overlays, $(CLIFFS_BOARDS),$(CLIFFS_APQ_BASE_DTB))
+pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
 
 VOLCANO_BASE_DTB += volcano.dtb
 
@@ -157,12 +162,16 @@ PITTI_BOARDS += \
 		 pitti-atp-overlay.dtbo \
 		 pitti-idp-overlay.dtbo \
 		 pitti-qrd-overlay.dtbo \
+		 pitti-idp-pmiv0104-overlay.dtbo \
 		 pitti-idp-apache-overlay.dtbo \
 		 pitti-idp-amoled-overlay.dtbo \
 		 pitti-idp-3gb-overlay.dtbo \
 		 pitti-qrd-3gb-overlay.dtbo \
 		 pitti-atp-4gb-overlay.dtbo \
 		 pitti-idp-4gb-overlay.dtbo \
+		 pitti-idp-pmiv0104-3gb-overlay.dtbo \
+		 pitti-idp-pmiv0104-4gb-overlay.dtbo \
+		 pitti-idp-pmiv0104-apache-overlay.dtbo \
 		 pitti-qrd-4gb-overlay.dtbo
 
 NOAPQ_PITTI_BOARDS += \
