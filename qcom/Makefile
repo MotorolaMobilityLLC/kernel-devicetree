@@ -518,10 +518,13 @@ MONACO_FLEX_LA_GVM_BOARDS += \
                    monaco-vm-flex-la-overlay.dtbo
 
 MONACO_MULTI_GVM_BASE_DTB += \
-		monaco-vm-lv-mt.dtb
+		monaco-vm-lv-mt.dtb \
+		monaco-vm-la-mt.dtb
+
 
 MONACO_MULTI_GVM_BOARDS += \
-		monaco-vm-lv-mt-overlay.dtbo
+		monaco-vm-lv-mt-overlay.dtbo \
+		monaco-vm-la-mt-overlay.dtbo
 
 autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(SA8155_LA_GVM_BOARDS),$(SA8155_LA_GVM_BASE_DTB)) \
