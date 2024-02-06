@@ -54,9 +54,12 @@
 		goodix,edge-ctrl;
 		goodix,sample-ctrl;
 		mmi,enable-gestures;
-		mmi,supported_gesture_type = <0x06>;
+		mmi,supported_gesture_type = <0x07>;
+		mmi,fod_coords = <610 2067>;
 		goodix,gesture-wait-pm;
-		mmi,enable-palm;
+		goodix,stowed-mode-ctrl;
+		mmi,resolution_boost = <16>;
+		goodix,pocket-mode-ctrl;
 	};
 };
 
