@@ -59,7 +59,7 @@
 		Semtech,ref-phases-a = <4>;
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
-		Semtech,button-flag = <0x1f>;
+		Semtech,button-flag = <0x07>;
 		Semtech,reg-num = <60>;
 		Semtech,reg-init = <
 		        0x8024 0x7F00
@@ -77,16 +77,16 @@
 	                0x8030 0x924925
 	                0x803C 0x92C924
 	                0x8048 0x964924
-	                0x8054 0xB24924
-	                0x8060 0x925924
+	                0x8054 0x924924
+	                0x8060 0x924924
 	                0x806C 0x92492C
 	                0x8078 0x924964
 	                0x8084 0xFFF9FF
 	                0x8098 0x9C52
 	                0x80B8 0x9540
 	                0x80D8 0x5E5E
-	                0x80F8 0x4D4D
-	                0x8118 0x4646
+	                0x80F8 0x3232
+	                0x8118 0x2A2A
 	                0x8138 0x5A40
 	                0x8158 0x5A40
 	                0x8178 0x5A40
@@ -136,7 +136,7 @@
 		interrupt-names = "awinic_irq";
 		irq-gpio = <&tlmm 10 0x02>;
 		vcc0-supply = <&L18B>;
-		channel_use_flag = <0x1f>;
+		channel_use_flag = <0x07>;
 		aw_sar,use_plug_cail;
 		aw_sar,update_fw;
 		/* private node belongs to aw963xx */
