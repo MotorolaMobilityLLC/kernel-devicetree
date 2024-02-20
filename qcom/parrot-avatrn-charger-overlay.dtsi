@@ -20,8 +20,8 @@
 			mmi,max-fv-mv = <4500>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
-			mmi,df-serialnum = "SB18D97317";
-			profile-ids-map = "107000", "SB18D97317","38000","SB18D87942";
+			mmi,df-serialnum = "SB18E08901";
+			profile-ids-map = "107000", "SB18E08901","38000","SB18E08902";
 		};
 	};
 
