@@ -77,3 +77,8 @@
 	regulator-always-on;
 	status = "okay";
 };
+&usb3phy_portselect_default {
+        config {
+                bias-pull-down;
+	};
+};
