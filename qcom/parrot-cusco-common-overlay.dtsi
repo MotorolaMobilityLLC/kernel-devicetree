@@ -44,6 +44,10 @@
 	qcom,vib-ldo-volt-uv-long = <2900000>;
 };
 
+&qseecom_ta_mem {
+	size = <0x0 0x2400000>;
+};
+
 &mpss_mem {
 	reg = <0x0 0x8bc00000 0x0 0xf000000>;
 };
