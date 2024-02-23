@@ -100,7 +100,7 @@
 		irq-dis-cfg;
 		init-charger-disabled;
 		iterm-microamp = <200000>;
-		ichg-max-microamp = <2100000>;
+		ichg-max-microamp = <2000000>;
 		vchg-max-microvolt = <4600000>;
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
@@ -112,22 +112,22 @@
 		mmi,chrg-iterm-ma = <102>;
 		mmi,fg-iterm-ma = <102>;
 		mmi,max-fv-mv = <4530>;
-		mmi,max-fcc-ma = <2104>;
+		mmi,max-fcc-ma = <2000>;
 		mmi,demo-fv-mv = <4000>;
 		mmi,df-serialnum = "SB18E07970";
 		mmi,mmi-temp-zones = <0 4200 204 0>,
 				<10 4250 814 509>,
 				<15 4530 814 0>,
-				<35 4200 2104 1527>,
+				<35 4200 2000 1527>,
 				<35 4300 1527 1222>,
 				<35 4350 1222 1018>,
-				<45 4250 2104 1527>,
+				<45 4250 2000 1527>,
 				<45 4300 1527 1222>,
 				<45 4350 1222 1018>,
 				<60 4200 814 0>;
 
 		mmi,paired-id = <0x00000001>;
-		mmi,thermal-mitigation = <2100000 1500000 1000000 800000 500000 300000 100000>;
+		mmi,thermal-mitigation = <2000000 1500000 1000000 800000 500000 300000 100000>;
 		/* the thermal-ratio is nums * step, and the step is 0.5 */
 		mmi,thermal-ratio-nums = <4>;
     };
@@ -144,7 +144,7 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
-	qcom,thermal-mitigation = <5895000 4000000 3000000 2000000 1000000 300000 100000>;
+	qcom,thermal-mitigation = <5600000 4000000 3000000 2000000 1000000 300000 100000>;
 	qcom,wireless-fw-name = "cps4041.bin";
 };
 
