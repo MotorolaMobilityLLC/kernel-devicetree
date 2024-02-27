@@ -45,7 +45,7 @@
 };
 
 &qseecom_ta_mem {
-	size = <0x0 0x2400000>;
+	size = <0x0 0x3000000>;
 };
 
 &mpss_mem {
