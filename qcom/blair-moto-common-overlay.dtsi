@@ -80,7 +80,7 @@
 };
 
 &trusted_apps_mem {
-	reg = <0x0 0xc1800000 0x0 0x5900000>;
+	reg = <0x0 0xc1800000 0x0 0x7900000>;
 };
 
 &qseecom_mem {
@@ -88,5 +88,5 @@
 };
 
 &qseecom_ta_mem{
-	size = <0x0 0x5000000>;
+	size = <0x0 0x7000000>;
 };
