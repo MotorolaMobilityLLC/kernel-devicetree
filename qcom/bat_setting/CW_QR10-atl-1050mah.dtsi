@@ -15,13 +15,13 @@ qr10-atl-1050mah {
     fcc_design = <1050>;
     ui_full = <95>;
     config_profile_info = [32 00 00 00 00 00 00 00
-                b7 b9 c3 c8 b6 ad c7 a8
-                9a ff d7 96 87 6c 59 4e
-                44 3e 32 7a 57 e1 b3 fd
-                c7 cb ce d5 d9 d7 d7 db
-                d7 cf ca b3 ac ab ad b3
-                b4 9f ce ce d2 fb ff cc
-                20 00 ab 10 00 81 1e 00
-                00 00 64 05 90 4b 00 00
-                00 00 00 00 00 00 00 76];
+                ac b8 b7 ce b7 b2 b9 99
+                7e ff f8 c2 9b 85 6d 59
+                4c 44 36 8b 58 e3 23 f9
+                cf c1 c8 d0 d6 db db dd
+                de d1 d3 c1 b5 b0 b5 b5
+                bc a9 cc d0 d7 ff ff ce
+                20 00 ab 10 00 81 02 00
+                00 00 64 07 90 33 00 00
+                00 00 00 00 00 00 00 d3];
 };
