@@ -95,6 +95,7 @@
 		dr_mode = "otg";
 		snps,usb2-lpm-disable;
 		snps,usb2-gadget-lpm-disable;
+		snps,dis_u2_susphy_quirk;
 	};
 };
 
