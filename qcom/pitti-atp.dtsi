@@ -28,7 +28,7 @@
 };
 
 &sdhc_1 {
-	status = "disabled";
+	status = "ok";
 
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&sdc1_on>;
@@ -46,7 +46,7 @@
 };
 
 &sdhc_2 {
-	status = "disabled";
+	status = "ok";
 
 	vdd-supply = <&L22A>;
 	qcom,vdd-voltage-level = <2960000 2960000>;
@@ -64,7 +64,7 @@
 };
 
 &ufsphy_mem {
-	compatible = "qcom,ufs-phy-qmp-v4-pitti";
+	compatible = "qcom,ufs-phy-qmp-v4-waipio";
 
 	/* VDDA_UFS_CORE */
 	vdda-phy-supply = <&L4A>;
@@ -104,11 +104,30 @@
 	qcom,wireless-charging-not-supported;
 };
 
+&usb0 {
+	usb-role-switch;
+	port {
+		usb_port0: endpoint {
+			remote-endpoint = <&usb_port0_connector>;
+		};
+	};
+};
+
+&ucsi {
+	connector {
+		port {
+			usb_port0_connector: endpoint {
+				remote-endpoint = <&usb_port0>;
+			};
+		};
+	};
+};
+
 &qupv3_se3_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	status = "disabled";
+	status = "ok";
 	qcom,touch-active = "goodix,gt9916S";
 	qcom,la-vm;
 
@@ -129,6 +148,8 @@
 		goodix,config-name = "goodix_cfg_group_spi.bin";
 		goodix,avdd-name = "avdd";
 		goodix,iovdd-name = "iovdd";
+		avdd-supply = <&L21A>;
+		iovdd-supply = <&L9A>;
 		goodix,touch-type = "primary";
 		goodix,qts_en;
 	};

@@ -42,12 +42,14 @@
 			 0x144 /* GSI_RING_BASE_ADDR_H */
 			 0x1a4>; /* GSI_IF_STS */
 
+		extcon = <&eud>;
+
 		dwc3@4e00000 {
 			compatible = "snps,dwc3";
 			reg = <0x4e00000 0xe000>;
 
 			iommus = <&apps_smmu 0x260 0x0>;
-			qcom,iommu-dma = "atmoic";
+			qcom,iommu-dma = "atomic";
 			qcom,iommu-dma-addr-pool = <0x50000000 0x60000000>;
 
 			interrupts = <GIC_SPI 255 IRQ_TYPE_LEVEL_HIGH>;
@@ -61,7 +63,7 @@
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
-			dr_mode = "peripheral";
+			dr_mode = "otg";
 			maximum-speed = "super-speed";
 			usb-role-switch;
 		};

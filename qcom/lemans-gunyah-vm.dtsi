@@ -9,7 +9,7 @@
 	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M console=hvc0 loglevel=8 androidboot.first_stage_console=1 androidboot.hardware=qcom androidboot.slot_suffix=_a androidboot.selinux=permissive androidboot.verifiedbootstate=orange";
+		bootargs = "nokaslr log_buf_len=1M console=hvc0 loglevel=8 androidboot.first_stage_console=1 androidboot.hardware=qcom androidboot.slot_suffix=_a androidboot.selinux=enforcing androidboot.verifiedbootstate=orange";
 	};
 
 	reserved_memory: reserved-memory {
@@ -617,8 +617,8 @@
 
 	qtee_shmbridge {
 		compatible = "qcom,tee-shared-memory-bridge";
-		//qcom,support-hypervisor;
-		qcom,disable-shmbridge-support;
+		qcom,custom-bridge-size = <512>;
+		qcom,support-hypervisor;
 	};
 
 	apps_smmu: apps-smmu@15000000 {

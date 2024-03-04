@@ -25,6 +25,22 @@
 		mmc0 = &sdhc_1; /* SDC1 eMMC slot */
 		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 		ufshc1 = &ufshc_mem; /* Embedded UFS Slot */
+		i2c0 = &qupv3_se0_i2c;
+		i2c1 = &qupv3_se1_i2c;
+		i2c3 = &qupv3_se3_i2c;
+		i2c4 = &qupv3_se4_i2c;
+		i2c5 = &qupv3_se5_i2c;
+		i2c6 = &qupv3_se6_i2c;
+		i2c7 = &qupv3_se7_i2c;
+		i2c9 = &qupv3_se9_i2c;
+		spi0 = &qupv3_se0_spi;
+		spi1 = &qupv3_se1_spi;
+		spi3 = &qupv3_se3_spi;
+		spi4 = &qupv3_se4_spi;
+		spi5 = &qupv3_se5_spi;
+		spi6 = &qupv3_se6_spi;
+		spi7 = &qupv3_se7_spi;
+		spi9 = &qupv3_se9_spi;
 	};
 
 	chosen: chosen {
@@ -427,6 +443,13 @@
 		qcom,gic-class1-cpus = <6 7>;
 	};
 
+	kryo-erp {
+		compatible = "arm,arm64-kryo-cpu-erp";
+		interrupts = <GIC_PPI 6 IRQ_TYPE_LEVEL_HIGH>,
+			    <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "l1-l2-faultirq","l3-scu-faultirq";
+	};
+
 	arch_timer: timer {
 		compatible = "arm,armv8-timer";
 		interrupts = <GIC_PPI 1 (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
@@ -562,11 +585,6 @@
 			reg = <0xc8 0xc8>;
 		};
 
-		restart_reason@65c {
-			compatible = "qcom,msm-imem-restart_reason";
-			reg = <0x65c 0x4>;
-		};
-
 		boot_stats@6b0 {
 			compatible = "qcom,msm-imem-boot_stats";
 			reg = <0x6b0 0x20>;
@@ -647,6 +665,17 @@
 
 		sleepstate_smp2p_in: qcom,sleepstate-in {
 			qcom,entry-name = "sleepstate_see";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg2_out: qcom,smp2p-rdbg2-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg2_in: qcom,smp2p-rdbg2-in {
+			qcom,entry-name = "rdbg";
 			interrupt-controller;
 			#interrupt-cells = <2>;
 		};
@@ -860,7 +889,7 @@
 		compatible = "qcom,msm-eud";
 		interrupt-names = "eud_irq";
 		interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH>;
-		reg = <0x1610000 0x1000>,
+		reg = <0x1610000 0x2000>,
 			<0x1612000 0x1000>;
 		reg-names = "eud_base", "eud_mode_mgr2";
 		qcom,secure-eud-en;
@@ -1253,6 +1282,7 @@
 		clock-names = "ahb_clk";
 		sw-reset = <&gpu_cc_gx_sw_reset>;
 		domain-addr = <&gpu_cc_gx_domain_addr>;
+		qcom,reset-aon-logic;
 		qcom,retain-regs;
 		qcom,support-cfg-gdscr;
 	};
@@ -1475,6 +1505,16 @@
 			};
 
 		};
+	};
+
+	reg_1p3_rfa_fixed: fixed-regulator {
+		compatible = "qti-regulator-fixed";
+		regulator-name = "1P3_RFA";
+		regulator-min-microvolt = <1304000>;
+		regulator-max-microvolt = <1304000>;
+		gpio = <&tlmm 71 0>;
+		enable-active-high;
+		vin-supply = <&S6A>;
 	};
 
 	google,debug-kinfo {
@@ -1869,7 +1909,7 @@
 			l3_dcvs_sp: sp {
 				compatible = "qcom,dcvs-path";
 				qcom,dcvs-path-type = <0>;
-				qcom,shared-offset = <0x0090>;
+				qcom,shared-offset = <0x0320>;
 			};
 		};
 
@@ -2190,6 +2230,7 @@
 #include "pitti-reserved-memory.dtsi"
 #include "pitti-coresight.dtsi"
 #include "pitti-debug.dtsi"
+#include "msm-rdbg-adsp.dtsi"
 #include "pitti-dma-heaps.dtsi"
 #include "msm-arm-smmu-pitti.dtsi"
 #include "pitti-thermal.dtsi"
