@@ -34,43 +34,43 @@
         regulators {
             cam_dio_ldo1: ldo1 {
                 regulator-name = "ldo1_dio";
-                regulator-min-microvolt = <504000>;
-                regulator-max-microvolt = <1504000>;
+                regulator-min-microvolt = <496000>;
+                regulator-max-microvolt = <2048000>;
             };
 
             cam_dio_ldo2: ldo2 {
                 regulator-name = "ldo2_dio";
-                regulator-min-microvolt = <504000>;
-                regulator-max-microvolt = <1504000>;
+                regulator-min-microvolt = <496000>;
+                regulator-max-microvolt = <2048000>;
             };
 
             cam_dio_ldo3: ldo3 {
                 regulator-name = "ldo3_dio";
-                regulator-min-microvolt = <1500000>;
+                regulator-min-microvolt = <1372000>;
                 regulator-max-microvolt = <3412000>;
             };
 
             cam_dio_ldo4: ldo4 {
                 regulator-name = "ldo4_dio";
-                regulator-min-microvolt = <1500000>;
+                regulator-min-microvolt = <1372000>;
                 regulator-max-microvolt = <3412000>;
             };
 
             cam_dio_ldo5: ldo5 {
                 regulator-name = "ldo5_dio";
-                regulator-min-microvolt = <1500000>;
+                regulator-min-microvolt = <1372000>;
                 regulator-max-microvolt = <3412000>;
             };
 
             cam_dio_ldo6: ldo6 {
                 regulator-name = "ldo6_dio";
-                regulator-min-microvolt = <1500000>;
+                regulator-min-microvolt = <1372000>;
                 regulator-max-microvolt = <3412000>;
             };
 
             cam_dio_ldo7: ldo7 {
                 regulator-name = "ldo7_dio";
-                regulator-min-microvolt = <1500000>;
+                regulator-min-microvolt = <1372000>;
                 regulator-max-microvolt = <3412000>;
             };
         };
