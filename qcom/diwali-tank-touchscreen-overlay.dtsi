@@ -55,7 +55,7 @@
 		goodix,sample-ctrl;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x07>;
-		mmi,fod_coords = <610 2067>;
+		mmi,fod_coords = <610 2440>;
 		goodix,gesture-wait-pm;
 		goodix,stowed-mode-ctrl;
 		mmi,resolution_boost = <16>;
