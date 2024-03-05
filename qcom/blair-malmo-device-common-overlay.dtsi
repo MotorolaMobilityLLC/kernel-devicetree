@@ -25,6 +25,13 @@
         cd-gpios = <&tlmm 94 GPIO_ACTIVE_HIGH>;
 };
 
+/* Primary USB port related controller */
+&usb0 {
+	dwc3@4e00000 {
+		snps,usb2-lpm-disable;
+	};
+};
+
 /* Primary USB port related QUSB2 PHY */
 &usb2_phy0 {
 	qcom,param-override-seq =
