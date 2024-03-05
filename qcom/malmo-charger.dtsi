@@ -69,12 +69,14 @@
 	qcom,fv-max-uv = <4500000>;
 	qcom,dcp-curr-max = <2000000>;
 	qcom,hvdcp2-max-icl-ua = <2000000>;
-	qcom,otg-cl-ua = <1000000>;
+	qcom,otg-cl-ua = <1500000>;
 	qcom,thermal-mitigation = <3000000 2500000
 			2000000 1500000
 			1200000 900000
 			500000>;
 	mmi,qc3p-support;
+	qcom,lpd-disable;
+	qcom,typec-legacy-rp-icl;
 	qcom,sec-charger-config = <0>;
 	/delete-property/ qcom,fcc-stepping-enable;
 
