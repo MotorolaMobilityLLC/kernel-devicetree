@@ -13,6 +13,14 @@
 #include "blair-pm7250b-moto-common-overlay.dtsi"
 #include "malmo-charger.dtsi"
 
+&pm8008_8 {
+	status = "disabled";
+};
+
+&pm8008_9 {
+	status = "disabled";
+};
+
 &pm7250b_charger {
 	dpdm-supply = <&usb2_phy0>;
 };
