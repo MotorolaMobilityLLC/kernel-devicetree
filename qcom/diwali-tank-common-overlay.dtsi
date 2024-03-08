@@ -28,6 +28,7 @@
 #include "moto-tank-external-camera-pmic.dtsi"
 #include "diwali-tank-evb-sensor-overlay.dtsi"
 #include "diwali-tank-thermal-overlay.dtsi"
+#include "diwali-tank-wlan-elna-controller.dtsi"
 
 &pm8010i_8 {
 	status = "disabled";
