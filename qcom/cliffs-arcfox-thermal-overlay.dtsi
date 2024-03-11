@@ -1,7 +1,7 @@
 #include "moto_therm_sys_temp.dtsi"
 
 &socd_trip {
-    temperature = <98>;
+    temperature = <95>;
 };
 
 &pmk8550_vadc {
