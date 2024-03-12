@@ -144,6 +144,7 @@
 
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
+	mmi,aura-combo-policy;
 	qcom,thermal-mitigation = <5600000 4000000 3000000 2000000 1000000 300000 100000>;
 	qcom,wireless-fw-name = "cps4041.bin";
 };
