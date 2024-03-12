@@ -465,6 +465,10 @@
 			regulator-min-microvolt = <1100000>;
 			regulator-max-microvolt = <1300000>;
 			qcom,init-voltage = <1100000>;
+			qcom,proxy-consumer-enable;
+			proxy-supply = <&pm6125_l3>;
+			qcom,proxy-consumer-current = <299000>;
+			qcom,proxy-consumer-voltage = <1250000 1300000>;
 			status = "okay";
 		};
 	};
@@ -477,6 +481,8 @@
 			qcom,init-voltage = <1232000>;
 			qcom,proxy-consumer-enable;
 			proxy-supply = <&pm6125_l4>;
+			qcom,proxy-consumer-voltage = <1200000 1300000>;
+			qcom,proxy-consumer-current = <21800>;
 			status = "okay";
 		};
 	};
@@ -507,6 +513,10 @@
 			regulator-min-microvolt = <788000>;
 			regulator-max-microvolt = <1050000>;
 			qcom,init-voltage = <880000>;
+			qcom,proxy-consumer-enable;
+			proxy-supply = <&pm6125_l7>;
+			qcom,proxy-consumer-voltage = <880000 1050000>;
+			qcom,proxy-consumer-current = <97800>;
 			status = "okay";
 		};
 	};
@@ -571,8 +581,9 @@
 			regulator-max-microvolt = <1980000>;
 			qcom,init-voltage = <1650000>;
 			qcom,proxy-consumer-enable;
-			qcom,proxy-consumer-current = <62000>;
+			qcom,proxy-consumer-current = <200000>;
 			proxy-supply = <&pm6125_l13>;
+			qcom,proxy-consumer-voltage = <1800000 1980000>;
 			status = "okay";
 		};
 	};
@@ -660,6 +671,10 @@
 			regulator-min-microvolt = <3000000>;
 			regulator-max-microvolt = <3400000>;
 			qcom,init-voltage = <3000000>;
+			qcom,proxy-consumer-enable;
+			proxy-supply = <&pm6125_l21>;
+			qcom,proxy-consumer-voltage = <3000000 3400000>;
+			qcom,proxy-consumer-current = <10000>;
 			status = "okay";
 		};
 	};
