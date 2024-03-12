@@ -44,6 +44,7 @@
 		df-serialnum = "SB18D34202";
 		#include "bat_setting/CW_nd50-atl-5000mah-penang5g.dtsi"
 		#include "bat_setting/CW_nd50-atl-5000mah_new-penang5g.dtsi"
+                #include "bat_setting/CW_nh50-atl-5000mah-new-5mohm-penang5g.dtsi"
 		#include "bat_setting/CW_nd50-jiade-5000mah-penang5g.dtsi"
 		#include "bat_setting/CW_nd50-jiade-5000mah_new-penang5g.dtsi"
 		#include "bat_setting/CW_nd50-local-5000mah.dtsi"
