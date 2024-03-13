@@ -15,8 +15,8 @@ qcom,qe50-scud-5000mah {
     serialnum = "SB18E14178";
     qcom,sdam-magic-number = <0x18E14178>;
     qcom,max-voltage-uv = <4530000>;
-    qcom,fg-cc-cv-threshold-uv = <4500000>;
-    qcom,fastchg-current-ma = <6000>;
+    qcom,fg-cc-cv-threshold-uv = <4520000>;
+    qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <4150>;
     qcom,battery-therm-kohm = <100>;
