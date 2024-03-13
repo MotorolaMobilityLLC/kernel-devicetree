@@ -46,6 +46,7 @@
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
+		goodix,pitch-ctrl;
 		goodix,interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
@@ -74,6 +75,7 @@
 		pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
 		pinctrl-2 = <&ts_spi_release>;
 		focaltech,edge-ctrl;
+		focaltech,pitch-ctrl;
 		focaltech,sample-ctrl;
 		focaltech,interpolation-ctrl;
 		focaltech,stowed-mode-ctrl;
