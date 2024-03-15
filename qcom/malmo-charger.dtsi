@@ -237,3 +237,9 @@
 	};
 };
 
+&usb2_phy0 {
+        #io-channel-cells = <1>;
+        io-channels = <&pm7250b_charger PSY_IIO_USB_REAL_TYPE>;
+        io-channel-names = "chg_type";
+};
+
