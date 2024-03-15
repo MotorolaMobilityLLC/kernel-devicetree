@@ -349,6 +349,7 @@ _platform_map = {
             {"name": "cliffs-arcfox-evt3-overlay.dtbo", "product": "arcfox", },
             {"name": "cliffs-arcfox-dvt1b-overlay.dtbo", "product": "arcfox", },
             {"name": "cliffs-arcfox-dvt1c-overlay.dtbo", "product": "arcfox", },
+            {"name": "cliffs-arcfox-jp-evt-overlay.dtbo", "product": "arcfox", },
         ],
     },
     "pineapple-tuivm": {

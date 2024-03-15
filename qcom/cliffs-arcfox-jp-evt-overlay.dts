@@ -1,0 +1,13 @@
+/dts-v1/;
+/plugin/;
+
+#include "cliffs-arcfox-device-common-overlay.dtsi"
+
+#define ARCFOX_RADIO_JP 4
+
+/ {
+	model = "arcfox";
+	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp", "qcom,moto";
+	qcom,msm-id = <614 0x10000>, <632 0x10000>;
+	qcom,board-id = <(ARCFOX_RADIO_JP<<8 | 0x43) 0xA000>;
+};

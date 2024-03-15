@@ -26,6 +26,7 @@ PINEAPPLE_BASE_DTB += cliffs-arcfox-base.dtb
 PINEAPPLE_BOARDS += cliffs-arcfox-evt3-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-arcfox-dvt1b-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-arcfox-dvt1c-overlay.dtbo
+PINEAPPLE_BOARDS += cliffs-arcfox-jp-evt-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_CTWOV_DTB),y)
