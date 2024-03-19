@@ -39,6 +39,19 @@
 			output-low;
 		};
 	};
+
+	sc760x_ext_mos_dis: sc760x_ext_mos_dis {
+		mux {
+			pins = "gpio176";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio176";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
 };
 
 &qupv3_se1_spi {
@@ -72,9 +85,10 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <169 0>;
 		pinctrl-names = "default", "sc760x_enable", "sc760x_disable";
-		pinctrl-0 = <&sc760x_irq_default>;
+		pinctrl-0 = <&sc760x_irq_default &sc760x_disable &sc760x_ext_mos_dis>;
 		pinctrl-1 = <&sc760x_enable>;
 		pinctrl-2 = <&sc760x_disable>;
+		mmi,sc760x_extmos_en = <&tlmm 176 0>;
 
 		sc,sc760x,bat-chg-lim-disable = <0>;
 		sc,sc760x,bat-chg-lim = <39>; /*50 + val * 50*/
@@ -104,6 +118,7 @@
 		vchg-max-microvolt = <4600000>;
 		ichg-microamp = <700000>;
 		vchg-microvolt = <4400000>;
+		dual-vbatt-diff-thre = <500>;
 
 		mmi,ichg-invert-polority;
 		mmi,ext-usb-psy-name = "usb";
