@@ -129,6 +129,8 @@ its hardware characteristcs.
 
 		- CoreSight secure ETR:
 			"qcom,coresight-secure-etr"
+		- Coresight dbgui device:
+                        "qcom,coresight-dbgui"
 
 	* port or ports: see "Graph bindings for Coresight" below.
 
