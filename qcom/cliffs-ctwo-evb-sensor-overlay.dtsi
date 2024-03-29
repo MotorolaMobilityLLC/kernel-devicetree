@@ -54,6 +54,7 @@
 		interrupts = <135 0x02>;
 		interrupt-names = "capsense0_irq";
 		Semtech,nirq-gpio= <&tlmm 135 0x02>;
+		reinit-on-i2c-failure = <1>;
 		/*use PH4/5/6 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
 		Semtech,ref-phases-a = <3>;
