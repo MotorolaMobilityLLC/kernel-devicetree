@@ -63,7 +63,7 @@
 			dma-coherent;
 
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
-			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+			usb-phy = <&usb_nop_phy>, <&usb_qmp_dp_phy>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x0>;
@@ -73,7 +73,7 @@
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
-			dr_mode = "otg";
+			dr_mode = "peripheral";
 			maximum-speed = "super-speed-plus";
 		};
 	};
@@ -88,7 +88,9 @@
 			"eud_enable_reg",
 			"eud_detect_reg";
 
+		vdd-supply = <&pmxr2230_l8>;
 		qcom,vdd-voltage-level = <0 880000 880000>;
+		vdda12-supply = <&pm_v8d_l1>;
 
 		clocks = <&rpmhcc RPMH_CXO_PAD_CLK>,
 			<&tcsrcc TCSR_USB2_CLKREF_EN>;
@@ -104,8 +106,10 @@
 		reg = <0x88e6000 0x3000>;
 		reg-names = "qmp_phy_base";
 
+		vdd-supply = <&pm_v8d_l3>;
 		qcom,vdd-voltage-level = <0 880000 880000>;
 		qcom,vdd-max-load-uA = <47000>;
+		core-supply = <&pm_v8d_l1>;
 
 		usb3_dp_phy_gdsc-supply = <&gcc_usb3_phy_gdsc>;
 		clocks = <&gcc GCC_USB3_PRIM_PHY_AUX_CLK>,
@@ -123,6 +127,8 @@
 			<&gcc GCC_USB3_PHY_PRIM_BCR>;
 		reset-names = "global_phy_reset", "phy_reset";
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb3_0_phy_portselect_default>;
 		qcom,qmp-phy-reg-offset =
 			<USB3_DP_PCS_PCS_STATUS1
 			USB3_DP_PCS_USB3_AUTONOMOUS_MODE_CTRL
@@ -344,6 +350,15 @@
 		qcom,core-clk-rate-disconnected = <133333333>;
 		qcom,pm-qos-latency = <2>;
 
+		qcom,num-gsi-evt-buffs = <0x3>;
+		qcom,gsi-reg-offset =
+			<0x0fc /* GSI_GENERAL_CFG */
+			0x110 /* GSI_DBL_ADDR_L */
+			0x120 /* GSI_DBL_ADDR_H */
+			0x130 /* GSI_RING_BASE_ADDR_L */
+			0x144 /* GSI_RING_BASE_ADDR_H */
+			0x1a4>; /* GSI_IF_STS */
+
 		interconnect-names = "usb-ddr", "ddr-usb";
 		interconnects = <&aggre1_noc MASTER_USB3_1 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_1>;
@@ -381,7 +396,9 @@
 		reg = <0x88e9000 0x154>;
 		reg-names = "eusb2_phy_base";
 
+		vdd-supply = <&pmxr2230_l8>;
 		qcom,vdd-voltage-level = <0 880000 880000>;
+		vdda12-supply = <&pm_v8d_l1>;
 
 		clocks = <&rpmhcc RPMH_CXO_PAD_CLK>,
 			<&tcsrcc TCSR_USB2_2_CLKREF_EN>;
@@ -397,8 +414,10 @@
 		reg = <0x88ea000 0x3000>;
 		reg-names = "qmp_phy_base";
 
+		vdd-supply = <&pmxr2230_l9>;
 		qcom,vdd-voltage-level = <0 880000 880000>;
 		qcom,vdd-max-load-uA = <47000>;
+		core-supply = <&pm_v8d_l1>;
 
 		usb3_dp_phy_gdsc-supply = <&gcc_usb3_sec_phy_gdsc>;
 		clocks = <&gcc GCC_USB3_SEC_PHY_AUX_CLK>,
@@ -416,6 +435,8 @@
 			<&gcc GCC_USB3_PHY_SEC_BCR>;
 		reset-names = "global_phy_reset", "phy_reset";
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb3_1_phy_portselect_default>;
 		qcom,qmp-phy-reg-offset =
 			<USB3_DP_PCS_PCS_STATUS1
 			USB3_DP_PCS_USB3_AUTONOMOUS_MODE_CTRL
@@ -607,4 +628,9 @@
 		qcom,usb-audio-stream-id = <0xf>;
 		qcom,usb-audio-intr-num = <2>;
 	};
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
+	};
+
 };

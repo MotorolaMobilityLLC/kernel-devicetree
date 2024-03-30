@@ -419,7 +419,7 @@
 	qcom,rpm-master-stats@45f0150 {
 		compatible = "qcom,rpm-master-stats";
 		reg = <0x45f0150 0x5000>;
-		qcom,masters = "APSS", "MPSS", "ADSP";
+		qcom,masters = "APSS", "MPSS", "ADSP", "WPSS";
 		qcom,master-stats-version = <2>;
 		qcom,master-offset = <4096>;
 	};
@@ -441,6 +441,11 @@
 		qcom,gic-class0-cpus = <0 1 2 3 4 5>;
 		/* keep gold cores in class1 */
 		qcom,gic-class1-cpus = <6 7>;
+	};
+
+	show_resume_irqs@f200000 {
+		compatible = "qcom,show-resume-irqs";
+		reg = <0xf200000 0x150000>;
 	};
 
 	kryo-erp {
@@ -800,7 +805,8 @@
 		qcom,keepalive;
 		clock-names = "bus", "bus_a";
 		clocks = <&rpmcc RPM_SMD_SNOC_CLK>,
-			<&rpmcc RPM_SMD_SNOC_A_CLK>;
+			<&rpmcc RPM_SMD_SNOC_A_CLK>,
+			<&gcc GCC_SYS_NOC_UFS_PHY_AXI_CLK>;
 	};
 
 	config_noc: interconnect@1900000 {
@@ -839,6 +845,33 @@
 		interrupts = <IPCC_CLIENT_AOP
 			      IPCC_MPROC_SIGNAL_GLINK_QMP
 			      IRQ_TYPE_EDGE_RISING>;
+	};
+
+	qcom,memshare {
+		compatible = "qcom,memshare";
+
+		qcom,client_1 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x0>;
+			qcom,client-id = <0>;
+			qcom,allocate-boot-time;
+			label = "modem";
+		};
+
+		qcom,client_2 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x0>;
+			qcom,client-id = <2>;
+			label = "modem";
+		};
+
+		qcom,client_3 {
+			compatible = "qcom,memshare-peripheral";
+			qcom,peripheral-size = <0x500000>;
+			qcom,client-id = <1>;
+			qcom,allocate-on-request;
+			label = "modem";
+		};
 	};
 
 	clocks {
@@ -890,9 +923,13 @@
 		interrupt-names = "eud_irq";
 		interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_HIGH>;
 		reg = <0x1610000 0x2000>,
-			<0x1612000 0x1000>;
-		reg-names = "eud_base", "eud_mode_mgr2";
+			<0x1612000 0x1000>,
+			<0x3E5018 0x4>;
+		reg-names = "eud_base", "eud_mode_mgr2",
+					"eud_tcsr_check_reg";
 		qcom,secure-eud-en;
+		qcom,eud-tcsr-check-enable;
+		qcom,eud-utmi-delay = /bits/ 16 <255>;
 	};
 
 	rpmcc: clock-controller {
@@ -1537,12 +1574,20 @@
 
 		lanes-per-direction = <2>;
 		clock-names = "ref_clk_src",
-			"ref_aux_clk", "qref_clk",
+			"ref_aux_clk", "qref_clk", "ref_clk_pad_en",
 			"rx_sym0_mux_clk", "rx_sym1_mux_clk", "tx_sym0_mux_clk",
 			"rx_sym0_phy_clk", "rx_sym1_phy_clk", "tx_sym0_phy_clk";
 		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
 			<&gcc GCC_UFS_PHY_PHY_AUX_CLK>,
 			<&gcc GCC_UFS_CLKREF_EN>,
+			/* *
+			 * GCC_UFS_PAD_CLKREF_EN is required only if separate
+			 * vote on both UFS PHY and UFS_CLK_REF_BSM is needed.
+			 * GCC_UFS_PAD_CLKREF_EN should be voted to enable ref
+			 * clock for UFS_CLK_REF_BSM. Refer XO network diagram
+			 * to check if vote on UFS_CLK_REF_BSM is needed.
+			 */
+			<&gcc GCC_UFS_PAD_CLKREF_EN>,
 			<&gcc GCC_UFS_PHY_RX_SYMBOL_0_CLK_SRC>,
 			<&gcc GCC_UFS_PHY_RX_SYMBOL_1_CLK_SRC>,
 			<&gcc GCC_UFS_PHY_TX_SYMBOL_0_CLK_SRC>,
@@ -1658,7 +1703,7 @@
 		qcom,iommu-dma-addr-pool = <0x40000000 0x10000000>;
 		qcom,iommu-geometry = <0x40000000 0x10000000>;
 		iommus = <&apps_smmu 0x0180 0x0>;
-		qcom,iommu-dma = "bypass";
+		qcom,iommu-dma = "fastmap";
 
 		ufs-dev-types = <2>;
 		nvmem-cells = <&ufs_dev>, <&boot_config>;
@@ -1764,6 +1809,11 @@
 
 	qcom,glink {
 		compatible = "qcom,glink";
+	};
+
+	adsp_sleepmon: adsp-sleepmon {
+		compatible = "qcom,adsp-sleepmon";
+		qcom,rproc-handle = <&adsp_pas>;
 	};
 
 	spmi_bus: qcom,spmi@1c40000 {
