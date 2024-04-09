@@ -13,8 +13,8 @@ qcom,qe50-cosmx-5000mah {
     /* 6988537_Huaqin_QN6982A_COSMX_5000mAH_PM7250B_averaged_MasterSlave_Feb12th2024 */
     serialnum = "SB18E14179";
     qcom,sdam-magic-number = <0x18E14179>;
-    qcom,max-voltage-uv = <4530000>;
-    qcom,fg-cc-cv-threshold-uv = <4520000>;
+    qcom,max-voltage-uv = <4500000>;
+    qcom,fg-cc-cv-threshold-uv = <4500000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <4150>;

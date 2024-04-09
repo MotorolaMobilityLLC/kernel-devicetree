@@ -14,8 +14,8 @@ qcom,qe50-scud-5000mah {
     /* 6988512_Huaqin_QN6982A_5000mAH_averaged_MasterSlave_Jan24th2024 */
     serialnum = "SB18E14178";
     qcom,sdam-magic-number = <0x18E14178>;
-    qcom,max-voltage-uv = <4530000>;
-    qcom,fg-cc-cv-threshold-uv = <4520000>;
+    qcom,max-voltage-uv = <4500000>;
+    qcom,fg-cc-cv-threshold-uv = <4500000>;
     qcom,fastchg-current-ma = <4000>;
     qcom,batt-id-kohm = <0>;
     qcom,battery-beta = <4150>;
