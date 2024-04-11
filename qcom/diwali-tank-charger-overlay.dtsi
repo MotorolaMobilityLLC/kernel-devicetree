@@ -1,7 +1,8 @@
 &mmi_charger {
-	mmi,dcp-power-max = <7500>;
+	mmi,dcp-power-max = <10000>;
 	mmi,hvdcp-power-max = <20000>;
 	mmi,pd-power-max = <68000>;
+	mmi,factory-syspoweroff-wait;
 };
 
 &battery_charger {
