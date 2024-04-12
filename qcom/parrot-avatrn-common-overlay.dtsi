@@ -149,3 +149,10 @@
 &usb0 {
 	ssusb_redriver = <&redriver>;
 };
+
+&usb3phy_portselect_default {
+	config {
+		pins = "gpio100";
+		bias-pull-down;
+	};
+};
