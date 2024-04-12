@@ -75,7 +75,7 @@
 		/* Tx pre-emphasis tuning */
 		 0x5 0x57
 		/* HS disconnect threshold */
-		 0x3 0x53
+		 0x4 0x53
 		/* slew rate */
 		 0x00 0x59>;
 };
