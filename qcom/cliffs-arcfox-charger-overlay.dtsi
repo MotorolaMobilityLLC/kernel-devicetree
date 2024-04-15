@@ -133,10 +133,10 @@
 		mmi,mmi-temp-zones = <0 4200 204 0>,
 				<10 4250 814 509>,
 				<15 4530 814 0>,
-				<35 4200 2000 1527>,
+				<35 4000 2000 1527>,
 				<35 4300 1527 1222>,
 				<35 4350 1222 1018>,
-				<45 4250 2000 1527>,
+				<45 4000 2000 1527>,
 				<45 4300 1527 1222>,
 				<45 4350 1222 1018>,
 				<60 4200 814 0>;
@@ -160,12 +160,12 @@
 &battery_charger {
 	mmi,combo-batt-psy = <&mmi_charger>;
 	mmi,aura-combo-policy;
-	qcom,thermal-mitigation = <5600000 4000000 3000000 2000000 1000000 300000 100000>;
+	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 300000 100000>;
 	qcom,wireless-fw-name = "cps4041.bin";
 };
 
 &qti_glink_charger {
-	mmi,max-fv-mv = <4550>;
+	mmi,max-fv-mv = <4540>;
 	mmi,max-fcc-ma = <5000>;
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
