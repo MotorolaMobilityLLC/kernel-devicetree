@@ -7,6 +7,8 @@
 	qcom,batt-id-range-pct = <15>;
 	#include "qg-batterydata-qe50-scud-5000mah.dtsi"
 	#include "qg-batterydata-qe50-cosmx-5000mah.dtsi"
+	#include "qg-batterydata-qe50-nvti-5000mah.dtsi"
+	#include "qg-batterydata-qe50-nvti-cn-5000mah.dtsi"
 };
 
 &pm7250b_charger {
