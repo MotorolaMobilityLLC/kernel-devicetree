@@ -79,6 +79,7 @@
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
 		goodix,sample-ctrl;
+		mmi,resolution_boost = <16>;
 	};
 };
 
@@ -182,5 +183,6 @@
 		mmi,cli-enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
 		fts,pocket-mode-ctrl;
+		mmi,resolution_boost = <16>
     };
 };
