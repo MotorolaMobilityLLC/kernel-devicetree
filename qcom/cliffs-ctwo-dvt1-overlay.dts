@@ -3,7 +3,7 @@
 
 #include "cliffs-ctwo-device-common-overlay.dtsi"
 #include "cliffs-moto-ctwo-qorvo-uwb.dtsi"
-
+#include "cliffs-ctwo-dvt-sensor-overlay.dtsi"
 / {
 	model = "ctwo";
 	compatible = "qcom,cliffs-mtp", "qcom,cliffs", "qcom,mtp", "qcom,moto";
