@@ -3,7 +3,7 @@
 
 #include "cliffs-ctwo-device-common-overlay.dtsi"
 #include "cliffs-moto-ctwo-qorvo-uwb-evt.dtsi"
-
+#include "cliffs-ctwo-evb-sensor-overlay.dtsi"
 &L11B {
 	regulator-min-microvolt = <1800000>;
 	regulator-max-microvolt = <1800000>;
