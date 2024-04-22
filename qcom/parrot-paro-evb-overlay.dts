@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "parrot-cusco-common-overlay.dtsi"
+#include "parrot-paro-common-overlay.dtsi"
 
 / {
 	model = "cusco";
