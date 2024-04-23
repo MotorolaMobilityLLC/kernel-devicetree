@@ -113,3 +113,8 @@
 			0x03 0x78>;
 };
 
+&usb3phy_portselect_default {
+	config {
+		bias-pull-down;
+	};
+};
