@@ -142,6 +142,7 @@
 		/* private node belongs to aw963xx */
 		start-mode = < 1 >; // 0: start in rom  1: start in ram
 		irq-mux = < 2 >; // set csx as irq pin. config this field when connect to aw96308/aw96310
+		monitor_esd_flag = < 1 >; // enable esd recover timer
 		status = "okay";
 	};
 };
