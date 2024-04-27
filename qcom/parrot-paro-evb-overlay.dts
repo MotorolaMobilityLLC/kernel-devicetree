@@ -4,9 +4,9 @@
 #include "parrot-paro-common-overlay.dtsi"
 
 / {
-	model = "cusco";
-	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,cusco";
+	model = "paro";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,paro";
 	qcom,msm-id = <537 0x10000>;
-	qcom,board-id = <0x45 0x9000>;
+	qcom,board-id = <0x43 0x9000>;
 };
 
