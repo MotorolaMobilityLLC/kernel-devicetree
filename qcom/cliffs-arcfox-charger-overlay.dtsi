@@ -171,6 +171,6 @@
 	mmi,paired-id = <0x00010000>;
 	mmi,partner_psy_name = "charger";
 	mmi,thermal-primary-mitigation = <4000000 2900000 2000000 1000000 500000 300000 200000>;
-	mmi,thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1000000 500000 100000>;
+	mmi,thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1100000 500000 100000>;
 	//mmi,shutdown-empty-vbat-mv = <3000>;
 };
