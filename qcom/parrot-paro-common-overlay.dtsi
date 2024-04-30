@@ -12,7 +12,7 @@
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-wcn3990.dtsi"
-#include "parrot-cusco-charger-overlay.dtsi"
+#include "parrot-paro-charger-overlay.dtsi"
 #include "parrot-cusco-thermal-overlay.dtsi"
 #include "parrot-paro-touchscreen-overlay.dtsi"
 #include "parrot-cusco-sensor-overlay.dtsi"
