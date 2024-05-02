@@ -115,11 +115,9 @@
 };
 
 &qupv3_se9_spi {
-	#address-cells = <1>;
-	#size-cells = <0>;
-
 	status = "ok";
-
+	pinctrl-0 = <&qupv3_se9_spi_mosi_active &qupv3_se9_spi_miso_active &qupv3_se9_spi_clk_active &qupv3_se9_spi_cs_active>;
+	pinctrl-1 = <&qupv3_se9_spi_sleep &qupv3_se9_spi_cs_sleep>;
 	ilitek@1 {
 		compatible = "tchip,ilitek";
 		reg = <0x1>;
