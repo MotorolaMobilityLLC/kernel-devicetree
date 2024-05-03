@@ -112,6 +112,21 @@
 			};
 		};
 	};
+
+	pmx_ts_spi_int_active {
+                        ts_spi_int_active: ts_spi_int_active {
+                                mux {
+                                        pins = "gpio65", "gpio131";
+                                        function = "gpio";
+                                };
+
+                                config {
+                                        pins = "gpio65", "gpio131";
+                                        drive-strength = <8>;
+                                        bias-pull-up;
+                                };
+                        };
+                };
 };
 
 &qupv3_se9_spi {
@@ -128,7 +143,7 @@
 		touch,reset-gpio = <&tlmm 131 0x00>;
 		touch,irq-gpio = <&tlmm 65 0x2001>;
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
-		pinctrl-0 = <&ts_spi_active>;
+		pinctrl-0 = <&ts_spi_int_active>;
 		pinctrl-1 = <&ts_spi_int_suspend_high>;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
