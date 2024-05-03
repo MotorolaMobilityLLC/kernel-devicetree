@@ -16,7 +16,7 @@
 #include "parrot-cusco-thermal-overlay.dtsi"
 #include "parrot-paro-touchscreen-overlay.dtsi"
 #include "parrot-paro-sensor-overlay.dtsi"
-#include "parrot-cusco-fps-overlay.dtsi"
+#include "parrot-paro-fps-overlay.dtsi"
 #include "moto-paro-et5904.dtsi"
 #include "parrot-cusco-nfc-overlay.dtsi"
 #include "parrot-cusco-wlan-antenna-control.dtsi"
