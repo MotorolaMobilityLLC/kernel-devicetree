@@ -1,138 +1,97 @@
 &tlmm {
 	fps_rst_active: fps_rst_active {
-                /* active state */
-                mux {
-                        pins = "gpio101";
-                        function = "gpio";
-                };
+		/* active state */
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
 
-                config {
-                        pins = "gpio101";
-                        drive-strength = <2>; /* 2 MA */
-                        output-low;
-                };
-        };
-
-        fps_rst_suspend: fps_rst_suspend {
-                /* sleep state */
-                mux {
-                        pins = "gpio101";
-                        function = "gpio";
-                };
-
-                config {
-                        pins = "gpio101";
-                        drive-strength = <2>; /* 2 MA */
-                };
-        };
-
-        fps_int_active: fps_int_active {
-                /* active state */
-                mux {
-                        pins = "gpio111";
-                        function = "gpio";
-                };
-
-                config {
-                        pins = "gpio111";
-                        drive-strength = <2>; /* 2 MA */
-                        bias-disable;
-                        input-enable;
-                };
-        };
-
-        fps_int_suspend: fps_int_suspend {
-                /* sleep state */
-                mux {
-                        pins = "gpio111";
-                        function = "gpio";
-                };
-
-                config {
-                        pins = "gpio111";
-                        drive-strength = <2>; /* 2 MA */
-                        bias-disable;
-                        input-enable;
-                };
-        };
-
-        jiiov_fp_reset_output_low: jiiov_fp_reset_output_low {
-                /* active state */
-                mux {
-                        pins = "gpio101";
-                        function = "gpio";
-                };
-
-                config {
-                        pins = "gpio101";
-                        drive-strength = <2>; /* 2 MA */
-                        output-low;
-                };
+		config {
+			pins = "gpio101";
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
 	};
 
-        jiiov_fp_reset_output_high: jiiov_fp_reset_output_high {
-                /* active state */
-                mux {
-                        pins = "gpio101";
-                        function = "gpio";
-                };
+	fps_rst_suspend: fps_rst_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio101";
+			function = "gpio";
+		};
 
-                config {
-                        pins = "gpio101";
-                        drive-strength = <2>; /* 2 MA */
-                        output-high;
-                };
-        };
+		config {
+			pins = "gpio101";
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
 
-        jiiov_fp_irq_default: jiiov_fp_irq_default {
-                mux {
-                        pins = "gpio111";
-                        function = "gpio";
-                };
+	fps_int_active: fps_int_active {
+		/* active state */
+		mux {
+			pins = "gpio111";
+			function = "gpio";
+		};
 
-                config {
-                        pins = "gpio111";
-                        drive-strength = <2>; /* 2 MA */
-                        bias-disable;
-                        input-enable;
-                };
-        };
+		config {
+			pins = "gpio111";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
+
+	fps_int_suspend: fps_int_suspend {
+		/* sleep state */
+		mux {
+			pins = "gpio111";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio111";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			input-enable;
+		};
+	};
+};
+
+&L28B {
+	regulator-max-microvolt = <3008000>;
+	qcom,init-voltage = <3000000>;
+	status = "ok";
 };
 
 &soc {
-	goodix_fingerprint {
-		compatible = "goodix,fingerprint";
+	fpc: fpc_fpc1020 {
+		compatible = "fpc,fpc1020";
 		status = "ok";
+		irq = <&tlmm 111 0>;
+		rst = <&tlmm 101 0>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <111 0>;
+		rgltr-ctrl-support;
+		fp,vdd-supply=<&L28B>;
+		fp,voltage-range = <3000000 3000000>;
+		pinctrl-names = "default", "suspend";
+		pinctrl-0 = <&fps_rst_active &fps_int_active>;
+		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+	};
+	goodix_fingerprint{
+		//status = "/chosen", "mmi,fps", "true";
+		status = "ok";
+		compatible = "goodix,fingerprint";
 		fp-gpio-reset = <&tlmm 101 0x00>;
-		fp-gpio-irq = <&tlmm 111 0x00>;
-		fp-gpio-ven = <&tlmm 132 0x00>;
+		fp-gpio-irq = <&tlmm 111  0x00>;
+		rgltr-ctrl-support;
+		fp,vdd-supply=<&L28B>;
+		fp,voltage-range = <3000000 3000000>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <111 0>;
 		interrupt-controller;
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&fps_rst_active &fps_int_active>;
 		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
-	};
-
-	jiiov_fp {
-		status = "ok";
-		compatible = "jiiov,fingerprint";
-		interrupt-parent = <&tlmm>;
-		interrupts = <111 0>;
-		anc,gpio_rst = <&tlmm 101 0x00>;
-		anc,gpio_irq = <&tlmm 111 0x00>;
-		anc,enable-on-boot;
-		anc,vdd_use_gpio;
-		anc,gpio_pwr = <&tlmm 132 0x0>;
-		//anc,vdd_use_pmic;
-		//vdd-supply = <&mt6368_vfp>;
-		//anc,vdd_config = <3300000 3300000 150000>;
-		pinctrl-names = "anc_reset_low",
-			"anc_reset_high",
-			"anc_irq_default";
-
-		pinctrl-0 = <&jiiov_fp_reset_output_low>;
-		pinctrl-1 = <&jiiov_fp_reset_output_high>;
-		pinctrl-2 = <&jiiov_fp_irq_default>;
 	};
 };
