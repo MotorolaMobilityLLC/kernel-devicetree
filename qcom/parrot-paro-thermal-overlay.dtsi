@@ -46,7 +46,7 @@
 };
 
 &pm6150l_vadc {
-	pinctrl-0 = <&spkr_therm_default &cam_therm_default &wide_rfc_therm_default>;
+	pinctrl-0 = <&ufs_therm_default &cam_therm_default &wide_rfc_therm_default>;
 
 	msm_therm {
 		reg = <ADC5_AMUX_THM2_100K_PU>;
@@ -62,53 +62,6 @@
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
 	};
-	spkr_therm {
-                reg = <ADC5_GPIO1_100K_PU>;
-                label = "spkr_therm";
-                qcom,ratiometric;
-                qcom,hw-settle-time = <200>;
-                qcom,pre-scaling = <1 1>;
-        };
-	rear_cam_therm {
-                reg = <ADC5_GPIO3_100K_PU>;
-                label = "rear_cam_therm";
-                qcom,ratiometric;
-                qcom,hw-settle-time = <200>;
-                qcom,pre-scaling = <1 1>;
-        };
-
-};
-
-&pm7250b_vadc {
-	interrupts = <0x8 0x31 0x0 IRQ_TYPE_EDGE_RISING>;
-
-	smb1390_therm@e {
-		qcom,scale-fn-type = <ADC_SCALE_HW_CALIB_PM5_SMB1398_TEMP>;
-	};
-
-	pm7250b_usb_conn_therm {
-		reg = <ADC5_AMUX_THM3_100K_PU>;
-		label = "pm7250b_usb_conn_therm";
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
-
-	pm7250b_smb_therm {
-                reg = <ADC5_AMUX_THM2_100K_PU>;
-                label = "pm7250b_smb_therm";
-                qcom,ratiometric;
-                qcom,hw-settle-time = <200>;
-                qcom,pre-scaling = <1 1>;
-        };
-
-	pm7250b_smb_skin_therm {
-		reg = <ADC5_AMUX_THM1_100K_PU>;
-		label = "pm7250b_smb_skin_therm";
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
 };
 
 &pm6150l_gpios {
@@ -118,45 +71,6 @@
 			bias-high-impedance;
 		};
 	};
-	spkr_therm {
-                spkr_therm_default: spkr_therm_default {
-                        pins = "gpio5";
-                        bias-high-impedance;
-                };
-        };
-	rear_cam_therm {
-                rear_cam_default: rear_cam_default {
-                        pins = "gpio7";
-                        bias-high-impedance;
-                };
-        };
-
-};
-
-&pm7250b_adc_tm {
-	interrupts = <0x8 0x35 0x0 IRQ_TYPE_EDGE_RISING>;
-	io-channels = <&pm7250b_vadc ADC5_AMUX_THM3_100K_PU>,
-			<&pm7250b_vadc ADC5_AMUX_THM2_100K_PU>,
-			<&pm7250b_vadc ADC5_AMUX_THM1_100K_PU>;
-
-	pm7250b_usb_conn_therm {
-		reg = <ADC5_AMUX_THM3_100K_PU>;
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-	};
-
-	pm7250b_smb_skin_therm {
-		reg = <ADC5_AMUX_THM1_100K_PU>;
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-	};
-
-	pm7250b_smb_therm {
-                reg = <ADC5_AMUX_THM2_100K_PU>;
-                qcom,ratiometric;
-                qcom,hw-settle-time = <200>;
-        };
-
 };
 
 &spmi_bus {
@@ -168,9 +82,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 			io-channels = <&pm6150l_vadc ADC5_AMUX_THM2_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO3_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO2_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO1_100K_PU>;
+			<&pm6150l_vadc ADC5_GPIO2_100K_PU>;
 
 			msm_therm {
 				reg = <ADC5_AMUX_THM2_100K_PU>;
@@ -182,17 +94,6 @@
 				qcom,ratiometric;
 				qcom,hw-settle-time = <200>;
 			};
-			spkr_therm {
-                                reg = <ADC5_GPIO1_100K_PU>;
-                                qcom,ratiometric;
-                                qcom,hw-settle-time = <200>;
-                        };
-			rear_cam_therm {
-                                reg = <ADC5_GPIO3_100K_PU>;
-                                qcom,ratiometric;
-                                qcom,hw-settle-time = <200>;
-                        };
-
 		};
 	};
 };
@@ -217,30 +118,6 @@
 			};
 		};
 	};
-	spkr-therm {
-                polling-delay-passive = <5000>;
-                polling-delay = <20000>;
-                thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO1_100K_PU>;
-                trips {
-                        active-config0 {
-                                temperature = <125000>;
-                                hysteresis = <1000>;
-                                type = "passive";
-                        };
-                };
-        };
-	sub-therm {
-                polling-delay-passive = <5000>;
-                polling-delay = <20000>;
-                thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO3_100K_PU>;
-                trips {
-                        active-config0 {
-                                temperature = <125000>;
-                                hysteresis = <1000>;
-                                type = "passive";
-                        };
-                };
-        };
 
 	sys-therm-3 {
 		status = "disabled";
@@ -267,7 +144,7 @@
 	sys-therm-4 {
 		status = "disabled";
 	};
-	pa-therm2 {
+	pa-therm1 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM1_100K_PU>;
@@ -288,7 +165,7 @@
 	sys-therm-5 {
 		status = "disabled";
 	};
-	pa-therm1 {
+	pa-therm0 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM3_100K_PU>;
@@ -333,7 +210,7 @@
 	sys-therm-6 {
 		status = "disabled";
 	};
-	chg-therm  {
+	schg-therm  {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
 		thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM1_100K_PU>;
@@ -351,27 +228,9 @@
 			};
 		};
 	};
-	mchg-therm  {
-                polling-delay-passive = <5000>;
-                polling-delay = <20000>;
-                thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM2_100K_PU>;
-                trips {
-                        active-config0 {
-                                temperature = <125000>;
-                                hysteresis = <1000>;
-                                type = "passive";
-                        };
-
-                        active-config1 {
-                                temperature = <125000>;
-                                hysteresis = <1000>;
-                                type = "passive";
-                        };
-                };
-        };
 	conn-therm  {
-                polling-delay-passive = <5000>;
-                polling-delay = <20000>;
+                polling-delay-passive = <3000>;
+                polling-delay = <5000>;
                 thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM3_100K_PU>;
                 trips {
                         active-config0 {
