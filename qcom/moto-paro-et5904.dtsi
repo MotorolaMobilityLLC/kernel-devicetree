@@ -1,15 +1,14 @@
 &tlmm{
 	cam_pmic_en_default: cam_pmic_en_default {
 		mux {
-		pins = "gpio125";
+		pins = "gpio122";
 		function = "gpio";
 		};
 
 		config {
-		pins = "gpio125";
+		pins = "gpio122";
 		drive-strength = <2>;
 		bias-pull-down;
-		output-low;
 		};
 	};
 };
@@ -28,33 +27,34 @@
 		compatible = "etek,et5904";
 		reg = <0x28>;
 
-		pinctrl-names = "et5904_gpio_en0";
+		etek,cs-gpios = <&tlmm 122 0>;
+		pinctrl-names = "default";
 		pinctrl-0 = <&cam_pmic_en_default>;
 
 		vin1-supply = <&S8B>;
 		vin2-supply = <&BOB>;
 
 		regulators {
-			et5904_ldo1: et5904_ldo1 {
-				regulator-name = "et5904_ldo1";
+			et5904_ldo1: ldo1 {
+				regulator-name = "ldo1";
 				regulator-min-microvolt = <600000>;
 				regulator-max-microvolt = <1800000>;
 			};
 
-			et5904_ldo2: et5904_ldo2 {
-				regulator-name = "et5904_ldo2";
+			et5904_ldo2: ldo2 {
+				regulator-name = "ldo2";
 				regulator-min-microvolt = <600000>;
 				regulator-max-microvolt = <1800000>;
 			};
 
-			et5904_ldo3: et5904_ldo3 {
-				regulator-name = "et5904_ldo3";
+			et5904_ldo3: ldo3 {
+				regulator-name = "ldo3";
 				regulator-min-microvolt = <1200000>;
 				regulator-max-microvolt = <4300000>;
 			};
 
-			et5904_ldo4: et5904_ldo4 {
-				regulator-name = "et5904_ldo4";
+			et5904_ldo4: ldo4 {
+				regulator-name = "ldo4";
 				regulator-min-microvolt = <1200000>;
 				regulator-max-microvolt = <4300000>;
 			};
