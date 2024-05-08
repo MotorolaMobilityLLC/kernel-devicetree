@@ -145,6 +145,7 @@
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_spi_int_active>;
 		pinctrl-1 = <&ts_spi_int_suspend_high>;
+		ilitek,check_resolution;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
