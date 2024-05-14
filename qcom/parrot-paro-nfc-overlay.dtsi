@@ -92,7 +92,7 @@
 	#size-cells = <0>;
 	nq@28 {
 		compatible = "qcom,sn-nci";
-		reg = <0x28>;
+		reg = <0x29>;
 		qcom,sn-irq = <&tlmm 9 0x00>;
 		qcom,sn-ven = <&tlmm 6 0x00>;
 		qcom,sn-clkreq = <&tlmm 7 0x00>;
