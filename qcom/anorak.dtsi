@@ -2662,6 +2662,7 @@
 #include "anorak-pinctrl.dtsi"
 #include "anorak-pcie.dtsi"
 #include "anorak-debug.dtsi"
+#include "anorak-coresight.dtsi"
 #include "msm-arm-smmu-anorak.dtsi"
 #include "anorak-usb.dtsi"
 #include "msm-rdbg.dtsi"
