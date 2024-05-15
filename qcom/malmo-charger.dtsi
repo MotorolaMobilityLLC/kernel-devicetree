@@ -134,6 +134,47 @@
 	temperature = <98>;
 };
 
+&tlmm{
+    qupv3_se10_i2c_out_high: qupv3_se10_i2c_out_high {
+	mux {
+		pins = "gpio5";
+		function = "gpio";
+	};
+
+	config {
+		    pins = "gpio5";
+		    drive-strength = <2>;
+		    bias-disable;
+		    output-high;
+	};
+    };
+    qupv3_se10_i2c_out_low: qupv3_se10_i2c_out_low {
+	mux {
+		pins = "gpio5";
+		function = "gpio";
+	};
+
+	config {
+		    pins = "gpio5";
+		    drive-strength = <2>;
+		    bias-disable;
+		    output-low;
+	};
+    };
+};
+
+&qupv3_se10_i2c{
+	status = "okay";
+	qcom,i2c_reg_address = <0x4C90000>;
+	qcom,noise_rjct_scl = <3>;
+	qcom,noise_rjct_sda = <3>;
+	pinctrl-names = "default", "sleep", "gpio_high", "gpio_low";
+	pinctrl-0 = <&qupv3_se10_i2c_active>;
+	pinctrl-1 = <&qupv3_se10_i2c_sleep>;
+	pinctrl-2 = <&qupv3_se10_i2c_out_high>;
+	pinctrl-3 = <&qupv3_se10_i2c_out_low>;
+};
+
 &qupv3_se10_i2c {
 	status = "okay";
 	bq25960_standalone:bq25960-standalone@6A {
