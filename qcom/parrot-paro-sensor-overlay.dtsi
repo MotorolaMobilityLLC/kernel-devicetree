@@ -131,4 +131,18 @@
 
 		status = "okay";
 	};
+
+	stk501xx@28 { /* SAR sensor */
+		compatible = "stk,stk501xx";
+		reg = <0x28>;
+		//pinctrl-names = "default","sleep";
+		//pinctrl-0 = <&sar_int_default>;
+		//pinctrl-1 = <&sar_int_sleep>;
+		stk,direction = "in";
+		interrupt-parent = <&tlmm>;
+		interrupts = <47 0x02>;
+		interrupt-names = "capsense1_irq";
+		stk501xx,irq-gpio = <&tlmm 47 0x02>;
+		status = "okay";
+	};
 };
