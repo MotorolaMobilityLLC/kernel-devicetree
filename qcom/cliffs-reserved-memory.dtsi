@@ -169,12 +169,12 @@
 
 	adspslpi_mem: adspslpi_region@9d400000 {
 		no-map;
-		reg = <0x0 0x9d400000 0x0 0x3200000>;
+		reg = <0x0 0x9d400000 0x0 0x3280000>;
 	};
 
-	q6_adsp_dtb_mem: q6_adsp_dtb_region@a0600000 {
+	q6_adsp_dtb_mem: q6_adsp_dtb_region@a0680000 {
 		no-map;
-		reg = <0x0 0xa0600000 0x0 0x80000>;
+		reg = <0x0 0xa0680000 0x0 0x80000>;
 	};
 
 	wlan_msa_mem: wlan_msa_region@a6400000 {
