@@ -2,7 +2,7 @@
 /plugin/;
 
 #include "parrot-paro-common-overlay.dtsi"
-//#include "parrot-wcn6755.dtsi"
+#include "parrot-wcn6755.dtsi"
 
 / {
 	model = "paros";
