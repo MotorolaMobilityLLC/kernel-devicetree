@@ -504,7 +504,7 @@
 
 	cpusys_vm_mem: cpusys_vm_region@e0600000 {
 		no-map;
-		//reg = <0x0 0xe0600000 0x0 0x400000>;
+		reg = <0x0 0xe0600000 0x0 0x400000>;
 	};
 
 	hyp_reserved_mem: hyp_reserved_region@e0a00000 {
@@ -1248,7 +1248,7 @@
 		qcom,pas-id = <35>;
 		qcom,vmid = <50>;
 		qcom,firmware-name = "cpusys_vm";
-		//memory-region = <&cpusys_vm_mem>;
+		memory-region = <&cpusys_vm_mem>;
 	};
 
 	tlmm-vm-mem-access {
