@@ -45,7 +45,9 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&key_vol_up_default
 			     &key_confirm_default
-			     &key_back_default>;
+			     &key_back_default
+			     &ipd_vol_up_default
+			     &ipd_vol_down_default>;
 
 		back_key {
 			label = "back_key";
@@ -76,6 +78,41 @@
 			debounce-interval = <15>;
 			linux,can-disable;
 		};
+
+		ipd_down {
+			label = "ipd_narrow";
+			gpios = <&tlmm 17 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_KPMINUS>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+
+		ipd_up {
+			label = "ipd_wide";
+			gpios = <&tlmm 16 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_KPPLUS>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+
+	ipd-step-motor {
+		status = "ok";
+		compatible = "qcom,ipd_step_motor";
+		label = "ipd-step-motor";
+
+		step-gpio = <&tlmm 5  0>;
+		pwr-gpio = <&tlmm 14  0>;
+		nsleep-gpio = <&tlmm 18  0>;
+		nen-gpio = <&tlmm 72 0>;
+		dir-gpio = <&tlmm  74 0>;
+
+		io-channels = <&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM5>;
+		io-channel-names = "ipd_step_motor";
 	};
 };
 
