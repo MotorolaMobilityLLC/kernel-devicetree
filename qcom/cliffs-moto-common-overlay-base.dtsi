@@ -131,6 +131,12 @@
         };
 };
 
+&usb0 {
+	dwc3@a600000 {
+		snps,usb2-lpm-disable;
+	};
+};
+
 &battery_charger {
 	#cooling-cells = <2>;
 	qcom,thermal-mitigation-step = <500000>;
