@@ -339,9 +339,19 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-rumi.dtb \
                 volcano-vm-atp.dtb \
                 volcano-vm-idp.dtb \
                 volcano-vm-idp-wcd9395.dtb \
+		volcano6i-vm-idp-wcd9395-brahma.dtb \
+		volcano6i-vm-idp-wcd9395-ganges.dtb \
                 volcano-vm-mtp.dtb \
                 volcano-vm-mtp-wcd9395-aatc.dtb \
+		volcano6i-vm-mtp-brahma.dtb \
+		volcano6i-vm-mtp-ganges.dtb \
+		volcano6i-vm-mtp-moselle-wingmate.dtb \
+		volcano6i-vm-mtp-wcd9395-brahma.dtb \
+		volcano6i-vm-mtp-wcd9395-ganges-hac2019.dtb \
+		volcano6i-vm-mtp-wcd9395-ganges.dtb \
+		volcano6i-vm-mtp-wcd9395-moselle.dtb \
                 volcano-vm-qrd.dtb \
+		volcano6i-vm-qrd-moselle.dtb \
                 volcano-oemvm-rumi.dtb \
                 volcano-oemvm-atp.dtb \
                 volcano-oemvm-idp.dtb \
