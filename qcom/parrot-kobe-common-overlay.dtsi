@@ -63,6 +63,39 @@
 	};
 };
 
+&soc {
+	qcom,pmic_glink_log {
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_home_default>;
+	};
+};
+
+&pm7250b_gpios {
+	key_home {
+		key_home_default: key_home_default {
+			pins = "gpio3";
+			function = "normal";
+			input-enable;
+			bias-pull-up;
+			power-source = <0>;
+		};
+	};
+};
+
+&soc {
+	gpio_keys {
+		home_key {
+			label = "home_key";
+			gpios = <&pm7250b_gpios 3 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_HOME>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
 &usb2_phy0 {
 	qcom,param-override-seq = <
 			0x83 0x6c
