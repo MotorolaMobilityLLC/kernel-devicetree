@@ -1,0 +1,23 @@
+&tlmm{
+	cam_pmic_en_default: cam_pmic_en_default {
+		mux {
+		pins = "gpio122";
+		function = "gpio";
+		};
+
+		config {
+		pins = "gpio122";
+		drive-strength = <2>;
+		bias-pull-down;
+		};
+	};
+};
+
+/*
+ * Each QUP device that's a parent to PMIC must be listed as a critical device
+ * to GCC.
+ */
+&gcc {
+	qcom,critical-devices = <&qupv3_se2_i2c>;
+};
+

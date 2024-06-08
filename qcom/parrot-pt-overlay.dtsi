@@ -1,0 +1,103 @@
+
+&qupv3_se9_spi {
+	status = "disabled";
+};
+
+&qupv3_se9_i2c {
+	status = "ok";
+	qcom,i2c-touch-active = "parade,pt_i2c_adapter";
+
+	tsc@24 {
+		compatible = "parade,pt_i2c_adapter";
+		reg = <0x24>;
+		status = "ok";
+
+		//interrupt-parent = <&tlmm>;
+		//interrupts = <22 0x2>;
+		parade,adapter_id = "pt_i2c_adapter";
+
+		//dvdd-supply = <&pm6350_l9>;
+		//avdd-supply = <&tp_avdd>;
+
+		//pinctrl-names = "default";
+		//pinctrl-0 = <&ts_pt_int_default>;
+
+		//panel = <&dsi_sofeg01m_1080x2520_cmd &dsi_sofeg01m_1080x1980_cmd &dsi_sofe06x01_1080x1980_cmd>;
+
+		parade,core {
+			parade,name = "pt_core";
+
+			//dvdd_voltage = <1800000>;
+			//dvdd_uA = <100000>;
+
+			//parade,irq_gpio = <&tlmm 22 0x00>;
+			//parade,rst_gpio = <&tlmm 106 0x00>;
+
+			/* Picoleaf GPIOs */
+
+			//pico_micon,vdd_gpio = <&tlmm 101 0x00>;
+			//pico_micon,vref_gpio = <&tlmm 102 0x00>;
+
+			parade,hid_desc_register = <1>;
+			/*
+			 * PT_CORE_FLAG_NONE = 0x00
+			 * PT_CORE_FLAG_POWEROFF_ON_SLEEP = 0x02
+			 * PT_CORE_FLAG_RESTORE_PARAMETERS = 0x04
+			 * PT_CORE_FLAG_DEEP_STANDBY = 0x08
+			 * PT_CORE_FLAG_SKIP_SYS_SLEEP = 0x10
+			 * PT_CORE_FLAG_SKIP_RUNTIME = 0x20
+			 * PT_CORE_FLAG_SKIP_RESUME = 0x40
+			 */
+			parade,flags = <12>;
+			/* PT_CORE_EWG_NONE */
+			parade,easy_wakeup_gesture = <0>;
+			/* 0:AUTO 1:PIP1_ONLY 2:PIP2_CAPABLE*/
+			parade,config_dut_generation = <2>;
+			/* 0:False 1:True */
+			parade,watchdog_force_stop = <0>;
+
+			parade,mt {
+				parade,name = "pt_mt";
+				parade,inp_dev_name = "pt_mt";
+				/*
+				 * PT_MT_FLAG_NONE,
+				 * PT_MT_FLAG_HOVER = 0x04,
+				 * PT_MT_FLAG_FLIP = 0x08,
+				 * PT_MT_FLAG_INV_X = 0x10,
+				 * PT_MT_FLAG_INV_Y = 0x20,
+				 * PT_MT_FLAG_VKEYS = 0x40,
+				 * PT_MT_FLAG_NO_TOUCH_ON_LO = 0x80,
+				 */
+				parade,flags = <0x00>; /* PT_MT_FLAG_NONE */
+				parade,abs =
+					/* ABS_MT_POSITION_X, PT_ABS_MIN_X, PT_ABS_MAX_X, 0, 0 */
+					<0x35 0 1440 0 0
+					/* ABS_MT_POSITION_Y, PT_ABS_MIN_Y, PT_ABS_MAX_Y, 0, 0 */
+					0x36 0 3120 0 0
+					/* ABS_MT_PRESSURE, PT_ABS_MIN_P, PT_ABS_MAX_P, 0, 0 */
+					0x3a 0 255 0 0
+					/* PT_IGNORE_VALUE, PT_ABS_MIN_W, PT_ABS_MAX_W, 0, 0 */
+					0xffff 0 255 0 0
+					/* ABS_MT_TRACKING_ID, PT_ABS_MIN_T, PT_ABS_MAX_T, 0, 0 */
+					0x39 0 15 0 0
+					/* ABS_MT_TOUCH_MAJOR, 0, 255, 0, 0 */
+					0x30 0 255 0 0
+					/* ABS_MT_TOUCH_MINOR, 0, 255, 0, 0 */
+					0x31 0 255 0 0
+					/* ABS_MT_ORIENTATION, -127, 127, 0, 0 */
+					0x34 0xffffff81 127 0 0
+					/* ABS_MT_TOOL_TYPE, 0, MT_TOOL_MAX, 0, 0 */
+					0x37 0 0 0 0
+					/* ABS_DISTANCE, 0, 255, 0, 0 */
+					0x19 0 255 0 0>;
+			};
+		};
+	};
+	pico_micon@8 {
+		compatible = "cypress,cypsoc_adapter";
+		reg = <0x8>;
+		status = "ok";
+		pico_micon,rst_gpio = <&tlmm 106 0x00>;
+	};
+};
+
