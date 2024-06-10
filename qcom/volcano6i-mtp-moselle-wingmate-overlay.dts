@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "volcano6i-mtp-moselle-wingmate.dtsi"
+#include "volcano-pm7550ba.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Volcano6I MTP + WCD9378 HSJ + SN220T + Wingmate + Moselle";
@@ -9,4 +10,3 @@
 	qcom,msm-id = <657 0x10000>, <658 0x10000>;
 	qcom,board-id = <8 8>;
 };
-
