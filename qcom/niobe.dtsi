@@ -3143,3 +3143,10 @@
 #include "niobe-debug.dtsi"
 #include "niobe-thermal.dtsi"
 #include "niobe-pcie.dtsi"
+
+&pcie2_rp {
+	sdxc_pcie2: sdxc_pcie2 {
+		reg = <0x10000 0x0 0x0 0x0 0x0>;
+		qcom,iommu-dma = "atomic";
+	};
+};
