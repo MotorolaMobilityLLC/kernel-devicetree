@@ -2213,6 +2213,10 @@
 		};
 	};
 
+	qcom_cpufreq_stats: qcom,cpufreq_stats {
+		compatible = "qcom,cpufreq-stats-v2";
+	};
+
 	cpucp_log: qcom,cpucp_log@d8140000 {
 		compatible = "qcom,cpucp-log";
 		reg = <0xD8130000 0x10000>, <0xD8140000 0x10000>;
