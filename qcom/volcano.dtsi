@@ -1500,6 +1500,10 @@
 		};
 	};
 
+	qcom_mpam: qcom,mpam {
+		compatible = "qcom,mpam";
+	};
+
 	qcom_dynpf: qcom,dynpf {
 		compatible = "qcom,dynpf";
 	};
