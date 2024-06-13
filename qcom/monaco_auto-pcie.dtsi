@@ -141,6 +141,9 @@
 			<0xe00 &pcie_smmu 0x000e 0x1>,
 			<0xf00 &pcie_smmu 0x000f 0x1>;
 
+		qcom,bdf-halt-dis;
+		qcom,pcie-halt-feature-dis;
+
 		qcom,boot-option = <0x0>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
 		qcom,slv-addr-space-size = <0x1fd00000>;
@@ -458,6 +461,9 @@
 			<0xd00 &pcie_smmu 0x008d 0x1>,
 			<0xe00 &pcie_smmu 0x008e 0x1>,
 			<0xf00 &pcie_smmu 0x008f 0x1>;
+
+		qcom,bdf-halt-dis;
+		qcom,pcie-halt-feature-dis;
 
 		qcom,boot-option = <0x0>;
 		qcom,aux-clk-freq = <20>; /* 19.2 MHz */
