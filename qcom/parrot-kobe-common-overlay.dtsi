@@ -32,6 +32,37 @@
 	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
 };
 
+&soc {
+	gpio_keys {
+		pinctrl-0 = <&key_vol_up_default &key_cam_default>;
+
+		google_key {
+			label = "cam_key";
+			gpios = <&tlmm 103 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_CAMERA>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&tlmm{
+	key_cam_default: key_cam_default {
+		mux {
+			pins = "gpio103";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio103";
+			drive-strength = <16>;
+			bias-pull-up;
+		};
+	};
+};
+
 &usb2_phy0 {
 	qcom,param-override-seq = <
 			0x83 0x6c
