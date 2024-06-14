@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "parrot-paro-common-overlay.dtsi"
+#include "parrot-kobe-common-overlay.dtsi"
 #include "parrot-wcn3990.dtsi"
 
 / {
