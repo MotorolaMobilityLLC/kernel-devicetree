@@ -162,9 +162,8 @@
 		focaltech,irq-gpio = <&tlmm 65 0x2800>;
 		focaltech,max-touch-number = <10>;
 		focaltech,display-coords =  <0 0 1079 2387>;
-		mmi,power-off-suspend;
-		mmi,enable-gestures;
 		mmi,usb-charger-detection;
-		mmi,supported_gesture_type = <0x07>;
+		mmi,enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
     };
 };
