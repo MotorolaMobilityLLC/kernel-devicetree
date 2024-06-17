@@ -15,6 +15,7 @@ properties:
     enum:
       - qcom,pineapple-pcie-pdc
       - qcom,cliffs-pcie-pdc
+      - qcom,niobe-pcie-pdc
       - qcom,pcie-pdc
 
   reg:
