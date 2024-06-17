@@ -2691,6 +2691,7 @@
 		qcom,scaling-exceptions = <>;
 		qcom,interconnect,num-cases = <5>;
 		qcom,interconnect,num-paths = <3>;
+		mboxes = <&qmp_aop 0>;
 		interconnects = <&aggre2_noc MASTER_IPA &gem_noc SLAVE_LLCC>,
 			<&mc_virt MASTER_LLCC &mc_virt SLAVE_EBI1>,
 			<&gem_noc MASTER_APPSS_PROC &cnoc_main SLAVE_IPA_CFG>;
