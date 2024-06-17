@@ -685,6 +685,18 @@
 		};
 	};
 
+	pcie_crm: crm@1d01000 {
+		label = "pcie_crm";
+		compatible = "qcom,pcie-crm";
+		reg = <0x1d01000 0x3000>, <0x1d04800 0x800>, <0x1d05000 0x2000>, <0x1d04000 0x800>;
+		reg-names = "base", "crm_b", "crm_c", "crm_v";
+		interrupts = <GIC_SPI 431 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "pcie_crm";
+		clocks = <&pcie_0_pipe_clk>;
+		qcom,hw-drv-ids = <0 1 2>;
+		qcom,sw-drv-ids = <0>;
+	};
+
 	pdc: interrupt-controller@b220000 {
 		compatible = "qcom,niobe-pdc", "qcom,pdc";
 		reg = <0xb220000 0x10000>, <0x174000f0 0x64>;
