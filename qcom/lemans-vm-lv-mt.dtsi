@@ -47,3 +47,7 @@
 &emac_ctrl_fe {
 	status = "disabled";
 };
+
+&qcom_rng_ee3 {
+	status = "ok";
+};
