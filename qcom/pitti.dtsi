@@ -823,7 +823,7 @@
 		reg = <0x04480000 0x80000>;
 		compatible = "qcom,pitti-bimc";
 		#interconnect-cells = <1>;
-		qcom,util-factor = <167>;
+		qcom,util-factor = <151>;
 		qcom,keepalive;
 		clock-names = "bus", "bus_a";
 		clocks = <&rpmcc RPM_SMD_BIMC_CLK>,
