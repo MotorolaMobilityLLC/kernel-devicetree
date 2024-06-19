@@ -716,6 +716,11 @@
 		interrupt-controller;
 	};
 
+	pcie_pdc: pdc@b350000 {
+		compatible = "qcom,niobe-pcie-pdc", "qcom,pcie-pdc";
+		reg = <0x0B340000 0x20000>;
+	};
+
 	kryo-erp {
 		compatible = "arm,arm64-kryo-cpu-erp";
 		interrupts = <GIC_PPI 6 IRQ_TYPE_LEVEL_HIGH>,
