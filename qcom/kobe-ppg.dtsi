@@ -1,0 +1,34 @@
+&tlmm{
+	goodix_int: goodix {
+		pins = "gpio67";
+		function = "gpio";
+		input-enable;
+		bias-pull-up;
+	};
+	goodix_int1: goodix1 {
+		pins = "gpio124";
+		function = "gpio";
+		input-enable;
+		bias-pull-up;
+	};
+	goodix_int2: goodix2 {
+		pins = "gpio42";
+		function = "gpio";
+		input-enable;
+		bias-pull-up;
+	};
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+	goodix,health {
+		compatible = "goodix,health";
+		reg = <0x14>;
+		goodix,gpio_reset = <&tlmm 126 0>;
+		goodix,gpio_irq = <&tlmm 67 0>;
+		goodix,gh_vdd = <&tlmm 124 0>;
+		goodix,gh_vdd_io = <&tlmm 42 0>;
+		pinctrl-0 = <&goodix_int>,<&goodix_int1>,<&goodix_int2>;
+		status = "okay";
+	};
+};

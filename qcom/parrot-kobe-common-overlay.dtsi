@@ -21,6 +21,7 @@
 #include "moto-kobe-aw37004.dtsi"
 #include "parrot-pt-overlay.dtsi"
 #include "parrot-kobe-touchscreen-overlay.dtsi"
+#include "kobe-ppg.dtsi"
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
