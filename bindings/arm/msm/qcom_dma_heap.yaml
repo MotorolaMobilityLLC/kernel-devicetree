@@ -79,6 +79,13 @@ patternProperties:
           Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt
           for more information.
 
+      qcom,unmapped:
+      Usage: optional
+      Value type: <boolean>
+      Definition: Indicates that the memory region has been pre assigned to a
+      secure domain. Heaps with this property will not be hyp assigned or zeroed
+      out by the secure carveout heap.
+
     required:
       - qcom,dma-heap-name
       - qcom,dma-heap-type
