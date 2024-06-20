@@ -1,0 +1,76 @@
+/*
+ * Each QUP device that's a parent to PMIC must be listed as a critical device
+ * to GCC
+ */
+
+&pm6450_gpios{
+	wl2868c_pins_default: wl2868c_pins_default {
+		pins = "gpio3";
+		function = "normal";
+		output-high;
+		bias-disable;
+		power-source = <0>;
+	};
+};
+
+/* for wl2868c pmic only */
+&gcc {
+	qcom,critical-devices = <&qupv3_se2_i2c>;
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+	cam_pmic: wl2868c@2F {
+		compatible = "semi,wl2868c";
+		reg = <0x2F>;
+		semi,cs-gpios = <&pm6450_gpios 3 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&wl2868c_pins_default>;
+		vin1-supply = <&S8B>;
+		vin2-supply = <&BOB>;
+
+		regulators {
+			camera_ldo1: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			camera_ldo2: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			camera_ldo3: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			camera_ldo4: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			camera_ldo5: ldo5 {
+				regulator-name = "ldo5";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			camera_ldo6: ldo6 {
+				regulator-name = "ldo6";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			camera_ldo7: ldo7 {
+				regulator-name = "ldo7";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+		};
+	};
+};
