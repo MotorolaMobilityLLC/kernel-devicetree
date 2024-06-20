@@ -144,21 +144,31 @@
 		cooling-maps {
 			pm8550ve_APC1 {
 				trip = <&pm8550ve_trip0>;
-				cooling-device = <&cdsp_sw 5 THERMAL_NO_LIMIT>;
+				cooling-device = <&APC1_pause 1 1>;
+			};
+
+			pm8550ve_gpu {
+				trip = <&pm8550ve_trip0>;
+				cooling-device = <&msm_gpu 5 THERMAL_NO_LIMIT>;
 			};
 		};
 	};
 
 	pm8550vs_c_tz {
 		cooling-maps {
-			pm8550vs_c_APC1 {
+			pm8550vs_c_cdsp {
 				trip = <&pm8550vs_c_trip0>;
-				cooling-device = <&APC1_pause 1 1>;
+				cooling-device = <&cdsp_sw 16 THERMAL_NO_LIMIT>;
 			};
 
-			pm8550vs_c_gpu {
+			pm8550vs_c_cdsp_hvx {
 				trip = <&pm8550vs_c_trip0>;
-				cooling-device = <&msm_gpu 5 THERMAL_NO_LIMIT>;
+				cooling-device = <&cdsp_sw_hvx 16 THERMAL_NO_LIMIT>;
+			};
+
+			pm8550vs_c_cdsp_hmx {
+				trip = <&pm8550vs_c_trip0>;
+				cooling-device = <&cdsp_sw_hmx 16 THERMAL_NO_LIMIT>;
 			};
 		};
 	};
