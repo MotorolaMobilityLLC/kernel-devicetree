@@ -411,3 +411,5 @@
 		gunyah-label = <9>;
 	};
 };
+
+#include "niobe-vm-dma-heaps.dtsi"
