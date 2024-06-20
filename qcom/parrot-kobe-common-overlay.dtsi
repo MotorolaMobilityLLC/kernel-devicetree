@@ -13,7 +13,7 @@
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-kobe-charger-overlay.dtsi"
 #include "parrot-paro-thermal-overlay.dtsi"
-#include "parrot-paro-sensor-overlay.dtsi"
+#include "parrot-kobe-sensor-overlay.dtsi"
 #include "parrot-paro-fps-overlay.dtsi"
 #include "moto-kobe-et5904.dtsi"
 #include "parrot-paro-nfc-overlay.dtsi"
