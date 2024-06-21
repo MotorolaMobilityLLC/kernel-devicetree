@@ -23,6 +23,7 @@
 #include "parrot-kobe-touchscreen-overlay.dtsi"
 #include "kobe-ppg.dtsi"
 #include "moto-kobe-wl2868c.dtsi"
+#include "parrot-kobe-haptic-overlay.dtsi"
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
@@ -106,13 +107,6 @@
 			0x08 0x70
 			0x14 0x74
 			0x03 0x78>;
-};
-
-&pm7250b_vib {
-	qcom,vib-ldo-volt-uv = <2900000>;
-	qcom,vib-dis-short-long;
-	qcom,vib-dis-short-long-val = <80>;
-	qcom,vib-ldo-volt-uv-long = <2900000>;
 };
 
 &qseecom_ta_mem {
