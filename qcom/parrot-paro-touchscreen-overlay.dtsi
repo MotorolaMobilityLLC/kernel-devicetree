@@ -167,3 +167,11 @@
 		mmi,supported_gesture_type = <0x06>;
     };
 };
+
+&soc {
+	mmi_stow {
+		compatible = "moto,mmi_stow";
+		mmi,stow-gpio = <&tlmm 56 0x0>;
+	};
+
+};
