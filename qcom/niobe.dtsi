@@ -2803,6 +2803,15 @@
 		shared-buffer-size = <0x1000>;
 	};
 
+	hall_gpio {
+		compatible = "qcom,hall-gpio";
+		label = "hall_gpio";
+		pinctrl-names = "sleep", "active";
+		pinctrl-0 = <&hall_gpio_sleep>;
+		pinctrl-1 = <&hall_gpio_active>;
+		vdd-supply = <&L14B>;
+		status = "ok";
+	};
 };
 
 &reserved_memory {

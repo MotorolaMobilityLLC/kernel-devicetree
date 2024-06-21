@@ -1895,6 +1895,36 @@
 		};
 	};
 
+	hall_gpio {
+		hall_gpio_active: hall_gpio_active {
+			mux {
+				pins = "gpio12";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio12";
+				drive-strength = <2>;
+				bias-pull-up;
+				output-high;
+			};
+		};
+
+		hall_gpio_sleep: hall_gpio_sleep {
+			mux {
+				pins = "gpio12";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio12";
+				drive-strength = <2>;
+				bias-disable;
+				output-low;
+			};
+		};
+	};
+
 	usb0_phy_ps: usb0_phy_ps {
 		usb3_0_phy_portselect_default: usb3_0_phy_portselect_default {
 			mux {
