@@ -168,3 +168,7 @@
                 bias-pull-down;
 	};
 };
+
+&display_panel_extvdd {
+	status = "disabled";
+};
