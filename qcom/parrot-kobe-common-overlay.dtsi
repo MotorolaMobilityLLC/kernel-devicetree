@@ -15,7 +15,6 @@
 #include "parrot-kobe-thermal-overlay.dtsi"
 #include "parrot-kobe-sensor-overlay.dtsi"
 #include "parrot-paro-fps-overlay.dtsi"
-#include "moto-kobe-et5904.dtsi"
 #include "parrot-kobe-nfc-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "moto-kobe-aw37004.dtsi"
