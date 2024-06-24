@@ -16,6 +16,16 @@
 		qcom,iommu-dma = "fastmap";
 		status = "ok";
 
+		ssc_qup {
+			compatible = "qcom,geni-se-ssc-qup";
+			clock-names = "corex", "core2x";
+
+			clocks = <&scc SCC_QUPV3_CORE_CLK>,
+				 <&scc SCC_QUPV3_2XCORE_CLK>;
+			qcom,subsys-name = "lpass";
+			status = "ok";
+		};
+
 		/* 2-Wire UART instance */
 		qupv3_se8_2uart: qcom,qup_uart@62680000 {
 			compatible = "qcom,msm-geni-serial-hs";
