@@ -3,7 +3,9 @@
 #include "volcano6i.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Volcano6I SoC";
+	model = "Qualcomm Technologies, Inc. Volcano6I FP4 SoC";
 	compatible = "qcom,volcano";
+	qcom,msm-id = <0X10000291 0x10000>;
 	qcom,board-id = <0 0>;
 };
+
