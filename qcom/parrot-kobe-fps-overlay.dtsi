@@ -1,0 +1,81 @@
+&soc {
+        fp_focaltech {
+		status = "ok";
+		compatible = "focaltech,fp";
+		focaltech_fp,vdd-gpio = <&tlmm 132 0x00>;
+		focaltech_fp,reset-gpio = <&tlmm 101 0x00>;
+		focaltech_fp,irq-gpio = <&tlmm 111 0x00>;
+		pinctrl-names = "ff_pins_reset_low", "ff_pins_reset_high", "ff_pins_irq_as_int", "ff_pins_power_low", "ff_pins_power_high";
+		pinctrl-0 = <&ff_pins_reset_low>;
+		pinctrl-1 = <&ff_pins_reset_high>;
+		pinctrl-2 = <&ff_pins_irq_as_int>;
+		pinctrl-3 = <&ff_pins_power_low>;
+		pinctrl-4 = <&ff_pins_power_high>;
+	};
+};
+&tlmm {
+          ff_rst_pin: ff_rst_pin {
+		ff_pins_reset_low: ff_pins_reset_low {
+			mux {
+				pins = "gpio101";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio101";
+				drive-strength = <8>;
+				output-low;
+				bias-pull-down;
+			};
+		};
+		ff_pins_reset_high: ff_pins_reset_high {
+			mux {
+				pins = "gpio101";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio101";
+				drive-strength = <8>;
+				output-high;
+				bias-pull-up;
+			};
+		};
+	};
+        	ff_pins_irq_as_int: ff_pins_irq_as_int {
+		mux {
+			pins = "gpio111";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio111";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
+	ff_vcc_pin: ff_vcc_pin {
+		ff_pins_power_low: ff_pins_power_low {
+			mux {
+				pins = "gpio132";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio132";
+				drive-strength = <8>;
+				output-low;
+				bias-pull-down;
+			};
+		};
+       		ff_pins_power_high: ff_pins_power_high {
+			mux {
+				pins = "gpio132";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio132";
+				drive-strength = <8>;
+				output-high;
+				bias-pull-up;
+			};
+		};
+	};
+};
