@@ -127,6 +127,49 @@
                                 };
                         };
                 };
+
+	pmx_ts_spi_release {
+		ts_spi_release: ts_spi_release {
+			mux {
+				pins = "gpio65", "gpio131";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio65", "gpio131";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+
+	touch_reset_mux {
+		touch_reset_active: touch_reset_active {
+			mux {
+				pins = "gpio131";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio131";
+				drive-strength = <8>;
+				bias-disable;
+				output-high;
+			};
+		};
+
+		touch_reset_suspend: touch_reset_suspend {
+			mux {
+				pins = "gpio131";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio131";
+				drive-strength = <2>;
+				bias-pull-down;
+				output-low;
+			};
+		};
+	};
 };
 
 &qupv3_se9_spi {
@@ -160,6 +203,11 @@
 		spi-max-frequency = <10000000>;
 		focaltech,reset-gpio = <&tlmm 131 0x0>;
 		focaltech,irq-gpio = <&tlmm 65 0x2800>;
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend",
+				"pmx_ts_release";
+		pinctrl-0 = <&touch_reset_active>;
+		pinctrl-1 = <&touch_reset_suspend>;
+		pinctrl-2 = <&ts_spi_release>;
 		focaltech,max-touch-number = <10>;
 		focaltech,display-coords =  <0 0 1079 2387>;
 		mmi,usb-charger-detection;
