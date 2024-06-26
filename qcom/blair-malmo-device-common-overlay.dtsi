@@ -29,6 +29,8 @@
 &usb0 {
 	dwc3@4e00000 {
 		snps,usb2-lpm-disable;
+                usb-phy = <&usb2_phy0>, <&usb_nop_phy>;
+                maximum-speed = "high-speed";
 	};
 };
 
