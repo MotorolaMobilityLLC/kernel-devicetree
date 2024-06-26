@@ -217,6 +217,17 @@
 				};
 			};
 
+			qrtr-shm {
+				vdevice-type = "shm-doorbell";
+				generate = "/hypervisor/qrtr-shm";
+				push-compatible = "qcom,qrtr-gunyah-gen";
+				peer-default;
+				memory {
+					qcom,label = <0x3>;
+					allocate-base;
+				};
+			};
+
 			mem-buf-message-queue-pair {
 				vdevice-type = "message-queue-pair";
 				generate = "/hypervisor/membuf-msgq-pair";
@@ -274,6 +285,15 @@
 				queue-depth = <0x00000008>;
 				peer-default;
 				qcom,label = <0xA>;
+			};
+
+			msgqsock-msgq {
+				vdevice-type = "message-queue-pair";
+				generate = "/hypervisor/msgqsock-msgq-pair";
+				message-size = <0xf0>;
+				queue-depth = <0x8>;
+				peer = "vm-name:qcom,oemvm";
+				qcom,label = <0x3>;
 			};
 
 		};
@@ -413,6 +433,17 @@
 		compatible = "qcom,tee-shared-memory-bridge";
 		qcom,custom-bridge-size = <64>;
 		qcom,support-hypervisor;
+	};
+
+	qrtr-gunyah {
+		compatible = "qcom,qrtr-gunyah";
+		gunyah-label = <3>;
+	};
+
+	qmsgq-gunyah {
+		compatible = "qcom,qmsgq-gh";
+		qcom,master;
+		msgq-label = <3>;
 	};
 
 	logbuf: qcom,logbuf-vendor-hooks {
