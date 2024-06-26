@@ -46,7 +46,7 @@
 
 	reserved_memory: reserved-memory { };
 
-	mem-offline {
+	mem_offline: mem-offline {
 		compatible = "qcom,mem-offline";
 		offline-sizes = <0x1 0x40000000 0x0 0x40000000>,
 				<0x1 0xc0000000 0x0 0x80000000>,
@@ -2661,7 +2661,7 @@
 	thermal_zones: thermal-zones {
 	};
 
-	qcom_ramoops {
+	qcom_ramoops:qcom_ramoops {
 		compatible = "qcom,ramoops";
 		memory-region = <&ramoops_mem>;
 		pmsg-size = <0x200000>;
