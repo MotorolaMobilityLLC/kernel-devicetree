@@ -108,13 +108,11 @@
 	pmiv0104_iin_fb {
 		reg = <PMIV0104_ADC5_GEN3_IIN_FB>;
 		label = "pmiv0104_iin_fb";
-		qcom,pre-scaling = <1 1>;
 	};
 
 	pmiv0104_ichg_fb {
 		reg = <PMIV0104_ADC5_GEN3_ICHG_FB>;
 		label = "pmiv0104_ichg_fb";
-		qcom,pre-scaling = <1 1>;
 	};
 
 	pmiv0104_sys_therm_7 {
