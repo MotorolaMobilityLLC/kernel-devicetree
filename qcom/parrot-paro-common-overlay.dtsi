@@ -1,0 +1,102 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include "parrot-moto-common-overlay-base.dtsi"
+#include "parrot-moto-common-overlay.dtsi"
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&tlmm {
+	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
+};
+
+&sdhc_1 {
+	status = "disabled";
+};
+
+&sdhc_2 {
+	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
+};
+
+&usb2_phy0 {
+	qcom,param-override-seq = <
+			0x83 0x6c
+			0x08 0x70
+			0x14 0x74
+			0x03 0x78>;
+};
+
+&pm7250b_vib {
+	qcom,vib-ldo-volt-uv = <2900000>;
+	qcom,vib-dis-short-long;
+	qcom,vib-dis-short-long-val = <80>;
+	qcom,vib-ldo-volt-uv-long = <2900000>;
+};
+
+&qseecom_ta_mem {
+	size = <0x0 0x3000000>;
+};
+
+&mpss_mem {
+	reg = <0x0 0x8bc00000 0x0 0xf000000>;
+};
+&fsa4480 {
+	status = "disabled";
+};
+&pmr735a_debug {
+	status = "disabled";
+};
+
+&pmr735a_spmi {
+	status = "disabled";
+};
+
+&pmr735a_temp_alarm {
+	status = "disabled";
+};
+&qupv3_se2_i2c {
+	pm8010i@8 {
+		status = "disabled";
+	};
+	pm8010j@c {
+		status = "disabled";
+	};
+};
+&L21B{
+	regulator-always-on;
+	status = "okay";
+};
+
+&apps_rsc {
+	rpmh-regulator-ldob15 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldob15";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 30000>;
+		L15B:
+		pm6450_l15: regulator-pm6450-l15 {
+			regulator-name = "pm6450_l15";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <1200000>;
+			regulator-max-microvolt = <1200000>;
+			qcom,init-voltage = <1200000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+		};
+	};
+};
+
+&usb3phy_portselect_default {
+        config {
+                bias-pull-down;
+	};
+};
