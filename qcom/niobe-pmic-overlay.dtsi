@@ -507,11 +507,11 @@
 };
 
 &pmxr2230_switch0 {
-	qcom,led-mask = <3>; /* Channels 1 & 2 */
+	qcom,led-mask = <1>; /* Channel 1 */
 };
 
 &pmxr2230_switch1 {
-	status = "disabled";
+	qcom,led-mask = <2>; /* Channel 2 */
 };
 
 &pmxr2230_switch2 {
