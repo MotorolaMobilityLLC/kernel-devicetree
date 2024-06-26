@@ -103,6 +103,14 @@ properties:
     description: disable cm l1.
     type: boolean
 
+  qcom,enable_host_slow_suspend:
+    description: if present, xhci slow suspend enabled.
+    type: boolean
+
+  qcom,disable-host-ssphy-powerdown:
+    description: disable Power down SS PHY if HS device is connected.
+    type: boolean
+
   qcom,core-clk-rate:
     description: Core/Master clock rate.
     $ref: /schemas/types.yaml#/definitions/uint32
@@ -193,6 +201,8 @@ examples:
           qcom,core-clk-rate-disconnected = <133333333>;
           qcom,pm-qos-latency = <2>;
           extcon = <&eud>;
+          qcom,enable_host_slow_suspend;
+          qcom,disable-host-ssphy-powerdown;
 
           qcom,num-gsi-evt-buffs = <0x3>;
           qcom,gsi-reg-offset =
