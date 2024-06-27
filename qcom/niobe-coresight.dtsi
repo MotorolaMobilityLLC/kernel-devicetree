@@ -1586,8 +1586,8 @@
 				};
 			};
 
-			port@9 {
-				reg = <9>;
+			port@2 {
+				reg = <2>;
 				tpda_dlmm_in_tpdm_mdss0: endpoint {
 					remote-endpoint =
 					<&tpdm_mdss0_out_tpda_dlmm>;
