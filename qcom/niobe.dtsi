@@ -716,9 +716,9 @@
 		interrupt-controller;
 	};
 
-	pcie_pdc: pdc@b350000 {
+	pcie_pdc: pdc@b340000 {
 		compatible = "qcom,niobe-pcie-pdc", "qcom,pcie-pdc";
-		reg = <0x0B340000 0x20000>;
+		reg = <0xb340000 0x30000>;
 	};
 
 	kryo-erp {
