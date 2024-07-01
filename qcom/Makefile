@@ -15,6 +15,17 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_LEAP_DTB),y)
+SUN_BASE_DTB += sun-leap-base.dtb sun-v2-leap-base.dtb
+SUN_BOARDS += sun-leap-evb-overlay.dtbo
+endif
+
+sun-dtb-$(CONFIG_ARCH_SUN) += \
+	$(call add-overlays, $(SUN_BOARDS), $(SUN_BASE_DTB))
+
+else
 SUN_BASE_DTB += sun.dtb sun-v2.dtb sun-tp.dtb sun-tp-v2.dtb
 SUN_APQ_BASE_DTB += sunp.dtb sunp-v2.dtb sunp-tp.dtb sunp-tp-v2.dtb
 
@@ -79,7 +90,10 @@ NOAPQ_KERA_BOARDS += \
 sun-dtb-$(CONFIG_ARCH_KERA) +=  \
         $(call add-overlays, $(NOAPQ_KERA_BOARDS),$(KERA_BASE_DTB))
 sun-overlays-dtb-$(CONFIG_ARCH_KERA) += $(NOAPQ_KERA_BOARDS) $(KERA_BASE_DTB)
+
+endif  # end of CONFIG_MMI_DEVICE_DTBS
 dtb-y += $(sun-dtb-y)
+
 
 PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
 PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb

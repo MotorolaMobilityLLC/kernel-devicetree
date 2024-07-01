@@ -1,3 +1,5 @@
+load("//msm-kernel:moto_product.bzl", "mmi_product_name")
+
 _platform_map = {
     "sdxkova": {
         "dtb_list": [
@@ -21,57 +23,14 @@ _platform_map = {
     },
     "sun": {
         "dtb_list": [
-            # keep sorted
-            {"name": "sun.dtb"},
-            {
-                "name": "sunp.dtb",
-                "apq": True,
-            },
-            {
-                "name": "sunp-v2.dtb",
-                "apq": True,
-            },
-            {"name": "sun-v2.dtb"},
-            {"name": "sun-tp.dtb"},
-            {"name": "sun-tp-v2.dtb"},
-            {
-                "name": "sunp-tp.dtb",
-                "apq": True,
-            },
-            {
-                "name": "sunp-tp-v2.dtb",
-                "apq": True,
-            },
+            {"name": "sun-leap-base.dtb", "product": "leap"},
+            {"name": "sun-v2-leap-base.dtb", "product": "leap"},
         ],
         "dtbo_list": [
             # keep sorted
-            {"name": "sun-atp-overlay.dtbo"},
-            {"name": "sun-cdp-kiwi-overlay.dtbo"},
-            {"name": "sun-cdp-kiwi-v8-overlay.dtbo"},
-            {"name": "sun-cdp-nfc-overlay.dtbo"},
-            {"name": "sun-cdp-no-display-overlay.dtbo"},
-            {"name": "sun-cdp-overlay.dtbo"},
-            {"name": "sun-cdp-v8-overlay.dtbo"},
-            {"name": "sun-mtp-3.5mm-kiwi-v8-overlay.dtbo"},
-            {"name": "sun-mtp-3.5mm-overlay.dtbo"},
-            {"name": "sun-mtp-kiwi-overlay.dtbo"},
-            {"name": "sun-mtp-kiwi-v8-overlay.dtbo"},
-            {"name": "sun-mtp-nfc-overlay.dtbo"},
-            {"name": "sun-mtp-overlay.dtbo"},
-            {"name": "sun-mtp-qmp1000-overlay.dtbo"},
-            {"name": "sun-mtp-qmp1000-v8-overlay.dtbo"},
-            {"name": "sun-mtp-v8-overlay.dtbo"},
-            {"name": "sun-qrd-sku1-overlay.dtbo"},
-            {"name": "sun-qrd-sku1-v8-overlay.dtbo"},
-            {"name": "sun-qrd-sku2-v8-overlay.dtbo"},
-            {"name": "sun-rcm-kiwi-overlay.dtbo"},
-            {"name": "sun-rcm-kiwi-v8-overlay.dtbo"},
-            {"name": "sun-rcm-overlay.dtbo"},
-            {"name": "sun-rcm-v8-overlay.dtbo"},
-            {"name": "sunp-hdk-overlay.dtbo"},
-            {"name": "sun-rumi-overlay.dtbo"},
+            {"name": "sun-leap-evb-overlay.dtbo", "product": "leap"},
         ],
-        "binary_compatible_with": ["tuna", "kera"],
+        #"binary_compatible_with": ["tuna", "kera"],
     },
     "tuna": {
         "dtb_list": [
@@ -359,11 +318,18 @@ def _get_dtb_lists(target, dt_overlay_supported):
         "dtb_list": [],
         "dtbo_list": [],
     }
-
+    product = mmi_product_name
     for dtb_node in [target] + _platform_map[target].get("binary_compatible_with", []):
-        ret["dtb_list"].extend(_platform_map[dtb_node].get("dtb_list", []))
+        for dtb in _platform_map[dtb_node].get("dtb_list", []):
+            if (dtb.get("product","default") == product) or (dtb.get("product","default") == "default") :
+                # print("target:{} product:{} append dtb_list name {}".format(target, product, dtb.get("name")))
+                ret["dtb_list"].append({"name": "{}".format(dtb.get("name"))})
+
         if dt_overlay_supported:
-            ret["dtbo_list"].extend(_platform_map[dtb_node].get("dtbo_list", []))
+            for dtbo in _platform_map[dtb_node].get("dtbo_list", []):
+                if (dtbo.get("product","default") == product) or (dtbo.get("product","default") == "default") :
+                    # print("target:{} product:{} append dtbo_list name {}".format(target, product, dtbo.get("name")))
+                    ret["dtbo_list"].append({"name": "{}".format(dtbo.get("name"))})
         else:
             # Translate the dtbo list into dtbs we can append to main dtb_list
             for dtb in _platform_map[dtb_node].get("dtb_list", []):
