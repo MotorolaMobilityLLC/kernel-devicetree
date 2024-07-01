@@ -902,8 +902,8 @@
 				"phy", "mmio";
 
 		#address-cells = <0>;
-		interrupt-parent = <&pcie_ep>;
 		interrupts = <0>;
+		interrupt-parent = <&pcie_ep>;
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0xffffffff>;
 		interrupt-map = <0 &intc GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH>;
@@ -979,6 +979,7 @@
 		qcom,pcie-phy-ver = <6>;
 		qcom,phy-status-reg2 = <0x1214>;
 		qcom,aux-clk = <0x11>;
+		qcom,pcie-edma;
 
 		qcom,phy-init = <0x1240 0x01 0x0
 				0x100c 0x02 0x0
@@ -1146,9 +1147,28 @@
 				0x1260 0x00 0x0
 				0x1200 0x00 0x0
 				0x1244 0x03 0x0>;
-		status="disabled";
+		status = "disabled";
 		iommus = <&apps_smmu 0x2c00 0x0>;
 		qcom,iommu-dma = "bypass";
 	};
 
+	mhi_device: mhi_dev@0x01BD3000 {
+		compatible = "qcom,msm-mhi-dev";
+		reg = <0x01C13000 0x1000>;
+		reg-names = "mhi_mmio_base";
+		qcom,mhi-ep-msi = <0>;
+		qcom,mhi-version = <0x1000000>;
+		interrupts = <GIC_SPI 440 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "mhi-device-inta";
+		qcom,mhi-ifc-id = <0x011117CB>;
+		qcom,mhi-interrupt;
+		qcom,no-m0-timeout;
+		status = "disabled";
+	};
+
+	mhi_net_device: qcom,mhi_net_dev {
+		compatible = "qcom,msm-mhi-dev-net";
+		qcom,tx_rx_reqs = <1024>;
+		status = "disabled";
+	};
 };
