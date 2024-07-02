@@ -426,3 +426,4 @@
 };
 
 #include "niobe-vm-dma-heaps.dtsi"
+#include "msm-arm-smmu-niobe-vm.dtsi"
