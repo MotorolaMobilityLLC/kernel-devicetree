@@ -3,7 +3,7 @@
 	status = "disabled";
 };
 
-&qupv3_se9_i2c {
+&qupv3_se4_i2c {
 	status = "ok";
 	qcom,i2c-touch-active = "parade,pt_i2c_adapter";
 
