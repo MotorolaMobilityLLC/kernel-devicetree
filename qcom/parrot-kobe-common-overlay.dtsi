@@ -18,6 +18,7 @@
 #include "parrot-kobe-nfc-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "moto-kobe-aw37004.dtsi"
+#include "moto-kobe-et5904.dtsi"
 #include "parrot-pt-overlay.dtsi"
 #include "parrot-kobe-touchscreen-overlay.dtsi"
 #include "kobe-ppg.dtsi"
