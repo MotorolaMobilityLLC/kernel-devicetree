@@ -1,12 +1,10 @@
 &qupv3_se2_i2c {
 	status = "ok";
-	aw37004@28 {
+	aw37004@40 {
 		compatible = "awinic,aw37004";
-		reg = <0x28>;
-		// enable-gpio = <&tlmm 22 0>;
+		reg = <0x40>;
+		enable-gpio-low = <1>;//use init voltage
 		enable-gpio = <&tlmm 56 0>;
-		vdd1P8-gpio = <&tlmm 42 0>;
-		status = "okay";
 
 		dvdd1 {
 			regulator-min-microvolt = <600000>;
@@ -30,8 +28,8 @@
 			regulator-min-microvolt = <1200000>;
 			regulator-max-microvolt = <4387500>;
 			regulator-active-discharge = <1>;
-			// regulator-always-on;
-			init-voltage = <1200000>;
+			regulator-always-on;
+			init-voltage = <3300000>;
 			ilimit-ua = <480000>;
 		};
 
