@@ -63,6 +63,7 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,refresh-rate-update;
+		mmi,supported_gesture_type = <0x07>;
 	};
 
 	goodix_ts_i2c@5d {
@@ -93,5 +94,6 @@
 		mmi,power-off-suspend;
 		mmi,usb-charger-detection;
 		mmi,refresh-rate-update;
+		mmi,supported_gesture_type = <0x07>;
 	};
 };
