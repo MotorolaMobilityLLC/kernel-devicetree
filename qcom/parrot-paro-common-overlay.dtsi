@@ -16,7 +16,7 @@
 #include "parrot-paro-touchscreen-overlay.dtsi"
 #include "parrot-paro-sensor-overlay.dtsi"
 #include "parrot-paro-fps-overlay.dtsi"
-#include "moto-paro-et5904.dtsi"
+#include "moto-paro-dio8015.dtsi"
 #include "parrot-paro-nfc-overlay.dtsi"
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
