@@ -1537,8 +1537,6 @@
 		reg-name = "cc_base";
 		vdd_cx-supply = <&VDD_CX_LEVEL>;
 		vdd_mx-supply = <&VDD_MXA_LEVEL>;
-		vdd_gfx-supply = <&VDD_GFX_LEVEL>;
-		vdd_mxc-supply = <&VDD_MXC_LEVEL>;
 		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_GPU_GPLL0_CLK_SRC>,
 			<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>;
 		clock-names = "bi_tcxo", "gpll0_out_main",
