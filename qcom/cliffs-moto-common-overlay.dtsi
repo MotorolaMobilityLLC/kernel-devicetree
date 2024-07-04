@@ -35,12 +35,16 @@
 		compatible = "mmi,suspend_dbg";
 	};
 
-    moto_reboot_reason {
+	moto_reboot_reason {
 		compatible = "moto,reboot-reason";
 		nvmem-cells = <&extra_restart_reason>;
 		nvmem-cell-names = "extra_restart_reason";
 	};
 
+	mmi_qcom_minidump {
+		compatible = "moto,mmi_qcom_minidump";
+		cpusys-mem = <&cpusys_vm_mem>;
+	};
 };
 
 &pmk8550_sdam_2 {
@@ -64,4 +68,3 @@
 		reg = <0x0 0xadfff000 0x0 0x1000>;
 	};
 };
-
