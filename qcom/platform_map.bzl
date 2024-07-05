@@ -183,6 +183,21 @@ _platform_map = {
         ],
         "binary_compatible_with": ["cliffs", "volcano"],
     },
+    "neo-la": {
+        "dtb_list": [
+            {"name": "neo_la.dtb"},
+            {"name": "neo_luna-v2.dtb"},
+        ],
+        "dtbo_list": [
+            {"name": "neo_la-rumi-overlay.dtbo"},
+            {"name": "neo-sg-idp-hmt-overlay.dtbo"},
+            {"name": "neo-sg-idp-pm8008-overlay.dtbo"},
+            {"name": "neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo"},
+            {"name": "neo_luna-v2-sg-idp-dual-display-overlay.dtbo"},
+            {"name": "neo_luna-v2-sg-idp-overlay.dtbo"},
+            {"name": "neo_luna-v2-sg-idp-pm8008-overlay.dtbo"},
+        ],
+    },
     "anorak": {
         "dtb_list": [
             {"name": "anorak.dtb"},
