@@ -190,19 +190,17 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;";
 		qcom,secdomain-ids = <52>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump";
 
 		/* Pass through regions */
 		/* TLMM region */
-		/* QUPv3 Tile 1 read-only region */
-		/* QUPv3 Tile 2 read-only region */
-		/* QUPv3 SE17 region */
 		/* QRNG region */
 		/* MPROC NS1 IPCC region */
 		/* Compute L0 IPCC region */
+		/* Board serial number region */
 		iomemory-ranges = <0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
 				0x0 0x10dc000 0x0 0x10dc000 0x0 0x1000 0x0
 				0x0 0x421000 0x0 0x421000 0x0 0x1000 0x0
@@ -212,10 +210,10 @@
 				0x0 0x1fdd000 0x0 0x1fdd000 0x0 0x1000 0x3
 				0x0 0x1fdb000 0x0 0x1fdb000 0x0 0x1000 0x0
 				0x0 0x1fdf000 0x0 0x1fdf000 0x0 0x1000 0x0
+				0x0 0x786000 0x0 0x786000 0x0 0x1000 0x1
 				>;
 
 		/* Pass through IRQs */
-		/* QUPv3 SE17 GIC IRQ */
 		/* MPROC NS1 IPCC GIC IRQ */
 		/* Compute L0 IPCC GIC IRQ */
 		gic-irq-ranges = <
@@ -886,7 +884,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "70007000.virtio-mmio,70008000.virtio-mmio,70009000.virtio-mmio,7000A000.virtio-mmio,7000B000.virtio-mmio,7000C000.virtio-mmio,7000D000.virtio-mmio,7000E000.virtio-mmio,7000F000.virtio-mmio,70010000.virtio-mmio,70013000.virtio-mmio,70014000.virtio-mmio,70015000.virtio-mmio,70016000.virtio-mmio,70017000.virtio-mmio";
+			boot_devices = "70003000.virtio-mmio,70004000.virtio-mmio,70005000.virtio-mmio,70006000.virtio-mmio,70007000.virtio-mmio,70008000.virtio-mmio,70009000.virtio-mmio,7000A000.virtio-mmio,7000B000.virtio-mmio,7000C000.virtio-mmio,7000D000.virtio-mmio,7000E000.virtio-mmio,7000F000.virtio-mmio,70010000.virtio-mmio,70011000.virtio-mmio,70012000.virtio-mmio,70013000.virtio-mmio,70014000.virtio-mmio,70015000.virtio-mmio,70016000.virtio-mmio,70017000.virtio-mmio";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -1128,16 +1126,21 @@
 		compatible = "qcom,rename-devices";
 		rename_blk: rename_blk {
 			device-type = "block";
-			actual-dev = "vda", "vdb", "vdc",
+			actual-dev =    "vda", "vdb", "vdc",
 					"vdd", "vde", "vdf",
 					"vdg", "vdh", "vdi",
 					"vdj", "vdk", "vdl",
-					"vdm", "vdn", "vdo";
+					"vdm", "vdn", "vdo",
+					"vdp", "vdq", "vdr",
+					"vds", "vdt", "vdu";
 			rename-dev = "super", "userdata", "metadata",
-					"persist", "misc", "modem_b",
-					"modem_a", "bluetooth_b", "bluetooth_a",
+					"persist", "misc", "vbmeta_b",
+					"vbmeta_a", "modem_b", "modem_a",
+					"bluetooth_b", "bluetooth_a",
 					"boot_b", "boot_a", "dtbo_b",
-					"dtbo_a", "dsp_b", "dsp_a";
+					"dtbo_a", "dsp_b", "dsp_a",
+					"vendor_boot_b", "vendor_boot_a",
+					"init_boot_b", "init_boot_a";
 		};
 	};
 };

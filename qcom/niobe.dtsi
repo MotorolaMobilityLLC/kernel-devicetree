@@ -27,7 +27,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance ufshcd-core.use_mcq_mode=n loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
+		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
 	};
 
 	reserved_memory: reserved-memory {};
@@ -685,6 +685,18 @@
 		};
 	};
 
+	pcie_crm: crm@1d01000 {
+		label = "pcie_crm";
+		compatible = "qcom,pcie-crm";
+		reg = <0x1d01000 0x3000>, <0x1d04800 0x800>, <0x1d05000 0x2000>, <0x1d04000 0x800>;
+		reg-names = "base", "crm_b", "crm_c", "crm_v";
+		interrupts = <GIC_SPI 431 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "pcie_crm";
+		clocks = <&pcie_0_pipe_clk>;
+		qcom,hw-drv-ids = <0 1 2>;
+		qcom,sw-drv-ids = <0>;
+	};
+
 	pdc: interrupt-controller@b220000 {
 		compatible = "qcom,niobe-pdc", "qcom,pdc";
 		reg = <0xb220000 0x10000>, <0x174000f0 0x64>;
@@ -702,6 +714,11 @@
 		#interrupt-cells = <2>;
 		interrupt-parent = <&intc>;
 		interrupt-controller;
+	};
+
+	pcie_pdc: pdc@b350000 {
+		compatible = "qcom,niobe-pcie-pdc", "qcom,pcie-pdc";
+		reg = <0x0B340000 0x20000>;
 	};
 
 	kryo-erp {
@@ -1913,6 +1930,7 @@
 		reg = <0x1d80000 0x2000>;
 		reg-names = "phy_mem";
 		#phy-cells = <0>;
+
 		lanes-per-direction = <2>;
 		clock-names = "ref_clk_src",
 			"ref_aux_clk", "qref_clk",
@@ -1936,8 +1954,9 @@
 		compatible = "qcom,ufshc";
 		reg = <0x1d84000 0x3000>,
 			<0x1D88000 0x8000>,
-			<0x1D90000 0x9000>;
-		reg-names = "ufs_mem","ufs_ice","ufs_ice_hwkm";
+			<0x1D90000 0x9000>,
+			<0x1da5000 0x2000>, <0x1da4000 0x10>;
+		reg-names = "ufs_mem","ufs_ice","ufs_ice_hwkm", "mcq_sqd", "mcq_vs";
 		interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH>;
 		phys = <&ufsphy_mem>;
 		phy-names = "ufsphy";
@@ -2045,15 +2064,22 @@
 
 		iommus = <&apps_smmu 0x60 0x0>;
 		qcom,iommu-dma = "fastmap";
+		qcom,iommu-dma-addr-pool = <0x1000 0xFFFFF000>;
+		qcom,iommu-msi-size = <0x1000>;
 		shared-ice-cfg = <&ice_cfg>;
 		dma-coherent;
 
 		/* skip pbl wa as we have got this fixed in pbl */
 		qcom,bypass-pbl-rst-wa;
 
+		/* Enable WA for broken ah8*/
+		qcom,broken-ahit-wa;
+
 		reset-gpios = <&tlmm 200 GPIO_ACTIVE_LOW>;
 		resets = <&gcc GCC_UFS_PHY_BCR>;
 		reset-names = "rst";
+
+		msi-parent = <&gic_its 0x60>;
 
 		status = "disabled";
 
@@ -2202,6 +2228,10 @@
 			reg = <0x80>;
 			#clock-cells = <1>;
 		};
+	};
+
+	qcom_cpufreq_stats: qcom,cpufreq_stats {
+		compatible = "qcom,cpufreq-stats-v2";
 	};
 
 	cpucp_log: qcom,cpucp_log@d8140000 {
@@ -2678,6 +2708,7 @@
 		qcom,scaling-exceptions = <>;
 		qcom,interconnect,num-cases = <5>;
 		qcom,interconnect,num-paths = <3>;
+		mboxes = <&qmp_aop 0>;
 		interconnects = <&aggre2_noc MASTER_IPA &gem_noc SLAVE_LLCC>,
 			<&mc_virt MASTER_LLCC &mc_virt SLAVE_EBI1>,
 			<&gem_noc MASTER_APPSS_PROC &cnoc_main SLAVE_IPA_CFG>;
@@ -2772,6 +2803,15 @@
 		shared-buffer-size = <0x1000>;
 	};
 
+	hall_gpio {
+		compatible = "qcom,hall-gpio";
+		label = "hall_gpio";
+		pinctrl-names = "sleep", "active";
+		pinctrl-0 = <&hall_gpio_sleep>;
+		pinctrl-1 = <&hall_gpio_active>;
+		vdd-supply = <&L14B>;
+		status = "ok";
+	};
 };
 
 &reserved_memory {
