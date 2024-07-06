@@ -39,22 +39,13 @@
 
 &soc {
 	gpio_keys {
-		pinctrl-0 = <&key_vol_up_default &key_cam_default &rf_connect_default>;
+		pinctrl-0 = <&key_vol_up_default &key_cam_default>;
 
 		google_key {
 			label = "cam_key";
 			gpios = <&tlmm 103 GPIO_ACTIVE_LOW>;
 			linux,input-type = <1>;
 			linux,code = <KEY_CAMERA>;
-			gpio-key,wakeup;
-			debounce-interval = <15>;
-			linux,can-disable;
-		};
-		rf_connect_key {
-			label = "rf_connect_key";
-			gpios = <&tlmm 43 55 87 89 GPIO_ACTIVE_HIGH>;
-			linux,input-type = <1>;
-			linux,code = <KEY_RF_CONNECT>;
 			gpio-key,wakeup;
 			debounce-interval = <15>;
 			linux,can-disable;
@@ -73,19 +64,6 @@
 			pins = "gpio103";
 			drive-strength = <16>;
 			bias-pull-up;
-		};
-	};
-	rf_connect_default: rf_connect_default {
-		mux {
-			pins = "gpio43", "gpio55", "gpio87", "gpio89";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio43", "gpio55", "gpio87", "gpio89";
-			drive-strength = <2>;
-			input-enable;
-			bias-disable;
 		};
 	};
 };
