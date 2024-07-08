@@ -661,9 +661,11 @@ endif
 
 ifeq ($(CONFIG_KOBE_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += \
-        parrot-kobe-evt-overlay.dtbo
+        parrot-kobe-evt-overlay.dtbo \
+        parrot-kobe-dvt-overlay.dtbo
 
 parrot-kobe-evt-overlay.dtbo-base := parrot-moto-base.dtb
+parrot-kobe-dvt-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 
 

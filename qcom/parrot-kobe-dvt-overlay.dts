@@ -2,11 +2,10 @@
 /plugin/;
 
 #include "parrot-kobe-common-overlay.dtsi"
-#include "kobe-ppg-evt.dtsi"
+#include "kobe-ppg-dvt.dtsi"
 / {
 	model = "kobe";
 	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,kobe";
 	qcom,msm-id = <663 0x10000>;
-	qcom,board-id = <0x45 0xA100>;
+	qcom,board-id = <0x45 0xB100>;
 };
-
