@@ -38,7 +38,7 @@
 
 &soc {
 	gpio_keys {
-		pinctrl-0 = <&key_vol_up_default &key_cam_default>;
+		pinctrl-0 = <&key_vol_up_default &key_cam_default &rf_connect_default>;
 
 		google_key {
 			label = "cam_key";
@@ -63,6 +63,19 @@
 			pins = "gpio103";
 			drive-strength = <16>;
 			bias-pull-up;
+		};
+	};
+	rf_connect_default: rf_connect_default {
+		mux {
+			pins = "gpio43", "gpio55", "gpio87", "gpio89";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio43", "gpio55", "gpio87", "gpio89";
+			drive-strength = <2>;
+			input-enable;
+			bias-disable;
 		};
 	};
 };
