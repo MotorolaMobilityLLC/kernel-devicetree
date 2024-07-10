@@ -200,7 +200,7 @@
 		reg = <0x2>;
 		status = "ok";
 		mmi,status = "/chosen","mmi,panel_name","contains","ft8725";
-		spi-max-frequency = <10000000>;
+		spi-max-frequency = <8000000>;
 		focaltech,reset-gpio = <&tlmm 131 0x0>;
 		focaltech,irq-gpio = <&tlmm 65 0x2800>;
 		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend",
