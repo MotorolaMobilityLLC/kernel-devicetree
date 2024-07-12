@@ -150,5 +150,4 @@
 	periph-5ca-supply = <&L10F>;
 	periph-5cb-supply = <&L11F>;
 	periph-5cc-supply = <&L12F_LEVEL>;
-	periph-69b-supply = <&S1G>;
 };
