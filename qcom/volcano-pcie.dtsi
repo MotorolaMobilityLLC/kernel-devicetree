@@ -226,6 +226,8 @@ pcie0: qcom,pcie@1c00000 {
 				0x0200 0x00 0x0
 				0x0244 0x03 0x0>;
 
+	status = "disabled";
+
 	pcie0_rp: pcie0_rp {
 		reg = <0 0 0 0 0>;
 	};
