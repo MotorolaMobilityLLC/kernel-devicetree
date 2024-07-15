@@ -85,8 +85,8 @@
 };
 
 &eusb2_phy1 {
-	dummy-supply = <&pm8550b_eusb2_sec_repeater>;
-	usb-repeater = <&pm8550b_eusb2_sec_repeater>;
+	dummy-supply = <&pm8550b_repeater>;
+	usb-repeater = <&pm8550b_repeater>;
 };
 
 &usb0 {
