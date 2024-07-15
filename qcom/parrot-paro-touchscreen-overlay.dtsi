@@ -209,7 +209,8 @@
 		pinctrl-1 = <&touch_reset_suspend>;
 		pinctrl-2 = <&ts_spi_release>;
 		focaltech,max-touch-number = <10>;
-		focaltech,display-coords =  <0 0 1079 2387>;
+		focaltech,display-coords =  <0 0 4316 9548>;
+		focaltech,high-resolution =  <4>;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
