@@ -1925,6 +1925,33 @@
 		};
 	};
 
+	ipd_vol_up_default: ipd_vol_up_default {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			bias-pull-up;
+			drive-strength = <2>;
+		};
+	};
+
+	ipd_vol_down_default: ipd_vol_down_default {
+		mux {
+			pins = "gpio16";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio16";
+			bias-pull-up;
+			drive-strength = <2>;
+
+		};
+	};
+
 	usb0_phy_ps: usb0_phy_ps {
 		usb3_0_phy_portselect_default: usb3_0_phy_portselect_default {
 			mux {
