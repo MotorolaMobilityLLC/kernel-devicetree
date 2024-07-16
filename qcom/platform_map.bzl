@@ -352,11 +352,13 @@ _platform_map = {
             # keep sorted
             {"name": "parrot-moto-base.dtb", "product":"paros",},
             {"name": "parrot-moto-base.dtb", "product":"mona",},
+            {"name": "parrot-moto-base.dtb", "product":"paro",},
         ],
         "dtbo_list": [
             # keep sorted
             {"name": "parrot-paros-evt-overlay.dtbo", "product": "paros",},
             {"name": "parrot-mona-evt-overlay.dtbo", "product": "mona",},
+            {"name": "parrot-paro-evt-overlay.dtbo", "product": "paro",},
         ],
     },
 }
