@@ -1,5 +1,6 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/qcom,gcc-niobe.h>
+#include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 
 / {
 	#address-cells = <0x2>;
@@ -423,6 +424,19 @@
 
 	qti,smmu-proxy {
 		compatible = "smmu-proxy-receiver";
+	};
+
+	qti,smmu-proxy-camera-cb {
+		compatible = "smmu-proxy-cb";
+		qti,cb-id = <QTI_SMMU_PROXY_CAMERA_CB>;
+		qcom,iommu-defer-smr-config;
+		iommus = <&apps_smmu 0x1841 0x20>,
+			 <&apps_smmu 0x1821 0xA0>,
+			 <&apps_smmu 0x1902 0x0>,
+			 <&apps_smmu 0x1921 0x0>,
+			 <&apps_smmu 0x0801 0x0>,
+			 <&apps_smmu 0x19A7 0x0>;
+		dma-coherent;
 	};
 
 	qcom_smcinvoke {
