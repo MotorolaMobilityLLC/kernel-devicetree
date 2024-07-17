@@ -6,8 +6,39 @@
 };
 
 &qti_glink_charger {
-	profile-ids-map = "107000", "SB18D58448";
-	mmi,switched-nums = <2>;
+	compatible = "mmi,adsp-glink-charger";
+	polling-interval-ms = <60000>;
+	def_batt: battery {
+		type = <0x0000>;
+		battid-utags = "mmi,battid";
+		df-serialnum = "SB18D58448";
+		profile-ids-map = "107000", "SB18D58448";
+	};
+
+	charger {
+		type = <0x0100>;
+		battery = <&def_batt>;
+		encrypted-chg-enabled;
+	};
+
+	usb {
+		type = <0x0200>;
+		//therm-supported;
+	};
+
+	wireless_cps4035b {
+		type = <0x0301>;
+	};
+
+	pump_charger_master {
+		type = <0x0400>;
+		//pump-psy-enabled;
+	};
+
+	pump_charger_slave {
+		type = <0x0401>;
+		//pump-psy-enabled;
+	};
 };
 
 &battery_charger {

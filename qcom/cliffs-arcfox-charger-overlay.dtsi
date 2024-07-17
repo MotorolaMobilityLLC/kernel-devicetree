@@ -165,12 +165,48 @@
 };
 
 &qti_glink_charger {
+	compatible = "mmi,adsp-glink-charger";
 	mmi,max-fv-mv = <4540>;
 	mmi,max-fcc-ma = <5000>;
-	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
-	mmi,partner_psy_name = "charger";
-	mmi,thermal-primary-mitigation = <4000000 2900000 2000000 1000000 500000 300000 200000>;
-	mmi,thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1100000 500000 100000>;
 	//mmi,shutdown-empty-vbat-mv = <3000>;
+	polling-interval-ms = <60000>;
+	main_batt: main_battery {
+		type = <0x0000>;
+		battery-psy-enabled;
+		battid-utags = "mmi,battid";
+		df-serialnum = "SB18E07971";
+		profile-ids-map = "107000", "SB18E07971";
+	};
+
+	glink_charger {
+		type = <0x0100>;
+		//mmi-charger-disabled;
+		encrypted-chg-enabled;
+		battery = <&main_batt>;
+		partner_psy_name = "charger";
+		max-fcc-ma = <5000>;
+		thermal-primary-mitigation = <4000000 2900000 2000000 1000000 500000 300000 200000>;
+		thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1100000 500000 100000>;
+	};
+
+	usb {
+		type = <0x0200>;
+		//therm-supported;
+		//otp-en-gpio = <&pmxr2230_gpios 11 0>;
+	};
+
+	wireless_cps4035b {
+		type = <0x0301>;
+	};
+
+	pump_charger {
+		type = <0x0400>;
+		//pump-psy-enabled;
+	};
+
+	buck_charger {
+		type = <0x0500>;
+		//buck-psy-enabled;
+	};
 };
