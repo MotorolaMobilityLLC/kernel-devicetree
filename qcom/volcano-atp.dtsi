@@ -105,6 +105,10 @@
 	};
 };
 
+&L1B {
+	status = "disabled";
+};
+
 &regulator_ocp_notifier {
 	periph-1c2-supply = <&L2B>;
 	periph-1c3-supply = <&L3B>;
