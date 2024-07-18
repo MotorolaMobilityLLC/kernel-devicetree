@@ -974,3 +974,4 @@
 };
 
 #include "neo-regulators.dtsi"
+#include "msm-arm-smmu-neo.dtsi"
