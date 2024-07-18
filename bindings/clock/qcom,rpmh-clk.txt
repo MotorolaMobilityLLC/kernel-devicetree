@@ -23,6 +23,7 @@ Required properties :
 		"qcom,niobe-rpmh-clk"
 		"qcom,volcano-rpmh-clk"
 		"qcom,anorak-rpmh-clk"
+		"qcom,neo-rpmh-clk"
 
 - #clock-cells : must contain 1
 
