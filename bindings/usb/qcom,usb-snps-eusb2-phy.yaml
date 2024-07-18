@@ -16,8 +16,8 @@ properties:
     description: |
       Address and length of the register set for the device. Required regs are::
        - eusb2_phy_base:: the base register for the PHY
-       - eud_detect_reg:: VIOCTL_EUD_DETECT register.
       Optional regs are::
+       - eud_detect_reg:: VIOCTL_EUD_DETECT register.
        - eud_enable_reg:: register address to read eud enable/disable status.
     minItems: 2
 
