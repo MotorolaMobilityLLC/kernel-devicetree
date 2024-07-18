@@ -3210,8 +3210,8 @@
 	};
 
 	qfprom: qfprom@221c2000 {
-		compatible = "qcom,qfprom";
-		reg = <0x221c2000 0x2000>;
+		compatible = "qcom,pineapple-qfprom", "qcom,qfprom";
+		reg = <0x221c2000 0x1000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 		read-only;
