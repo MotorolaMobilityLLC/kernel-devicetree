@@ -1,4 +1,5 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/soc/qcom,rpmh-rsc.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO";
@@ -372,6 +373,63 @@
 		interrupts = <GIC_PPI 0 IRQ_TYPE_LEVEL_HIGH>,
 			     <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "l1-l2-faultirq","l3-scu-faultirq";
+	};
+
+	apps_rsc: rsc@17a00000 {
+		label = "apps_rsc";
+		compatible = "qcom,rpmh-rsc";
+		reg = <0x17a00000 0x10000>,
+		      <0x17a10000 0x10000>,
+		      <0x17a20000 0x10000>;
+		reg-names = "drv-0", "drv-1", "drv-2";
+		qcom,drv-count = <3>;
+		interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>;
+		power-domains = <&CLUSTER_PD>;
+
+		apps_rsc_drv2: drv@2 {
+			qcom,drv-id = <2>;
+			qcom,tcs-offset = <0xd00>;
+			channel@0 {
+				qcom,tcs-config = <ACTIVE_TCS    3>,
+						  <SLEEP_TCS     2>,
+						  <WAKE_TCS      2>,
+						  <FAST_PATH_TCS 1>,
+						  <CONTROL_TCS   0>;
+			};
+		};
+	};
+
+	disp_rsc: rsc@af20000 {
+		label = "disp_rsc";
+		compatible = "qcom,rpmh-rsc";
+		reg = <0xaf20000 0x10000>;
+		reg-names = "drv-0";
+		qcom,drv-count = <1>;
+		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH>;
+
+		disp_rsc_drv0: drv@0 {
+			qcom,drv-id = <0>;
+			qcom,tcs-offset = <0x1c00>;
+			channel@0 {
+				qcom,tcs-config = <ACTIVE_TCS    0>,
+						  <SLEEP_TCS     1>,
+						  <WAKE_TCS      1>,
+						  <CONTROL_TCS   0>,
+						  <FAST_PATH_TCS 0>;
+			};
+		};
+	};
+
+	pdc: interrupt-controller@b220000 {
+		compatible = "qcom,pdc", "qcom,neo-pdc";
+		reg = <0xb220000 0x30000>, <0x174000f0 0x64>;
+		reg-names = "pdc-interrupt-base", "apss-shared-spi-cfg";
+		qcom,pdc-ranges = <0 480 94>, <94 609 31>, <125 63 1>, <126 716 12>;
+		#interrupt-cells = <2>;
+		interrupt-parent = <&intc>;
+		interrupt-controller;
 	};
 
 	memtimer: timer@17420000 {
