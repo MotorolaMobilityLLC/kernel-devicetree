@@ -2173,7 +2173,7 @@
 			iommus = <&apps_smmu 0x93 0>,
 				<&apps_smmu 0x9C 0x0001>,
 				<&apps_smmu 0x9E 0>,
-				<&apps_smmu 0x9D 0x0011>;
+				<&apps_smmu 0x9D 0x0001>;
 			qcom,iommu-vmid = <0x9>; /* VMID_CP_BITSTREAM */
 			qcom,secure-context-bank;
 		};
