@@ -26,6 +26,7 @@ Properties:
 		    - "qcom,pineapple-pdc": For Pineapple
 		    - "qcom,cliffs-pdc": For Cliffs
 		    - "qcom,volcano-pdc": For Volcano
+		    - "qcom,neo-pdc": For Neo
 
 - reg:
 	Usage: required
