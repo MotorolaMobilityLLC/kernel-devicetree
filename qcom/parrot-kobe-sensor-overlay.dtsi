@@ -46,6 +46,7 @@
 
 &qupv3_se6_i2c {
 	status = "ok";
+	clock-frequency = <400000>;
 	sx937x@2c { /* SAR sensor */
 		compatible = "Semtech,sx937x";
 		reg = <0x2c>;
