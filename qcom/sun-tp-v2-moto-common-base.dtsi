@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+/* This file is derivated from sun-v2.dts */
+
+/dts-v1/;
+
+#include "sun-v2.dtsi"
+#include "sun-tp-v2.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Sun Alt. Thermal Profile v2 SoC";
+	compatible = "qcom,sun";
+	qcom,board-id = <0 0>;
+/*
+ * Moto common base dtb nodes definition
+ */
+	channel-id-map = "";
+	chosen: chosen { };
+	aliases: aliases { };
+	reserved_memory: reserved-memory { };
+	mot_batterydata: qcom,battery-data { };
+	utags: utags { };
+	hw: hw { };
+};
