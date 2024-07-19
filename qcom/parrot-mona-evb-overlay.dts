@@ -1,13 +1,12 @@
 /dts-v1/;
 /plugin/;
 
-#include "parrot-paro-common-overlay.dtsi"
-#include "parrot-wcn6755.dtsi"
+#include "parrot-mona-common-overlay.dtsi"
 
 / {
-	model = "paros";
-	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,paros";
+	model = "mona";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,mona";
 	qcom,msm-id = <663 0x10000>;
-	qcom,board-id = <0x43 0xA100>;
+	qcom,board-id = <0x41 0x9000>;
 };
 
