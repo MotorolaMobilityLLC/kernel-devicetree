@@ -527,3 +527,4 @@
 
 #include "neo-dma-heaps.dtsi"
 #include "neo-pinctrl.dtsi"
+#include "neo-regulators.dtsi"
