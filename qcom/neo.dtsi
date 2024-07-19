@@ -6,6 +6,8 @@
 #include <dt-bindings/clock/qcom,dispcc-neo.h>
 #include <dt-bindings/clock/qcom,tcsrcc-neo.h>
 #include <dt-bindings/clock/qcom,videocc-neo.h>
+#include <dt-bindings/interconnect/qcom,icc.h>
+#include <dt-bindings/interconnect/qcom,neo.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
 
 / {
@@ -410,6 +412,10 @@
 						  <CONTROL_TCS   0>;
 			};
 
+			apps_bcm_voter: bcm_voter {
+				compatible = "qcom,bcm-voter";
+			};
+
 			rpmhcc: qcom,rpmhclk {
 				compatible = "qcom,neo-rpmh-clk";
 				#clock-cells = <1>;
@@ -434,6 +440,11 @@
 						  <WAKE_TCS      1>,
 						  <CONTROL_TCS   0>,
 						  <FAST_PATH_TCS 0>;
+			};
+
+			disp_bcm_voter: bcm_voter {
+				compatible = "qcom,bcm-voter";
+				qcom,tcs-wait = <QCOM_ICC_TAG_AMC>;
 			};
 		};
 	};
@@ -644,6 +655,79 @@
 		reg-name = "cc_base";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	nsp_noc: interconnect@320C0000 {
+		reg = <0x320C0000 0x10>;
+		compatible = "qcom,neo-nsp_noc";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	lpass_ag_noc: interconnect@3c40000 {
+		reg = <0x3c40000 0x10>;
+		compatible = "qcom,neo-lpass_ag_noc";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	clk_virt: interconnect@0 {
+		compatible = "qcom,neo-clk_virt";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	mc_virt: interconnect@1 {
+		compatible = "qcom,neo-mc_virt";
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	config_noc: interconnect@1500000 {
+		reg = <0x1500000 0x10>;
+		compatible = "qcom,neo-config_noc";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	system_noc: interconnect@1680000 {
+		reg = <0x1680000 0x29080>;
+		compatible = "qcom,neo-system_noc";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+		clocks = <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>;
+	};
+
+	pcie_noc: interconnect@16c0000 {
+		reg = <0x16c0000 0xA080>;
+		compatible = "qcom,neo-pcie_anoc";
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		#interconnect-cells = <1>;
+		clocks =  <&gcc GCC_AGGRE_NOC_PCIE_1_AXI_CLK>,
+			<&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>;
+	};
+
+	mmss_noc: interconnect@1740000 {
+		reg = <0x1740000 0x1F100>;
+		compatible = "qcom,neo-mmss_noc";
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		#interconnect-cells = <1>;
+	};
+
+	gem_noc: interconnect@19100000 {
+		reg = <0x19100000 0xA2080>;
+		compatible = "qcom,neo-gem_noc";
+		qcom,bcm-voter-names = "hlos", "disp";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+		#interconnect-cells = <1>;
 	};
 
 	cpu_pmu: cpu-pmu {

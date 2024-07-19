@@ -45,3 +45,18 @@
 &disp_cc_mdss_core_int2_gdsc {
 	status = "ok";
 };
+
+&mc_virt {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&mmss_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&gem_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
