@@ -1,0 +1,173 @@
+/*
+ * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+
+/*
+&aliases {
+	spi0 = "/soc/spi@a90000";
+	spi1 = "/soc/spi@88c000";
+};
+*/
+
+&L14B {
+	regulator-min-microvolt = <2960000>;
+	regulator-max-microvolt = <3008000>;
+	qcom,init-voltage = <3008000>;
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix,gt9916P";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+
+		goodix,reset-gpio = <&tlmm 161 0x0>;
+		goodix,irq-gpio = <&tlmm 162 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <42240>;
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-name = "pm_humu_l14";
+		goodix,iovdd-name = "pm_humu_l4";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
+		pinctrl-2 = <&ts_release>;
+	};
+};
+
+&qupv3_se15_i2c {
+	status = "disabled";
+};
+
+/* CLI touchscreen pins */
+
+&tlmm {
+	cli_pmx_ts_active {
+		cli_ts_active: cli_ts_active {
+			mux {
+				pins = "gpio14", "gpio108";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14", "gpio108";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	cli_pmx_ts_reset_suspend {
+		cli_ts_reset_suspend: cli_ts_reset_suspend {
+			mux {
+				pins = "gpio14";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_int_suspend {
+		cli_ts_int_suspend: cli_ts_int_suspend {
+			mux {
+				pins = "gpio108";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio108";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	cli_pmx_ts_release {
+		cli_ts_release: cli_ts_release {
+			mux {
+				pins = "gpio14", "gpio108";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio14", "gpio108";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&L9B {
+	qcom,init-voltage = <3000000>;
+};
+
+&qupv3_se11_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "disabled";
+
+	gdx-cli@0 {
+		status = "ok";
+		compatible = "goodix,marseille";
+		reg = <0>;
+		spi-max-frequency = <15000000>;
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
+
+		goodix,reset-gpio = <&tlmm 14 0x0>;
+		goodix,irq-gpio = <&tlmm 108 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-x = <17280>;
+		goodix,panel-max-y = <20352>;
+		goodix,panel-max-w = <256>;
+		goodix,avdd-name = "avdd";
+		avdd-supply = <&L9B>;
+		goodix,iovdd-name = "iovdd";
+		iovdd-supply = <&L8B>;
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+
+		mmi,power-off-suspend;
+		mmi,cli-enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
+		goodix,gesture-wait-pm;
+		mmi,resolution_boost = <16>;
+		mmi,usb-charger-detection;
+		goodix,stowed-mode-ctrl;
+		goodix,pocket-mode-ctrl;
+	};
+};
