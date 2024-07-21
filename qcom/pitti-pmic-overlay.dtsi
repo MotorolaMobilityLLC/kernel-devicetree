@@ -217,9 +217,9 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			pa_therm0 {
+			gnss_third_therm {
 				reg = <0>;
-				io-channels = <&pm6125_vadc ADC5_AMUX_THM1_100K_PU>;
+				io-channels = <&pm6125_vadc ADC5_GPIO2_100K_PU>;
 				qcom,ratiometric;
 				qcom,hw-settle-time-us = <200>;
 			};
@@ -258,9 +258,9 @@
 	#address-cells = <1>;
 	#size-cells = <0>;
 /* Channel nodes */
-	gnss_third_therm {
+	pa_therm0 {
 		reg = <0>;
-		io-channels = <&pm6125_vadc ADC5_GPIO2_100K_PU>;
+		io-channels = <&pm6125_vadc ADC5_AMUX_THM1_100K_PU>;
 		qcom,ratiometric;
 		qcom,hw-settle-time-us = <200>;
 	};
@@ -296,7 +296,7 @@
 	sys-therm-1 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
-		thermal-sensors = <&pm6125_adc_tm 0>;
+		thermal-sensors = <&pm6125_adc_tm_iio 0>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -396,7 +396,7 @@
 	sys-therm-5 {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
-		thermal-sensors = <&pm6125_adc_tm_iio 0>;
+		thermal-sensors = <&pm6125_adc_tm 0>;
 		trips {
 			active-config0 {
 				temperature = <125000>;

@@ -198,6 +198,27 @@
 		};
 	};
 
+	rpmh-regulator-ldob1 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldob1";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 30000>;
+
+		L1B:
+		pm7550_l1: regulator-pm7550-l1 {
+			regulator-name = "pm7550_l1";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+			qcom,init-voltage = <1800000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_LPM>;
+			regulator-always-on;
+		};
+	};
+
 	rpmh-regulator-ldob2 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldob2";
@@ -281,7 +302,8 @@
 			regulator-min-microvolt = <1200000>;
 			regulator-max-microvolt = <1200000>;
 			qcom,init-voltage = <1200000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_LPM>;
+			regulator-always-on;
 		};
 	};
 
@@ -674,6 +696,21 @@
 		};
 	};
 
+	rpmh-regulator-smpd1 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "smpd1";
+		status = "disabled";
+
+		S1D:
+		pmg1110d_s1: regulator-pmg1110d-s1 {
+			regulator-name = "pmg1110d_s1";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <1010000>;
+			regulator-max-microvolt = <1170000>;
+			qcom,init-voltage = <952000>;
+		};
+	};
+
 	rpmh-regulator-ldof1 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldof1";
@@ -911,4 +948,33 @@
 		};
 	};
 
+	rpmh-regulator-smpk1 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "smpk1";
+		status = "disabled";
+
+		S1K:
+		pmg1110k_s1: regulator-pmg1110k-s1 {
+			regulator-name = "pmg1110k_s1";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <300000>;
+			regulator-max-microvolt = <1004000>;
+			qcom,init-voltage = <300000>;
+		};
+	};
+
+	rpmh-regulator-smpl1 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "smpl1";
+		status = "disabled";
+
+		S1L:
+		pmg1110l_s1: regulator-pmg1110l-s1 {
+			regulator-name = "pmg1110l_s1";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <300000>;
+			regulator-max-microvolt = <1004000>;
+			qcom,init-voltage = <300000>;
+		};
+	};
 };

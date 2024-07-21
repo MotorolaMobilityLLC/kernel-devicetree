@@ -716,9 +716,9 @@
 		interrupt-controller;
 	};
 
-	pcie_pdc: pdc@b350000 {
+	pcie_pdc: pdc@b340000 {
 		compatible = "qcom,niobe-pcie-pdc", "qcom,pcie-pdc";
-		reg = <0x0B340000 0x20000>;
+		reg = <0xb340000 0x30000>;
 	};
 
 	kryo-erp {
@@ -1096,18 +1096,27 @@
 		};
 	};
 
+	pcie_crm_hw_0_bcm_voter: bcm_voter@0 {
+		compatible = "qcom,bcm-voter";
+		qcom,crm-name = "pcie_crm";
+		qcom,crm-client-idx = <0>;
+		qcom,crm-pwr-states = <5>;
+	};
+
 	clk_virt: interconnect@0 {
 		compatible = "qcom,niobe-clk_virt";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos";
-		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "pcie_crm_hw_0";
+		qcom,bcm-voters = <&apps_bcm_voter>,
+				  <&pcie_crm_hw_0_bcm_voter>;
 	};
 
 	mc_virt: interconnect@1 {
 		compatible = "qcom,niobe-mc_virt";
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp", "disp2";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp", "disp2", "pcie_crm_hw_0";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>,
+				  <&disp1_bcm_voter>, <&pcie_crm_hw_0_bcm_voter>;
 	};
 
 	aggre1_noc: interconnect@16E0000 {
@@ -1150,8 +1159,9 @@
 		compatible = "qcom,niobe-gem_noc";
 		reg = <0x24100000 0xC1080>;
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos", "disp", "disp2";
-		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>, <&disp1_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "disp", "disp2", "pcie_crm_hw_0";
+		qcom,bcm-voters = <&apps_bcm_voter>, <&disp0_bcm_voter>,
+				  <&disp1_bcm_voter>, <&pcie_crm_hw_0_bcm_voter>;
 	};
 
 	lpass_ag_noc: interconnect@3C40000 {
@@ -1182,8 +1192,9 @@
 		compatible = "qcom,niobe-pcie_anoc";
 		reg = <0x16C0000 0x14200>;
 		#interconnect-cells = <1>;
-		qcom,bcm-voter-names = "hlos";
-		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,bcm-voter-names = "hlos", "pcie_crm_hw_0";
+		qcom,bcm-voters = <&apps_bcm_voter>,
+				  <&pcie_crm_hw_0_bcm_voter>;
 		clocks = <&gcc GCC_AGGRE_NOC_PCIE_AXI_CLK>,
 			 <&gcc GCC_CFG_NOC_PCIE_ANOC_AHB_CLK>;
 	};
@@ -1245,6 +1256,10 @@
 		interrupt-controller;
 		#interrupt-cells = <2>;
 		wakeup-parent = <&pdc>;
+	};
+
+	qti,smmu-proxy {
+		compatible = "smmu-proxy-sender";
 	};
 
 	tlmm-vm-mem-access {
@@ -1522,8 +1537,6 @@
 		reg-name = "cc_base";
 		vdd_cx-supply = <&VDD_CX_LEVEL>;
 		vdd_mx-supply = <&VDD_MXA_LEVEL>;
-		vdd_gfx-supply = <&VDD_GFX_LEVEL>;
-		vdd_mxc-supply = <&VDD_MXC_LEVEL>;
 		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_GPU_GPLL0_CLK_SRC>,
 			<&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>;
 		clock-names = "bi_tcxo", "gpll0_out_main",
@@ -1798,14 +1811,16 @@
 					<&soccp_smp2p_in 1 0>,
 					<&soccp_smp2p_in 3 0>,
 					<&soccp_smp2p_in 2 0>,
-					<&soccp_smp2p_in 9 0>;
+					<&soccp_smp2p_in 9 0>,
+					<&soccp_smp2p_in 10 0>;
 
 		interrupt-names = "wdog",
 				"fatal",
 				"ready",
 				"stop-ack",
 				"handover",
-				"pong";
+				"pong",
+				"wake-ack";
 
 		/* Outputs to soccp */
 		qcom,smem-states = <&soccp_smp2p_out 0>, <&soccp_smp2p_out 10>, <&soccp_smp2p_out 9>;
@@ -2759,7 +2774,7 @@
 			iommus = <&apps_smmu 0x4A2 0x0>;
 			qcom,iommu-dma-addr-pool = <0x20000000 0x20000000>;
 			/* Map IPCC Fence Protocol Region to uC CB */
-			qcom,ipcc-mapping = <0x500000 0x500000 0x40000>;
+			qcom,ipcc-mapping = <0x504000 0x504000 0x1000>;
 			qcom,iommu-dma = "atomic";
 			dma-coherent;
 		};
@@ -2801,6 +2816,13 @@
 		peer-name = <2>;
 		memory-region = <&vm_comm_mem>;
 		shared-buffer-size = <0x1000>;
+	};
+
+	qcom,qrtr-gunyah-tuivm {
+		compatible = "qcom,qrtr-gunyah";
+		qcom,master;
+		gunyah-label = <3>;
+		peer-name = <2>;
 	};
 
 	hall_gpio {
@@ -3143,3 +3165,10 @@
 #include "niobe-debug.dtsi"
 #include "niobe-thermal.dtsi"
 #include "niobe-pcie.dtsi"
+
+&pcie2_rp {
+	sdxc_pcie2: sdxc_pcie2 {
+		reg = <0x10000 0x0 0x0 0x0 0x0>;
+		qcom,iommu-dma = "atomic";
+	};
+};

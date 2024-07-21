@@ -5,3 +5,7 @@
 	compatible = "qcom,volcano";
 	qcom,msm-id = <657 0x10000>;
 };
+
+&pcie0 {
+	status = "ok";
+};

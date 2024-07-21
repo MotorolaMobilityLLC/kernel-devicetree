@@ -225,6 +225,7 @@
 };
 
 &pcie4 {
+	/delete-property/ iommu-map;
 	status = "okay";
 };
 

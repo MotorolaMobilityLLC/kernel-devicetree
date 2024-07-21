@@ -823,7 +823,7 @@
 		reg = <0x04480000 0x80000>;
 		compatible = "qcom,pitti-bimc";
 		#interconnect-cells = <1>;
-		qcom,util-factor = <167>;
+		qcom,util-factor = <151>;
 		qcom,keepalive;
 		clock-names = "bus", "bus_a";
 		clocks = <&rpmcc RPM_SMD_BIMC_CLK>,
@@ -2148,23 +2148,32 @@
 		qcom,no-clock-support;
 		interconnect-names = "data_path";
 		interconnects = <&system_noc MASTER_CRYPTO_CORE0 &bimc SLAVE_EBI_CH0>;
-		iommus = <&apps_smmu 0x86 0x0011>;
+		iommus = <&apps_smmu 0x86 0x0011>,
+			<&apps_smmu 0x92 0x0>,
+			<&apps_smmu 0x96 0x0011>,
+			<&apps_smmu 0x98 0x0011>,
+			<&apps_smmu 0x9F 0x0>,
+			<&apps_smmu 0x84 0x0011>,
+			<&apps_smmu 0x94 0x0011>;
 		qcom,iommu-dma = "atomic";
 
 		qcom_cedev_ns_cb {
-			compatible = "qcom,qcedev,context-bank";
+		compatible = "qcom,qcedev,context-bank";
 			label = "ns_context";
 			iommus = <&apps_smmu 0x92 0>,
-				 <&apps_smmu 0x98 0x0001>,
-				 <&apps_smmu 0x9F 0>;
+				<&apps_smmu 0x98 0x0001>,
+				<&apps_smmu 0x9F 0>,
+				<&apps_smmu 0x96 0x0011>,
+				<&apps_smmu 0x86 0x0011>;
 		};
 
 		qcom_cedev_s_cb {
-			compatible = "qcom,qcedev,context-bank";
+		compatible = "qcom,qcedev,context-bank";
 			label = "secure_context";
 			iommus = <&apps_smmu 0x93 0>,
-				 <&apps_smmu 0x9C 0x0001>,
-				 <&apps_smmu 0x9E 0>;
+				<&apps_smmu 0x9C 0x0001>,
+				<&apps_smmu 0x9E 0>,
+				<&apps_smmu 0x9D 0x0011>;
 			qcom,iommu-vmid = <0x9>; /* VMID_CP_BITSTREAM */
 			qcom,secure-context-bank;
 		};

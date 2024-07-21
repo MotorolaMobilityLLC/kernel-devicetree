@@ -2,6 +2,7 @@
 /plugin/;
 
 #include "volcano6i-mtp-wcd9395-brahma.dtsi"
+#include "volcano-pmiv0104.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. Volcano6I MTP + WCD9395 HSJ + Brahma";
@@ -10,3 +11,13 @@
 	qcom,board-id = <8 5>;
 };
 
+&pmiv0104_eusb2_repeater {
+	status = "ok";
+	vdd18-supply = <&L7B>;
+	vdd3-supply = <&L17B>;
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pmiv0104_eusb2_repeater>;
+	usb-repeater = <&pmiv0104_eusb2_repeater>;
+};

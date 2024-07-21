@@ -124,13 +124,11 @@
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
 		queue = <1>;
-		status="disabled";
 		emac0_emb_smmu: emac0_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x122 0x1>;
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
-			status="disabled";
 		};
 	};
 
@@ -147,6 +145,16 @@
 		interrupt-controller;
 		#interrupt-cells = <3>;
 		#mbox-cells = <2>;
+	};
+
+	ipcc_compute_l0_apps_ns1: qcom,ipcc@461000 {
+		compatible = "qcom,ipcc";
+		reg = <0x461000 0x1000>;
+		interrupts = <GIC_SPI 556 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+		status = "ok";
 	};
 
 	virtio_glink_cma: virtio-glink-cma@2e000000 {
@@ -189,6 +197,13 @@
 		alloc-ranges = <0x0 0x00000000 0xffffffff 0xffffffff>;
 		size = <0x0 0x1000>;
 		no-map;
+	};
+
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
 	};
 };
 
@@ -293,5 +308,10 @@
 	google,debug-kinfo {
 		compatible = "google,debug-kinfo";
 		memory-region = <&kinfo_mem>;
+	};
+
+	va_mini_dump {
+		compatible = "qcom,va-minidump";
+		memory-region = <&va_md_mem>;
 	};
 };

@@ -190,6 +190,11 @@
 &thermal_zones {
 	socd {
 		cooling-maps {
+			socd_apc1 {
+				trip = <&socd_trip>;
+				cooling-device = <&APC1_pause 1 1>;
+			};
+
 			socd_cdsp1 {
 				trip = <&socd_trip>;
 				cooling-device = <&cdsp_sw 4 4>;

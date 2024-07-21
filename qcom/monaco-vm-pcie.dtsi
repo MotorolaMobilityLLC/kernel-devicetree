@@ -27,11 +27,11 @@
 				"int_d";
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0 0 0 0xffffffff>;
-		interrupt-map = <0 0 0 0 &intc 0 GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 1 &intc 0 GIC_SPI 434 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 2 &intc 0 GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 3 &intc 0 GIC_SPI 438 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 4 &intc 0 GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-map = <0 0 0 0 &intc GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 1 &intc GIC_SPI 434 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 2 &intc GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 3 &intc GIC_SPI 438 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 4 &intc GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
 		perst-gpio = <&tlmm 2 GPIO_ACTIVE_HIGH>;
 		wake-gpio = <&tlmm 0 GPIO_ACTIVE_HIGH>;
 		pinctrl-names = "default", "sleep";
@@ -348,11 +348,11 @@
 				"int_d";
 		#interrupt-cells = <1>;
 		interrupt-map-mask = <0 0 0 0xffffffff>;
-		interrupt-map = <0 0 0 0 &intc 0 GIC_SPI 518 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 1 &intc 0 GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 2 &intc 0 GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 3 &intc 0 GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH
-				0 0 0 4 &intc 0 GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-map = <0 0 0 0 &intc GIC_SPI 518 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 1 &intc GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 2 &intc GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 3 &intc GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH
+				0 0 0 4 &intc GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH>;
 
 		perst-gpio = <&tlmm 23 GPIO_ACTIVE_HIGH>;
 		wake-gpio = <&tlmm 21 GPIO_ACTIVE_HIGH>;

@@ -123,13 +123,11 @@
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
 		queue = <1>;
-		status="disabled";
 		emac0_emb_smmu: emac0_emb_smmu {
-			compatible = "qcom,emac-smmu-embedded";
+			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x122 0x1>;
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
-			status="disabled";
 		};
 	};
 };
@@ -148,6 +146,13 @@
 		size = <0x0 0x1000>;
 		no-map;
 	};
+
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
+	};
 };
 
 &qcom_dma_heaps {
@@ -163,6 +168,11 @@
 	google,debug-kinfo {
 		compatible = "google,debug-kinfo";
 		memory-region = <&kinfo_mem>;
+	};
+
+	va_mini_dump {
+		compatible = "qcom,va-minidump";
+		memory-region = <&va_md_mem>;
 	};
 };
 

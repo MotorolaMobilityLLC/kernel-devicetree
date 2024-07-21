@@ -270,7 +270,7 @@
 				<RPMH_REGULATOR_LEVEL_LOW_SVS_D1>;
 			qcom,proxy-consumer-enable;
 			qcom,proxy-consumer-voltage =
-				<RPMH_REGULATOR_LEVEL_LOW_SVS_D1
+				<RPMH_REGULATOR_LEVEL_TURBO
 				 RPMH_REGULATOR_LEVEL_MAX>;
 		};
 	};

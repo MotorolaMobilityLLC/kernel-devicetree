@@ -161,6 +161,7 @@
 			interrupt-names = "ovp-irq", "pre-flash-irq",
 					"flash-irq";
 			qcom,auto-calibration;
+			qcom,slew-ramp-time = <256>;
 
 			wled_flash: qcom,wled-flash {
 				label = "flash";

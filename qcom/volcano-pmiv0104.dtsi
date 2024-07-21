@@ -108,13 +108,11 @@
 	pmiv0104_iin_fb {
 		reg = <PMIV0104_ADC5_GEN3_IIN_FB>;
 		label = "pmiv0104_iin_fb";
-		qcom,pre-scaling = <1 1>;
 	};
 
 	pmiv0104_ichg_fb {
 		reg = <PMIV0104_ADC5_GEN3_ICHG_FB>;
 		label = "pmiv0104_ichg_fb";
-		qcom,pre-scaling = <1 1>;
 	};
 
 	pmiv0104_sys_therm_7 {
@@ -236,6 +234,11 @@
 &thermal_zones {
 	socd {
 		cooling-maps {
+			socd_apc1 {
+				trip = <&socd_trip>;
+				cooling-device = <&APC1_pause 1 1>;
+			};
+
 			socd_cdsp1 {
 				trip = <&socd_trip>;
 				cooling-device = <&cdsp_sw 4 4>;
