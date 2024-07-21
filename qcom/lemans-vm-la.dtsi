@@ -1,4 +1,5 @@
 #include "lemans-vm-ethernet.dtsi"
+#include <dt-bindings/mailbox/qcom-ipcc.h>
 
 &soc {
 	hsi2s: qcom,hsi2s@3B40000 {
@@ -205,6 +206,12 @@
 		reusable;
 		size = <0 0x1000000>;
 	};
+
+	ipc_shmem_mem_cached: ipc_shmem_cached_region {
+		compatible = "shared-dma-pool";
+		no-map;
+		reg = <0x0 0x00000000 0x0 0x00000000>;
+	};
 };
 
 &qcom_dma_heaps {
@@ -313,5 +320,95 @@
 	va_mini_dump {
 		compatible = "qcom,va-minidump";
 		memory-region = <&va_md_mem>;
+	};
+};
+
+&soc {
+	ipcc_self_ping_apss_cl0: ipcc-self-ping-apss_cl0 {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_APSS_NS1
+				IPCC_COMPUTE_L0_SIGNAL_MSG>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_APSS_NS1
+				IPCC_COMPUTE_L0_SIGNAL_MSG
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_apss_cl0_ack: ipcc-self-ping-apss_cl0_ack {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_APSS_NS1
+				IPCC_COMPUTE_L0_SIGNAL_ACK>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_APSS_NS1
+				IPCC_COMPUTE_L0_SIGNAL_ACK
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_adsp_cl0: ipcc-self-ping-adsp_cl0 {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_LPASS
+				IPCC_COMPUTE_L0_SIGNAL_MSG>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_LPASS
+				IPCC_COMPUTE_L0_SIGNAL_MSG
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_adsp_cl0_ack: ipcc-self-ping-adsp_cl0_ack {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_LPASS
+				IPCC_COMPUTE_L0_SIGNAL_ACK>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_LPASS
+				IPCC_COMPUTE_L0_SIGNAL_ACK
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_gpdsp0_cl0: ipcc-self-ping-gpdsp0_cl0 {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_GPDSP0
+				IPCC_COMPUTE_L0_SIGNAL_MSG>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_GPDSP0
+				IPCC_COMPUTE_L0_SIGNAL_MSG
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_gpdsp0_cl0_ack: ipcc-self-ping-gpdsp0_cl0_ack {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_GPDSP0
+				IPCC_COMPUTE_L0_SIGNAL_ACK>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_GPDSP0
+				IPCC_COMPUTE_L0_SIGNAL_ACK
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_gpdsp1_cl0: ipcc-self-ping-gpdsp1_cl0 {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_GPDSP1
+				IPCC_COMPUTE_L0_SIGNAL_MSG>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_GPDSP1
+				IPCC_COMPUTE_L0_SIGNAL_MSG
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
+	};
+
+	ipcc_self_ping_gpdsp1_cl0_ack: ipcc-self-ping-gpdsp1_cl0_ack {
+		compatible = "qcom,ipcc-self-ping";
+		mboxes = <&ipcc_compute_l0_apps_ns1 IPCC_CLIENT_GPDSP1
+				IPCC_COMPUTE_L0_SIGNAL_ACK>;
+		interrupt-parent = <&ipcc_compute_l0_apps_ns1>;
+		interrupts = <IPCC_CLIENT_GPDSP1
+				IPCC_COMPUTE_L0_SIGNAL_ACK
+				IRQ_TYPE_EDGE_RISING>;
+		memory-region = <&ipc_shmem_mem_cached>;
 	};
 };
