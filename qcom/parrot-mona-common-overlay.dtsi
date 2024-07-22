@@ -9,94 +9,142 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "parrot-moto-common-overlay-base.dtsi"
+#include "parrot-moto-common-overlay-base-pm8350b.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
-#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include "parrot-mona-charger-overlay.dtsi"
+
+&display_panel_avdd {
+         status = "disabled";
+};
 
 &tlmm {
 	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
 };
 
-&sdhc_1 {
-	status = "disabled";
-};
-
 &sdhc_2 {
-	cd-gpios = <&tlmm 107 GPIO_ACTIVE_HIGH>;
+	status = "disabled";
 };
 
 &usb2_phy0 {
 	qcom,param-override-seq = <
 			0x83 0x6c
-			0x08 0x70
-			0x14 0x74
+			0x8a 0x70
+			0xcd 0x74
 			0x03 0x78>;
 };
 
-&pm7250b_vib {
-	qcom,vib-ldo-volt-uv = <2900000>;
-	qcom,vib-dis-short-long;
-	qcom,vib-dis-short-long-val = <80>;
-	qcom,vib-ldo-volt-uv-long = <2900000>;
-};
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio124";
+			function = "gpio";
+		};
 
-&qseecom_ta_mem {
-	size = <0x0 0x3000000>;
-};
-
-&mpss_mem {
-	reg = <0x0 0x8bc00000 0x0 0xf000000>;
-};
-&fsa4480 {
-	status = "disabled";
-};
-&pmr735a_debug {
-	status = "disabled";
-};
-
-&pmr735a_spmi {
-	status = "disabled";
-};
-
-&pmr735a_temp_alarm {
-	status = "disabled";
-};
-&qupv3_se2_i2c {
-	pm8010i@8 {
-		status = "disabled";
+		config {
+			pins = "gpio124";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
 	};
-	pm8010j@c {
-		status = "disabled";
-	};
-};
-&L21B{
-	regulator-always-on;
-	status = "okay";
-};
 
-&apps_rsc {
-	rpmh-regulator-ldob15 {
-		compatible = "qcom,rpmh-vrm-regulator";
-		qcom,resource-name = "ldob15";
-		qcom,regulator-type = "pmic5-ldo";
-		qcom,supported-modes =
-			<RPMH_REGULATOR_MODE_LPM
-			RPMH_REGULATOR_MODE_HPM>;
-		qcom,mode-threshold-currents = <0 30000>;
-		L15B:
-		pm6450_l15: regulator-pm6450-l15 {
-			regulator-name = "pm6450_l15";
-			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <1200000>;
-			regulator-max-microvolt = <1200000>;
-			qcom,init-voltage = <1200000>;
-			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio124";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio124";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+
+	google_key_default: google_key_default {
+		mux {
+			pins = "gpio89";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio89";
+			drive-strength = <2>;
+			bias-pull-up;
 		};
 	};
 };
 
+&soc {
+	gpio_keys {
+		pinctrl-0 = <&key_vol_up_default &google_key_default>;
+
+		google_key {
+			label = "google_key";
+			gpios = <&tlmm 89 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&qupv3_se2_spi {
+	status = "disabled";
+};
+
+&qupv3_se2_i2c {
+	status = "ok";
+	#include "parrot-moto-common-redriver.dtsi"
+};
+
+&redriver {
+	status = "ok";
+	vcc-supply = <&L21B>;
+	redriver,enable-gpio = <&tlmm 124 0x00>;
+	redriver,orientation-gpio = <&tlmm 100 0x00>;
+	redriver,config-dp-eq;
+	config-seq =
+		/* <reg_offset, value, delay_us> */
+		<0x9d 0x80 10000
+		0x9d 0x00 0
+		0x40 0x80 0
+		0x9f 0x02 0
+		0x8d 0x01 0
+		0x90 0x01 0
+		0x51 0x87 0
+		0x50 0x20 0
+		0x54 0x11 0
+		0x5d 0x66 0
+		0x52 0x50 0
+		0x55 0x00 0
+		0x56 0x00 0
+		0x57 0x00 0
+		0x58 0x00 0
+		0x59 0x00 0
+		0x5a 0x00 0
+		0x5b 0x00 0
+		0x5e 0x07 0
+		0x5f 0x00 0
+		0x60 0x00 0
+		0x61 0x03 0
+		0x65 0x40 0
+		0x66 0x00 0
+		0x67 0x03 0
+		0x75 0x0c 0
+		0x77 0x00 0
+		0x78 0x7c 0>;
+};
+
+&usb0 {
+	ssusb_redriver = <&redriver>;
+};
+
 &usb3phy_portselect_default {
-        config {
-                bias-pull-down;
+	config {
+		pins = "gpio100";
+		bias-pull-down;
 	};
 };

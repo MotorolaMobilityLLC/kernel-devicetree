@@ -139,7 +139,7 @@ endif
 
 ifeq ($(CONFIG_MONA_DTB),y)
 PARROT_BASE_DTB += parrot-moto-base.dtb
-PARROT_BOARDS += parrot-mona-evt-overlay.dtbo
+PARROT_BOARDS += parrot-mona-evb-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_PARO_DTB),y)
