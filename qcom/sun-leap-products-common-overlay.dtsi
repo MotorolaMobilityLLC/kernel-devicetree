@@ -14,5 +14,5 @@
    This file is used for all leap products include prc, row, na etc.
 */
 
-#include "sun-moto-common-overlay-base.dtsi"
+#include "sun-moto-common-sku2-v8-overlay-base.dtsi"
 #include "sun-moto-common-overlay.dtsi"
