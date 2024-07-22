@@ -10,3 +10,35 @@
 
 	stdout-path = "/soc/qcom,qup_uart@994000:115200n8";
 };
+
+&lsr_lefteye_dma_buf {
+	status = "disabled";
+};
+
+&lsr_righteye_dma_buf {
+	status = "disabled";
+};
+
+&lsr_depth_dma_buf {
+	status = "disabled";
+};
+
+&lsr_misc_dma_buf {
+	status = "disabled";
+};
+
+&lsr_lefteye_mem_heap {
+	status = "disabled";
+};
+
+&lsr_righteye_mem_heap {
+	status = "disabled";
+};
+
+&lsr_depth_mem_heap {
+	status = "disabled";
+};
+
+&lsr_misc_mem_heap {
+	status = "disabled";
+};
