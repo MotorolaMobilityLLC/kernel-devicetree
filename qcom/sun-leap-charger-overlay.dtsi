@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&mmi_charger {
+	mmi,pd-power-max = <68000>;
+	mmi,wls-power-max = <30000>;
+	mmi,ibat-calc-alignment-time = <1000>;
+	mmi,max-fcc-ma = <5000>;
+	mmi,thermal-primary-mitigation = <4000000 2900000 2000000 1000000 500000 300000 200000>;
+	mmi,thermal-secondary-mitigation = <4000000 3000000 2000000 1000000 500000 500000 100000>;
+	main-ids-map = "107000", "SB18E07971";
+	flip-ids-map = "38000", "SB18D58447";
+	charger_device_0 {
+		dev-name = "main_battery";
+		psy-name = "main_battery";
+		dev-type = <1>;
+		dev-role = <0>;
+	};
+	charger_device_1 {
+		dev-name = "flip_battery";
+		psy-name = "flip_battery";
+		dev-type = <1>;
+		dev-role = <1>;
+	};
+	charger_device_2 {
+		dev-name = "wireless";
+		psy-name = "wireless";
+		dev-type = <5>;
+	};
+	charger_device_3 {
+		dev-name = "sc760x_master";
+		psy-name = "sc760x_master";
+		dev-type = <4>;
+		dev-role = <0>;
+	};
+	charger_device_4 {
+		dev-name = "sc760x_slave";
+		psy-name = "sc760x_slave";
+		dev-type = <4>;
+		dev-role = <1>;
+	};
+};
+
+&battery_charger {
+	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 300000 100000>;
+	qcom,wireless-fw-name = "cps4059.bin";
+};
+

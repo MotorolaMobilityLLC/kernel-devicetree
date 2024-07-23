@@ -16,3 +16,5 @@
 
 #include "sun-leap-products-common-overlay.dtsi"
 #include "sun-leap-haptics-overlay.dtsi"
+#include "sun-moto-common-charger.dtsi"
+#include "sun-leap-charger-overlay.dtsi"
