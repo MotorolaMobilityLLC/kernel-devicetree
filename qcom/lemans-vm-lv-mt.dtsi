@@ -41,7 +41,7 @@
 };
 
 &glink_cma_mem0 {
-	status = "disabled";
+	status = "ok";
 };
 
 &emac_ctrl_fe {
