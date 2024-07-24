@@ -913,6 +913,23 @@
 		#interconnect-cells = <1>;
 	};
 
+	cache_controller: cache-controller@19200000 {
+		compatible = "qcom,neo-llcc", "qcom,llcc-v31";
+		reg = <0x19200000 0x180000>, <0x19A00000 0x80000>,
+		      <0x19AF0000 0x8000>, <0x19CF0000 0x8000>;
+		reg-names = "llcc_base", "llcc_broadcast_base",
+			    "spad_or_broadcast_base", "spad_and_broadcast_base";
+		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
+		cap-based-alloc-and-pwr-collapse;
+		memory-region = <&llcc_tcm_mem>;
+
+		llcc-perfmon {
+			compatible = "qcom,llcc-perfmon";
+			clocks = <&aoss_qmp QDSS_CLK>;
+			clock-names = "qdss_clk";
+		};
+	};
+
 	cpu_pmu: cpu-pmu {
 		compatible = "arm,armv8-pmuv3";
 		qcom,irq-is-percpu;
