@@ -34,6 +34,8 @@
 		hsuart0 = &qupv3_se7_4uart;
 	};
 
+	firmware: firmware { };
+
 	cpus {
 		#address-cells = <2>;
 		#size-cells = <0>;
@@ -212,6 +214,14 @@
 
 	soc: soc { };
 
+};
+
+&firmware {
+	qcom_scm {
+		compatible = "qcom,scm";
+		qcom,dload-mode = <&tcsr 0x13000>;
+		qcom,no-multi-smc-support;
+	};
 };
 
 #include "neo-reserved-memory.dtsi"
@@ -662,6 +672,11 @@
 		reg-name = "cc_base";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	tcsr: syscon@1fc0000 {
+		compatible = "syscon";
+		reg = <0x1fc0000 0x30000>;
 	};
 
 	nsp_noc: interconnect@320C0000 {
