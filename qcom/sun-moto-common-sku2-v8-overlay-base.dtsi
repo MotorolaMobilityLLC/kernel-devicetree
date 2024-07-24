@@ -3,7 +3,7 @@
  * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
-#include "sun-qrd-sku2.dtsi"
+#include "sun-moto-common-sku2-overlay-base.dtsi"
 #include "sun-pmic-overlay-v8.dtsi"
 
 &regulator_ocp_notifier {
