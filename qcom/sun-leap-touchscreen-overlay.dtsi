@@ -131,7 +131,7 @@
 	qcom,init-voltage = <3000000>;
 };
 
-&qupv3_se11_spi {
+&qupv3_se15_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
 
