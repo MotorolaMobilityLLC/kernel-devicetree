@@ -41,7 +41,7 @@
 			#interrupt-cells = <2>;
 		};
 
-		led-controller {
+		led_controller: led-controller {
 			compatible = "qcom,pm8350c-pwm";
 			#address-cells = <1>;
 			#size-cells = <0>;
