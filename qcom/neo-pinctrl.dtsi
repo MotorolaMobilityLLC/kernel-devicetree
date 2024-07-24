@@ -773,5 +773,36 @@
 			cnss_pins: cnss_pins {
 			};
 		};
+
+		usb0_phy_ps: usb0_phy_ps {
+			usb3phy_portselect_default: usb3phy_portselect_default {
+				mux {
+					pins = "gpio100";
+					function = "usb0_phy";
+				};
+
+				config {
+					pins = "gpio100";
+					bias-disable;
+					drive-strength = <2>;
+				};
+			};
+		};
+
+		eusb2_reset_ctrl: eusb2_reset_ctrl {
+			eusb2_reset_ctrl_default: eusb2_reset_ctrl_default {
+				mux {
+					pins = "gpio99";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio99";
+					output-low;
+					bias-pull-down;
+					drive-strength = <2>;
+				};
+			};
+		};
 	};
 };
