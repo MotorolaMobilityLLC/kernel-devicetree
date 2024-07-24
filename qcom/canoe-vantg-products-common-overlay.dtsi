@@ -17,3 +17,105 @@
 #include "canoe-moto-common-overlay-base.dtsi"
 #include "canoe-moto-common-overlay.dtsi"
 #include "canoe-vantg-haptics-overlay.dtsi"
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio95";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio95";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio95";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio95";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+};
+
+&wcd_usbss {
+	status = "disabled";
+};
+&redriver {
+	status = "disabled";
+};
+
+&qupv3_se5_i2c {
+	status = "ok";
+	#include "canoe-moto-common-redriver.dtsi"
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pmih010x_eusb2_repeater>;
+	usb-repeater = <&pmih010x_eusb2_repeater>;
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	usb-role-switch;
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 60 0>;
+
+	ssusb_redriver = <&redriver_mmi>;
+
+	/delete-node/ qcom,wcd_usbss;
+
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+		maximum-speed = "super-speed-plus";
+		snps,usb2-gadget-lpm-disable;
+		snps,usb2-lpm-disable;
+	};
+};
+
+&pmih010x_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS termination resistor */
+		 0x1 0x52
+		/* HS disconnect threshold */
+		 0x1 0x53
+		/* Squelch detection threshold */
+		 0x3 0x54
+		/* USB2 Tx slew rate */
+		 0x3 0x55
+		/* USB2 Rx Equalization */
+		 0x0 0x56
+		/* Tx pre-emphasis tuning */
+		 0x3 0x57>;
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS termination resistor */
+		 0x1 0x52
+		/* HS disconnect threshold */
+		 0x1 0x53
+		/* Squelch detection threshold */
+		 0x3 0x54
+		/*USB2 Tx slew rate */
+		 0x3 0x55
+		/* USB2 Rx Equalization */
+		 0x0 0x56
+		/* Tx pre-emphasis tuning */
+		 0x3 0x57>;
+};
