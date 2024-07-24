@@ -322,3 +322,17 @@
 		};
 	};
 };
+
+&led_controller {
+	led@1 {
+		label = "charging";
+	};
+
+	led@2 {
+		status = "disabled";
+	};
+
+	led@3 {
+		status = "disabled";
+	};
+};
