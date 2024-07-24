@@ -14,4 +14,4 @@
    This file is only for leap device, na etc.
 */
 
-#include "sun-moto-common-sku2-v8-overlay-base.dtsi"
+#include "sun-leap-products-common-overlay.dtsi"
