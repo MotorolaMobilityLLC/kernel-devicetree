@@ -41,4 +41,8 @@
 			init-log-enabled;
 		};
 	};
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
+	};
 };
