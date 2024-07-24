@@ -16,3 +16,4 @@
 
 #include "canoe-moto-common-overlay-base.dtsi"
 #include "canoe-moto-common-overlay.dtsi"
+#include "canoe-vantg-haptics-overlay.dtsi"
