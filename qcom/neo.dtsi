@@ -10,6 +10,7 @@
 #include <dt-bindings/interconnect/qcom,neo.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/gpio/gpio.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO";
@@ -977,3 +978,26 @@
 
 #include "neo-regulators.dtsi"
 #include "msm-arm-smmu-neo.dtsi"
+#include "neo-usb.dtsi"
+
+&qupv3_se8_i2c {
+	status = "ok";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	nxp_eusb2_repeater: eusb2_repeater@4f {
+		compatible = "nxp,eusb2-repeater";
+		reg = <0x4f>;
+		vdd18-supply = <&L15A>;
+		vdd3-supply = <&L2A>;
+		reset-gpio = <&tlmm 99 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&eusb2_reset_ctrl_default>;
+	};
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&nxp_eusb2_repeater>;
+	usb-repeater = <&nxp_eusb2_repeater>;
+};
