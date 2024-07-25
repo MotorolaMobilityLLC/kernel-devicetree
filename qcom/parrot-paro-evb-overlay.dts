@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 
-#include "parrot-paro-common-overlay.dtsi"
+#include "parrot-mona-sm6450-common-overlay.dtsi"
 #include "parrot-wcn6750.dtsi"
 
 / {
