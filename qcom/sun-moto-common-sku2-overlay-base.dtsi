@@ -10,6 +10,7 @@
 #include "sun-pmic-overlay.dtsi"
 #include "sun-thermal-overlay.dtsi"
 #include "sun-leap-touchscreen-overlay.dtsi"
+#include "sun-leap-fingerprint-overlay.dtsi"
 
 &soc {
 	gpio_keys {
