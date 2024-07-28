@@ -11,8 +11,70 @@
  * GNU General Public License for more details.
  */
 
+&tlmm {
+	pmx_ts_active {
+		ts_spi_active: ts_spi_active {
+			mux {
+				pins = "gpio131", "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131", "gpio65";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_reset_suspend {
+		ts_spi_reset_suspend: ts_spi_reset_suspend {
+			mux {
+				pins = "gpio131";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	pmx_ts_int_suspend {
+		ts_spi_int_suspend: ts_spi_int_suspend {
+			mux {
+				pins = "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio65";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	pmx_ts_release {
+		ts_spi_release: ts_spi_release {
+			mux {
+				pins = "gpio131", "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131", "gpio65";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
 &qupv3_se9_i2c {
-        status = "disabled";
+	status = "disabled";
 };
 
 &qupv3_se9_spi {
@@ -34,7 +96,7 @@
 		goodix,panel-max-id = <10>;
 		goodix,panel-max-x = <19520>; /* 1220*16 */
 		goodix,panel-max-y = <43392>; /* 2712*16 */
-		goodix,panel-max-w = <255>;
+		goodix,panel-max-w = <1000>;
 		goodix,panel-max-p = <4096>;
 		goodix,iovdd-gpio = <&tlmm 126 0x0>;
 		goodix,avdd-name = "avdd";
@@ -46,11 +108,10 @@
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
-		goodix,pitch-ctrl;
 		goodix,interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
-		goodix,stowed-mode-ctrl;
+		goodix,passive-stylus-mode-ctrl;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
@@ -58,3 +119,10 @@
 	};
 };
 
+&soc {
+	mmi_stow {
+		compatible = "moto,mmi_stow";
+		mmi,stow-gpio = <&tlmm 124 0x0>;
+	};
+
+};
