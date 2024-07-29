@@ -39,13 +39,13 @@
 	};
 	charger_device_3 {
 		dev-name = "sc760x_master";
-		psy-name = "sc760x_master";
+		psy-name = "balance_master";
 		dev-type = <4>;
 		dev-role = <0>;
 	};
 	charger_device_4 {
 		dev-name = "sc760x_slave";
-		psy-name = "sc760x_slave";
+		psy-name = "balance_slave";
 		dev-type = <4>;
 		dev-role = <1>;
 	};
