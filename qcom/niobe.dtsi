@@ -730,8 +730,8 @@
 
 	gic-interrupt-router {
 		compatible = "qcom,gic-intr-routing";
-		qcom,gic-class0-cpus = <0 1>;
-		qcom,gic-class1-cpus = <2 3 4 5>;
+		qcom,gic-class0-cpus = <&CPU0 &CPU1>;
+		qcom,gic-class1-cpus = <&CPU2 &CPU3 &CPU4 &CPU5>;
 	};
 
 	cluster-device {
