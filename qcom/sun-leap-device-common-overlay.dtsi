@@ -20,6 +20,7 @@
 #include "sun-leap-charger-overlay.dtsi"
 #include "sun-leap-thermal-overlay.dtsi"
 #include "sun-leap-evb-sensor-overlay.dtsi"
+#include "sun-moto-leap-qorvo-uwb.dtsi"
 
 &usb_qmp_dp_phy {
 	status = "disabled";

@@ -1,0 +1,43 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/* This file is used for leap device which use qorvo UWB chipst */
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+&qupv3_se13_spi {
+	status = "ok";
+	qm35@0 {
+		status = "ok";
+		mmi,status = "/chosen", "mmi,uwb", "qorvo";
+		compatible = "qorvo,qm35_spi";
+		reg = <0>;
+		spi-max-frequency = <20000000>;
+		reset-gpios = <&tlmm 170 GPIO_ACTIVE_LOW>;
+		irq-gpios = <&tlmm 47 GPIO_ACTIVE_HIGH>;
+		//ready-gpios = <&tlmm 176 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+		//wakeup-gpios = <&tlmm 175 GPIO_ACTIVE_HIGH>;
+		uwbccc-gpios = <&tlmm 169 GPIO_ACTIVE_HIGH>;
+		csn-gpios = <&tlmm 23 GPIO_ACTIVE_LOW>;
+		clocks = <&rpmhcc RPMH_RF_CLK5>;
+		clock-names = "uwb_rf_clk5";
+
+		// Uncomment to bind regulators to qm35-vddX
+		power_reg-supply = <&L3K>;
+		// qm35-vdd2-supply = <&L14B>;
+		// qm35-vdd3-supply = <&reg_ls1_31>;
+		// qm35-vdd4-supply = <&reg_ls1_32>;
+	};
+};
+
