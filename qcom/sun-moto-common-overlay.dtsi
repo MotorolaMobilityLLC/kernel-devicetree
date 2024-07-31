@@ -51,6 +51,19 @@
 		memory-region = <&mmi_annotate_mem>;
 		mem-size = <0x2000>;
 	};
+
+    moto_reboot_reason {
+		compatible = "moto,reboot-reason";
+		nvmem-cells = <&extra_restart_reason>;
+		nvmem-cell-names = "extra_restart_reason";
+	};
+};
+
+&pmk8550_sdam_2 {
+	extra_restart_reason:restart@a0 {
+		reg = <0xa0 0x1>;
+		bit = <0 7>;
+	};
 };
 
 &reserved_memory {
