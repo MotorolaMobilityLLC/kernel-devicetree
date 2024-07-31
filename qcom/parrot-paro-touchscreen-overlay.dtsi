@@ -211,6 +211,7 @@
 		focaltech,max-touch-number = <10>;
 		focaltech,display-coords =  <0 0 4316 9548>;
 		focaltech,high-resolution =  <4>;
+		focaltech,interpolation-ctrl;
 		mmi,usb-charger-detection;
 		mmi,enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
