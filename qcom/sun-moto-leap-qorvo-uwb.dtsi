@@ -19,7 +19,7 @@
 &qupv3_se13_spi {
 	status = "ok";
 	qm35@0 {
-		status = "ok";
+		status = "disable";
 		mmi,status = "/chosen", "mmi,uwb", "qorvo";
 		compatible = "qorvo,qm35_spi";
 		reg = <0>;
