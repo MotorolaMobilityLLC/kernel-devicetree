@@ -21,6 +21,7 @@
 #include "sun-leap-thermal-overlay.dtsi"
 #include "sun-leap-evb-sensor-overlay.dtsi"
 #include "sun-moto-leap-qorvo-uwb.dtsi"
+#include "sun-moto-common-st-nfc.dtsi"
 
 &usb_qmp_dp_phy {
 	status = "disabled";
