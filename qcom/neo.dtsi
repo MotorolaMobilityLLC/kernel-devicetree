@@ -1066,6 +1066,27 @@
 		qcom,no-clock-support;
 	};
 
+	qfprom: qfprom@221c8000 {
+		compatible = "qcom,qfprom";
+		reg = <0x221c8000 0x1000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		read-only;
+		ranges;
+
+		gpu_speed_bin: gpu_speed_bin@119 {
+			reg = <0x119 0x2>;
+			bits = <5 8>;
+		};
+	};
+
+	qfprom_sys: qfprom@0 {
+		compatible = "qcom,qfprom-sys";
+
+		nvmem-cells = <&gpu_speed_bin>;
+		nvmem-cell-names = "gpu_speed_bin";
+	};
+
 	qcom_tzlog: tz-log@146AA720 {
 		compatible = "qcom,tz-log";
 		reg = <0x146AA720 0x3000>;
