@@ -16,6 +16,7 @@
 #include "parrot-mona-nfc-overlay.dtsi"
 #include "parrot-mona-sensor-overlay.dtsi"
 #include "moto-mona-aw37004.dtsi"
+#include "parrot-mona-haptics-overlay.dtsi"
 
 &display_panel_avdd {
          status = "disabled";
