@@ -55,6 +55,18 @@
 		dev-type = <2>;
 		dev-role = <0>;
 	};
+	charger_device_6 {
+		dev-name = "charge_pump";
+		psy-name = "charge_pump_master";
+		dev-type = <3>;
+		dev-role = <0>;
+	};
+	charger_device_7 {
+		dev-name = "charge_pump";
+		psy-name = "charge_pump_slave";
+		dev-type = <3>;
+		dev-role = <1>;
+	};
 };
 
 &battery_charger {
