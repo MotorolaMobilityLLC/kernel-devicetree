@@ -918,6 +918,16 @@
 		#clock-cells = <1>;
 	};
 
+	qcom,mem-buf-msgq {
+		compatible = "qcom,mem-buf-msgq";
+	};
+
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,mem-buf-capabilities = "supplier";
+		qcom,vmid = <3>;
+	};
+
 	tcsr_mutex_block: syscon@1f40000 {
 		compatible = "syscon";
 		reg = <0x1f40000 0x20000>;
