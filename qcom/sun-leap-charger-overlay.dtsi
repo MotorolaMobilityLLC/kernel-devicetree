@@ -49,6 +49,12 @@
 		dev-type = <4>;
 		dev-role = <1>;
 	};
+	charger_device_5 {
+		dev-name = "switch_buck";
+		psy-name = "switch_buck";
+		dev-type = <2>;
+		dev-role = <0>;
+	};
 };
 
 &battery_charger {
