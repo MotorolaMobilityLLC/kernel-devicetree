@@ -142,6 +142,26 @@ niobe-dtb-$(CONFIG_ARCH_NIOBE) += \
 niobe-overlays-dtb-$(CONFIG_ARCH_NIOBE) += $(NIOBE_BOARDS) $(NOAPQ_NIOBE_BOARDS) $(NIOBE_BASE_DTB) $(NIOBE_APQ_BASE_DTB)
 dtb-y += $(niobe-dtb-y)
 
+### Added for Neo ###
+NEO_LA_BASE_DTB += neo_la.dtb
+NEO_LUNA_DTB += neo_luna-v2.dtb
+
+NEO_BOARDS += \
+		neo_la-rumi-overlay.dtbo \
+		neo-sg-idp-hmt-overlay.dtbo \
+		neo-sg-idp-pm8008-overlay.dtbo \
+		neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo \
+		neo_luna-v2-sg-idp-dual-display-overlay.dtbo \
+		neo_luna-v2-sg-idp-overlay.dtbo \
+		neo_luna-v2-sg-idp-pm8008-overlay.dtbo
+
+neo-dtb-$(CONFIG_ARCH_NEO) += \
+	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LA_BASE_DTB)) \
+	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LUNA_DTB))
+
+neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_LA_BASE_DTB) $(NEO_LUNA_DTB)
+dtb-y += $(neo-dtb-y)
+
 ### Added for Anorak ###
 ANORAK_BASE_DTB += anorak.dtb
 ANORAK_APQ_BASE_DTB += anorakp.dtb
