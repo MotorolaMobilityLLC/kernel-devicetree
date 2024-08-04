@@ -119,7 +119,7 @@
 		snps,pbl = <32>;
 		mac-address = [00 55 7B B5 7D f7];
 		rx-fifo-depth = <4096>;
-		tx-fifo-depth = <4096>;
+		tx-fifo-depth = <5120>;
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
 		queue = <1>;
