@@ -246,6 +246,16 @@ _platform_map = {
             },
         ],
     },
+    "seraph": {
+        "dtb_list": [
+            {"name": "seraph.dtb"},
+        ],
+        "dtbo_list": [
+            {
+                "name": "seraph-rumi-overlay.dtbo",
+            },
+        ],
+    },
     "cliffs": {
         "dtb_list": [
             {"name": "cliffs.dtb"},

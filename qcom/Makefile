@@ -162,6 +162,17 @@ neo-dtb-$(CONFIG_ARCH_NEO) += \
 neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_LA_BASE_DTB) $(NEO_LUNA_DTB)
 dtb-y += $(neo-dtb-y)
 
+SERAPH_BASE_DTB += seraph.dtb
+
+NOAPQ_SERAPH_BOARDS += \
+                  seraph-rumi-overlay.dtbo
+
+seraph-dtb-$(CONFIG_ARCH_SERAPH) += \
+	$(call add-overlays, $(NOAPQ_SERAPH_BOARDS),$(SERAPH_BASE_DTB))\
+	$(call add-overlays, $(APQ_SERAPH_BOARDS),$(SERAPH_APQ_BASE_DTB))
+seraph-overlays-dtb-$(CONFIG_ARCH_SERAPH) += $(NOAPQ_SERAPH_BOARDS) $(SERAPH_BASE_DTB) $(SERAPH_APQ_BASE_DTB)
+dtb-y += $(seraph-dtb-y)
+
 ### Added for Anorak ###
 ANORAK_BASE_DTB += anorak.dtb
 ANORAK_APQ_BASE_DTB += anorakp.dtb
