@@ -62,7 +62,8 @@
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
 			snps,usb3_lpm_capable;
-			maximum-speed = "high-speed";
+			snps,usb2-lpm-disable;
+			maximum-speed = "super-speed";
 			dr_mode = "otg";
 			usb-role-switch;
 		};
