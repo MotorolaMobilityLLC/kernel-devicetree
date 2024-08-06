@@ -51,7 +51,7 @@
 	};
 	charger_device_5 {
 		dev-name = "switch_buck";
-		psy-name = "switch_buck";
+		psy-name = "switch_buck_master";
 		dev-type = <2>;
 		dev-role = <0>;
 	};
