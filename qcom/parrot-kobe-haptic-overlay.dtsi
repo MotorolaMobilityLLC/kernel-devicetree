@@ -45,7 +45,7 @@
 					    0 0 0 1 0 2 0 >;
 		aw8622x_vib_duration_time = < 20 30 40 60 >;
 		aw8622x_vib_is_enabled_track_en;
-		/* aw8622x_vib_is_enabled_auto_brk; */
+		aw8622x_vib_is_enabled_auto_brk;
 		status = "okay";
 	};
 };
