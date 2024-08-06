@@ -1803,7 +1803,8 @@
 		clock-names = "xo";
 
 		memory-region = <&soccp_mem 0>;
-		soccp-config = <&tcsr 0x9d004>;
+		soccp-tcsr = <&tcsr 0x9d004>;
+		soccp-spare = <0xda0024>;
 
 		/* Inputs from SOCCP */
 		interrupts-extended = <&intc GIC_SPI 250 IRQ_TYPE_EDGE_RISING>,
