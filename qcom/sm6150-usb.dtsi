@@ -42,6 +42,12 @@
 		interconnects = <&aggre1_noc MASTER_USB3_0 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_USB3>;
 
+		/*
+		 * Establish dependency on smmu driver so that depopulate path of
+		 * deferred probe doesn't run into existing bug in smmu driver.
+		 */
+		dummy-supply = <&apps_smmu>;
+
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
 			reg = <0xa600000 0xcd00>;
