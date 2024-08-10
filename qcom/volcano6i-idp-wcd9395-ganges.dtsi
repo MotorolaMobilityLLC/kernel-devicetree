@@ -45,3 +45,7 @@
 		pinctrl-2 = <&ts_release>;
 	};
 };
+
+&L1B {
+	status = "ok";
+};

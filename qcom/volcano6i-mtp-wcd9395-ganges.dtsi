@@ -13,3 +13,7 @@
 		status = "ok";
 	};
 };
+
+&L1B {
+	status = "ok";
+};
