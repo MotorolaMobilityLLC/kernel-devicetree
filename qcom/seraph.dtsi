@@ -8,6 +8,7 @@
 #include <dt-bindings/clock/qcom,lsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,tcsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,videocc-seraph.h>
+#include <dt-bindings/interconnect/qcom,seraph.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 / {
@@ -231,7 +232,115 @@
 						  <CONTROL_TCS   0>,
 						  <FAST_PATH_TCS 1>;
 			};
+
+			apps_bcm_voter: bcm_voter {
+				compatible = "qcom,bcm-voter";
+			};
 		};
+	};
+
+	clk_virt: interconnect@0 {
+		compatible = "qcom,seraph-clk_virt";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	mc_virt: interconnect@1 {
+		compatible = "qcom,seraph-mc_virt";
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+	};
+
+	cnoc_cfg: interconnect@1600000 {
+		compatible = "qcom,seraph-config_noc_cfg";
+		reg = <0x01600000 0x7200>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	cnoc_main: interconnect@1500000 {
+		compatible = "qcom,seraph-config_noc_main";
+		reg = <0x01500000 0x1a200>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	gem_noc: interconnect@24100000 {
+		compatible = "qcom,seraph-gem_noc";
+		reg = <0x24100000 0x163080>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	lpass_ag_noc: interconnect@8240000 {
+		compatible = "qcom,seraph-lpass_ag_noc";
+		reg = <0x08240000 0xe080>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	lpass_lpiaon_noc: interconnect@07800000 {
+		compatible = "qcom,seraph-lpass_lpiaon_noc";
+		reg = <0x07800000 0x19080>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	lpass_lpicx_noc: interconnect@07820000 {
+		compatible = "qcom,seraph-lpass_lpicx_noc";
+		reg = <0x07820000 0x44080>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	mmss_noc: interconnect@1780000 {
+		compatible = "qcom,seraph-mmss_noc";
+		reg = <0x01780000 0x6b800>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	nsp_noc: interconnect@320C0000 {
+		compatible = "qcom,seraph-nsp_noc";
+		reg = <0x320C0000 0x1f400>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	pcie_anoc: interconnect@16C0000 {
+		compatible = "qcom,seraph-pcie_anoc";
+		reg = <0x016C0000 0xe400>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
+	};
+
+	system_noc: interconnect@1680000 {
+		compatible = "qcom,seraph-system_noc";
+		reg = <0x01680000 0x2d800>;
+		#interconnect-cells = <1>;
+		qcom,bcm-voter-names = "hlos";
+		qcom,bcm-voters = <&apps_bcm_voter>;
+		qcom,skip-qos;
 	};
 
 	pdc: interrupt-controller@b220000 {
