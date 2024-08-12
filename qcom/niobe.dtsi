@@ -3008,6 +3008,8 @@
 	clock-names = "ahb_clk";
 	parent-supply = <&VDD_MM_MXC_VOTER_LEVEL>;
 	reg = <0xadf4024 0x4>;
+	interconnects = <&mmss_noc MASTER_CAMNOC_HF &mmss_noc SLAVE_MNOC_HF_MEM_NOC>;
+	interconnect-names = "mmnoc";
 	qcom,support-hw-trigger;
 	status = "ok";
 };
