@@ -955,6 +955,7 @@
 		coresight-name = "coresight-tpdm-tmess1";
 
 		clocks = <&aoss_qmp>;
+		status = "disabled";
 		clock-names = "apb_pclk";
 		atid = <100>;
 		qcom,hw-enable-check;
