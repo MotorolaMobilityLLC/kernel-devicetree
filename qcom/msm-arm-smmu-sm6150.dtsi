@@ -24,6 +24,8 @@
 			      "gpu_cc_hlos1_vote_gpu_smmu_clk";
 		#size-cells = <1>;
 		#address-cells = <1>;
+		qcom,num-smr-override = <4>;
+		qcom,num-context-banks-override = <5>;
 		ranges;
 		interrupts =	<GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>,
 				<GIC_SPI 590 IRQ_TYPE_LEVEL_HIGH>,
@@ -67,6 +69,8 @@
 		#global-interrupts = <1>;
 		#size-cells = <1>;
 		#address-cells = <1>;
+		qcom,num-smr-override = <70>;
+		qcom,num-context-banks-override = <47>;
 		ranges;
 		interrupts =	<GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>,
 				<GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,

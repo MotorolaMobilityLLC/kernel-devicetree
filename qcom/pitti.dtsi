@@ -438,9 +438,9 @@
 	gic-interrupt-router {
 		compatible = "qcom,gic-intr-routing";
 		/* keep silver core only to avoid wakeup of gold cores */
-		qcom,gic-class0-cpus = <0 1 2 3 4 5>;
+		qcom,gic-class0-cpus = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5>;
 		/* keep gold cores in class1 */
-		qcom,gic-class1-cpus = <6 7>;
+		qcom,gic-class1-cpus = <&CPU6 &CPU7>;
 	};
 
 	show_resume_irqs@f200000 {
@@ -2173,7 +2173,7 @@
 			iommus = <&apps_smmu 0x93 0>,
 				<&apps_smmu 0x9C 0x0001>,
 				<&apps_smmu 0x9E 0>,
-				<&apps_smmu 0x9D 0x0011>;
+				<&apps_smmu 0x9D 0x0001>;
 			qcom,iommu-vmid = <0x9>; /* VMID_CP_BITSTREAM */
 			qcom,secure-context-bank;
 		};

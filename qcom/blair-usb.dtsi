@@ -51,6 +51,7 @@
 						<0 2400>,
 						<0 40000>;
 
+		qcom,enable_host_slow_suspend;
 		qcom,num-gsi-evt-buffs = <0x3>;
 		qcom,gsi-reg-offset =
 			<0x0fc /* GSI_GENERAL_CFG */
@@ -84,6 +85,7 @@
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
 			snps,dis_u2_susphy_quirk;
+			snps,dis_u3_susphy_quirk;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x10>;
 			snps,usb3_lpm_capable;

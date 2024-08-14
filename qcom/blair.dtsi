@@ -592,9 +592,9 @@
 	gic-interrupt-router {
 		compatible = "qcom,gic-intr-routing";
 		/* keep silver core only to avoid wakeup of gold cores */
-		qcom,gic-class0-cpus = <0 1 2 3 4 5>;
+		qcom,gic-class0-cpus = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5>;
 		/* keep gold cores in class1 */
-		qcom,gic-class1-cpus = <6 7>;
+		qcom,gic-class1-cpus = <&CPU6 &CPU7>;
 	};
 
 	rpm_bus: qcom,rpm-smd {

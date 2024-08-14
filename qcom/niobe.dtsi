@@ -27,7 +27,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
+		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on pci-msm-drv.pcie_sm_regs=0x1D07000,0x1040,0x1048,0x3000,0x3";
 	};
 
 	reserved_memory: reserved-memory {};
@@ -730,8 +730,8 @@
 
 	gic-interrupt-router {
 		compatible = "qcom,gic-intr-routing";
-		qcom,gic-class0-cpus = <0 1>;
-		qcom,gic-class1-cpus = <2 3 4 5>;
+		qcom,gic-class0-cpus = <&CPU0 &CPU1>;
+		qcom,gic-class1-cpus = <&CPU2 &CPU3 &CPU4 &CPU5>;
 	};
 
 	cluster-device {
@@ -1806,7 +1806,7 @@
 		soccp-config = <&tcsr 0x9d004>;
 
 		/* Inputs from SOCCP */
-		interrupts-extended = <&intc GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>,
+		interrupts-extended = <&intc GIC_SPI 250 IRQ_TYPE_EDGE_RISING>,
 					<&soccp_smp2p_in 0 0>,
 					<&soccp_smp2p_in 1 0>,
 					<&soccp_smp2p_in 3 0>,
@@ -2679,6 +2679,16 @@
 		compatible = "qcom,msm_gsi";
 	};
 
+	cnss_ipa_wlan_iommu_group0: cnss_ipa_wlan_iommu_group0 {
+		qcom,iommu-msi-size = <0x1000>;
+		qcom,iommu-dma-addr-pool = <0x98000000 0x18000000>;
+		qcom,iommu-geometry = <0x98000000 0x18010000>;
+		qcom,iommu-dma = "fastmap";
+		qcom,iommu-pagetable = "coherent";
+		qcom,iommu-faults = "stall-disable", "HUPCF",
+				    "non-fatal";
+	};
+
 	ipa_hw: qcom,ipa@3e00000 {
 		compatible = "qcom,ipa";
 		reg =
@@ -2765,7 +2775,8 @@
 		ipa_smmu_wlan: ipa_smmu_wlan {
 			compatible = "qcom,ipa-smmu-wlan-cb";
 			iommus = <&apps_smmu 0x4A1 0x0>;
-			qcom,iommu-dma = "atomic";
+			qcom,iommu-group = <&cnss_ipa_wlan_iommu_group0>;
+			qcom,shared-cb;
 			dma-coherent;
 		};
 
