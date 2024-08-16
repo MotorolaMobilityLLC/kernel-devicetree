@@ -1625,6 +1625,7 @@
 
 #include "lemans-pinctrl.dtsi"
 #include "lemans-vm-qupv3.dtsi"
+#include "lemans-vm-usb.dtsi"
 
 /delete-node/ &qupv3_0;
 /delete-node/ &qupv3_1;
@@ -1750,4 +1751,46 @@
 			remote-vmids = <0>;
 		};
 	};
+};
+
+/delete-node/ &usb0;
+/delete-node/ &usb2_phy0;
+/delete-node/ &usb_qmp_phy0;
+/delete-node/ &usb1;
+/delete-node/ &usb2_phy1;
+/delete-node/ &usb_qmp_phy1;
+
+&usb2 {
+	compatible = "qcom,dwc3-msm-fw-managed";
+
+	power-domains = <&scmi_power 4>, <&scmi_power 5>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	/delete-property/ USB3_GDSC-supply;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
+	/delete-property/ qcom,core-clk-rate;
+	/delete-property/ qcom,default-mode-host;
+
+	status = "disabled";
+};
+
+&usb2_phy2 {
+	compatible = "qcom,usb-hsphy-snps-femto-fw-managed";
+
+	power-domains = <&scmi_power 6>, <&scmi_power 7>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	status = "disabled";
+
+	/delete-property/ vdd-supply;
+	/delete-property/ vdda18-supply;
+	/delete-property/ vdda33-supply;
+	/delete-property/ qcom,vdd-voltage-level;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
 };
