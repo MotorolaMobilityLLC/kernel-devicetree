@@ -76,6 +76,7 @@
 		clock-names = "stmmaceth", "pclk", "ptp_ref", "phyaux","sgmi_ref","rgmii";
 
 		emac-phy-addr = <10>;
+		emac-cl45-phy-addr=<0>;
 		snps,ptp-ref-clk-rate = <230400000>;
 		snps,ptp-req-clk-rate = <125000000>;
 		interrupts-extended = <&intc 0 929 4>;
