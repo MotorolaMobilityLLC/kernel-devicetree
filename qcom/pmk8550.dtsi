@@ -320,5 +320,13 @@
 				qcom,pre-scaling = <1 1>;
 			};
 		};
+
+		pmk8550_qpt: qcom,power-telemetry-device {
+			compatible = "qcom,power-telemetry";
+			interrupts = <0x0 0xa4 0x1 IRQ_TYPE_EDGE_RISING>;
+			nvmem = <&pmk8550_sdam_49>, <&pmk8550_sdam_53>;
+			nvmem-names = "qpt-config-sdam", "qpt-data-sdam";
+			status = "disabled";
+		};
 	};
 };
