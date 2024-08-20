@@ -25,7 +25,9 @@
 
 	reserved_memory: reserved-memory {};
 
-	aliases { };
+	aliases {
+		serial0 = &qupv3_se11_2uart;
+	 };
 
 	firmware: firmware {};
 
@@ -494,5 +496,12 @@
 &video_cc_mvs0c_gdsc {
 	compatible = "regulator-fixed";
 	reg = <0xaaf814c 0x4>;
+	status = "ok";
+};
+
+#include "seraph-pinctrl.dtsi"
+#include "seraph-qupv3.dtsi"
+
+&qupv3_se11_2uart {
 	status = "ok";
 };
