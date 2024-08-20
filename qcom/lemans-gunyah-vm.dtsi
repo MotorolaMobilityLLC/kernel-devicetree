@@ -283,6 +283,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x0>;
 				memory {
@@ -298,6 +299,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x4000>;
 				memory {
@@ -313,6 +315,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x8000>;
 				memory {
@@ -328,6 +331,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0xC000>;
 				memory {
@@ -343,6 +347,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x10000>;
 				memory {
@@ -358,6 +363,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x14000>;
 				memory {
@@ -373,6 +379,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x18000>;
 				memory {
@@ -388,6 +395,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1C000>;
 				memory {
@@ -403,6 +411,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x20000>;
 				memory {
@@ -418,6 +427,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x24000>;
 				memory {
@@ -433,6 +443,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x28000>;
 				memory {
@@ -448,6 +459,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x2C000>;
 				memory {
@@ -463,6 +475,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x30000>;
 				memory {
@@ -478,6 +491,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x34000>;
 				memory {
@@ -493,6 +507,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x38000>;
 				memory {
@@ -508,6 +523,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x3C000>;
 				memory {
@@ -523,6 +539,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x40000>;
 				memory {
@@ -538,6 +555,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x44000>;
 				memory {
@@ -553,6 +571,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x48000>;
 				memory {
@@ -568,6 +587,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x4C000>;
 				memory {
@@ -583,6 +603,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x50000>;
 				memory {
@@ -598,6 +619,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x54000>;
 				memory {
@@ -613,6 +635,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x58000>;
 				memory {
@@ -628,6 +651,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x5C000>;
 				memory {
@@ -643,6 +667,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x64000>;
 				memory {
@@ -658,6 +683,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x6C000>;
 				memory {
@@ -673,6 +699,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x7C000>;
 				memory {
@@ -688,6 +715,7 @@
 				peer-default;
 				vqs-num = <0x8>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x8C000>;
 				memory {
@@ -703,6 +731,7 @@
 				peer-default;
 				vqs-num = <0xA>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0xCC000>;
 				memory {
@@ -718,6 +747,7 @@
 				peer-default;
 				vqs-num = <0x6>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x11C000>;
 				memory {
@@ -733,6 +763,7 @@
 				peer-default;
 				vqs-num = <0x6>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x14C000>;
 				memory {
@@ -749,6 +780,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x17C000>;
 				memory {
@@ -765,6 +797,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x180000>;
 				memory {
@@ -780,6 +813,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x184000>;
 				memory {
@@ -795,6 +829,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x18C000>;
 				memory {
@@ -810,6 +845,7 @@
 				peer-default;
 				vqs-num = <0x3>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x194000>;
 				memory {
@@ -825,6 +861,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A0000>;
 				memory {
@@ -840,6 +877,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A2000>;
 				memory {
@@ -855,6 +893,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A6000>;
 				memory {
@@ -870,6 +909,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A8000>;
 				memory {
@@ -885,6 +925,7 @@
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1AA000>;
 				memory {
