@@ -39,6 +39,7 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,disable-host-ssphy-powerdown;
+		qcom,disable-wakeup;
 		status = "disabled";
 
 		dwc3@a600000 {
@@ -263,6 +264,7 @@
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,default-mode-host;
 		qcom,disable-host-ssphy-powerdown;
+		qcom,disable-wakeup;
 		status = "disabled";
 
 		dwc3@a800000 {
@@ -484,6 +486,7 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,default-mode-host;
+		qcom,disable-wakeup;
 
 		status = "disabled";
 
