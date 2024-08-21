@@ -19,7 +19,8 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 
 ifeq ($(CONFIG_LEAP_DTB),y)
 SUN_BASE_DTB += sun-tp-leap-base.dtb sun-tp-v2-leap-base.dtb
-SUN_BOARDS += sun-leap-evb-overlay.dtbo
+SUN_BOARDS += sun-leap-evb-overlay.dtbo \
+              sun-leap-evt1-overlay.dtbo
 endif
 
 sun-dtb-$(CONFIG_ARCH_SUN) += \
