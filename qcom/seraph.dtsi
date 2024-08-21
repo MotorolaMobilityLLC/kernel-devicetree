@@ -8,6 +8,7 @@
 #include <dt-bindings/clock/qcom,lsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,tcsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,videocc-seraph.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Seraph";
@@ -505,3 +506,5 @@
 &qupv3_se11_2uart {
 	status = "ok";
 };
+
+#include "seraph-stub-regulators.dtsi"
