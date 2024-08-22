@@ -2,8 +2,8 @@
 	mmi_charger: mmi,charger {
 		compatible = "mmi,mmi-charger";
 		mmi,enable-charging-limit;
-		mmi,upper-limit-capacity = <65>;
-		mmi,lower-limit-capacity = <60>;
+		mmi,upper-limit-capacity = <30>;
+		mmi,lower-limit-capacity = <25>;
 		mmi,heartbeat-interval = <10000>;
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <15000>;
@@ -21,8 +21,8 @@
 			mmi,max-fv-mv = <4500>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
-			mmi,df-serialnum = "SB18E08901";
-			profile-ids-map = "107000", "SB18E08901","38000","SB18E08902";
+			mmi,df-serialnum = "COSRH50COS";
+			profile-ids-map = "107000", "COSRH50COS","38000","LWNRH50SWD";
 		};
 	};
 
