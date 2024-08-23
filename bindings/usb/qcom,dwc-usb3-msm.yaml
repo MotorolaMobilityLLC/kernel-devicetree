@@ -111,6 +111,12 @@ properties:
     description: disable Power down SS PHY if HS device is connected.
     type: boolean
 
+  qcom,disable-wakeup:
+    description: Disable system wakeup when this property is used.
+                 This property should be applied to platforms where system
+                 wakeup is not necessary.
+    type: boolean
+
   qcom,core-clk-rate:
     description: Core/Master clock rate.
     $ref: /schemas/types.yaml#/definitions/uint32
