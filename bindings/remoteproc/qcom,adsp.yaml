@@ -84,6 +84,8 @@ properties:
       - qcom,volcano-modem-pas
       - qcom,anorak-adsp-pas
       - qcom,anorak-cdsp-pas
+      - qcom,neo-adsp-pas
+      - qcom,neo-cdsp-pas
 
   reg:
     maxItems: 1
