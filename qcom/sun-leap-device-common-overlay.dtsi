@@ -23,6 +23,43 @@
 #include "sun-moto-leap-qorvo-uwb.dtsi"
 #include "sun-moto-common-st-nfc.dtsi"
 
+&tlmm {
+	key_ai {
+		key_ai_default: key_ai_default {
+			mux {
+				pins = "gpio78";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio78";
+				bias-pull-up;
+				input-enable;
+			};
+		};
+	};
+};
+
+&soc {
+	gpio_keys {
+		compatible = "gpio-keys";
+		label = "gpio-keys";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
+
+		ai_assist {
+			label = "ai_assist";
+			gpios = <&tlmm 78 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
 &usb_qmp_dp_phy {
 	status = "disabled";
 };
