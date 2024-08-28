@@ -937,6 +937,11 @@
 			reg = <0x128 0x4>;
 			bits = <25 6>;
 		};
+
+		tsens_itemp: tsens_itemp@133 {
+			reg = <0x133 0x1>;
+			bits = <7 1>;
+		};
 	};
 
 	qfprom_sys: qfprom@0 {
