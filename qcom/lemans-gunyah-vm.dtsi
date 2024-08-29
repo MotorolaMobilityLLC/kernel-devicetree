@@ -1017,7 +1017,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "70003000.virtio-mmio,70004000.virtio-mmio,70005000.virtio-mmio,70006000.virtio-mmio,70007000.virtio-mmio,70008000.virtio-mmio,70009000.virtio-mmio,7000A000.virtio-mmio,7000B000.virtio-mmio,7000C000.virtio-mmio,7000D000.virtio-mmio,7000E000.virtio-mmio,7000F000.virtio-mmio,70010000.virtio-mmio,70011000.virtio-mmio,70012000.virtio-mmio,70013000.virtio-mmio,70014000.virtio-mmio,70015000.virtio-mmio,70016000.virtio-mmio,70017000.virtio-mmio";
+			boot_devices = "70003000.virtio-mmio,70004000.virtio-mmio,70005000.virtio-mmio,70006000.virtio-mmio,70007000.virtio-mmio,70008000.virtio-mmio,70009000.virtio-mmio,7000a000.virtio-mmio,7000b000.virtio-mmio,7000c000.virtio-mmio,7000d000.virtio-mmio,7000e000.virtio-mmio,7000f000.virtio-mmio,70010000.virtio-mmio,70011000.virtio-mmio,70012000.virtio-mmio,70013000.virtio-mmio,70014000.virtio-mmio,70015000.virtio-mmio,70016000.virtio-mmio,70017000.virtio-mmio";
 
 			vbmeta {
 				compatible = "android,vbmeta";
