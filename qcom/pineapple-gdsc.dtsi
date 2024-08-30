@@ -47,6 +47,36 @@
 		status = "disabled";
 	};
 
+	cam_cc_ife_lite_0_gdsc: qcom,gdsc@adf3004 {
+		compatible = "qcom,gdsc";
+		reg = <0xadf3004 0x4>;
+		regulator-name = "cam_cc_ife_lite_0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	cam_cc_ife_lite_1_gdsc: qcom,gdsc@adf3078 {
+		compatible = "qcom,gdsc";
+		reg = <0xadf3078 0x4>;
+		regulator-name = "cam_cc_ife_lite_1_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	cam_cc_ife_lite_2_gdsc: qcom,gdsc@adf30ec {
+		compatible = "qcom,gdsc";
+		reg = <0xadf30ec 0x4>;
+		regulator-name = "cam_cc_ife_lite_2_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
 	cam_cc_ipe_0_gdsc: qcom,gdsc@adf0080 {
 		compatible = "qcom,gdsc";
 		reg = <0xadf0080 0x4>;
@@ -143,6 +173,26 @@
 		reg = <0xa90b000 0x4>;
 		regulator-name = "mdss_1_disp_cc_mdss_core_int2_gdsc";
 		qcom,support-hw-trigger;
+		qcom,retain-regs;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	/* EVA_CC GDSCs */
+	eva_cc_mvs0_gdsc: qcom,gdsc@a8f8068 {
+		compatible = "qcom,gdsc";
+		reg = <0xa8f8068 0x4>;
+		regulator-name = "eva_cc_mvs0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	eva_cc_mvs0c_gdsc: qcom,gdsc@a8f8034 {
+		compatible = "qcom,gdsc";
+		reg = <0xa8f8034 0x4>;
+		regulator-name = "eva_cc_mvs0c_gdsc";
 		qcom,retain-regs;
 		qcom,support-cfg-gdscr;
 		status = "disabled";
@@ -356,11 +406,62 @@
 		status = "disabled";
 	};
 
+	/* LSR_CC GDSCs */
+	lsr_cc_lsr_noc_gdsc: qcom,gdsc@a9f8100 {
+		compatible = "qcom,gdsc";
+		reg = <0xa9f8100 0x4>;
+		regulator-name = "lsr_cc_lsr_noc_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	lsr_cc_mvs0_gdsc: qcom,gdsc@a9f807c {
+		compatible = "qcom,gdsc";
+		reg = <0xa9f807c 0x4>;
+		regulator-name = "lsr_cc_mvs0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	lsr_cc_mvs0c_gdsc: qcom,gdsc@a9f8034 {
+		compatible = "qcom,gdsc";
+		reg = <0xa9f8034 0x4>;
+		regulator-name = "lsr_cc_mvs0c_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
 	/* VIDEO_CC GDSCs */
 	video_cc_mvs0_gdsc: qcom,gdsc@aaf80a4 {
 		compatible = "qcom,gdsc";
 		reg = <0xaaf80a4 0x4>;
 		regulator-name = "video_cc_mvs0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	video_cc_mvs0_vpp0_gdsc: qcom,gdsc@aaf8120 {
+		compatible = "qcom,gdsc";
+		reg = <0xaaf8120 0x4>;
+		regulator-name = "video_cc_mvs0_vpp0_gdsc";
+		qcom,retain-regs;
+		qcom,support-hw-trigger;
+		qcom,support-cfg-gdscr;
+		status = "disabled";
+	};
+
+	video_cc_mvs0_vpp1_gdsc: qcom,gdsc@aaf80f4 {
+		compatible = "qcom,gdsc";
+		reg = <0xaaf80f4 0x4>;
+		regulator-name = "video_cc_mvs0_vpp1_gdsc";
 		qcom,retain-regs;
 		qcom,support-hw-trigger;
 		qcom,support-cfg-gdscr;
