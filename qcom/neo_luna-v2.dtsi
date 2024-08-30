@@ -4,3 +4,59 @@
 	model = "Qualcomm Technologies, Inc. NEO LUNA-V2";
 	qcom,msm-id = <579 0x10000>;
 };
+
+&gpucc {
+	status = "ok";
+};
+
+&dispcc {
+	status = "ok";
+};
+
+&debugcc {
+	qcom,gpucc = <&gpucc>;
+	qcom,dispcc = <&dispcc>;
+	clock-names = "xo_clk_src",
+			"gcc",
+			"videocc",
+			"dispcc",
+			"camcc",
+			"gpucc";
+	clocks = <&rpmhcc RPMH_CXO_CLK>,
+		<&gcc 0>,
+		<&videocc 0>,
+		<&dispcc 0>,
+		<&camcc 0>,
+		<&gpucc 0>;
+};
+
+&gpu_cc_cx_gdsc {
+	status = "ok";
+};
+
+&gpu_cc_gx_gdsc {
+	status = "ok";
+};
+
+&disp_cc_mdss_core_gdsc {
+	status = "ok";
+};
+
+&disp_cc_mdss_core_int2_gdsc {
+	status = "ok";
+};
+
+&mc_virt {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&mmss_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
+
+&gem_noc {
+	qcom,bcm-voter-names = "hlos", "disp";
+	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
+};
