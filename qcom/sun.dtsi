@@ -3934,7 +3934,7 @@
 
 	adspslpi_mem: adspslpi_region@9ee00000 {
 		no-map;
-		reg = <0x0 0x9ee00000 0x0 0x3a80000>;
+		reg = <0x0 0x9ee00000 0x0 0x4a80000>;
 	};
 
 	/* uefi region can be reused by apps */
