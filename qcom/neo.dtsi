@@ -889,6 +889,9 @@
 		hwlocks = <&tcsr_mutex 3>;
 	};
 
+	thermal_zones: thermal-zones {
+	};
+
 	qcom_tzlog: tz-log@146AA720 {
 		compatible = "qcom,tz-log";
 		reg = <0x146AA720 0x3000>;
@@ -1075,6 +1078,7 @@
 #include "neo-regulators.dtsi"
 #include "msm-arm-smmu-neo.dtsi"
 #include "neo-usb.dtsi"
+#include "neo-thermal.dtsi"
 
 &qupv3_se8_i2c {
 	status = "ok";
