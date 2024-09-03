@@ -1867,6 +1867,8 @@
 #include "msm-arm-smmu-neo.dtsi"
 #include "neo-usb.dtsi"
 #include "neo-thermal.dtsi"
+#include "neo-coresight.dtsi"
+#include "neo-debug.dtsi"
 
 &qupv3_se8_i2c {
 	status = "ok";
