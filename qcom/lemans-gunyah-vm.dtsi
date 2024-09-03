@@ -189,6 +189,10 @@
 		};
 	};
 
+	virtio_input_keyboard@1c150000 {
+		wakeup-source;
+	};
+
 	qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
@@ -801,7 +805,7 @@
 
 			virtio-mmio@32 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_input_keyboard@1c150000";
 				virtio,device-type = <18>;
 				peer-default;
 				vqs-num = <0x2>;
