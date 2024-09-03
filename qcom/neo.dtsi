@@ -27,6 +27,10 @@
 
 	reserved_memory: reserved-memory { };
 
+	aliases: aliases {
+		serial0 = &qupv3_se11_2uart;
+	};
+
 	cpus {
 		#address-cells = <2>;
 		#size-cells = <0>;
@@ -801,6 +805,7 @@
 #include "neo-dma-heaps.dtsi"
 #include "neo-pinctrl.dtsi"
 #include "anorak-gdsc.dtsi"
+#include "neo-qupv3.dtsi"
 
 &gcc_apcs_gdsc_vote_ctrl {
 	reg = <0x162200 0x4>;
@@ -964,4 +969,9 @@
 
 };
 
+&qupv3_se11_2uart {
+	status = "ok";
+};
+
 #include "neo-regulators.dtsi"
+#include "msm-arm-smmu-neo.dtsi"
