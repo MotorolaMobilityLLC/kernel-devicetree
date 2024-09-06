@@ -119,7 +119,8 @@
 	nvmem-cells = <&ufs_dev>, <&boot_config>;
 	nvmem-cell-names = "ufs_dev", "boot_conf";
 
-	boot_device_type = <0x0>;
+	/* Secureboot machine can't boot from ufs, need to remove the config */
+	/*boot_device_type = <0x0>;*/
 	non-removable;
 
 	status = "ok";
