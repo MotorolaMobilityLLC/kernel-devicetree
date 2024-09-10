@@ -57,6 +57,8 @@
 		goodix,interpolation-ctrl;
 		goodix,sample-ctrl;
 		mmi,resolution_boost = <16>;
+		mmi,refresh-rate-update;
+		goodix,report_rate-ctrl;
 	};
 };
 
