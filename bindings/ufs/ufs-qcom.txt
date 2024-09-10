@@ -32,6 +32,8 @@ Required properties:
 			 present on cliffs chipsets.
 			"qcom,ufs-phy-qmp-v4-crow" for ufs phy
 			 present on Crow chipsets.
+			"qcom,ufs-phy-qmp-v4-niobe" for ufs phy
+			 present on Niobe chipsets.
 - reg               : should contain PHY register address space (mandatory),
 - reg-names         : indicates various resources passed to driver (via reg proptery) by name.
                       Required "reg-names" is "phy_mem".
