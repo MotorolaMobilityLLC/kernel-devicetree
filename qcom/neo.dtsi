@@ -395,6 +395,10 @@
 
 	msm_gpu: qcom,kgsl-3d0@3d00000 { };
 
+	kgsl_msm_iommu: qcom,kgsl-iommu@3da0000 { };
+
+	gmu: qcom,gmu@3d6a000 { };
+
 	arch_timer: timer {
 		compatible = "arm,armv8-timer";
 		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
