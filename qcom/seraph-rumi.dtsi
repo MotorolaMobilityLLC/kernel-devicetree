@@ -11,3 +11,31 @@
 
 &soc {
 };
+
+&SILVER_OFF {
+	status = "disabled";
+};
+
+&SILVER_RAIL_OFF {
+	status = "disabled";
+};
+
+&GOLD_OFF {
+	status = "disabled";
+};
+
+&GOLD_RAIL_OFF {
+	status = "disabled";
+};
+
+&CLUSTER_PWR_DN {
+	status = "disabled";
+};
+
+&CX_OFF {
+	status = "disabled";
+};
+
+&APSS_OFF {
+	status = "disabled";
+};
