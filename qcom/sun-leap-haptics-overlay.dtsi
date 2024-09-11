@@ -29,7 +29,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	effect_1 {
@@ -40,7 +41,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce 7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-mode = <BRAKE_AUTO>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	effect_2 {
@@ -51,7 +53,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	effect_3 {
@@ -62,7 +65,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	effect_4 {
@@ -73,7 +77,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 c4];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	effect_5 {
@@ -84,7 +89,8 @@
 		qcom,wf-fifo-data = [7f 7f 32 81 e2 f6 fb fb];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-mode = <BRAKE_AUTO>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_0 {
@@ -95,7 +101,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 c4];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_1 {
@@ -106,7 +113,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_2 {
@@ -117,7 +125,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_3 {
@@ -128,7 +137,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_4 {
@@ -139,7 +149,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_5 {
@@ -150,7 +161,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_6 {
@@ -161,7 +173,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_7 {
@@ -172,7 +185,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 	primitive_8 {
@@ -183,7 +197,8 @@
 		qcom,wf-fifo-data = [7f 7f 81 ce];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
 		qcom,wf-auto-res-disable;
-		qcom,wf-brake-disable;
+		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
+		/delete-property/ qcom,wf-brake-disable;
 	};
 
 };
