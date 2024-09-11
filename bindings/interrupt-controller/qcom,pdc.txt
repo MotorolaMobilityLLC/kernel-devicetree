@@ -27,6 +27,7 @@ Properties:
 		    - "qcom,cliffs-pdc": For Cliffs
 		    - "qcom,volcano-pdc": For Volcano
 		    - "qcom,neo-pdc": For Neo
+		    - "qcom,seraph-pdc": For Seraph
 
 - reg:
 	Usage: required
