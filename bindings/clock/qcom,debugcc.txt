@@ -25,6 +25,7 @@ Required properties :
 			"qcom,mdm9607-debugcc"
 			"qcom,volcano-debugcc"
 			"qcom,anorak-debugcc"
+			"qcom,neo-debugcc"
 
 - qcom,gcc: phandle to the GCC device node.
 - qcom,videocc: phandle to the Video CC device node.

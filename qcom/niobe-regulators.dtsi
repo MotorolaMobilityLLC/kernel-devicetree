@@ -1124,8 +1124,8 @@
 		pm8010n_l6: vreg-pm8010n-l6 {
 			regulator-name = "pm8010n_l6";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <2960000>;
-			regulator-max-microvolt = <2960000>;
+			regulator-min-microvolt = <2800000>;
+			regulator-max-microvolt = <2800000>;
 			qcom,init-voltage = <2960000>;
 		};
 	};

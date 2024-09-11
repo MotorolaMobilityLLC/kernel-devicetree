@@ -1,6 +1,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/qcom,gcc-niobe.h>
 #include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
 
 / {
 	#address-cells = <0x2>;
@@ -93,7 +94,10 @@
 		 */
 		gic-irq-ranges = <101 101
 				  315 315
+				  734 734
 				  316 316>; /* PVM->SVM IRQ transfer */
+
+		iomemory-ranges = <0x0 0x405000 0x0 0x405000 0x0 0x1000 0x0>;
 
 		vm-attrs = "crash-fatal", "context-dump";
 
@@ -328,6 +332,15 @@
 		redistributor-stride = <0x0 0x20000>;
 		reg = <0x17200000 0x10000>,     /* GICD */
 		      <0x17260000 0xC0000>;    /* GICR * 8 */
+	};
+
+	ipcc_mproc_ns1: qcom,ipcc@405000 {
+		compatible = "qcom,ipcc";
+		reg = <0x405000 0x1000>;
+		interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
 	};
 
 	arch_timer: timer {

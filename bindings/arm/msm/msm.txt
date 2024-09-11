@@ -101,11 +101,17 @@ SoCs:
 - PINEAPPLE
   compatible = "qcom,pineapple", "qcom,pineapplep"
 
+- NEO
+  compatible = "qcom,neo"
+
 - ANORAK
   compatible = "qcom,anorak", "qcom,anorakp"
 
 - NIOBE
   compatible = "qcom,niobe", "qcom,niobep"
+
+- SERAPH
+  compatible = "qcom,seraph"
 
 - LEMANS
   compatible = "qcom,lemans"
@@ -334,6 +340,7 @@ compatible = "qcom,niobe-qxr"
 compatible = "qcom,niobep-atp"
 compatible = "qcom,niobep-idp"
 compatible = "qcom,niobep-qxr"
+compatible = "qcom,seraph-rumi"
 compatible = "qcom,quinvm"
 compatible = "qcom,direwolf"
 compatible = "qcom,lemans-rumi"
@@ -374,6 +381,8 @@ compatible = "qcom,monaco_auto-adas-adp-star"
 compatible = "qcom,monaco_auto-ivi"
 compatible = "qcom,monaco_auto-ivi-adp-air"
 compatible = "qcom,monaco_auto-ivi-adp-star"
+compatible = "qcom,neo-rumi"
+compatible = "qcom,neo-idp"
 compatible = "qcom,anorak-idp"
 compatible = "qcom,anorak-qxr"
 compatible = "qcom,anorak-atp"

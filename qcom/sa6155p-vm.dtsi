@@ -426,6 +426,11 @@
 	status = "disabled";
 };
 
+&scc {
+	vdd_cx-supply = <&VDD_CX_LEVEL>;
+	status = "ok";
+};
+
 &slpi_tlmm {
 	status = "ok";
 };

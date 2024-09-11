@@ -27,7 +27,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on pci-msm-drv.pcie_sm_regs=0x1D07000,0x1040,0x1048,0x3000,0x3";
+		bootargs = "nokaslr kpti=0 log_buf_len=256K swiotlb=noforce loop.max_part=7 pcie_ports=compat cpufreq.default_governor=performance loglevel=6 printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-5 kernel.panic_on_rcu_stall=1 ftrace_dump_on_oops can.stats_timer=0 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware fw_devlink.strict=1 service_locator.enable=1 irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
 	};
 
 	reserved_memory: reserved-memory {};
@@ -1802,8 +1802,13 @@
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
 
+		interconnects = <&aggre2_noc MASTER_SOCCP_AGGR_NOC &mc_virt SLAVE_EBI1>,
+				<&cnoc_main MASTER_CNOC_CFG &mc_virt SLAVE_EBI1>;
+		interconnect-names = "rproc_ddr", "rproc_cnoc";
+
 		memory-region = <&soccp_mem 0>;
-		soccp-config = <&tcsr 0x9d004>;
+		soccp-tcsr = <&tcsr 0x9d004>;
+		soccp-spare = <0xda0024>;
 
 		/* Inputs from SOCCP */
 		interrupts-extended = <&intc GIC_SPI 250 IRQ_TYPE_EDGE_RISING>,
@@ -1811,16 +1816,14 @@
 					<&soccp_smp2p_in 1 0>,
 					<&soccp_smp2p_in 3 0>,
 					<&soccp_smp2p_in 2 0>,
-					<&soccp_smp2p_in 9 0>,
-					<&soccp_smp2p_in 10 0>;
+					<&soccp_smp2p_in 9 0>;
 
 		interrupt-names = "wdog",
 				"fatal",
 				"ready",
 				"stop-ack",
 				"handover",
-				"pong",
-				"wake-ack";
+				"pong";
 
 		/* Outputs to soccp */
 		qcom,smem-states = <&soccp_smp2p_out 0>, <&soccp_smp2p_out 10>, <&soccp_smp2p_out 9>;
@@ -2545,7 +2548,7 @@
 
 			ddrqos_prime_latfloor: prime-latfloor {
 				compatible = "qcom,memlat-mon";
-				qcom,cpulist = <&CPU2 &CPU3 &CPU4 &CPU5>;
+				qcom,cpulist = <&CPU0 &CPU1 &CPU2 &CPU3 &CPU4 &CPU5>;
 				qcom,cpufreq-memfreq-tbl =
 					< 1900800 0 >,
 					< 2880000 1 >;
@@ -2845,6 +2848,116 @@
 		vdd-supply = <&L14B>;
 		status = "ok";
 	};
+
+	pdm_pwm: pdm_pwm@8600000 {
+		compatible = "qcom,pdm-pwm-v2";
+		reg = <0x8600000 0x16000>;
+		clocks = <&gcc GCC_PDM_AHB_CLK>, <&gcc GCC_PWM0_XO512_CLK>;
+		clock-names =  "pdm_ahb_clk", "pwm_core_clk";
+		assigned-clocks = <&gcc GCC_PWM0_XO512_CLK>;
+		assigned-clock-rates = <19200000>;
+		#pwm-cells = <3>;
+
+		pwm@0 {
+			frame-index = <0>;
+			frame-offset = <0x1000>;
+		};
+
+		pwm@1 {
+			frame-index = <1>;
+			frame-offset = <0x2000>;
+		};
+
+		pwm@2 {
+			frame-index = <2>;
+			frame-offset = <0x3000>;
+		};
+
+		pwm@3 {
+			frame-index = <3>;
+			frame-offset = <0x4000>;
+		};
+
+		pwm@4 {
+			frame-index = <4>;
+			frame-offset = <0x5000>;
+		};
+
+		pwm@5 {
+			frame-index = <5>;
+			frame-offset = <0x6000>;
+		};
+
+		pwm@6 {
+			frame-index = <6>;
+			frame-offset = <0x7000>;
+		};
+
+		pwm@7 {
+			frame-index = <7>;
+			frame-offset = <0x8000>;
+		};
+
+		pwm@8 {
+			frame-index = <8>;
+			frame-offset = <0x9000>;
+		};
+
+		pwm@9 {
+			frame-index = <9>;
+			frame-offset = <0xa000>;
+		};
+
+		pwm@10 {
+			frame-index = <10>;
+			frame-offset = <0xb000>;
+		};
+
+		pwm@11 {
+			frame-index = <11>;
+			frame-offset = <0xc000>;
+		};
+
+		pwm@12 {
+			frame-index = <12>;
+			frame-offset = <0xd000>;
+		};
+
+		pwm@13 {
+			frame-index = <13>;
+			frame-offset = <0xe000>;
+		};
+
+		pwm@14 {
+			frame-index = <14>;
+			frame-offset = <0xf000>;
+		};
+
+		pwm@15 {
+			frame-index = <15>;
+			frame-offset = <0x10000>;
+		};
+
+		pwm@16 {
+			frame-index = <16>;
+			frame-offset = <0x11000>;
+		};
+
+		pwm@17 {
+			frame-index = <17>;
+			frame-offset = <0x12000>;
+		};
+
+		pwm@18 {
+			frame-index = <18>;
+			frame-offset = <0x13000>;
+		};
+
+		pwm@19 {
+			frame-index = <19>;
+			frame-offset = <0x14000>;
+		};
+	};
 };
 
 &reserved_memory {
@@ -3008,6 +3121,8 @@
 	clock-names = "ahb_clk";
 	parent-supply = <&VDD_MM_MXC_VOTER_LEVEL>;
 	reg = <0xadf4024 0x4>;
+	interconnects = <&mmss_noc MASTER_CAMNOC_HF &mmss_noc SLAVE_MNOC_HF_MEM_NOC>;
+	interconnect-names = "mmnoc";
 	qcom,support-hw-trigger;
 	status = "ok";
 };
