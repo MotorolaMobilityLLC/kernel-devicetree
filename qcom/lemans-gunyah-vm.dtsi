@@ -193,6 +193,94 @@
 		wakeup-source;
 	};
 
+	virtio_blk_super {
+		qcom,dev-name = "super";
+	};
+
+	virtio_blk_userdata {
+		qcom,dev-name = "userdata";
+	};
+
+	virtio_blk_metadata {
+		qcom,dev-name = "metadata";
+	};
+
+	virtio_blk_persist {
+		qcom,dev-name = "persist";
+	};
+
+	virtio_blk_misc {
+		qcom,dev-name = "misc";
+	};
+
+	virtio_blk_vbmeta_b {
+		qcom,dev-name = "vbmeta_b";
+	};
+
+	virtio_blk_vbmeta_a {
+		qcom,dev-name = "vbmeta_a";
+	};
+
+	virtio_blk_modem_b {
+		qcom,dev-name = "modem_b";
+	};
+
+	virtio_blk_modem_a {
+		qcom,dev-name = "modem_a";
+	};
+
+	virtio_blk_bluetooth_b {
+		qcom,dev-name = "bluetooth_b";
+	};
+
+	virtio_blk_bluetooth_a {
+		qcom,dev-name = "bluetooth_a";
+	};
+
+	virtio_blk_la_boot_b {
+		qcom,dev-name = "boot_b";
+	};
+
+	virtio_blk_la_boot_a {
+		qcom,dev-name = "boot_a";
+	};
+
+	virtio_blk_la_dtbo_b {
+		qcom,dev-name = "dtbo_b";
+	};
+
+	virtio_blk_la_dtbo_a {
+		qcom,dev-name = "dtbo_a";
+	};
+
+	virtio_blk_dsp_b {
+		qcom,dev-name = "dsp_b";
+	};
+
+	virtio_blk_dsp_a {
+		qcom,dev-name = "dsp_a";
+	};
+
+	virtio_blk_la_vendor_boot_b {
+		qcom,dev-name = "vendor_boot_b";
+	};
+
+	virtio_blk_la_vendor_boot_a {
+		qcom,dev-name = "vendor_boot_a";
+	};
+
+	virtio_blk_la_init_boot_b {
+		qcom,dev-name = "init_boot_b";
+	};
+
+	virtio_blk_la_init_boot_a {
+		qcom,dev-name = "init_boot_a";
+	};
+
+	virtio_blk_la_devinfo {
+		qcom,dev-name = "devinfo";
+	};
+
 	qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
@@ -308,7 +396,7 @@
 
 			virtio-mmio@1 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_devinfo";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -324,7 +412,7 @@
 
 			virtio-mmio@2 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_init_boot_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -340,7 +428,7 @@
 
 			virtio-mmio@3 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_init_boot_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -356,7 +444,7 @@
 
 			virtio-mmio@4 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_vendor_boot_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -372,7 +460,7 @@
 
 			virtio-mmio@5 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_vendor_boot_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -388,7 +476,7 @@
 
 			virtio-mmio@6 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_dsp_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -404,7 +492,7 @@
 
 			virtio-mmio@7 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_dsp_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -420,7 +508,7 @@
 
 			virtio-mmio@8 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_dtbo_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -436,7 +524,7 @@
 
 			virtio-mmio@9 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_dtbo_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -452,7 +540,7 @@
 
 			virtio-mmio@10 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_boot_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -468,7 +556,7 @@
 
 			virtio-mmio@11 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_boot_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -484,7 +572,7 @@
 
 			virtio-mmio@12 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_bluetooth_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -500,7 +588,7 @@
 
 			virtio-mmio@13 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_bluetooth_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -516,7 +604,7 @@
 
 			virtio-mmio@14 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_modem_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -532,7 +620,7 @@
 
 			virtio-mmio@15 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_modem_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -548,7 +636,7 @@
 
 			virtio-mmio@16 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_vbmeta_a";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -564,7 +652,7 @@
 
 			virtio-mmio@17 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_vbmeta_b";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -580,7 +668,7 @@
 
 			virtio-mmio@18 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_misc";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -596,7 +684,7 @@
 
 			virtio-mmio@19 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_persist";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -612,7 +700,7 @@
 
 			virtio-mmio@20 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_metadata";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -628,7 +716,7 @@
 
 			virtio-mmio@21 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_userdata";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -644,7 +732,7 @@
 
 			virtio-mmio@22 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_super";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -982,7 +1070,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "70003000.virtio-mmio,70004000.virtio-mmio,70005000.virtio-mmio,70006000.virtio-mmio,70007000.virtio-mmio,70008000.virtio-mmio,70009000.virtio-mmio,7000a000.virtio-mmio,7000b000.virtio-mmio,7000c000.virtio-mmio,7000d000.virtio-mmio,7000e000.virtio-mmio,7000f000.virtio-mmio,70010000.virtio-mmio,70011000.virtio-mmio,70012000.virtio-mmio,70013000.virtio-mmio,70014000.virtio-mmio,70015000.virtio-mmio,70016000.virtio-mmio,70017000.virtio-mmio";
+			boot_devices = "70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -1262,7 +1350,7 @@
 					"vdj", "vdk", "vdl",
 					"vdm", "vdn", "vdo",
 					"vdp", "vdq", "vdr",
-					"vds", "vdt", "vdu";
+					"vds", "vdt", "vdu", "vdv";
 			rename-dev = "super", "userdata", "metadata",
 					"persist", "misc", "vbmeta_b",
 					"vbmeta_a", "modem_b", "modem_a",
@@ -1270,7 +1358,7 @@
 					"boot_b", "boot_a", "dtbo_b",
 					"dtbo_a", "dsp_b", "dsp_a",
 					"vendor_boot_b", "vendor_boot_a",
-					"init_boot_b", "init_boot_a";
+					"init_boot_b", "init_boot_a", "devinfo";
 		};
 	};
 };
