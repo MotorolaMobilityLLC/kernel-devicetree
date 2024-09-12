@@ -67,6 +67,12 @@
 		dev-type = <3>;
 		dev-role = <1>;
 	};
+	charger_device_8 {
+		dev-name = "usb_info";
+		psy-name = "usb_info";
+		dev-type = <6>;
+		dev-role = <0>;
+	};
 };
 
 &battery_charger {
