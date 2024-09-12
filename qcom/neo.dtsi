@@ -446,6 +446,11 @@
 		};
 	};
 
+	cluster-device {
+		compatible = "qcom,lpm-cluster-dev";
+		power-domains = <&CLUSTER_PD>;
+	};
+
 	disp_rsc: rsc@af20000 {
 		label = "disp_rsc";
 		compatible = "qcom,rpmh-rsc";
@@ -453,6 +458,7 @@
 		reg-names = "drv-0";
 		qcom,drv-count = <1>;
 		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH>;
+		clocks = <&dispcc DISP_CC_MDSS_RSCC_AHB_CLK>;
 
 		disp_rsc_drv0: drv@0 {
 			qcom,drv-id = <0>;
@@ -480,6 +486,23 @@
 		#interrupt-cells = <2>;
 		interrupt-parent = <&intc>;
 		interrupt-controller;
+	};
+
+	cpuss-sleep-stats@17800054 {
+		compatible = "qcom,cpuss-sleep-stats";
+		reg = <0x17800054 0x4>, <0x17810054 0x4>, <0x17820054 0x4>,
+		    <0x17830054 0x4>, <0x17880098 0x4>, <0x178C0000 0x10000>;
+		reg-names = "seq_lpm_cntr_cfg_cpu0", "seq_lpm_cntr_cfg_cpu1",
+			"seq_lpm_cntr_cfg_cpu2", "seq_lpm_cntr_cfg_cpu3",
+			"l3_seq_lpm_cntr_cfg", "apss_seq_mem_base";
+		num-cpus = <4>;
+	};
+
+	soc-sleep-stats@c3f0000 {
+		compatible = "qcom,rpmh-stats-v3";
+		reg = <0xc3f0000 0x400>;
+		qcom,qmp = <&aoss_qmp>;
+		ss-name = "adsp", "adsp_island", "cdsp", "apss", "wpss";
 	};
 
 	memtimer: timer@17420000 {
