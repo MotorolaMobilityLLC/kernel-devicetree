@@ -984,6 +984,11 @@
 		tmecrashdump-address-offset = <0x808a0000>;
 	};
 
+	qcom,secure-buffer {
+		compatible = "qcom,secure-buffer";
+		qcom,vmid-cp-camera-preview-ro;
+	};
+
 	qcom,glinkpkt {
 		compatible = "qcom,glinkpkt";
 
