@@ -63,6 +63,11 @@
 			no-map;
 			qcom,label = <0x60>;
 		};
+
+		gptp_timedata_mem: gptp_timedata_region {
+			no-map;
+			qcom,label = <0x61>;
+		};
 	};
 
 	cpus {
@@ -223,6 +228,10 @@
 				0x0 0x1fdf000 0x0 0x1fdf000 0x0 0x1000 0x0
 				/* Board serial number region */
 				0x0 0x786000 0x0 0x786000 0x0 0x1000 0x1
+				/* PTP region */
+				0x0 0x23047000 0x0 0x23047000 0x0 0x1000 0x0
+				/* Qtimer region */
+				0x0 0x17c23000 0x0 0x17c23000 0x0 0x1000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -1273,6 +1282,16 @@
 				qcom,glink-label = "cdsp";
 			};
 		};
+	};
+
+	ptp_virtual {
+		compatible = "qcom,ptp_virtual";
+		reg = <0xacfff000 0x1000>,
+			<0x23047000 0x1000>,
+			<0x17c23000 0x1000>;
+		reg-names = "ptp_carveout_mem",
+				"ptp_reg",
+				"qtimer_reg";
 	};
 };
 
