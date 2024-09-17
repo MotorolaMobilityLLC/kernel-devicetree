@@ -139,6 +139,12 @@ properties:
     description: Skip thaw if hibernate is supported.
     $ref: /schemas/types.yaml#/definitions/flag
 
+  qcom,force-suspend:
+    description: |
+      If device doesn't honor kernel based wakelocks during suspend, enable this
+      flag to avoid setting syscore for roothubs and external usb devices in host mode.
+    $ref: /schemas/types.yaml#/definitions/flag
+
   usb-role-switch:
     description: Indicator showing the Glue driver supports role switch.
     type: boolean
