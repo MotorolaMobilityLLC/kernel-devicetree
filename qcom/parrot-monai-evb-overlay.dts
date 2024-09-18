@@ -1,0 +1,12 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-monai-common-overlay.dtsi"
+
+/ {
+	model = "monai";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,monai";
+	qcom,msm-id = <613 0x10000>;
+	qcom,board-id = <0x41 0x9000>;
+};
+
