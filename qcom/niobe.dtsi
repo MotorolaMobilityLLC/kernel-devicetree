@@ -1806,6 +1806,9 @@
 				<&cnoc_main MASTER_CNOC_CFG &mc_virt SLAVE_EBI1>;
 		interconnect-names = "rproc_ddr", "rproc_cnoc";
 
+		rproc-ddr-set-icc-low-svs;
+		rproc-ddr-lowsvs-icc-bw = <1050>;
+
 		memory-region = <&soccp_mem 0>;
 		soccp-tcsr = <&tcsr 0x9d004>;
 		soccp-spare = <0xda0024>;
