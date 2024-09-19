@@ -12,3 +12,7 @@
 		softsku-id = "4";
 	};
 };
+
+&pcie1 {
+	status = "ok";
+};
