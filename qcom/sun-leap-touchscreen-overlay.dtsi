@@ -63,6 +63,9 @@
 		mmi,enable-gestures;
 		goodix,gesture-wait-pm;
 		mmi,resolution_boost = <16>;
+		goodix,sample-ctrl;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
 	};
 };
 
