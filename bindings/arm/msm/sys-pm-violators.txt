@@ -21,6 +21,7 @@ PROPERTIES
 		    - "qcom,sys-pm-cliffs"
 		    - "qcom,sys-pm-niobe"
 		    - "qcom,sys-pm-anorak"
+		    - "qcom,sys-pm-neo"
 
 - reg:
 	Usage: required
