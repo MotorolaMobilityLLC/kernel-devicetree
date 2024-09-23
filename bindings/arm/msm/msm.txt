@@ -136,6 +136,9 @@ Generic board variants:
 - CDP device:
   compatible = "qcom,cdp"
 
+- TTP device:
+  compatible = "qcom,ttp"
+
 - IDP device:
   compatible = "qcom,idp"
 
@@ -394,6 +397,7 @@ compatible = "qcom,pitti-idp"
 compatible = "qcom,pitti-atp"
 compatible = "qcom,pitti-qrd"
 compatible = "qcom,volcano-rumi"
+<<<<<<< HEAD   (31a9fa Merge "ARM: dts: msm: Add repeater nodes to Niobe ATP")
 compatible = "qcom,volcano-atp"
 compatible = "qcom,volcano-idp"
 compatible = "qcom,volcano-mtp"
@@ -402,3 +406,10 @@ compatible = "qcom,volcanop-atp"
 compatible = "qcom,volcanop-idp"
 compatible = "qcom,volcanop-mtp"
 compatible = "qcom,volcanop-qrd"
+=======
+compatible = "qcom,mdm9607-cdp"
+compatible = "qcom,mdm9607-rumi"
+compatible = "qcom,mdm9607-mtp"
+compatible = "qcom,mdm9607-ttp"
+compatible = "qcom,mdm9607"
+>>>>>>> CHANGE (04bd1b ARM: dts: msm: Add initial device tree for MDM9607)
