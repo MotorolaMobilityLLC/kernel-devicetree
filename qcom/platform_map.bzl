@@ -360,7 +360,7 @@ _platform_map = {
             {"name": "parrot-paros-evt-overlay.dtbo", "product": "paros",},
             {"name": "parrot-mona-evb-overlay.dtbo", "product": "mona",},
             {"name": "parrot-paro-evb-overlay.dtbo", "product": "paro",},
-            {"name": "parrot-monai-evb-overlay.dtbo", "product": "monai",},
+            {"name": "parrot-monai-dvt1-overlay.dtbo", "product": "monai",},
         ],
     },
 }
