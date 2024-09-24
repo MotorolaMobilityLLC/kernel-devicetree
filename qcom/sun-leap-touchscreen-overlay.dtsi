@@ -171,6 +171,9 @@
 		mmi,power-off-suspend;
 		mmi,cli-enable-gestures;
 		mmi,supported_gesture_type = <0x06>;
+		mmi,resolution_boost = <16>;
 		mmi,usb-charger-detection;
+		fts,stowed-mode-ctrl;
+		fts,pocket-mode-ctrl;
 	};
 };
