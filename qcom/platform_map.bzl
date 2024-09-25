@@ -4,6 +4,7 @@ _platform_map = {
             # keep sorted
             {"name": "direwolf-vm-la.dtb"},
             {"name": "direwolf-vm-lv.dtb"},
+            {"name": "direwolf-vm-lv-headless-mt.dtb"},
             {"name": "lemans-vm-la.dtb"},
             {"name": "lemans-vm-la-mt.dtb"},
             {"name": "lemans-vm-la1-mt.dtb"},
@@ -20,6 +21,7 @@ _platform_map = {
             # keep sorted
             {"name": "direwolf-vm-la-overlay.dtbo"},
             {"name": "direwolf-vm-lv-overlay.dtbo"},
+            {"name": "direwolf-vm-lv-headless-mt-overlay.dtbo"},
             {"name": "lemans-vm-la-overlay.dtbo"},
             {"name": "lemans-vm-la-mt-overlay.dtbo"},
             {"name": "lemans-vm-la1-mt-overlay.dtbo"},
