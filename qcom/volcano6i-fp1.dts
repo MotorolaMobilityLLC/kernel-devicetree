@@ -7,5 +7,9 @@
 	compatible = "qcom,volcano";
 	qcom,msm-id = <0X4000291 0x10000>;
 	qcom,board-id = <0 0>;
+
+	chosen {
+		softsku-id = "1";
+	};
 };
 
