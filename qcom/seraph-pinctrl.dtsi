@@ -1539,6 +1539,56 @@
 		};
 	};
 
+	sdc1_on: sdc1_on {
+		clk {
+			pins = "sdc1_clk";
+			bias-disable;
+			drive-strength = <8>;
+		};
+
+		cmd {
+			pins = "sdc1_cmd";
+			bias-pull-up;
+			drive-strength = <8>;
+		};
+
+		data {
+			pins = "sdc1_data";
+			bias-pull-up;
+			drive-strength = <8>;
+		};
+
+		rclk {
+			pins = "sdc1_rclk";
+			bias-pull-down;
+		};
+	};
+
+	sdc1_off: sdc1_off {
+		clk {
+			pins = "sdc1_clk";
+			bias-disable;
+			drive-strength = <2>;
+		};
+
+		cmd {
+			pins = "sdc1_cmd";
+			bias-pull-up;
+			drive-strength = <2>;
+		};
+
+		data {
+			pins = "sdc1_data";
+			bias-pull-up;
+			drive-strength = <2>;
+		};
+
+		rclk {
+			pins = "sdc1_rclk";
+			bias-pull-down;
+		};
+	};
+
 	qupv3_se10_spi_pins: qupv3_se10_spi_pins {
 		qupv3_se10_spi_miso_active: qupv3_se10_spi_miso_active {
 			mux {
