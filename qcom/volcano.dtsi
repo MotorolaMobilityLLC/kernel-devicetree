@@ -2945,6 +2945,17 @@
 	status = "ok";
 };
 
+&gcc_pcie_1_gdsc {
+	reg = <0x190004 0x4>;
+	parent-supply = <&VDD_CX_LEVEL>;
+	qcom,collapse-vote = <&gcc_apcs_gdsc_vote_ctrl 3>;
+};
+
+&gcc_pcie_1_phy_gdsc {
+	reg = <0x1a2000 0x4>;
+	parent-supply = <&VDD_MX_LEVEL>;
+};
+
 &gcc_ufs_mem_phy_gdsc {
 	parent-supply = <&VDD_MX_LEVEL>;
 	status = "ok";
