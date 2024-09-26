@@ -1,5 +1,9 @@
 #include "volcano6p.dtsi"
 
+&S1K {
+			regulator-min-microvolt = <665000>;
+};
+
 / {
 	model = "Qualcomm Technologies, Inc. Volcano6IP SoC";
 	compatible = "qcom,volcanop";
