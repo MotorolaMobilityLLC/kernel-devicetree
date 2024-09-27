@@ -167,6 +167,7 @@ For the compatible string below the following supplies are required:
 	qcom,ipq8074-wcss-pil:
 		    no power-domain names required
 	qcom,q6v5-pil:
+	qcom,mdm9607-mss-pil:
 	qcom,msm8916-mss-pil:
 	qcom,msm8974-mss-pil:
 	qcom,msm8996-mss-pil:
