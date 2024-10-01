@@ -1,4 +1,7 @@
 #include "mdm9607.dtsi"
+#include "mdm9x07-pinctrl.dtsi"
+#include "mdm9607-display.dtsi"
+#include "qpic-panel-ili-hvga.dtsi"
 
 &i2c_4 {
 	status = "ok";
@@ -50,4 +53,14 @@
 &usb_otg {
 	vbus_otg-supply = <&smb358_otg_supply>;
 	extcon = <&smb358_otg_supply>;
+};
+
+/* Display */
+&mdss_qpic {
+	pinctrl-names= "mdss_default", "mdss_sleep";
+	pinctrl-0 = <&mdss_ldo_active &mdss_cs_active &mdss_te_active
+		&mdss_rs_active &mdss_ad_active &mdss_bl_active>;
+	pinctrl-1 = <&mdss_ldo_sleep &mdss_cs_sleep &mdss_te_sleep
+		&mdss_rs_sleep &mdss_ad_sleep &mdss_bl_sleep>;
+	status = "disabled";
 };
