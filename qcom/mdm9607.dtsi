@@ -469,10 +469,48 @@
 		reg-names = "cc_base";
 		vdd_dig-supply = <&VDD_CX_LEVEL>;
 		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
+			 <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
 			 <&sleep_clk>;
-		clock-names = "xo", "sleep_clk";
+		clock-names = "xo", "xo_ao", "sleep_clk";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	cpucc: syscon@b01101c {
+		compatible = "syscon";
+		reg = <0xb01101c 0x4>;
+	};
+
+	debugcc: debug-clock-controller@0 {
+		compatible = "qcom,mdm9607-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,cpucc = <&cpucc>;
+		clock-names = "xo_clk_src";
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		#clock-cells = <1>;
+	};
+
+	apsscc: clock-controller@0b010008 {
+		compatible = "qcom,mdm9607-apsscc";
+		clocks = <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
+			<&gcc GPLL0_AO>;
+		clock-names = "bi_tcxo_ao", "gpll0_out_even";
+		reg = <0xb010008 0x8>,
+			<0xb008018 0x28>,
+			<0x000a412c 0x8>;
+		reg-names = "apcs_cmd" , "apcs_pll", "efuse";
+		vdd-pll-supply = <&mdm9607_s3_level_ao>;
+		cpu-vdd-supply = <&apc_vreg_corner>;
+		qcom,speed4-bin-v0 =
+			<          0 0>,
+			<  400000000 1>,
+			<  800000000 2>,
+			<  998400000 3>,
+			< 1094400000 4>,
+			< 1190400000 5>,
+			< 1248000000 6>,
+			< 1305600000 7>;
+		#clock-cells = <1>;
 	};
 
 	qnand_1: nand@7980000 {
