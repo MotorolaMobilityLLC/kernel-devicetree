@@ -459,6 +459,20 @@
 			clock-output-names = "chip_sleep_clk";
 			#clock-cells = <0>;
 		};
+
+		emac_0_125m_clk: emac_0_125m_clk {
+			compatible = "fixed-clock";
+			clock-frequency = <125000000>;
+			clock-output-names = "emac_0_125m_clk";
+			#clock-cells = <0>;
+		};
+
+		emac_0_tx_clk: emac_0_tx_clk {
+			compatible = "fixed-clock";
+			clock-frequency = <125000000>;
+			clock-output-names = "emac_0_tx_clk";
+			#clock-cells = <0>;
+		};
 	};
 
 	rpmcc: clock-controller {
@@ -472,9 +486,12 @@
 		reg-names = "cc_base";
 		vdd_dig-supply = <&VDD_CX_LEVEL>;
 		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
-			 <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
-			 <&sleep_clk>;
-		clock-names = "xo", "xo_ao", "sleep_clk";
+			<&rpmcc RPM_SMD_XO_A_CLK_SRC>,
+			<&sleep_clk>,
+			<&emac_0_125m_clk>,
+			<&emac_0_tx_clk>;
+		clock-names = "xo", "xo_ao", "sleep_clk",
+				"emac_0_125m_clk", "emac_0_tx_clk";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
