@@ -6,6 +6,7 @@
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/interconnect/qcom,mdm9x07.h>
 #include <dt-bindings/interconnect/qcom,icc.h>
+#include <dt-bindings/clock/qcom,apsscc-sdxlemur.h>
 
 #define MHZ_TO_MBPS(mhz, w) ((mhz * 1000000 * w) / (1024 * 1024))
 #define BW_OPP_ENTRY(mhz, w) opp-mhz {opp-hz = /bits/ 64 <MHZ_TO_MBPS(mhz, w)>;}
@@ -513,6 +514,59 @@
 			< 1248000000 6>,
 			< 1305600000 7>;
 		#clock-cells = <1>;
+	};
+
+	msm_cpufreq: qcom,msm-cpufreq {
+		compatible = "qcom,msm-cpufreq";
+		clocks = <&apsscc APCS_MUX_CLK>;
+		clock-names = "cpu0_clk";
+		qcom,cpufreq-table =
+				<  400000 >,
+				<  800000 >,
+				<  998400 >,
+				< 1094400 >,
+				< 1190400 >,
+				< 1248000 >,
+				< 1305600 >;
+	};
+
+	ddr_bw_opp_table: ddr-bw-opp-table {
+		compatible = "operating-points-v2";
+		BW_OPP_ENTRY( 48, 8); /*  366 MB/s */
+		BW_OPP_ENTRY( 96, 8); /*  732 MB/s */
+		BW_OPP_ENTRY( 120,8); /*  915 MB/s */
+		BW_OPP_ENTRY( 150, 8); /* 1145 MB/s */
+		BW_OPP_ENTRY( 240, 8); /* 1831 MB/s */
+		BW_OPP_ENTRY( 300, 8); /* 2291 MB/s */
+	};
+
+	cpubw: qcom,cpubw {
+		compatible = "qcom,devfreq-icc";
+		governor = "cpufreq";
+		interconnects = <&bimc MASTER_AMPSS_M0 &bimc SLAVE_EBI_CH0>;
+		qcom,active-only;
+		operating-points-v2 = <&ddr_bw_opp_table>;
+	};
+
+	devfreq-cpufreq {
+		cpubw-cpufreq {
+			target-dev = <&cpubw>;
+			cpu-to-dev-map =
+				<  400000 MHZ_TO_MBPS(48, 8) >,
+				<  800000 MHZ_TO_MBPS(96, 8) >,
+				<  998400 MHZ_TO_MBPS(150, 8) >,
+				< 1094400 MHZ_TO_MBPS(240, 8) >,
+				< 1305600 MHZ_TO_MBPS(300, 8) >;
+		};
+	};
+
+	qcom,cpu-bwmon {
+		compatible = "qcom,bimc-bwmon2";
+		reg = <0x408000 0x300>, <0x401000 0x200>;
+		reg-names = "base", "global_base";
+		interrupts = <0 183 4>;
+		qcom,mport = <0>;
+		qcom,target-dev = <&cpubw>;
 	};
 
 	qnand_1: nand@7980000 {
