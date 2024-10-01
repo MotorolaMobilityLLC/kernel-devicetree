@@ -25,6 +25,7 @@
 
 	aliases {
 		qpic_nand1 = &qnand_1;
+		mmc0 = &sdhc_1; /* SDC1 for SDIO slot */
 	};
 
 	reserved_mem: reserved-memory {
@@ -683,6 +684,9 @@
 			<&gcc GCC_SDCC1_APPS_CLK>;
 		no-sd;
 		no-mmc;
+
+		interconnects = <&pcnoc MASTER_SDCC_1 &bimc SLAVE_EBI_CH0>;
+		interconnect-names = "sdhc-ddr";
 		qcom,msm-bus,name = "sdhc1";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
