@@ -55,6 +55,10 @@
 	extcon = <&smb358_otg_supply>;
 };
 
+&emac0 {
+	status = "ok";
+};
+
 /* Display */
 &mdss_qpic {
 	pinctrl-names= "mdss_default", "mdss_sleep";

@@ -1120,6 +1120,71 @@
 			qcom,smdpkt-dev-name = "smd_pkt_loopback";
 		};
 	};
+
+	emac0: qcom,emac@7c40000 {
+		compatible = "qcom,mdm9607-emac";
+		reg-names = "emac", "emac_csr", "emac_1588";
+		reg = <0x7c40000 0x10000>,
+			<0x7c56000 0x1000>,
+			<0x7c5c000 0x4000>;
+		#address-cells = <1>;
+		#interrupt-cells = <1>;
+		interrupts-extended = <&intc 0 76 0>,
+					<&tlmm 30 0x8>;
+		interrupt-names = "emac_core0_irq", "emac_wol_irq";
+
+		emac_vreg1-supply = <&mdm9607_l1>;
+		emac_vreg2-supply = <&mdm9607_l3>;
+		emac_vreg3-supply = <&mdm9607_l5>;
+		emac_vreg4-supply = <&mdm9607_l11>;
+		emac_vreg5-supply = <&emac_lan_vreg>;
+		qcom,vdd-voltage-level = <1250000 1800000 2850000 1800000 0>;
+		clocks = <&gcc GCC_EMAC_0_AXI_CLK>,
+			<&gcc GCC_EMAC_0_AHB_CLK>,
+			<&gcc GCC_EMAC_0_125M_CLK>,
+			<&gcc GCC_EMAC_0_SYS_25M_CLK>,
+			<&gcc GCC_EMAC_0_TX_CLK>,
+			<&gcc GCC_EMAC_0_RX_CLK>,
+			<&gcc GCC_EMAC_0_SYS_CLK>;
+		clock-names = "axi_clk", "cfg_ahb_clk", "high_speed_clk",
+			"mdio_clk", "tx_clk", "rx_clk", "sys_clk";
+
+		internal-phy = <&emac_sgmii>;
+		phy-handle = <&phy0>;
+		phy-mode = "sgmii";
+
+		pinctrl-names = "emac_mdio_clk_active", "emac_mdio_clk_sleep",
+			"emac_mdio_data_active", "emac_mdio_data_sleep",
+			"emac_ephy_active", "emac_ephy_sleep";
+		pinctrl-0 = <&emac0_mdio_clk_active>;
+		pinctrl-1 = <&emac0_mdio_clk_sleep>;
+		pinctrl-2 = <&emac0_mdio_data_active>;
+		pinctrl-3 = <&emac0_mdio_data_sleep>;
+		pinctrl-4 = <&emac0_ephy_active>;
+		pinctrl-5 = <&emac0_ephy_sleep>;
+		qcom,emac-tstamp-en;
+		qcom,emac-ptp-frac-ns-adj = <125000000 1>;
+
+		qcom,msm-bus,name = "emac0";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<114 512 0 0>,       /* No vote */
+			<114 512 125000 800000>; /* Max. bandwidth */
+		status = "ok";
+
+		phy0: ethernet-phy@0 {
+			reg = <0>;
+		};
+	};
+
+	emac_sgmii: ethernet@7c58000 {
+		compatible = "qcom,mdm9607-emac-sgmii";
+		reg-names = "emac_sgmii";
+		reg = <0x7c58000 0x400>;
+		interrupt-names = "emac_sgmii_irq";
+		interrupts = <GIC_SPI 80 IRQ_TYPE_EDGE_RISING>;
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"

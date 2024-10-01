@@ -46,6 +46,10 @@
 	};
 };
 
+&emac0 {
+	status = "ok";
+};
+
 &sdhc_2 {
 	vdd-supply = <&sdcard_ext_vreg>;
 	qcom,vdd-voltage-level = <2850000 2850000>;
