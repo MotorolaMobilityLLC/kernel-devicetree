@@ -723,17 +723,11 @@
 		reg = <0x88000000 0x500000>;
 		reg-names = "secapp-region";
 		memory-region = <&qseecom_mem>;
+		interconnects = <&pcnoc MASTER_CRYPTO_CORE_0 &bimc SLAVE_EBI_CH0>;
+		interconnect-names = "data_path";
 		qcom,hlos-ce-hw-instance = <0>;
 		qcom,qsee-ce-hw-instance = <0>;
-		qcom,msm-bus,name = "qseecom-noc";
-		qcom,msm-bus,num-cases = <4>;
-		qcom,msm-bus,num-paths = <1>;
 		qcom,support-bus-scaling;
-		qcom,msm-bus,vectors-KBps =
-				<47 512 0 0>,
-				<47 512 0 0>,
-				<47 512 120000 1200000>,
-				<47 512 393600 3936000>;
 		clocks = <&gcc CRYPTO_CLK_SRC>,
 			<&gcc GCC_CRYPTO_CLK>,
 			<&gcc GCC_CRYPTO_AHB_CLK>,
