@@ -33,22 +33,22 @@
 		#size-cells = <1>;
 		ranges;
 
-		cnss_debug_mem: cnss_debug_region@82200000 {
-			no-map;
-			reg = <0x82200000 0x200000>;
-			label = "cnss_debug_mem";
-		};
-
 		modem_adsp_mem: modem_adsp_region@82a00000 {
 			no-map;
 			reg = <0x82a00000 0x5000000>;
 			label = "modem_adsp_mem";
 		};
 
-		mba_mem: mba_region@8f600000 {
+		mba_mem: mba_region@87a00000 {
 			no-map;
-			reg = <0x8f600000 0x100000>;
+			reg = <0x87a00000 0x100000>;
 			label = "mba_mem";
+		};
+
+		sbl_region: sbl_region@87c00000 {
+			no-map;
+			reg = <0x87c00000 0x100000>;
+			label = "sbl_mem";
 		};
 
 		smem_mem: smem_region@87d00000 {
