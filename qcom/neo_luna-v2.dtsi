@@ -102,3 +102,19 @@
 	qcom,bcm-voter-names = "hlos", "disp";
 	qcom,bcm-voters = <&apps_bcm_voter>, <&disp_bcm_voter>;
 };
+
+&kgsl_smmu {
+	status = "okay";
+};
+
+&msm_gpu {
+	status = "okay";
+};
+
+&kgsl_msm_iommu {
+	status = "okay";
+};
+
+&gmu {
+	status = "okay";
+};
