@@ -151,6 +151,7 @@
 		rpm-channel-name = "rpm_requests";
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
 		rpm-channel-type = <15>; /* SMD_APPS_RPM */
+		qcom,use-rpmsg-no-sleep; /* For soc using single cpu core only */
 	};
 
 	timer@b020000 {
