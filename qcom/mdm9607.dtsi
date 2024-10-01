@@ -69,6 +69,13 @@
 			label = "tz_apps_mem";
 		};
 
+		dump_mem: mem_dump_region {
+			compatible = "shared-dma-pool";
+			reusable;
+			alignment = <0x400000>;
+			size = <0x400000>;
+		};
+
 		audio_mem: audio_region@0 {
 			compatible = "shared-dma-pool";
 			reusable;
@@ -229,6 +236,67 @@
 		qcom,pet-time = <10000>;
 		qcom,wakeup-enable;
 	};
+
+	mem_dump {
+		compatible = "qcom,mem-dump";
+		memory-region = <&dump_mem>;
+
+		c0_context_dump {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x0>;
+		 };
+
+		etr_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0x100>;
+		};
+
+		etf_dump {
+			qcom,dump-size = <0x20000>;
+			qcom,dump-id = <0xf0>;
+		};
+
+		etf_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0x101>;
+		};
+
+		dbgui_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe5>;
+		};
+
+		etm_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xa0>;
+		 };
+
+		log_buf_dump {
+			qcom,dump-size = <0x2000>;
+			qcom,dump-id = <0x110>;
+		 };
+
+		misc_data_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe8>;
+		};
+
+		pmic_dump {
+			qcom,dump-size = <0x10000>;
+			qcom,dump-id = <0xe4>;
+		};
+
+		vsense_data_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe9>;
+		};
+
+		rpm_data_dump {
+			qcom,dump-size = <0x28000>;
+			qcom,dump-id = <0xea>;
+		};
+	};
+
 
 	tcsr_mutex_regs: syscon@1905000 {
 		compatible = "syscon";
