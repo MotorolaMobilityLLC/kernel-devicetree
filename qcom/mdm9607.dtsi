@@ -51,12 +51,6 @@
 			label = "mba_mem";
 		};
 
-		sbl_region: sbl_region@87c00000 {
-			no-map;
-			reg = <0x87c00000 0x100000>;
-			label = "sbl_mem";
-		};
-
 		smem_mem: smem_region@87d00000 {
 			no-map;
 			reg = <0x87d00000 0x100000>;
@@ -73,13 +67,6 @@
 			no-map;
 			reg = <0x88000000 0x500000>;
 			label = "tz_apps_mem";
-		};
-
-		dump_mem: mem_dump_region {
-			compatible = "shared-dma-pool";
-			reusable;
-			alignment = <0x400000>;
-			size = <0x400000>;
 		};
 
 		audio_mem: audio_region@0 {
