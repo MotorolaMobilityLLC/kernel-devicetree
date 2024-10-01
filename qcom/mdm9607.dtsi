@@ -973,6 +973,7 @@
 #include "mdm9607-audio.dtsi"
 #include "pm8019.dtsi"
 #include "mdm9607-cnss.dtsi"
+#include "mdm9607-coresight.dtsi"
 
 &blsp1_uart5 {
 	status = "ok";
