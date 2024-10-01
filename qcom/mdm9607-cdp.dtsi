@@ -4,6 +4,14 @@
 	status = "ok";
 };
 
+&bluetooth {
+	status = "ok";
+};
+
+&blsp1_uart3 {
+	status = "ok";
+};
+
 &pm8019_mpps {
 
 	/* MPP 2 configs for SMB358 interrupt line */
