@@ -40,15 +40,10 @@
 		reg = <0x78b1000 0x200>,
 			<0x7884000 0x2b000>;
 		reg-names = "core_mem", "bam_mem";
-		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
+		interrupts-extended = <&intc GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>,
+				<&intc GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>,
+				<&tlmm 1 IRQ_TYPE_LEVEL_HIGH>;
 		#address-cells = <0>;
-		interrupt-parent = <&blsp1_uart3>;
-		interrupts = <0 1 2>;
-		#interrupt-cells = <1>;
-		interrupt-map-mask = <0xffffffff>;
-		interrupt-map = <0 &intc 0 119 IRQ_TYPE_LEVEL_HIGH
-				1 &intc 0 238 IRQ_TYPE_LEVEL_HIGH
-				2 &tlmm 1 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,inject-rx-on-wakeup;
 		qcom,rx-char-to-inject = <0xFD>;
 		qcom,bam-tx-ep-pipe-index = <4>;
@@ -57,10 +52,14 @@
 		clock-names = "core_clk", "iface_clk";
 		clocks = <&gcc GCC_BLSP1_UART3_APPS_CLK>,
 				<&gcc GCC_BLSP1_AHB_CLK>;
-		pinctrl-names = "sleep", "default";
+		pinctrl-names = "sleep", "default", "shutdown", "active";
 		pinctrl-0 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
 				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
-		pinctrl-1 = <&blsp1_uart3_hs_tx_active>,<&blsp1_uart3_hs_rx_active>,
+		pinctrl-1 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
+				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
+		pinctrl-2 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
+				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
+		pinctrl-3 = <&blsp1_uart3_hs_tx_active>,<&blsp1_uart3_hs_rx_active>,
 				<&blsp1_uart3_hs_cts_active>,<&blsp1_uart3_hs_rfr_active>;
 		interconnect-names ="blsp-ddr";
 		interconnects = <&pcnoc MASTER_BLSP_1 &bimc SLAVE_EBI_CH0>;

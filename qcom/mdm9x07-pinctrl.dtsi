@@ -75,7 +75,7 @@
 				config {
 					pins = "gpio0";
 					drive-strength = <2>;
-					bias-disable;
+					bias-pull-up;
 				};
 			};
 
@@ -108,13 +108,13 @@
 			blsp1_uart3_hs_rx_sleep: blsp1_uart3_hs_rx_sleep {
 				mux {
 					pins = "gpio1";
-					function = "blsp_uart_rx3";
+					function = "gpio";
 				};
 
 				config {
 					pins = "gpio1";
 					drive-strength = <2>;
-					bias-no-pull;
+					bias-pull-down;
 				};
 			};
 
@@ -140,7 +140,7 @@
 				config {
 					pins = "gpio2";
 					drive-strength = <2>;
-					bias-no-pull;
+					bias-pull-down;
 				};
 			};
 
@@ -153,7 +153,7 @@
 				config {
 					pins = "gpio3";
 					drive-strength = <2>;
-					bias-disable;
+					bias-pull-down;
 				};
 			};
 
@@ -166,7 +166,7 @@
 				config {
 					pins = "gpio3";
 					drive-strength = <2>;
-					bias-no-pull;
+					bias-pull-down;
 				};
 			};
 		};
