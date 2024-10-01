@@ -341,6 +341,10 @@
 		#mbox-cells = <1>;
 	};
 
+	system_pm_rpm {
+		compatible = "qcom,system-pm-rpm";
+	};
+
 	qcom,smd {
 		compatible = "qcom,smd";
 
