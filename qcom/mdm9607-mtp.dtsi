@@ -1,5 +1,13 @@
 #include "mdm9607.dtsi"
 
+&bluetooth {
+	status = "ok";
+};
+
+&blsp1_uart3 {
+	status = "ok";
+};
+
 &i2c_4 {
 	status = "ok";
 };
