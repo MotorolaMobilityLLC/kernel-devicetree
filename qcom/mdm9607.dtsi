@@ -832,7 +832,7 @@
 		interconnect-names = "data_path";
 		interconnects = <&bimc MASTER_AMPSS_M0 &pcnoc SLAVE_PRNG>;
 		clocks = <&gcc GCC_PRNG_AHB_CLK>;
-		clock-names = "iface_clk";
+		clock-names = "km_clk_src";
 	};
 
 	qcom_qseecom: qseecom@88000000 {
