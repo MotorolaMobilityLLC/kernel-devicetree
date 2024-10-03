@@ -719,6 +719,82 @@
 			};
 		};
 	};
+
+	qcom,smdpkt {
+		compatible = "qcom,smdpkt";
+
+		qcom,smdpkt-data5-cntl {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA5_CNTL";
+			qcom,smdpkt-dev-name = "smdcntl0";
+		};
+
+		qcom,smdpkt-data22 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA22";
+			qcom,smdpkt-dev-name = "smd22";
+		};
+
+		qcom,smdpkt-data40-cntl {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA40_CNTL";
+			qcom,smdpkt-dev-name = "smdcntl8";
+		};
+
+		qcom,smdpkt-data2 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA2";
+			qcom,smdpkt-dev-name = "at_mdm0";
+		};
+
+		qcom,smdpkt-data-mdm1 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DS";
+			qcom,smdpkt-dev-name = "at_mdm1";
+		};
+
+		qcom,smdpkt-data1 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA1";
+			qcom,smdpkt-dev-name = "smd7";
+		};
+
+		qcom,smdpkt-data3 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA3";
+			qcom,smdpkt-dev-name = "smd10";
+		};
+
+		qcom,smdpkt-data4 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA4";
+			qcom,smdpkt-dev-name = "smd8";
+		};
+
+		qcom,smdpkt-data11 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA11";
+			qcom,smdpkt-dev-name = "smd11";
+		};
+
+		qcom,smdpkt-data21 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "DATA21";
+			qcom,smdpkt-dev-name = "smd21";
+		};
+
+		qcom,smdpkt-apr-apps2 {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "apr_apps2";
+			qcom,smdpkt-dev-name = "apr_apps2";
+		};
+
+		qcom,smdpkt-loopback {
+			qcom,smdpkt-edge = "modem";
+			qcom,smdpkt-ch-name = "LOOPBACK";
+			qcom,smdpkt-dev-name = "smd_pkt_loopback";
+		};
+	};
 };
 
 #include "mdm9x07-pinctrl.dtsi"
