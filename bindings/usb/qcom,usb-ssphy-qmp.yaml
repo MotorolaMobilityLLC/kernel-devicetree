@@ -159,6 +159,12 @@ properties:
       "USB-HOST" cable events. This phandle is used for notifying number of
       lanes used in case of USB+DP concurrent mode to driver.
 
+  qcom,invert-ps-polarity:
+    description: |
+      An indicator to the qmp phy driver to use an inverted polarity for CC
+      detection.
+    type: boolean
+
 required:
   - compatible
   - reg
