@@ -14,7 +14,7 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
 PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
-PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb
+PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb pineapplep-sg-v2.dtb
 
 PINEAPPLE_BOARDS += \
 		 pineapple-mtp-overlay.dtbo \
@@ -28,7 +28,18 @@ PINEAPPLE_BOARDS += \
 		 pineapplep-hdk-overlay.dtbo \
 		 pineapple-dpm-overlay.dtbo \
 		 pineapplep-aim500-overlay.dtbo \
-		 pineapplep-aim500-v2-overlay.dtbo
+		 pineapplep-aim500-v2-overlay.dtbo \
+		 pineapplep-sg-v2-mtp-overlay.dtbo \
+		 pineapplep-sg-v2-atp-overlay.dtbo \
+		 pineapplep-sg-v2-cdp-nfc-overlay.dtbo \
+		 pineapplep-sg-v2-cdp-overlay.dtbo \
+		 pineapplep-sg-v2-mtp-nfc-overlay.dtbo \
+		 pineapplep-sg-v2-qrd-overlay.dtbo \
+		 pineapplep-sg-v2-qrd-sku2-overlay.dtbo \
+		 pineapplep-sg-v2-rcm-overlay.dtbo \
+		 pineapplep-sg-v2-aim500-overlay.dtbo \
+		 pineapplep-sg-v2-hdk-overlay.dtbo
+
 
 NOAPQ_PINEAPPLE_BOARDS += \
 		 pineapple-rumi-overlay.dtbo
