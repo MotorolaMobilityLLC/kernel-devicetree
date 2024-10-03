@@ -115,6 +115,8 @@
 	firmware: firmware {};
 };
 
+#include "mdm9607-pm.dtsi"
+
 &soc {
 	#address-cells = <1>;
 	#size-cells = <1>;
