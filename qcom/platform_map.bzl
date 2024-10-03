@@ -175,6 +175,10 @@ _platform_map = {
                 "name": "pineapplep-v2.dtb",
                 "apq": True,
             },
+            {
+                "name": "pineapplep-sg-v2.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
             {"name": "pineapple-atp-overlay.dtbo"},
@@ -189,6 +193,16 @@ _platform_map = {
             {"name": "pineapple-dpm-overlay.dtbo"},
             {"name": "pineapplep-aim500-overlay.dtbo"},
             {"name": "pineapplep-aim500-v2-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-mtp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-atp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-cdp-nfc-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-cdp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-mtp-nfc-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-qrd-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-qrd-sku2-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-rcm-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-aim500-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-hdk-overlay.dtbo"},
             {
                 "name": "pineapple-rumi-overlay.dtbo",
                 "apq": False,
