@@ -1,3 +1,4 @@
+#include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 #include <dt-bindings/clock/qcom,camcc-niobe.h>
 #include <dt-bindings/clock/qcom,dispcc0-niobe.h>
 #include <dt-bindings/clock/qcom,dispcc1-niobe.h>
@@ -1262,6 +1263,11 @@
 		compatible = "smmu-proxy-sender";
 	};
 
+	qcom,seccamtest {
+		compatible = "qcom,seccamtest";
+		qti,smmu-proxy-cb-id = <QTI_SMMU_PROXY_CAMERA_CB>;
+	};
+
 	tlmm-vm-mem-access {
 		compatible = "qcom,tlmm-vm-mem-access";
 		qcom,master;
@@ -1341,6 +1347,8 @@
 		qcom,vmid = <50>;
 		qcom,firmware-name = "cpusys_vm";
 		memory-region = <&cpusys_vm_mem>;
+		ext-region = <&chipinfo_mem>;
+		ext-label = <0x7>;
 	};
 
 	clocks {

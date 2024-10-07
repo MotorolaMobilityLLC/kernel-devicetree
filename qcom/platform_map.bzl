@@ -4,6 +4,7 @@ _platform_map = {
             # keep sorted
             {"name": "direwolf-vm-la.dtb"},
             {"name": "direwolf-vm-lv.dtb"},
+            {"name": "direwolf-vm-lv-headless-mt.dtb"},
             {"name": "lemans-vm-la.dtb"},
             {"name": "lemans-vm-la-mt.dtb"},
             {"name": "lemans-vm-la1-mt.dtb"},
@@ -20,6 +21,7 @@ _platform_map = {
             # keep sorted
             {"name": "direwolf-vm-la-overlay.dtbo"},
             {"name": "direwolf-vm-lv-overlay.dtbo"},
+            {"name": "direwolf-vm-lv-headless-mt-overlay.dtbo"},
             {"name": "lemans-vm-la-overlay.dtbo"},
             {"name": "lemans-vm-la-mt-overlay.dtbo"},
             {"name": "lemans-vm-la1-mt-overlay.dtbo"},
@@ -82,6 +84,17 @@ _platform_map = {
             {"name": "monaco_auto-ivi-adp-air-overlay.dtbo"},
             {"name": "monaco_auto-ivi-adp-star-overlay.dtbo"},
             {"name": "monaco_auto-rumi-overlay.dtbo"},
+        ],
+    },
+    "mdm9607": {
+        "dtb_list": [
+            # keep sorted
+            {"name": "mdm9607-cdp.dtb"},
+            {"name": "mdm9607-mtp.dtb"},
+            {"name": "mdm9607-rcm.dtb"},
+        ],
+        "dtbo_list": [
+            # keep sorted
         ],
     },
     "sdmsteppeauto": {
