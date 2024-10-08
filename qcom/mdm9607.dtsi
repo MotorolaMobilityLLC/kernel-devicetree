@@ -228,6 +228,16 @@
 		qcom,pipe-attr-ee;
 	};
 
+	qcom,wdt@b017000 {
+		compatible = "qcom,msm-watchdog";
+		reg = <0xb017000 0x1000>;
+		reg-names = "wdt-base";
+		interrupts = <0 3 IRQ_TYPE_LEVEL_HIGH>, <0 4 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,bark-time = <11000>;
+		qcom,pet-time = <10000>;
+		qcom,wakeup-enable;
+	};
+
 	tcsr_mutex_regs: syscon@1905000 {
 		compatible = "syscon";
 		reg = <0x1905000 0x20000>;
