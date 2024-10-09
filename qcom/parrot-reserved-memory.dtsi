@@ -136,7 +136,13 @@
 
 	trust_ui_vm_mem: trust_ui_vm_region@e0c00000 {
 		no-map;
-		reg = <0x0 0xe0c00000 0x0 0x49f3000>;
+		reg = <0x0 0xe0c00000 0x0 0x4500000>;
+	};
+
+	/* Moto kernel protection reserved CMA region (carved out from TUI) */
+	kern_prot_mem: kern_prot_region@e5100000 {
+		no-map;
+		reg = <0x0 0xe5100000 0x0 0x400000>;
 	};
 
 	trust_ui_vm_qrtr: trust_ui_vm_qrtr@e55f3000 {
