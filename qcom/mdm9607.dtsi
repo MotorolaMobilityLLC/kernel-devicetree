@@ -132,6 +132,10 @@
 		      <0x0b002000 0x1000>;
 	};
 
+	dload_mode {
+		compatible = "qcom,dload-mode";
+	};
+
 	wakegic: wake-gic {
 		compatible = "qcom,mpm-gic-mdm9607", "qcom,mpm";
 		interrupts = <GIC_SPI 197 IRQ_TYPE_EDGE_RISING>;
@@ -247,6 +251,11 @@
 		compatible = "qcom,tcsr-mutex";
 		syscon = <&tcsr_mutex_regs 0 0x1000>;
 		#hwlock-cells = <1>;
+	};
+
+	tcsr: syscon@193d100 {
+		compatible = "syscon";
+		reg = <0x193d100 0x4>;
 	};
 
 	qcom,ipc-spinlock@1905000 {
@@ -581,6 +590,10 @@
 		};
 	};
 
+	reboot_reason {
+		compatible = "qcom,reboot-reason";
+	};
+
 	restart@4ab000 {
 		compatible = "qcom,pshold";
 		reg = <0x4ab000 0x4>,
@@ -820,5 +833,6 @@
 &firmware {
 	scm {
 		compatible = "qcom,scm";
+		qcom,dload-mode = <&tcsr 0>;
 	};
 };
