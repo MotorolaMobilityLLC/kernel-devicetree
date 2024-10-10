@@ -374,6 +374,8 @@
 		};
 	};
 
+	thermal_zones: thermal-zones {};
+
 	apcs: syscon@0b011008 {
 		compatible = "syscon";
 		reg = <0x0b011008 0x04>;
@@ -974,6 +976,7 @@
 #include "pm8019.dtsi"
 #include "mdm9607-cnss.dtsi"
 #include "mdm9607-coresight.dtsi"
+#include "mdm9607-thermal.dtsi"
 
 &blsp1_uart5 {
 	status = "ok";
