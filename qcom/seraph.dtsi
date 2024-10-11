@@ -526,3 +526,4 @@
 };
 
 #include "seraph-reserved-memory.dtsi"
+#include "seraph-dma-heaps.dtsi"
