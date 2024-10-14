@@ -242,4 +242,14 @@
 	};
 };
 
+&usb0 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+};
+
+&usb1 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+};
+
 #include "sdmshrike-coresight.dtsi"
