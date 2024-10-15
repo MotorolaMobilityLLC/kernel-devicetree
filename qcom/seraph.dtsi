@@ -133,9 +133,9 @@
 		#interrupt-cells = <3>;
 		interrupt-controller;
 		#redistributor-regions = <1>;
-		redistributor-stride = <0x0 0x40000>;
+		redistributor-stride = <0x0 0x20000>;
 		reg = <0x17200000 0x10000>,       /* GICD */
-		     <0x17260000 0x200000>;       /* GICR * 8 */
+		     <0x17260000 0xA0000>;       /* GICR * 5 */
 		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
