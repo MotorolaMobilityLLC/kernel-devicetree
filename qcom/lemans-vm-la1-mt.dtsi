@@ -67,3 +67,7 @@
 &pcie_smmu {
 	status = "disabled";
 };
+
+&emac_ctrl_fe {
+	status = "disabled";
+};
