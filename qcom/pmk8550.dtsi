@@ -59,6 +59,14 @@
 			fmd_set: fmd-set@9a {
 				reg = <0x9a 0x1>;
 			};
+
+			fmd_chg_pon: fmd-chg-pon@9f {
+				reg = <0x9f 0x1>;
+			};
+
+			fmd_cnt2_stop: fmd-cnt2-stop@a2 {
+				reg = <0xa2 0x1>;
+			};
 		};
 
 		pmk8550_sdam_5: sdam@7400 {
