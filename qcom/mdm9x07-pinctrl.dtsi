@@ -494,5 +494,75 @@
 				};
 			};
 		};
+
+	sdc1_on: sdc1_on {
+		clk {
+				pins = "sdc1_clk";
+				bias-disable;
+				drive-strength = <16>;
+			};
+
+			cmd {
+				pins = "sdc1_cmd";
+				bias-pull-up;
+				drive-strength = <10>;
+			};
+
+			data {
+				pins = "sdc1_data";
+				bias-pull-up;
+				drive-strength = <10>;
+			};
+		};
+
+		sdc1_off: sdc1_off {
+			clk {
+				pins = "sdc1_clk";
+				bias-disable;
+				drive-strength = <2>;
+			};
+
+			cmd {
+				pins = "sdc1_cmd";
+				bias-pull-up;
+				drive-strength = <2>;
+			};
+
+			data {
+				pins = "sdc1_data";
+				bias-pull-up;
+				drive-strength = <2>;
+			};
+		};
+
+		sdc1_wlan_gpio {
+			sdc1_wlan_gpio_active: sdc1_wlan_gpio_active {
+				mux {
+					pins = "gpio38";
+					function  = "gpio";
+				};
+
+				config {
+					pins  = "gpio38";
+					output-high;
+					drive-strength = <8>;
+					bias-pull-up;
+				};
+			};
+
+			sdc1_wlan_gpio_sleep: sdc1_wlan_gpio_sleep {
+				mux {
+					pins = "gpio38";
+					function  = "gpio";
+				};
+
+				config {
+					pins  = "gpio38";
+					drive-strength = <2>;
+					bias-disable;
+					output-low;
+				};
+			};
+		};
 	};
 };

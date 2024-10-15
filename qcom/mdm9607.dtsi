@@ -663,6 +663,54 @@
 		qcom,disable-shmbridge-support;
 	};
 
+	sdhc_1: sdhci@7824900 {
+		compatible = "qcom,sdhci-msm-v4";
+		reg = <0x7824900 0x200>, <0x7824000 0x800>, <0x01111000 0x4>;
+		reg-names = "hc_mem", "core_mem", "tlmm_mem";
+		qcom,cpu-dma-latency-us = <701>;
+		bus-width = <4>;
+		gpios = <&tlmm 16 0>, /* CLK */
+			<&tlmm 17 0>, /* CMD */
+			<&tlmm 15 0>, /* DATA0 */
+			<&tlmm 14 0>, /* DATA1 */
+			<&tlmm 13 0>, /* DATA2 */
+			<&tlmm 12 0>; /* DATA3 */
+		qcom,gpio-names = "CLK", "CMD", "DAT0", "DAT1", "DAT2", "DAT3";
+		qcom,clk-rates = <400000 20000000 25000000 50000000 100000000
+		200000000>;
+		clock-names = "iface", "core";
+		clocks = <&gcc GCC_SDCC1_AHB_CLK>,
+			<&gcc GCC_SDCC1_APPS_CLK>;
+		no-sd;
+		no-mmc;
+		qcom,msm-bus,name = "sdhc1";
+		qcom,msm-bus,num-cases = <8>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps = <0 0>, /* No vote */
+						<1600 3200>,    /* 400 KB/s*/
+						<80000 160000>, /* 20 MB/s */
+						<100000 200000>, /* 25 MB/s */
+						<200000 400000>, /* 50 MB/s */
+						<400000 800000>, /* 100 MB/s */
+						<800000 800000>, /* 200 MB/s */
+						<2048000 4096000>; /* Max. bandwidth */
+		qcom,bus-bw-vectors-bps = <0 400000 20000000 25000000
+				50000000 100000000 200000000 4294967295>;
+		#address-cells = <0>;
+		interrupt-parent = <&sdhc_1>;
+		interrupts = <0 1 2>;
+		#interrupt-cells = <1>;
+		interrupt-map-mask = <0xffffffff>;
+		interrupt-map = <0 &intc GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH
+				1 &intc GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH
+				2 &tlmm 59 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "hc_irq", "pwr_irq", "sdiowakeup_irq";
+		qcom,pm-qos-irq-type = "affine_irq";
+		qcom,pm-qos-irq-latency = <2 250>;
+
+		status = "disabled";
+	};
+
 	remoteproc_mss: remoteproc-mss@4080000 {
 		compatible = "qcom,mdm9607-mss-pil";
 		reg = <0x04080000 0x100>,
@@ -825,6 +873,7 @@
 #include "mdm9607-regulator.dtsi"
 #include "mdm9607-blsp.dtsi"
 #include "pm8019.dtsi"
+#include "mdm9607-cnss.dtsi"
 
 &blsp1_uart5 {
 	status = "ok";
@@ -835,4 +884,21 @@
 		compatible = "qcom,scm";
 		qcom,dload-mode = <&tcsr 0>;
 	};
+};
+&sdhc_1 {
+	vdd-io-supply = <&mdm9607_l11>;
+	qcom,vdd-io-always-on;
+	qcom,vdd-io-voltage-level = <1800000 1800000>;
+	qcom,vdd-io-current-level = <0 30000>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc1_on &sdc1_wlan_gpio_active>;
+	pinctrl-1 = <&sdc1_off &sdc1_wlan_gpio_sleep>;
+	non-removable;
+
+	qcom,nonremovable;
+	keep-power-in-suspend;
+	enable-sdio-wakeup;
+	qcom,core_3_0v_support;
+	status = "ok";
 };
