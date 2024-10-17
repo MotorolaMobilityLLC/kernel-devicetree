@@ -330,6 +330,19 @@ hsi2s: qcom,hsi2s {
 	};
 };
 
+&usb0 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+	qcom,hibernate-skip-thaw;
+};
+
+&usb1 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+	qcom,hibernate-skip-thaw;
+	qcom,disable-host-ssphy-powerdown;
+};
+
 &gpucc {
 	compatible = "qcom,sa8155-gpucc", "syscon";
 };
