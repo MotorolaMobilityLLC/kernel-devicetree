@@ -50,3 +50,12 @@
 	vbus_otg-supply = <&smb358_otg_supply>;
 	extcon = <&smb358_otg_supply>;
 };
+
+&usb_hsusb {
+	vbus_otg-supply = <&smb358_otg_supply>;
+	extcon = <&smb358_otg_supply>;
+};
+
+&spi_2 {
+	status = "ok";
+};

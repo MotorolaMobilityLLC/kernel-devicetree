@@ -25,6 +25,7 @@
 
 	aliases {
 		qpic_nand1 = &qnand_1;
+		mmc0 = &sdhc_1; /* SDC1 for SDIO slot */
 	};
 
 	reserved_mem: reserved-memory {
@@ -48,12 +49,6 @@
 			no-map;
 			reg = <0x8f600000 0x100000>;
 			label = "mba_mem";
-		};
-
-		sbl_region: sbl_region@87c00000 {
-			no-map;
-			reg = <0x87c00000 0x100000>;
-			label = "sbl_mem";
 		};
 
 		smem_mem: smem_region@87d00000 {
@@ -242,6 +237,67 @@
 		qcom,wakeup-enable;
 	};
 
+	mem_dump {
+		compatible = "qcom,mem-dump";
+		memory-region = <&dump_mem>;
+
+		c0_context_dump {
+			qcom,dump-size = <0x800>;
+			qcom,dump-id = <0x0>;
+		 };
+
+		etr_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0x100>;
+		};
+
+		etf_dump {
+			qcom,dump-size = <0x20000>;
+			qcom,dump-id = <0xf0>;
+		};
+
+		etf_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0x101>;
+		};
+
+		dbgui_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe5>;
+		};
+
+		etm_reg_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xa0>;
+		 };
+
+		log_buf_dump {
+			qcom,dump-size = <0x2000>;
+			qcom,dump-id = <0x110>;
+		 };
+
+		misc_data_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe8>;
+		};
+
+		pmic_dump {
+			qcom,dump-size = <0x10000>;
+			qcom,dump-id = <0xe4>;
+		};
+
+		vsense_data_dump {
+			qcom,dump-size = <0x1000>;
+			qcom,dump-id = <0xe9>;
+		};
+
+		rpm_data_dump {
+			qcom,dump-size = <0x28000>;
+			qcom,dump-id = <0xea>;
+		};
+	};
+
+
 	tcsr_mutex_regs: syscon@1905000 {
 		compatible = "syscon";
 		reg = <0x1905000 0x20000>;
@@ -413,10 +469,48 @@
 		reg-names = "cc_base";
 		vdd_dig-supply = <&VDD_CX_LEVEL>;
 		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>,
+			 <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
 			 <&sleep_clk>;
-		clock-names = "xo", "sleep_clk";
+		clock-names = "xo", "xo_ao", "sleep_clk";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	cpucc: syscon@b01101c {
+		compatible = "syscon";
+		reg = <0xb01101c 0x4>;
+	};
+
+	debugcc: debug-clock-controller@0 {
+		compatible = "qcom,mdm9607-debugcc";
+		qcom,gcc = <&gcc>;
+		qcom,cpucc = <&cpucc>;
+		clock-names = "xo_clk_src";
+		clocks = <&rpmcc RPM_SMD_XO_CLK_SRC>;
+		#clock-cells = <1>;
+	};
+
+	apsscc: clock-controller@0b010008 {
+		compatible = "qcom,mdm9607-apsscc";
+		clocks = <&rpmcc RPM_SMD_XO_A_CLK_SRC>,
+			<&gcc GPLL0_AO>;
+		clock-names = "bi_tcxo_ao", "gpll0_out_even";
+		reg = <0xb010008 0x8>,
+			<0xb008018 0x28>,
+			<0x000a412c 0x8>;
+		reg-names = "apcs_cmd" , "apcs_pll", "efuse";
+		vdd-pll-supply = <&mdm9607_s3_level_ao>;
+		cpu-vdd-supply = <&apc_vreg_corner>;
+		qcom,speed4-bin-v0 =
+			<          0 0>,
+			<  400000000 1>,
+			<  800000000 2>,
+			<  998400000 3>,
+			< 1094400000 4>,
+			< 1190400000 5>,
+			< 1248000000 6>,
+			< 1305600000 7>;
+		#clock-cells = <1>;
 	};
 
 	qnand_1: nand@7980000 {
@@ -601,6 +695,12 @@
 		reg-names = "pshold-base", "tcsr-boot-misc-detect";
 	};
 
+	qcom,mpm2-sleep-counter@4a3000 {
+		compatible = "qcom,mpm2-sleep-counter";
+		reg = <0x4a3000 0x1000>;
+		clock-frequency = <32768>;
+	};
+
 	usb_hsusb: hsusb@78d9000 {
 		compatible = "qcom,msm-hsusb";
 		reg = <0x78d9000 0x400>;
@@ -623,17 +723,11 @@
 		reg = <0x88000000 0x500000>;
 		reg-names = "secapp-region";
 		memory-region = <&qseecom_mem>;
+		interconnects = <&pcnoc MASTER_CRYPTO_CORE_0 &bimc SLAVE_EBI_CH0>;
+		interconnect-names = "data_path";
 		qcom,hlos-ce-hw-instance = <0>;
 		qcom,qsee-ce-hw-instance = <0>;
-		qcom,msm-bus,name = "qseecom-noc";
-		qcom,msm-bus,num-cases = <4>;
-		qcom,msm-bus,num-paths = <1>;
 		qcom,support-bus-scaling;
-		qcom,msm-bus,vectors-KBps =
-				<47 512 0 0>,
-				<47 512 0 0>,
-				<47 512 120000 1200000>,
-				<47 512 393600 3936000>;
 		clocks = <&gcc CRYPTO_CLK_SRC>,
 			<&gcc GCC_CRYPTO_CLK>,
 			<&gcc GCC_CRYPTO_AHB_CLK>,
@@ -683,6 +777,9 @@
 			<&gcc GCC_SDCC1_APPS_CLK>;
 		no-sd;
 		no-mmc;
+
+		interconnects = <&pcnoc MASTER_SDCC_1 &bimc SLAVE_EBI_CH0>;
+		interconnect-names = "sdhc-ddr";
 		qcom,msm-bus,name = "sdhc1";
 		qcom,msm-bus,num-cases = <8>;
 		qcom,msm-bus,num-paths = <1>;
@@ -869,11 +966,14 @@
 };
 
 #include "mdm9x07-pinctrl.dtsi"
+#include "mdm9x07-dma-heaps.dtsi"
 #include "pm8019-rpm-regulator.dtsi"
 #include "mdm9607-regulator.dtsi"
 #include "mdm9607-blsp.dtsi"
+#include "mdm9607-audio.dtsi"
 #include "pm8019.dtsi"
 #include "mdm9607-cnss.dtsi"
+#include "mdm9607-coresight.dtsi"
 
 &blsp1_uart5 {
 	status = "ok";
