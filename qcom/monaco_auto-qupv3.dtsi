@@ -128,8 +128,7 @@
 			<&qupv3_se2_default_tx>, <&qupv3_se2_default_rx>;
 			pinctrl-1 = <&qupv3_se2_cts>, <&qupv3_se2_rts>,
 			<&qupv3_se2_tx>, <&qupv3_se2_rx>;
-			pinctrl-2 = <&qupv3_se2_cts>, <&qupv3_se2_rts>,
-			<&qupv3_se2_tx>, <&qupv3_se2_default_rx>;
+			pinctrl-2 = <&qupv3_se2_sleep_txctsrts>, <&qupv3_se2_default_rx>;
 			pinctrl-3 = <&qupv3_se2_default_cts>, <&qupv3_se2_default_rts>,
 			<&qupv3_se2_default_tx>, <&qupv3_se2_default_rx>;
 			qcom,wakeup-byte = <0xFD>;
