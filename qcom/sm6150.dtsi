@@ -1533,6 +1533,9 @@
 		bus-width = <4>;
 		qcom,restore-after-cx-collapse;
 
+		no-sdio;
+		no-mmc;
+
 		/* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
 		qcom,dll-hsr-list = <0x0007642C 0x0 0x0 0x00010800 0x80040868>;
 
