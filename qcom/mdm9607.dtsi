@@ -27,6 +27,7 @@
 	aliases {
 		qpic_nand1 = &qnand_1;
 		mmc0 = &sdhc_1; /* SDC1 for SDIO slot */
+		mmc1 = &sdhc_2; /* SDC2 SD card slot */
 	};
 
 	reserved_mem: reserved-memory {
@@ -150,6 +151,7 @@
 		rpm-channel-name = "rpm_requests";
 		interrupts = <GIC_SPI 168 IRQ_TYPE_EDGE_RISING>;
 		rpm-channel-type = <15>; /* SMD_APPS_RPM */
+		qcom,use-rpmsg-no-sleep; /* For soc using single cpu core only */
 	};
 
 	timer@b020000 {
@@ -337,6 +339,10 @@
 		compatible = "qcom,sdxnightjar-apcs-gcc";
 		reg = <0xb011008 0x4>;
 		#mbox-cells = <1>;
+	};
+
+	system_pm_rpm {
+		compatible = "qcom,system-pm-rpm";
 	};
 
 	qcom,smd {
@@ -835,6 +841,45 @@
 		clock-names = "km_clk_src";
 	};
 
+	sdhc_2: sdhci@07864900 {
+		compatible = "qcom,sdhci-msm-v4";
+		reg = <0x07864900 0x200>, <0x07864000 0x800>;
+		reg-names = "hc_mem", "core_mem";
+
+		interrupts = <0 125 0>, <0 221 0>;
+		interrupt-names = "hc_irq", "pwr_irq";
+
+		qcom,bus-width = <4>;
+
+		qcom,devfreq,freq-table = <50000000 200000000>;
+		interconnects = <&pcnoc MASTER_SDCC_2 &bimc SLAVE_EBI_CH0>;
+		interconnect-names = "sdhc-ddr";
+		qcom,msm-bus,name = "sdhc2";
+		qcom,msm-bus,num-cases = <8>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps = <81 512 0 0>, /* No vote */
+				<81 512 1600 3200>,    /* 400 KB/s*/
+				<81 512 80000 160000>, /* 20 MB/s */
+				<81 512 100000 200000>, /* 25 MB/s */
+				<81 512 200000 400000>, /* 50 MB/s */
+				<81 512 400000 800000>, /* 100 MB/s */
+				<81 512 800000 800000>, /* 200 MB/s */
+				<81 512 2048000 4096000>; /* Max. bandwidth */
+		qcom,bus-bw-vectors-bps = <0 400000 20000000 25000000 50000000
+						100000000 200000000 4294967295>;
+
+		clocks = <&gcc GCC_SDCC2_AHB_CLK>,
+			<&gcc GCC_SDCC2_APPS_CLK >;
+		clock-names = "iface", "core";
+
+		qcom,clk-rates = <400000 25000000 50000000 100000000 200000000>;
+
+		qcom,pm-qos-irq-type = "affine_irq";
+		qcom,pm-qos-irq-latency = <2 250>;
+
+		status = "disabled";
+	};
+
 	qcom_qseecom: qseecom@88000000 {
 		compatible = "qcom,qseecom";
 		reg = <0x88000000 0x500000>;
@@ -1079,6 +1124,71 @@
 			qcom,smdpkt-ch-name = "LOOPBACK";
 			qcom,smdpkt-dev-name = "smd_pkt_loopback";
 		};
+	};
+
+	emac0: qcom,emac@7c40000 {
+		compatible = "qcom,mdm9607-emac";
+		reg-names = "emac", "emac_csr", "emac_1588";
+		reg = <0x7c40000 0x10000>,
+			<0x7c56000 0x1000>,
+			<0x7c5c000 0x4000>;
+		#address-cells = <1>;
+		#interrupt-cells = <1>;
+		interrupts-extended = <&intc 0 76 0>,
+					<&tlmm 30 0x8>;
+		interrupt-names = "emac_core0_irq", "emac_wol_irq";
+
+		emac_vreg1-supply = <&mdm9607_l1>;
+		emac_vreg2-supply = <&mdm9607_l3>;
+		emac_vreg3-supply = <&mdm9607_l5>;
+		emac_vreg4-supply = <&mdm9607_l11>;
+		emac_vreg5-supply = <&emac_lan_vreg>;
+		qcom,vdd-voltage-level = <1250000 1800000 2850000 1800000 0>;
+		clocks = <&gcc GCC_EMAC_0_AXI_CLK>,
+			<&gcc GCC_EMAC_0_AHB_CLK>,
+			<&gcc GCC_EMAC_0_125M_CLK>,
+			<&gcc GCC_EMAC_0_SYS_25M_CLK>,
+			<&gcc GCC_EMAC_0_TX_CLK>,
+			<&gcc GCC_EMAC_0_RX_CLK>,
+			<&gcc GCC_EMAC_0_SYS_CLK>;
+		clock-names = "axi_clk", "cfg_ahb_clk", "high_speed_clk",
+			"mdio_clk", "tx_clk", "rx_clk", "sys_clk";
+
+		internal-phy = <&emac_sgmii>;
+		phy-handle = <&phy0>;
+		phy-mode = "sgmii";
+
+		pinctrl-names = "emac_mdio_clk_active", "emac_mdio_clk_sleep",
+			"emac_mdio_data_active", "emac_mdio_data_sleep",
+			"emac_ephy_active", "emac_ephy_sleep";
+		pinctrl-0 = <&emac0_mdio_clk_active>;
+		pinctrl-1 = <&emac0_mdio_clk_sleep>;
+		pinctrl-2 = <&emac0_mdio_data_active>;
+		pinctrl-3 = <&emac0_mdio_data_sleep>;
+		pinctrl-4 = <&emac0_ephy_active>;
+		pinctrl-5 = <&emac0_ephy_sleep>;
+		qcom,emac-tstamp-en;
+		qcom,emac-ptp-frac-ns-adj = <125000000 1>;
+
+		qcom,msm-bus,name = "emac0";
+		qcom,msm-bus,num-cases = <2>;
+		qcom,msm-bus,num-paths = <1>;
+		qcom,msm-bus,vectors-KBps =
+			<114 512 0 0>,       /* No vote */
+			<114 512 125000 800000>; /* Max. bandwidth */
+		status = "ok";
+
+		phy0: ethernet-phy@0 {
+			reg = <0>;
+		};
+	};
+
+	emac_sgmii: ethernet@7c58000 {
+		compatible = "qcom,mdm9607-emac-sgmii";
+		reg-names = "emac_sgmii";
+		reg = <0x7c58000 0x400>;
+		interrupt-names = "emac_sgmii_irq";
+		interrupts = <GIC_SPI 80 IRQ_TYPE_EDGE_RISING>;
 	};
 };
 
