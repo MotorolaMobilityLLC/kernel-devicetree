@@ -347,6 +347,7 @@
 			compatible = "qcom,llcc-perfmon";
 			clocks = <&aoss_qmp QDSS_CLK>;
 			clock-names = "qdss_clk";
+			llcc-occupancy-snapshot;
 		};
 	};
 
