@@ -6,8 +6,8 @@
 		#address-cells = <1>;
 		#size-cells = <1>;
 		clock-names = "m-ahb", "s-ahb";
-		clocks = <&gcc GCC_QUPV3_WRAP_1_M_AHB_CLK>,
-			<&gcc GCC_QUPV3_WRAP_1_S_AHB_CLK>;
+		clocks = <&gcc GCC_QUPV3_WRAP_2_M_AHB_CLK>,
+			<&gcc GCC_QUPV3_WRAP_2_S_AHB_CLK>;
 		ranges;
 		status = "ok";
 
@@ -16,9 +16,9 @@
 			compatible = "qcom,geni-debug-uart";
 			reg = <0xa94000 0x4000>;
 			reg-names = "se_phys";
-			interrupts = <GIC_SPI 500 IRQ_TYPE_LEVEL_HIGH>;
+			interrupts = <GIC_SPI 375 IRQ_TYPE_LEVEL_HIGH>;
 			clock-names = "se";
-			clocks = <&gcc GCC_QUPV3_WRAP1_S5_CLK>;
+			clocks = <&gcc GCC_QUPV3_WRAP2_S5_CLK>;
 			pinctrl-names = "default", "sleep";
 			pinctrl-0 = <&qupv3_se11_2uart_tx_active>, <&qupv3_se11_2uart_rx_active>;
 			pinctrl-1 = <&qupv3_se11_2uart_sleep>;
