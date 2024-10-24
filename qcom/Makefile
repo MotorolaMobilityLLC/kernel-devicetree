@@ -41,9 +41,6 @@ PINEAPPLE_BOARDS += \
 		 pineapplep-sg-v2-hdk-overlay.dtbo
 
 
-NOAPQ_PINEAPPLE_BOARDS += \
-		 pineapple-rumi-overlay.dtbo
-
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(NOAPQ_PINEAPPLE_BOARDS),$(PINEAPPLE_BASE_DTB))\
 	$(call add-overlays, $(PINEAPPLE_BOARDS) $(APQ_PINEAPPLE_BOARDS),$(PINEAPPLE_APQ_BASE_DTB))
@@ -68,9 +65,6 @@ CLIFFS_BOARDS += \
 		 cliffs-rcm-qhdp-overlay.dtbo \
 		 cliffs-rcm-fhdp-kiwi-overlay.dtbo \
 		 cliffs-rcm-qhdp-kiwi-overlay.dtbo
-
-NOAPQ_CLIFFS_BOARDS += \
-		 cliffs-rumi-overlay.dtbo
 
 pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 	$(call add-overlays, $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS),$(CLIFFS_BASE_DTB))\
@@ -98,9 +92,6 @@ VOLCANO_BOARDS += \
 		volcano6i-mtp-moselle-wingmate-overlay.dtbo \
 		volcano-qrd-overlay.dtbo \
 		volcano6i-qrd-moselle-overlay.dtbo
-
-NOAPQ_VOLCANO_BOARDS += \
-		volcano-rumi-overlay.dtbo
 
 pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 	$(call add-overlays, $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS),$(VOLCANO_BASE_DTB))\
@@ -316,8 +307,7 @@ dtb-y += $(gen4auto-dtb-y)
 
 ifeq ($(CONFIG_ARCH_PINEAPPLE), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
-pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += pineapple-vm-rumi.dtb \
-				pineapple-vm-mtp.dtb \
+pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += pineapple-vm-mtp.dtb \
 				pineapple-vm-cdp.dtb \
 				pineapple-vm-qrd.dtb \
 				pineapple-vm-rcm.dtb \
@@ -325,7 +315,6 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += pineapple-vm-rumi.dtb \
 				pineapple-oemvm-cdp.dtb \
 				pineapple-oemvm-mtp.dtb \
 				pineapple-oemvm-qrd.dtb \
-				pineapple-oemvm-rumi.dtb \
 				pineapple-oemvm-rcm.dtb \
 				pineapplep-oemvm-hdk.dtb
 dtb-y += $(pineapple_tuivm-dtb-y)
@@ -344,8 +333,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_CLIFFS), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
-pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += cliffs-vm-rumi.dtb \
-		cliffs-vm-atp.dtb \
+pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += cliffs-vm-atp.dtb \
 		cliffs-vm-cdp.dtb \
 		cliffs-vm-mtp.dtb \
 		cliffs-vm-mtp-kiwi.dtb \
@@ -364,7 +352,6 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += cliffs-vm-rumi.dtb \
 		cliffs-oemvm-mtp-peach.dtb \
 		cliffs-oemvm-qrd.dtb \
 		cliffs-oemvm-rcm.dtb \
-		cliffs-oemvm-rumi.dtb \
 		cliffs-oemvm-rcm-fhdp-kiwi.dtb \
 		cliffs-oemvm-rcm-qhdp.dtb \
 		cliffs-oemvm-rcm-qhdp-kiwi.dtb \
@@ -377,8 +364,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_VOLCANO), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
-pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-rumi.dtb \
-                volcano-vm-atp.dtb \
+pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
                 volcano-vm-idp.dtb \
                 volcano-vm-idp-wcd9395.dtb \
 		volcano6i-vm-idp-wcd9395-brahma.dtb \
@@ -394,7 +380,6 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-rumi.dtb \
 		volcano6i-vm-mtp-wcd9395-moselle.dtb \
                 volcano-vm-qrd.dtb \
 		volcano6i-vm-qrd-moselle.dtb \
-                volcano-oemvm-rumi.dtb \
                 volcano-oemvm-atp.dtb \
                 volcano-oemvm-idp.dtb \
                 volcano-oemvm-idp-wcd9395.dtb \
