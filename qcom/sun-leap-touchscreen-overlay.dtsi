@@ -66,6 +66,8 @@
 		goodix,sample-ctrl;
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		mmi,refresh-rate-update;
+		goodix,report_rate-ctrl;
 	};
 };
 
