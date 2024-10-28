@@ -647,6 +647,13 @@
 	};
 };
 
+&firmware {
+	qcom_scm {
+		compatible = "qcom,scm";
+	};
+};
+
+
 #include "seraph-reserved-memory.dtsi"
 #include "seraph-dma-heaps.dtsi"
 #include "msm-arm-smmu-seraph.dtsi"
