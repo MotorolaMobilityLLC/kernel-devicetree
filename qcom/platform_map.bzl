@@ -175,6 +175,10 @@ _platform_map = {
                 "name": "pineapplep-v2.dtb",
                 "apq": True,
             },
+            {
+                "name": "pineapplep-sg-v2.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
             {"name": "pineapple-atp-overlay.dtbo"},
@@ -189,10 +193,16 @@ _platform_map = {
             {"name": "pineapple-dpm-overlay.dtbo"},
             {"name": "pineapplep-aim500-overlay.dtbo"},
             {"name": "pineapplep-aim500-v2-overlay.dtbo"},
-            {
-                "name": "pineapple-rumi-overlay.dtbo",
-                "apq": False,
-            },
+            {"name": "pineapplep-sg-v2-mtp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-atp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-cdp-nfc-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-cdp-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-mtp-nfc-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-qrd-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-qrd-sku2-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-rcm-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-aim500-overlay.dtbo"},
+            {"name": "pineapplep-sg-v2-hdk-overlay.dtbo"},
         ],
         "binary_compatible_with": ["cliffs", "volcano"],
     },
@@ -283,10 +293,6 @@ _platform_map = {
             },
         ],
         "dtbo_list": [
-            {
-                "name": "cliffs-rumi-overlay.dtbo",
-                "apq": False,
-            },
             {"name": "cliffs-atp-overlay.dtbo"},
             {"name": "cliffs-cdp-overlay.dtbo"},
             {"name": "cliffs-mtp-overlay.dtbo"},
@@ -310,13 +316,11 @@ _platform_map = {
             {"name": "pineapple-oemvm-cdp.dtb"},
             {"name": "pineapple-oemvm-mtp.dtb"},
             {"name": "pineapple-oemvm-qrd.dtb"},
-            {"name": "pineapple-oemvm-rumi.dtb"},
             {"name": "pineapplep-oemvm-hdk.dtb"},
             {"name": "pineapple-vm-rcm.dtb"},
             {"name": "pineapple-vm-cdp.dtb"},
             {"name": "pineapple-vm-mtp.dtb"},
             {"name": "pineapple-vm-qrd.dtb"},
-            {"name": "pineapple-vm-rumi.dtb"},
             {"name": "pineapplep-vm-hdk.dtb"},
         ],
         "binary_compatible_with": ["cliffs-tuivm", "volcano-tuivm"],
@@ -327,13 +331,11 @@ _platform_map = {
             {"name": "pineapple-oemvm-cdp.dtb"},
             {"name": "pineapple-oemvm-mtp.dtb"},
             {"name": "pineapple-oemvm-qrd.dtb"},
-            {"name": "pineapple-oemvm-rumi.dtb"},
             {"name": "pineapplep-oemvm-hdk.dtb"},
             {"name": "pineapple-vm-rcm.dtb"},
             {"name": "pineapple-vm-cdp.dtb"},
             {"name": "pineapple-vm-mtp.dtb"},
             {"name": "pineapple-vm-qrd.dtb"},
-            {"name": "pineapple-vm-rumi.dtb"},
             {"name": "pineapplep-vm-hdk.dtb"},
         ],
         "binary_compatible_with": ["cliffs-oemvm", "volcano-oemvm"],
@@ -346,7 +348,6 @@ _platform_map = {
     },
     "cliffs-tuivm": {
         "dtb_list": [
-            {"name": "cliffs-vm-rumi.dtb"},
             {"name": "cliffs-vm-atp.dtb"},
             {"name": "cliffs-vm-cdp.dtb"},
             {"name": "cliffs-vm-mtp.dtb"},
@@ -359,7 +360,6 @@ _platform_map = {
             {"name": "cliffs-vm-rcm-qhdp-kiwi.dtb"},
             {"name": "cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
             {"name": "cliffs-vm-mtp-peach-2s-nfc-wcd9395.dtb"},
-            {"name": "cliffs-oemvm-rumi.dtb"},
             {"name": "cliffs-oemvm-atp.dtb"},
             {"name": "cliffs-oemvm-cdp.dtb"},
             {"name": "cliffs-oemvm-mtp.dtb"},
@@ -376,7 +376,6 @@ _platform_map = {
     },
     "cliffs-oemvm": {
         "dtb_list": [
-            {"name": "cliffs-vm-rumi.dtb"},
             {"name": "cliffs-vm-atp.dtb"},
             {"name": "cliffs-vm-cdp.dtb"},
             {"name": "cliffs-vm-mtp.dtb"},
@@ -389,7 +388,6 @@ _platform_map = {
             {"name": "cliffs-vm-rcm-qhdp-kiwi.dtb"},
             {"name": "cliffs-vm-mtp-kiwi-2s-nfc-wcd9395.dtb"},
             {"name": "cliffs-vm-mtp-peach-2s-nfc-wcd9395.dtb"},
-            {"name": "cliffs-oemvm-rumi.dtb"},
             {"name": "cliffs-oemvm-atp.dtb"},
             {"name": "cliffs-oemvm-cdp.dtb"},
             {"name": "cliffs-oemvm-mtp.dtb"},
@@ -406,7 +404,6 @@ _platform_map = {
     },
     "volcano-tuivm": {
         "dtb_list": [
-            {"name": "volcano-vm-rumi.dtb"},
             {"name": "volcano-vm-atp.dtb"},
             {"name": "volcano-vm-idp.dtb"},
             {"name": "volcano-vm-idp-wcd9395.dtb"},
@@ -423,7 +420,6 @@ _platform_map = {
             {"name": "volcano6i-vm-mtp-wcd9395-moselle.dtb"},
             {"name": "volcano-vm-qrd.dtb"},
             {"name": "volcano6i-vm-qrd-moselle.dtb"},
-            {"name": "volcano-oemvm-rumi.dtb"},
             {"name": "volcano-oemvm-atp.dtb"},
             {"name": "volcano-oemvm-idp.dtb"},
             {"name": "volcano-oemvm-idp-wcd9395.dtb"},
@@ -444,7 +440,6 @@ _platform_map = {
     },
     "volcano-oemvm": {
         "dtb_list": [
-            {"name": "volcano-oemvm-rumi.dtb"},
             {"name": "volcano-oemvm-atp.dtb"},
             {"name": "volcano-oemvm-idp.dtb"},
             {"name": "volcano-oemvm-idp-wcd9395.dtb"},
@@ -461,7 +456,6 @@ _platform_map = {
             {"name": "volcano6i-oemvm-mtp-wcd9395-moselle.dtb"},
             {"name": "volcano-oemvm-qrd.dtb"},
             {"name": "volcano6i-oemvm-qrd-moselle.dtb"},
-            {"name": "volcano-vm-rumi.dtb"},
             {"name": "volcano-vm-atp.dtb"},
             {"name": "volcano-vm-idp.dtb"},
             {"name": "volcano-vm-idp-wcd9395.dtb"},
@@ -580,10 +574,6 @@ _platform_map = {
             },
         ],
         "dtbo_list": [
-            {
-                "name": "volcano-rumi-overlay.dtbo",
-                "apq": False,
-            },
             {"name": "volcano-atp-overlay.dtbo"},
             {"name": "volcano-idp-overlay.dtbo"},
             {"name": "volcano-idp-wcd9395-overlay.dtbo"},
