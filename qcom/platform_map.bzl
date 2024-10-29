@@ -206,6 +206,38 @@ _platform_map = {
         ],
         "binary_compatible_with": ["cliffs", "volcano"],
     },
+    "pineapple-le": {
+        "dtb_list": [
+            {"name": "pineapple.dtb"},
+            {"name": "pineapple-v2.dtb"},
+            {
+                "name": "pineapplep.dtb",
+                "apq": True,
+            },
+            {
+                "name": "pineapplep-v2.dtb",
+                "apq": True,
+            },
+        ],
+        "dtbo_list": [
+            {"name": "pineapple-atp-overlay.dtbo"},
+            {"name": "pineapple-cdp-nfc-overlay.dtbo"},
+            {"name": "pineapple-cdp-overlay.dtbo"},
+            {"name": "pineapple-mtp-nfc-overlay.dtbo"},
+            {"name": "pineapple-mtp-overlay.dtbo"},
+            {"name": "pineapple-qrd-overlay.dtbo"},
+            {"name": "pineapple-qrd-sku2-overlay.dtbo"},
+            {"name": "pineapple-rcm-overlay.dtbo"},
+            {"name": "pineapplep-hdk-overlay.dtbo"},
+            {"name": "pineapplep-aim500-overlay.dtbo"},
+            {"name": "pineapplep-aim500-v2-overlay.dtbo"},
+            {
+                "name": "pineapple-rumi-overlay.dtbo",
+                "apq": False,
+            },
+        ],
+        "binary_compatible_with": ["cliffs", "volcano"],
+    },
     "neo-la": {
         "dtb_list": [
             {"name": "neo_la.dtb"},
