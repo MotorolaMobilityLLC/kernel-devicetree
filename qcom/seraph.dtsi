@@ -764,6 +764,7 @@
 
 #include "seraph-pinctrl.dtsi"
 #include "seraph-qupv3.dtsi"
+#include "ipcc-test-seraph.dtsi"
 
 &qupv3_se11_2uart {
 	status = "ok";
