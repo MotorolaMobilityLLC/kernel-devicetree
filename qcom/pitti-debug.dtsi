@@ -554,5 +554,10 @@
 			qcom,dump-size = <0x1000>;
 			qcom,dump-id = <0xe8>;
 		};
+
+		etf_lpass {
+			qcom,dump-size = <0x8000>;
+			qcom,dump-id = <0xf4>;
+		};
 	};
 };
