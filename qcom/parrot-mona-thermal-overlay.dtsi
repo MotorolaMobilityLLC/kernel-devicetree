@@ -31,14 +31,7 @@
 
 &pmk8350_vadc {
 	pinctrl-names = "default";
-	pinctrl-0 = <&quiet_therm_default &chg_therm_default &pm8350b_chg_therm_default &pm8350b_cp_therm_default>;
-	pm6450_chg_pump_therm {
-		reg = <PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
-		label = "pm6450_chg_pump_therm";
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
+	pinctrl-0 = <&quiet_therm_default &pm8350b_chg_therm_default &pm8350b_cp_therm_default>;
 
 	pm8350b_chg_skin_therm {
 		reg = <PM8350B_ADC7_GPIO1_100K_PU>;
@@ -89,23 +82,6 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,hw-settle-time-us = <200>;
-	};
-	pm6450_chg_pump_therm {
-		reg = <4>;
-		io-channels = <&pmk8350_vadc PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,hw-settle-time-us = <200>;
-	};
-};
-
-
-&pm6450_gpios {
-	chg_pump_therm{
-		chg_therm_default: chg_therm_default{
-			pins = "gpio4";
-			bias-high-impedance;
-		};
 	};
 };
 
