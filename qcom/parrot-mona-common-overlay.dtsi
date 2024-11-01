@@ -80,3 +80,21 @@
 		bias-pull-down;
 	};
 };
+
+&qupv3_se2_i2c {
+	pm8010i@8 {
+		status = "disabled";
+	};
+
+	pm8010i@9{
+		status = "disabled";
+	};
+
+	pm8010j@c{
+		status = "disabled";
+	};
+
+	pm8010j@d{
+		status = "disabled";
+	};
+};
