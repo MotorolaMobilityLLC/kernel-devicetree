@@ -15,7 +15,7 @@
 	mmi_charger: mmi,charger {
 		compatible = "mmi,mmi-charger";
 		mmi,enable-charging-limit;
-		mmi,upper-limit-en-voltage = <4000>;
+		mmi,upper-limit-en-voltage = <3700>;
 		mmi,upper-limit-capacity = <30>;
 		mmi,lower-limit-capacity = <15>;
 		mmi,heartbeat-interval = <10000>;
