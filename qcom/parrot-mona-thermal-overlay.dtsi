@@ -9,10 +9,6 @@
 	};
 };
 
-&socd_trip {
-    temperature = <98>;
-};
-
 &pm8350b_gpios {
 	pm8350b_chg_therm {
 		pm8350b_chg_therm_default: pm8350b_chg_therm_default {
@@ -327,6 +323,32 @@
 				temperature = <125000>;
 				hysteresis = <1000>;
 				type = "passive";
+			};
+		};
+	};
+
+    socd {
+		trips {
+			socd-trip {
+				temperature = <98>;
+				hysteresis = <1>;
+			};
+		};
+
+		cooling-maps {
+			socd_apc1 {
+				trip = <&socd_trip>;
+				cooling-device = <&APC1_pause 1 1>;
+			};
+
+			socd_cdsp1 {
+				trip = <&socd_trip>;
+				cooling-device = <&cdsp_sw 4 4>;
+			};
+
+			socd_gpu0 {
+				trip = <&socd_trip>;
+				cooling-device = <&msm_gpu 2 2>;
 			};
 		};
 	};
