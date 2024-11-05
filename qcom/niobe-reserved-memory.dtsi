@@ -5,22 +5,17 @@
 
 	gunyah_hyp_mem: gunyah_hyp_region@80000000 {
 		no-map;
-		reg = <0x0 0x80000000 0x0 0xa00000>;
+		reg = <0x0 0x80000000 0x0 0xe00000>;
 	};
 
-	cpusys_vm_mem: cpusys_vm_region@80a00000 {
+	cpusys_vm_mem: cpusys_vm_region@80e00000 {
 		no-map;
-		reg = <0x0 0x80a00000 0x0 0x400000>;
+		reg = <0x0 0x80e00000 0x0 0x400000>;
 	};
 
-	tags_hyp_mem: tags_hyp_region@80e00000 {
+	tags_hyp_mem: tags_hyp_region@81200000 {
 		no-map;
-		reg = <0x0 0x80e00000 0x0 0x3d0000>;
-	};
-
-	dare_hyp_reserved_mem: reserved_region@811d0000 {
-		no-map;
-		reg = <0x0 0x811d0000 0x0 0x30000>;
+		reg = <0x0 0x81200000 0x0 0x500000>;
 	};
 
 	xbl_dtlog_mem: xbl_dtlog_region@81a00000 {
