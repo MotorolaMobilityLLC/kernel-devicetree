@@ -684,14 +684,12 @@
 		regulator-name = "ldoa7";
 		regulator-min-microvolt = <720000>;
 		regulator-max-microvolt = <950000>;
-		regulator-allow-set-load;
 	};
 
 	L9A: pm8775_a_l9: regulator-pm8775_a-l9 {
 		regulator-name = "ldoa9";
 		regulator-min-microvolt = <2970000>;
 		regulator-max-microvolt = <3544000>;
-		regulator-allow-set-load;
 	};
 
 	L1C: pm8775_c_l1: regulator-pm8775_c-l1 {
