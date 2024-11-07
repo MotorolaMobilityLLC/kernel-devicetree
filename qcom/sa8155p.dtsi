@@ -6,3 +6,16 @@
 	compatible = "qcom,sa8155p";
 	qcom,msm-id = <367 0x10000>;
 };
+
+&usb0 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+	qcom,hibernate-skip-thaw;
+};
+
+&usb1 {
+	qcom,disable-wakeup;
+	qcom,host-poweroff-in-pm-suspend;
+	qcom,hibernate-skip-thaw;
+	qcom,disable-host-ssphy-powerdown;
+};

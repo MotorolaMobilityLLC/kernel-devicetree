@@ -8,6 +8,7 @@
 #include <dt-bindings/clock/qcom,lsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,tcsrcc-seraph.h>
 #include <dt-bindings/clock/qcom,videocc-seraph.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Seraph";
@@ -133,9 +134,9 @@
 		#interrupt-cells = <3>;
 		interrupt-controller;
 		#redistributor-regions = <1>;
-		redistributor-stride = <0x0 0x40000>;
+		redistributor-stride = <0x0 0x20000>;
 		reg = <0x17200000 0x10000>,       /* GICD */
-		     <0x17260000 0x200000>;       /* GICR * 8 */
+		     <0x17260000 0xA0000>;       /* GICR * 5 */
 		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
@@ -505,3 +506,25 @@
 &qupv3_se11_2uart {
 	status = "ok";
 };
+
+#include "seraph-stub-regulators.dtsi"
+
+&reserved_memory {
+	#address-cells = <2>;
+	#size-cells = <2>;
+	ranges;
+
+	/* global autoconfigured region for contiguous allocations */
+	system_cma: linux,cma {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x2000000>;
+		linux,cma-default;
+	};
+};
+
+#include "seraph-reserved-memory.dtsi"
+#include "seraph-dma-heaps.dtsi"
+#include "msm-arm-smmu-seraph.dtsi"

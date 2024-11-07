@@ -1,5 +1,11 @@
 / {
 	aliases {
+		spi1 = &spi_1;
+		spi2 = &spi_2;
+		spi3 = &spi_3;
+		spi4 = &spi_4;
+		spi5 = &spi_5;
+		spi6 = &spi_6;
 		i2c1 = &i2c_1;
 		i2c2 = &i2c_2;
 		i2c3 = &i2c_3;
@@ -40,15 +46,10 @@
 		reg = <0x78b1000 0x200>,
 			<0x7884000 0x2b000>;
 		reg-names = "core_mem", "bam_mem";
-		interrupt-names = "core_irq", "bam_irq", "wakeup_irq";
+		interrupts-extended = <&intc GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>,
+				<&intc GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>,
+				<&tlmm 1 IRQ_TYPE_LEVEL_HIGH>;
 		#address-cells = <0>;
-		interrupt-parent = <&blsp1_uart3>;
-		interrupts = <0 1 2>;
-		#interrupt-cells = <1>;
-		interrupt-map-mask = <0xffffffff>;
-		interrupt-map = <0 &intc 0 119 IRQ_TYPE_LEVEL_HIGH
-				1 &intc 0 238 IRQ_TYPE_LEVEL_HIGH
-				2 &tlmm 1 IRQ_TYPE_LEVEL_HIGH>;
 		qcom,inject-rx-on-wakeup;
 		qcom,rx-char-to-inject = <0xFD>;
 		qcom,bam-tx-ep-pipe-index = <4>;
@@ -57,10 +58,14 @@
 		clock-names = "core_clk", "iface_clk";
 		clocks = <&gcc GCC_BLSP1_UART3_APPS_CLK>,
 				<&gcc GCC_BLSP1_AHB_CLK>;
-		pinctrl-names = "sleep", "default";
+		pinctrl-names = "sleep", "default", "shutdown", "active";
 		pinctrl-0 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
 				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
-		pinctrl-1 = <&blsp1_uart3_hs_tx_active>,<&blsp1_uart3_hs_rx_active>,
+		pinctrl-1 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
+				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
+		pinctrl-2 = <&blsp1_uart3_hs_tx_sleep>,<&blsp1_uart3_hs_rx_sleep>,
+				<&blsp1_uart3_hs_cts_sleep>,<&blsp1_uart3_hs_rfr_sleep>;
+		pinctrl-3 = <&blsp1_uart3_hs_tx_active>,<&blsp1_uart3_hs_rx_active>,
 				<&blsp1_uart3_hs_cts_active>,<&blsp1_uart3_hs_rfr_active>;
 		interconnect-names ="blsp-ddr";
 		interconnects = <&pcnoc MASTER_BLSP_1 &bimc SLAVE_EBI_CH0>;
@@ -212,6 +217,186 @@
 		pinctrl-names = "i2c_active", "i2c_sleep";
 		pinctrl-0 = <&i2c_6_sda6_active &i2c_6_scl6_active>;
 		pinctrl-1 = <&i2c_6_sda6_sleep &i2c_6_scl6_sleep>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_1: spi@78B5000 { /* BLSP1 QUP1 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78B5000 0x600>,
+			<0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <12>;
+		qcom,bam-producer-pipe-index = <13>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_1_mosi1_default &spi_1_miso1_default
+				&spi_1_cs1_active &spi_1_clk1_default>;
+		pinctrl-1 = <&spi_1_mosi1_sleep &spi_1_miso1_sleep
+				&spi_1_cs1_sleep &spi_1_clk1_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP1_SPI_APPS_CLK>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_2: spi@78B6000 { /* BLSP1 QUP2 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78B6000 0x600>,
+			 <0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <14>;
+		qcom,bam-producer-pipe-index = <15>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_2_mosi2_default &spi_2_miso2_default
+				&spi_2_cs2_active &spi_2_clk2_default>;
+		pinctrl-1 = <&spi_2_mosi2_sleep &spi_2_miso2_sleep
+				&spi_2_cs2_sleep &spi_2_clk2_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP2_SPI_APPS_CLK>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_3: spi@78B7000 { /* BLSP1 QUP3 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78B7000 0x600>,
+			<0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <16>;
+		qcom,bam-producer-pipe-index = <17>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_3_mosi3_default &spi_3_miso3_default
+				&spi_3_cs3_active &spi_3_clk3_default>;
+		pinctrl-1 = <&spi_3_mosi3_sleep &spi_3_miso3_sleep
+				&spi_3_cs3_sleep &spi_3_clk3_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP3_SPI_APPS_CLK>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_4: spi@78B8000 { /* BLSP1 QUP4 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78B8000 0x600>,
+			<0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <18>;
+		qcom,bam-producer-pipe-index = <19>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_4_mosi4_default &spi_4_miso4_default
+				&spi_4_cs4_active &spi_4_clk4_default>;
+		pinctrl-1 = <&spi_4_mosi4_sleep &spi_4_miso4_sleep
+				&spi_4_cs4_sleep &spi_4_clk4_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP4_SPI_APPS_CLK>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_5: spi@78B9000 { /* BLSP1 QUP5 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78B9000 0x600>,
+			<0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <20>;
+		qcom,bam-producer-pipe-index = <21>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_5_mosi5_default &spi_5_miso5_default
+				&spi_5_cs5_active &spi_5_clk5_default>;
+		pinctrl-1 = <&spi_5_mosi5_sleep &spi_5_miso5_sleep
+				&spi_5_cs5_sleep &spi_5_clk5_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP5_SPI_APPS_CLK>;
+		interconnect-names = "blsp-ddr";
+		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
+		status = "disabled";
+	};
+
+	spi_6: spi@78BA000 { /* BLSP1 QUP6 */
+		compatible = "qcom,spi-qup-v2";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg-names = "spi_physical", "spi_bam_physical";
+		reg = <0x78BA000 0x600>,
+			<0x7884000 0x2b000>;
+		interrupt-names = "spi_irq", "spi_bam_irq";
+		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
+		spi-max-frequency = <50000000>;
+		qcom,use-bam;
+		qcom,ver-reg-exists;
+		qcom,bam-consumer-pipe-index = <22>;
+		qcom,bam-producer-pipe-index = <23>;
+		qcom,master-id = <86>;
+		qcom,use-pinctrl;
+		pinctrl-names = "spi_default", "spi_sleep";
+		pinctrl-0 = <&spi_6_mosi6_default &spi_6_miso6_default
+				&spi_6_cs6_active &spi_6_clk6_default>;
+		pinctrl-1 = <&spi_6_mosi6_sleep &spi_6_miso6_sleep
+				&spi_6_cs6_sleep &spi_6_clk6_sleep>;
+		clock-names = "iface_clk", "core_clk";
+		clocks = <&gcc GCC_BLSP1_AHB_CLK>,
+			<&gcc GCC_BLSP1_QUP6_SPI_APPS_CLK>;
 		interconnect-names = "blsp-ddr";
 		interconnects = <&pcnoc MASTER_BLSP_1 &pcnoc SLAVE_BLSP_1>;
 		status = "disabled";

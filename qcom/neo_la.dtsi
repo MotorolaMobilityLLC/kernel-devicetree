@@ -1,4 +1,5 @@
 #include "neo.dtsi"
+#include "neo_la-reserved-memory.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO-LA";
@@ -130,6 +131,16 @@
 	};
 };
 
+&reserved_memory {
+	cnss_wlan_mem: cnss_wlan_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x2000000>;
+	};
+};
+
 &soc {
 	bwprof: qcom,bwprof-ddr@19090000 {
 		compatible = "qcom,bwprof";
@@ -201,4 +212,20 @@
 					< 1804800 1516800 >;
 		};
 	};
+};
+
+&kgsl_smmu {
+	status = "disabled";
+};
+
+&msm_gpu {
+	status = "disabled";
+};
+
+&kgsl_msm_iommu {
+	status = "disabled";
+};
+
+&gmu {
+	status = "disabled";
 };

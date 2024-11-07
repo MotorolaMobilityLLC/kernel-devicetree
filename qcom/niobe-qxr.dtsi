@@ -121,6 +121,13 @@
 	usb-repeater = <&pm8550b_eusb2_repeater>;
 };
 
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Tx pre-emphasis tuning */
+		<0x5 0x57>;
+};
+
 &eusb2_phy1 {
 	dummy-supply = <&pm8550b_repeater>;
 	usb-repeater = <&pm8550b_repeater>;
@@ -243,7 +250,7 @@
 };
 
 &ufsphy_mem {
-	compatible = "qcom,ufs-phy-qmp-v4-pineapple";
+	compatible = "qcom,ufs-phy-qmp-v4-niobe";
 
 	/* VDDA_UFS_CORE */
 	vdda-phy-supply = <&L3C>;

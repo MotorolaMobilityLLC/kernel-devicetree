@@ -44,6 +44,13 @@
 	/delete-node/ bt_wcn3990;
 };
 
+&usb0 {
+	qcom,disable-wakeup;
+	qcom,hibernate-skip-thaw;
+	qcom,host-poweroff-in-pm-suspend;
+	qcom,disable-host-ssphy-powerdown;
+};
+
 &qusb_phy0 {
 	vdd-supply = <&L5A>;
 	vdda18-supply = <&L12A>;
@@ -53,6 +60,12 @@
 &usb_qmp_phy {
 	vdd-supply = <&L5A>;
 	core-supply = <&L12A>;
+};
+
+&usb1 {
+	qcom,disable-wakeup;
+	qcom,hibernate-skip-thaw;
+	qcom,host-poweroff-in-pm-suspend;
 };
 
 &qusb_phy1 {

@@ -554,13 +554,28 @@ _platform_map = {
         "dtb_list": [
             {"name": "volcano.dtb"},
             {"name": "volcano6.dtb"},
-            {"name": "volcano6i.dtb"},
+            {"name": "volcano6i-fp1.dtb"},
+            {"name": "volcano6i-fp2.dtb"},
+            {"name": "volcano6i-fp3.dtb"},
+            {"name": "volcano6i-fp4.dtb"},
             {
                 "name": "volcano6p.dtb",
                 "apq": True,
             },
             {
-                "name": "volcano6ip.dtb",
+                "name": "volcano6ip-fp1.dtb",
+                "apq": True,
+            },
+            {
+                "name": "volcano6ip-fp2.dtb",
+                "apq": True,
+            },
+            {
+                "name": "volcano6ip-fp3.dtb",
+                "apq": True,
+            },
+            {
+                "name": "volcano6ip-fp4.dtb",
                 "apq": True,
             },
         ],

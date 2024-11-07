@@ -1,5 +1,13 @@
 #include "mdm9607.dtsi"
 
+&bluetooth {
+	status = "ok";
+};
+
+&blsp1_uart3 {
+	status = "ok";
+};
+
 &i2c_4 {
 	status = "ok";
 };
@@ -41,4 +49,13 @@
 &usb_otg {
 	vbus_otg-supply = <&smb358_otg_supply>;
 	extcon = <&smb358_otg_supply>;
+};
+
+&usb_hsusb {
+	vbus_otg-supply = <&smb358_otg_supply>;
+	extcon = <&smb358_otg_supply>;
+};
+
+&spi_2 {
+	status = "ok";
 };

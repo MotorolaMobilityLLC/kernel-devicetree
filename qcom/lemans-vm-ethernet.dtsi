@@ -75,8 +75,9 @@
 				<&gcc GCC_EMAC1_RGMII_CLK>;
 		clock-names = "stmmaceth", "pclk", "ptp_ref", "phyaux","sgmi_ref","rgmii";
 
-		emac-phy-addr = <10>;
-		emac-cl45-phy-addr=<0>;
+		emac-1g-phy-addr = <10>;
+		emac-air-cl45-phy-addr=<0>;
+		emac-star-cl45-phy-addr=<8>;
 		snps,ptp-ref-clk-rate = <230400000>;
 		snps,ptp-req-clk-rate = <125000000>;
 		interrupts-extended = <&intc 0 929 4>;
