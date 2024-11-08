@@ -57,13 +57,13 @@
 		dev-role = <0>;
 	};
 	charger_device_6 {
-		dev-name = "charge_pump";
+		dev-name = "charge_pump_master";
 		psy-name = "charge_pump_master";
 		dev-type = <3>;
 		dev-role = <0>;
 	};
 	charger_device_7 {
-		dev-name = "charge_pump";
+		dev-name = "charge_pump_slave";
 		psy-name = "charge_pump_slave";
 		dev-type = <3>;
 		dev-role = <1>;
