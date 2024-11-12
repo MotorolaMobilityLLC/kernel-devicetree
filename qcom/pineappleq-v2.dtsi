@@ -1,0 +1,7 @@
+#include "pineapple.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. PineappleQ v2 SoC";
+	compatible = "qcom,pineappleq";
+	qcom,msm-id = <696 0x20000>;
+};

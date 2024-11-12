@@ -99,7 +99,7 @@ SoCs:
   compatible = "qcom,diwali"
 
 - PINEAPPLE
-  compatible = "qcom,pineapple", "qcom,pineapplep"
+  compatible = "qcom,pineapple", "qcom,pineapplep", "qcom,pineappleq"
 
 - NEO
   compatible = "qcom,neo"
