@@ -998,6 +998,28 @@
 		method = "smc";
 	};
 
+	scmi {
+		compatible = "arm,scmi-virtio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+
+		scmi_power: protocol@11 {
+			reg = <0x11>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_perf: protocol@13 {
+			reg = <0x13>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_reset: protocol@16 {
+			reg = <0x16>;
+			#reset-cells = <1>;
+		};
+	};
+
 	intc: interrupt-controller@17a00000 {
 		compatible = "arm,gic-v3";
 		interrupt-controller;
