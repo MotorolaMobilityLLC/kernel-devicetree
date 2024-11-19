@@ -28,17 +28,7 @@ PINEAPPLE_BOARDS += \
 		 pineapplep-hdk-overlay.dtbo \
 		 pineapple-dpm-overlay.dtbo \
 		 pineapplep-aim500-overlay.dtbo \
-		 pineapplep-aim500-v2-overlay.dtbo \
-		 pineapplep-sg-v2-mtp-overlay.dtbo \
-		 pineapplep-sg-v2-atp-overlay.dtbo \
-		 pineapplep-sg-v2-cdp-nfc-overlay.dtbo \
-		 pineapplep-sg-v2-cdp-overlay.dtbo \
-		 pineapplep-sg-v2-mtp-nfc-overlay.dtbo \
-		 pineapplep-sg-v2-qrd-overlay.dtbo \
-		 pineapplep-sg-v2-qrd-sku2-overlay.dtbo \
-		 pineapplep-sg-v2-rcm-overlay.dtbo \
-		 pineapplep-sg-v2-aim500-overlay.dtbo \
-		 pineapplep-sg-v2-hdk-overlay.dtbo
+		 pineapplep-aim500-v2-overlay.dtbo
 
 
 pineapple-dtb-$(CONFIG_ARCH_PINEAPPLE) += \
