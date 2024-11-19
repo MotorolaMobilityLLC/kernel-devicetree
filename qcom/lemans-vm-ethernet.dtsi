@@ -85,7 +85,7 @@
 
 		snps,tso;
 		snps,pbl = <32>;
-		rx-fifo-depth = <16384>;
+		rx-fifo-depth = <20480>;
 		tx-fifo-depth = <20480>;
 		snps,mtl-rx-config = <&emac1_mtl_rx_setup>;
 		snps,mtl-tx-config = <&emac1_mtl_tx_setup>;
