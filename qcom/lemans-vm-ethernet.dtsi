@@ -105,6 +105,12 @@
 		virtio-mdio;
 		gdsc-off-on-suspend;
 
+		fixed-link {
+			status = "okay";
+			speed = <2500>;
+			full-duplex;
+		};
+
 		ethqos_emb_smmu: ethqos_emb_smmu {
 			compatible = "qcom,emac-smmu-embedded";
 			iommus = <&apps_smmu 0x140 0xf>;
