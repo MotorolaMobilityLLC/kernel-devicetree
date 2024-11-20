@@ -24,10 +24,10 @@
 	effect_0 {
 		/* CLICK */
 		qcom,effect-id = <0>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
 		qcom,wf-fifo-data = [7f 7f 28 81];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -36,10 +36,10 @@
 	effect_1 {
 		/* DOUBLE_CLICK */
 		qcom,effect-id = <1>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 64 32 81 ce 7f 64 32 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 32 81 81 d8 7f 7f 32 81 81 d8];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-mode = <BRAKE_AUTO>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -48,10 +48,10 @@
 	effect_2 {
 		/* TICK */
 		qcom,effect-id = <2>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -60,10 +60,10 @@
 	effect_3 {
 		/* THUD */
 		qcom,effect-id = <3>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -72,10 +72,10 @@
 	effect_4 {
 		/* POP */
 		qcom,effect-id = <4>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 c4];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -84,10 +84,10 @@
 	effect_5 {
 		/* HEAVY_CLICK */
 		qcom,effect-id = <5>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 28 81 fb];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 3c 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-mode = <BRAKE_AUTO>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -96,10 +96,10 @@
 	primitive_0 {
 		/* NOOP */
 		qcom,primitive-id = <0>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
 		qcom,wf-fifo-data = [7f 7f 81 c4];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -108,10 +108,10 @@
 	primitive_1 {
 		/* CLICK */
 		qcom,primitive-id = <1>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -120,10 +120,10 @@
 	primitive_2 {
 		/* THUD */
 		qcom,primitive-id = <2>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -132,10 +132,10 @@
 	primitive_3 {
 		/* SPIN */
 		qcom,primitive-id = <3>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -144,10 +144,10 @@
 	primitive_4 {
 		/* QUICK_RISE */
 		qcom,primitive-id = <4>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -156,10 +156,10 @@
 	primitive_5 {
 		/* SLOW_RISE */
 		qcom,primitive-id = <5>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -168,10 +168,10 @@
 	primitive_6 {
 		/* QUICK_FALL */
 		qcom,primitive-id = <6>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -180,10 +180,10 @@
 	primitive_7 {
 		/* LIGHT_TICK */
 		qcom,primitive-id = <7>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 81 ce];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
@@ -192,10 +192,10 @@
 	primitive_8 {
 		/* LOW_TICK */
 		qcom,primitive-id = <8>;
-		qcom,wf-vmax-mv = <6700>;
+		qcom,wf-vmax-mv = <9000>;
 		/delete-property/ qcom,wf-fifo-preload;
 		qcom,wf-fifo-data = [7f 7f 28 81];
-		qcom,wf-fifo-period = <S_PERIOD_T_LRA>;
+		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_2>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
 		/delete-property/ qcom,wf-brake-disable;
