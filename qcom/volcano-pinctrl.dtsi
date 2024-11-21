@@ -1748,6 +1748,36 @@
 		};
 	};
 
+	spkr_3_sd_n {
+		spkr_3_sd_n_sleep: spkr_3_sd_n_sleep {
+			mux {
+				pins = "108";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio108";
+				drive-strength = <2>;  /* 2 mA */
+				bias-pull-down;
+				input-enable;
+			};
+		};
+
+		spkr_3_sd_n_active: spkr_3_sd_n_active {
+			mux {
+				pins = "gpio108";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio108";
+				drive-strength = <16>;  /* 16 mA */
+				bias-disable;
+				output-high;
+			};
+		};
+	};
+
 	/* touchscreen pins */
 	pmx_ts_active {
 		ts_active: ts_active {
