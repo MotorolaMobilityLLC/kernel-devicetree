@@ -1888,6 +1888,7 @@
 				pins = "gpio67";
 				drive-strength = <2>;
 				bias-pull-up;
+				input-enable;
 			};
 		};
 	};
@@ -1942,6 +1943,7 @@
 				pins = "gpio70";
 				drive-strength = <2>;
 				bias-pull-up;
+				input-enable;
 			};
 		};
 	};
