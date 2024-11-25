@@ -623,7 +623,7 @@
 	};
 
 	sys-therm-1 {
-		polling-delay-passive = <1000>;
+		polling-delay-passive = <0>;
 		polling-delay = <0>;
 		thermal-sensors = <&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM1_100K_PU>;
 		trips {
