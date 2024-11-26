@@ -185,6 +185,19 @@
 				bias-disable;
 			};
 		};
+
+		qupv3_se2_sleep_txctsrts: qupv3_se2_sleep_txctsrts {
+			mux {
+				pins = "gpio35", "gpio33", "gpio34";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio35", "gpio33", "gpio34";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
 	};
 
 	qupv3_se2_i2c_pins: qupv3_se2_i2c_pins {
