@@ -1,3 +1,5 @@
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/interrupt-controller/irq.h>
 #include <dt-bindings/spmi/spmi.h>
 
 &spmi_bus {
@@ -5,6 +7,7 @@
 	#size-cells = <0>;
 	interrupt-controller;
 	#interrupt-cells = <4>;
+
 	pmar2230@0 {
 		compatible = "qcom,spmi-pmic";
 		reg = <0 SPMI_USID>;
@@ -18,6 +21,24 @@
 			#gpio-cells = <2>;
 			interrupt-controller;
 			#interrupt-cells = <2>;
+		};
+
+		pon_hlos@C00 {
+			compatible = "qcom,pmk8350-pon";
+			reg = <0xC00>, <0x800>;
+			reg-names = "hlos", "pbs";
+
+			pwrkey {
+				compatible = "qcom,pmk8350-pwrkey";
+				interrupts = <0x0 0xC 0x7 IRQ_TYPE_EDGE_BOTH>;
+				linux,code = <KEY_POWER>;
+			};
+
+			resin {
+				compatible = "qcom,pmk8350-resin";
+				interrupts = <0x0 0xC 0x6 IRQ_TYPE_EDGE_BOTH>;
+				linux,code = <KEY_VOLUMEDOWN>;
+			};
 		};
 	};
 };
