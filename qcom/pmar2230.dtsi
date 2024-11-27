@@ -77,6 +77,22 @@
 			reg = <0x7400>;
 		};
 
+		pmar2230_pwm_1: pwms@e800 {
+			compatible = "qcom,pwm-lpg";
+			reg = <0xe800>;
+			reg-names = "lpg-base";
+			#pwm-cells = <2>;
+			qcom,num-lpg-channels = <1>;
+		};
+
+		pmar2230_pwm_2: pwms@e900 {
+			compatible = "qcom,pwm-lpg";
+			reg = <0xe900>;
+			reg-names = "lpg-base";
+			#pwm-cells = <2>;
+			qcom,num-lpg-channels = <1>;
+		};
+
 		pmar2230_vadc: vadc@7900 {
 			compatible = "qcom,spmi-adc5-gen4";
 			reg = <0x7900>;
