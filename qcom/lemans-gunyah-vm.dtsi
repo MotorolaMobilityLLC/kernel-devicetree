@@ -326,6 +326,11 @@
 				0x0 0x17c23000 0x0 0x17c23000 0x0 0x1000 0x0
 				/* MPM timer read only*/
 				0x0 0xc221000 0x0 0xc221000 0x0 0x1000 0x1
+				/* PCIe0 region */
+				0x4 0x0 0x4 0x0 0x0 0x10000000 0x0
+				0x0 0x40000000 0x0 0x40000000 0x0 0x100000 0x0
+				0x0 0x40100000 0x0 0x40100000 0x0 0x1ff00000 0x0
+				0x4 0x10100000 0x4 0x10100000 0x0 0x100000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -337,7 +342,17 @@
 			/* Compute L0 IPCC GIC IRQ */
 			588 588
 			270 270
-			271 271>;
+			271 271
+			/* PCIe0 IRQs */
+			339 339
+			340 340
+			341 341
+			344 344
+			345 345
+			346 346
+			406 406
+			407 407
+			>;
 
 		memory {
 			#address-cells = <0x2>;
@@ -1107,6 +1122,14 @@
 				patch = "/soc/apps-smmu@15000000";
 			};
 
+			vsmmu@15200000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15200000>;
+				num-cbs = <0x1>;
+				num-smrs = <0x10>;
+				patch = "/soc/pcie-smmu@15200000";
+			};
+
 			test-dbl-tuivm {
 				vdevice-type = "doorbell";
 				generate = "/hypervisor/test-dbl-tuivm";
@@ -1171,6 +1194,41 @@
 				};
 			};
 		};
+	};
+
+	pcie0: qcom,pcie@0x01c00000 {
+		compatible = "qcom,pcie-ecam-rc";
+		reg = <0x4 0x00000000 0x0 0x10000000>;
+		device_type = "pci";
+
+		#address-cells = <3>;
+		#size-cells = <2>;
+		ranges = <0x01000000 0x0 0x40000000 0x0 0x40000000 0x0 0x100000>,
+				<0x02000000 0x0 0x40100000 0x0 0x40100000 0x0 0x1ff00000>,
+				<0x43000000 0x4 0x10100000 0x4 0x10100000 0x0 0x100000>;
+		interrupt-parent = <&intc>;
+
+		bus-range = <0x00 0xff>;
+		dma-coherent;
+		linux,pci-domain = <0>;
+
+		power-domains = <&scmi_power 1>;
+		power-domain-names = "power";
+
+		interrupts = <GIC_SPI 307 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 308 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 309 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 312 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 313 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 314 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 374 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 375 IRQ_TYPE_LEVEL_HIGH>;
+
+		iommus = <&pcie_smmu 0x00 0x7f>;
+		iommu-map = <0x0 &pcie_smmu 0x0000 0x1>,
+			<0x100 &pcie_smmu 0x0001 0x1>;
+
+		status = "disabled";
 	};
 
 	soc: soc { };
@@ -1382,6 +1440,13 @@
 		 * be added dynamically by bootloader.
 		 */
 		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+
+	pcie_smmu: pcie-smmu@15200000 {
+		compatible = "qcom,qsmmu-v500","qcom,virt-smmu";
 		#iommu-cells = <2>;
 		qcom,use-3-lvl-tables;
 		dma-coherent;
