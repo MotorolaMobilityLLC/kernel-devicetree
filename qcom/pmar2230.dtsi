@@ -51,6 +51,13 @@
 			};
 		};
 
+		pmar2230_rtc: rtc@6400 {
+			compatible = "qcom,pm5100-rtc";
+			reg = <0x6400>, <0x6500>;
+			reg-names = "rtc", "alarm";
+			interrupts = <0x0 0x65 0x1 IRQ_TYPE_EDGE_RISING>;
+		};
+
 		pmar2230_vadc: vadc@7900 {
 			compatible = "qcom,spmi-adc5-gen4";
 			reg = <0x7900>;
