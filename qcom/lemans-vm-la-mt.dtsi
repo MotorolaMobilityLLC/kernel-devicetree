@@ -85,7 +85,7 @@
 			pcm-lane-config = <1>;
 		};
 	};
-	mtl_rx_setup: rx-queues-config {
+	mtl_rx_setup: rx-queue-config {
 		snps,rx-queues-to-use = <1>;
 		snps,rx-sched-sp;
 
@@ -95,7 +95,7 @@
 		};
 	};
 
-	mtl_tx_setup: tx-queues-config {
+	mtl_tx_setup: tx-queue-config {
 		snps,tx-queues-to-use = <1>;
 		snps,tx-sched-sp;
 		queue {
