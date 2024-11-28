@@ -14,6 +14,10 @@
 		qcom,vmid = <52>;
 	};
 
+	aliases {
+		hsuart0 = &qupv3_se2_4uart;
+	};
+
 	chosen {
 		bootargs = "nokaslr log_buf_len=1M androidboot.force_normal_boot=1 ufshcd-core.use_mcq_mode=n androidboot.verifiedbootstate=orange";
 	};
@@ -244,15 +248,28 @@
 		vm-attrs = "guest-ram-dump";
 
 		/* Pass through regions */
-		/* TLMM region */
-		/* QRNG region */
-		/* Board serial number region */
-		/* MPM timer read only*/
-
-		iomemory-ranges = <0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
+		iomemory-ranges = <
+				/* TLMM region */
+				0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
+				/* QRNG region */
 				0x0 0x10dc000 0x0 0x10dc000 0x0 0x1000 0x0
+				/* Board serial number region */
 				0x0 0x786000 0x0 0x786000 0x0 0x1000 0x1
+				/* MPM timer read only*/
 				0x0 0xc221000 0x0 0xc221000 0x0 0x1000 0x1
+				/* QUPv3 Tile 0 read-only region */
+				0x0 0x9c0000 0x0 0x9c0000 0x0 0x1000 0x1
+				0x0 0x9c1000 0x0 0x9c1000 0x0 0x1000 0x1
+				/* QUPv3 SE2 region */
+				0x0 0x988000 0x0 0x988000 0x0 0x1000 0x0
+				0x0 0x989000 0x0 0x989000 0x0 0x1000 0x0
+				0x0 0x990000 0x0 0x990000 0x0 0x1000 0x0
+				0x0 0x991000 0x0 0x991000 0x0 0x1000 0x0
+				>;
+
+		gic-irq-ranges = <
+				/* QUPv3 SE2 GIC IRQ */
+				561 561
 				>;
 
 		memory {
@@ -1106,4 +1123,35 @@
 					"init_boot_b", "init_boot_a", "devinfo";
 		};
 	};
+};
+
+#include "monaco-vm-qupv3.dtsi"
+#include "monaco_auto-pinctrl.dtsi"
+
+/delete-node/ &qupv3_1;
+
+&qupv3_0 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	reg = <0x9c0000 0x2000>;
+	qcom,firmware-managed-resources;
+
+	iommus = <&apps_smmu 0x418 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disable";
+};
+
+&qupv3_se2_4uart {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	compatible = "qcom,geni-uart";
+	reg = <0x988000 0x4000>;
+
+	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disable";
 };
