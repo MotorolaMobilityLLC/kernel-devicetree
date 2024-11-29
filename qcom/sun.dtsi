@@ -2868,7 +2868,7 @@
 				<&aggre2_noc MASTER_CRYPTO &mc_virt SLAVE_EBI1>;
 		interconnect-names = "rproc_ddr", "crypto_ddr";
 
-		memory-region = <&mpss_mem &q6_mpss_dtb_mem &system_cma &dsm_partition_1_mem &dsm_partition_2_mem>;
+		memory-region = <&mpss_mem &q6_mpss_dtb_mem &system_cma &dsm_partition_1_mem>;
 		firmware-name = "modem.mdt", "modem_dtb.mdt";
 
 		/* Inputs from mss */
@@ -3840,11 +3840,6 @@
 	dsm_partition_1_mem: dsm_partition_1_region@84a00000 {
 		no-map;
 		reg = <0x0 0x84a00000 0x0 0x4900000>;
-	};
-
-	dsm_partition_2_mem: dsm_partition_2_region@89300000 {
-		no-map;
-		reg = <0x0 0x89300000 0x0 0xa80000>;
 	};
 
 	mpss_mem: mpss_region@8ba00000 {
