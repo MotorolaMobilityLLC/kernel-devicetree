@@ -165,12 +165,7 @@ _platform_map = {
     },
     "pineapple": {
         "dtb_list": [
-            {"name": "pineapple.dtb"},
             {"name": "pineapple-v2.dtb"},
-            {
-                "name": "pineapplep.dtb",
-                "apq": True,
-            },
             {
                 "name": "pineapplep-v2.dtb",
                 "apq": True,
@@ -198,12 +193,7 @@ _platform_map = {
     },
     "pineapple-le": {
         "dtb_list": [
-            {"name": "pineapple.dtb"},
             {"name": "pineapple-v2.dtb"},
-            {
-                "name": "pineapplep.dtb",
-                "apq": True,
-            },
             {
                 "name": "pineapplep-v2.dtb",
                 "apq": True,
