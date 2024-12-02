@@ -49,6 +49,7 @@ Required properties :
 			"qcom,anorak-gcc"
 			"qcom,neo-gcc"
 			"qcom,gcc-mdm9607"
+			"qcom,seraph-gcc"
 
 - reg : shall contain base register location and length
 - vdd_cx-supply: The vdd_cx logic rail supply.

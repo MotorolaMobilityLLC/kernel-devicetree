@@ -24,6 +24,7 @@ Required properties :
 		"qcom,volcano-rpmh-clk"
 		"qcom,anorak-rpmh-clk"
 		"qcom,neo-rpmh-clk"
+		"qcom,seraph-rpmh-clk"
 
 - #clock-cells : must contain 1
 
