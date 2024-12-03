@@ -12,6 +12,7 @@ VADC node:
     Value type: <string>
     Definition: Should contain "qcom,spmi-vadc".
                 Should contain "qcom,spmi-adc5-gen3" for PMIC5 Gen3 ADC.
+                Should contain "qcom,spmi-adc5-gen4" for PMIC5 Gen4 ADC.
                 Should contain "qcom,spmi-adc7" for PMIC7 ADC.
                 Should contain "qcom,spmi-adc5" for PMIC5 ADC.
                 Should contain "qcom,spmi-adc-rev2" for PMIC rev2 ADC.
@@ -29,7 +30,7 @@ VADC node:
     Value type: <u32>
     Definition: Debug ADC peripheral base address in the SPMI PMIC
             register map. Only applicable for devices with compatible
-            property "qcom,spmi-adc5-gen3".
+            property "qcom,spmi-adc5-gen3" and "qcom,spmi-adc5-gen4".
 
 - #address-cells:
     Usage: required
@@ -68,8 +69,8 @@ Channel node properties:
             See include/dt-bindings/iio/qcom,spmi-vadc.h
 
 - label:
-    Usage: required for "qcom,spmi-adc5", "qcom,spmi-adc7", "qcom,spmi-adc5-gen3"
-    and "qcom,spmi-adc-rev2"
+    Usage: required for "qcom,spmi-adc5", "qcom,spmi-adc7", "qcom,spmi-adc5-gen3",
+    "qcom,spmi-adc5-gen4" and "qcom,spmi-adc-rev2"
     Value type: <empty>
     Definition: ADC input of the platform as seen in the schematics.
             For thermistor inputs connected to generic AMUX or GPIO inputs
@@ -90,6 +91,9 @@ Channel node properties:
             - For compatible property "qcom,spmi-adc7" and "qcom,spmi-adc5-gen3",
               valid values are 85, 340 and 1360. If property is not found, default
               value of 1360 is used.
+            - For compatible property "qcom,spmi-adc5-gen4",
+              valid values are 85, 340 and 1360. If property is not found, default
+              value of 340 is used.
             - For compatible property "qcom,spmi-adc-rev2", valid values are 256,
               512 and 1024. If property is not present, default value is 1024.
 
@@ -115,9 +119,9 @@ Channel node properties:
               calibrated with 0.625V and 1.25V reference channels, also
               known as absolute calibration.
             - For compatible property "qcom,spmi-adc5", "qcom,spmi-adc7",
-              "qcom,spmi-adc5-gen3" and "qcom,spmi-adc-rev2", if this property
-              is specified VADC will use the VDD reference (1.875V) and GND for
-              channel calibration.
+              "qcom,spmi-adc5-gen3", "qcom,spmi-adc5-gen4" and "qcom,spmi-adc-rev2",
+              if this property is specified VADC will use the VDD reference (1.875V)
+              and GND for channel calibration.
               If property is not found, channel will be calibrated with 0V
               and 1.25V reference channels, also known as absolute calibration.
 
@@ -154,9 +158,9 @@ Channel node properties:
               Certain controller digital versions have valid values of
               15, 100, 200, 300, 400, 500, 600, 700, 1, 2, 4, 8, 16, 32, 64, 128 ms
               If property is not found, channel will use 15us.
-            - For compatible property "qcom,spmi-adc7" or "qcom,spmi-adc5-gen3",
-              delay = 15us for value 0, 100us * (value) for values < 8, 1ms for value 8
-              and 2ms * (value - 8) otherwise.
+            - For compatible property "qcom,spmi-adc7", "qcom,spmi-adc5-gen3" and
+              "qcom,spmi-adc5-gen4" ,delay = 15us for value 0, 100us * (value) for
+              values < 8, 1ms for value 8 and 2ms * (value - 8) otherwise.
               Valid values are: 15, 100, 200, 300, 400, 500, 600, 700, 1000, 2000,
               4000, 8000, 16000, 32000, 64000, 128000 us.
               If property is not found, channel will use 15us.
@@ -172,7 +176,7 @@ Channel node properties:
               are: 1, 2, 4, 8, 16, 32, 64, 128, 256, 512
               If property is not found, 1 sample will be used.
             - For compatible property "qcom,spmi-adc5", "qcom,spmi-adc7",
-              "qcom,spmi-adc5-gen3" and "qcom,spmi-adc-rev2",
+              "qcom,spmi-adc5-gen3", "qcom,spmi-adc5-gen4" and "qcom,spmi-adc-rev2",
               valid values are: 1, 2, 4, 8, 16.
               If property is not found, 1 sample will be used.
 
@@ -181,14 +185,16 @@ Channel node properties:
     Value type: <u32>
     Definition: The index of the VADC scale function used to convert raw ADC
             code to physical scaled units for the channel. Defined for compatible
-            properties "qcom,spmi-adc5", "qcom,spmi-adc5-gen3" and "qcom,spmi-adc7".
+            properties "qcom,spmi-adc5", "qcom,spmi-adc5-gen3", "qcom,spmi-adc5-gen4"
+            and "qcom,spmi-adc7".
             See include/dt-bindings/iio/qcom,spmi-vadc.h.
 
 - qcom,adc-tm-type:
     Usage: optional
     Value type: <u32>
     Definition: Type of ADC_TM usage defined for a given channel. Valid values
-            are 0-3. Defined for compatible property "qcom,spmi-adc5-gen3".
+            are 0-3. Defined for compatible property "qcom,spmi-adc5-gen3" and
+            "qcom,spmi-adc5-gen4".
             - Value 0 indicates it will not be used for ADC_TM.
             - Value 1 indicates it will be used for thermistors, for detecting
               temperature threshold violations and temperature reads.
@@ -203,7 +209,13 @@ Channel node properties:
     Definition: Type of reverse scaling function used for ADC_TM channels. Valid only
             for the case of non-thermal ADC_TM client. Valid value at present is only
             0 for reverse scaling of default voltage scaling function. Defined for
-            compatible property "qcom,spmi-adc5-gen3".
+            compatible property "qcom,spmi-adc5-gen3" and "qcom,spmi-adc5-gen4".
+
+- qcom,adc5-gen4:
+    Usage: optional
+    Value type: <boolean>
+    Definition:Flag indicating that the channel is an ADC5 GEN4 channel. Defined for
+            compatible "qcom,spmi-adc5-gen3".
 
 NOTE:
 
