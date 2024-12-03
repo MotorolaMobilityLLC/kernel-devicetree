@@ -424,6 +424,8 @@
 			<&gcc GCC_USB3_PHY_SEC_BCR>;
 		reset-names = "global_phy_reset", "phy_reset";
 
+		qcom,force-usb3;
+
 		pinctrl-names = "default";
 		pinctrl-0 = <&usb3_1_phy_portselect_default>;
 		qcom,qmp-phy-reg-offset =
