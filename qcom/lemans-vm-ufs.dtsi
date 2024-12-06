@@ -30,6 +30,8 @@
 		phy-names = "ufsphy";
 		#reset-cells = <1>;
 
+		set-ds-spm-level;
+
 		vdd-hba-supply = <&gcc_ufs_card_gdsc>;
 		vdd-hba-fixed-regulator;
 
