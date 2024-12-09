@@ -700,8 +700,15 @@
 	};
 
 	evacc: clock-controller@a8f0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "evacc_clocks";
+		compatible = "qcom,seraph-evacc", "syscon";
+		reg = <0xa8f0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&sleep_clk>, <&gcc GCC_EVA_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "sleep_clk", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -734,8 +741,15 @@
 	};
 
 	lsrcc: clock-controller@a9f0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "lsrcc_clocks";
+		compatible = "qcom,seraph-lsrcc", "syscon";
+		reg = <0xa9f0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&sleep_clk>, <&gcc GCC_LSR_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "sleep_clk", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -749,8 +763,13 @@
 	};
 
 	videocc: clock-controller@aaf0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "videocc_clocks";
+		compatible = "qcom,seraph-videocc", "syscon";
+		reg = <0xaaf0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_VIDEO_AHB_CLK>;
+		clock-names = "bi_tcxo", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -866,12 +885,16 @@
 };
 
 &eva_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&eva_cc_mvs0c_gdsc>;
+	clocks = <&gcc GCC_EVA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &eva_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_EVA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
@@ -922,39 +945,53 @@
 };
 
 &lsr_cc_lsr_noc_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &lsr_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&lsr_cc_mvs0c_gdsc>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &lsr_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&video_cc_mvs0c_gdsc>;
 	reg = <0xaaf80a8 0x4>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_vpp0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_vpp1_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
 	reg = <0xaaf814c 0x4>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
