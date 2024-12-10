@@ -7,6 +7,7 @@
 /plugin/;
 
 #include "sun-leap-device-common-overlay.dtsi"
+#include "sun-leap-evb-sensor-overlay.dtsi"
 
 / {
 	model = "leap";
