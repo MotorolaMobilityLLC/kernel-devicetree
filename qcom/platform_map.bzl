@@ -30,6 +30,7 @@ _platform_map = {
             # keep sorted
             {"name": "sun-leap-evb-overlay.dtbo", "product": "leap"},
             {"name": "sun-leap-evt1-overlay.dtbo", "product": "leap"},
+            {"name": "sun-leap-pvt1-overlay.dtbo", "product": "leap"},
         ],
         "binary_compatible_with": ["tuna", "kera"],
     },
