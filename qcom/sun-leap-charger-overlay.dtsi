@@ -22,6 +22,8 @@
 
 	main-ids-map = "107000", "SB18E07971";
 	flip-ids-map = "38000", "SB18D58447";
+	mmi,upper-limit-capacity = <78>;
+	mmi,lower-limit-capacity = <65>;
 	charger_device_0 {
 		dev-name = "main_battery";
 		psy-name = "main_battery";
