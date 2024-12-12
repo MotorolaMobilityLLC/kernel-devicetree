@@ -63,3 +63,11 @@
 &thermal_zones {
 	/delete-node/ sys-therm-5;
 };
+
+&msm_sdexpress {
+	status = "disabled";
+};
+
+&sdhc_2 {
+	status = "disabled";
+};
