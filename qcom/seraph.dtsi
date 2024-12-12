@@ -24,7 +24,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8";
+		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8 cpufreq.default_governor=performance";
 	};
 
 	reserved_memory: reserved-memory {};
@@ -50,6 +50,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -73,6 +74,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 		};
 
 		CPU2: cpu@200 {
@@ -86,6 +88,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 		};
 
 		CPU3: cpu@300 {
@@ -99,6 +102,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
+			qcom,freq-domain = <&cpufreq_hw 0>;
 		};
 
 		CPU4: cpu@400 {
@@ -112,6 +116,7 @@
 			next-level-cache = <&L2_0>;
 			capacity-dmips-mhz = <1956>;
 			dynamic-power-coefficient = <389>;
+			qcom,freq-domain = <&cpufreq_hw 1>;
 		};
 
 		cpu-map {
@@ -503,6 +508,11 @@
 			apps_bcm_voter: bcm_voter {
 				compatible = "qcom,bcm-voter";
 			};
+
+			rpmhcc: clock-controller {
+				compatible = "qcom,seraph-rpmh-clk";
+				#clock-cells = <1>;
+			};
 		};
 	};
 
@@ -685,13 +695,6 @@
 		};
 	};
 
-	rpmhcc: clock-controller {
-		compatible = "fixed-clock";
-		clock-output-names = "rpmh_clocks";
-		clock-frequency = <19200000>;
-		#clock-cells = <1>;
-	};
-
 	camcc: clock-controller@ade0000 {
 		compatible = "qcom,seraph-camcc", "syscon";
 		reg = <0xade0000 0x20000>;
@@ -788,6 +791,58 @@
 		clock-names = "bi_tcxo", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	apsscc: syscon@17aa0000 {
+		compatible = "syscon";
+		reg = <0x17aa0000 0x1c>;
+	};
+
+	mccc: syscon@240ba000 {
+		compatible = "syscon";
+		reg = <0x240ba000 0x54>;
+	};
+
+	gxclkctldebugcc: clock-controller@3d64000 {
+		compatible = "syscon";
+		reg = <0x3d64000 0x5000>;
+	};
+
+	debugcc: clock-controller@0 {
+		compatible = "qcom,seraph-debugcc";
+		qcom,apsscc = <&apsscc>;
+		qcom,camcc = <&camcc>;
+		qcom,evacc = <&evacc>;
+		qcom,gcc = <&gcc>;
+		qcom,gpucc = <&gpucc>;
+		qcom,gxclkctl = <&gxclkctldebugcc>;
+		qcom,lsrcc = <&lsrcc>;
+		qcom,videocc = <&videocc>;
+		qcom,mccc = <&mccc>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&camcc 0>,
+			 <&evacc 0>, <&gcc 0>, <&gpucc 0>,
+			 <&lsrcc 0>, <&videocc 0>;
+		clock-names = "xo_clk_src", "camcc",
+			      "evacc", "gcc", "gpucc",
+			      "lsrcc", "videocc";
+		#clock-cells = <1>;
+	};
+
+	cpufreq_hw: qcom,cpufreq-hw {
+		compatible = "qcom,cpufreq-epss";
+		reg = <0x17d91000 0x1000>, <0x17d92000 0x1000>;
+		reg-names = "freq-domain0", "freq-domain1";
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_GPLL0>;
+		clock-names = "xo", "alternate";
+		interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>,
+			<GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "dcvsh0_int", "dcvsh1_int";
+		#freq-domain-cells = <1>;
+	};
+
+	qcom,cpufreq-hw-debug {
+		compatible = "qcom,cpufreq-hw-epss-debug";
+		qcom,freq-hw-domain = <&cpufreq_hw 0>, <&cpufreq_hw 1>;
 	};
 
 	thermal_zones: thermal-zones {};
