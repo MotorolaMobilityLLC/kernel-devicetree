@@ -353,5 +353,13 @@
 		};
 	};
 
+    pm8350b-ibat-lvl1 {
+		trips {
+			ibat-lvl1 {
+				temperature = <8200>;
+			};
+		};
+	};
+
 };
 
