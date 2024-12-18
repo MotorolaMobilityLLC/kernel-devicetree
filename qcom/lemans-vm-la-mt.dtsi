@@ -1,3 +1,4 @@
+#include "lemans-vm-ethernet.dtsi"
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 
 &soc {
@@ -84,7 +85,7 @@
 			pcm-lane-config = <1>;
 		};
 	};
-	mtl_rx_setup: rx-queues-config {
+	mtl_rx_setup: rx-queue-config {
 		snps,rx-queues-to-use = <1>;
 		snps,rx-sched-sp;
 
@@ -94,7 +95,7 @@
 		};
 	};
 
-	mtl_tx_setup: tx-queues-config {
+	mtl_tx_setup: tx-queue-config {
 		snps,tx-queues-to-use = <1>;
 		snps,tx-sched-sp;
 		queue {
@@ -141,12 +142,18 @@
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
 		};
 	};
+
+	emac_mdio_fe: emac_mdio_drv@0x1e000000 {
+		compatible = "virtio,mmio";
+		reg =<0x1e000000 0x1000>;
+		interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_HIGH>;
+	};
 };
 
 / {
 	chosen {
 		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 ufshcd-core.use_mcq_mode=n arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1";
-		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=2";
+		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=3";
 	};
 
 	rename_devices: rename_devices {

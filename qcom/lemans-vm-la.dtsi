@@ -76,7 +76,7 @@
 		};
 	};
 
-	mtl_rx_setup: rx-queues-config {
+	mtl_rx_setup: rx-queue-config {
 		snps,rx-queues-to-use = <1>;
 		snps,rx-sched-sp;
 
@@ -86,7 +86,7 @@
 		};
 	};
 
-	mtl_tx_setup: tx-queues-config {
+	mtl_tx_setup: tx-queue-config {
 		snps,tx-queues-to-use = <1>;
 		snps,tx-sched-sp;
 		queue {
@@ -120,8 +120,8 @@
 		snps,tso;
 		snps,pbl = <32>;
 		mac-address = [00 55 7B B5 7D f7];
-		rx-fifo-depth = <4096>;
-		tx-fifo-depth = <4096>;
+		rx-fifo-depth = <5120>;
+		tx-fifo-depth = <5120>;
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
 		queue = <1>;
@@ -225,8 +225,8 @@
 
 / {
 	chosen {
-		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 ufshcd-core.use_mcq_mode=n qcom_dma_heaps.enable_bitstream_contig_heap=y arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1 ";
-		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=3";
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 ufshcd-core.use_mcq_mode=n qcom_dma_heaps.enable_bitstream_contig_heap=y arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1 fw_devlink.strict=1";
+		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=4";
 	};
 
 	rename_devices: rename_devices {

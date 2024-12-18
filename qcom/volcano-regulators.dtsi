@@ -154,6 +154,11 @@
 	rpmh-regulator-smpb1 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "smpb1";
+		qcom,regulator-type = "pmic5-ftsmps";
+		qcom,supported-modes = <RPMH_REGULATOR_MODE_RET
+			 RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 200000>;
+
 
 		S1B:
 		pm7550_s1: regulator-pm7550-s1 {
@@ -162,6 +167,7 @@
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <2080000>;
 			qcom,init-voltage = <1872000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
 
@@ -466,7 +472,7 @@
 		pm7550_l14: regulator-pm7550-l14 {
 			regulator-name = "pm7550_l14";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <3300000>;
+			regulator-min-microvolt = <3125000>;
 			regulator-max-microvolt = <3304000>;
 			qcom,init-voltage = <3300000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
@@ -486,7 +492,7 @@
 		pm7550_l15: regulator-pm7550-l15 {
 			regulator-name = "pm7550_l15";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <3300000>;
+			regulator-min-microvolt = <3125000>;
 			regulator-max-microvolt = <3304000>;
 			qcom,init-voltage = <3300000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
@@ -765,7 +771,7 @@
 			regulator-name = "pmr735b_l3";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
 			regulator-min-microvolt = <650000>;
-			regulator-max-microvolt = <880000>;
+			regulator-max-microvolt = <1050000>;
 			qcom,init-voltage = <650000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};

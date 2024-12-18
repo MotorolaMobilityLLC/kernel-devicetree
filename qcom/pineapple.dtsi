@@ -3148,6 +3148,10 @@
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 	};
 
+	crypto_node {
+		compatible = "qcom,crypto";
+	};
+
 	google,debug-kinfo {
 		compatible = "google,debug-kinfo";
 		memory-region = <&kinfo_mem>;

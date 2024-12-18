@@ -347,6 +347,7 @@
 			compatible = "qcom,llcc-perfmon";
 			clocks = <&aoss_qmp QDSS_CLK>;
 			clock-names = "qdss_clk";
+			llcc-occupancy-snapshot;
 		};
 	};
 
@@ -1820,6 +1821,9 @@
 		interconnects = <&aggre2_noc MASTER_SOCCP_AGGR_NOC &mc_virt SLAVE_EBI1>,
 				<&cnoc_main MASTER_CNOC_CFG &mc_virt SLAVE_EBI1>;
 		interconnect-names = "rproc_ddr", "rproc_cnoc";
+
+		rproc-ddr-set-icc-low-svs;
+		rproc-ddr-lowsvs-icc-bw = <1050>;
 
 		memory-region = <&soccp_mem 0>;
 		soccp-tcsr = <&tcsr 0x9d004>;

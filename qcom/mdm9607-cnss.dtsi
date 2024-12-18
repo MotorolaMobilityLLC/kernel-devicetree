@@ -6,6 +6,18 @@
 			bias-pull-down;
 		};
 	};
+
+	/* sdcard_ext_vreg GPIO 4 */
+	sdcard_vreg {
+		sdcard_vreg_default: sdcard_vreg_default {
+			pins = "gpio4";
+			function = "normal";
+			output-high;
+			input-disable;
+			qcom,drive-strength = <1>;
+			power-source = <0>;
+		};
+	};
 };
 
 &soc {

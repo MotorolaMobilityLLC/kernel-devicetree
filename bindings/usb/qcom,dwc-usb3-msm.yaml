@@ -60,6 +60,11 @@ properties:
   USB3_GDSC-supply:
     description: USB GDSC supply.
 
+  vbus_dwc3-supply:
+    description: Regulator supply for the VBUS 5V power for USB host mode.
+                 This is typically used when VBUS is controlled by a GPIO-based
+                 regulator to enable/disable USB port power.
+
   clock-names:
     minItems: 1
     items:
@@ -187,6 +192,7 @@ examples:
           ranges;
 
           USB3_GDSC-supply = <&gcc_usb30_prim_gdsc>;
+          vbus_dwc3-supply = <&usb0_vbus_reg>;
           clocks = <&gcc GCC_USB30_PRIM_MASTER_CLK>,
                    <&gcc GCC_CFG_NOC_USB3_PRIM_AXI_CLK>,
                    <&gcc GCC_AGGRE_USB3_PRIM_AXI_CLK>,

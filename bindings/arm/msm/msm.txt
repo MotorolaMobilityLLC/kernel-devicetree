@@ -190,6 +190,9 @@ Generic board variants:
 - QAM device:
   compatible = "qcom,qam"
 
+- COB device:
+  compatible = "qcom,cob"
+
 Boards (SoC type + board variant):
 
 compatible = "qcom,apq8016"

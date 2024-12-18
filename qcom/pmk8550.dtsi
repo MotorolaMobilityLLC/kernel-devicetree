@@ -60,6 +60,10 @@
 				reg = <0x9a 0x1>;
 			};
 
+			fmd_cont_after_pon: fmd-cont-after-pon@9c {
+				reg = <0x9c 0x1>;
+			};
+
 			fmd_chg_pon: fmd-chg-pon@9f {
 				reg = <0x9f 0x1>;
 			};

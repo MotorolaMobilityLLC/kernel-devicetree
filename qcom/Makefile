@@ -13,8 +13,8 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
-PINEAPPLE_BASE_DTB += pineapple.dtb pineapple-v2.dtb
-PINEAPPLE_APQ_BASE_DTB += pineapplep.dtb pineapplep-v2.dtb pineapplep-sg-v2.dtb
+PINEAPPLE_BASE_DTB += pineapple-v2.dtb
+PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb
 
 PINEAPPLE_BOARDS += \
 		 pineapple-mtp-overlay.dtbo \
@@ -67,11 +67,15 @@ VOLCANO_APQ_BASE_DTB += volcano6p.dtb volcano6ip-fp1.dtb volcano6ip-fp2.dtb volc
 VOLCANO_BOARDS += \
 		volcano-atp-overlay.dtbo \
 		volcano-idp-overlay.dtbo \
+		volcano-idp-evros-overlay.dtbo \
 		volcano-idp-wcd9395-overlay.dtbo \
+		volcano-idp-wcd9395-evros-overlay.dtbo \
 		volcano6i-idp-wcd9395-ganges-overlay.dtbo \
 		volcano6i-idp-wcd9395-brahma-overlay.dtbo \
 		volcano-mtp-overlay.dtbo \
 		volcano-mtp-wcd9395-aatc-overlay.dtbo \
+		volcano-mtp-wcd9395-aatc-evros-overlay.dtbo \
+		volcano-mtp-wcd9378-hsj-evros-overlay.dtbo \
 		volcano-mtp-pm7550ba-overlay.dtbo \
 		volcano6i-mtp-wcd9395-ganges-overlay.dtbo \
 		volcano6i-mtp-ganges-overlay.dtbo \
@@ -123,7 +127,8 @@ NIOBE_BOARDS += \
 		niobep-atp-overlay.dtbo \
 		niobep-idp-overlay.dtbo \
 		niobep-idp-dpu-overlay.dtbo \
-		niobep-qxr-overlay.dtbo
+		niobep-qxr-overlay.dtbo \
+		niobep-qxr-vista-overlay.dtbo
 
 NOAPQ_NIOBE_BOARDS += \
 		 niobe-rumi-overlay.dtbo
@@ -357,10 +362,14 @@ ifeq ($(CONFIG_ARCH_QTI_VM), y)
 pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
                 volcano-vm-idp.dtb \
                 volcano-vm-idp-wcd9395.dtb \
+		volcano-vm-idp-evros.dtb \
+		volcano-vm-idp-wcd9395-evros.dtb \
 		volcano6i-vm-idp-wcd9395-brahma.dtb \
 		volcano6i-vm-idp-wcd9395-ganges.dtb \
                 volcano-vm-mtp.dtb \
                 volcano-vm-mtp-wcd9395-aatc.dtb \
+		volcano-vm-mtp-wcd9378-hsj-evros.dtb \
+		volcano-vm-mtp-wcd9395-aatc-evros.dtb \
 		volcano6i-vm-mtp-brahma.dtb \
 		volcano6i-vm-mtp-ganges.dtb \
 		volcano6i-vm-mtp-moselle-wingmate.dtb \
@@ -372,11 +381,15 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
 		volcano6i-vm-qrd-moselle.dtb \
                 volcano-oemvm-atp.dtb \
                 volcano-oemvm-idp.dtb \
+		volcano-oemvm-idp-evros.dtb \
                 volcano-oemvm-idp-wcd9395.dtb \
+		volcano-oemvm-idp-wcd9395-evros.dtb \
                 volcano6i-oemvm-idp-wcd9395-brahma.dtb \
                 volcano6i-oemvm-idp-wcd9395-ganges.dtb \
                 volcano-oemvm-mtp.dtb \
                 volcano-oemvm-mtp-wcd9395-aatc.dtb \
+		volcano-oemvm-mtp-wcd9378-hsj-evros.dtb \
+		volcano-oemvm-mtp-wcd9395-aatc-evros.dtb \
                 volcano6i-oemvm-mtp-brahma.dtb \
                 volcano6i-oemvm-mtp-ganges.dtb \
                 volcano6i-oemvm-mtp-moselle-wingmate.dtb \
@@ -540,6 +553,19 @@ autoghgvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
 	$(LEMANS_GH_LA_GVM_VP_BOARDS) $(LEMANS_GH_LA_GVM_VP_BASE_DTB) \
 	$(LEMANS_GH_LA_GVM_COB_BOARDS) $(LEMANS_GH_LA_GVM_COB_BASE_DTB)
 
+LEMANS_GH_LV_GVM_COB_BASE_DTB += lemans-gunyah-vm-lv-cob.dtb
+LEMANS_GH_LV_GVM_QAM_BASE_DTB += lemans-gunyah-vm-lv-qam.dtb
+LEMANS_GH_LV_GVM_COB_BOARDS += lemans-gunyah-vm-lv-cob-overlay.dtbo
+LEMANS_GH_LV_GVM_QAM_BOARDS += lemans-gunyah-vm-lv-qam-overlay.dtbo
+
+autoghgvm-dtb-$(CONFIG_ARCH_QTI_VM) += \
+	$(call add-overlays, $(LEMANS_GH_LV_GVM_COB_BOARDS),$(LEMANS_GH_LV_GVM_COB_BASE_DTB)) \
+	$(call add-overlays, $(LEMANS_GH_LV_GVM_QAM_BOARDS),$(LEMANS_GH_LV_GVM_QAM_BASE_DTB))
+
+autoghgvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
+	$(LEMANS_GH_LV_GVM_COB_BOARDS) $(LEMANS_GH_LV_GVM_COB_BASE_DTB) \
+	$(LEMANS_GH_LV_GVM_QAM_BOARDS) $(LEMANS_GH_LV_GVM_QAM_BASE_DTB)
+
 dtb-y += $(autoghgvm-dtb-y)
 endif
 endif
@@ -554,7 +580,7 @@ autoghgvm-dtb-$(CONFIG_ARCH_QTI_VM) += \
 	$(call add-overlays, $(MONACO_GH_LA_GVM_QAM_BOARDS),$(MONACO_GH_LA_GVM_QAM_BASE_DTB))
 
 autoghgvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
-	$(MONACO_GH_LA_GVM_QAM_BOARDS),$(MONACO_GH_LA_GVM_QAM_BASE_DTB)
+	$(MONACO_GH_LA_GVM_QAM_BOARDS) $(MONACO_GH_LA_GVM_QAM_BASE_DTB)
 
 dtb-y += $(autoghgvm-dtb-y)
 endif
