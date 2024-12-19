@@ -192,3 +192,7 @@
 &sdhc_2 {
 	status = "disabled";
 };
+
+&pcie2 {
+	status = "disabled";
+};
