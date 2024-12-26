@@ -202,3 +202,8 @@
 	};
 
 };
+
+&hap_swr_slave_reg {
+	/delete-property/ regulator-always-on;
+};
+
