@@ -143,6 +143,102 @@
 	};
 };
 
+&qupv3_se9_i2c {
+	status = "ok";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	touch: iqs7211e@56 {
+		compatible = "azoteq,iqs7211e";
+		reg = <0x56>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
+		irq-gpios = <&tlmm 141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
+		touchscreen-size-x = <3840>;
+		touchscreen-size-y = <3550>;
+		azoteq,num-contacts = <1>;
+		azoteq,forced-comms = <1>;
+
+		trackpad {
+			azoteq,rx-enable = <4>, <1>, <0>;
+			azoteq,tx-enable = <12>, <11>,<10>,<9>,<8>,<7>,<6>,<5>,<3>, <2>;
+			azoteq,channel-select = <1>, <0>, <2>, <255>, <4>, <3>, <5>, <255>,
+				<7>, <6>, <8>, <255>, <10>, <9>,<11>, <255>, <13>, <12>, <14>,
+				<255>, <16>, <15>, <17>, <255>, <19>, <18>, <20>, <255>, <22>,
+				<21>, <23>, <255>, <25>, <24>, <26>, <255>, <28>, <27>, <29>, <255>;
+			azoteq,ati-frac-div-fine = <5>;
+			azoteq,ati-frac-mult-coarse = <4>;
+			azoteq,ati-frac-div-coarse = <1>;
+			azoteq,ati-comp-div = <5>;
+			azoteq,ati-target = <300>;
+			azoteq,touch-enter = <20>;
+			azoteq,touch-exit = <14>;
+
+			event-tap {
+				linux,code = <KEY_PLAYPAUSE>;
+			};
+
+			event-tap-double {
+				linux,code = <KEY_SHUFFLE>;
+			};
+
+			event-tap-triple {
+				linux,code = <KEY_AGAIN>;
+			};
+
+			event-hold {
+				linux,code = <KEY_STOP>;
+			};
+
+			event-palm {
+				linux,code = <KEY_EXIT>;
+			};
+
+			event-swipe-x-pos {
+				linux,code = <KEY_REWIND>;
+			};
+
+			event-swipe-x-pos-hold {
+				linux,code = <KEY_PREVIOUS>;
+			};
+
+			event-swipe-x-neg {
+				linux,code = <KEY_FASTFORWARD>;
+			};
+
+			event-swipe-x-neg-hold {
+				linux,code = <KEY_NEXT>;
+			};
+
+			event-swipe-y-pos {
+				linux,code = <KEY_VOLUMEUP>;
+			};
+
+			event-swipe-y-pos-hold {
+				linux,code = <KEY_MUTE>;
+			};
+
+			event-swipe-y-neg {
+				linux,code = <KEY_VOLUMEDOWN>;
+			};
+
+			event-swipe-y-neg-hold {
+				linux,code = <KEY_MUTE>;
+			};
+		};
+
+		alp {
+			azoteq,rx-enable = <0>, <4>;
+			azoteq,tx-enable = <12>, <11>, <10>, <9>, <8>, <7>, <6>, <5>, <3>, <2>;
+			azoteq,ati-frac-div-fine = <1>;
+			azoteq,ati-frac-mult-coarse = <1>;
+			azoteq,ati-frac-div-coarse = <3>;
+			azoteq,ati-comp-div = <2>;
+			azoteq,ati-target = <200>;
+		};
+	};
+};
+
 &thermal_zones {
 	/delete-node/ sys-therm-5;
 
