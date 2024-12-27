@@ -25,8 +25,12 @@
 	hw: hw { };
 };
 
+&soc {
+	/delete-node/ qcom_ramoops;
+};
+
 &reserved_memory {
-	/delete-node/ ramoops_region;
+	/delete-node/ ramoops-region;
 };
 
 &firmware {
