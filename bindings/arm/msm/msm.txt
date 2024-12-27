@@ -131,6 +131,9 @@ SoCs:
 - VOLCANO
   compatible = "qcom,volcano", "qcom,volcanop"
 
+- SA8797p
+  compatible = "qcom,sa8797p"
+
 Generic board variants:
 
 - CDP device:
