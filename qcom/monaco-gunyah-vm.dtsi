@@ -898,6 +898,7 @@
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A0000>;
 				memory {
@@ -934,6 +935,37 @@
 				dma_base = <0x0 0x1A6000>;
 				memory {
 					qcom,label = <0x46>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@39 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1A8000>;
+				memory {
+					qcom,label = <0x47>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@40 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				dma-coherent;
+				dma_base = <0x0 0x1AA000>;
+				memory {
+					qcom,label = <0x48>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
