@@ -161,9 +161,11 @@ endif
 
 ifeq ($(CONFIG_CUSCO_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += \
+        parrot-cuscoi-noi-evb-overlay.dtbo \
         parrot-cuscoi-evb-overlay.dtbo
 
 parrot-cuscoi-evb-overlay.dtbo-base := parrot-moto-base.dtb
+parrot-cuscoi-noi-evb-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 
 parrot-dtb-$(CONFIG_ARCH_PARROT) += \
