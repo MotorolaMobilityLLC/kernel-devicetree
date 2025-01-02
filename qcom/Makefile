@@ -85,7 +85,8 @@ VOLCANO_BOARDS += \
 		volcano6i-mtp-wcd9395-moselle-overlay.dtbo \
 		volcano6i-mtp-moselle-wingmate-overlay.dtbo \
 		volcano-qrd-overlay.dtbo \
-		volcano6i-qrd-moselle-overlay.dtbo
+		volcano6i-qrd-moselle-overlay.dtbo \
+		volcano6i-mtp-STSafe320-brahma-overlay.dtbo
 
 pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 	$(call add-overlays, $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS),$(VOLCANO_BASE_DTB))\
