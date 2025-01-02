@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-cusco-common-overlay.dtsi"
+
+#define CUSCOI_RADIO_APEM1 6
+#define CUSCOI_RADIO_INDIA1 7
+
+/ {
+	model = "cuscoi";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,cuscoi";
+	qcom,msm-id = <613 0x10000>;
+	qcom,board-id = <(CUSCOI_RADIO_APEM1 << 8 | 0x45) 0x9000>, <(CUSCOI_RADIO_INDIA1 << 8|0x45) 0x9000>;
+};
+
