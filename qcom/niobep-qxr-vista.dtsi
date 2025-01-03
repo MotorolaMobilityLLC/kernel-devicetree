@@ -184,3 +184,11 @@
 		};
 	};
 };
+
+&msm_sdexpress {
+	status = "disabled";
+};
+
+&sdhc_2 {
+	status = "disabled";
+};
