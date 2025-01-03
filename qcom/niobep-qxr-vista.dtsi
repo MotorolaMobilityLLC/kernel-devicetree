@@ -1,4 +1,49 @@
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include "niobep-qxr.dtsi"
+
+&apps_rsc_drv2 {
+	rpmh-regulator-ldob18 {
+		status = "ok";
+	};
+};
+
+&L18B {
+	status = "ok";
+};
+
+&L19B {
+	regulator-min-microvolt = <1650000>;
+	regulator-max-microvolt = <3544000>;
+};
+
+&L1M {
+	regulator-min-microvolt = <900000>;
+	regulator-max-microvolt = <1260000>;
+	qcom,init-voltage = <1050000>;
+};
+
+&L4M {
+	regulator-min-microvolt = <2100000>;
+	regulator-max-microvolt = <3000000>;
+	qcom,init-voltage = <2200000>;
+};
+
+&L7M {
+	regulator-min-microvolt = <2700000>;
+	regulator-max-microvolt = <3000000>;
+};
+
+&L5N {
+	regulator-min-microvolt = <2100000>;
+	regulator-max-microvolt = <3000000>;
+	qcom,init-voltage = <2200000>;
+};
+
+&L7N {
+	regulator-min-microvolt = <2700000>;
+	regulator-max-microvolt = <3100000>;
+	qcom,init-voltage = <3000000>;
+};
 
 &soc {
 	gpio_keys {
