@@ -13,3 +13,6 @@
 	qcom,board-id = <(CUSCOI_RADIO_APEM1 << 8 | 0x45) 0x9000>, <(CUSCOI_RADIO_INDIA1 << 8|0x45) 0x9000>;
 };
 
+
+#include "parrot-noida-charger-overlay.dtsi"
+
