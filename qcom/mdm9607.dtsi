@@ -878,6 +878,10 @@
 		qcom,pm-qos-irq-latency = <2 250>;
 
 		status = "disabled";
+		qos0 {
+			mask = <0x1>;
+			vote = <70>;
+		};
 	};
 
 	qcom_qseecom: qseecom@88000000 {
@@ -968,6 +972,10 @@
 		qcom,pm-qos-irq-latency = <2 250>;
 
 		status = "disabled";
+		qos0 {
+			mask = <0x1>;
+			vote = <70>;
+		};
 	};
 
 	remoteproc_mss: remoteproc-mss@4080000 {
