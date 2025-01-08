@@ -185,6 +185,14 @@
 	};
 };
 
+&redriver1 {
+	set-aux;
+};
+
+&redriver0 {
+	set-aux;
+};
+
 &msm_sdexpress {
 	status = "disabled";
 };
