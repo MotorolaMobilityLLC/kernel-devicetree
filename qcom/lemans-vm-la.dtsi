@@ -100,11 +100,11 @@
 		qcom,arm-smmu;
 		reg = <0x23049000 0x1000>;
 		reg-names = "stmmaceth";
-		interrupts-extended = <&intc 0 945 4>, <&intc 0 944 4>,
+		interrupts-extended = <&intc 0 944 4>, <&intc 0 945 4>,
 			<&intc 0 943 4>, <&intc 0 942 4>,
 			<&intc 0 941 4>, <&intc 0 940 4>,
 			<&intc 0 939 4>, <&intc 0 938 4>,
-			<&intc 0 859 4>,<&intc 0 863 4>,
+			<&intc 0 863 4>,<&intc 0 859 4>,
 			<&intc 0 866 4>,<&intc 0 869 4>,
 			<&intc 0 870 4>,<&intc 0 871 4>,
 			<&intc 0 872 4>,<&intc 0 858 4>;
@@ -124,7 +124,7 @@
 		tx-fifo-depth = <5120>;
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
-		queue = <1>;
+		queue = <0>;
 		emac0_emb_smmu: emac0_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x122 0x1>;
