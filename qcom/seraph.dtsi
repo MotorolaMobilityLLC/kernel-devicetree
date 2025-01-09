@@ -725,8 +725,15 @@
 	};
 
 	camcc: clock-controller@ade0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "camcc_clocks";
+		compatible = "qcom,seraph-camcc", "syscon";
+		reg = <0xade0000 0x20000>;
+		reg-name = "cc_base";
+		vdd_cx-supply = <&VDD_CX_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&sleep_clk>, <&gcc GCC_CAMERA_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "sleep_clk", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -766,8 +773,17 @@
 	};
 
 	gpucc: clock-controller@3d90000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "gpucc_clocks";
+		compatible = "qcom,seraph-gpucc", "syscon";
+		reg = <0x3d90000 0x9800>;
+		reg-name = "cc_base";
+		vdd_cx-supply = <&VDD_CX_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&gcc GCC_GPU_GPLL0_CLK_SRC>,
+			 <&gcc GCC_GPU_GPLL0_DIV_CLK_SRC>;
+		clock-names = "bi_tcxo",
+			      "gpll0_out_main",
+			      "gpll0_out_main_div";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -875,44 +891,62 @@
 #include "pineapple-gdsc.dtsi"
 
 &cam_cc_bps_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &cam_cc_ife_0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	qcom,support-hw-trigger;
 	status = "ok";
 };
 
 &cam_cc_ife_1_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	qcom,support-hw-trigger;
 	status = "ok";
 };
 
 &cam_cc_ife_lite_0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &cam_cc_ife_lite_1_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &cam_cc_ife_lite_2_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &cam_cc_ipe_0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&cam_cc_titan_top_gdsc>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &cam_cc_titan_top_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_CX_LEVEL>;
+	clocks = <&gcc GCC_CAMERA_AHB_CLK>;
+	clock-names = "ahb_clk";
+	interconnects = <&mmss_noc MASTER_CAMNOC_HF &mmss_noc SLAVE_MNOC_HF_MEM_NOC>;
+	interconnect-names = "mmnoc";
 	reg = <0xadf4028 0x4>;
 	qcom,support-hw-trigger;
 	status = "ok";
@@ -968,13 +1002,18 @@
 };
 
 &gpu_cc_cx_gdsc {
-	compatible = "regulator-fixed";
 	reg = <0x3d99080 0x4>;
+	clocks = <&gcc GCC_GPU_CFG_AHB_CLK>;
+	clock-names = "ahb_clk";
+	parent-supply = <&VDD_CX_LEVEL>;
+	proxy-supply = <&gpu_cc_cx_gdsc>;
+	qcom,proxy-consumer-enable;
 	status = "ok";
 };
 
 &gx_clkctl_gx_gdsc {
-	compatible = "regulator-fixed";
+	reg-supply = <&gpu_cc_cx_gdsc>;
+	parent-supply = <&VDD_GFX_LEVEL>;
 	status = "ok";
 };
 
