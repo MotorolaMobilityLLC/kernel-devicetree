@@ -162,6 +162,10 @@
 	mmi,aura-combo-policy;
 	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 300000 100000>;
 	qcom,wireless-fw-name = "cps4041.bin";
+	qcom,wireless-fw-name-2nd = "cps4041_2nd.bin";
+	qcom,wireless-coil-id = "SA38E08780";
+	qcom,wireless-coil-id-2nd = "SA38E12594";
+	mmi,wls-2nd-fw-enabled;
 };
 
 &qti_glink_charger {
