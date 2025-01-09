@@ -167,6 +167,7 @@
 		status = "ok";
 		compatible = "goodix,marseille";
 		reg = <0>;
+		mmi,status = "/chosen","mmi,panel_name_s","contains","csot";
 		spi-max-frequency = <15000000>;
 		mmi,control-dsi = <1>;
 		mmi,class-entry-name = "secondary";
@@ -195,5 +196,36 @@
 		mmi,usb-charger-detection;
 		goodix,stowed-mode-ctrl;
 		goodix,pocket-mode-ctrl;
+	};
+
+	focaltech@1 {
+		status = "ok";
+		compatible = "focaltech,fts";
+		reg = <1>;
+		mmi,status = "/chosen","mmi,panel_name_s","contains","tm_vtdr6126A";
+		spi-max-frequency = <15000000>;
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
+
+		interrupt-parent = <&tlmm>;
+		interrupts = <162 0x2>;
+		focaltech,reset-gpio = <&tlmm 20 0x0>;
+		focaltech,irq-gpio = <&tlmm 162 0x02>;
+		focaltech,max-touch-number = <10>;
+		focaltech,display-coords =  <0 0 1080 1272>;
+		vdd-supply=<&L14B>;
+		iovcc-supply=<&L23B>;
+
+		pinctrl-names = "cli_pmx_ts_active","cli_pmx_ts_suspend","cli_pmx_ts_release";
+		pinctrl-0 = <&cli_ts_active>;
+		pinctrl-1 = <&cli_ts_int_suspend &cli_ts_reset_suspend>;
+		pinctrl-2 = <&cli_ts_release>;
+
+		mmi,power-off-suspend;
+		mmi,cli-enable-gestures;
+		mmi,supported_gesture_type = <0x06>;
+		mmi,resolution_boost = <16>;
+		mmi,usb-charger-detection;
+		fts,stowed-mode-ctrl;
 	};
 };
