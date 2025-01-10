@@ -742,10 +742,6 @@
 			reg = <0x10 0x8>;
 		};
 
-		restart_reason@65c {
-			compatible = "qcom,msm-imem-restart_reason";
-			reg = <0x65c 0x4>;
-		};
 
 		boot_stats@6b0 {
 			compatible = "qcom,msm-imem-boot_stats";
@@ -763,8 +759,22 @@
 		};
 	};
 
+	qcom,msm-imem@860065C {
+		compatible = "qcom,msm-imem-restart_reason";
+		reg = <0x860065C 0x4>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+	restart_reason: restart_reason@65c {
+		reg = <0x0 0x4>;
+		};
+	};
+
 	reboot_reason {
-		compatible = "qcom,reboot-reason";
+		compatible = "qcom,imem-reboot-reason";
+		nvmem-cells = <&restart_reason>;
+		nvmem-cell-names = "restart_reason";
 	};
 
 	restart@4ab000 {
