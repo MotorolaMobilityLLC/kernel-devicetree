@@ -999,6 +999,32 @@
 		power-domains = <&CLUSTER_PD>;
 	};
 
+	sys-pm-vx@c320000 {
+		compatible = "qcom,sys-pm-violators", "qcom,sys-pm-seraph";
+		reg = <0xc320000 0x400>;
+		qcom,qmp = <&aoss_qmp>;
+	};
+
+	cpuss-sleep-stats@17800054 {
+		compatible = "qcom,cpuss-sleep-stats";
+		reg = <0x17800054 0x4>, <0x17810054 0x4>, <0x17820054 0x4>,
+		      <0x17830054 0x4>, <0x17840054 0x4>, <0x17880098 0x4>,
+		      <0x178c0000 0x10000>;
+		reg-names = "seq_lpm_cntr_cfg_cpu0", "seq_lpm_cntr_cfg_cpu1",
+			    "seq_lpm_cntr_cfg_cpu2", "seq_lpm_cntr_cfg_cpu3",
+			    "seq_lpm_cntr_cfg_cpu4", "l3_seq_lpm_cntr_cfg",
+			    "apss_seq_mem_base";
+		num-cpus = <5>;
+	};
+
+	sram@c3f0000 {
+		compatible = "qcom,rpmh-stats-v4";
+		reg = <0xc3f0000 0x400>;
+		qcom,qmp = <&aoss_qmp>;
+		ss-name = "modem", "wpss", "adsp", "adsp_island",
+			  "cdsp", "apss";
+	};
+
 	tlmm: pinctrl@f000000 {
 		compatible = "qcom,seraph-pinctrl";
 		reg = <0x0F000000 0x1000000>;
