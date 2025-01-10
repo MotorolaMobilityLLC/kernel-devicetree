@@ -78,6 +78,9 @@ properties:
       - qcom,pitti-wpss-pas
       - qcom,pitti-adsp-pas
       - qcom,pitti-modem-pas
+      - qcom,seraph-adsp-pas
+      - qcom,seraph-cdsp-pas
+      - qcom,seraph-soccp-pas
       - qcom,volcano-wpss-pas
       - qcom,volcano-adsp-pas
       - qcom,volcano-cdsp-pas
