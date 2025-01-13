@@ -298,6 +298,11 @@
 		#hwlock-cells = <1>;
 	};
 
+	tcsr: syscon@1f40000 {
+		compatible = "syscon";
+		reg = <0x1f40000 0xc0000>;
+	};
+
 	qcom,tmecom-qmp-client {
 		compatible = "qcom,tmecom-qmp-client";
 		mboxes = <&qmp_tme 0>;
@@ -1845,6 +1850,7 @@
 &firmware {
 	qcom_scm {
 		compatible = "qcom,scm";
+		qcom,dload-mode = <&tcsr 0x99000>;
 	};
 
 	qcom_smcinvoke {
