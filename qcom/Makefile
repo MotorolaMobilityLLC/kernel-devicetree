@@ -128,7 +128,8 @@ NIOBE_BOARDS += \
 		niobep-idp-overlay.dtbo \
 		niobep-idp-dpu-overlay.dtbo \
 		niobep-qxr-overlay.dtbo \
-		niobep-qxr-vista-overlay.dtbo
+		niobep-qxr-vista-overlay.dtbo \
+		niobep-qxr-vista-v2-overlay.dtbo
 
 NOAPQ_NIOBE_BOARDS += \
 		 niobe-rumi-overlay.dtbo
