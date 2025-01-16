@@ -1235,6 +1235,11 @@
 		qcom,smem-state-names = "stop", "wakeup", "sleep", "ping";
 	};
 
+	pcie_pdc: pdc@b310000 {
+		compatible = "qcom,seraph-pcie-pdc", "qcom,pcie-pdc";
+		reg = <0xb310000 0x20000>;
+	};
+
 	clocks {
 		xo_board: xo_board {
 			compatible = "fixed-clock";
