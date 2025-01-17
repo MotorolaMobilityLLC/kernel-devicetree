@@ -1,2 +1,8 @@
 #include "sa8797p-gunyah-vm.dtsi"
+#include "sa8797p-vm-qupv3.dtsi"
 
+/ {
+	aliases {
+		hsuart0 = &qupv3_se17_4uart;
+	};
+};
