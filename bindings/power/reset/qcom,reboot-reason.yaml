@@ -18,6 +18,7 @@ properties:
   compatible:
     items:
       - const: qcom,reboot-mode
+      - const: qcom,imem-reboot-reason
 
   allOf:
     - $ref: /schemas/nvmem/nvmem-consumer.yaml#/properties
