@@ -14,6 +14,10 @@
 		qcom,vmid = <52>;
 	};
 
+	aliases {
+		hsuart0 = &qupv3_se2_4uart;
+	};
+
 	chosen {
 		bootargs = "nokaslr log_buf_len=1M androidboot.force_normal_boot=1 ufshcd-core.use_mcq_mode=n androidboot.verifiedbootstate=orange";
 	};
@@ -244,15 +248,33 @@
 		vm-attrs = "guest-ram-dump";
 
 		/* Pass through regions */
-		/* TLMM region */
-		/* QRNG region */
-		/* Board serial number region */
-		/* MPM timer read only*/
-
-		iomemory-ranges = <0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
+		iomemory-ranges = <
+				/* TLMM region */
+				0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
+				/* QRNG region */
 				0x0 0x10dc000 0x0 0x10dc000 0x0 0x1000 0x0
+				/* Board serial number region */
 				0x0 0x786000 0x0 0x786000 0x0 0x1000 0x1
+				/* MPM timer read only*/
 				0x0 0xc221000 0x0 0xc221000 0x0 0x1000 0x1
+				/* QUPv3 Tile 0 read-only region */
+				0x0 0x9c0000 0x0 0x9c0000 0x0 0x1000 0x1
+				0x0 0x9c1000 0x0 0x9c1000 0x0 0x1000 0x1
+				/* QUPv3 SE2 region */
+				0x0 0x988000 0x0 0x988000 0x0 0x1000 0x0
+				0x0 0x989000 0x0 0x989000 0x0 0x1000 0x0
+				0x0 0x990000 0x0 0x990000 0x0 0x1000 0x0
+				0x0 0x991000 0x0 0x991000 0x0 0x1000 0x0
+				/*MPROC NS1 IPCC region*/
+				0x0 0x421000 0x0 0x421000 0x0 0x1000 0x0
+				>;
+
+		gic-irq-ranges = <
+				/* QUPv3 SE2 GIC IRQ */
+				561 561
+				/* MPROC NS1 IPCC GIC IRQ */
+				591 591
+
 				>;
 
 		memory {
@@ -998,6 +1020,28 @@
 		method = "smc";
 	};
 
+	scmi {
+		compatible = "arm,scmi-virtio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+
+		scmi_power: protocol@11 {
+			reg = <0x11>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_perf: protocol@13 {
+			reg = <0x13>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_reset: protocol@16 {
+			reg = <0x16>;
+			#reset-cells = <1>;
+		};
+	};
+
 	intc: interrupt-controller@17a00000 {
 		compatible = "arm,gic-v3";
 		interrupt-controller;
@@ -1042,6 +1086,16 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
+	};
+
+	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
+		compatible = "qcom,ipcc";
+		reg = <0x421000 0x1000>;
+		interrupts = <GIC_SPI 559 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+		status = "ok";
 	};
 
 	qcom_rng_ee3: qrng@10dc000 {
@@ -1106,4 +1160,35 @@
 					"init_boot_b", "init_boot_a", "devinfo";
 		};
 	};
+};
+
+#include "monaco-vm-qupv3.dtsi"
+#include "monaco_auto-pinctrl.dtsi"
+
+/delete-node/ &qupv3_1;
+
+&qupv3_0 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	reg = <0x9c0000 0x2000>;
+	qcom,firmware-managed-resources;
+
+	iommus = <&apps_smmu 0x418 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disable";
+};
+
+&qupv3_se2_4uart {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	compatible = "qcom,geni-uart";
+	reg = <0x988000 0x4000>;
+
+	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disable";
 };

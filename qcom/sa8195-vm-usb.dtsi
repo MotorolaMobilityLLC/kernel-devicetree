@@ -33,6 +33,7 @@
 
 		qcom,core-clk-rate = <200000000>;
 		qcom,core-clk-rate-hs = <66666667>;
+		qcom,disable-wakeup;
 		qcom,host-poweroff-in-pm-suspend;
 
 		status = "disabled";
@@ -102,6 +103,7 @@
 		qcom,use-pdc-interrupts;
 
 		qcom,default-mode-host;
+		qcom,disable-wakeup;
 		qcom,host-poweroff-in-pm-suspend;
 
 		USB3_GDSC-supply = <&usb30_sec_gdsc>;

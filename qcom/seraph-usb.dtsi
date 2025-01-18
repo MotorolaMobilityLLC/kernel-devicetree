@@ -30,6 +30,10 @@
 		qcom,core-clk-rate-hs = <66666667>;
 		qcom,core-clk-rate-disconnected = <133333333>;
 
+		interconnect-names = "usb-ddr", "ddr-usb";
+		interconnects = <&system_noc MASTER_USB3_0 &mc_virt SLAVE_EBI1>,
+				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_0>;
+
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
 			reg = <0xa600000 0xd93c>;

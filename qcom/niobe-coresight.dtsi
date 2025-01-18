@@ -1268,7 +1268,7 @@
 		reg-names = "tpdm-base";
 
 		coresight-name = "coresight-tpdm-gpu";
-		atid = <78>;
+		atid = <103>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 

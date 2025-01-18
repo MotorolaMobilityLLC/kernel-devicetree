@@ -368,7 +368,7 @@
 
 		vcpus {
 			config = "/cpus";
-			affinity = "static";
+			affinity = "pinned";
 			affinity-map = <0x7 0x6 0x5 0x4 0x3 0x2 0x1 0x0>;
 			sched-priority = <0>;       /* relative to PVM */
 			sched-timeslice = <5000>;   /* in ms */
@@ -1563,8 +1563,17 @@
 	/delete-property/ clock-names;
 	/delete-property/ interconnects;
 	/delete-property/ interconnect-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+	/delete-property/ pinctrl-2;
+	/delete-property/ pinctrl-3;
+	/delete-property/ interrupts-extended;
+	/delete-property/ qcom,wakeup-byte;
+
 	compatible = "qcom,geni-uart";
 	reg = <0x88c000 0x3000>;
+	interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>;
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";

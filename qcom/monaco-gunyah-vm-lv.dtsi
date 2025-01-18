@@ -4,11 +4,11 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <532 0x10000>, <533 0x10000>, <534 0x10000>, <532 0x20000>, <533 0x20000>, <534 0x20000>;
+	qcom,msm-id = <606 0x10000>;
 	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "root=/dev/vda nokaslr log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
+		bootargs = "root=/dev/vda log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
 	};
 
 	reserved_memory: reserved-memory {
@@ -278,11 +278,6 @@
 
 		vdevices {
 			generate = "/hypervisor";
-			minidump {
-				vdevice-type = "minidump";
-				push-compatible = "qcom,minidump_rm";
-				minidump_allowed;
-			};
 
 			rm-rpc {
 				vdevice-type = "rm-rpc";
@@ -941,83 +936,6 @@
 			qcom,dma-heap-name = "qcom,qseecom-ta";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
-		};
-	};
-
-	qcom,mem-buf {
-		compatible = "qcom,mem-buf";
-		qcom,mem-buf-capabilities = "consumer";
-		qcom,vmid = <53>;
-	};
-
-	qtee_shmbridge {
-		compatible = "qcom,tee-shared-memory-bridge";
-		qcom,custom-bridge-size = <512>;
-		qcom,support-hypervisor;
-	};
-
-	logbuf: qcom,logbuf-vendor-hooks {
-		compatible = "qcom,logbuf-vendor-hooks";
-	};
-};
-
-&soc {
-	hab: qcom,hab {
-		compatible = "qcom,hab";
-		vmid = <3>;
-
-		mmidgrp100: mmidgrp100 {
-			grp-start-id = <100>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp200: mmidgrp200 {
-			grp-start-id = <200>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp300: mmidgrp300 {
-			grp-start-id = <300>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp400: mmidgrp400 {
-			grp-start-id = <400>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp500: mmidgrp500 {
-			grp-start-id = <500>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp600: mmidgrp600 {
-			grp-start-id = <600>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp1400: mmidgrp1400 {
-			grp-start-id = <1400>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp1500: mmidgrp1500 {
-			grp-start-id = <1500>;
-			role = "fe";
-			remote-vmids = <0>;
-		};
-
-		mmidgrp1600: mmidgrp1600 {
-			grp-start-id = <1600>;
-			role = "fe";
-			remote-vmids = <0>;
 		};
 	};
 };

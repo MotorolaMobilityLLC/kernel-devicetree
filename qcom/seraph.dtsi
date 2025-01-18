@@ -11,6 +11,7 @@
 #include <dt-bindings/interconnect/qcom,seraph.h>
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/spmi/spmi.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Seraph";
@@ -268,10 +269,144 @@
 		#hwlock-cells = <1>;
 	};
 
-	smem: qcom,smem {
-		compatible = "qcom,smem";
-		memory-region = <&smem_mem>;
-		hwlocks = <&tcsr_mutex 3>;
+	qcom,smp2p-adsp {
+		compatible = "qcom,smp2p";
+		qcom,smem = <443>, <429>;
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_LPASS IPCC_MPROC_SIGNAL_SMP2P
+			      IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_LPASS
+			  IPCC_MPROC_SIGNAL_SMP2P>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <2>;
+
+		adsp_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		adsp_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		sleepstate_smp2p_out: sleepstate-out {
+			qcom,entry-name = "sleepstate";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		sleepstate_smp2p_in: qcom,sleepstate-in {
+			qcom,entry-name = "sleepstate_see";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg2_out: qcom,smp2p-rdbg2-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg2_in: qcom,smp2p-rdbg2-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	qcom,smp2p-cdsp {
+		compatible = "qcom,smp2p";
+		qcom,smem = <94>, <432>;
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_CDSP IPCC_MPROC_SIGNAL_SMP2P
+			      IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_CDSP IPCC_MPROC_SIGNAL_SMP2P>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <5>;
+
+		cdsp_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		cdsp_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		smp2p_rdbg5_out: qcom,smp2p-rdbg5-out {
+			qcom,entry-name = "rdbg";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		smp2p_rdbg5_in: qcom,smp2p-rdbg5-in {
+			qcom,entry-name = "rdbg";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	qcom,smp2p-soccp {
+		compatible = "qcom,smp2p";
+		qcom,smem = <617>, <616>;
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_SOCCP IPCC_MPROC_SIGNAL_SMP2P
+			      IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_SOCCP IPCC_MPROC_SIGNAL_SMP2P>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <19>;
+
+		soccp_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		soccp_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
+
+	qcom,smp2p_sleepstate {
+		compatible = "qcom,smp2p-sleepstate";
+		qcom,smem-states = <&sleepstate_smp2p_out 0>;
+		interrupt-parent = <&sleepstate_smp2p_in>;
+		interrupts = <0 0>;
+		interrupt-names = "smp2p-sleepstate-in";
+	};
+
+	aoss_qmp: power-controller@c300000 {
+		compatible = "qcom,aoss-qmp";
+		reg = <0xc300000 0x400>;
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_AOP
+			      IPCC_MPROC_SIGNAL_GLINK_QMP
+			      IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_AOP
+			  IPCC_MPROC_SIGNAL_GLINK_QMP>;
+
+		#power-domain-cells = <1>;
+		#clock-cells = <0>;
+	};
+
+	qmp_tme: qcom,qmp-tme {
+		compatible = "qcom,qmp-mbox";
+		qcom,remote-pid = <14>;
+		mboxes = <&ipcc_mproc IPCC_CLIENT_TME
+			  IPCC_MPROC_SIGNAL_GLINK_QMP>;
+		mbox-names = "tme_qmp";
+		interrupt-parent = <&ipcc_mproc>;
+		interrupts = <IPCC_CLIENT_TME
+			      IPCC_MPROC_SIGNAL_GLINK_QMP
+			      IRQ_TYPE_EDGE_RISING>;
+
+		label = "tme";
+		qcom,early-boot;
+		priority = <0>;
+		mbox-desc-offset = <0x0>;
+		#mbox-cells = <1>;
 	};
 
 	intc: interrupt-controller@17200000 {
@@ -360,6 +495,16 @@
 			reg = <0x1742d000 0x1000>;
 			status = "disabled";
 		};
+	};
+
+	qcom,chd {
+		compatible = "qcom,core-hang-detect";
+		label = "core";
+		qcom,chd-percpu-info = <&CPU0 0x17800058 0x17800060>,
+					<&CPU1 0x17810058 0x17810060>,
+					<&CPU2 0x17820058 0x17820060>,
+					<&CPU3 0x17830058 0x17830060>,
+					<&CPU4 0x17840058 0x17840060>;
 	};
 
 	apps_rsc: rsc@17a00000 {
@@ -587,8 +732,15 @@
 	};
 
 	evacc: clock-controller@a8f0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "evacc_clocks";
+		compatible = "qcom,seraph-evacc", "syscon";
+		reg = <0xa8f0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&sleep_clk>, <&gcc GCC_EVA_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "sleep_clk", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -621,8 +773,15 @@
 	};
 
 	lsrcc: clock-controller@a9f0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "lsrcc_clocks";
+		compatible = "qcom,seraph-lsrcc", "syscon";
+		reg = <0xa9f0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>,
+			 <&sleep_clk>, <&gcc GCC_LSR_AHB_CLK>;
+		clock-names = "bi_tcxo",
+			      "sleep_clk", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
 	};
@@ -636,10 +795,80 @@
 	};
 
 	videocc: clock-controller@aaf0000 {
-		compatible = "qcom,dummycc";
-		clock-output-names = "videocc_clocks";
+		compatible = "qcom,seraph-videocc", "syscon";
+		reg = <0xaaf0000 0x10000>;
+		reg-name = "cc_base";
+		vdd_mm-supply = <&VDD_MM_LEVEL>;
+		vdd_mx-supply = <&VDD_MX_LEVEL>;
+		clocks = <&rpmhcc RPMH_CXO_CLK>, <&gcc GCC_VIDEO_AHB_CLK>;
+		clock-names = "bi_tcxo", "iface";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	thermal_zones: thermal-zones {};
+
+	spmi_bus: spmi0_bus: qcom,spmi@c42d000 {
+		compatible = "qcom,spmi-pmic-arb";
+		reg = <0xc42d000 0x4000>,
+		      <0xc400000 0x3000>,
+		      <0xc500000 0x400000>,
+		      <0xc440000 0x80000>,
+		      <0xc4c0000 0x10000>;
+		reg-names = "cnfg", "core", "chnls", "obsrvr", "intr";
+		interrupts-extended = <&pdc 1 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "periph_irq";
+		interrupt-controller;
+		#interrupt-cells = <4>;
+		#address-cells = <2>;
+		#size-cells = <0>;
+		cell-index = <0>;
+		qcom,channel = <0>;
+		qcom,ee = <0>;
+		qcom,bus-id = <0>;
+	};
+
+	spmi0_debug_bus: qcom,spmi-debug@11314000 {
+		compatible = "qcom,spmi-pmic-arb-debug";
+		reg = <0x11314000 0x60>, <0x221c8784 0x4>;
+		reg-names = "core", "fuse";
+		clock-names = "core_clk";
+		qcom,fuse-enable-bit = <18>;
+		#address-cells = <2>;
+		#size-cells = <0>;
+		depends-on-supply = <&spmi_bus>;
+
+		qcom,pmar2230-debug@0 {
+			compatible = "qcom,spmi-pmic";
+			reg = <0 SPMI_USID>;
+			#address-cells = <2>;
+			#size-cells = <0>;
+			qcom,can-sleep;
+		};
+
+		qcom,pmg1110-debug@a {
+			compatible = "qcom,spmi-pmic";
+			reg = <10 SPMI_USID>;
+			#address-cells = <2>;
+			#size-cells = <0>;
+			qcom,can-sleep;
+		};
+
+		qcom,pm8010-debug@c {
+			compatible = "qcom,spmi-pmic";
+			reg = <12 SPMI_USID>;
+			#address-cells = <2>;
+			#size-cells = <0>;
+			qcom,can-sleep;
+		};
+
+		qcom,pm8010-debug@d {
+			compatible = "qcom,spmi-pmic";
+			reg = <13 SPMI_USID>;
+			#address-cells = <2>;
+			#size-cells = <0>;
+			qcom,can-sleep;
+		};
 	};
 };
 
@@ -690,12 +919,16 @@
 };
 
 &eva_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&eva_cc_mvs0c_gdsc>;
+	clocks = <&gcc GCC_EVA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &eva_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_EVA_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
@@ -746,39 +979,53 @@
 };
 
 &lsr_cc_lsr_noc_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &lsr_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&lsr_cc_mvs0c_gdsc>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &lsr_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_LSR_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&video_cc_mvs0c_gdsc>;
 	reg = <0xaaf80a8 0x4>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_vpp0_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0_vpp1_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 
 &video_cc_mvs0c_gdsc {
-	compatible = "regulator-fixed";
+	parent-supply = <&VDD_MM_LEVEL>;
 	reg = <0xaaf814c 0x4>;
+	clocks = <&gcc GCC_VIDEO_AHB_CLK>;
+	clock-names = "ahb_clk";
 	status = "ok";
 };
 

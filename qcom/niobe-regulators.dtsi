@@ -661,6 +661,28 @@
 		};
 	};
 
+	rpmh-regulator-ldob18 {
+		compatible = "qcom,rpmh-vrm-regulator";
+		qcom,resource-name = "ldob18";
+		qcom,regulator-type = "pmic5-ldo";
+		qcom,supported-modes =
+			<RPMH_REGULATOR_MODE_LPM
+			RPMH_REGULATOR_MODE_HPM>;
+		qcom,mode-threshold-currents = <0 10000>;
+		status = "disabled";
+
+		L18B:
+		pmxr2230_l18: vreg-pmxr2230-l18 {
+			regulator-name = "pmxr2230_l18";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+			regulator-min-microvolt = <1700000>;
+			regulator-max-microvolt = <1900000>;
+			qcom,init-voltage = <1800000>;
+			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+			status = "disabled";
+		};
+	};
+
 	rpmh-regulator-ldob19 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldob19";

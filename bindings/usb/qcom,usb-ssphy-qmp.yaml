@@ -165,6 +165,13 @@ properties:
       detection.
     type: boolean
 
+  qcom,force-usb3:
+    description: |
+      On some targets, although the second controller is DP Combo, yet it
+      needs to be configured as USB3 only since DP is not supported and any
+      DP related register ops are NOP.
+    type: boolean
+
 required:
   - compatible
   - reg

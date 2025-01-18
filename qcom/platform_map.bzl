@@ -42,6 +42,7 @@ _platform_map = {
             {"name": "lemans-gunyah-vm-qam.dtb"},
             {"name": "lemans-gunyah-vm-vp.dtb"},
             {"name": "monaco-gunyah-vm-qam.dtb"},
+            {"name": "sa8797p-gunyah-vm-qam.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -49,6 +50,7 @@ _platform_map = {
             {"name": "lemans-gunyah-vm-qam-overlay.dtbo"},
             {"name": "lemans-gunyah-vm-vp-overlay.dtbo"},
             {"name": "monaco-gunyah-vm-qam-overlay.dtbo"},
+            {"name": "sa8797p-gunyah-vm-qam-overlay.dtbo"},
         ],
     },
     "gen3auto": {
@@ -275,6 +277,7 @@ _platform_map = {
             {"name": "niobep-idp-overlay.dtbo"},
             {"name": "niobep-idp-dpu-overlay.dtbo"},
             {"name": "niobep-qxr-overlay.dtbo"},
+            {"name": "niobep-qxr-vista-overlay.dtbo"},
             {
                 "name": "niobe-rumi-overlay.dtbo",
                 "apq": False,

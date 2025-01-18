@@ -230,7 +230,7 @@
 };
 
 &usb0 {
-	extcon = <&charger>, <&eud>;
+	extcon = <&eud>;
 };
 
 &pm8150_poweron {
