@@ -127,6 +127,24 @@
 			};
 		};
 	};
+
+	qupv3_se11_spi_pins: qupv3_se11_spi_pins {
+
+		qupv3_se11_spi_sleep: qupv3_se11_spi_sleep {
+			mux {
+				pins = "gpio44", "gpio45",
+					"gpio46";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio44", "gpio45",
+					"gpio46";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
 };
 
 &L23B {
@@ -163,6 +181,11 @@
 
 	status = "ok";
 
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&qupv3_se11_spi_mosi_active>, <&qupv3_se11_spi_miso_active>,
+		<&qupv3_se11_spi_clk_active>;
+	pinctrl-1 = <&qupv3_se11_spi_sleep>;
+
 	gdx-cli@0 {
 		status = "ok";
 		compatible = "goodix,marseille";
@@ -175,6 +198,7 @@
 		goodix,reset-gpio = <&tlmm 20 0x0>;
 		goodix,irq-gpio = <&tlmm 162 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		cs,gpio = <&tlmm 47 0x0>;
 		goodix,panel-max-x = <17280>;
 		goodix,panel-max-y = <20352>;
 		goodix,panel-max-w = <256>;
@@ -211,6 +235,7 @@
 		interrupts = <162 0x2>;
 		focaltech,reset-gpio = <&tlmm 20 0x0>;
 		focaltech,irq-gpio = <&tlmm 162 0x02>;
+		cs,gpio = <&tlmm 47 0x0>;
 		focaltech,max-touch-number = <10>;
 		focaltech,display-coords =  <0 0 1080 1272>;
 		vdd-supply=<&L14B>;
