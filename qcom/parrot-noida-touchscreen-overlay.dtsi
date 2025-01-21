@@ -1,0 +1,53 @@
+/*
+ * Copyright (c) 2022, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&qupv3_se9_i2c {
+        status = "disabled";
+};
+
+&qupv3_se9_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	focaltech@1{
+                status = "ok";
+                compatible = "focaltech,fts";
+                reg = <1>;
+                mmi,status = "/chosen","mmi,panel_name","contains","ft36","boe_vtdr6150";
+                spi-max-frequency = <9600000>;
+                //interrupt-parent = <&tlmm>;
+                //interrupts = <65 0x2002>;
+                focaltech,vdd-gpio = <&tlmm 126 0x0>;
+                focaltech,reset-gpio = <&tlmm 131 0x0>;
+                focaltech,irq-gpio = <&tlmm 65 0x2002>;
+                vdd-supply = <&L28B>;
+		//vdd-volt = <3300000>;
+	 	vcc_i2c-supply = <&L21B>;
+                focaltech,max-touch-number = <10>;
+                focaltech,display-coords =  <0 0 17280 38400>;
+                //focaltech,edge-ctrl;
+                //focaltech,interpolation-ctrl;
+                //focaltech,sample-ctrl;
+
+                pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+                pinctrl-0 = <&ts_spi_active>;
+                pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
+                pinctrl-2 = <&ts_spi_release>;
+		mmi,usb-charger-detection;
+                mmi,enable-gestures;
+                mmi,supported_gesture_type = <0x07>;
+	};
+};
+
