@@ -1015,6 +1015,30 @@
 					allocate-base;
 				};
 			};
+
+			vsmmu@15a00000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15a00000>;
+				num-cbs = <0x8>;
+				num-smrs = <0x8>;
+				patch = "/soc/apps-smmu@15a00000";
+			};
+
+			vsmmu@15c00000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15c00000>;
+				num-cbs = <0x8>;
+				num-smrs = <0x8>;
+				patch = "/soc/apps-smmu@15c00000";
+			};
+
+			vsmmu@15e00000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15e00000>;
+				num-cbs = <0x8>;
+				num-smrs = <0x8>;
+				patch = "/soc/apps-smmu@15e00000";
+			};
 		};
 	};
 
@@ -1080,6 +1104,39 @@
 		clock-frequency = <19200000>;
 	};
 
+	apps_smmu_0: apps-smmu@15a00000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+
+	apps_smmu_1: apps-smmu@15c00000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+
+	apps_smmu_2: apps-smmu@15e00000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+
 	qcom_dma_heaps: qcom,dma-heaps {
 		compatible = "qcom,dma-heaps";
 
@@ -1094,6 +1151,11 @@
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
 		};
+	};
+
+	dma_dev@0x0 {
+		compatible = "qcom,iommu-dma";
+		memory-region = <&system_cma>;
 	};
 
 	msm_gpu_hyp: qcom,hgsl {
