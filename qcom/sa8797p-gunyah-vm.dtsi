@@ -1053,6 +1053,38 @@
 				num-smrs = <0x8>;
 				patch = "/soc/apps-smmu@15e00000";
 			};
+
+			test-dbl-gvm1 {
+				vdevice-type = "doorbell";
+				generate = "/hypervisor/test-dbl-gvm1";
+				qcom,label = <0x4>;
+				peer-default;
+			};
+
+			test-dbl-gvm1-source {
+				vdevice-type = "doorbell-source";
+				generate = "/hypervisor/test-dbl-gvm1-source";
+				qcom,label = <0x4>;
+				peer-default;
+			};
+
+			test-msgq-gvm1 {
+				vdevice-type = "message-queue-pair";
+				generate = "/hypervisor/test-msgq-gvm1-pair";
+				message-size = <0xf0>;
+				queue-depth = <0x8>;
+				qcom,label = <0x4>;
+				peer-default;
+			};
+
+			vcpu-sched-test-msgq {
+				vdevice-type = "message-queue-pair";
+				generate = "/hypervisor/sched-test-msgq-pair";
+				message-size = <0xf0>;
+				queue-depth = <0x8>;
+				qcom,label = <0x8>;
+				peer-default;
+			};
 		};
 	};
 
@@ -1386,6 +1418,26 @@
 			speed = <10000>;
 			full-duplex;
 		};
+	};
+
+	qcom,test-dbl-gvm1 {
+		compatible = "qcom,gh-dbl";
+		qcom,label = <0x4>;
+	};
+
+	qcom,test-msgq-gvm1 {
+		compatible = "qcom,gh-msgq-test";
+		gunyah-label = <4>;
+		affinity = <0>;
+	};
+
+	qcom,gh-qtimer@17C25000 {
+		compatible = "qcom,gh-qtmr";
+		reg = <0x17425000 0x1000>;
+		reg-names = "qtmr-base";
+		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "qcom,qtmr-intr";
+		qcom,secondary;
 	};
 };
 
