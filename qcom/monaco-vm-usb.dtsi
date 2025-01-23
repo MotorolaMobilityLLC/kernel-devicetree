@@ -38,6 +38,13 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,disable-host-ssphy-powerdown;
+
+		/*
+		 * Establish dependency on smmu driver so that depopulate path of
+		 * deferred probe doesn't run into existing bug in smmu driver.
+		 */
+		dummy-supply = <&apps_smmu>;
+
 		status = "disabled";
 		dwc3@a600000 {
 			compatible = "snps,dwc3";
@@ -251,6 +258,12 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,default-mode-host;
+
+		/*
+		 * Establish dependency on smmu driver so that depopulate path of
+		 * deferred probe doesn't run into existing bug in smmu driver.
+		 */
+		dummy-supply = <&apps_smmu>;
 
 		status = "disabled";
 		dwc3@a400000 {
