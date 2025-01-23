@@ -848,6 +848,10 @@
 		};
 	};
 
+	crypto_node {
+		compatible = "qcom,crypto";
+	};
+
 	sdhc_1: sdhci@7C4000 {
 		status = "disabled";
 
