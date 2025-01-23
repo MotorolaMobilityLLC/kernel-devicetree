@@ -1306,5 +1306,7 @@
 
 #include "seraph-reserved-memory.dtsi"
 #include "seraph-dma-heaps.dtsi"
+#include "seraph-coresight.dtsi"
+#include "seraph-debug.dtsi"
 #include "msm-arm-smmu-seraph.dtsi"
 #include "seraph-usb.dtsi"
