@@ -82,5 +82,9 @@
 &battery_charger {
 	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 500000 300000 100000>;
 	qcom,wireless-fw-name = "cps4059.bin";
+	mmi,wls-2nd-fw-by-sku;
+	/*PRC 0x01, ROW 0x02, NA 0x03, VZW 0x04, JP 0x05 ...*/
+	mmi,wls-2nd-fw-sku = <0x01>;
+	qcom,wireless-fw-name-2nd = "cps4059_2nd.bin";
 };
 
