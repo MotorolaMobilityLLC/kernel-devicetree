@@ -1,0 +1,21 @@
+gmugos for hgsl driver
+
+gmugos registers provides interface for communication between guest operating system
+and graphics management unit(GMU).
+
+Required properties:
+- compatible : Must be "qcom,hgsl-gmugosx-ipcy"
+                x is gpu idx
+                y ranges from 0 to 7 based on vm
+- reg : Specify register range used for gmu communication
+
+Examples:
+	gmugos0_ipc0: syscon@3d40000 {
+		compatible = "qcom,hgsl-gmugos0-ipc0", "syscon";
+		reg = <0x3d40000 0x10>;
+	};
+
+	gmugos1_ipc0: syscon@9840000 {
+		compatible = "qcom,hgsl-gmugos1-ipc0", "syscon";
+		reg = <0x9840000 0x10>;
+	};
