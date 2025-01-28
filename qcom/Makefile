@@ -128,6 +128,7 @@ NIOBE_BOARDS += \
 		niobep-atp-overlay.dtbo \
 		niobep-idp-overlay.dtbo \
 		niobep-idp-dpu-overlay.dtbo \
+		niobep-idp-ihv-overlay.dtbo \
 		niobep-qxr-overlay.dtbo \
 		niobep-qxr-vista-overlay.dtbo \
 		niobep-qxr-vista-v2-overlay.dtbo
