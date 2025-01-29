@@ -1095,6 +1095,13 @@
 			memory-region = <&qseecom_ta_mem>;
 		};
 	};
+
+	msm_gpu_hyp: qcom,hgsl {
+		compatible = "qcom,hgsl";
+
+		default_iocoherency;
+		db-off;
+	};
 };
 
 / {
