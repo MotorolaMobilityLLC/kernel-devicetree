@@ -65,6 +65,11 @@ properties:
     description: parameter override sequence with value, reg offset pair
     $ref: /schemas/types.yaml#/definitions/uint32-array
 
+  qcom,eud-det-val:
+    description:
+      EUD Detect register programming incase multiple HS PHYs are present and
+      each one has to be brought out of reset.
+
   dummy-supply:
     description: |
       phandle to eUSB2 repeater for enforcing probe ordering for eUSB2 repeater
