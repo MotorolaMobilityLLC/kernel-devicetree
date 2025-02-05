@@ -90,6 +90,8 @@
 		resets = <&gcc GCC_QUSB2PHY_PRIM_BCR>;
 		reset-names = "phy_reset";
 
+		qcom,eud-det-val = /bits/ 8 <0x3>;
+
 		/* eUSB2 HPG version 1.0.2 update */
 		qcom,param-override-seq =
 			<0x00 0x58>;
