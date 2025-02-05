@@ -78,7 +78,6 @@
 		};
 
 		pm8550b_repeater: qcom,repeater@fd00 {
-			status = "disabled";
 			compatible = "qcom,pmic-eusb2-repeater";
 			reg = <0xfd00>;
 		};
