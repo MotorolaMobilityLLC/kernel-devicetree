@@ -349,9 +349,6 @@
 		interconnect-names = "usb-ddr", "ddr-usb";
 		interconnects = <&aggre1_noc MASTER_USB3_1 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_1>;
-
-		status = "disabled";
-
 		dwc3@a400000 {
 			compatible = "snps,dwc3";
 			reg = <0xa400000 0xd93c>;
@@ -374,6 +371,7 @@
 			tx-fifo-resize;
 			dr_mode = "otg";
 			maximum-speed = "super-speed-plus";
+			usb-role-switch;
 		};
 	};
 
@@ -393,7 +391,6 @@
 
 		resets = <&gcc GCC_QUSB2PHY_SEC_BCR>;
 		reset-names = "phy_reset";
-		status = "disabled";
 
 	};
 
@@ -610,9 +607,6 @@
 				USB3_DP_PCS_USB3_RXEQTRAINING_DFE_TIME_S2 0x07
 				USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_L 0x40
 				USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_H 0x00>;
-
-		status = "disabled";
-
 	};
 
 	usb_audio_qmi_dev {
