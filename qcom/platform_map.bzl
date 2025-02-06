@@ -278,6 +278,7 @@ _platform_map = {
             {"name": "niobep-atp-overlay.dtbo"},
             {"name": "niobep-idp-overlay.dtbo"},
             {"name": "niobep-idp-dpu-overlay.dtbo"},
+            {"name": "niobep-idp-ihv-overlay.dtbo"},
             {"name": "niobep-qxr-overlay.dtbo"},
             {"name": "niobep-qxr-vista-overlay.dtbo"},
             {"name": "niobep-qxr-vista-v2-overlay.dtbo"},
