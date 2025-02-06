@@ -453,6 +453,17 @@
 		qcom,gic-class1-cpus = <&CPU4>;
 	};
 
+	qcom,msm-cdsp-loader {
+		compatible = "qcom,cdsp-loader";
+		qcom,proc-img-to-load = "cdsp";
+		qcom,rproc-handle = <&cdsp_pas>;
+	};
+
+	qcom,msm-adsprpc-mem {
+		compatible = "qcom,msm-adsprpc-mem-region";
+		memory-region = <&adsp_mem_heap>;
+	};
+
 	memtimer: timer@17420000 {
 		#address-cells = <1>;
 		#size-cells = <1>;
@@ -1353,6 +1364,14 @@
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x2000000>;
 		linux,cma-default;
+	};
+
+	adsp_mem_heap: adsp_heap_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0xC00000>;
 	};
 
 	/* cdsp eva shared memory */
