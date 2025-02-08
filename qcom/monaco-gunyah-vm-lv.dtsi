@@ -13,7 +13,7 @@
 	};
 
 	chosen {
-		bootargs = "root=/dev/vda log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
+		bootargs = "log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
 	};
 
 	reserved_memory: reserved-memory {
