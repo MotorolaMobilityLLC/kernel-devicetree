@@ -166,10 +166,6 @@
 		};
 	};
 
-	virtio_blk_lv_system_b {
-		qcom,dev-name = "system_b";
-	};
-
 	virtio_blk_lv_system_a {
 		qcom,dev-name = "system_a";
 	};
@@ -178,68 +174,80 @@
 		qcom,dev-name = "userdata";
 	};
 
-	virtio_blk_lv_firmware {
-		qcom,dev-name = "firmware";
+	virtio_blk_lv_system_b {
+		qcom,dev-name = "system_b";
 	};
 
 	virtio_blk_lv_persist {
 		qcom,dev-name = "persist";
 	};
 
-	virtio_blk_lv_misc {
-		qcom,dev-name = "misc";
+	virtio_blk_lv_vbmeta_a {
+		qcom,dev-name = "vbmeta_a";
 	};
 
 	virtio_blk_lv_vbmeta_b {
 		qcom,dev-name = "vbmeta_b";
 	};
 
-	virtio_blk_lv_vbmeta_a {
-		qcom,dev-name = "vbmeta_a";
-	};
-
-	virtio_blk_lv_modem_b {
-		qcom,dev-name = "modem_b";
-	};
-
-	virtio_blk_lv_modem_a {
-		qcom,dev-name = "modem_a";
-	};
-
-	virtio_blk_lv_bluetooth_b {
-		qcom,dev-name = "bluetooth_b";
-	};
-
-	virtio_blk_lv_bluetooth_a {
-		qcom,dev-name = "bluetooth_a";
+	virtio_blk_lv_boot_a {
+		qcom,dev-name = "boot_a";
 	};
 
 	virtio_blk_lv_boot_b {
 		qcom,dev-name = "boot_b";
 	};
 
-	virtio_blk_lv_boot_a {
-		qcom,dev-name = "boot_a";
+	virtio_blk_lv_dtbo_a {
+		qcom,dev-name = "dtbo_a";
 	};
 
-	virtio_blk_lv_bootloader_b {
-		qcom,dev-name = "bootloader_b";
+	virtio_blk_lv_dtbo_b {
+		qcom,dev-name = "dtbo_b";
 	};
 
-	virtio_blk_lv_bootloader_a {
-		qcom,dev-name = "bootloader_a";
+	virtio_blk_lv_firmware {
+		qcom,dev-name = "firmware";
 	};
 
-	virtio_blk_lv_dsp_b {
-		qcom,dev-name = "dsp_b";
+	virtio_blk_lv_devinfo {
+		qcom,dev-name = "devinfo";
+	};
+
+	virtio_blk_lv_misc {
+		qcom,dev-name = "misc";
+	};
+
+	virtio_blk_lv_modem_a {
+		qcom,dev-name = "modem_a";
+	};
+
+	virtio_blk_lv_modem_b {
+		qcom,dev-name = "modem_b";
+	};
+
+	virtio_blk_lv_bluetooth_a {
+		qcom,dev-name = "bluetooth_a";
+	};
+
+	virtio_blk_lv_bluetooth_b {
+		qcom,dev-name = "bluetooth_b";
 	};
 
 	virtio_blk_lv_dsp_a {
 		qcom,dev-name = "dsp_a";
 	};
 
-	virtio_blk_lv_devinfo {
-		qcom,dev-name = "devinfo";
+	virtio_blk_lv_dsp_b {
+		qcom,dev-name = "dsp_b";
+	};
+
+	virtio_blk_lv_bootloader_a {
+		qcom,dev-name = "bootloader_a";
+	};
+
+	virtio_blk_lv_bootloader_b {
+		qcom,dev-name = "bootloader_b";
 	};
 
 	qcom,vm-config {
@@ -798,6 +806,7 @@
 				};
 			};
 
+			/* Touch input0 */
 			virtio-mmio@31 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -814,6 +823,7 @@
 				};
 			};
 
+			/* keyboard input1 */
 			virtio-mmio@32 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -830,6 +840,7 @@
 				};
 			};
 
+			/* console */
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -846,7 +857,7 @@
 				};
 			};
 
-			/* i2c 0*/
+			/* i2c 0 */
 			virtio-mmio@34 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -863,6 +874,7 @@
 				};
 			};
 
+			/* scmi */
 			virtio-mmio@35 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -879,7 +891,41 @@
 				};
 			};
 
+			/* dtbo_a */
 			virtio-mmio@36 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_lv_dtbo_a";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1D6000>;
+				memory {
+					qcom,label = <0x124>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* dtbo_b */
+			virtio-mmio@37 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_lv_dtbo_b";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1DA000>;
+				memory {
+					qcom,label = <0x125>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@38 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -887,9 +933,9 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x1D6000>;
+				dma_base = <0x0 0x1DE000>;
 				memory {
-					qcom,label = <0x124>;
+					qcom,label = <0x126>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
