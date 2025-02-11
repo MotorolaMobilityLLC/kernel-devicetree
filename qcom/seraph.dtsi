@@ -990,6 +990,12 @@
 		tlmm-vm-gpio-list = <&tlmm 12 0>;
 	};
 
+	tlmm-vm-test {
+		compatible = "qcom,tlmm-vm-test";
+		qcom,master;
+		tlmm-vm-gpio-list = <&tlmm 12 0>;
+	};
+
 	adsp_pas: remoteproc-adsp@06C00000 {
 		compatible = "qcom,seraph-adsp-pas";
 		reg = <0x06C00000 0x10000>;
