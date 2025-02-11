@@ -331,6 +331,8 @@
 				0x0 0x40000000 0x0 0x40000000 0x0 0x100000 0x0
 				0x0 0x40100000 0x0 0x40100000 0x0 0x1ff00000 0x0
 				0x4 0x10100000 0x4 0x10100000 0x0 0x100000 0x0
+				/* EMAC1 CH4 region */
+				0x0 0x2300C000 0x0 0x2300C000 0x0 0x1000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -352,6 +354,9 @@
 			346 346
 			406 406
 			407 407
+			/* EMAC1 CH4 GIC IRQ */
+			808 808
+			860 860
 			>;
 
 		memory {
@@ -1531,6 +1536,48 @@
 
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
+	mtl_rx_setup: rx-queue-config {
+		snps,rx-queues-to-use = <1>;
+		snps,rx-sched-sp;
+
+		queue {
+			snps,dcb-algorithm;
+			snps,priority = <0x1>;
+		};
+	};
+
+	mtl_tx_setup: tx-queue-config {
+		snps,tx-queues-to-use = <1>;
+		snps,tx-sched-sp;
+		queue {
+			snps,dcb-algorithm;
+		};
+	};
+
+	emac1_hw: qcom,ethernet@2300C000 {
+		compatible = "qcom,stmmac-ethqos-emac1";
+		emac-core-version = <0x30010000>;
+		qcom,arm-smmu;
+		reg = <0x2300C000 0x1000>;
+		reg-names = "stmmaceth";
+		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
+		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
+		snps,tso;
+		snps,pbl = <32>;
+		mac-address = [00 55 7B B5 7D f7];
+		rx-fifo-depth = <4096>;
+		tx-fifo-depth = <4096>;
+		snps,mtl-rx-config = <&mtl_rx_setup>;
+		snps,mtl-tx-config = <&mtl_tx_setup>;
+		queue = <0>;
+		emac1_emb_smmu: emac1_emb_smmu {
+			compatible = "qcom,emac-thin-smmu-embedded";
+			iommus = <&apps_smmu 0x148 0x1>;
+			qcom,iommu-dma = "fastmap";
+			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
+		};
 	};
 };
 
