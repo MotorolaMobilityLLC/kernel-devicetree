@@ -507,6 +507,12 @@ MONACO_FLEX_LA_GVM_BASE_DTB += monaco-vm-flex-la.dtb
 MONACO_FLEX_LA_GVM_BOARDS += \
                    monaco-vm-flex-la-overlay.dtbo
 
+MONACO_MULTI_GVM_BASE_DTB += \
+		monaco-vm-lv-mt.dtb
+
+MONACO_MULTI_GVM_BOARDS += \
+		monaco-vm-lv-mt-overlay.dtbo
+
 autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(SA8155_LA_GVM_BOARDS),$(SA8155_LA_GVM_BASE_DTB)) \
 	$(call add-overlays, $(SA6155P_LA_GVM_BOARDS),$(SA6155P_LA_GVM_BASE_DTB)) \
@@ -521,7 +527,8 @@ autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(MONACO_LV_GVM_BOARDS),$(MONACO_LV_GVM_BASE_DTB)) \
 	$(call add-overlays, $(MONACO_LA_GVM_BOARDS),$(MONACO_LA_GVM_BASE_DTB)) \
 	$(call add-overlays, $(SA8155_MULTI_GVM_BOARDS),$(SA8155_MULTI_GVM_BASE_DTB)) \
-	$(call add-overlays, $(MONACO_FLEX_LA_GVM_BOARDS),$(MONACO_FLEX_LA_GVM_BASE_DTB))
+	$(call add-overlays, $(MONACO_FLEX_LA_GVM_BOARDS),$(MONACO_FLEX_LA_GVM_BASE_DTB)) \
+	$(call add-overlays, $(MONACO_MULTI_GVM_BOARDS),$(MONACO_MULTI_GVM_BASE_DTB))
 
 autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(SA8155_LA_GVM_BOARDS) $(SA8155_LA_GVM_BASE_DTB) \
@@ -537,7 +544,8 @@ autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(MONACO_LV_GVM_BOARDS) $(MONACO_LV_GVM_BASE_DTB) \
 	$(MONACO_LA_GVM_BOARDS) $(MONACO_LA_GVM_BASE_DTB) \
 	$(SA8155_MULTI_GVM_BOARDS) $(SA8155_MULTI_GVM_BASE_DTB) \
-	$(MONACO_FLEX_LA_GVM_BOARDS) $(MONACO_FLEX_LA_GVM_BASE_DTB)
+	$(MONACO_FLEX_LA_GVM_BOARDS) $(MONACO_FLEX_LA_GVM_BASE_DTB) \
+	$(MONACO_MULTI_GVM_BOARDS) $(MONACO_MULTI_GVM_BASE_DTB)
 
 dtb-y += $(autogvm-dtb-y)
 
