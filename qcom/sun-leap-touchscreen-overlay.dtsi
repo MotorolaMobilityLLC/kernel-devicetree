@@ -176,5 +176,6 @@
 		mmi,resolution_boost = <16>;
 		mmi,usb-charger-detection;
 		fts,stowed-mode-ctrl;
+		fts,pocket-mode-ctrl;
 	};
 };
