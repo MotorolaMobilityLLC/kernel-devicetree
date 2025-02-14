@@ -185,6 +185,14 @@
 	};
 };
 
+&redriver1 {
+	set-aux;
+};
+
+&redriver0 {
+	set-aux;
+};
+
 &msm_sdexpress {
 	status = "disabled";
 };
@@ -195,4 +203,62 @@
 
 &pcie2 {
 	status = "disabled";
+};
+
+/delete-node/ &nordic_ctrl_suspend;
+/delete-node/ &nordic_ctrl_active;
+
+&tlmm {
+	nordic_ctrl_suspend: nordic_ctrl_suspend {
+		mux {
+			pins = "gpio116";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio116";
+			drive-strength = <8>;
+			bias-disable = <0>;
+			output-high;
+		};
+	};
+
+	/* active low due to hmd nordic */
+	nordic_ctrl_active: nordic_ctrl_active {
+		mux {
+			pins = "gpio116";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio116";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+};
+
+&qupv3_se1_spi {
+	status = "okay";
+
+	nordic@0 {
+		compatible = "nordic,spicontroller";
+		reg = <0>;
+
+		v1p8-supply = <&L11B>;
+		spi-max-frequency = <8000000>;
+		pinctrl-names = "nordic_default", "nordic_sleep";
+		pinctrl-0 = <&nordic_gpio6_active &nordic_ctrl_active>;
+		pinctrl-1 = <&nordic_gpio6_suspend &nordic_ctrl_suspend>;
+
+		nordic,ledl-gpio = <&tlmm 116 0>;
+		nordic,ledr-gpio = <&tlmm 4 0>;
+
+		interrupt-parent = <&tlmm>;
+		interrupt-names = "nordicspi_irq";
+		nordic,irq-gpio = <&tlmm 52 0>;
+		nordic,irq_pin = <&tlmm 52 0x00>;
+		interrupts = <52 1>;
+	};
 };

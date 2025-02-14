@@ -1,11 +1,16 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/clock/qcom,gcc-monaco_auto.h>
 
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
 	qcom,msm-id = <606 0x10000>;
 	interrupt-parent = <&intc>;
+
+	aliases {
+		hsuart1 = &qupv3_se3_2uart;
+	};
 
 	chosen {
 		bootargs = "root=/dev/vda log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
@@ -251,6 +256,23 @@
 		qcom,secdomain-ids = <53>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump";
+
+		/* Pass through regions */
+		iomemory-ranges = <
+				/* QUPv3 Tile 0 read-only region */
+				0x0 0x9c0000 0x0 0x9c0000 0x0 0x1000 0x1
+				0x0 0x9c1000 0x0 0x9c1000 0x0 0x1000 0x1
+				/* QUPv3 SE3 region */
+				0x0 0x98c000 0x0 0x98c000 0x0 0x1000 0x0
+				0x0 0x98d000 0x0 0x98d000 0x0 0x1000 0x0
+				0x0 0x99e000 0x0 0x99e000 0x0 0x1000 0x0
+				0x0 0x99f000 0x0 0x99f000 0x0 0x1000 0x0
+				>;
+
+		gic-irq-ranges = <
+				/* QUPv3 SE3 GIC IRQ */
+				562 562
+				>;
 
 		memory {
 			#address-cells = <0x2>;
@@ -841,7 +863,24 @@
 				};
 			};
 
+			/* i2c 0*/
 			virtio-mmio@34 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1CC000>;
+				memory {
+					qcom,label = <0x122>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@35 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -849,9 +888,25 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x1CC000>;
+				dma_base = <0x0 0x1CE000>;
 				memory {
-					qcom,label = <0x122>;
+					qcom,label = <0x123>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@36 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1D6000>;
+				memory {
+					qcom,label = <0x124>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -864,10 +919,18 @@
 				peer-default;
 				dma_base = <0x0 0x1100000>;
 				memory {
-					qcom,label = <0x123>;
+					qcom,label = <0x140>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
+			};
+
+			vsmmu@15000000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15000000>;
+				num-cbs = <0x1>;
+				num-smrs = <0x1>;
+				patch = "/soc/apps-smmu@15000000";
 			};
 		};
 	};
@@ -896,6 +959,28 @@
 		clock-output-names = "gcc_clocks";
 		#clock-cells = <1>;
 		#reset-cells = <1>;
+	};
+
+	scmi {
+		compatible = "arm,scmi-virtio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+
+		scmi_power: protocol@11 {
+			reg = <0x11>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_perf: protocol@13 {
+			reg = <0x13>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_reset: protocol@16 {
+			reg = <0x16>;
+			#reset-cells = <1>;
+		};
 	};
 
 	psci {
@@ -938,4 +1023,72 @@
 			memory-region = <&qseecom_ta_mem>;
 		};
 	};
+
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,mem-buf-capabilities = "consumer";
+		qcom,vmid = <53>;
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		qcom,custom-bridge-size = <512>;
+		qcom,support-hypervisor;
+	};
+
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,monaco_auto-pinctrl";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		status = "disabled";
+	};
+
+	apps_smmu: apps-smmu@15000000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+};
+
+#include "monaco_auto-pinctrl.dtsi"
+#include "monaco-vm-qupv3.dtsi"
+
+/delete-node/ &qupv3_1;
+
+&qupv3_0 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	reg = <0x9c0000 0x2000>;
+	qcom,firmware-managed-resources;
+
+	iommus = <&apps_smmu 0x418 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_se3_2uart {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+	compatible = "qcom,geni-uart";
+	reg = <0x98c000 0x4000>;
+
+	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disabled";
 };

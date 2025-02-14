@@ -49,6 +49,34 @@
 	status = "okay";
 };
 
+&usb2 {
+	status = "okay";
+};
+
+&usb2_phy2 {
+	status = "okay";
+};
+
+&usb_qmp_phy0 {
+	status = "okay";
+};
+
+&usb_qmp_phy1 {
+	status = "okay";
+};
+
+&usb2_phy3 {
+	status = "okay";
+};
+
+&usb2_phy4 {
+	status = "okay";
+};
+
+&usb2_phy5 {
+	status = "okay";
+};
+
 &pcie4 {
 	/delete-property/ iommu-map;
 	status = "okay";

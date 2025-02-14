@@ -16,6 +16,7 @@ _platform_map = {
             {"name": "monaco-vm-la.dtb"},
             {"name": "monaco-vm-lv.dtb"},
             {"name": "sa6155p-vm-la.dtb"},
+            {"name": "monaco-vm-flex-la.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -33,6 +34,7 @@ _platform_map = {
             {"name": "monaco-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-lv-overlay.dtbo"},
             {"name": "sa6155p-vm-la-overlay.dtbo"},
+            {"name": "monaco-vm-flex-la-overlay.dtbo"},
         ],
     },
     "autoghgvm": {
@@ -280,8 +282,10 @@ _platform_map = {
             {"name": "niobep-atp-overlay.dtbo"},
             {"name": "niobep-idp-overlay.dtbo"},
             {"name": "niobep-idp-dpu-overlay.dtbo"},
+            {"name": "niobep-idp-ihv-overlay.dtbo"},
             {"name": "niobep-qxr-overlay.dtbo"},
             {"name": "niobep-qxr-vista-overlay.dtbo"},
+            {"name": "niobep-qxr-vista-v2-overlay.dtbo"},
             {
                 "name": "niobe-rumi-overlay.dtbo",
                 "apq": False,
@@ -625,6 +629,7 @@ _platform_map = {
             {"name": "volcano6i-mtp-moselle-wingmate-overlay.dtbo"},
             {"name": "volcano-qrd-overlay.dtbo"},
             {"name": "volcano6i-qrd-moselle-overlay.dtbo"},
+            {"name": "volcano6i-mtp-STSafe320-brahma-overlay.dtbo"},
         ],
     },
 }

@@ -846,7 +846,24 @@
 				};
 			};
 
+			/*i2c 0*/
 			virtio-mmio@34 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1CC000>;
+				memory {
+					qcom,label = <0x122>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@35 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -854,9 +871,9 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x1CC000>;
+				dma_base = <0x0 0x1CE000>;
 				memory {
-					qcom,label = <0x122>;
+					qcom,label = <0x123>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -869,7 +886,7 @@
 				peer-default;
 				dma_base = <0x0 0x1100000>;
 				memory {
-					qcom,label = <0x123>;
+					qcom,label = <0x140>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};

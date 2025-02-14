@@ -1,6 +1,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/qcom,gcc-monaco_auto.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
 
 / {
 	#address-cells = <0x2>;
@@ -56,6 +57,11 @@
 			alloc-ranges = <0x0 0x0 0xffffffff 0xffffffff>;
 			size = <0x0 0x1000>;
 			no-map;
+		};
+
+		glink_cma_mem: glink-cma-region {
+			no-map;
+			qcom,label = <0x60>;
 		};
 	};
 
@@ -899,10 +905,11 @@
 
 			virtio-mmio@36 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/soc/virtio-glink-cma@2e000000";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
+				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x1A0000>;
 				memory {
@@ -939,6 +946,37 @@
 				dma_base = <0x0 0x1A6000>;
 				memory {
 					qcom,label = <0x46>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@39 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1A8000>;
+				memory {
+					qcom,label = <0x47>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@40 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				dma-coherent;
+				dma_base = <0x0 0x1AA000>;
+				memory {
+					qcom,label = <0x48>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -1136,6 +1174,19 @@
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
 	};
+
+	virtio_glink_cma: virtio-glink-cma@2e000000 {
+		glink_bridge: virtio-glink-bridge {
+			compatible = "virtio,device49162";
+			glink-edge {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_CLIENT_CDSP 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_CLIENT_CDSP 0>;
+				label = "cdsp";
+				qcom,glink-label = "cdsp";
+			};
+		};
+	};
 };
 
 / {
@@ -1183,8 +1234,16 @@
 	/delete-property/ clock-names;
 	/delete-property/ interconnects;
 	/delete-property/ interconnect-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+	/delete-property/ pinctrl-2;
+	/delete-property/ pinctrl-3;
+	/delete-property/ interrupts-extended;
+	/delete-property/ qcom,wakeup-byte;
 	compatible = "qcom,geni-uart";
 	reg = <0x988000 0x4000>;
+	interrupts = <GIC_SPI 529 IRQ_TYPE_LEVEL_HIGH>;
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";

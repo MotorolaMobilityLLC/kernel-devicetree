@@ -1101,6 +1101,22 @@
 				};
 			};
 
+			virtio-mmio@44 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x23A000>;
+				memory {
+					qcom,label = <0x4C>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
 			swiotlb-shm {
 				vdevice-type = "shm";
 				generate = "/swiotlb";
@@ -1256,7 +1272,7 @@
 		compatible = "arm,scmi-virtio";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		status = "disabled";
+		status = "ok";
 
 		scmi_power: protocol@11 {
 			reg = <0x11>;
@@ -1550,12 +1566,11 @@
 &qupv3_2 {
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
 	reg = <0x8c0000 0x2000>;
-	qcom,firmware-managed-resources;
-
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
-	status = "disabled";
+	status = "ok";
 };
 
 &qupv3_se17_4uart {
@@ -1570,16 +1585,13 @@
 	/delete-property/ pinctrl-3;
 	/delete-property/ interrupts-extended;
 	/delete-property/ qcom,wakeup-byte;
-
-	compatible = "qcom,geni-uart";
+	compatible = "qcom,sa8255p-geni-uart";
 	reg = <0x88c000 0x3000>;
 	interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>;
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";
-
-	qcom,auto-suspend-disable;
-	status = "disabled";
+	status = "ok";
 };
 
 &soc {
