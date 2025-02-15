@@ -1047,6 +1047,10 @@
 			compatible = "qcom,scm";
 		};
 
+		qcom_smcinvoke {
+			compatible = "qcom,smcinvoke";
+		};
+
 		android {
 			compatible = "android,firmware";
 			boot_devices = "70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
@@ -1151,6 +1155,18 @@
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
 		};
+	};
+
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,mem-buf-capabilities = "consumer";
+		qcom,vmid = <52>;
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		qcom,custom-bridge-size = <512>;
+		qcom,support-hypervisor;
 	};
 
 	dma_dev@0x0 {
