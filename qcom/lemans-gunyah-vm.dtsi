@@ -1106,22 +1106,6 @@
 				};
 			};
 
-			virtio-mmio@44 {
-				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
-				peer-default;
-				vqs-num = <0x2>;
-				push-compatible = "virtio,mmio";
-				sync-reset;
-				dma-coherent;
-				dma_base = <0x0 0x23A000>;
-				memory {
-					qcom,label = <0x4C>;
-					#address-cells = <0x2>;
-					allocate-base;
-				};
-			};
-
 			swiotlb-shm {
 				vdevice-type = "shm";
 				generate = "/swiotlb";
