@@ -253,5 +253,6 @@
 		mmi,usb-charger-detection;
 		fts,stowed-mode-ctrl;
 		fts,tcmd-test-ctrl;
+		fts,pocket-mode-ctrl;
 	};
 };
