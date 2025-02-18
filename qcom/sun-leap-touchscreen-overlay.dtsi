@@ -17,12 +17,10 @@
 	status = "disabled";
 };
 
-/*
 &aliases {
-	spi0 = "/soc/spi@a90000";
-	spi1 = "/soc/spi@88c000";
+	spi0 = "/soc/qcom,qupv3_1_geni_se@ac0000/spi@a90000";
+	spi2 = "/soc/qcom,qupv3_2_geni_se@8c0000/spi@89c000";
 };
-*/
 
 &L14B {
 	regulator-min-microvolt = <2960000>;
