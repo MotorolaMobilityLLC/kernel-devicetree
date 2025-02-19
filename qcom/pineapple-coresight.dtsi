@@ -4395,9 +4395,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe0: cti@12010000 {
+	apss_pe0: cti@120f0000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12010000 0x1000>;
+		reg = <0x120f0000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe0";
@@ -4406,9 +4406,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe1: cti@12020000 {
+	apss_pe1: cti@12170000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12020000 0x1000>;
+		reg = <0x12170000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe1";
@@ -4417,9 +4417,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe2: cti@12030000 {
+	apss_pe2: cti@121f0000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12030000 0x1000>;
+		reg = <0x121f0000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe2";
@@ -4428,9 +4428,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe3: cti@12040000 {
+	apss_pe3: cti@12270000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12040000 0x1000>;
+		reg = <0x12270000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe3";
@@ -4439,9 +4439,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe4: cti@12050000 {
+	apss_pe4: cti@122f0000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12050000 0x1000>;
+		reg = <0x122f0000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe4";
@@ -4450,9 +4450,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe5: cti@12060000 {
+	apss_pe5: cti@12370000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12060000 0x1000>;
+		reg = <0x12370000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe5";
@@ -4461,9 +4461,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe6: cti@12070000 {
+	apss_pe6: cti@123f0000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12070000 0x1000>;
+		reg = <0x123f0000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe6";
@@ -4472,9 +4472,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_pe7: cti@12080000 {
+	apss_pe7: cti@12470000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12080000 0x1000>;
+		reg = <0x12470000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_pe7";
@@ -4483,9 +4483,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	apss_cluster: cti@12230000 {
+	apss_cluster: cti@12040000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x12230000 0x1000>;
+		reg = <0x12040000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-apss_cluster";
