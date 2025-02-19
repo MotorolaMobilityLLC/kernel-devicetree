@@ -378,3 +378,5 @@
 		qcom,support-hypervisor;
 	};
 };
+
+#include "seraph-vm-dma-heaps.dtsi"
