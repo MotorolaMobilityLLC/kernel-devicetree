@@ -180,6 +180,11 @@ _platform_map = {
                 "name": "pineapplep-sg-v2.dtb",
                 "apq": True,
             },
+            {"name": "pineapple-qcm.dtb"},
+            {
+                "name": "pineapplep-qcs.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
             {"name": "pineapple-atp-overlay.dtbo"},
