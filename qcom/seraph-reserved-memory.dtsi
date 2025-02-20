@@ -224,10 +224,19 @@
 		reg = <0x0 0xf7c00000 0x0 0x4c00000>;
 		reusable;
 		alignment = <0x0 0x400000>;
+		status = "disabled";
 	};
 
 	llcc_lpi_mem: llcc_lpi_region@fc000000 {
 		no-map;
 		reg = <0x0 0xfc000000 0x0 0xc00000>;
+	};
+
+	vm_comm_mem: vm_comm_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		alignment = <0x0 0x400000>;
+		size = <0x0 0x400000>;
 	};
 };

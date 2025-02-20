@@ -372,6 +372,11 @@ _platform_map = {
             {"name": "niobep-vm-idp.dtb"},
         ],
     },
+    "seraph-tuivm": {
+        "dtb_list": [
+            {"name": "seraph-vm-rumi.dtb"},
+        ],
+    },
     "cliffs-tuivm": {
         "dtb_list": [
             {"name": "cliffs-vm-atp.dtb"},
