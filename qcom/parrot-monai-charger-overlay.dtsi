@@ -36,6 +36,7 @@
 			categories = /bits/ 64 <0x1FFFBFFFFF>;
 			level = <4>;
 			init-log-enabled;
+			disable-dynamic-open-log;
 		};
 	};
 };
