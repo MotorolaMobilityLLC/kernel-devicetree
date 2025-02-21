@@ -16,6 +16,10 @@
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
+&aliases {
+        spi1 = "/soc/qcom,qupv3_2_geni_se@8c0000/spi@894000";
+};
+
 &qupv3_se13_spi {
 	status = "ok";
 	qm35@0 {
