@@ -1233,7 +1233,7 @@
 		iommu-map = <0x0 &pcie_smmu 0x0000 0x1>,
 			<0x100 &pcie_smmu 0x0001 0x1>;
 
-		status = "disabled";
+		status = "ok";
 	};
 
 	soc: soc { };
