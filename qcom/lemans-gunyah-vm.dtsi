@@ -1623,6 +1623,7 @@
 #include "lemans-pinctrl.dtsi"
 #include "lemans-vm-qupv3.dtsi"
 
+/delete-node/ &qupv3_0;
 /delete-node/ &qupv3_1;
 
 &qupv3_2 {
