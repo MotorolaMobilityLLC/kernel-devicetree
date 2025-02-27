@@ -1536,6 +1536,7 @@
 		compatible = "qcom,spmi-pmic-arb-debug";
 		reg = <0x11314000 0x60>, <0x221c8784 0x4>;
 		reg-names = "core", "fuse";
+		clocks = <&aoss_qmp>;
 		clock-names = "core_clk";
 		qcom,fuse-enable-bit = <18>;
 		#address-cells = <2>;
