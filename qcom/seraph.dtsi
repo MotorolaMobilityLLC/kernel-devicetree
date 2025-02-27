@@ -1871,3 +1871,4 @@
 #include "seraph-debug.dtsi"
 #include "msm-arm-smmu-seraph.dtsi"
 #include "seraph-usb.dtsi"
+#include "msm-rdbg.dtsi"
