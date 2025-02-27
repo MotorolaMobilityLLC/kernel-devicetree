@@ -158,6 +158,7 @@
 		touchscreen-size-y = <3550>;
 		azoteq,num-contacts = <1>;
 		azoteq,forced-comms = <1>;
+		azoteq,tp_settings = <7>;
 
 		trackpad {
 			azoteq,rx-enable = <4>, <1>, <0>;
