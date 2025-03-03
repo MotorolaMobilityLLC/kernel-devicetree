@@ -54,6 +54,14 @@
 		interconnects = <&aggre1_noc MASTER_USB3_0 &mc_virt SLAVE_EBI1>,
 				<&aggre1_noc MASTER_USB3_0 &config_noc SLAVE_IPA_CFG>,
 				<&gem_noc MASTER_APPSS_PROC &config_noc SLAVE_USB3_0>;
+		qcom,interconnect-values-nom = /* NOMINAL Votes */
+						<1000000 4500000>,
+						<0 2400>,
+						<0 40000>;
+		qcom,interconnect-values-svs = /* SVS Votes */
+						<240000 700000>,
+						<0 2400>,
+						<0 40000>;
 
 		/*
 		 * Establish dependency on smmu driver so that depopulate path of
