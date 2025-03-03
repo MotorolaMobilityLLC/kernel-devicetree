@@ -83,6 +83,7 @@
 		#address-cells = <1>;
 		ranges;
 		dma-coherent;
+		qcom,handoff-smrs = <0x1c00 0x2>;
 
 		/* TODO: qcom,actlr */
 
