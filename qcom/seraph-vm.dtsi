@@ -428,3 +428,5 @@
 		gunyah-label = <9>;
 	};
 };
+
+#include "seraph-vm-dma-heaps.dtsi"
