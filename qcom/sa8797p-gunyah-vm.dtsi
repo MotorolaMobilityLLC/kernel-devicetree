@@ -3,7 +3,7 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <690 0x10000>, <690 0x20000>;
+	qcom,msm-id = <690 0x10000>, <690 0x20000>, <690 0x10001>;
 	interrupt-parent = <&intc>;
 
 	chosen {
