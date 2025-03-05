@@ -72,7 +72,7 @@
 		compatible = "cellwise,cw2217";
 		reg = <0x64>;
 		sense_r_mohm = <5>;
-		df-serialnum = "SB18E07970";
+		df-serialnum = "SB18E07971";
 		vdd-i2c-supply = <&L7B>;
 		fg-psy-name = "flip_battery";
 		factory_mode_ntc_exist = <1>;
@@ -124,27 +124,48 @@
 		mmi,ext-usb-psy-name = "usb";
 		mmi,ext-wls-psy-name = "wireless";
 		mmi,fg-psy-name = "flip_battery";
-		mmi,chrg-iterm-ma = <102>;
-		mmi,fg-iterm-ma = <102>;
-		mmi,max-fv-mv = <4530>;
-		mmi,max-fcc-ma = <2000>;
-		mmi,demo-fv-mv = <4000>;
-		mmi,df-serialnum = "SB18E07970";
-		mmi,mmi-temp-zones = <0 4200 204 0>,
-				<10 4250 814 509>,
-				<15 4530 814 0>,
-				<35 4000 2000 1527>,
-				<35 4300 1400 1222>,
-				<35 4350 1222 1018>,
-				<45 4000 2000 1527>,
-				<45 4300 1400 1222>,
-				<45 4350 1222 1018>,
-				<60 4200 814 0>;
-
+		mmi,df-serialnum = "SB18E07971";
 		mmi,paired-id = <0x00000001>;
 		mmi,thermal-mitigation = <2000000 1500000 1000000 800000 500000 300000 100000>;
 		/* the thermal-ratio is nums * step, and the step is 0.5 */
 		mmi,thermal-ratio-nums = <4>;
+		mmi,chrg-profile-num = <2>;
+		qr10-atl-1050mah {
+			serialnum = "SB18E07971";
+			mmi,chrg-iterm-ma = <102>;
+			mmi,fg-iterm-ma = <102>;
+			mmi,max-fv-mv = <4530>;
+			mmi,max-fcc-ma = <2000>;
+			mmi,demo-fv-mv = <4000>;
+			mmi,mmi-temp-zones = <0 4200 204 0>,
+					<10 4250 814 509>,
+					<15 4530 814 0>,
+					<35 4000 2000 1527>,
+					<35 4300 1400 1222>,
+					<35 4350 1222 1018>,
+					<45 4000 2000 1527>,
+					<45 4300 1400 1222>,
+					<45 4350 1222 1018>,
+					<60 4200 814 0>;
+		};
+		ra11-atl-1105mah {
+			serialnum = "SB18E56673";
+			mmi,chrg-iterm-ma = <120>;
+			mmi,fg-iterm-ma = <264>;
+			mmi,max-fv-mv = <4550>;
+			mmi,max-fcc-ma = <2044>;
+			mmi,demo-fv-mv = <4000>;
+			mmi,mmi-temp-zones = <0 4200 211 0>,
+					<10 4250 844 528>,
+					<15 4550 844 0>,
+					<35 4150 2044 1583>,
+					<35 4250 1583 1266>,
+					<35 4350 1266 1055>,
+					<45 4150 2044 1583>,
+					<45 4250 1583 1266>,
+					<45 4350 1266 1055>,
+					<60 4200 844 0>;
+		};
     };
 };
 
@@ -174,6 +195,7 @@
 	mmi,main-battery-enabled;
 	mmi,paired-id = <0x00010000>;
 	mmi,partner_psy_name = "charger";
+	profile-ids-map = "107000", "SB18E07971", "38000", "SB18E56673";
 	mmi,thermal-primary-mitigation = <4000000 2900000 2000000 1000000 500000 300000 200000>;
 	mmi,thermal-secondary-mitigation = <5000000 4000000 3000000 2000000 1100000 500000 100000>;
 	//mmi,shutdown-empty-vbat-mv = <3000>;
