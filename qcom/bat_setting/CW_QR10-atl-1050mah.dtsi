@@ -11,7 +11,7 @@
  * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
  */
 qr10-atl-1050mah {
-    serialnum = "SB18E07970";
+    serialnum = "SB18E07971";
     fcc_design = <1050>;
     ui_full = <95>;
     config_profile_info = [3c 00 00 00 00 00 00 00
@@ -24,4 +24,21 @@ qr10-atl-1050mah {
                 20 00 ab 10 00 81 02 00
                 00 00 64 07 90 33 00 00
                 00 00 00 00 00 00 00 93];
+
+};
+
+ra11-atl-1105mah {
+    serialnum = "SB18E56673";
+    fcc_design = <1105>;
+    ui_full = <95>;
+    config_profile_info = [37 00 00 00 00 00 00 00
+                ac b9 c1 cb c0 b4 ba 99
+                7f ff e4 a5 94 74 5f 4e
+                45 45 43 82 51 e3 4b ff
+                c9 c7 ca d0 d8 de e7 d9
+                d9 d5 cb cb c7 ca bb d4
+                d0 db d0 da f8 ff ff cb
+                20 00 ab 10 00 80 ee 00
+                00 00 64 20 90 23 00 00
+                00 00 00 00 00 00 00 41];
 };
