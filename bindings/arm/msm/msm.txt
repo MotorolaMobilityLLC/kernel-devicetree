@@ -111,7 +111,7 @@ SoCs:
   compatible = "qcom,niobe", "qcom,niobep"
 
 - SERAPH
-  compatible = "qcom,seraph"
+  compatible = "qcom,seraph", "qcom,seraphp"
 
 - LEMANS
   compatible = "qcom,lemans"
@@ -351,6 +351,7 @@ compatible = "qcom,niobep-idp"
 compatible = "qcom,niobep-qxr"
 compatible = "qcom,seraph-rumi"
 compatible = "qcom,seraph-atp"
+compatible = "qcom,seraphp-atp"
 compatible = "qcom,quinvm"
 compatible = "qcom,direwolf"
 compatible = "qcom,lemans-rumi"

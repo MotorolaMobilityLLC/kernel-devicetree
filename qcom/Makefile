@@ -165,9 +165,11 @@ neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_LA_BASE_DTB) $(NEO_LU
 dtb-y += $(neo-dtb-y)
 
 SERAPH_BASE_DTB += seraph.dtb
+SERAPH_APQ_BASE_DTB += seraphp.dtb
 
 SERAPH_BOARDS += \
-		seraph-atp-overlay.dtbo
+		seraph-atp-overlay.dtbo \
+		seraphp-atp-overlay.dtbo
 
 NOAPQ_SERAPH_BOARDS += \
                   seraph-rumi-overlay.dtbo
