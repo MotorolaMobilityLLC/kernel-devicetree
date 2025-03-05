@@ -117,14 +117,26 @@
 	qcom,max-current-ma = <30>;
 	qcom,id = <0>;
 	qcom,ires-ua = <5000>;
+	qcom,default-led-trigger = "vst_indicator";
 
 	/delete-property/ qcom,strobe-sel;
 	/delete-property/ qcom,strobe-config;
-	/delete-property/ qcom,default-led-trigger;
 	/delete-property/ qcom,duration-ms;
 };
 
 &pmxr2230_flash1 {
+	status = "disabled";
+};
+
+&pmxr2230_switch0 {
+	status = "disabled";
+};
+
+&pmxr2230_switch1 {
+	status = "disabled";
+};
+
+&itof_level {
 	status = "disabled";
 };
 
