@@ -1324,6 +1324,10 @@
 		clock-frequency = <32768>;
 	};
 
+	dload_mode {
+		compatible = "qcom,dload-mode";
+	};
+
 	apsscc: syscon@17aa0000 {
 		compatible = "syscon";
 		reg = <0x17aa0000 0x1c>;
