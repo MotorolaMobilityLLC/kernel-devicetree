@@ -1,0 +1,9 @@
+/dts-v1/;
+
+#include "pineappleq-v2.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. PineappleQ v2 SoC";
+	compatible = "qcom,pineappleq";
+	qcom,board-id = <0 0>;
+};
