@@ -16,4 +16,5 @@
 
 #include "parrot-noida-charger-overlay.dtsi"
 #include "parrot-noida-touchscreen-overlay.dtsi"
+#include "parrot-noida-sensor-overlay.dtsi"
 
