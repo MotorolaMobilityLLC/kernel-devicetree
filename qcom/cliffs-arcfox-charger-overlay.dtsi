@@ -124,7 +124,8 @@
 		mmi,ext-usb-psy-name = "usb";
 		mmi,ext-wls-psy-name = "wireless";
 		mmi,fg-psy-name = "flip_battery";
-		mmi,df-serialnum = "SB18E07971";
+		mmi,df-serialnum = "SB18E07970";
+		mmi,main-df-serialnum = "SB18E07971";
 		mmi,paired-id = <0x00000001>;
 		mmi,thermal-mitigation = <2000000 1500000 1000000 800000 500000 300000 100000>;
 		/* the thermal-ratio is nums * step, and the step is 0.5 */
