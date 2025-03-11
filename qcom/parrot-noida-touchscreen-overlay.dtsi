@@ -21,6 +21,10 @@
 
 	status = "ok";
 
+	goodix-berlin@0 {
+		goodix,fw-upgrade-drv;
+	};
+
 	focaltech@1{
                 status = "ok";
                 compatible = "focaltech,fts";
