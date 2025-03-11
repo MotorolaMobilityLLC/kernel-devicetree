@@ -762,14 +762,14 @@
 		usb20_vbus_boost_default: usb20_vbus_boost_default {
 			pins = "gpio3";
 			function = "normal";
-			output-high;
+			output-low;
 			power-source = <0>;
 		};
 
 		usb21_vbus_boost_default: usb21_vbus_boost_default {
 			pins = "gpio10";
 			function = "normal";
-			output-high;
+			output-low;
 			power-source = <0>;
 		};
 	};
@@ -780,10 +780,54 @@
 		usb22_vbus_boost_default: usb22_vbus_boost_default {
 			pins = "gpio9";
 			function = "normal";
-			output-high;
+			output-low;
 			power-source = <0>;
 		};
 	};
+};
+
+&soc {
+	usb0_vbus_boost_regulator: usb0_vbus_boost_regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "usb0_vbus_boost_vregulator";
+		enable-active-high;
+		gpios = <&pm8775_3_gpios 3 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb20_vbus_boost_default>;
+	};
+
+	usb1_vbus_boost_regulator: usb1_vbus_boost_regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "usb1_vbus_boost_vregulator";
+		enable-active-high;
+		gpios = <&pm8775_3_gpios 10 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb21_vbus_boost_default>;
+	};
+
+	usb2_vbus_boost_regulator: usb2_vbus_boost_regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "usb2_vbus_boost_vregulator";
+		enable-active-high;
+		gpios = <&pm8775_2_gpios 9 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&usb22_vbus_boost_default>;
+	};
+};
+
+&usb0 {
+	vbus_dwc3-supply = <&usb0_vbus_boost_regulator>;
+};
+
+&usb1 {
+	vbus_dwc3-supply = <&usb1_vbus_boost_regulator>;
+};
+
+&usb2 {
+	vbus_dwc3-supply = <&usb2_vbus_boost_regulator>;
 };
 
 &qupv3_1 {
@@ -792,21 +836,6 @@
 
 &qupv3_2 {
 	 qcom,iommu-dma = "bypass";
-};
-
-&usb0 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&usb20_vbus_boost_default>;
-};
-
-&usb1 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&usb21_vbus_boost_default>;
-};
-
-&usb2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&usb22_vbus_boost_default>;
 };
 
 &reserved_memory {
