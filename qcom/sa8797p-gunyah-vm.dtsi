@@ -1197,6 +1197,11 @@
 		};
 	};
 };
+#include "sa8797p-vm-pcie.dtsi"
+
+&pcie2 {
+	status = "okay";
+};
 
 / {
 	rename_devices: rename_devices {
