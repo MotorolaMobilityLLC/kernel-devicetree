@@ -43,7 +43,7 @@
 		interconnects = <&aggre1_noc MASTER_USB3_0 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_0>;
 
-		dwc3@a600000 {
+		dwc0: dwc3@a600000 {
 			compatible = "snps,dwc3";
 			reg = <0xa600000 0xd93c>;
 
@@ -351,7 +351,7 @@
 		interconnect-names = "usb-ddr", "ddr-usb";
 		interconnects = <&aggre1_noc MASTER_USB3_1 &mc_virt SLAVE_EBI1>,
 				<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_USB3_1>;
-		dwc3@a400000 {
+		dwc1: dwc3@a400000 {
 			compatible = "snps,dwc3";
 			reg = <0xa400000 0xd93c>;
 
