@@ -306,10 +306,17 @@ _platform_map = {
     "seraph": {
         "dtb_list": [
             {"name": "seraph.dtb"},
+            {
+                "name": "seraphp.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
+            {"name": "seraph-atp-overlay.dtbo"},
+            {"name": "seraphp-atp-overlay.dtbo"},
             {
                 "name": "seraph-rumi-overlay.dtbo",
+                "apq": False,
             },
         ],
     },
