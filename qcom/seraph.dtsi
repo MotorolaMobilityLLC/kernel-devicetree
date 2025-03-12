@@ -29,7 +29,7 @@
 
 	reserved_memory: reserved-memory {};
 
-	aliases {
+	aliases: aliases {
 		serial0 = &qupv3_se11_2uart;
 		hsuart0 = &qupv3_se7_4uart;
 		hsuart1 = &qupv3_se3_2uart;
