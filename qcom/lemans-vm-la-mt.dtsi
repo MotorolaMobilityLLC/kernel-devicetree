@@ -215,11 +215,11 @@
 };
 
 &ufs2phy_mem {
-	status = "ok";
+	status = "disabled";
 };
 
 &ufshc2_mem {
-	status = "ok";
+	status = "disabled";
 };
 
 &reserved_memory {
