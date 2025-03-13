@@ -23,6 +23,8 @@ properties:
     enum:
       - qcom,sa8255p-geni-uart
       - qcom,sa8255p-geni-debug-uart
+      - qcom,sa8797p-geni-uart
+      - qcom,sa8797p-geni-debug-uart
 
   interrupts:
     minItems: 1
