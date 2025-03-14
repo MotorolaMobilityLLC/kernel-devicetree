@@ -811,6 +811,7 @@
 			virtio-mmio@31 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
+				virtio,device-type = <18>;
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
@@ -828,6 +829,7 @@
 			virtio-mmio@32 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
+				virtio,device-type = <18>;
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
