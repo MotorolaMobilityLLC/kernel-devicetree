@@ -79,6 +79,14 @@
 				>;
 };
 
+&xpcs1 {
+	status = "okay";
+};
+
+&ethernet1 {
+	status = "okay";
+};
+
 &usb2 {
 	status = "ok";
 };
