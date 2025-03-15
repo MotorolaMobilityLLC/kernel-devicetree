@@ -66,6 +66,8 @@
 		spi12 = &qupv3_se12_spi;
 		spi13 = &qupv3_se13_spi;
 		spi15 = &qupv3_se15_spi;
+		usb0 = &dwc0; /*usb0 child node*/
+		usb1 = &dwc1; /*usb1 child node*/
 	};
 
 	firmware: firmware {};
