@@ -62,7 +62,6 @@
 			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
 			dma-coherent;
 
-
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
@@ -73,7 +72,7 @@
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
-			dr_mode = "otg";
+			dr_mode = "peripheral";
 			maximum-speed = "super-speed-plus";
 		};
 	};
