@@ -88,6 +88,10 @@
 			    "eud_enable_reg",
 			    "eud_detect_reg";
 
+		vdd-supply = <&pmar2230_l10>;
+		qcom,vdd-voltage-level = <0 880000 880000>;
+		vdda12-supply = <&pmar2230_l6>;
+
 		clocks = <&rpmhcc RPMH_CXO_PAD_CLK>;
 		clock-names = "ref_clk_src";
 
@@ -100,6 +104,11 @@
 		compatible = "qcom,usb-ssphy-qmp-dp-combo";
 		reg = <0x88e6000 0x3000>;
 		reg-names = "qmp_phy_base";
+
+		vdd-supply = <&pmar2230_l10>;
+		qcom,vdd-voltage-level = <0 880000 880000>;
+		qcom,vdd-max-load-uA = <47000>;
+		core-supply = <&pmar2230_l6>;
 
 		usb3_dp_phy_gdsc-supply = <&gcc_usb3_phy_gdsc>;
 		clocks = <&gcc GCC_USB3_PRIM_PHY_AUX_CLK>,
