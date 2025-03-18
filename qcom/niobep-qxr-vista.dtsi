@@ -465,3 +465,65 @@
 		interrupts = <52 1>;
 	};
 };
+
+&qupv3_se2_i2c {
+	status = "okay";
+
+	lm36011_led_r: lm36011@64 {
+		status = "okay";
+		compatible = "ti,lm36011";
+		reg = <0x64>;
+
+		mode = <0x0>;
+		led-max-microamp = <1500000>;
+		led-ivfm-max-microvolt = <3600000>;
+		led-max-timeout-us = <1600000>;
+		label = "right";
+	};
+
+	lm3535_led_r: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 142 0>;
+		label = "right";
+	};
+};
+
+&qupv3_se6_i2c {
+	status = "okay";
+
+	lm36011_led_l: lm36011@64 {
+		status = "okay";
+		compatible = "ti,lm36011";
+		reg = <0x64>;
+
+		mode = <0x0>;
+		led-max-microamp = <1500000>;
+		led-ivfm-max-microvolt = <3600000>;
+		led-max-timeout-us = <1600000>;
+		label = "left";
+	};
+
+	lm3535_led_l: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 142 0>;
+		label = "left";
+	};
+};
+
+&qupv3_se10_i2c {
+	status = "okay";
+	lm3535_led_hat: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 113 0>;
+		label = "hat";
+	};
+};
