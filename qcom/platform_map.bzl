@@ -390,6 +390,8 @@ _platform_map = {
     "seraph-tuivm": {
         "dtb_list": [
             {"name": "seraph-vm-rumi.dtb"},
+            {"name": "seraph-vm-atp.dtb"},
+            {"name": "seraphp-vm-atp.dtb"},
         ],
     },
     "cliffs-tuivm": {
