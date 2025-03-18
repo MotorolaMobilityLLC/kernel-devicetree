@@ -162,6 +162,10 @@
 		};
 	};
 
+	virtio_input_keyboard@1c160000 {
+		wakeup-source;
+	};
+
 	virtio_blk_lv_system_a {
 		qcom,dev-name = "system_a";
 	};
@@ -828,7 +832,7 @@
 			/* keyboard input1 */
 			virtio-mmio@32 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_input_keyboard@1c160000";
 				virtio,device-type = <18>;
 				peer-default;
 				vqs-num = <0x2>;
