@@ -52,3 +52,33 @@
 	pinctrl-0 = <&qupv3_se8_spi_miso_active>, <&qupv3_se8_spi_clk_active>;
 	pinctrl-1 = <&qupv3_se8_spi_sleep>;
 };
+&soc {
+	/delete-node/ ipd-step-motor;
+
+	ipd-step-motor {
+		status = "ok";
+		compatible = "qcom,ipd_step_motor";
+		label = "ipd-step-motor-dual";
+
+		pinctrl-names = "sleep", "default";
+		pinctrl-0 = <&hall_gpio_sleep &hall2_gpio_sleep>;
+		pinctrl-1 = <&hall_gpio_default &hall2_gpio_default>;
+		vdd-supply = <&L14B>;
+
+		pwr-gpio = <&tlmm 11  0>;
+		nsleep-gpio = <&tlmm 174  0>;
+
+		step-gpio-left = <&tlmm 5  0>;
+		nen-gpio-left = <&tlmm 62 0>;
+		dir-gpio-left = <&tlmm  26 0>;
+
+		step-gpio-right = <&tlmm 15  0>;
+		nen-gpio-right = <&tlmm 29 0>;
+		dir-gpio-right = <&tlmm  173 0>;
+
+		io-channels = <&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM5>,
+			<&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM4>;
+		io-channel-names = "ipd_step_motor_left",
+			"ipd_step_motor_right";
+	};
+};
