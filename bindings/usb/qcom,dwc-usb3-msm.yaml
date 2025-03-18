@@ -13,6 +13,7 @@ properties:
     items:
       - enum:
           - qcom,dwc-usb3-msm
+          - qcom,dwc3-msm-fw-managed
 
   reg:
     description: Address and length of the register set for the device.
@@ -73,6 +74,15 @@ properties:
       - const: bus_aggr_clk
       - const: utmi_clk
       - const: sleep_clk
+
+  power-domains:
+    description: specifies phandles to PM domain provider nodes
+    maxItems: 2
+
+  power-domain-names:
+    items:
+      - const: usb_transfer
+      - const: usb_core
 
   resets:
     maxItems: 1
@@ -249,3 +259,43 @@ examples:
             };
         };
     };
+  - |
+    soc {
+        #address-cells = <2>;
+        #size-cells = <2>;
+
+
+        ssusb@a600000 {
+          compatible = "qcom,dwc-msm-fw-managed";
+          reg = <0xa600000 0x100000>,
+                <0x1fc6000 0x4>;
+          reg-names = "core_base", "tcsr_dyn_en_dis";
+
+          #address-cells = <2>;
+          #size-cells = <2>;
+          ranges;
+
+          power-domains = <&scmi_power 0>, <&scmi_power 1>;
+          power-domain-names = "usb_transfer", "usb_core";
+
+
+          interrupts-extended = <&intc GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>,
+                                <&pdc 14 IRQ_TYPE_EDGE_RISING>,
+                                <&pdc 15 IRQ_TYPE_EDGE_RISING>,
+                                <&pdc 17 IRQ_TYPE_LEVEL_HIGH>;
+          interrupt-names = "pwr_event_irq", "dp_hs_phy_irq",
+                            "dm_hs_phy_irq", "ss_phy_irq";
+
+            usb@a600000 {
+                compatible = "snps,dwc3";
+                reg = <0 0x0a600000 0 0xcd00>;
+                interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
+                iommus = <&apps_smmu 0x740 0>;
+                snps,dis_u2_susphy_quirk;
+                snps,dis_enblslpm_quirk;
+                phys = <&usb_1_hsphy>, <&usb_1_ssphy>;
+                phy-names = "usb2-phy", "usb3-phy";
+            };
+        };
+    };
+
