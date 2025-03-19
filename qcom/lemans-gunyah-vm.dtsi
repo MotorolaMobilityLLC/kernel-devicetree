@@ -298,11 +298,6 @@
 
 		/* Pass through regions */
 		iomemory-ranges = <
-				/* TLMM region */
-				0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
-				/* QUPv3 Tile 2 read-only region */
-				0x0 0x8C0000 0x0 0x8C0000 0x0 0x1000 0x1
-				0x0 0x8C1000 0x0 0x8C1000 0x0 0x1000 0x1
 				/* QUPv3 SE17 region */
 				0x0 0x88C000 0x0 0x88C000 0x0 0x1000 0x0
 				0x0 0x88D000 0x0 0x88D000 0x0 0x1000 0x0
@@ -1323,6 +1318,7 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
+		status = "disabled";
 	};
 
 	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
@@ -1601,7 +1597,7 @@
 	reg = <0x8c0000 0x2000>;
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
-	status = "ok";
+	status = "disabled";
 };
 
 &qupv3_se17_4uart {
@@ -1622,7 +1618,7 @@
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";
-	status = "ok";
+	status = "disabled";
 };
 
 &soc {
