@@ -1,5 +1,8 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/mailbox/qcom-ipcc.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
+
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
@@ -250,6 +253,14 @@
 		qcom,secdomain-ids = <52>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump";
+
+		/* Pass through regions */
+		/* MPROC NS1 IPCC region */
+		iomemory-ranges = <0x0 0x9008000 0x0 0x9008000 0x0 0x1000 0x0>;
+
+		/* Pass through IRQs */
+		/* MPROC NS1 IPCC GIC IRQ */
+		gic-irq-ranges = <471 471>;
 
 		memory {
 			#address-cells = <0x2>;
@@ -1212,7 +1223,19 @@
 			#reset-cells = <1>;
 		};
 	};
+
+	ipcc_mproc_apps_ns1: qcom,ipcc@9008000 {
+		compatible = "qcom,ipcc";
+		reg = <0x9008000 0x1000>;
+		interrupts = <GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+		status = "ok";
+	};
+
 };
+
 #include "sa8797p-vm-pcie.dtsi"
 
 &pcie2 {
