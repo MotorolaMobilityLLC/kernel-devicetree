@@ -165,6 +165,19 @@
 				qcom,adc-tm-type = <1>;
 			};
 		};
+
+		pmar2230_bcl: bcl@4700 {
+			compatible = "qcom,bcl-v5";
+			reg = <0x4700 0x100>;
+			interrupts = <0x0 0x47 0x0 IRQ_TYPE_NONE>,
+					<0x0 0x47 0x1 IRQ_TYPE_NONE>,
+					<0x0 0x47 0x2 IRQ_TYPE_NONE>;
+			interrupt-names = "bcl-lvl0",
+					"bcl-lvl1",
+					"bcl-lvl2";
+			qcom,pmic7-threshold;
+			#thermal-sensor-cells = <1>;
+		};
 	};
 };
 
@@ -279,6 +292,48 @@
 			active-config1 {
 				temperature = <125000>;
 				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	pmar2230-bcl-lvl0 {
+		polling-delay-passive = <100>;
+		polling-delay = <0>;
+		thermal-sensors = <&pmar2230_bcl 5>;
+
+		trips {
+			bcl_lvl0: bcl-lvl0 {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+		};
+	};
+
+	pmar2230-bcl-lvl1 {
+		polling-delay-passive = <100>;
+		polling-delay = <0>;
+		thermal-sensors = <&pmar2230_bcl 6>;
+
+		trips {
+			bcl_lvl1: bcl-lvl1 {
+				temperature = <1>;
+				hysteresis = <1>;
+				type = "passive";
+			};
+		};
+	};
+
+	pmar2230-bcl-lvl2 {
+		polling-delay-passive = <100>;
+		polling-delay = <0>;
+		thermal-sensors = <&pmar2230_bcl 7>;
+
+		trips {
+			bcl_lvl2: bcl-lvl2 {
+				temperature = <1>;
+				hysteresis = <1>;
 				type = "passive";
 			};
 		};

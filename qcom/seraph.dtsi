@@ -75,6 +75,7 @@
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			qcom,freq-domain = <&cpufreq_hw 0>;
+			#cooling-cells = <2>;
 			L2_0: l2-cache {
 				compatible = "arm,arch-cache";
 				cache-level = <2>;
@@ -99,6 +100,7 @@
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			qcom,freq-domain = <&cpufreq_hw 0>;
+			#cooling-cells = <2>;
 		};
 
 		CPU2: cpu@200 {
@@ -113,6 +115,7 @@
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			qcom,freq-domain = <&cpufreq_hw 0>;
+			#cooling-cells = <2>;
 		};
 
 		CPU3: cpu@300 {
@@ -127,6 +130,7 @@
 			capacity-dmips-mhz = <1024>;
 			dynamic-power-coefficient = <100>;
 			qcom,freq-domain = <&cpufreq_hw 0>;
+			#cooling-cells = <2>;
 		};
 
 		CPU4: cpu@400 {
@@ -141,6 +145,7 @@
 			capacity-dmips-mhz = <1956>;
 			dynamic-power-coefficient = <389>;
 			qcom,freq-domain = <&cpufreq_hw 1>;
+			#cooling-cells = <2>;
 		};
 
 		cpu-map {
@@ -1976,3 +1981,5 @@
 	dummy-supply = <&nxp_eusb2_repeater>;
 	usb-repeater = <&nxp_eusb2_repeater>;
 };
+
+#include "seraph-thermal.dtsi"
