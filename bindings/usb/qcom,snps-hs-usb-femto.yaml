@@ -13,6 +13,7 @@ properties:
     items:
       - enum:
           - qcom,usb-hsphy-snps-femto
+          - qcom,usb-hsphy-snps-femto-fw-managed
   reg:
     description: Address and length of the registers set for the phy.
     minItems: 1
@@ -59,6 +60,15 @@ properties:
     items:
       - const: phy_reset
 
+  power-domains:
+    description: specifies phandles to PM domain provider nodes
+    maxItems: 2
+
+  power-domain-names:
+    items:
+      - const: usb_transfer
+      - const: usb_core
+
   qcom,param-override-seq:
     description: Required if override x0/1/2 need to be changed.
     $ref: /schemas/types.yaml#/definitions/uint32-matrix
@@ -98,5 +108,19 @@ examples:
                      <0xa6 0x6c	/* override_x0 */
                       0x85 0x70	/* override_x1 */
                       0x16 0x74>;	/* override x2 */
+    };
+  - |
+    usb2_phy2: hsphy@88e7000 {
+          compatible = "qcom,usb-hsphy-snps-femto-fw-managed";
+          reg = <0x88e7000 0x120>;
+          reg-names = "hsusb_phy_base";
+
+          qcom,param-override-seq =
+                     <0xa6 0x6c	/* override_x0 */
+                      0x85 0x70	/* override_x1 */
+                      0x16 0x74>;	/* override x2 */
+
+          power-domains = <&scmi_power 6>, <&scmi_power 7>;
+          power-domain-names = "usb_transfer", "usb_core";
     };
 
