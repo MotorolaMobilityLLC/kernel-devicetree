@@ -47,12 +47,51 @@
 
 &soc {
 	gpio_keys {
-		pinctrl-0 = <&key_vol_up_default
-			     &ipd_vol_up_default
-			     &ipd_vol_down_default>;
+		pinctrl-0 = <&key_vol_up_default>;
 
 		/delete-node/ back_key;
 		/delete-node/ confirm_key;
+		/delete-node/ ipd_vol_up_default;
+		/delete-node/ ipd_vol_down_default;
+		/delete-node/ ipd_down;
+		/delete-node/ ipd_up;
+
+		ipd_up {
+			label = "ipd_wide";
+			gpios = <&tlmm 35 GPIO_ACTIVE_LOW>;
+			linux,input-type = <1>;
+			linux,code = <KEY_KPPLUS>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+
+	ipd-step-motor {
+		status = "ok";
+		compatible = "qcom,ipd_step_motor";
+		label = "ipd-step-motor-dual";
+
+		pinctrl-names = "sleep", "default";
+		pinctrl-0 = <&hall_gpio_sleep &hall2_gpio_sleep>;
+		pinctrl-1 = <&hall_gpio_default &hall2_gpio_default>;
+		vdd-supply = <&L14B>;
+
+		pwr-gpio = <&tlmm 11  0>;
+		nsleep-gpio = <&tlmm 18  0>;
+
+		step-gpio-left = <&tlmm 5  0>;
+		nen-gpio-left = <&tlmm 62 0>;
+		dir-gpio-left = <&tlmm  26 0>;
+
+		step-gpio-right = <&tlmm 15  0>;
+		nen-gpio-right = <&tlmm 29 0>;
+		dir-gpio-right = <&tlmm  16 0>;
+
+		io-channels = <&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM5>,
+				<&pmk8550_vadc PMXR2230_ADC5_GEN3_AMUX_THM4>;
+		io-channel-names = "ipd_step_motor_left",
+				"ipd_step_motor_right";
 	};
 };
 
@@ -140,6 +179,102 @@
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
 		qcom,adc-tm-type = <1>;
+	};
+};
+
+&qupv3_se9_i2c {
+	status = "ok";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	touch: iqs7211e@56 {
+		compatible = "azoteq,iqs7211e";
+		reg = <0x56>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
+		irq-gpios = <&tlmm 141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
+		touchscreen-size-x = <3840>;
+		touchscreen-size-y = <3550>;
+		azoteq,num-contacts = <1>;
+		azoteq,forced-comms = <1>;
+
+		trackpad {
+			azoteq,rx-enable = <4>, <1>, <0>;
+			azoteq,tx-enable = <12>, <11>,<10>,<9>,<8>,<7>,<6>,<5>,<3>, <2>;
+			azoteq,channel-select = <1>, <0>, <2>, <255>, <4>, <3>, <5>, <255>,
+				<7>, <6>, <8>, <255>, <10>, <9>,<11>, <255>, <13>, <12>, <14>,
+				<255>, <16>, <15>, <17>, <255>, <19>, <18>, <20>, <255>, <22>,
+				<21>, <23>, <255>, <25>, <24>, <26>, <255>, <28>, <27>, <29>, <255>;
+			azoteq,ati-frac-div-fine = <5>;
+			azoteq,ati-frac-mult-coarse = <4>;
+			azoteq,ati-frac-div-coarse = <1>;
+			azoteq,ati-comp-div = <5>;
+			azoteq,ati-target = <300>;
+			azoteq,touch-enter = <20>;
+			azoteq,touch-exit = <14>;
+
+			event-tap {
+				linux,code = <KEY_PLAYPAUSE>;
+			};
+
+			event-tap-double {
+				linux,code = <KEY_SHUFFLE>;
+			};
+
+			event-tap-triple {
+				linux,code = <KEY_AGAIN>;
+			};
+
+			event-hold {
+				linux,code = <KEY_STOP>;
+			};
+
+			event-palm {
+				linux,code = <KEY_EXIT>;
+			};
+
+			event-swipe-x-pos {
+				linux,code = <KEY_REWIND>;
+			};
+
+			event-swipe-x-pos-hold {
+				linux,code = <KEY_PREVIOUS>;
+			};
+
+			event-swipe-x-neg {
+				linux,code = <KEY_FASTFORWARD>;
+			};
+
+			event-swipe-x-neg-hold {
+				linux,code = <KEY_NEXT>;
+			};
+
+			event-swipe-y-pos {
+				linux,code = <KEY_VOLUMEUP>;
+			};
+
+			event-swipe-y-pos-hold {
+				linux,code = <KEY_MUTE>;
+			};
+
+			event-swipe-y-neg {
+				linux,code = <KEY_VOLUMEDOWN>;
+			};
+
+			event-swipe-y-neg-hold {
+				linux,code = <KEY_MUTE>;
+			};
+		};
+
+		alp {
+			azoteq,rx-enable = <0>, <4>;
+			azoteq,tx-enable = <12>, <11>, <10>, <9>, <8>, <7>, <6>, <5>, <3>, <2>;
+			azoteq,ati-frac-div-fine = <1>;
+			azoteq,ati-frac-mult-coarse = <1>;
+			azoteq,ati-frac-div-coarse = <3>;
+			azoteq,ati-comp-div = <2>;
+			azoteq,ati-target = <200>;
+		};
 	};
 };
 
@@ -234,6 +369,62 @@
 			pins = "gpio116";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	hall_gpio_default: hall_gpio_default {
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <2>;
+			bias-pull-up;
+			output-high;
+		};
+	};
+
+	hall_gpio_sleep: hall_gpio_sleep {
+		mux {
+			pins = "gpio12";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio12";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	hall2_gpio_default: hall2_gpio_default {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>;
+			bias-pull-up;
+			output-high;
+		};
+	};
+
+	hall2_gpio_sleep: hall2_gpio_sleep {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			drive-strength = <2>;
+			bias-disable;
 			output-low;
 		};
 	};

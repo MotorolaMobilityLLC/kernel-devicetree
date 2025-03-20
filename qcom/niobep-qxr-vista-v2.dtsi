@@ -1,1 +1,54 @@
 #include "niobep-qxr-vista.dtsi"
+
+&tlmm {
+
+	/delete-node/ qupv3_se8_spi_pins;
+
+	qupv3_se8_spi_pins: qupv3_se8_spi_pins {
+		qupv3_se8_spi_miso_active: qupv3_se8_spi_miso_active {
+			mux {
+				pins = "gpio16";
+				function = "qup2_se4_l0";
+			};
+
+			config {
+				pins = "gpio16";
+				drive-strength = <6>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se8_spi_clk_active: qupv3_se8_spi_clk_active {
+			mux {
+				pins = "gpio18";
+				function = "qup2_se4_l2";
+			};
+
+			config {
+				pins = "gpio18";
+				drive-strength = <6>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se8_spi_sleep: qupv3_se8_spi_sleep {
+			mux {
+				pins = "gpio16","gpio18";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio16","gpio18";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&qupv3_se8_spi {
+	/delete-property/ pinctrl-1;
+	/delete-property/ pinctrl-0;
+	pinctrl-0 = <&qupv3_se8_spi_miso_active>, <&qupv3_se8_spi_clk_active>;
+	pinctrl-1 = <&qupv3_se8_spi_sleep>;
+};

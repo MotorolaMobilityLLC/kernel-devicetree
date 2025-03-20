@@ -13,8 +13,8 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
-PINEAPPLE_BASE_DTB += pineapple-v2.dtb
-PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb pineappleq-v2.dtb
+PINEAPPLE_BASE_DTB += pineapple-v2.dtb pineapple-qcm.dtb
+PINEAPPLE_APQ_BASE_DTB += pineapplep-v2.dtb pineapplep-sg-v2.dtb pineappleq-v2.dtb pineapplep-qcs.dtb
 
 PINEAPPLE_BOARDS += \
 		 pineapple-mtp-overlay.dtbo \
@@ -124,11 +124,13 @@ NIOBE_BOARDS += \
 		niobe-atp-overlay.dtbo \
 		niobe-idp-overlay.dtbo \
 		niobe-idp-dpu-overlay.dtbo \
+		niobe-idp-edp-overlay.dtbo \
 		niobe-qxr-overlay.dtbo \
 		niobep-atp-overlay.dtbo \
 		niobep-idp-overlay.dtbo \
 		niobep-idp-dpu-overlay.dtbo \
 		niobep-idp-ihv-overlay.dtbo \
+		niobep-idp-edp-overlay.dtbo \
 		niobep-qxr-overlay.dtbo \
 		niobep-qxr-vista-overlay.dtbo \
 		niobep-qxr-vista-v2-overlay.dtbo
@@ -329,6 +331,14 @@ dtb-y += $(niobe_tuivm-dtb-y)
 endif
 endif
 
+ifeq ($(CONFIG_ARCH_SERAPH), y)
+ifeq ($(CONFIG_ARCH_QTI_VM), y)
+seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb
+
+dtb-y += $(seraph_tuivm-dtb-y)
+endif
+endif
+
 ifeq ($(CONFIG_ARCH_CLIFFS), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
 pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += cliffs-vm-atp.dtb \
@@ -507,6 +517,15 @@ MONACO_FLEX_LA_GVM_BASE_DTB += monaco-vm-flex-la.dtb
 MONACO_FLEX_LA_GVM_BOARDS += \
                    monaco-vm-flex-la-overlay.dtbo
 
+MONACO_MULTI_GVM_BASE_DTB += \
+		monaco-vm-lv-mt.dtb \
+		monaco-vm-la-mt.dtb
+
+
+MONACO_MULTI_GVM_BOARDS += \
+		monaco-vm-lv-mt-overlay.dtbo \
+		monaco-vm-la-mt-overlay.dtbo
+
 autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(SA8155_LA_GVM_BOARDS),$(SA8155_LA_GVM_BASE_DTB)) \
 	$(call add-overlays, $(SA6155P_LA_GVM_BOARDS),$(SA6155P_LA_GVM_BASE_DTB)) \
@@ -521,7 +540,8 @@ autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(MONACO_LV_GVM_BOARDS),$(MONACO_LV_GVM_BASE_DTB)) \
 	$(call add-overlays, $(MONACO_LA_GVM_BOARDS),$(MONACO_LA_GVM_BASE_DTB)) \
 	$(call add-overlays, $(SA8155_MULTI_GVM_BOARDS),$(SA8155_MULTI_GVM_BASE_DTB)) \
-	$(call add-overlays, $(MONACO_FLEX_LA_GVM_BOARDS),$(MONACO_FLEX_LA_GVM_BASE_DTB))
+	$(call add-overlays, $(MONACO_FLEX_LA_GVM_BOARDS),$(MONACO_FLEX_LA_GVM_BASE_DTB)) \
+	$(call add-overlays, $(MONACO_MULTI_GVM_BOARDS),$(MONACO_MULTI_GVM_BASE_DTB))
 
 autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(SA8155_LA_GVM_BOARDS) $(SA8155_LA_GVM_BASE_DTB) \
@@ -537,7 +557,8 @@ autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(MONACO_LV_GVM_BOARDS) $(MONACO_LV_GVM_BASE_DTB) \
 	$(MONACO_LA_GVM_BOARDS) $(MONACO_LA_GVM_BASE_DTB) \
 	$(SA8155_MULTI_GVM_BOARDS) $(SA8155_MULTI_GVM_BASE_DTB) \
-	$(MONACO_FLEX_LA_GVM_BOARDS) $(MONACO_FLEX_LA_GVM_BASE_DTB)
+	$(MONACO_FLEX_LA_GVM_BOARDS) $(MONACO_FLEX_LA_GVM_BASE_DTB) \
+	$(MONACO_MULTI_GVM_BOARDS) $(MONACO_MULTI_GVM_BASE_DTB)
 
 dtb-y += $(autogvm-dtb-y)
 

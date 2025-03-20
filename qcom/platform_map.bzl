@@ -15,6 +15,8 @@ _platform_map = {
             {"name": "sa8195-vm-la.dtb"},
             {"name": "monaco-vm-la.dtb"},
             {"name": "monaco-vm-lv.dtb"},
+            {"name": "monaco-vm-lv-mt.dtb"},
+            {"name": "monaco-vm-la-mt.dtb"},
             {"name": "sa6155p-vm-la.dtb"},
             {"name": "monaco-vm-flex-la.dtb"},
         ],
@@ -33,6 +35,8 @@ _platform_map = {
             {"name": "sa8195-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-lv-overlay.dtbo"},
+            {"name": "monaco-vm-lv-mt-overlay.dtbo"},
+            {"name": "monaco-vm-la-mt-overlay.dtbo"},
             {"name": "sa6155p-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-flex-la-overlay.dtbo"},
         ],
@@ -178,6 +182,11 @@ _platform_map = {
                 "name": "pineapplep-sg-v2.dtb",
                 "apq": True,
             },
+            {"name": "pineapple-qcm.dtb"},
+            {
+                "name": "pineapplep-qcs.dtb",
+                "apq": True,
+            },
             {
                 "name": "pineappleq-v2.dtb",
                 "apq": True,
@@ -278,11 +287,13 @@ _platform_map = {
             {"name": "niobe-atp-overlay.dtbo"},
             {"name": "niobe-idp-overlay.dtbo"},
             {"name": "niobe-idp-dpu-overlay.dtbo"},
+            {"name": "niobe-idp-edp-overlay.dtbo"},
             {"name": "niobe-qxr-overlay.dtbo"},
             {"name": "niobep-atp-overlay.dtbo"},
             {"name": "niobep-idp-overlay.dtbo"},
             {"name": "niobep-idp-dpu-overlay.dtbo"},
             {"name": "niobep-idp-ihv-overlay.dtbo"},
+            {"name": "niobep-idp-edp-overlay.dtbo"},
             {"name": "niobep-qxr-overlay.dtbo"},
             {"name": "niobep-qxr-vista-overlay.dtbo"},
             {"name": "niobep-qxr-vista-v2-overlay.dtbo"},
@@ -367,6 +378,11 @@ _platform_map = {
         "dtb_list": [
             {"name": "niobe-vm-idp.dtb"},
             {"name": "niobep-vm-idp.dtb"},
+        ],
+    },
+    "seraph-tuivm": {
+        "dtb_list": [
+            {"name": "seraph-vm-rumi.dtb"},
         ],
     },
     "cliffs-tuivm": {

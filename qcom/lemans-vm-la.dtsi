@@ -239,14 +239,16 @@
 					"vdj", "vdk", "vdl",
 					"vdm", "vdn", "vdo",
 					"vdp", "vdq", "vdr",
-					"vds", "vdt", "vdu";
+					"vds", "vdt", "vdu",
+					"vdv";
 			rename-dev = "super", "userdata", "metadata",
 					"persist", "modem_a","bluetooth_a",
 					"misc", "vbmeta_a", "vbmeta_b",
 					"boot_a", "dtbo_a", "dsp_a",
 					"modem_b", "bluetooth_b", "boot_b",
 					"dtbo_b", "dsp_b", "vendor_boot_b",
-					"vendor_boot_a", "init_boot_b", "init_boot_a";
+					"vendor_boot_a", "init_boot_b", "init_boot_a",
+					"swap";
 		};
 	};
 };

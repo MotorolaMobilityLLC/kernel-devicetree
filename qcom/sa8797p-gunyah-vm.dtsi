@@ -39,6 +39,16 @@
 			alignment = <0x0 0x400000>;
 			size = <0x0 0x1000000>;
 		};
+
+		glink_cma_mem1: glink-cma-region@1 {
+			no-map;
+			qcom,label = <0x60>;
+		};
+
+		glink_cma_mem2: glink-cma-region@2 {
+			no-map;
+			qcom,label = <0x61>;
+		};
 	};
 
 	cpus {
@@ -1163,6 +1173,28 @@
 
 		default_iocoherency;
 		db-off;
+	};
+
+	scmi {
+		compatible = "arm,scmi-virtio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+
+		scmi_power: protocol@11 {
+			reg = <0x11>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_perf: protocol@13 {
+			reg = <0x13>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_reset: protocol@16 {
+			reg = <0x16>;
+			#reset-cells = <1>;
+		};
 	};
 };
 
