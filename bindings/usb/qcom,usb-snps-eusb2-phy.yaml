@@ -10,7 +10,10 @@ maintainers:
 
 properties:
   compatible:
-    const: qcom,usb-snps-eusb2-phy
+    items:
+      - enum:
+        - qcom,usb-snps-eusb2-phy
+        - qcom,usb-snps-eusb2-fw-managed
 
   reg:
     description: |
@@ -38,6 +41,15 @@ properties:
     items:
       - const: ref_clk_src # required
       - const: ref_clk
+
+  power-domains:
+    description: specifies phandles to PM domain provider nodes
+    maxItems: 2
+
+  power-domain-names:
+    items:
+      - const: usb_transfer
+      - const: usb_core
 
   qcom,vdd-voltage-level:
     description: |
@@ -78,14 +90,30 @@ properties:
 required:
   - compatible
   - reg
-  - vdd-supply
-  - vdda12-supply
-  - clocks
-  - clock-names
-  - qcom,vdd-voltage-level
-  - resets
-  - reset-names
-  - usb-repeater
+
+allOf:
+  - if:
+      properties:
+        compatible:
+          contains:
+            enum:
+              - qcom,usb-snps-eusb2-fw-managed
+    then:
+      required:
+        - power-domains
+        - power-domain-names
+    else:
+      required:
+        - clocks
+        - clock-names
+        - resets
+        - vdd-supply
+        - vdda12-supply
+        - qcom,vdd-voltage-level
+        - resets
+        - reset-names
+        - usb-repeater
+
 
 additionalProperties: false
 
@@ -112,6 +140,13 @@ examples:
       reset-names = "phy_reset";
 
       usb-repeater = <&pm8550b_eusb2_repeater>;
+    };
+  - |
+    usb_1_hsphy: phy@88e3000 {
+      compatible = "qcom,usb-snps-eusb2-fw-managed";
+      reg = <0x88e3000 0x154>;
+      power-domains = <&scmi12_pd 0>, <&scmi12_pd 1>;
+      power-domain-names = "usb_transfer", "usb_core";
     };
 ...
 
