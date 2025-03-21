@@ -1238,7 +1238,7 @@
 	virtio_glink_cma: virtio-glink-cma@2e000000 {
 		glink_bridge: virtio-glink-bridge {
 			compatible = "virtio,device49162";
-			glink-edge {
+			remoteproc_cdsp_glink: glink-edge {
 				interrupt-parent = <&ipcc_mproc_apps_ns1>;
 				interrupts = <IPCC_MPROC_NSP0 0 IRQ_TYPE_EDGE_RISING>;
 				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP0 0>;
@@ -1246,7 +1246,7 @@
 				qcom,glink-label = "cdsp";
 			};
 
-			glink-edge1 {
+			remoteproc_cdsp1_glink: glink-edge1 {
 				interrupt-parent = <&ipcc_mproc_apps_ns1>;
 				interrupts = <IPCC_MPROC_NSP1 0 IRQ_TYPE_EDGE_RISING>;
 				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP1 0>;
@@ -1254,6 +1254,22 @@
 				qcom,glink-label = "cdsp1";
 			};
 		};
+	};
+};
+
+&remoteproc_cdsp_glink {
+	qcom,fastrpc {
+		label = "nsp";
+		instance-id = <0>;
+		dsp-type = <1>;
+	};
+};
+
+&remoteproc_cdsp1_glink {
+	qcom,fastrpc {
+		label = "nsp";
+		instance-id = <1>;
+		dsp-type = <1>;
 	};
 };
 
