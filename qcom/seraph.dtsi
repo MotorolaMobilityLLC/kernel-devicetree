@@ -1935,3 +1935,22 @@
 #include "msm-arm-smmu-seraph.dtsi"
 #include "seraph-usb.dtsi"
 #include "msm-rdbg.dtsi"
+
+&qupv3_se8_i2c {
+	status = "ok";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	nxp_eusb2_repeater: eusb2_repeater@4f {
+		compatible = "nxp,eusb2-repeater";
+		reg = <0x4f>;
+		vdd18-supply = <&pmar2230_l3>;
+		vdd3-supply = <&pmar2230_l14>;
+	};
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&nxp_eusb2_repeater>;
+	usb-repeater = <&nxp_eusb2_repeater>;
+};

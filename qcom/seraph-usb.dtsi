@@ -62,7 +62,6 @@
 			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
 			dma-coherent;
 
-
 			interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
@@ -73,7 +72,8 @@
 			snps,dis_u2_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
-			dr_mode = "otg";
+			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+			dr_mode = "peripheral";
 			maximum-speed = "super-speed-plus";
 		};
 	};
@@ -88,6 +88,10 @@
 			    "eud_enable_reg",
 			    "eud_detect_reg";
 
+		vdd-supply = <&pmar2230_l10>;
+		qcom,vdd-voltage-level = <0 880000 880000>;
+		vdda12-supply = <&pmar2230_l6>;
+
 		clocks = <&rpmhcc RPMH_CXO_PAD_CLK>;
 		clock-names = "ref_clk_src";
 
@@ -100,6 +104,11 @@
 		compatible = "qcom,usb-ssphy-qmp-dp-combo";
 		reg = <0x88e6000 0x3000>;
 		reg-names = "qmp_phy_base";
+
+		vdd-supply = <&pmar2230_l10>;
+		qcom,vdd-voltage-level = <0 880000 880000>;
+		qcom,vdd-max-load-uA = <47000>;
+		core-supply = <&pmar2230_l6>;
 
 		usb3_dp_phy_gdsc-supply = <&gcc_usb3_phy_gdsc>;
 		clocks = <&gcc GCC_USB3_PRIM_PHY_AUX_CLK>,
@@ -300,6 +309,10 @@
 				USB3_DP_PCS_USB3_RXEQTRAINING_DFE_TIME_S2 0x07
 				USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_L 0x40
 				USB3_DP_PCS_USB3_RCVR_DTCT_DLY_U3_H 0x00>;
+	};
+
+	usb_nop_phy: usb_nop_phy {
+		compatible = "usb-nop-xceiv";
 	};
 
 	usb_audio_qmi_dev {
