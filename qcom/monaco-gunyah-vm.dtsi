@@ -1222,11 +1222,11 @@
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
 	reg = <0x9c0000 0x2000>;
-	qcom,firmware-managed-resources;
+	compatible = "qcom,sa7255p-geni-se-qup", "qcom,sa8255p-geni-se-qup";
 
 	iommus = <&apps_smmu 0x418 0x0>;
 	qcom,iommu-dma = "default";
-	status = "disable";
+	status = "ok";
 };
 
 &qupv3_se2_4uart {
@@ -1241,7 +1241,7 @@
 	/delete-property/ pinctrl-3;
 	/delete-property/ interrupts-extended;
 	/delete-property/ qcom,wakeup-byte;
-	compatible = "qcom,geni-uart";
+	compatible = "qcom,sa7255p-geni-uart", "qcom,sa8255p-geni-uart";
 	reg = <0x988000 0x4000>;
 	interrupts = <GIC_SPI 529 IRQ_TYPE_LEVEL_HIGH>;
 
@@ -1249,5 +1249,5 @@
 	power-domain-names = "power", "perf";
 
 	qcom,auto-suspend-disable;
-	status = "disable";
+	status = "ok";
 };
