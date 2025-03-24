@@ -701,6 +701,10 @@
 		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
 	qcom,msm-imem@14680000 {
 		compatible = "qcom,msm-imem";
 		reg = <0x14680000 0x1000>;
