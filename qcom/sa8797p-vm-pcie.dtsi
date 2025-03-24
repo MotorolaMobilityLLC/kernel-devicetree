@@ -15,7 +15,7 @@
 
 		linux,pci-domain = <2>;
 
-		power-domains = <&scmi_power 5>;
+		power-domains = <&scmi_power 7>;
 		power-domain-names = "power";
 
 		interrupts = <GIC_SPI 844 IRQ_TYPE_LEVEL_HIGH>,
@@ -57,7 +57,7 @@
 
 		linux,pci-domain = <3>;
 
-		power-domains = <&scmi_power 6>;
+		power-domains = <&scmi_power 8>;
 		power-domain-names = "power";
 
 		interrupts = <GIC_SPI 364 IRQ_TYPE_LEVEL_HIGH>,

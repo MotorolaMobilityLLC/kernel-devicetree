@@ -1,5 +1,6 @@
 #include "sa8797p-gunyah-vm.dtsi"
 #include "sa8797p-vm-qupv3.dtsi"
+#include "sa8797p-vm-pcie.dtsi"
 
 / {
 	aliases {
