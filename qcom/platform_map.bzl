@@ -314,6 +314,8 @@ _platform_map = {
         "dtbo_list": [
             {"name": "seraph-atp-overlay.dtbo"},
             {"name": "seraphp-atp-overlay.dtbo"},
+            {"name": "seraph-idp-overlay.dtbo"},
+            {"name": "seraphp-idp-overlay.dtbo"},
             {
                 "name": "seraph-rumi-overlay.dtbo",
                 "apq": False,
