@@ -357,6 +357,12 @@
 				qcom,label = <0x1>;
 			};
 
+			vrtc {
+				vdevice-type = "vrtc-pl031";
+				peer-default;
+				allocate-base;
+			};
+
 			virtio-mmio@0 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
