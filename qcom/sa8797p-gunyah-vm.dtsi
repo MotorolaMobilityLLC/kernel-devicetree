@@ -53,6 +53,31 @@
 			no-map;
 			qcom,label = <0x61>;
 		};
+
+		glink_cma_mem3: glink-cma-region@3 {
+			no-map;
+			qcom,label = <0x62>;
+		};
+
+		glink_cma_mem4: glink-cma-region@4 {
+			no-map;
+			qcom,label = <0x63>;
+		};
+
+		glink_cma_mem5: glink-cma-region@5 {
+			no-map;
+			qcom,label = <0x64>;
+		};
+
+		glink_cma_mem6: glink-cma-region@6 {
+			no-map;
+			qcom,label = <0x65>;
+		};
+
+		glink_cma_mem7: glink-cma-region@7 {
+			no-map;
+			qcom,label = <0x66>;
+		};
 	};
 
 	cpus {
