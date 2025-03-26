@@ -338,7 +338,9 @@ endif
 
 ifeq ($(CONFIG_ARCH_SERAPH), y)
 ifeq ($(CONFIG_ARCH_QTI_VM), y)
-seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb
+seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb \
+				seraph-vm-atp.dtb \
+				seraphp-vm-atp.dtb
 
 dtb-y += $(seraph_tuivm-dtb-y)
 endif
