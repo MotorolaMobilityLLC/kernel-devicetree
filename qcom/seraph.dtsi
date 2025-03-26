@@ -1553,6 +1553,7 @@
 		reg-names = "hc", "cqhci", "cqhci_ice", "cqhci_ice_hwkm";
 
 		iommus = <&apps_smmu 0x120 0x0>;
+		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
 		/*
