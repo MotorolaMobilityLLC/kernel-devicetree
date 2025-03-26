@@ -52,6 +52,10 @@
 				reg = <0x58 0x1>;
 			};
 
+			xo_calib_data: xo_calib-data@59 {
+				reg = <0x59 0x1>;
+			};
+
 			alarm_log: alarm-log@76 {
 				reg = <0x76 0x6>;
 			};

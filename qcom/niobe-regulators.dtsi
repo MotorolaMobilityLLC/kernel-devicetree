@@ -1165,4 +1165,15 @@
 			qcom,init-voltage = <2800000>;
 		};
 	};
+
+	rpmh-regulator-vrm-cal {
+		compatible = "qcom,rpmh-pbs-regulator";
+		qcom,resource-name = "vrm.wcal";
+
+		WCAL_PBS:
+		pmk8550_wcal_pbs: regulator-pmk8550-wcal-pbs {
+			regulator-name = "pmk8550_wcal_pbs";
+			qcom,set = <RPMH_REGULATOR_SET_ALL>;
+		};
+	};
 };
