@@ -132,10 +132,23 @@
 			};
 		};
 
-		qupv3_se7_rx: qupv3_se7_rx {
+		qupv3_se7_rx_active: qupv3_se7_rx_active {
 			mux {
 				pins = "gpio27";
 				function = "qup1_se1_l3";
+			};
+
+			config {
+				pins = "gpio27";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se7_rx_wake: qupv3_se7_rx_wake {
+			mux {
+				pins = "gpio27";
+				function = "gpio";
 			};
 
 			config {
@@ -1158,117 +1171,6 @@
 
 			config {
 				pins = "gpio61", "gpio62";
-				drive-strength = <2>;
-				bias-disable;
-			};
-		};
-	};
-
-	qupv3_se7_i2c_pins: qupv3_se7_i2c_pins {
-		qupv3_se7_i2c_sda_active: qupv3_se7_i2c_sda_active {
-			mux {
-				pins = "gpio24";
-				function = "qup1_se1_l0";
-			};
-
-			config {
-				pins = "gpio24";
-				drive-strength = <2>;
-				bias-pull-up;
-				qcom,i2c_pull;
-			};
-		};
-
-		qupv3_se7_i2c_scl_active: qupv3_se7_i2c_scl_active {
-			mux {
-				pins = "gpio25";
-				function = "qup1_se1_l1";
-			};
-
-			config {
-				pins = "gpio25";
-				drive-strength = <2>;
-				bias-pull-up;
-				qcom,i2c_pull;
-			};
-		};
-
-		qupv3_se7_i2c_sleep: qupv3_se7_i2c_sleep {
-			mux {
-				pins = "gpio24", "gpio25";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio24", "gpio25";
-				drive-strength = <2>;
-			};
-		};
-	};
-
-	qupv3_se7_spi_pins: qupv3_se7_spi_pins {
-		qupv3_se7_spi_miso_active: qupv3_se7_spi_miso_active {
-			mux {
-				pins = "gpio24";
-				function = "qup1_se1_l0";
-			};
-
-			config {
-				pins = "gpio24";
-				drive-strength = <6>;
-				bias-disable;
-			};
-		};
-
-		qupv3_se7_spi_mosi_active: qupv3_se7_spi_mosi_active {
-			mux {
-				pins = "gpio25";
-				function = "qup1_se1_l1";
-			};
-
-			config {
-				pins = "gpio25";
-				drive-strength = <6>;
-				bias-disable;
-			};
-		};
-
-		qupv3_se7_spi_clk_active: qupv3_se7_spi_clk_active {
-			mux {
-				pins = "gpio26";
-				function = "qup1_se1_l2";
-			};
-
-			config {
-				pins = "gpio26";
-				drive-strength = <6>;
-				bias-disable;
-			};
-		};
-
-		qupv3_se7_spi_cs_active: qupv3_se7_spi_cs_active {
-			mux {
-				pins = "gpio27";
-				function = "qup1_se1_l3";
-			};
-
-			config {
-				pins = "gpio27";
-				drive-strength = <6>;
-				bias-disable;
-			};
-		};
-
-		qupv3_se7_spi_sleep: qupv3_se7_spi_sleep {
-			mux {
-				pins = "gpio24", "gpio25",
-					"gpio26", "gpio27";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio24", "gpio25",
-					"gpio26", "gpio27";
 				drive-strength = <2>;
 				bias-disable;
 			};
