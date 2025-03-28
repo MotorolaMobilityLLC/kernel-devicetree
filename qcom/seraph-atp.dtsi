@@ -1,2 +1,4 @@
+#include "seraph-pmic-overlay.dtsi"
+
 &soc {
 };
