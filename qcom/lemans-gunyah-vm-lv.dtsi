@@ -1,4 +1,5 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/clock/qcom,gcc-lemans.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
 
 / {
@@ -1102,6 +1103,120 @@
 		compatible = "qcom,iommu-dma";
 		memory-region = <&system_cma>;
 	};
+
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,lemans-pinctrl";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		status = "disabled";
+	};
+};
+
+#include "lemans-pinctrl.dtsi"
+#include "lemans-vm-qupv3.dtsi"
+
+&qupv3_0 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0x9c0000 0x1000>;
+
+	iommus = <&apps_smmu 0x419 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_1 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0xac0000 0x1000>;
+
+	iommus = <&apps_smmu 0x459 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_2 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0x8c0000 0x1000>;
+
+	iommus = <&apps_smmu 0x5b9 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_se16_2uart {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	/delete-property/ interrupts-extended;
+
+	compatible = "qcom,sa8255p-geni-uart";
+	interrupts = <GIC_SPI 584 IRQ_TYPE_LEVEL_HIGH>;
+
+	power-domains = <&scmi_power 1>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disabled";
+};
+
+&qupv3_se16_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 1>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disabled";
+
+	spi_codec@0 {
+		compatible = "qcom,spi-msm-codec-slave";
+		reg = <0>;
+		spi-max-frequency = <10000000>;
+		spi-cpha;
+	};
+};
+
+&qupv3_se14_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 2>, <&scmi_perf 1>;
+	power-domain-names = "power", "perf";
+
+	status = "disabled";
+};
+
+&qupv3_se3_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 3>, <&scmi_perf 2>;
+	power-domain-names = "power", "perf";
+
+	status = "disabled";
 };
 
 &soc {
