@@ -1,0 +1,55 @@
+#include <dt-bindings/thermal/thermal_qti.h>
+
+&thermal_zones {
+	pmar2230-bcl-lvl0 {
+		cooling-maps {
+			vph_cpu_2_3 {
+				trip = <&bcl_lvl0>;
+				cooling-device = <&cpu_2_3_pause 1 1>;
+			};
+
+			vph_cdsp0 {
+				trip = <&bcl_lvl0>;
+				cooling-device = <&cdsp_sw 2 2>;
+			};
+
+			vph_gpu0 {
+				trip = <&bcl_lvl0>;
+				cooling-device = <&msm_gpu 2 2>;
+			};
+		};
+	};
+
+	pmar2230-bcl-lvl1 {
+		cooling-maps {
+			vph_cpu_4 {
+				trip = <&bcl_lvl1>;
+				cooling-device = <&cpu4_pause 1 1>;
+			};
+
+			vph_cdsp1 {
+				trip = <&bcl_lvl1>;
+				cooling-device = <&cdsp_sw 4 4>;
+			};
+
+			vph_gpu1 {
+				trip = <&bcl_lvl1>;
+				cooling-device = <&msm_gpu 4 4>;
+			};
+		};
+	};
+
+	pmar2230-bcl-lvl2 {
+		cooling-maps {
+			vph_cdsp2 {
+				trip = <&bcl_lvl2>;
+				cooling-device = <&cdsp_sw 5 THERMAL_NO_LIMIT>;
+			};
+
+			vph_gpu2 {
+				trip = <&bcl_lvl2>;
+				cooling-device = <&msm_gpu 5 THERMAL_NO_LIMIT>;
+			};
+		};
+	};
+};
