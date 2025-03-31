@@ -976,8 +976,8 @@
 			vsmmu@15000000 {
 				vdevice-type = "vsmmu-v2";
 				smmu-handle = <0x15000000>;
-				num-cbs = <0x1>;
-				num-smrs = <0x1>;
+				num-cbs = <0x3>;
+				num-smrs = <0x3>;
 				patch = "/soc/apps-smmu@15000000";
 			};
 		};
