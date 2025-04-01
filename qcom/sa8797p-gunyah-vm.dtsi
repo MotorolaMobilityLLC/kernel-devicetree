@@ -1270,6 +1270,22 @@
 				label = "cdsp1";
 				qcom,glink-label = "cdsp1";
 			};
+
+			remoteproc_cdsp2_glink: glink-edge2 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP2 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP2 0>;
+				label = "cdsp2";
+				qcom,glink-label = "cdsp2";
+			};
+
+			remoteproc_cdsp3_glink: glink-edge3 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP3 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP3 0>;
+				label = "cdsp3";
+				qcom,glink-label = "cdsp3";
+			};
 		};
 	};
 };
