@@ -705,6 +705,10 @@
 		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
+	vendor_hooks: qcom,cpu-vendor-hooks {
+		compatible = "qcom,cpu-vendor-hooks";
+	};
+
 	qcom,msm-imem@14680000 {
 		compatible = "qcom,msm-imem";
 		reg = <0x14680000 0x1000>;
@@ -1926,6 +1930,14 @@
 		reusable;
 		alignment = <0x0 0x400000>;
 		size = <0x0 0x1000000>;
+	};
+
+	ramoops_mem: ramoops_region {
+		compatible = "ramoops";
+		alloc-ranges = <0x0 0x00000000 0xffffffff 0xffffffff>;
+		size = <0x0 0x200000>;
+		pmsg-size = <0x200000>;
+		mem-type = <2>;
 	};
 };
 
