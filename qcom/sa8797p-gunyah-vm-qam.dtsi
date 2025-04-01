@@ -1,6 +1,7 @@
 #include "sa8797p-gunyah-vm.dtsi"
 #include "sa8797p-vm-qupv3.dtsi"
 #include "sa8797p-vm-pcie.dtsi"
+#include "sa8797p-vm-usb.dtsi"
 
 / {
 	aliases {
@@ -31,6 +32,9 @@
 				0x0 0x9840000 0x0 0x9840000 0x0 0x1000 0x0
 				/* VCODEC CS1 region */
 				0x0 0xAAA1000 0x0 0xAAA1000 0x0 0x1000 0x0
+				/* USB2 region */
+				0x0 0x88e0000 0x0 0x88e0000 0x0 0x1000 0x0
+				0x0 0xa200000 0x0 0xa200000 0x0 0x200000 0x0
 				/* Fence NS1 IPCC region */
 				0x0 0x9307000 0x0 0x9307000 0x0 0x1000 0x0
 				>;
@@ -45,7 +49,20 @@
 				893 893
 				/* VCODEC CS1 */
 				214 214
+				/*USB2 IRQs*/
+				784 784
+				785 785
+				939 939
+				942 942
 				/* Fence NS1 IPCC GIC IRQ */
 				459 459
 				>;
+};
+
+&usb2 {
+	status = "ok";
+};
+
+&eusb2_phy2 {
+	status = "ok";
 };
