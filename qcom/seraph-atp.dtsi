@@ -1,4 +1,5 @@
 #include "seraph-pmic-overlay.dtsi"
+#include "seraph-thermal-overlay.dtsi"
 
 &soc {
 };
