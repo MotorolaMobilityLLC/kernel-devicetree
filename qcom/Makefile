@@ -170,8 +170,10 @@ SERAPH_APQ_BASE_DTB += seraphp.dtb
 SERAPH_BOARDS += \
 		seraph-atp-overlay.dtbo \
 		seraph-idp-overlay.dtbo \
+		seraph-idp-dtof-overlay.dtbo \
 		seraphp-atp-overlay.dtbo \
-		seraphp-idp-overlay.dtbo
+		seraphp-idp-overlay.dtbo \
+		seraphp-idp-dtof-overlay.dtbo
 
 NOAPQ_SERAPH_BOARDS += \
                   seraph-rumi-overlay.dtbo
