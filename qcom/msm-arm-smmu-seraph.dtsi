@@ -226,7 +226,7 @@
 			reg = <0x7b3000 0x1000>;
 			qcom,stream-id-range = <0x1000 0x400>;
 			qcom,iova-width = <32>;
-			interconnects = <&lpass_ag_noc MASTER_LPASS_PROC &mc_virt SLAVE_EBI1>;
+			interconnects = <&lpass_lpicx_noc MASTER_LPASS_PROC &mc_virt SLAVE_EBI1>;
 			qcom,num-qtb-ports = <1>;
 		};
 
