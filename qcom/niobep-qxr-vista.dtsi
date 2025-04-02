@@ -140,16 +140,16 @@
 	status = "disabled";
 };
 
-&pmxr2230_gpios {
-	pmxr2230_optics_therm_l {
-		pmxr2230_optics_therm_l_default: pmxr2230_optics_therm_l_default {
+&pm8550b_gpios {
+	pm8550b_optics_therm_l {
+		pm8550b_optics_therm_l_default: pm8550b_optics_therm_l_default {
 			pins = "gpio5";
 			bias-high-impedance;
 		};
 	};
 
-	pmxr2230_optics_therm_r {
-		pmxr2230_optics_therm_r_default: pmxr2230_optics_therm_r_default {
+	pm8550b_optics_therm_r {
+		pm8550b_optics_therm_r_default: pm8550b_optics_therm_r_default {
 			pins = "gpio10";
 			bias-high-impedance;
 		};
@@ -158,8 +158,8 @@
 
 &pmk8550_vadc {
 	pinctrl-0 = <&pmxr2230_optics_therm_default
-		     &pmxr2230_optics_therm_l_default
-		     &pmxr2230_optics_therm_r_default>;
+		     &pm8550b_optics_therm_l_default
+		     &pm8550b_optics_therm_r_default>;
 
 	/delete-node/ pmxr2230_sde_card_therm;
 
