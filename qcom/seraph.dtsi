@@ -1435,6 +1435,14 @@
 		compatible = "qcom,dload-mode";
 	};
 
+	mini_dump_mode {
+		compatible = "qcom,minidump";
+	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
 	apsscc: syscon@17aa0000 {
 		compatible = "syscon";
 		reg = <0x17aa0000 0x1c>;
