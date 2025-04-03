@@ -164,7 +164,7 @@ endif
 
 ifeq ($(CONFIG_PORTOV_DTB),y)
 PARROT_BASE_DTB += parrot-moto-base.dtb
-PARROT_BOARDS += parrot-portov-dvt1-overlay.dtbo
+PARROT_BOARDS += parrot-portov-evb-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_PARO_DTB),y)

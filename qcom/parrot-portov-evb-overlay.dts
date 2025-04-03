@@ -7,6 +7,6 @@
 	model = "portov";
 	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,portov";
 	qcom,msm-id = <613 0x10000>;
-	qcom,board-id = <0x43 0xB100>;
+	qcom,board-id = <0x46 0x9000>;
 };
 
