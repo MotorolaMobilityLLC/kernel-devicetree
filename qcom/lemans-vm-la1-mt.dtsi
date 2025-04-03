@@ -10,6 +10,15 @@
 	};
 };
 
+&reserved_memory {
+		dice: dice@12340000 {
+		compatible = "google,open-dice";
+		no-map;
+		reg = <0x0 0x0 0x0 0x0>;
+		label = "sdv_dice_mem";
+	};
+};
+
 &hab {
 	vmid = <5>;
 };
