@@ -1521,6 +1521,84 @@
 		qcom,freq-hw-domain = <&cpufreq_hw 0>, <&cpufreq_hw 1>;
 	};
 
+	pdm_pwm: pdm_pwm@88f0000 {
+		compatible = "qcom,pdm-pwm-v2";
+		reg = <0x88f0000 0xc000>;
+		clocks = <&gcc GCC_PDM_AHB_CLK>;
+		clock-names =  "pdm_ahb_clk";
+		#pwm-cells = <3>;
+
+		pwm@0 {
+			frame-index = <0>;
+			frame-offset = <0x1000>;
+			clocks = <&gcc GCC_PWM0_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@1 {
+			frame-index = <1>;
+			frame-offset = <0x2000>;
+			clocks = <&gcc GCC_PWM1_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@2 {
+			frame-index = <2>;
+			frame-offset = <0x3000>;
+			clocks = <&gcc GCC_PWM2_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@3 {
+			frame-index = <3>;
+			frame-offset = <0x4000>;
+			clocks = <&gcc GCC_PWM3_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@4 {
+			frame-index = <4>;
+			frame-offset = <0x5000>;
+			clocks = <&gcc GCC_PWM4_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@5 {
+			frame-index = <5>;
+			frame-offset = <0x6000>;
+			clocks = <&gcc GCC_PWM5_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@6 {
+			frame-index = <6>;
+			frame-offset = <0x7000>;
+			clocks = <&gcc GCC_PWM6_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@7 {
+			frame-index = <7>;
+			frame-offset = <0x8000>;
+			clocks = <&gcc GCC_PWM7_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@8 {
+			frame-index = <8>;
+			frame-offset = <0x9000>;
+			clocks = <&gcc GCC_PWM8_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@9 {
+			frame-index = <9>;
+			frame-offset = <0xa000>;
+			clocks = <&gcc GCC_PWM9_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+	};
+
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
 
