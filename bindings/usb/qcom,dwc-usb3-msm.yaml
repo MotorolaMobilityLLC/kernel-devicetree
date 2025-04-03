@@ -170,6 +170,12 @@ properties:
     description: Indicator showing the Glue driver supports role switch.
     type: boolean
 
+  orientation-override:
+    description: |
+      There are some targets that needs forcing orientation on boot.
+      This parameter will help provide this from dt.
+    $ref: /schemas/types.yaml#/definitions/string
+
 # Required child node:
 
 patternProperties:
