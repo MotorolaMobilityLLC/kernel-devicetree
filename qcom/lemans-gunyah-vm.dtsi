@@ -21,7 +21,7 @@
 	};
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n";
+		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n androidboot.usbcontroller=a400000.dwc3";
 	};
 
 	reserved_memory: reserved-memory {
@@ -1283,7 +1283,7 @@
 		compatible = "arm,scmi-virtio";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		status = "ok";
+		status = "okay";
 
 		scmi_power: protocol@11 {
 			reg = <0x11>;
@@ -1763,9 +1763,13 @@
 &usb2 {
 	compatible = "qcom,dwc3-msm-fw-managed";
 
+	interrupts-extended = <&intc GIC_SPI 444 IRQ_TYPE_LEVEL_HIGH>;
+	interrupt-names = "pwr_event_irq";
+
 	power-domains = <&scmi_power 4>, <&scmi_power 5>;
 	power-domain-names = "usb_transfer", "usb_core";
 
+	/delete-property/ qcom,use-pdc-interrupts;
 	/delete-property/ USB3_GDSC-supply;
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
@@ -1774,7 +1778,7 @@
 	/delete-property/ qcom,core-clk-rate;
 	/delete-property/ qcom,default-mode-host;
 
-	status = "disabled";
+	status = "okay";
 };
 
 &usb2_phy2 {
@@ -1783,7 +1787,7 @@
 	power-domains = <&scmi_power 6>, <&scmi_power 7>;
 	power-domain-names = "usb_transfer", "usb_core";
 
-	status = "disabled";
+	status = "okay";
 
 	/delete-property/ vdd-supply;
 	/delete-property/ vdda18-supply;
