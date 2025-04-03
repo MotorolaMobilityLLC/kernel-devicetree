@@ -3,6 +3,7 @@
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 #include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
@@ -328,6 +329,11 @@
 				0x4 0x10100000 0x4 0x10100000 0x0 0x100000 0x0
 				/* EMAC1 CH4 region */
 				0x0 0x2300C000 0x0 0x2300C000 0x0 0x1000 0x0
+				/* USB2 region */
+				0x0 0xa400000 0x0 0xa400000 0x0 0x200000 0x0
+				0x0 0x88e7000 0x0 0x88e7000 0x0 0x1000 0x0
+				/* PDC region */
+				0x0 0xb220000 0x0 0xb220000 0x0 0x10000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -352,6 +358,11 @@
 			/* EMAC1 CH4 GIC IRQ */
 			808 808
 			860 860
+			/* USB2 IRQs */
+			521 521
+			522 522
+			476 476
+			474 474
 			>;
 
 		memory {
@@ -1290,6 +1301,15 @@
 		};
 	};
 
+	pdc: interrupt-controller@b220000 {
+		compatible = "qcom,sm8150-pdc","qcom,pdc";
+		reg = <0xb220000 0x30000>;
+		qcom,pdc-ranges = <7 487 4>, <12 492 4>;
+		#interrupt-cells = <2>;
+		interrupt-parent = <&intc>;
+		interrupt-controller;
+	};
+
 	intc: interrupt-controller@17a00000 {
 		compatible = "arm,gic-v3";
 		interrupt-controller;
@@ -1605,6 +1625,7 @@
 
 #include "lemans-pinctrl.dtsi"
 #include "lemans-vm-qupv3.dtsi"
+#include "lemans-vm-usb.dtsi"
 
 /delete-node/ &qupv3_0;
 /delete-node/ &qupv3_1;
@@ -1730,4 +1751,46 @@
 			remote-vmids = <0>;
 		};
 	};
+};
+
+/delete-node/ &usb0;
+/delete-node/ &usb2_phy0;
+/delete-node/ &usb_qmp_phy0;
+/delete-node/ &usb1;
+/delete-node/ &usb2_phy1;
+/delete-node/ &usb_qmp_phy1;
+
+&usb2 {
+	compatible = "qcom,dwc3-msm-fw-managed";
+
+	power-domains = <&scmi_power 4>, <&scmi_power 5>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	/delete-property/ USB3_GDSC-supply;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
+	/delete-property/ qcom,core-clk-rate;
+	/delete-property/ qcom,default-mode-host;
+
+	status = "disabled";
+};
+
+&usb2_phy2 {
+	compatible = "qcom,usb-hsphy-snps-femto-fw-managed";
+
+	power-domains = <&scmi_power 6>, <&scmi_power 7>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	status = "disabled";
+
+	/delete-property/ vdd-supply;
+	/delete-property/ vdda18-supply;
+	/delete-property/ vdda33-supply;
+	/delete-property/ qcom,vdd-voltage-level;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
 };
