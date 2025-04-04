@@ -654,6 +654,15 @@
 		#mbox-cells = <2>;
 	};
 
+	cache-controller@25000000 {
+		compatible = "qcom,seraph-llcc", "qcom,llcc-v51";
+		reg = <0x25000000 0x400000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
+		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
+		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
+		cap-based-alloc-and-pwr-collapse;
+		qcom,sct-initialized;
+	};
+
 	gic-interrupt-router {
 		compatible = "qcom,gic-intr-routing";
 		qcom,gic-class0-cpus = <&CPU0 &CPU1 &CPU2 &CPU3>;
