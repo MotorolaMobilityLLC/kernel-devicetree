@@ -397,7 +397,15 @@
 	tlmm: pinctrl@f000000 {
 		compatible = "qcom,direwolf-pinctrl";
 		reg = <0x0F000000 0x1000000>;
-		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 210 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 211 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		interrupt-controller;
@@ -708,6 +716,10 @@
 
 &qupv3_2 {
 	qcom,iommu-dma = "bypass";
+};
+
+&tlmm {
+	qcom,dirconn-list = <127 0>,<211 0>,<210 0>;
 };
 
 &pm8540_2_gpios {
