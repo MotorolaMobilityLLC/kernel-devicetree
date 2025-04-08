@@ -1,0 +1,11 @@
+/dts-v1/;
+/plugin/;
+
+#include "neo_luna-v2-sg-qar.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO LUNA-V2 QAR";
+	compatible = "qcom,neo";
+	qcom,msm-id = <579 0x10000>;
+	qcom,board-id = <44 1>;
+};
