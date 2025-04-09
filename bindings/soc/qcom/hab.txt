@@ -23,6 +23,12 @@ Required properties:
     BE.
   - kernel_only: If the current mmid group can only be accessed by kernel hab
     clients, please add this property.
+  - dma-coherent: Add this property when IO-coherency is supported in the
+    current MMID group. The HAB driver will attach a char device to the exported
+    dma-buf for the HAB client and extract memory metadata by calling dma-buf
+    ops map_attachment() and unmap_attachment() during memory unexport, where
+    cache operations will be triggered. Enabling this property will skip the
+    cache operations.
 
 Example:
 	qcom,hab {
@@ -40,5 +46,12 @@ Example:
 			role = "fe";
 			remote-vmids = <0>;
 			kernel_only;
+		};
+
+		mmid300: mmid-grp@300 {
+			grp-start-id = <300>;
+			role = "fe";
+			remote-vmids = <0>;
+			dma-coherent;
 		};
 	}
