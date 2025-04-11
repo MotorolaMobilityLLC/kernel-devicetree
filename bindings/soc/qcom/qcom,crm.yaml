@@ -28,6 +28,9 @@ properties:
     enum:
       - qcom,cam-crm
       - qcom,pcie-crm
+      - qcom,cam-crm-v2
+      - qcom,pcie-crm-v2
+      - qcom,disp-crm-v2
 
   reg:
     minItems: 4
