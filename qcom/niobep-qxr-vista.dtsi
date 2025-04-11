@@ -480,6 +480,15 @@
 		led-ivfm-max-microvolt = <3600000>;
 		led-max-timeout-us = <1600000>;
 		label = "right";
+		lm36011_flash_right: qcom,flash_6 {
+			label = "flash";
+			qcom,led-name = "led:flash_6";
+			qcom,max-current-ma = <255>;
+			qcom,default-led-trigger = "backlight_36011right";
+			qcom,id = <6>;
+			qcom,duration-ms = <1280>;
+			qcom,ires-ua = <12500>;
+		};
 	};
 
 	lm3535_led_r: lm3535@38 {
@@ -489,6 +498,15 @@
 
 		drv-en-gpio = <&tlmm 142 0>;
 		label = "right";
+		lm3535_flash_right: qcom,flash_9 {
+			label = "flash";
+			qcom,led-name = "led:flash_9";
+			qcom,max-current-ma = <255>;
+			qcom,default-led-trigger = "backlight_3535right";
+			qcom,id = <9>;
+			qcom,duration-ms = <1280>;
+			qcom,ires-ua = <12500>;
+		};
 	};
 };
 
@@ -505,6 +523,15 @@
 		led-ivfm-max-microvolt = <3600000>;
 		led-max-timeout-us = <1600000>;
 		label = "left";
+		lm36011_flash_left: qcom,flash_5 {
+			label = "flash";
+			qcom,led-name = "led:flash_5";
+			qcom,max-current-ma = <255>;
+			qcom,default-led-trigger = "backlight_36011left";
+			qcom,id = <5>;
+			qcom,duration-ms = <1280>;
+			qcom,ires-ua = <12500>;
+		};
 	};
 
 	lm3535_led_l: lm3535@38 {
@@ -514,6 +541,15 @@
 
 		drv-en-gpio = <&tlmm 142 0>;
 		label = "left";
+		lm3535_flash_left: qcom,flash_7 {
+			label = "flash";
+			qcom,led-name = "led:flash_7";
+			qcom,max-current-ma = <255>;
+			qcom,default-led-trigger = "backlight_3535left";
+			qcom,id = <7>;
+			qcom,duration-ms = <1280>;
+			qcom,ires-ua = <12500>;
+		};
 	};
 };
 
@@ -526,6 +562,15 @@
 
 		drv-en-gpio = <&tlmm 113 0>;
 		label = "hat";
+		lm3535_flash_hat: qcom,flash_8 {
+			label = "flash";
+			qcom,led-name = "led:flash_8";
+			qcom,max-current-ma = <255>;
+			qcom,default-led-trigger = "backlight_3535hat";
+			qcom,id = <8>;
+			qcom,duration-ms = <1280>;
+			qcom,ires-ua = <12500>;
+		};
 	};
 
 	max77720_tof: max77720@41 {
