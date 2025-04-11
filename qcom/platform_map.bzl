@@ -318,6 +318,8 @@ _platform_map = {
             {"name": "seraphp-idp-overlay.dtbo"},
             {"name": "seraph-idp-dtof-overlay.dtbo"},
             {"name": "seraphp-idp-dtof-overlay.dtbo"},
+            {"name": "seraph-idp-no-display-overlay.dtbo"},
+            {"name": "seraphp-idp-no-display-overlay.dtbo"},
             {
                 "name": "seraph-rumi-overlay.dtbo",
                 "apq": False,
