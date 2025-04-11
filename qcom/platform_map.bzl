@@ -252,6 +252,18 @@ _platform_map = {
             {"name": "neo_luna-v2-sg-idp-pm8008-overlay.dtbo"},
         ],
     },
+    "neo": {
+        "dtb_list": [
+            {"name": "neo.dtb"},
+        ],
+        "dtbo_list": [
+            {"name": "neo-atp-overlay.dtbo"},
+            {"name": "neo-idp-mos-overlay.dtbo"},
+            {"name": "neo-idp-display-overlay.dtbo"},
+            {"name": "neo-idp-e2e-overlay.dtbo"},
+            {"name": "neo-idp-hmt-overlay.dtbo"},
+        ],
+    },
     "anorak": {
         "dtb_list": [
             {"name": "anorak.dtb"},

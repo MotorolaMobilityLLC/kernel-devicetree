@@ -144,6 +144,21 @@ niobe-dtb-$(CONFIG_ARCH_NIOBE) += \
 niobe-overlays-dtb-$(CONFIG_ARCH_NIOBE) += $(NIOBE_BOARDS) $(NOAPQ_NIOBE_BOARDS) $(NIOBE_BASE_DTB) $(NIOBE_APQ_BASE_DTB)
 dtb-y += $(niobe-dtb-y)
 
+NEO_BASE_DTB += neo.dtb
+
+NEO_BOARDS += \
+		neo-atp-overlay.dtbo \
+		neo-idp-mos-overlay.dtbo \
+		neo-idp-display-overlay.dtbo \
+		neo-idp-e2e-overlay.dtbo \
+		neo-idp-hmt-overlay.dtbo
+
+neo-dtb-$(CONFIG_ARCH_NEO) += \
+        $(call add-overlays, $(NEO_BOARDS) ,$(NEO_BASE_DTB))
+
+neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_BASE_DTB)
+dtb-y += $(neo-dtb-y)
+
 ### Added for Neo ###
 NEO_LA_BASE_DTB += neo_la.dtb
 NEO_LUNA_DTB += neo_luna-v2.dtb
