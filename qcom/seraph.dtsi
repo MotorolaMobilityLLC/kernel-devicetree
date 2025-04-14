@@ -1759,6 +1759,12 @@
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
 
+		opp-400000 {
+			opp-hz = /bits/ 64 <400000>;
+			opp-peak-kBps = <0 0>;
+			opp-avg-kBps = <0 0>;
+		};
+
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <250000 133320>;
@@ -1781,6 +1787,7 @@
 		reg-names = "hc", "cqhci", "cqhci_ice", "cqhci_ice_hwkm";
 
 		iommus = <&apps_smmu 0x120 0x0>;
+		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
 		/*
