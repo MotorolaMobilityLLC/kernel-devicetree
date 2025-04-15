@@ -82,3 +82,15 @@
 			"ipd_step_motor_right";
 	};
 };
+
+&qupv3_se8_spi {
+	status = "ok";
+	vd628x_spi@0 {
+		compatible = "st,vd628x_spi";
+		reg = <0>;
+		spi-cpha;
+		spi-max-frequency = <5000000>;
+		chunk-size = <32768>;
+		status = "ok";
+	};
+};
