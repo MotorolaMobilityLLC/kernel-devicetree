@@ -13,8 +13,8 @@ description: |
 
 properties:
   compatible:
-    const: st,vd6281
     enum:
+      - st,vd628x_spi
       - st,vd6281
       - st,vd6283
 
