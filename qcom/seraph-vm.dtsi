@@ -84,6 +84,8 @@
 		vm-guid = "598085da-c516-5b25-a9c1-927a02819770";
 		qcom,sensitive;
 		vm-attrs = "context-dump", "crash-restart";
+
+		iomemory-ranges = <0x0 405000 0x0 405000 0x1000 0x0>;
 		/* For LEVM por usecases is QUP1_SE4 and QUP2_SE7.
 		 * QUP1_SE4: GPII5 : IRQ_316
 		 * QUP2_SE7: GPII5 : IRQ_625
@@ -93,7 +95,7 @@
 				  625 625
 				  279 279>;
 		*/
-		gic-irq-ranges = <>;
+		gic-irq-ranges = <734 734>;
 		memory {
 			#address-cells = <0x2>;
 			#size-cells = <0x0>;
@@ -319,6 +321,15 @@
 		redistributor-stride = <0x0 0x20000>;
 		reg = <0x17200000 0x10000>,       /* GICD */
 		     <0x17260000 0xA0000>;       /* GICR * 5 */
+	};
+
+	ipcc_mproc_ns1: qcom,ipcc@405000 {
+		compatible = "qcom,ipcc";
+		reg = <0x405000 0x1000>; /* size */
+		interrupts = <GIC_SPI 703 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
 	};
 
 	arch_timer: timer {
