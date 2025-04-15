@@ -652,13 +652,13 @@
 		};
 	};
 
-	tpdm_llm_cmb: tpdm@12860000 {
+	tpdm_actpm: tpdm@12860000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x12860000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-llm-cmb";
+		coresight-name = "coresight-tpdm-actpm";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -666,9 +666,9 @@
 		atid = <66>;
 		out-ports {
 			port {
-				tpdm_llm_cmb_out_tpda_apss: endpoint {
+				tpdm_actpm_out_tpda_apss: endpoint {
 					remote-endpoint =
-					<&tpda_apss_in_tpdm_llm_cmb>;
+					<&tpda_apss_in_tpdm_actpm>;
 				};
 			};
 		};
@@ -728,9 +728,9 @@
 
 			port@3 {
 				reg = <3>;
-				tpda_apss_in_tpdm_llm_cmb: endpoint {
+				tpda_apss_in_tpdm_actpm: endpoint {
 					remote-endpoint =
-					<&tpdm_llm_cmb_out_tpda_apss>;
+					<&tpdm_actpm_out_tpda_apss>;
 				};
 			};
 
@@ -2655,7 +2655,7 @@
 		reg-names = "tpdm-base";
 
 		status = "disabled";
-		coresight-name = "coresight-tpdm-mxc";
+		coresight-name = "coresight-tpdm-rdpm-mxc";
 		atid = <79>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -2699,7 +2699,7 @@
 		reg-names = "tpdm-base";
 
 		status = "disabled";
-		coresight-name = "coresight-tpdm-mxa";
+		coresight-name = "coresight-tpdm-rdpm-mxa";
 		atid = <79>;
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -4009,13 +4009,13 @@
 		};
 	};
 
-	tpdm_aoss_prio0: tpdm@11309000 {
+	tpdm_swao_prio0: tpdm@11309000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x11309000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-aoss-prio0";
+		coresight-name = "coresight-tpdm-swao-prio0";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -4023,21 +4023,21 @@
 		atid = <71>;
 		out-ports {
 			port {
-				tpdm_aoss_prio0_out_tpda_aoss: endpoint {
+				tpdm_swao_prio0_out_tpda_aoss: endpoint {
 					remote-endpoint =
-					<&tpda_aoss_in_tpdm_aoss_prio0>;
+					<&tpda_aoss_in_tpdm_swao_prio0>;
 				};
 			};
 		};
 	};
 
-	tpdm_aoss_prio1: tpdm@1130a000 {
+	tpdm_swao_prio1: tpdm@1130a000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x1130a000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-aoss-prio1";
+		coresight-name = "coresight-tpdm-swao-prio1";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -4045,15 +4045,15 @@
 		atid = <71>;
 		out-ports {
 			port {
-				tpdm_aoss_prio1_out_tpda_aoss: endpoint {
+				tpdm_swao_prio1_out_tpda_aoss: endpoint {
 					remote-endpoint =
-					<&tpda_aoss_in_tpdm_aoss_prio1>;
+					<&tpda_aoss_in_tpdm_swao_prio1>;
 				};
 			};
 		};
 	};
 
-	tpdm_aoss_prio2: tpdm@1130b000 {
+	tpdm_swao_prio2: tpdm@1130b000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x1130b000 0x1000>;
@@ -4067,15 +4067,15 @@
 		atid = <71>;
 		out-ports {
 			port {
-				tpdm_aoss_prio2_out_tpda_aoss: endpoint {
+				tpdm_swao_prio2_out_tpda_aoss: endpoint {
 					remote-endpoint =
-					<&tpda_aoss_in_tpdm_aoss_prio2>;
+					<&tpda_aoss_in_tpdm_swao_prio2>;
 				};
 			};
 		};
 	};
 
-	tpdm_aoss_prio3: tpdm@1130c000 {
+	tpdm_swao_prio3: tpdm@1130c000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x1130c000 0x1000>;
@@ -4089,21 +4089,21 @@
 		atid = <71>;
 		out-ports {
 			port {
-				tpdm_aoss_prio3_out_tpda_aoss: endpoint {
+				tpdm_swao_prio3_out_tpda_aoss: endpoint {
 					remote-endpoint =
-					<&tpda_aoss_in_tpdm_aoss_prio3>;
+					<&tpda_aoss_in_tpdm_swao_prio3>;
 				};
 			};
 		};
 	};
 
-	tpdm_aoss_dsb: tpdm@1130d000 {
+	tpdm_swao_dsb: tpdm@1130d000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb968>;
 		reg = <0x1130d000 0x1000>;
 		reg-names = "tpdm-base";
 
-		coresight-name = "coresight-tpdm-aoss-dsb";
+		coresight-name = "coresight-tpdm-swao-dsb";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -4111,9 +4111,9 @@
 		atid = <71>;
 		out-ports {
 			port {
-				tpdm_aoss_dsb_out_tpda_aoss: endpoint {
+				tpdm_swao_dsb_out_tpda_aoss: endpoint {
 					remote-endpoint =
-					<&tpda_aoss_in_tpdm_aoss_dsb>;
+					<&tpda_aoss_in_tpdm_swao_dsb>;
 				};
 			};
 		};
@@ -4144,41 +4144,41 @@
 
 			port@0 {
 				reg = <0>;
-				tpda_aoss_in_tpdm_aoss_prio0: endpoint {
+				tpda_aoss_in_tpdm_swao_prio0: endpoint {
 					remote-endpoint =
-					<&tpdm_aoss_prio0_out_tpda_aoss>;
+					<&tpdm_swao_prio0_out_tpda_aoss>;
 				};
 			};
 
 			port@1 {
 				reg = <1>;
-				tpda_aoss_in_tpdm_aoss_prio1: endpoint {
+				tpda_aoss_in_tpdm_swao_prio1: endpoint {
 					remote-endpoint =
-					<&tpdm_aoss_prio1_out_tpda_aoss>;
+					<&tpdm_swao_prio1_out_tpda_aoss>;
 				};
 			};
 
 			port@2 {
 				reg = <2>;
-				tpda_aoss_in_tpdm_aoss_prio2: endpoint {
+				tpda_aoss_in_tpdm_swao_prio2: endpoint {
 					remote-endpoint =
-					<&tpdm_aoss_prio2_out_tpda_aoss>;
+					<&tpdm_swao_prio2_out_tpda_aoss>;
 				};
 			};
 
 			port@3 {
 				reg = <3>;
-				tpda_aoss_in_tpdm_aoss_prio3: endpoint {
+				tpda_aoss_in_tpdm_swao_prio3: endpoint {
 					remote-endpoint =
-					<&tpdm_aoss_prio3_out_tpda_aoss>;
+					<&tpdm_swao_prio3_out_tpda_aoss>;
 				};
 			};
 
 			port@4 {
 				reg = <4>;
-				tpda_aoss_in_tpdm_aoss_dsb: endpoint {
+				tpda_aoss_in_tpdm_swao_dsb: endpoint {
 					remote-endpoint =
-					<&tpdm_aoss_dsb_out_tpda_aoss>;
+					<&tpdm_swao_dsb_out_tpda_aoss>;
 				};
 			};
 
