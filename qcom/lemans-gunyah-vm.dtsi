@@ -7,7 +7,6 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <532 0x10000>, <533 0x10000>, <534 0x10000>, <532 0x20000>, <533 0x20000>, <534 0x20000>;
 	interrupt-parent = <&intc>;
 
 	qcom,mem-buf {
@@ -314,7 +313,7 @@
 		qcom,dev-name = "bootloader_a";
 	};
 
-	qcom,vm-config {
+	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
 		boot-config = "fdt,unified";
