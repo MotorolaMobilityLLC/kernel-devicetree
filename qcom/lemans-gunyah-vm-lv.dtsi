@@ -259,7 +259,7 @@
 		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,FD02C9DA-306C-48C7-A49C-BBD827AE86EE;";
 		qcom,secdomain-ids = <53>;
 		qcom,primary-vm-index = <0>;
-		vm-attrs = "guest-ram-dump";
+		vm-attrs = "guest-ram-dump", "allow-unprotected";
 
 		memory {
 			#address-cells = <0x2>;
