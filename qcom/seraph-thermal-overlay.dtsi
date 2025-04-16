@@ -52,4 +52,38 @@
 			};
 		};
 	};
+
+	pmar2230_tz {
+		cooling-maps {
+			pmar2230_cpu1_pause {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&cpu1_pause 1 1>;
+			};
+
+			pmar2230_cpu2_pause {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&cpu2_pause 1 1>;
+			};
+
+			pmar2230_cpu3_pause {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&cpu3_pause 1 1>;
+			};
+
+			pmar2230_cpu4_pause {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&cpu4_pause 1 1>;
+			};
+
+			pmar2230_cdsp {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&cdsp_sw 5 THERMAL_NO_LIMIT>;
+			};
+
+			pmar2230_gpu {
+				trip = <&pmar2230_trip0>;
+				cooling-device = <&msm_gpu 5 THERMAL_NO_LIMIT>;
+			};
+		};
+	};
 };
