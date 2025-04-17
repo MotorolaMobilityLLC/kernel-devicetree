@@ -11,7 +11,8 @@
  */
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
-#include "parrot-wcn3990.dtsi"
+// Moto: wlan has its own device tree project at shm2024 baseline
+//#include "parrot-wcn3990.dtsi"
 #include "parrot-cusco-charger-overlay.dtsi"
 #include "parrot-cusco-thermal-overlay.dtsi"
 #include "parrot-cusco-touchscreen-overlay.dtsi"

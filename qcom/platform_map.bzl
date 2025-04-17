@@ -350,17 +350,20 @@ _platform_map = {
     "parrot": {
         "dtb_list": [
             # keep sorted
-            {"name": "parrot-moto-base.dtb", "product":"paros",},
+            {"name": "parrot-moto-base.dtb", "product":"cuscoi",},
             {"name": "parrot-moto-base.dtb", "product":"mona",},
-            {"name": "parrot-moto-base.dtb", "product":"paro",},
             {"name": "parrot-moto-base.dtb", "product":"monai",},
+            {"name": "parrot-moto-base.dtb", "product":"paro",},
+            {"name": "parrot-moto-base.dtb", "product":"paros",},
         ],
         "dtbo_list": [
             # keep sorted
-            {"name": "parrot-paros-evt-overlay.dtbo", "product": "paros",},
+            {"name": "parrot-cuscoi-evb-overlay.dtbo", "product":"cuscoi",},
+            {"name": "parrot-cuscoi-noi-evb-overlay.dtbo", "product":"cuscoi",},
             {"name": "parrot-mona-evb-overlay.dtbo", "product": "mona",},
-            {"name": "parrot-paro-evb-overlay.dtbo", "product": "paro",},
             {"name": "parrot-monai-dvt1-overlay.dtbo", "product": "monai",},
+            {"name": "parrot-paro-evb-overlay.dtbo", "product": "paro",},
+            {"name": "parrot-paros-evt-overlay.dtbo", "product": "paros",},
         ],
     },
 }

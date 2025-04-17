@@ -153,19 +153,9 @@ PARROT_BOARDS += parrot-paro-evb-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_CUSCO_DTB),y)
-dtbo-$(CONFIG_ARCH_PARROT) += \
-        parrot-cusco-evb-overlay.dtbo
-
-parrot-cusco-evb-overlay.dtbo-base := parrot-moto-base.dtb
-endif
-
-ifeq ($(CONFIG_CUSCO_DTB),y)
-dtbo-$(CONFIG_ARCH_PARROT) += \
-        parrot-cuscoi-noi-evb-overlay.dtbo \
+PARROT_BASE_DTB += parrot-moto-base.dtb
+PARROT_BOARDS += parrot-cuscoi-noi-evb-overlay.dtbo \
         parrot-cuscoi-evb-overlay.dtbo
-
-parrot-cuscoi-evb-overlay.dtbo-base := parrot-moto-base.dtb
-parrot-cuscoi-noi-evb-overlay.dtbo-base := parrot-moto-base.dtb
 endif
 
 parrot-dtb-$(CONFIG_ARCH_PARROT) += \
