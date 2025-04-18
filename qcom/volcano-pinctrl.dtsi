@@ -1751,7 +1751,7 @@
 	spkr_3_sd_n {
 		spkr_3_sd_n_sleep: spkr_3_sd_n_sleep {
 			mux {
-				pins = "108";
+				pins = "gpio108";
 				function = "gpio";
 			};
 

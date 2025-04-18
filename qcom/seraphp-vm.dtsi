@@ -1,0 +1,9 @@
+/dts-v1/;
+
+#include "seraph-vm.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. SeraphP SVM";
+	compatible = "qcom,seraphp";
+	qcom,msm-id = <673 0x10000>;
+};

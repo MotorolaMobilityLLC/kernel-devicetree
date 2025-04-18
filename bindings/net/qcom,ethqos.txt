@@ -8,11 +8,13 @@ For emac0 instance, compatible should be "qcom,stmmac-ethqos-emac0"
 For emac1 instance, compatible should be "qcom,stmmac-ethqos-emac1"
 For supporting SMMU, compatible should be "qcom,emac-smmu-embedded"
 For supporting SMMU for thin driver, compatible should be "qcom,emac-thin-smmu-embedded"
+This document also supports DW25GMAC based ethernet devices which supports upto 25Gbps data rates,
+Compatible for Emac should be "qcom,sa8797p-ethqos-vm"
 This device has following properties:
 
 Required properties:
 
-- compatible: Should be "qcom,stmmac-ethqos"
+- compatible: Shall be one of "qcom,stmmac-ethqos", "qcom,sa8797p-ethqos-vm".
 
 - reg: Address and length of the register set for the device
 

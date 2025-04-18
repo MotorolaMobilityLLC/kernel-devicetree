@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "seraph-vm.dtsi"
+#include "seraph-vm-atp.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Seraph SVM ATP";
+	compatible = "qcom,seraph-atp", "qcom,seraph", "qcom,atp";
+	qcom,board-id = <0x10021 0>;
+};

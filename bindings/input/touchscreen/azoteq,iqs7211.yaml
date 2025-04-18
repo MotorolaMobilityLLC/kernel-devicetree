@@ -185,6 +185,12 @@ properties:
     maximum: 255
     description: Specifies the vertical trim height.
 
+  azoteq,tp_settings:
+    $ref: /schemas/types.yaml#/definitions/uint32
+    minimum: 0
+    maximum: 63
+    description: Specifies the device trackpad xy axis setting.
+
   trackpad:
     type: object
     description: Represents all channels associated with the trackpad.

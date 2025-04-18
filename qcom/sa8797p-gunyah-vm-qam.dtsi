@@ -1,2 +1,96 @@
 #include "sa8797p-gunyah-vm.dtsi"
+#include "sa8797p-vm-qupv3.dtsi"
+#include "sa8797p-vm-pcie.dtsi"
+#include "sa8797p-vm-usb.dtsi"
 
+/ {
+	aliases {
+		hsuart0 = &qupv3_se17_4uart;
+	};
+};
+
+&vm_config {
+		/* Pass through regions */
+		iomemory-ranges = <
+				/* MPROC NS1 IPCC region */
+				0x0 0x9008000 0x0 0x9008000 0x0 0x1000 0x0
+				/* MDSS 0 region */
+				0x0 0xAE00000 0x0 0xAE00000 0x0 0x180000 0x1
+				/* MDSS 0 LUT DMA region */
+				0x0 0x0AF80000 0x0 0x0AF80000 0x0 0x11000 0x0
+				/* MDSS 0 region 2 */
+				0x0 0xAFA4000 0x0 0xAFA4000 0x0 0x11000 0x1
+				/* MDSS 1 region */
+				0x0 0x8C00000 0x0 0x8C00000 0x0 0x180000 0x1
+				/* MDSS 1 LUT DMA region */
+				0x0 0x8D80000 0x0 0x8D80000 0x0 0x11000 0x0
+				/* MDSS 1 region 2 */
+				0x0 0x8DA4000 0x0 0x8DA4000 0x0 0x11000 0x1
+				/* GPU_0_GMU region */
+				0x0 0x3D40000 0x0 0x3D40000 0x0 0x1000 0x0
+				/* GPU_1_GMU region */
+				0x0 0x9840000 0x0 0x9840000 0x0 0x1000 0x0
+				/* VCODEC CS1 region */
+				0x0 0xAAA1000 0x0 0xAAA1000 0x0 0x1000 0x0
+				/* USB2 region */
+				0x0 0x88e0000 0x0 0x88e0000 0x0 0x1000 0x0
+				0x0 0xa200000 0x0 0xa200000 0x0 0x200000 0x0
+				/* Fence NS1 IPCC region */
+				0x0 0x9307000 0x0 0x9307000 0x0 0x1000 0x0
+				/* EMAC 1 DWC region */
+				0x0 0x1A80000 0x0 0x1A80000 0x0 0x1A000 0x0
+				/* EMAC 1 IO CSR region */
+				0x0 0x1AFF000 0x0 0x1AFF000 0x0 0x1000 0x0
+				>;
+
+		/* Pass through IRQs */
+		gic-irq-ranges = <
+				/* MPROC NS1 IPCC GIC IRQ */
+				471 471
+				/* GPU 0 GMU */
+				676 676
+				/* GPU 1 GMU */
+				893 893
+				/* VCODEC CS1 */
+				214 214
+				/*USB2 IRQs*/
+				784 784
+				785 785
+				939 939
+				942 942
+				/* Fence NS1 IPCC GIC IRQ */
+				459 459
+				/* EMAC 1 */
+				852 852
+				535 535
+				775 775
+				776 776
+				761 761
+				762 762
+				763 763
+				764 764
+				765 765
+				766 766
+				767 767
+				768 768
+				734 734
+				688 688
+				393 393
+				>;
+};
+
+&xpcs1 {
+	status = "okay";
+};
+
+&ethernet1 {
+	status = "okay";
+};
+
+&usb2 {
+	status = "ok";
+};
+
+&eusb2_phy2 {
+	status = "ok";
+};

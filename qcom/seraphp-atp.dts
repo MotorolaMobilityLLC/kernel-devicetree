@@ -1,0 +1,12 @@
+/dts-v1/;
+/plugin/;
+
+#include "seraphp.dtsi"
+#include "seraphp-atp.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. SeraphP ATP";
+	compatible = "qcom,seraphp-atp", "qcom,seraphp", "qcom,atp";
+	qcom,board-id = <0x10021 0>;
+};
+

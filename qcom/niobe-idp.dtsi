@@ -135,11 +135,30 @@
 	};
 };
 
+&usb1 {
+	usb-role-switch;
+	port {
+		usb_port1: endpoint {
+			remote-endpoint = <&usb_port1_connector>;
+		};
+	};
+};
+
 &ucsi {
-	connector {
+	connector@0 {
+		reg = <0>;
 		port {
 			usb_port0_connector: endpoint {
 				remote-endpoint = <&usb_port0>;
+			};
+		};
+	};
+
+	connector@1 {
+		reg = <1>;
+		port {
+			usb_port1_connector: endpoint {
+				remote-endpoint = <&usb_port1>;
 			};
 		};
 	};

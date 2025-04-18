@@ -1,4 +1,5 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/clock/qcom,gcc-lemans.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
 
 / {
@@ -8,7 +9,7 @@
 	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "root=/dev/vda nokaslr log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
+		bootargs = "nokaslr log_buf_len=1M console=hvc0 loglevel=4 trace_event=scmi:* tp_printk trace_buf_size=4M";
 	};
 
 	reserved_memory: reserved-memory {
@@ -161,10 +162,6 @@
 		};
 	};
 
-	virtio_blk_lv_system_b {
-		qcom,dev-name = "system_b";
-	};
-
 	virtio_blk_lv_system_a {
 		qcom,dev-name = "system_a";
 	};
@@ -173,68 +170,80 @@
 		qcom,dev-name = "userdata";
 	};
 
-	virtio_blk_lv_firmware {
-		qcom,dev-name = "firmware";
+	virtio_blk_lv_system_b {
+		qcom,dev-name = "system_b";
 	};
 
 	virtio_blk_lv_persist {
 		qcom,dev-name = "persist";
 	};
 
-	virtio_blk_lv_misc {
-		qcom,dev-name = "misc";
+	virtio_blk_lv_vbmeta_a {
+		qcom,dev-name = "vbmeta_a";
 	};
 
 	virtio_blk_lv_vbmeta_b {
 		qcom,dev-name = "vbmeta_b";
 	};
 
-	virtio_blk_lv_vbmeta_a {
-		qcom,dev-name = "vbmeta_a";
-	};
-
-	virtio_blk_lv_modem_b {
-		qcom,dev-name = "modem_b";
-	};
-
-	virtio_blk_lv_modem_a {
-		qcom,dev-name = "modem_a";
-	};
-
-	virtio_blk_lv_bluetooth_b {
-		qcom,dev-name = "bluetooth_b";
-	};
-
-	virtio_blk_lv_bluetooth_a {
-		qcom,dev-name = "bluetooth_a";
+	virtio_blk_lv_boot_a {
+		qcom,dev-name = "boot_a";
 	};
 
 	virtio_blk_lv_boot_b {
 		qcom,dev-name = "boot_b";
 	};
 
-	virtio_blk_lv_boot_a {
-		qcom,dev-name = "boot_a";
+	virtio_blk_lv_dtbo_a {
+		qcom,dev-name = "dtbo_a";
 	};
 
-	virtio_blk_lv_bootloader_b {
-		qcom,dev-name = "bootloader_b";
+	virtio_blk_lv_dtbo_b {
+		qcom,dev-name = "dtbo_b";
 	};
 
-	virtio_blk_lv_bootloader_a {
-		qcom,dev-name = "bootloader_a";
+	virtio_blk_lv_firmware {
+		qcom,dev-name = "firmware";
 	};
 
-	virtio_blk_lv_dsp_b {
-		qcom,dev-name = "dsp_b";
+	virtio_blk_lv_devinfo {
+		qcom,dev-name = "devinfo";
+	};
+
+	virtio_blk_lv_misc {
+		qcom,dev-name = "misc";
+	};
+
+	virtio_blk_lv_modem_a {
+		qcom,dev-name = "modem_a";
+	};
+
+	virtio_blk_lv_modem_b {
+		qcom,dev-name = "modem_b";
+	};
+
+	virtio_blk_lv_bluetooth_a {
+		qcom,dev-name = "bluetooth_a";
+	};
+
+	virtio_blk_lv_bluetooth_b {
+		qcom,dev-name = "bluetooth_b";
 	};
 
 	virtio_blk_lv_dsp_a {
 		qcom,dev-name = "dsp_a";
 	};
 
-	virtio_blk_lv_devinfo {
-		qcom,dev-name = "devinfo";
+	virtio_blk_lv_dsp_b {
+		qcom,dev-name = "dsp_b";
+	};
+
+	virtio_blk_lv_bootloader_a {
+		qcom,dev-name = "bootloader_a";
+	};
+
+	virtio_blk_lv_bootloader_b {
+		qcom,dev-name = "bootloader_b";
 	};
 
 	qcom,vm-config {
@@ -798,6 +807,7 @@
 				};
 			};
 
+			/* Touch input0 */
 			virtio-mmio@31 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -814,6 +824,7 @@
 				};
 			};
 
+			/* keyboard input1 */
 			virtio-mmio@32 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -830,6 +841,7 @@
 				};
 			};
 
+			/* console */
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -846,7 +858,7 @@
 				};
 			};
 
-			/*i2c 0*/
+			/* i2c 0 */
 			virtio-mmio@34 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -863,6 +875,7 @@
 				};
 			};
 
+			/* scmi */
 			virtio-mmio@35 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -879,7 +892,42 @@
 				};
 			};
 
+			/* dtbo_a */
 			virtio-mmio@36 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_lv_dtbo_a";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1D6000>;
+				memory {
+					qcom,label = <0x124>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* dtbo_b */
+			virtio-mmio@37 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_lv_dtbo_b";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1DA000>;
+				memory {
+					qcom,label = <0x125>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* reserved 0 */
+			virtio-mmio@38 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -887,9 +935,26 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x1D6000>;
+				dma_base = <0x0 0x1DE000>;
 				memory {
-					qcom,label = <0x124>;
+					qcom,label = <0x126>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* reserved 1 */
+			virtio-mmio@39 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x1E6000>;
+				memory {
+					qcom,label = <0x127>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -906,6 +971,14 @@
 					#address-cells = <0x2>;
 					allocate-base;
 				};
+			};
+
+			vsmmu@15000000 {
+				vdevice-type = "vsmmu-v2";
+				smmu-handle = <0x15000000>;
+				num-cbs = <0x3>;
+				num-smrs = <0x3>;
+				patch = "/soc/apps-smmu@15000000";
 			};
 		};
 	};
@@ -939,6 +1012,28 @@
 	psci {
 		compatible = "arm,psci-1.0";
 		method = "smc";
+	};
+
+	scmi {
+		compatible = "arm,scmi-virtio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		status = "ok";
+
+		scmi_power: protocol@11 {
+			reg = <0x11>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_perf: protocol@13 {
+			reg = <0x13>;
+			#power-domain-cells = <1>;
+		};
+
+		scmi_reset: protocol@16 {
+			reg = <0x16>;
+			#reset-cells = <1>;
+		};
 	};
 
 	intc: interrupt-controller@17a00000 {
@@ -992,6 +1087,136 @@
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
 	};
+
+	apps_smmu: apps-smmu@15000000 {
+		/*
+		 * reg, #global-interrupts & interrupts  properties will
+		 * be added dynamically by bootloader.
+		 */
+		compatible = "qcom,qsmmu-v500", "qcom,virt-smmu";
+		#iommu-cells = <2>;
+		qcom,use-3-lvl-tables;
+		dma-coherent;
+	};
+
+	dma_dev@0x0 {
+		compatible = "qcom,iommu-dma";
+		memory-region = <&system_cma>;
+	};
+
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,lemans-pinctrl";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+		status = "disabled";
+	};
+};
+
+#include "lemans-pinctrl.dtsi"
+#include "lemans-vm-qupv3.dtsi"
+
+&qupv3_0 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0x9c0000 0x1000>;
+
+	iommus = <&apps_smmu 0x419 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_1 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0xac0000 0x1000>;
+
+	iommus = <&apps_smmu 0x459 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_2 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0x8c0000 0x1000>;
+
+	iommus = <&apps_smmu 0x5b9 0x0>;
+	qcom,iommu-dma = "default";
+	status = "disabled";
+};
+
+&qupv3_se16_2uart {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	/delete-property/ interrupts-extended;
+
+	compatible = "qcom,sa8255p-geni-uart";
+	interrupts = <GIC_SPI 584 IRQ_TYPE_LEVEL_HIGH>;
+
+	power-domains = <&scmi_power 1>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disabled";
+};
+
+&qupv3_se16_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 1>, <&scmi_perf 0>;
+	power-domain-names = "power", "perf";
+
+	qcom,auto-suspend-disable;
+	status = "disabled";
+
+	spi_codec@0 {
+		compatible = "qcom,spi-msm-codec-slave";
+		reg = <0>;
+		spi-max-frequency = <10000000>;
+		spi-cpha;
+	};
+};
+
+&qupv3_se14_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 2>, <&scmi_perf 1>;
+	power-domain-names = "power", "perf";
+
+	status = "disabled";
+};
+
+&qupv3_se3_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ pinctrl-names;
+	/delete-property/ pinctrl-0;
+	/delete-property/ pinctrl-1;
+
+	compatible = "qcom,sa8255p-geni-spi";
+	power-domains = <&scmi_power 3>, <&scmi_perf 2>;
+	power-domain-names = "power", "perf";
+
+	status = "disabled";
 };
 
 &soc {

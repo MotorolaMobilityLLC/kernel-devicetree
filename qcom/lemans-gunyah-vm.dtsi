@@ -3,6 +3,7 @@
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 #include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
@@ -20,7 +21,7 @@
 	};
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n";
+		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n androidboot.usbcontroller=a400000.dwc3";
 	};
 
 	reserved_memory: reserved-memory {
@@ -51,20 +52,6 @@
 			reusable;
 			alignment = <0x0 0x400000>;
 			size = <0x0 0x1000000>;
-		};
-
-		cp_pixel_mem: cp_pixel_region {
-			no-map;
-			qcom,target-vmid = <0xA>;
-			qcom,label = <0xC0A>;
-			qcom,unmapped;
-		};
-
-		system_secure_mem: system_secure_region {
-			no-map;
-			qcom,label = <0xC09>;
-			qcom,target-vmid = <0x9>;
-			qcom,unmapped;
 		};
 
 		kinfo_mem: debug_kinfo_region {
@@ -309,15 +296,9 @@
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "vpm-virq";
-		qcom,peripheral-vmids = <0x9 0xa>;
 
 		/* Pass through regions */
 		iomemory-ranges = <
-				/* TLMM region */
-				0x0 0xF000000 0x0 0xF000000 0x0 0x1000000 0x0
-				/* QUPv3 Tile 2 read-only region */
-				0x0 0x8C0000 0x0 0x8C0000 0x0 0x1000 0x1
-				0x0 0x8C1000 0x0 0x8C1000 0x0 0x1000 0x1
 				/* QUPv3 SE17 region */
 				0x0 0x88C000 0x0 0x88C000 0x0 0x1000 0x0
 				0x0 0x88D000 0x0 0x88D000 0x0 0x1000 0x0
@@ -348,6 +329,11 @@
 				0x4 0x10100000 0x4 0x10100000 0x0 0x100000 0x0
 				/* EMAC1 CH4 region */
 				0x0 0x2300C000 0x0 0x2300C000 0x0 0x1000 0x0
+				/* USB2 region */
+				0x0 0xa400000 0x0 0xa400000 0x0 0x200000 0x0
+				0x0 0x88e7000 0x0 0x88e7000 0x0 0x1000 0x0
+				/* PDC region */
+				0x0 0xb220000 0x0 0xb220000 0x0 0x10000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -372,6 +358,11 @@
 			/* EMAC1 CH4 GIC IRQ */
 			808 808
 			860 860
+			/* USB2 IRQs */
+			521 521
+			522 522
+			476 476
+			474 474
 			>;
 
 		memory {
@@ -1121,6 +1112,22 @@
 				};
 			};
 
+			virtio-mmio@44 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x23A000>;
+				memory {
+					qcom,label = <0x4C>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
 			swiotlb-shm {
 				vdevice-type = "shm";
 				generate = "/swiotlb";
@@ -1137,8 +1144,8 @@
 			vsmmu@15000000 {
 				vdevice-type = "vsmmu-v2";
 				smmu-handle = <0x15000000>;
-				num-cbs = <0x4>;
-				num-smrs = <0x4>;
+				num-cbs = <0x3>;
+				num-smrs = <0x3>;
 				patch = "/soc/apps-smmu@15000000";
 			};
 
@@ -1276,7 +1283,7 @@
 		compatible = "arm,scmi-virtio";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		status = "ok";
+		status = "okay";
 
 		scmi_power: protocol@11 {
 			reg = <0x11>;
@@ -1292,6 +1299,15 @@
 			reg = <0x16>;
 			#reset-cells = <1>;
 		};
+	};
+
+	pdc: interrupt-controller@b220000 {
+		compatible = "qcom,sm8150-pdc","qcom,pdc";
+		reg = <0xb220000 0x30000>;
+		qcom,pdc-ranges = <7 487 4>, <12 492 4>;
+		#interrupt-cells = <2>;
+		interrupt-parent = <&intc>;
+		interrupt-controller;
 	};
 
 	intc: interrupt-controller@17a00000 {
@@ -1328,20 +1344,6 @@
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
 		};
-
-		qcom,cp_pixel {
-			qcom,dma-heap-name = "qcom,secure-pixel";
-			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
-			qcom,token = <0x80000>;
-			memory-region = <&cp_pixel_mem>;
-		};
-
-		qcom,cp_bitstream {
-			qcom,dma-heap-name = "system-secure";
-			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
-			qcom,token = <0x40000>;
-			memory-region = <&system_secure_mem>;
-		};
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -1352,6 +1354,7 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
+		status = "disabled";
 	};
 
 	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
@@ -1575,7 +1578,6 @@
 		qcom,arm-smmu;
 		reg = <0x2300C000 0x1000>;
 		reg-names = "stmmaceth";
-		status = "disabled";
 		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
 		snps,tso;
@@ -1589,7 +1591,6 @@
 		emac1_emb_smmu: emac1_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x148 0x1>;
-			status = "disabled";
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
 		};
@@ -1622,7 +1623,9 @@
 
 #include "lemans-pinctrl.dtsi"
 #include "lemans-vm-qupv3.dtsi"
+#include "lemans-vm-usb.dtsi"
 
+/delete-node/ &qupv3_0;
 /delete-node/ &qupv3_1;
 
 &qupv3_2 {
@@ -1632,7 +1635,7 @@
 	reg = <0x8c0000 0x2000>;
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
-	status = "ok";
+	status = "disabled";
 };
 
 &qupv3_se17_4uart {
@@ -1653,7 +1656,7 @@
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";
-	status = "ok";
+	status = "disabled";
 };
 
 &soc {
@@ -1746,4 +1749,50 @@
 			remote-vmids = <0>;
 		};
 	};
+};
+
+/delete-node/ &usb0;
+/delete-node/ &usb2_phy0;
+/delete-node/ &usb_qmp_phy0;
+/delete-node/ &usb1;
+/delete-node/ &usb2_phy1;
+/delete-node/ &usb_qmp_phy1;
+
+&usb2 {
+	compatible = "qcom,dwc3-msm-fw-managed";
+
+	interrupts-extended = <&intc GIC_SPI 444 IRQ_TYPE_LEVEL_HIGH>;
+	interrupt-names = "pwr_event_irq";
+
+	power-domains = <&scmi_power 4>, <&scmi_power 5>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	/delete-property/ qcom,use-pdc-interrupts;
+	/delete-property/ USB3_GDSC-supply;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
+	/delete-property/ qcom,core-clk-rate;
+	/delete-property/ qcom,default-mode-host;
+
+	status = "okay";
+};
+
+&usb2_phy2 {
+	compatible = "qcom,usb-hsphy-snps-femto-fw-managed";
+
+	power-domains = <&scmi_power 6>, <&scmi_power 7>;
+	power-domain-names = "usb_transfer", "usb_core";
+
+	status = "okay";
+
+	/delete-property/ vdd-supply;
+	/delete-property/ vdda18-supply;
+	/delete-property/ vdda33-supply;
+	/delete-property/ qcom,vdd-voltage-level;
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ resets;
+	/delete-property/ reset-names;
 };

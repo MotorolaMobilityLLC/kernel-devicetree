@@ -18,7 +18,9 @@ description: |
 
 properties:
   compatible:
+    const: qcom,sa7255p-geni-se-qup
     const: qcom,sa8255p-geni-se-qup
+    const: qcom,sa8797p-geni-se-qup
 
   reg:
     description: QUP wrapper common register address and length.
@@ -73,7 +75,9 @@ patternProperties:
 
     properties:
       compatible:
+        const: qcom,sa7255p-geni-uart
         const: qcom,sa8255p-geni-uart
+        const: qcom,sa8797p-geni-uart
 
 additionalProperties: false
 

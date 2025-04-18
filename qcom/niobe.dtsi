@@ -66,6 +66,8 @@
 		spi12 = &qupv3_se12_spi;
 		spi13 = &qupv3_se13_spi;
 		spi15 = &qupv3_se15_spi;
+		usb0 = &dwc0; /*usb0 child node*/
+		usb1 = &dwc1; /*usb1 child node*/
 	};
 
 	firmware: firmware {};
@@ -2596,6 +2598,38 @@
 		qcom,count-unit = <0x10000>;
 		qcom,target-dev = <&qcom_ddr_dcvs_hw>;
 	};
+
+	bwprof: qcom,bwprof-ddr@24090000 {
+		compatible = "qcom,bwprof";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		qcom,bus-width = <16>;
+		ranges;
+		reg = <0x240BA050 0x10>;
+		reg-names = "mem-freq";
+
+		bwprof_0: qcom,bwprof0@24092000 {
+			compatible = "qcom,bwprof-mon";
+			reg = <0x24092000 0x1000>;
+			reg-names = "base";
+			client = "total";
+		};
+
+		bwprof_1: qcom,bwprof1@24093000 {
+			compatible = "qcom,bwprof-mon";
+			reg = <0x24093000 0x1000>;
+			reg-names = "base";
+			client = "cpu";
+		};
+
+		bwprof_2: qcom,bwprof2@24094000 {
+			compatible = "qcom,bwprof-mon";
+			reg = <0x24094000 0x1000>;
+			reg-names = "base";
+			client = "gpu";
+		};
+	};
+
 	qcom_tzlog: tz-log@14680720 {
 		compatible = "qcom,tz-log";
 		reg = <0x14680720 0x3000>;

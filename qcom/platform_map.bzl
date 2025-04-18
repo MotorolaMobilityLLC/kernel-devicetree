@@ -19,6 +19,7 @@ _platform_map = {
             {"name": "monaco-vm-la-mt.dtb"},
             {"name": "sa6155p-vm-la.dtb"},
             {"name": "monaco-vm-flex-la.dtb"},
+            {"name": "monaco-vm-flex-la-mt.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -39,6 +40,7 @@ _platform_map = {
             {"name": "monaco-vm-la-mt-overlay.dtbo"},
             {"name": "sa6155p-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-flex-la-overlay.dtbo"},
+            {"name": "monaco-vm-flex-la-mt-overlay.dtbo"},
         ],
     },
     "autoghgvm": {
@@ -306,10 +308,21 @@ _platform_map = {
     "seraph": {
         "dtb_list": [
             {"name": "seraph.dtb"},
+            {
+                "name": "seraphp.dtb",
+                "apq": True,
+            },
         ],
         "dtbo_list": [
+            {"name": "seraph-atp-overlay.dtbo"},
+            {"name": "seraphp-atp-overlay.dtbo"},
+            {"name": "seraph-idp-overlay.dtbo"},
+            {"name": "seraphp-idp-overlay.dtbo"},
+            {"name": "seraph-idp-dtof-overlay.dtbo"},
+            {"name": "seraphp-idp-dtof-overlay.dtbo"},
             {
                 "name": "seraph-rumi-overlay.dtbo",
+                "apq": False,
             },
         ],
     },
@@ -383,6 +396,8 @@ _platform_map = {
     "seraph-tuivm": {
         "dtb_list": [
             {"name": "seraph-vm-rumi.dtb"},
+            {"name": "seraph-vm-atp.dtb"},
+            {"name": "seraphp-vm-atp.dtb"},
         ],
     },
     "cliffs-tuivm": {

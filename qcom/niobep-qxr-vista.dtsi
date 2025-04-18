@@ -117,10 +117,10 @@
 	qcom,max-current-ma = <30>;
 	qcom,id = <0>;
 	qcom,ires-ua = <5000>;
+	qcom,default-led-trigger = "vst_indicator";
 
 	/delete-property/ qcom,strobe-sel;
 	/delete-property/ qcom,strobe-config;
-	/delete-property/ qcom,default-led-trigger;
 	/delete-property/ qcom,duration-ms;
 };
 
@@ -128,16 +128,28 @@
 	status = "disabled";
 };
 
-&pmxr2230_gpios {
-	pmxr2230_optics_therm_l {
-		pmxr2230_optics_therm_l_default: pmxr2230_optics_therm_l_default {
+&pmxr2230_switch0 {
+	status = "disabled";
+};
+
+&pmxr2230_switch1 {
+	status = "disabled";
+};
+
+&itof_level {
+	status = "disabled";
+};
+
+&pm8550b_gpios {
+	pm8550b_optics_therm_l {
+		pm8550b_optics_therm_l_default: pm8550b_optics_therm_l_default {
 			pins = "gpio5";
 			bias-high-impedance;
 		};
 	};
 
-	pmxr2230_optics_therm_r {
-		pmxr2230_optics_therm_r_default: pmxr2230_optics_therm_r_default {
+	pm8550b_optics_therm_r {
+		pm8550b_optics_therm_r_default: pm8550b_optics_therm_r_default {
 			pins = "gpio10";
 			bias-high-impedance;
 		};
@@ -146,8 +158,8 @@
 
 &pmk8550_vadc {
 	pinctrl-0 = <&pmxr2230_optics_therm_default
-		     &pmxr2230_optics_therm_l_default
-		     &pmxr2230_optics_therm_r_default>;
+		     &pm8550b_optics_therm_l_default
+		     &pm8550b_optics_therm_r_default>;
 
 	/delete-node/ pmxr2230_sde_card_therm;
 
@@ -197,6 +209,7 @@
 		touchscreen-size-y = <3550>;
 		azoteq,num-contacts = <1>;
 		azoteq,forced-comms = <1>;
+		azoteq,tp_settings = <7>;
 
 		trackpad {
 			azoteq,rx-enable = <4>, <1>, <0>;
@@ -451,5 +464,77 @@
 		nordic,irq-gpio = <&tlmm 52 0>;
 		nordic,irq_pin = <&tlmm 52 0x00>;
 		interrupts = <52 1>;
+	};
+};
+
+&qupv3_se2_i2c {
+	status = "okay";
+
+	lm36011_led_r: lm36011@64 {
+		status = "okay";
+		compatible = "ti,lm36011";
+		reg = <0x64>;
+
+		mode = <0x0>;
+		led-max-microamp = <1500000>;
+		led-ivfm-max-microvolt = <3600000>;
+		led-max-timeout-us = <1600000>;
+		label = "right";
+	};
+
+	lm3535_led_r: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 142 0>;
+		label = "right";
+	};
+};
+
+&qupv3_se6_i2c {
+	status = "okay";
+
+	lm36011_led_l: lm36011@64 {
+		status = "okay";
+		compatible = "ti,lm36011";
+		reg = <0x64>;
+
+		mode = <0x0>;
+		led-max-microamp = <1500000>;
+		led-ivfm-max-microvolt = <3600000>;
+		led-max-timeout-us = <1600000>;
+		label = "left";
+	};
+
+	lm3535_led_l: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 142 0>;
+		label = "left";
+	};
+};
+
+&qupv3_se10_i2c {
+	status = "okay";
+	lm3535_led_hat: lm3535@38 {
+		status = "okay";
+		compatible = "ti,lm3535";
+		reg = <0x38>;
+
+		drv-en-gpio = <&tlmm 113 0>;
+		label = "hat";
+	};
+
+	max77720_tof: max77720@41 {
+		status = "okay";
+		compatible = "adi,max77720";
+		reg = <0x41>;
+		regulator-name = "vout_dtof";
+		regulator-min-microvolt = <11000000>;
+		regulator-max-microvolt = <11000000>;
+		regulator-initial-mode = <1>;
 	};
 };

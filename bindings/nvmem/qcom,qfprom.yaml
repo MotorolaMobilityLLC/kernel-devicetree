@@ -30,6 +30,7 @@ properties:
           - qcom,pitti-qfprom
           - qcom,niobe-qfprom
           - qcom,pineapple-qfprom
+          - qcom,seraph-qfprom
       - const: qcom,qfprom
 
   reg:

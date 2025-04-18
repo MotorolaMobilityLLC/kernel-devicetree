@@ -1,9 +1,13 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/arm/msm/qcom_dma_heap_dt_constants.h>
+#include <dt-bindings/mailbox/qcom-ipcc.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
+#include <dt-bindings/mailbox/qcom-ipcc-sa8797p.h>
+
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <690 0x10000>, <690 0x20000>;
+	qcom,msm-id = <690 0x10000>, <690 0x20000>, <690 0x10001>;
 	interrupt-parent = <&intc>;
 
 	chosen {
@@ -236,7 +240,7 @@
 		qcom,dev-name = "devinfo";
 	};
 
-	qcom,vm-config {
+	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
 		boot-config = "fdt,unified";
@@ -881,7 +885,7 @@
 			/* Virtio glink device */
 			virtio-mmio@36 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/soc/virtio-glink-cma@2e000000";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -1057,6 +1061,10 @@
 			compatible = "qcom,scm";
 		};
 
+		qcom_smcinvoke {
+			compatible = "qcom,smcinvoke";
+		};
+
 		android {
 			compatible = "android,firmware";
 			boot_devices = "70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
@@ -1163,6 +1171,18 @@
 		};
 	};
 
+	qcom,mem-buf {
+		compatible = "qcom,mem-buf";
+		qcom,mem-buf-capabilities = "consumer";
+		qcom,vmid = <52>;
+	};
+
+	qtee_shmbridge {
+		compatible = "qcom,tee-shared-memory-bridge";
+		qcom,custom-bridge-size = <512>;
+		qcom,support-hypervisor;
+	};
+
 	dma_dev@0x0 {
 		compatible = "qcom,iommu-dma";
 		memory-region = <&system_cma>;
@@ -1195,6 +1215,193 @@
 			reg = <0x16>;
 			#reset-cells = <1>;
 		};
+	};
+
+	ipcc_mproc_apps_ns1: qcom,ipcc@9008000 {
+		compatible = "qcom,ipcc";
+		reg = <0x9008000 0x1000>;
+		interrupts = <GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+		status = "ok";
+	};
+
+	virtio_glink_cma: virtio-glink-cma@2e000000 {
+		glink_bridge: virtio-glink-bridge {
+			compatible = "virtio,device49162";
+			remoteproc_cdsp_glink: glink-edge {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP0 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP0 0>;
+				label = "cdsp";
+				qcom,glink-label = "cdsp";
+			};
+
+			remoteproc_cdsp1_glink: glink-edge1 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP1 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP1 0>;
+				label = "cdsp1";
+				qcom,glink-label = "cdsp1";
+			};
+		};
+	};
+
+	xpcs1: xpcs@0x1A94000 {
+		status = "disabled";
+		compatible = "qcom,xpcs";
+		reg = <0x1A94000 0x5100>;
+		reg-names = "qxpcs";
+	};
+
+	ethernet1: ethernet@0x01A80000 {
+		status = "disabled";
+		compatible = "qcom,sa8797p-ethqos-vm";
+		reg = <0x01A80000 0x14000>,
+			<0x01AFF000 0x1000>;
+
+		reg-names = "stmmaceth", "rgmii";
+
+		interrupts = <GIC_SPI 820 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "macirq";
+
+		iommus = <&apps_smmu_2 0x11c1 0x0>,
+			 <&apps_smmu_2 0x11c2 0x0>,
+			 <&apps_smmu_2 0x11c3 0x0>,
+			 <&apps_smmu_2 0x11c4 0x0>,
+			 <&apps_smmu_2 0x11c5 0x0>,
+			 <&apps_smmu_2 0x11c6 0x0>,
+			 <&apps_smmu_2 0x11c7 0x0>;
+
+		power-domains = <&scmi_power 8>, <&scmi_power 9>, <&scmi_perf 1>, <&scmi_perf 2>;
+		power-domain-names = "power_core", "power_mdio", "perf_serdes", "perf_5g_serdes";
+
+		snps,ptp-ref-clk-rate = <250000000>;
+		snps,ptp-req-clk-rate = <250000000>;
+
+		phy-mode = "10gbase-r";
+		pcs-v4;
+		snps,tso;
+
+		snps,pbl = <4>;
+		snps,no-pbl-x8;
+		dma-coherent;
+
+		rx-fifo-depth = <98304>;
+		tx-fifo-depth = <98304>;
+
+		snps,axi-config = <&stmmac_axi_setup1>;
+		snps,mtl-rx-config = <&mtl_rx_setup1>;
+		snps,mtl-tx-config = <&mtl_tx_setup1>;
+
+		qcom-xpcs-handle = <&xpcs1>;
+
+		mtl_rx_setup1: rx-queues-config {
+			snps,rx-queues-to-use = <7>;
+			snps,rx-sched-sp;
+
+			queue0 {
+				snps,dcb-algorithm;
+				snps,map-to-dma-channel = <0x0>;
+				snps,route-up;
+			};
+
+			queue1 {
+				snps,dcb-algorithm;
+				snps,map-to-dma-channel = <0x1>;
+				snps,route-ptp;
+			};
+
+			queue2 {
+				snps,avb-algorithm;
+				snps,map-to-dma-channel = <0x2>;
+				snps,route-avcp;
+			};
+
+			queue3 {
+				snps,avb-algorithm;
+				snps,map-to-dma-channel = <0x3>;
+				snps,priority = <0xc>;
+			};
+
+			queue4 {
+				snps,dcb-algorithm;
+				snps,map-to-dma-channel = <0x4>;
+			};
+
+			queue5 {
+				snps,dcb-algorithm;
+				snps,map-to-dma-channel = <0x5>;
+			};
+
+			queue6 {
+				snps,dcb-algorithm;
+				snps,map-to-dma-channel = <0x6>;
+			};
+		};
+
+		mtl_tx_setup1: tx-queues-config {
+			snps,tx-queues-to-use = <7>;
+			snps,tx-sched-sp;
+
+			queue0 {
+				snps,dcb-algorithm;
+			};
+
+			queue1 {
+				snps,dcb-algorithm;
+			};
+
+			queue2 {
+				snps,dcb-algorithm;
+			};
+
+			queue3 {
+				snps,dcb-algorithm;
+			};
+
+			queue4 {
+				snps,dcb-algorithm;
+			};
+
+			queue5 {
+				snps,dcb-algorithm;
+			};
+
+			queue6 {
+				snps,dcb-algorithm;
+			};
+		};
+
+		stmmac_axi_setup1: stmmac-axi-config {
+			snps,rd_osr_lmt = <0x8>;
+			snps,wr_osr_lmt = <0x8>;
+			snps,kbbe;
+			snps,blen = <0 0 0 0 16 0 0>;
+		};
+
+		fixed-link {
+			status = "okay";
+			speed = <10000>;
+			full-duplex;
+		};
+	};
+};
+
+&remoteproc_cdsp_glink {
+	qcom,fastrpc {
+		label = "nsp";
+		instance-id = <0>;
+		dsp-type = <1>;
+	};
+};
+
+&remoteproc_cdsp1_glink {
+	qcom,fastrpc {
+		label = "nsp";
+		instance-id = <1>;
+		dsp-type = <1>;
 	};
 };
 
