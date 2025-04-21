@@ -65,6 +65,26 @@
 			qcom,label = <0x60>;
 		};
 
+		tlmm_shared_iomem: tlmm_sh_iomem {
+			no-map;
+			qcom,label = <0x7E>;
+		};
+
+		qupv3_0_shared_iomem: qupv3_0_sh_iomem {
+			no-map;
+			qcom,label = <0x7F>;
+		};
+
+		qupv3_1_shared_iomem: qupv3_1_sh_iomem {
+			no-map;
+			qcom,label = <0x80>;
+		};
+
+		qupv3_2_shared_iomem: qupv3_2_sh_iomem {
+			no-map;
+			qcom,label = <0x81>;
+		};
+
 		gptp_timedata_mem: gptp_timedata_region {
 			no-map;
 			qcom,label = <0x61>;
@@ -1354,7 +1374,6 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
-		status = "disabled";
 	};
 
 	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
@@ -1632,10 +1651,10 @@
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
 	compatible = "qcom,sa8255p-geni-se-qup";
-	reg = <0x8c0000 0x2000>;
+	reg = <0x8c0000 0x1000>;
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
-	status = "disabled";
+	status = "ok";
 };
 
 &qupv3_se17_4uart {
@@ -1656,7 +1675,7 @@
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";
-	status = "disabled";
+	status = "ok";
 };
 
 &soc {

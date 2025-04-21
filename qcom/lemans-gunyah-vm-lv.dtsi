@@ -41,6 +41,26 @@
 			alignment = <0x0 0x400000>;
 			size = <0x0 0x1000000>;
 		};
+
+		tlmm_shared_iomem: tlmm_sh_iomem {
+			no-map;
+			qcom,label = <0x7E>;
+		};
+
+		qupv3_0_shared_iomem: qupv3_0_sh_iomem {
+			no-map;
+			qcom,label = <0x7F>;
+		};
+
+		qupv3_1_shared_iomem: qupv3_1_sh_iomem {
+			no-map;
+			qcom,label = <0x80>;
+		};
+
+		qupv3_2_shared_iomem: qupv3_2_sh_iomem {
+			no-map;
+			qcom,label = <0x81>;
+		};
 	};
 
 	cpus {
