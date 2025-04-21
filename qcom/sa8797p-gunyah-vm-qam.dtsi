@@ -73,6 +73,10 @@
 				688 688
 				393 393
 				>;
+
+	vcpus {
+		affinity-map = <0xd 0xc 0xb 0xa 0x9 0x8>;
+	};
 };
 
 &xpcs1 {
