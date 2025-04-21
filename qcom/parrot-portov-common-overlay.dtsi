@@ -33,7 +33,7 @@
 };
 
 &tlmm {
-	qcom,gpios-reserved = <0 1 2 3 38 18 19 20 21>;
+	qcom,gpios-reserved = <0 1 2 3 18 19 20 21>;
 };
 
 &sdhc_1 {
