@@ -1220,11 +1220,28 @@
 		memory-region = <&system_cma>;
 	};
 
+	gmugos0_ipc0: syscon@3d40000 {
+		compatible = "qcom,hgsl-gmugos0-ipc0", "syscon";
+		reg = <0x3d40000 0x10>;
+	};
+
+	gmugos1_ipc0: syscon@9840000 {
+		compatible = "qcom,hgsl-gmugos1-ipc0", "syscon";
+		reg = <0x9840000 0x10>;
+	};
+
 	msm_gpu_hyp: qcom,hgsl {
 		compatible = "qcom,hgsl";
 
+		interrupts = <0 644 IRQ_TYPE_LEVEL_HIGH>,
+			/* gmugos1 */
+			<0 861 IRQ_TYPE_LEVEL_HIGH>;
+
+		interrupt-names = "hgsl_gmugos0_irq0",
+			/* gmugos1 */
+			"hgsl_gmugos1_irq0";
+
 		default_iocoherency;
-		db-off;
 	};
 
 	scmi {
