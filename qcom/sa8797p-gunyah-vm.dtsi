@@ -152,6 +152,10 @@
 		wakeup-source;
 	};
 
+	virtio_console {
+		qcom,dev-name = "vconsole";
+	};
+
 	virtio_blk_super {
 		qcom,dev-name = "super";
 	};
@@ -834,7 +838,7 @@
 			/* Virtio console device */
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_console";
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
