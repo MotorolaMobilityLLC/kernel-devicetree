@@ -9,16 +9,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#include "parrot-moto-common-overlay-base-pm8350b.dtsi"
+#include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-portov-charger-overlay.dtsi"
 #include "parrot-portov-fmr-overlay.dtsi"
-#include "parrot-mona-thermal-overlay.dtsi"
-#include "parrot-mona-touchscreen-overlay.dtsi"
-#include "parrot-mona-sensor-overlay.dtsi"
-#include "parrot-mona-fps-overlay.dtsi"
 #include "moto-mona-aw37004.dtsi"
-#include "parrot-mona-haptics-overlay.dtsi"
+//#include "parrot-mona-haptics-overlay.dtsi"
 
 &display_panel_avdd {
          status = "disabled";
