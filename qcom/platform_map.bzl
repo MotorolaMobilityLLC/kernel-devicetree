@@ -108,10 +108,10 @@ _platform_map = {
     },
     "kera": {
         "dtb_list": [
-            {"name": "kera.dtb"},
+            {"name": "kera-roadstr-base.dtb", "product":"roadstr"},
 		],
         "dtbo_list": [
-           {"name": "kera-atp-overlay.dtbo"},
+           {"name": "kera-roadstr-evb-overlay.dtbo", "product":"roadstr"},
         ],
     },
     "kera-le": {

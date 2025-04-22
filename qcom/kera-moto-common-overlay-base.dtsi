@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2023-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+// SPDX-License-Identifier: BSD-3-Clause
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+&sdhc_2 {
+	vdd-supply = <&L13B>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 976270>;
+
+	vdd-io-supply = <&L23B>;
+	qcom,vdd-io-voltage-level = <1800000 2960000>;
+	qcom,vdd-io-current-level = <0 5830>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc2_on>;
+	pinctrl-1 = <&sdc2_off>;
+
+	cd-gpios = <&tlmm 58 GPIO_ACTIVE_LOW>;
+
+	qcom,uses_level_shifter;
+
+	status = "disabled";
+};
+
+
+&pmxr2230_sys_therm_11 {
+	status = "disabled";
+};
+
+&sys_therm_11 {
+	status = "disabled";
+};
+
+&pm8550ve_f_die_temp {
+	status = "disabled";
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};

@@ -1,0 +1,72 @@
+/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/*
+   This file is only for roadstr device, na etc.
+*/
+
+#include "kera-roadstr-products-common-overlay.dtsi"
+#include "kera-pmiv0102.dtsi"
+#include "kera_ufs3.dtsi"
+
+//#include "sun-leap-haptics-overlay.dtsi"
+//#include "sun-moto-common-charger.dtsi"
+//#include "sun-leap-charger-overlay.dtsi"
+//#include "sun-leap-thermal-overlay.dtsi"
+//#include "sun-moto-leap-qorvo-uwb.dtsi"
+//#include "sun-moto-common-st-nfc.dtsi"
+
+&tlmm {
+    key_ai {
+        key_ai_default: key_ai_default {
+            mux {
+                pins = "gpio100";
+                function = "gpio";
+            };
+
+            config {
+                pins = "gpio100";
+                bias-pull-up; 
+                input-enable;
+            };
+        }; 
+    };
+};
+
+&soc {
+    gpio_keys {
+        compatible = "gpio-keys";
+        label = "gpio-keys";
+
+        pinctrl-names = "default";
+        pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
+
+        ai_assist {
+            label = "ai_assist";
+            gpios = <&tlmm 100 GPIO_ACTIVE_LOW>;
+            linux,input-type = <1>;
+            linux,code = <KEY_SEARCH>;
+            gpio-key,wakeup;
+            debounce-interval = <15>;
+            linux,can-disable;
+        };
+    };
+};
+
+
+&qupv3_se3_i2c {
+	status = "disabled";
+};
+
+&pmiv010x_amoled {
+    status = "disabled";
+};

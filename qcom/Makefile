@@ -24,9 +24,12 @@ SUN_BOARDS += sun-leap-evb-overlay.dtbo \
               sun-leap-pvt1-overlay.dtbo
 endif
 
-KERA_BASE_DTB += kera.dtb
+ifeq ($(CONFIG_ROADSTR_DTB),y)
+KERA_BASE_DTB += kera-roadstr-base.dtb
 KERA_BOARDS += \
-		kera-atp-overlay.dtbo
+		kera-roadstr-evb-overlay.dtbo
+endif
+
 sun-dtb-$(CONFIG_ARCH_KERA) +=  \
 	$(call add-overlays, $(KERA_BOARDS),$(KERA_BASE_DTB))
 sun-dtb-$(CONFIG_ARCH_SUN) += \
