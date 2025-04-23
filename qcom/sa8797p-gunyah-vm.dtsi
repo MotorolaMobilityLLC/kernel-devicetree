@@ -139,11 +139,11 @@
 	idle-states {
 		CPU_PWR_DWN: c4 { /* C4 */
 			compatible = "arm,idle-state";
-			idle-state-name = "rail-pc";
-			entry-latency-us = <702>;
-			exit-latency-us = <1061>;
-			min-residency-us = <4488>;
-			arm,psci-suspend-param = <0x40000004>;
+			idle-state-name = "ret";
+			entry-latency-us = <93>;
+			exit-latency-us = <129>;
+			min-residency-us = <560>;
+			arm,psci-suspend-param = <0x00000003>;
 			local-timer-stop;
 		};
 	};
