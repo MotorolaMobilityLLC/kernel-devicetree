@@ -273,8 +273,7 @@
 
 		vcpus {
 			config = "/cpus";
-			affinity = "static";
-			affinity-map = <0x5 0x4 0x3 0x2 0x1 0x0>;
+			affinity = "pinned";
 			sched-priority = <0>;       /* relative to PVM */
 			sched-timeslice = <5000>;   /* in ms */
 		};
