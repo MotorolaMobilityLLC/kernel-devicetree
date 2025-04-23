@@ -770,9 +770,9 @@
 		pmr735b_l3: regulator-pmr735b-l3 {
 			regulator-name = "pmr735b_l3";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <650000>;
+			regulator-min-microvolt = <620000>;
 			regulator-max-microvolt = <1050000>;
-			qcom,init-voltage = <650000>;
+			qcom,init-voltage = <620000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
