@@ -18,6 +18,7 @@
 #include "kera-pmiv0102.dtsi"
 #include "kera_ufs3.dtsi"
 #include "kera-roadstr-touchscreen-overlay.dtsi"
+#include "kera-roadstr-wlan-elna-controller.dtsi"
 //#include "sun-leap-haptics-overlay.dtsi"
 #include "kera-roadstr-thermal-overlay.dtsi"
 #include "kera-moto-common-charger.dtsi"

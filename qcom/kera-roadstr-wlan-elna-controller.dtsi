@@ -1,0 +1,52 @@
+
+&tlmm {
+	wlan_elna{
+        wlan_elna_default: wlan_elna_default {
+            mux {
+                    pins = "gpio108";
+                    function = "gpio";
+            };
+            config {
+                    pins = "gpio108";
+                    drive_strength = <16>;
+                    output-low;
+            };
+        };
+
+        wlan_elna_active: wlan_elna_active {
+            mux {
+                    pins = "gpio108";
+                    function = "gpio";
+            };
+            config {
+                    pins = "gpio108";
+                    drive_strength = <16>;
+                    output-high;
+            };
+        };
+
+        wlan_elna_suspend: wlan_elna_suspend {
+            mux {
+                    pins = "gpio108";
+                    function = "gpio";
+            };
+            config {
+                    pins = "gpio108";
+                    drive_strength = <16>;
+                    output-low;
+            };
+        };
+	};
+};
+
+&soc {
+	wlan_elna: wlan_elna{
+		status = "ok";
+		compatible = "moto,wlan_elna";
+		moto,wlan_elna-gpio = <&tlmm 108 0>;
+		pinctrl-names = "default", "elna_active", "elna_suspend";
+		pinctrl-0 = <&wlan_elna_default>;
+		pinctrl-1 = <&wlan_elna_active>;
+		pinctrl-2 = <&wlan_elna_suspend>;
+	};
+};
