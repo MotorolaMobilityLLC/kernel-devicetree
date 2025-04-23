@@ -13,6 +13,7 @@
 #include "parrot-moto-common-overlay.dtsi"
 #include "parrot-portov-charger-overlay.dtsi"
 #include "parrot-portov-fmr-overlay.dtsi"
+#include "parrot-portov-thermal-overlay.dtsi"
 #include "moto-mona-aw37004.dtsi"
 //#include "parrot-mona-haptics-overlay.dtsi"
 
