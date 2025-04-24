@@ -1266,13 +1266,13 @@
 		interrupts = <GIC_SPI 820 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "macirq";
 
-		iommus = <&apps_smmu_2 0x11c1 0x0>,
-			 <&apps_smmu_2 0x11c2 0x0>,
-			 <&apps_smmu_2 0x11c3 0x0>,
-			 <&apps_smmu_2 0x11c4 0x0>,
-			 <&apps_smmu_2 0x11c5 0x0>,
-			 <&apps_smmu_2 0x11c6 0x0>,
-			 <&apps_smmu_2 0x11c7 0x0>;
+		iommus = <&apps_smmu_2 0x11c1 0x8>,
+			 <&apps_smmu_2 0x11c2 0x1>,
+			 <&apps_smmu_2 0x11c3 0x1>,
+			 <&apps_smmu_2 0x11c4 0x3>,
+			 <&apps_smmu_2 0x11c5 0x3>,
+			 <&apps_smmu_2 0x11c6 0x3>,
+			 <&apps_smmu_2 0x11c7 0x3>;
 
 		power-domains = <&scmi_power 8>, <&scmi_power 9>, <&scmi_perf 1>, <&scmi_perf 2>;
 		power-domain-names = "power_core", "power_mdio", "perf_serdes", "perf_5g_serdes";
