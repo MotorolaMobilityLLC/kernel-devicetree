@@ -5,7 +5,7 @@
 
 / {
 	model = "Qualcomm Technologies, Inc. Volcano RUMI";
-	compatible = "qcom,volcano-rumi", "qcom,volcano", "qcom,rumi";
-	qcom,msm-id = <636 0x10000>;
+	compatible = "qcom,volcano-rumi", "qcom,volcano", "qcom,rumi", "qcom,volcanop";
+	qcom,msm-id = <636 0x10000>, <712 0x10000>;
 	qcom,board-id = <15 0>;
 };

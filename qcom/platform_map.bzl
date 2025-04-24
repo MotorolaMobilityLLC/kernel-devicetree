@@ -637,6 +637,10 @@ _platform_map = {
                 "apq": True,
             },
             {
+                "name": "volcanop.dtb",
+                "apq": True,
+            },
+            {
                 "name": "volcano6ip-fp1.dtb",
                 "apq": True,
             },
