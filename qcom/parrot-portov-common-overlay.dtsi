@@ -17,7 +17,15 @@
 #include "moto-mona-aw37004.dtsi"
 //#include "parrot-mona-haptics-overlay.dtsi"
 
+&display_panel_vddio {
+         status = "disabled";
+};
+
 &display_panel_avdd {
+         status = "disabled";
+};
+
+&display_panel_extvdd {
          status = "disabled";
 };
 
