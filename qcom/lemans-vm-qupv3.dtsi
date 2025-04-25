@@ -30,6 +30,36 @@
 			spi-max-frequency = <50000000>;
 			status = "disabled";
 		};
+
+		qupv3_se0_spi: spi@980000 {
+			compatible = "qcom,spi-geni";
+			reg = <0x980000 0x4000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg-names = "se_phys";
+			interrupts = <GIC_SPI 550 IRQ_TYPE_LEVEL_HIGH>;
+			clock-names = "se-clk";
+			clocks = <&gcc GCC_QUPV3_WRAP0_S0_CLK>;
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&qupv3_se0_spi_active>;
+			pinctrl-1 = <&qupv3_se0_spi_sleep>;
+			spi-max-frequency = <50000000>;
+			status = "disable";
+		};
+
+		qupv3_se0_i2c: i2c@980000 {
+			compatible = "qcom,i2c-geni";
+			reg = <0x980000 0x4000>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			interrupts = <GIC_SPI 550 IRQ_TYPE_LEVEL_HIGH>;
+			clock-names = "se-clk";
+			clocks = <&gcc GCC_QUPV3_WRAP0_S0_CLK>;
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&qupv3_se0_i2c_active>;
+			pinctrl-1 = <&qupv3_se0_i2c_sleep>;
+			status = "disabled";
+		};
 	};
 
 	/* QUPv3_1  wrapper  instance */
