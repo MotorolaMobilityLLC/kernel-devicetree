@@ -17,7 +17,7 @@
 #include "kera-roadstr-products-common-overlay.dtsi"
 #include "kera-pmiv0102.dtsi"
 #include "kera_ufs3.dtsi"
-
+#include "kera-roadstr-touchscreen-overlay.dtsi"
 //#include "sun-leap-haptics-overlay.dtsi"
 //#include "sun-moto-common-charger.dtsi"
 //#include "sun-leap-charger-overlay.dtsi"
