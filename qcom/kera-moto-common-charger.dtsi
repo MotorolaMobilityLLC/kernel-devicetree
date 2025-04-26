@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&soc {
+	mmi_charger: mmi,charger {
+		compatible = "mmi,mmi-charger";
+		mmi,enable-charging-limit;
+		mmi,upper-limit-en-voltage = <4000>;
+		mmi,upper-limit-capacity = <75>;
+		mmi,lower-limit-capacity = <65>;
+		mmi,heartbeat-interval = <10000>;
+		mmi,dcp-power-max = <10000>;
+		mmi,hvdcp-power-max = <20000>;
+		mmi,factory-kill-debounce-ms = <3000>;
+		};
+
+	qcom,pmic_glink {
+		qti_glink_charger: mmi,qti-glink-charger {
+			compatible = "mmi,qti-glink-charger";
+		};
+	};
+};
+
+&battery_charger {
+	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 300000 100000>;
+	qcom,wireless-fw-name = "cps4041.bin";
+};
