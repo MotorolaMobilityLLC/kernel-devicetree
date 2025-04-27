@@ -21,7 +21,7 @@
 //#include "sun-leap-haptics-overlay.dtsi"
 //#include "sun-moto-common-charger.dtsi"
 //#include "sun-leap-charger-overlay.dtsi"
-//#include "sun-leap-thermal-overlay.dtsi"
+#include "kera-roadstr-thermal-overlay.dtsi"
 //#include "sun-moto-leap-qorvo-uwb.dtsi"
 //#include "sun-moto-common-st-nfc.dtsi"
 
