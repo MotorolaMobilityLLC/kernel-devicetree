@@ -63,6 +63,73 @@
     };
 };
 
+&tlmm {
+    vib_int_def: vib_int_def {
+        mux {
+            pins = "gpio128";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio128";
+            drive-strength = <2>;
+            bias-pull-up;
+            input-enable;
+            qcom,apps;
+        };
+    };
+    vib_rst_def: vib_rst_def {
+        mux {
+            pins = "gpio155";
+            function = "gpio";
+        };
+        config {
+            pins = "gpio155";
+            drive-strength = <2>;
+            bias-pull-up;
+            //bias-disable;           /* NO PULL */
+            output-high;
+            qcom,apps;
+        };
+    };
+};
+
+&pmiv010x_vib {
+	status = "disabled";
+};
+
+&qupv3_se4_i2c {
+    status = "okay";
+    haptic_hv_tmp@5A {
+        compatible = "awinic,haptic_hv";
+        reg = < 0x5A >;
+        irq-gpio = < &tlmm 128 0 >;
+        reset-gpio = < &tlmm 155 0 >;
+        //pinctrl-names = "irq_active";
+        pinctrl-names = "default";
+        pinctrl-0 = < &vib_rst_def &vib_int_def >;
+        f0_pre = < 1700 >;
+        mode = /bits/ 8 < 5 >;
+        aw8693x_f0_cali_percent = /bits/ 8 < 15 >;
+        aw8693x_gain_bypass = /bits/ 8 < 1 >;
+        //aw8693x_uvlo_vol_default = /bits/ 8 < 0 >;
+        aw8693x_cont_smart_loop = /bits/ 8 < 0 >;
+        aw8693x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
+        aw8693x_cont_lra_vrms = < 1000 >;
+        aw8693x_cont_drv1_time = /bits/ 8 < 0x04 >;
+        aw8693x_cont_drv2_time = /bits/ 8 < 0x14 >;
+        aw8693x_cont_track_margin = /bits/ 8 < 0x0F >;
+        aw8693x_cont_brk_gain = /bits/ 8 < 0x08 >;
+        aw8693x_cont_brk_time = /bits/ 8 < 0x08 >;
+        aw8693x_duration_time = /bits/ 8 < 20 30 60 >;
+        aw8693x_d2s_gain = /bits/ 8 < 0x04 >;
+        aw8693x_trig_config = /bits/ 8 < 0 0 0 1 0 2 0 0
+                         0 0 0 1 0 2 0 0
+                         0 0 0 1 0 2 0 0 >;
+        aw8693x_bst_vol_default = < 8500 >;
+        aw8693x_is_enabled_track_en;
+        status = "okay";
+     };
+};
 
 &qupv3_se3_i2c {
 	status = "disabled";
