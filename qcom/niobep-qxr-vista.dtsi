@@ -231,7 +231,7 @@
 			};
 
 			event-tap-double {
-				linux,code = <KEY_SHUFFLE>;
+				linux,code = <KEY_STOPCD>;
 			};
 
 			event-tap-triple {
@@ -251,7 +251,7 @@
 			};
 
 			event-swipe-x-pos-hold {
-				linux,code = <KEY_PREVIOUS>;
+				linux,code = <KEY_PREVIOUSSONG>;
 			};
 
 			event-swipe-x-neg {
@@ -259,7 +259,7 @@
 			};
 
 			event-swipe-x-neg-hold {
-				linux,code = <KEY_NEXT>;
+				linux,code = <KEY_NEXTSONG>;
 			};
 
 			event-swipe-y-pos {
