@@ -12,7 +12,7 @@
 
 &pmih010x_haptics {
 	qcom,rt-imp-detect;
-	qcom,vmax-mv = <2200>;
+	qcom,vmax-mv = <1900>;
 	moto,wf-vmax-mv = <10000>;
 	qcom,lra-period-us = <5714>;
 	moto,lra-period-us-min = <5406>;
