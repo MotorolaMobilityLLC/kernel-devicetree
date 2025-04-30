@@ -8,7 +8,7 @@
 		ranges;
 		iommus = <&apps_smmu_0 0x15b8 0x0>;
 		qcom,iommu-dma = "default";
-		status = "disabled";
+		status = "okay";
 		/* BT UART Instance */
 		qupv3_se17_4uart: qcom,qup_uart@88c000 {
 			compatible = "qcom,sa8797p-geni-uart", "qcom,sa8255p-geni-uart";
@@ -16,7 +16,7 @@
 			interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>;
 			power-domains = <&scmi_power 4>, <&scmi_perf 0>;
 			power-domain-names = "power", "perf";
-			status = "disabled";
+			status = "okay";
 		};
 	};
 };
