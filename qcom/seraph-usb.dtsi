@@ -1,5 +1,5 @@
 #include <dt-bindings/clock/qcom,gcc-seraph.h>
-#include <dt-bindings/phy/qcom,usb3-4nm-qmp-combo.h>
+#include <dt-bindings/phy/qcom,usb3-3nm-qmp-combo.h>
 
 &soc {
 	usb0: ssusb@a600000 {
