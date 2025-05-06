@@ -1279,6 +1279,16 @@
 		status = "ok";
 	};
 
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,sa8797p-tlmm";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+	};
+
 	virtio_glink_cma: virtio-glink-cma@2e000000 {
 		glink_bridge: virtio-glink-bridge {
 			compatible = "virtio,device49162";
