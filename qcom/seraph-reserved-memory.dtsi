@@ -83,6 +83,46 @@
 	 * partition tables before boot occurs.
 	 */
 
+	qupv3_mem: qupv3_region@81f20000 {
+		no-map;
+		reg = <0x0 0x81f20000 0x0 0x40000>;
+	};
+
+	aoss_backup_mem: aoss_backup_region@81f60000 {
+		no-map;
+		reg = <0x0 0x81f60000 0x0 0x40000>;
+	};
+
+	cpucp_backup_mem: cpucp_backup_region@81fa0000 {
+		no-map;
+		reg = <0x0 0x81fa0000 0x0 0x40000>;
+	};
+
+	tz_config_backup_mem: tz_config_backup_region@81fe0000 {
+		no-map;
+		reg = <0x0 0x81fe0000 0x0 0x10000>;
+	};
+
+	ddr_training_data_mem: ddr_training_data_region@81ff0000 {
+		no-map;
+		reg = <0x0 0x81ff0000 0x0 0x80000>;
+	};
+
+	cdt_data_backup_mem: cdt_data_backup_region@82070000 {
+		no-map;
+		reg = <0x0 0x82070000 0x0 0x1000>;
+	};
+
+	qupv3_backup_mem: qupv3_backup_region@82071000 {
+		no-map;
+		reg = <0x0 0x82071000 0x0 0x40000>;
+	};
+
+	soccp_sdi_mem: soccp_sdi_region@823a0000 {
+		reg = <0x0 0x823a0000 0x0 0x40000>;
+		no-map;
+	};
+
 	pvm_fw_mem: pvm_fw_region@824a0000 {
 		no-map;
 		reg = <0x0 0x824a0000 0x0 0x100000>;
@@ -163,6 +203,11 @@
 		reg = <0x0 0xa2600000 0x0 0x600000>;
 	};
 
+	lsr_mem: lsr_region@a2c00000 {
+		no-map;
+		reg = <0x0 0xa2c00000 0x0 0x700000>;
+	};
+
 	/* UEFI region at 0xa7000000 is reclaimed by Linux */
 
 	/* Linux kernel image is loaded at 0xa8000000 */
@@ -194,12 +239,12 @@
 
 	xbl_sc_mem: xbl_sc_region@d8200000 {
 		no-map;
-		reg = <0x0 0xd8200000 0x0 0x40000>;
+		reg = <0x0 0xd8200000 0x0 0x50000>;
 	};
 
-	dare_tz_reserved_mem: reserved_region@d8240000 {
+	dare_tz_reserved_mem: reserved_region@d8250000 {
 		no-map;
-		reg = <0x0 0xd8240000 0x0 0xa0000>;
+		reg = <0x0 0xd8250000 0x0 0x90000>;
 	};
 
 	qtee_mem: qtee_region@d82e0000 {
@@ -211,6 +256,11 @@
 	 * ta/tags_mem is dynamically removed from the RAM
 	 * partition tables before boot occurs.
 	 */
+
+	dare_reserved_mem: dare_reserved_region@dc800000 {
+		no-map;
+		reg = <0x0 0xdc800000 0x0 0x300000>;
+	};
 
 	trust_ui_vm_region: trust_ui_vm_region@f3800000 {
 		compatible = "shared-dma-pool";
