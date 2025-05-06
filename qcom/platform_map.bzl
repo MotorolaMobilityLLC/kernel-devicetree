@@ -414,6 +414,10 @@ _platform_map = {
             {"name": "seraph-vm-rumi.dtb"},
             {"name": "seraph-vm-atp.dtb"},
             {"name": "seraphp-vm-atp.dtb"},
+            {"name": "seraph-vm-idp-dtof.dtb"},
+            {"name": "seraphp-vm-idp-dtof.dtb"},
+            {"name": "seraph-vm-idp.dtb"},
+            {"name": "seraphp-vm-idp.dtb"},
         ],
     },
     "cliffs-tuivm": {
