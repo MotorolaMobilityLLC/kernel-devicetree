@@ -132,16 +132,30 @@
 
 		qupv3_se11_spi_sleep: qupv3_se11_spi_sleep {
 			mux {
-				pins = "gpio44", "gpio45",
+				pins = "gpio45",
 					"gpio46";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio44", "gpio45",
+				pins = "gpio45",
 					"gpio46";
 				drive-strength = <2>;
 				bias-disable;
+			};
+		};
+
+		qupv3_se11_spi_miso_sleep: qupv3_se11_spi_miso_sleep {
+			mux {
+				pins = "gpio44";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio44";
+				drive-strength = <2>;
+				bias-pull-down;         /* PULL DOWN */
+				input-enable;
 			};
 		};
 	};
@@ -184,7 +198,7 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&qupv3_se11_spi_mosi_active>, <&qupv3_se11_spi_miso_active>,
 		<&qupv3_se11_spi_clk_active>;
-	pinctrl-1 = <&qupv3_se11_spi_sleep>;
+	pinctrl-1 = <&qupv3_se11_spi_sleep>, <&qupv3_se11_spi_miso_sleep>;
 
 	gdx-cli@0 {
 		status = "ok";
