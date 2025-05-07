@@ -24,6 +24,7 @@
 #include "kera-roadstr-charger-overlay.dtsi"
 //#include "sun-moto-leap-qorvo-uwb.dtsi"
 #include "kera-roadstr-st-nfc.dtsi"
+#include "kera-roadstr-sensor-overlay.dtsi"
 
 &tlmm {
     key_ai {
