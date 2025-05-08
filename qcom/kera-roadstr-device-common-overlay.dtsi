@@ -26,6 +26,7 @@
 #include "kera-roadstr-st-nfc.dtsi"
 #include "kera-roadstr-sensor-overlay.dtsi"
 #include "kera-roadstr-fingerprint-overlay.dtsi"
+#include "moto-roadstr-wl2866d.dtsi"
 &tlmm {
     key_ai {
         key_ai_default: key_ai_default {
