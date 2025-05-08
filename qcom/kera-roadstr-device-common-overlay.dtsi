@@ -23,7 +23,7 @@
 //#include "sun-leap-charger-overlay.dtsi"
 #include "kera-roadstr-thermal-overlay.dtsi"
 //#include "sun-moto-leap-qorvo-uwb.dtsi"
-//#include "sun-moto-common-st-nfc.dtsi"
+#include "kera-roadstr-st-nfc.dtsi"
 
 &tlmm {
     key_ai {
