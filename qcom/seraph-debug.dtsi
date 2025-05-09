@@ -50,6 +50,11 @@
 			qcom,dump-id = <0x3>;
 		};
 
+		dcp_sw {
+			qcom,dump-size = <0x600FFF>;
+			qcom,dump-id = <0x290>;
+		};
+
 		c400_context {
 			qcom,dump-size = <0x800>;
 			qcom,dump-id = <0x4>;
