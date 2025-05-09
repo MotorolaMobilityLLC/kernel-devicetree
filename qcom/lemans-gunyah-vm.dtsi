@@ -65,6 +65,26 @@
 			qcom,label = <0x60>;
 		};
 
+		tlmm_shared_iomem: tlmm_sh_iomem {
+			no-map;
+			qcom,label = <0x7E>;
+		};
+
+		qupv3_0_shared_iomem: qupv3_0_sh_iomem {
+			no-map;
+			qcom,label = <0x7F>;
+		};
+
+		qupv3_1_shared_iomem: qupv3_1_sh_iomem {
+			no-map;
+			qcom,label = <0x80>;
+		};
+
+		qupv3_2_shared_iomem: qupv3_2_sh_iomem {
+			no-map;
+			qcom,label = <0x81>;
+		};
+
 		gptp_timedata_mem: gptp_timedata_region {
 			no-map;
 			qcom,label = <0x61>;
@@ -194,6 +214,10 @@
 		wakeup-source;
 	};
 
+	virtio_console {
+		qcom,dev-name = "vconsole";
+	};
+
 	virtio_blk_super {
 		qcom,dev-name = "super";
 	};
@@ -292,10 +316,10 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,she_gvm;";
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
-		vm-attrs = "guest-ram-dump", "vpm-virq";
+		vm-attrs = "guest-ram-dump", "vpm-virq", "allow-unprotected";
 
 		/* Pass through regions */
 		iomemory-ranges = <
@@ -938,7 +962,7 @@
 
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_console";
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
@@ -1354,7 +1378,6 @@
 		#gpio-cells = <2>;
 		interrupt-controller;
 		#interrupt-cells = <2>;
-		status = "disabled";
 	};
 
 	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
@@ -1580,6 +1603,10 @@
 		reg-names = "stmmaceth";
 		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
+
+		power-domains = <&scmi_power 9>;
+		power-domain-names = "gvm_power_mdio";
+
 		snps,tso;
 		snps,pbl = <32>;
 		mac-address = [00 55 7B B5 7D f7];
@@ -1632,10 +1659,10 @@
 	/delete-property/ clocks;
 	/delete-property/ clock-names;
 	compatible = "qcom,sa8255p-geni-se-qup";
-	reg = <0x8c0000 0x2000>;
+	reg = <0x8c0000 0x1000>;
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
-	status = "disabled";
+	status = "ok";
 };
 
 &qupv3_se17_4uart {
@@ -1656,7 +1683,7 @@
 
 	power-domains = <&scmi_power 0>, <&scmi_perf 0>;
 	power-domain-names = "power", "perf";
-	status = "disabled";
+	status = "ok";
 };
 
 &soc {

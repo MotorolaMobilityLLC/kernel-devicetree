@@ -9,7 +9,7 @@
 
 	aliases {
 		hsuart0 = &qupv3_se7_4uart;
-		sdhc2 = &sdhc_2; /* SDC2 SD Card slot */
+		mmc1 = &sdhc_2; /* SDC2 SD Card slot */
 	};
 
 	cpus {

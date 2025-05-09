@@ -1,3 +1,4 @@
+#include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/soc/qcom,rpmh-rsc.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
@@ -670,6 +671,11 @@
 		memory-region = <&adsp_mem_heap>;
 	};
 
+	qcom,sps {
+		compatible = "qcom,msm-sps-4k";
+		qcom,pipe-attr-ee;
+	};
+
 	memtimer: timer@17420000 {
 		#address-cells = <1>;
 		#size-cells = <1>;
@@ -868,6 +874,15 @@
 		};
 	};
 
+	qti,smmu-proxy {
+		compatible = "smmu-proxy-sender";
+	};
+
+	qcom,seccamtest {
+		compatible = "qcom,seccamtest";
+		qti,smmu-proxy-cb-id = <QTI_SMMU_PROXY_CAMERA_CB>;
+	};
+
 	clk_virt: interconnect@0 {
 		compatible = "qcom,seraph-clk_virt";
 		#interconnect-cells = <1>;
@@ -994,9 +1009,42 @@
 		interrupt-controller;
 	};
 
+	kryo-erp {
+		compatible = "arm,arm64-kryo-cpu-erp";
+		interrupts = <GIC_PPI 6 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "l1-l2-faultirq","l3-scu-faultirq";
+	};
+
 	cluster-device {
 		compatible = "qcom,lpm-cluster-dev";
 		power-domains = <&CLUSTER_PD>;
+	};
+
+	sys-pm-vx@c320000 {
+		compatible = "qcom,sys-pm-violators", "qcom,sys-pm-seraph";
+		reg = <0xc320000 0x400>;
+		qcom,qmp = <&aoss_qmp>;
+	};
+
+	cpuss-sleep-stats@17800054 {
+		compatible = "qcom,cpuss-sleep-stats";
+		reg = <0x17800054 0x4>, <0x17810054 0x4>, <0x17820054 0x4>,
+		      <0x17830054 0x4>, <0x17840054 0x4>, <0x17880098 0x4>,
+		      <0x178c0000 0x10000>;
+		reg-names = "seq_lpm_cntr_cfg_cpu0", "seq_lpm_cntr_cfg_cpu1",
+			    "seq_lpm_cntr_cfg_cpu2", "seq_lpm_cntr_cfg_cpu3",
+			    "seq_lpm_cntr_cfg_cpu4", "l3_seq_lpm_cntr_cfg",
+			    "apss_seq_mem_base";
+		num-cpus = <5>;
+	};
+
+	sram@c3f0000 {
+		compatible = "qcom,rpmh-stats-v4";
+		reg = <0xc3f0000 0x400>;
+		qcom,qmp = <&aoss_qmp>;
+		ss-name = "modem", "wpss", "adsp", "adsp_island",
+			  "cdsp", "apss";
 	};
 
 	tlmm: pinctrl@f000000 {
@@ -1226,7 +1274,6 @@
 
 		firmware-name = "cdsp.mdt", "cdsp_dtb.mdt";
 		memory-region = <&cdsp_mem &q6_cdsp_dtb_mem>;
-		global-sync-mem-reg = <&global_sync_mem>;
 
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
@@ -1343,6 +1390,11 @@
 						0x4400 2>;
 			};
 		};
+	};
+
+	pcie_pdc: pdc@b310000 {
+		compatible = "qcom,seraph-pcie-pdc", "qcom,pcie-pdc";
+		reg = <0xb310000 0x20000>;
 	};
 
 	clocks {
@@ -1673,8 +1725,92 @@
 		qcom,freq-hw-domain = <&cpufreq_hw 0>, <&cpufreq_hw 1>;
 	};
 
+	pdm_pwm: pdm_pwm@88f0000 {
+		compatible = "qcom,pdm-pwm-v2";
+		reg = <0x88f0000 0xc000>;
+		clocks = <&gcc GCC_PDM_AHB_CLK>;
+		clock-names =  "pdm_ahb_clk";
+		#pwm-cells = <3>;
+
+		pwm@0 {
+			frame-index = <0>;
+			frame-offset = <0x1000>;
+			clocks = <&gcc GCC_PWM0_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@1 {
+			frame-index = <1>;
+			frame-offset = <0x2000>;
+			clocks = <&gcc GCC_PWM1_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@2 {
+			frame-index = <2>;
+			frame-offset = <0x3000>;
+			clocks = <&gcc GCC_PWM2_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@3 {
+			frame-index = <3>;
+			frame-offset = <0x4000>;
+			clocks = <&gcc GCC_PWM3_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@4 {
+			frame-index = <4>;
+			frame-offset = <0x5000>;
+			clocks = <&gcc GCC_PWM4_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@5 {
+			frame-index = <5>;
+			frame-offset = <0x6000>;
+			clocks = <&gcc GCC_PWM5_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@6 {
+			frame-index = <6>;
+			frame-offset = <0x7000>;
+			clocks = <&gcc GCC_PWM6_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@7 {
+			frame-index = <7>;
+			frame-offset = <0x8000>;
+			clocks = <&gcc GCC_PWM7_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@8 {
+			frame-index = <8>;
+			frame-offset = <0x9000>;
+			clocks = <&gcc GCC_PWM8_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+
+		pwm@9 {
+			frame-index = <9>;
+			frame-offset = <0xa000>;
+			clocks = <&gcc GCC_PWM9_XO512_CLK>;
+			clock-names = "frame-clk";
+		};
+	};
+
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
+
+		opp-400000 {
+			opp-hz = /bits/ 64 <400000>;
+			opp-peak-kBps = <0 0>;
+			opp-avg-kBps = <0 0>;
+		};
 
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
@@ -1698,6 +1834,7 @@
 		reg-names = "hc", "cqhci", "cqhci_ice", "cqhci_ice_hwkm";
 
 		iommus = <&apps_smmu 0x120 0x0>;
+		dma-coherent;
 		qcom,iommu-dma = "fastmap";
 
 		/*

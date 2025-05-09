@@ -1,0 +1,7 @@
+#include "volcano.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. VolcanoP SoC";
+	compatible = "qcom,volcanop";
+	qcom,msm-id = <712 0x10000>;
+};

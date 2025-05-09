@@ -16,6 +16,7 @@ properties:
       - qcom,pineapple-pcie-pdc
       - qcom,cliffs-pcie-pdc
       - qcom,niobe-pcie-pdc
+      - qcom,seraph-pcie-pdc
       - qcom,pcie-pdc
 
   reg:

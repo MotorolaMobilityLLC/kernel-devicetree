@@ -62,7 +62,7 @@ pineapple-dtb-$(CONFIG_ARCH_CLIFFS) += \
 pineapple-overlays-dtb-$(CONFIG_ARCH_CLIFFS) += $(CLIFFS_BOARDS) $(NOAPQ_CLIFFS_BOARDS) $(CLIFFS_BASE_DTB) $(CLIFFS_APQ_BASE_DTB)
 
 VOLCANO_BASE_DTB += volcano.dtb volcano6.dtb volcano6i-fp1.dtb volcano6i-fp2.dtb volcano6i-fp3.dtb volcano6i-fp4.dtb
-VOLCANO_APQ_BASE_DTB += volcano6p.dtb volcano6ip-fp1.dtb volcano6ip-fp2.dtb volcano6ip-fp3.dtb volcano6ip-fp4.dtb
+VOLCANO_APQ_BASE_DTB += volcano6p.dtb volcano6ip-fp1.dtb volcano6ip-fp2.dtb volcano6ip-fp3.dtb volcano6ip-fp4.dtb volcanop.dtb
 
 VOLCANO_BOARDS += \
 		volcano-atp-overlay.dtbo \
@@ -144,6 +144,21 @@ niobe-dtb-$(CONFIG_ARCH_NIOBE) += \
 niobe-overlays-dtb-$(CONFIG_ARCH_NIOBE) += $(NIOBE_BOARDS) $(NOAPQ_NIOBE_BOARDS) $(NIOBE_BASE_DTB) $(NIOBE_APQ_BASE_DTB)
 dtb-y += $(niobe-dtb-y)
 
+NEO_BASE_DTB += neo.dtb
+
+NEO_BOARDS += \
+		neo-atp-overlay.dtbo \
+		neo-idp-mos-overlay.dtbo \
+		neo-idp-display-overlay.dtbo \
+		neo-idp-e2e-overlay.dtbo \
+		neo-idp-hmt-overlay.dtbo
+
+neo-dtb-$(CONFIG_ARCH_NEO) += \
+        $(call add-overlays, $(NEO_BOARDS) ,$(NEO_BASE_DTB))
+
+neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_BASE_DTB)
+dtb-y += $(neo-dtb-y)
+
 ### Added for Neo ###
 NEO_LA_BASE_DTB += neo_la.dtb
 NEO_LUNA_DTB += neo_luna-v2.dtb
@@ -171,9 +186,11 @@ SERAPH_BOARDS += \
 		seraph-atp-overlay.dtbo \
 		seraph-idp-overlay.dtbo \
 		seraph-idp-dtof-overlay.dtbo \
+		seraph-idp-no-display-overlay.dtbo \
 		seraphp-atp-overlay.dtbo \
 		seraphp-idp-overlay.dtbo \
-		seraphp-idp-dtof-overlay.dtbo
+		seraphp-idp-dtof-overlay.dtbo \
+		seraphp-idp-no-display-overlay.dtbo
 
 NOAPQ_SERAPH_BOARDS += \
                   seraph-rumi-overlay.dtbo

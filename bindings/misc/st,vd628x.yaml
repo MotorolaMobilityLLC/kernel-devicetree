@@ -1,0 +1,47 @@
+%YAML 1.2
+---
+$id: http://devicetree.org/schemas/misc/vd628x.yaml#
+$schema: http://devicetree.org/meta-schemas/core.yaml#
+
+title: STMicro VD6283 Flicker Detection sensor
+
+maintainers:
+  - Wenjun Huang <wenjhuan@qti.qualcomm.com>
+
+description: |
+  Flicker detection sensor with an spi interface.
+
+properties:
+  compatible:
+    enum:
+      - st,vd628x_spi
+      - st,vd6281
+      - st,vd6283
+
+  reg:
+    maxItems: 1
+
+  interrupts:
+    maxItems: 1
+
+additionalProperties: false
+
+required:
+  - compatible
+  - reg
+
+examples:
+  - |
+    #include <dt-bindings/misc/spi.h>
+    spi {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        status = "ok";
+        flicker_sensor@0 {
+            compatible = "st,vd628x_spi";
+            reg = <0>;
+            status = "ok";
+        };
+    };
+...

@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "seraphp-vm.dtsi"
+#include "seraphp-vm-idp-dtof.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. SeraphP SVM IDP DTOF";
+	compatible = "qcom,seraphp-idp", "qcom,seraphp", "qcom,idp";
+	qcom,board-id = <0x10022 1>;
+};

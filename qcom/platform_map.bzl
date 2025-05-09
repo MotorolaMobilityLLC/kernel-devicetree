@@ -252,6 +252,18 @@ _platform_map = {
             {"name": "neo_luna-v2-sg-idp-pm8008-overlay.dtbo"},
         ],
     },
+    "neo": {
+        "dtb_list": [
+            {"name": "neo.dtb"},
+        ],
+        "dtbo_list": [
+            {"name": "neo-atp-overlay.dtbo"},
+            {"name": "neo-idp-mos-overlay.dtbo"},
+            {"name": "neo-idp-display-overlay.dtbo"},
+            {"name": "neo-idp-e2e-overlay.dtbo"},
+            {"name": "neo-idp-hmt-overlay.dtbo"},
+        ],
+    },
     "anorak": {
         "dtb_list": [
             {"name": "anorak.dtb"},
@@ -320,6 +332,8 @@ _platform_map = {
             {"name": "seraphp-idp-overlay.dtbo"},
             {"name": "seraph-idp-dtof-overlay.dtbo"},
             {"name": "seraphp-idp-dtof-overlay.dtbo"},
+            {"name": "seraph-idp-no-display-overlay.dtbo"},
+            {"name": "seraphp-idp-no-display-overlay.dtbo"},
             {
                 "name": "seraph-rumi-overlay.dtbo",
                 "apq": False,
@@ -620,6 +634,10 @@ _platform_map = {
             {"name": "volcano6i-fp4.dtb"},
             {
                 "name": "volcano6p.dtb",
+                "apq": True,
+            },
+            {
+                "name": "volcanop.dtb",
                 "apq": True,
             },
             {
