@@ -70,3 +70,20 @@
 &pmiv010x_amoled {
     status = "disabled";
 };
+
+&usb_qmp_dp_phy {
+        status = "disabled";
+};
+
+&usb0 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&usb3phy_portselect_gpio>;
+        gpios = <&tlmm 122 0>;
+
+        dwc3@a600000 {
+                usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
+                maximum-speed = "high-speed";
+                snps,usb2-gadget-lpm-disable;
+                snps,usb2-lpm-disable;
+        };
+};
