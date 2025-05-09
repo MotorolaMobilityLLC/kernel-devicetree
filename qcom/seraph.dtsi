@@ -2266,6 +2266,11 @@
 		size = <0x0 0x400000>;
 	};
 
+	hwfence_shbuf: hwfence-shmem {
+		no-map;
+		reg = <0x0 0xd4e23000 0x0 0x2dd000>;
+	};
+
 	qseecom_mem: qseecom_region {
 		compatible = "shared-dma-pool";
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
