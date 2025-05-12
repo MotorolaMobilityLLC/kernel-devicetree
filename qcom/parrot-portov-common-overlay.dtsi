@@ -14,7 +14,6 @@
 #include "parrot-portov-charger-overlay.dtsi"
 #include "parrot-portov-fmr-overlay.dtsi"
 #include "parrot-portov-thermal-overlay.dtsi"
-#include "moto-mona-aw37004.dtsi"
 #include "parrot-portov-touchscreen-overlay.dtsi"
 #include "parrot-portov-sensor-overlay.dtsi"
 #include "parrot-portov-nfc-overlay.dtsi"
