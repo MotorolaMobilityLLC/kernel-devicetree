@@ -13,6 +13,8 @@
 			<0x60100000 0x100000>,
 			<0x1c03000 0x1000>;
 		reg-names = "parf", "phy", "dm_core", "elbi", "iatu", "conf", "mhi";
+
+		device_type = "pci";
 		cell-index = <0>;
 		linux,pci-domain = <0>;
 
@@ -282,6 +284,8 @@
 			<0x64100000 0x100000>,
 			<0x01c0b000 0x1000>;
 		reg-names = "parf", "phy", "dm_core", "elbi", "iatu", "conf", "mhi";
+
+		device_type = "pci";
 		cell-index = <1>;
 		linux,pci-domain = <1>;
 
@@ -549,6 +553,8 @@
 			<0x40100000 0x100000>,
 			<0x01c13000 0x1000>;
 		reg-names = "parf", "phy", "dm_core", "elbi", "iatu", "conf", "mhi";
+
+		device_type = "pci";
 		cell-index = <2>;
 		linux,pci-domain = <2>;
 
