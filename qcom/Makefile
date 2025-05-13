@@ -15,6 +15,18 @@ add-overlays = $(foreach o,$1,$(foreach b,$2,$(eval $(basename $b)-$(basename $o
 
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+
+ifeq ($(CONFIG_VANTG_DTB),y)
+CANOE_BASE_DTB += canoe-tp-vantg-base.dtb canoe-tp-v2-vantg-base.dtb
+CANOE_BOARDS += canoe-vantg-evb-overlay.dtbo
+endif
+
+canoe-dtb-$(CONFIG_ARCH_CANOE) += \
+	$(call add-overlays, $(CANOE_BOARDS), $(CANOE_BASE_DTB))
+
+else
+
 CANOE_BASE_DTB += canoe.dtb canoe-v2.dtb canoe-tp.dtb canoe-tp-v2.dtb alor-interposer.dtb alor-interposer-v2.dtb whale.dtb
 CANOE_APQ_BASE_DTB += canoep.dtb canoep-v2.dtb canoep-tp.dtb canoep-tp-v2.dtb whalep.dtb canoep-sg.dtb canoep-sg-v2.dtb
 
@@ -76,6 +88,7 @@ canoe-dtb-$(CONFIG_ARCH_ALOR) += \
 	$(call add-overlays, $(ALOR_BOARDS) $(NOAPQ_ALOR_BOARDS),$(ALOR_BASE_DTB))\
 	$(call add-overlays, $(ALOR_BOARDS),$(ALOR_APQ_BASE_DTB))
 canoe-overlays-dtb-$(CONFIG_ARCH_ALOR) += $(ALOR_BOARDS) $(NOAPQ_ALOR_BOARDS) $(ALOR_BASE_DTB) $(ALOR_APQ_BASE_DTB)
+endif  # end of CONFIG_MMI_DEVICE_DTBS
 
 
 CHORA_BASE_DTB += chora.dtb

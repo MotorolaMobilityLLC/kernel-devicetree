@@ -1,3 +1,5 @@
+load("//soc-repo:moto_product.bzl", "mmi_product_name")
+
 _platform_map = {
     "autogvm": {
         "dtb_list": [
@@ -43,67 +45,14 @@ _platform_map = {
     "canoe": {
         "dtb_list": [
             # keep sorted
-            {"name": "canoe.dtb"},
-            {
-                "name": "canoep.dtb",
-                "apq": True,
-            },
-            {
-                "name": "canoep-tp.dtb",
-                "apq": True,
-            },
-            {
-                "name": "canoep-tp-v2.dtb",
-                "apq": True,
-            },
-            {
-                "name": "canoep-v2.dtb",
-                "apq": True,
-            },
-            {"name": "canoe-tp.dtb"},
-            {"name": "canoe-tp-v2.dtb"},
-            {"name": "canoe-v2.dtb"},
-            {"name": "whale.dtb"},
-            {
-                "name": "whalep.dtb",
-                "apq": True,
-            },
-            {
-                "name": "canoep-sg.dtb",
-                "apq": True,
-            },
-            {
-                "name": "canoep-sg-v2.dtb",
-                "apq": True,
-            },
+            {"name": "canoe-tp-vantg-base.dtb", "product": "vantg"},
+            {"name": "canoe-tp-v2-vantg-base.dtb", "product": "vantg"},
         ],
         "dtbo_list": [
             # keep sorted
-            {"name": "canoe-atp-overlay.dtbo"},
-            {"name": "canoe-cdp-kiwi-no-l3k-overlay.dtbo"},
-            {"name": "canoe-cdp-kiwi-overlay.dtbo"},
-            {"name": "canoe-cdp-overlay.dtbo"},
-            {"name": "canoe-cdp-st54l-pandeiro-i2s-overlay.dtbo"},
-            {"name": "canoe-cdp-st54l-pandeiro-no-l3k-overlay.dtbo"},
-            {"name": "canoe-cdp-st54l-pandeiro-overlay.dtbo"},
-            {"name": "canoe-mtp-3.5mm-overlay.dtbo"},
-            {"name": "canoe-mtp-kiwi-overlay.dtbo"},
-            {"name": "canoe-mtp-mango-overlay.dtbo"},
-            {"name": "canoe-mtp-overlay.dtbo"},
-            {"name": "canoe-mtp-pdm-mic-overlay.dtbo"},
-            {"name": "canoe-mtp-pictor-overlay.dtbo"},
-            {"name": "canoe-mtp-qmp1000-overlay.dtbo"},
-            {"name": "canoe-mtp-st54l-pandeiro-overlay.dtbo"},
-            {"name": "canoe-qrd-st54l-kundu-overlay.dtbo"},
-            {"name": "canoe-qrd-st54l-pandeiro-overlay.dtbo"},
-            {"name": "canoe-rcm-kiwi-overlay.dtbo"},
-            {"name": "canoe-rcm-overlay.dtbo"},
-            {"name": "canoe-rcm-st54l-pandeiro-overlay.dtbo"},
-            {"name": "canoep-hdk-no-l3k-overlay.dtbo"},
-            {"name": "canoep-hdk-overlay.dtbo"},
-            {"name": "canoe-rumi-overlay.dtbo"},
+            {"name": "canoe-vantg-evb-overlay.dtbo", "product": "vantg"},
         ],
-        "binary_compatible_with": ["alor", "alor-interposer", "chora"],
+       # "binary_compatible_with": ["alor", "alor-interposer", "chora", "malabar"],
     },
     "alor": {
         "dtb_list": [
@@ -802,11 +751,18 @@ def _get_dtb_lists(target, dt_overlay_supported):
         "dtb_list": [],
         "dtbo_list": [],
     }
-
+    product = mmi_product_name
     for dtb_node in [target] + _platform_map[target].get("binary_compatible_with", []):
-        ret["dtb_list"].extend(_platform_map[dtb_node].get("dtb_list", []))
+        for dtb in _platform_map[dtb_node].get("dtb_list", []):
+            if (dtb.get("product","default") == product) or (dtb.get("product","default") == "default") :
+                # print("target:{} product:{} append dtb_list name {}".format(target, product, dtb.get("name")))
+                ret["dtb_list"].append({"name": "{}".format(dtb.get("name"))})
+
         if dt_overlay_supported:
-            ret["dtbo_list"].extend(_platform_map[dtb_node].get("dtbo_list", []))
+            for dtbo in _platform_map[dtb_node].get("dtbo_list", []):
+                if (dtbo.get("product","default") == product) or (dtbo.get("product","default") == "default") :
+                    # print("target:{} product:{} append dtbo_list name {}".format(target, product, dtbo.get("name")))
+                    ret["dtbo_list"].append({"name": "{}".format(dtbo.get("name"))})
         else:
             # Translate the dtbo list into dtbs we can append to main dtb_list
             for dtb in _platform_map[dtb_node].get("dtb_list", []):
