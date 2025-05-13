@@ -838,6 +838,12 @@
 	 qcom,iommu-dma = "bypass";
 };
 
+&hab {
+	mmidgrp500: mmidgrp500 {
+		dma-coherent;
+	};
+};
+
 &reserved_memory {
 	glink_cma_mem0: glink-cma-region0 {
 		no-map;
