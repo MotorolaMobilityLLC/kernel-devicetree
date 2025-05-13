@@ -25,7 +25,7 @@
 //#include "sun-moto-leap-qorvo-uwb.dtsi"
 #include "kera-roadstr-st-nfc.dtsi"
 #include "kera-roadstr-sensor-overlay.dtsi"
-
+#include "kera-roadstr-fingerprint-overlay.dtsi"
 &tlmm {
     key_ai {
         key_ai_default: key_ai_default {
@@ -88,3 +88,16 @@
                 snps,usb2-lpm-disable;
         };
 };
+&tlmm {
+	/* reserve FP GPIOs: gpio12,13,14,15 24 25 26 27 for ESE 111 112 for WLAN*/
+	qcom,gpios-reserved = <8 9 10 11 20 21 22 23 111 112 118>;
+};
+
+&qseecom_mem {
+    size = <0x0 0x1800000>;
+};
+
+&qseecom_ta_mem {
+    size = <0x0 0x2000000>;
+};
+
