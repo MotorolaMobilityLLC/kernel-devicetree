@@ -55,7 +55,51 @@
 			input-enable;
 		};
 	};
+
+
+    jiiov_fp_reset_output_low: jiiov_fp_reset_output_low {
+        mux {
+            pins = "gpio101";
+            function = "gpio";
+        };
+
+        config {
+            pins = "gpio101";
+            drive-strength = <2>;
+            bias-disable;
+            output-low;
+        };
+    };
+
+    jiiov_fp_reset_output_high: jiiov_fp_reset_output_high {
+        mux {
+            pins = "gpio101";
+            function = "gpio";
+        };
+
+        config {
+            pins = "gpio101";
+            drive-strength = <2>;
+            bias-disable;
+            output-high;
+        };
+    };
+
+    jiiov_fp_irq_default: jiiov_fp_irq_default {
+        mux {
+            pins = "gpio111";
+            function = "gpio";
+        };
+
+        config {
+            pins = "gpio111";
+            drive-strength = <2>;
+            bias-pull-down;
+            input-enable;
+        };
+    };
 };
+
 
 &soc {
 	fpc: fpc_fpc1020 {
@@ -74,4 +118,23 @@
 		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
 	};
 
+	jiiov_fp {
+		status = "okay";
+		compatible = "jiiov,fingerprint";
+		interrupt-parent = <&tlmm>;
+		interrupts = <111 0x0>;
+		anc,gpio_rst = <&tlmm 101 0x0>;
+		anc,gpio_irq = <&tlmm 111 0x1>;
+		anc,vdd_use_gpio;
+		anc,gpio_pwr = <&tlmm 132 0x0>;
+		netlink_type = <29>;
+		/* anc,enable-on-boot; */
+		pinctrl-names = "anc_reset_low",
+				"anc_reset_high",
+				"anc_irq_default";
+
+		pinctrl-0 = <&jiiov_fp_reset_output_low>;
+		pinctrl-1 = <&jiiov_fp_reset_output_high>;
+		pinctrl-2 = <&jiiov_fp_irq_default>;
+	};
 };
