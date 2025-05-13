@@ -151,7 +151,10 @@ NEO_BOARDS += \
 		neo-idp-mos-overlay.dtbo \
 		neo-idp-display-overlay.dtbo \
 		neo-idp-e2e-overlay.dtbo \
-		neo-idp-hmt-overlay.dtbo
+		neo-idp-hmt-overlay.dtbo \
+		neo-qxr-e2e-overlay.dtbo \
+		neo-qxr-mos-overlay.dtbo \
+		neo-qxr-hmt-overlay.dtbo
 
 neo-dtb-$(CONFIG_ARCH_NEO) += \
         $(call add-overlays, $(NEO_BOARDS) ,$(NEO_BASE_DTB))

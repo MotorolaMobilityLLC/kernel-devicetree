@@ -264,6 +264,9 @@ _platform_map = {
             {"name": "neo-idp-display-overlay.dtbo"},
             {"name": "neo-idp-e2e-overlay.dtbo"},
             {"name": "neo-idp-hmt-overlay.dtbo"},
+            {"name": "neo-qxr-e2e-overlay.dtbo"},
+            {"name": "neo-qxr-mos-overlay.dtbo"},
+            {"name": "neo-qxr-hmt-overlay.dtbo"},
         ],
     },
     "anorak": {
