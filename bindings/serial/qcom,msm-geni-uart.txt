@@ -8,7 +8,8 @@ DMA.
 Required properties:
 - compatible: should contain "qcom,msm-geni-uart, qcom,msm-geni-console"
   for UART console usecases, "qcom,msm-geni-uart, qcom,msm-geni-serial-hs"
-  for High Speed (HS) usecases.
+  for High Speed (HS) usecases and "qcom,msm-geni-one-wire-serial" for
+  for one wire uart usecases.
 - reg: Should contain UART register location and length.
 - interrupts: Should contain UART core interrupts.
 - clocks: clocks needed for UART, includes the core and AHB clock.
@@ -21,6 +22,10 @@ Optional properties:
 - qcom,wakeup-byte: Byte to be injected in the tty layer during wakeup isr.
 - qcom,change-sampling-rate: This is a boolean parameter and use this to decide
   the samping rate at which sequencer engine runs.
+- qcom,qup-lane: This u32 parameter is used to select the UART lane for data transfer
+  in the one wire UART use case. If not used, the default lane will be L2.
+- qcom,push-pull: This Boolean property enables push-pull mode for one wire
+  uart usecase. If not used, the default mode will be open drain.
 
 Example:
 qupv3_uart11: qcom,qup_uart@0xa88000 {
