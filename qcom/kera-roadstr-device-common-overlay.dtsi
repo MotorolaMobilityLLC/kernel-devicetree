@@ -169,3 +169,9 @@
     size = <0x0 0x2000000>;
 };
 
+&pmxr2230_l18 {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+	regulator-always-on;
+};
