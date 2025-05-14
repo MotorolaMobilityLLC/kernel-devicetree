@@ -1534,6 +1534,19 @@
 		clock-frequency = <32768>;
 	};
 
+	wdog: qcom,wdt@17410000 {
+		compatible = "qcom,msm-watchdog";
+		reg = <0x17410000 0x1000>;
+		reg-names = "wdt-base";
+		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,bark-time = <11000>;
+		qcom,pet-time = <9360>;
+		qcom,ipi-ping;
+		qcom,wakeup-enable;
+		status = "ok";
+	};
+
 	dload_mode {
 		compatible = "qcom,dload-mode";
 	};
