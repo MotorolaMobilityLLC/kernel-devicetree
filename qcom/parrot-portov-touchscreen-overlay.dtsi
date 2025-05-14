@@ -111,6 +111,10 @@
 		chipone,y-res = <9600>;
 		chipone,def-build-id = <0x0101>;
 		chipone,def-config-id = <0x0001>;
+		chipone,touch-charger-detect-enable;
+		chipone,touch-charger-detect-type = "notify"; /* notify, poll */
+		chipone,touch-charger-detect-psp = "POWER_SUPPLY_PROP_ONLINE";
+		chipone,touch-charger-detect-psp-poll-interval = <1000>;
 		status = "ok";
 	};
 	ilitek@1 {
