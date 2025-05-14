@@ -2,13 +2,13 @@
 	mmi_charger: mmi,charger {
 		compatible = "mmi,mmi-charger";
 		mmi,enable-charging-limit;
-		mmi,upper-limit-capacity = <75>;
-		mmi,lower-limit-capacity = <70>;
+		mmi,upper-limit-capacity = <65>;
+		mmi,lower-limit-capacity = <60>;
 		mmi,heartbeat-interval = <10000>;
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <18000>;
 		mmi,factory-kill-debounce-ms = <3000>;
-		mmi,pd-power-max = <68000>;
+		mmi,pd-power-max = <30000>;
 		mmi,factory-syspoweroff-wait;
 		mmi,upper-limit-en-voltage = <3600>;
 	};
@@ -22,8 +22,8 @@
 			mmi,max-fv-mv = <4500>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
-			mmi,df-serialnum = "COSRH50COS";
-			profile-ids-map = "107000", "COSRH50COS","38000","LWNRH50SWD";
+			mmi,df-serialnum = "ATLSF70NVT";
+			profile-ids-map = "107000", "ATLSF70NVT","38000","LWNRH50SWD";
 		};
 	};
 
