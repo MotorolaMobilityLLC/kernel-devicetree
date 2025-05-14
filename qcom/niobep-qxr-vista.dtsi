@@ -577,9 +577,10 @@
 		status = "okay";
 		compatible = "adi,max77720";
 		reg = <0x41>;
-		regulator-name = "vout_dtof";
-		regulator-min-microvolt = <11000000>;
-		regulator-max-microvolt = <11000000>;
+		regulator-name = "max77720_dtof";
+		regulator-min-microvolt = <17010000>;
+		regulator-max-microvolt = <24000000>;
 		regulator-initial-mode = <1>;
+		enable-gpio = <&tlmm 136 GPIO_ACTIVE_HIGH>;
 	};
 };
