@@ -376,6 +376,51 @@
 			};
 		};
 	};
+
+	pm7250b-vbat-lvl0 {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-governor = "step_wise";
+		thermal-sensors = <&pm7250b_bcl 2>;
+
+		trips {
+			vbat_lvl0:vbat-lvl0 {
+				temperature = <3000>;
+				hysteresis = <0>;
+				type = "passive";
+			};
+		};
+	};
+
+	pm7250b-vbat-lvl1 {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-governor = "step_wise";
+		thermal-sensors = <&pm7250b_bcl 3>;
+
+		trips {
+			vbat_lvl1:vbat-lvl1 {
+				temperature = <2700>;
+				hysteresis = <0>;
+				type = "passive";
+			};
+		};
+	};
+
+	pm7250b-vbat-lvl2 {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-governor = "step_wise";
+		thermal-sensors = <&pm7250b_bcl 4>;
+
+		trips {
+			vbat_lvl2:vbat-lvl2 {
+				temperature = <2600>;
+				hysteresis = <0>;
+				type = "passive";
+			};
+		};
+	};
 };
 
 &qupv3_se2_i2c {
