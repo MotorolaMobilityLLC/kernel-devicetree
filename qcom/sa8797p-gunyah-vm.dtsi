@@ -53,6 +53,31 @@
 			no-map;
 			qcom,label = <0x61>;
 		};
+
+		glink_cma_mem3: glink-cma-region@3 {
+			no-map;
+			qcom,label = <0x62>;
+		};
+
+		glink_cma_mem4: glink-cma-region@4 {
+			no-map;
+			qcom,label = <0x63>;
+		};
+
+		glink_cma_mem5: glink-cma-region@5 {
+			no-map;
+			qcom,label = <0x64>;
+		};
+
+		glink_cma_mem6: glink-cma-region@6 {
+			no-map;
+			qcom,label = <0x65>;
+		};
+
+		glink_cma_mem7: glink-cma-region@7 {
+			no-map;
+			qcom,label = <0x66>;
+		};
 	};
 
 	cpus {
@@ -1306,6 +1331,22 @@
 				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP1 0>;
 				label = "cdsp1";
 				qcom,glink-label = "cdsp1";
+			};
+
+			remoteproc_cdsp2_glink: glink-edge2 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP2 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP2 0>;
+				label = "cdsp2";
+				qcom,glink-label = "cdsp2";
+			};
+
+			remoteproc_cdsp3_glink: glink-edge3 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_NSP3 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_NSP3 0>;
+				label = "cdsp3";
+				qcom,glink-label = "cdsp3";
 			};
 		};
 	};
