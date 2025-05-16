@@ -986,7 +986,8 @@
 					allocate-base;
 				};
 			};
-			/* Reserved device */
+
+			/* VHAB 9 device */
 			virtio-mmio@43 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
@@ -995,9 +996,60 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x1A0000>;
+				dma_base = <0x0 0x1FA000>;
 				memory {
 					qcom,label = <0x4B>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* VHAB 10 device */
+			virtio-mmio@44 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x4>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x22A000>;
+				memory {
+					qcom,label = <0x4C>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* VHAB 11 device */
+			virtio-mmio@45 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x25A000>;
+				memory {
+					qcom,label = <0x4D>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* Reserved device */
+			virtio-mmio@46 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x2>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x28A000>;
+				memory {
+					qcom,label = <0x4E>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
