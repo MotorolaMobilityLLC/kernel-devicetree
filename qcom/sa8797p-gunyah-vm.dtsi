@@ -44,6 +44,27 @@
 			size = <0x0 0x1000000>;
 		};
 
+		cp_pixel_mem: cp_pixel_region {
+			no-map;
+			qcom,target-vmid = <0xa>;
+			qcom,label = <0xc0a>;
+			qcom,unmapped;
+		};
+
+		cp_nonpixel_mem: cp_nonpixel_region {
+			no-map;
+			qcom,target-vmid = <0xb>;
+			qcom,label = <0xc0b>;
+			qcom,unmapped;
+		};
+
+		system_secure_mem: system_secure_region {
+			no-map;
+			qcom,label = <0xc09>;
+			qcom,target-vmid = <0x9>;
+			qcom,unmapped;
+		};
+
 		glink_cma_mem1: glink-cma-region@1 {
 			no-map;
 			qcom,label = <0x60>;
@@ -283,6 +304,7 @@
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "allow-unprotected";
+		qcom,peripheral-vmids = <0x9 0xa 0xb>;
 
 		memory {
 			#address-cells = <0x2>;
@@ -1228,6 +1250,27 @@
 			qcom,dma-heap-name = "qcom,qseecom-ta";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
+		};
+
+		qcom,cp_pixel {
+			qcom,dma-heap-name = "qcom,secure-pixel";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x80000>;
+			memory-region = <&cp_pixel_mem>;
+		};
+
+		qcom,cp_nonpixel {
+			qcom,dma-heap-name = "qcom,secure-non-pixel";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x100000>;
+			memory-region = <&cp_nonpixel_mem>;
+		};
+
+		qcom,cp_bitstream {
+			qcom,dma-heap-name = "system-secure";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x40000>;
+			memory-region = <&system_secure_mem>;
 		};
 	};
 
