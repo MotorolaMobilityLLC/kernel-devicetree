@@ -63,6 +63,10 @@
 	};
 };
 
+&pm6150l_bcl {
+	compatible = "qcom,pm6150l-bcl-v5";
+};
+
 &pm6150l_vadc {
 	pinctrl-names = "default";
 	pinctrl-0 = <&ufs_therm_default &cam_flash_therm_default>;
