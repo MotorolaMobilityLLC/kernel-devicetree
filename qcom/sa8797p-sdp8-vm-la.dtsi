@@ -21,6 +21,10 @@
 	};
 };
 
+&chosen {
+	bootconfig = "androidboot.usbcontroller=a200000.dwc3 androidboot.dtbo_idx=18";
+};
+
 &virt_scmi {
 	status = "ok";
 };
