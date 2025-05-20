@@ -112,6 +112,7 @@ _platform_map = {
 		],
         "dtbo_list": [
            {"name": "kera-roadstr-evb-overlay.dtbo", "product":"roadstr"},
+           {"name": "kera-roadstr-evt-overlay.dtbo", "product":"roadstr"},
         ],
     },
     "kera-le": {

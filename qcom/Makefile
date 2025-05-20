@@ -27,7 +27,8 @@ endif
 ifeq ($(CONFIG_ROADSTR_DTB),y)
 KERA_BASE_DTB += kera-roadstr-base.dtb
 KERA_BOARDS += \
-		kera-roadstr-evb-overlay.dtbo
+		kera-roadstr-evb-overlay.dtbo \
+		kera-roadstr-evt-overlay.dtbo
 endif
 
 sun-dtb-$(CONFIG_ARCH_KERA) +=  \
