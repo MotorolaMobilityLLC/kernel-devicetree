@@ -221,44 +221,6 @@
 	};
 };
 
-&qupv3_se19_spi {
-	#address-cells = <1>;
-	#size-cells = <0>;
-	status = "ok";
-	qcom,touch-active = "st,fts";
-	qcom,la-vm;
-
-	st_fts@0 {
-		compatible = "st,fts";
-		reg = <0x0>;
-		spi-max-frequency = <1000000>;
-
-		interrupt-parent = <&tlmm>;
-		interrupts = <158 0x2008>;
-		vdd-supply = <&L4B>;
-		avdd-supply = <&L14B>;
-		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend";
-		pinctrl-0 = <&ts_active>;
-		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
-		st,irq-gpio = <&tlmm 158 0x2008>;
-		st,irq-flags = <8>;
-		st,reset-gpio = <&tlmm 66 0x00>;
-		st,regulator_dvdd = "vdd";
-		st,regulator_avdd = "avdd";
-
-		st,touch-type = "primary";
-		st,qts_en;
-		qts,trusted-touch-mode = "vm_mode";
-		qts,touch-environment = "pvm";
-		qts,trusted-touch-type = "primary";
-		qts,trusted-touch-spi-irq = <647>;
-		qts,trusted-touch-io-bases = <0x1a80000>;
-		qts,trusted-touch-io-sizes = <0x1000>;
-		qts,trusted-touch-vm-gpio-list = <&tlmm 48 0 &tlmm 49 0 &tlmm 50 0
-						&tlmm 51 0 &tlmm 66 0 &tlmm 158 0x2008>;
-	};
-};
-
 &regulator_ocp_notifier {
 	periph-1c1-supply = <&L1B>;
 	periph-1c2-supply = <&L2B>;
