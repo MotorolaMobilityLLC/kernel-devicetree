@@ -21,6 +21,7 @@ properties:
     - qcom,cpuss-sleep-stats
     - qcom,cpuss-sleep-stats-v2
     - qcom,cpuss-sleep-stats-v3
+    - qcom,cpuss-sleep-stats-v4
 
 reg:
   maxItems: 10
