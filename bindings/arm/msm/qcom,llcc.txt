@@ -19,10 +19,12 @@ Properties:
 			or "qcom,sdmshrike-llcc" or "qcom,pineapple-llcc"
 			or "qcom,cliffs-llcc" or "qcom,cliffs7-llcc"
 			or "qcom,monaco_auto_ivi-llcc" or "qcom,niobe-llcc"
-			or "qcom,anorak-llcc" or "qcom,neo-llcc".
+			or "qcom,anorak-llcc" or "qcom,neo-llcc"
+			or "qcom,seraph-llcc".
 		    "qcom,llcc-v2" must be appended for V2 hardware or
 		    "qcom,llcc-v21" for V2.1 or "qcom,llcc-v31" for V3.1 or
-		    "qcom,llcc-v41" for V4.1 or "qcom,llcc-v50" for V5.0.
+		    "qcom,llcc-v41" for V4.1 or "qcom,llcc-v50" for V5.0 or
+		    "qcom,llcc-v51" for V5.1.
 
 - reg:
 	Usage: required
@@ -32,14 +34,17 @@ Properties:
 		    the llcc broadcast base address and size of the register region.
 		    The third element is optional and specifies the feature register
 		    used to decide which llcc configuration to use if multiple are
-		    available.
+		    available. There could also be another reg region if the property
+		    qcom,sct-initialized is present.
 
 - reg-names:
         Usage: required
         Value Type: <stringlist>
         Definition: Register region names. Must be "llcc_base", "llcc_broadcast_base".
 		    The third element is needed only if multiple llcc configurations
-		    are available and must be "multi_ch_reg".
+		    are available and must be "multi_ch_reg". Additionally, if property
+		    qcom,sct-initialized exists, then we need one more register region
+		    name and it must be "slc_mem_base".
 
 - interrupts:
 	Usage: required
@@ -56,6 +61,13 @@ Properties:
 		    and the number of bits used to decied which llcc configuration to
 		    use.
 
+- qcom,sct-initialized:
+	Usage: optional
+	Value Type: <bool>
+	Definition: If this exists, then the device is already configured with SCT
+		    table outside of the llcc-qcom driver. The information on the
+		    scid and uids are gathered from the reg-name region "slc_mem_base".
+
 Example:
 
 	cache-controller@1100000 {
@@ -63,6 +75,15 @@ Example:
 		reg = <0x1100000 0x200000>, <0x1300000 0x50000> ;
 		reg-names = "llcc_base", "llcc_broadcast_base";
 		interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH>;
+	};
+
+	// Example with qcom,sct-initialized flag
+	cache-controller@25000000 {
+		compatible = "qcom,seraph-llcc";
+		reg = <0x25000000 0x400000> , <0x25800000 0x200000>, <0xD8170000 0x800>;
+		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
+		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
+		qcom,sct-initialized;
 	};
 
 LLCC Performance Monitor
