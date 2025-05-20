@@ -99,6 +99,12 @@
 			no-map;
 			qcom,label = <0x66>;
 		};
+
+		kinfo_mem: debug_kinfo_region {
+			alloc-ranges = <0x0 0x0 0xffffffff 0xffffffff>;
+			size = <0x0 0x1000>;
+			no-map;
+		};
 	};
 
 	cpus {
@@ -331,6 +337,12 @@
 
 		vdevices {
 			generate = "/hypervisor";
+
+			minidump {
+				vdevice-type = "minidump";
+				push-compatible = "qcom,minidump_rm";
+				minidump_allowed;
+			};
 
 			rm-rpc {
 				vdevice-type = "rm-rpc";
@@ -1580,6 +1592,15 @@
 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "qcom,qtmr-intr";
 		qcom,secondary;
+	};
+
+	google,debug-kinfo {
+		compatible = "google,debug-kinfo";
+		memory-region = <&kinfo_mem>;
+	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
 	};
 };
 
