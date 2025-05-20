@@ -20,6 +20,7 @@ _platform_map = {
             {"name": "sa6155p-vm-la.dtb"},
             {"name": "monaco-vm-flex-la.dtb"},
             {"name": "monaco-vm-flex-la-mt.dtb"},
+            {"name": "sa8797p-sdp8-vm-la.dtb"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -41,6 +42,7 @@ _platform_map = {
             {"name": "sa6155p-vm-la-overlay.dtbo"},
             {"name": "monaco-vm-flex-la-overlay.dtbo"},
             {"name": "monaco-vm-flex-la-mt-overlay.dtbo"},
+            {"name": "sa8797p-sdp8-vm-la-overlay.dtbo"},
         ],
     },
     "autoghgvm": {

@@ -1,0 +1,30 @@
+&{/} {
+	model = "Qualcomm Technologies, Inc. SA8797p Single LA  Guest Virtual Machine";
+	compatible = "qcom,sa8797p", "qcom,quinvm";
+	qcom,msm-id = <690 0x10000>, <690 0x20000>, <690 0x10001>;
+	qcom,board-id = <0x0 0x1000001>;
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	rename_devices: rename_devices {
+		compatible = "qcom,rename-devices";
+		rename_blk: rename_blk {
+			device-type = "block";
+			actual-dev = "vda", "vdb", "vdc",
+					"vdd", "vde", "vdf",
+					"vdg", "vdh", "vdi",
+					"vdj", "vdk", "vdl",
+					"vdm", "vdn", "vdo",
+					"vdp", "vdq", "vdr",
+					"vds", "vdt", "vdu";
+			rename-dev = "super", "userdata", "metadata",
+					"persist", "modem_a","bluetooth_a",
+					"misc", "vbmeta_a", "vbmeta_b",
+					"boot_a", "dtbo_a", "dsp_a",
+					"modem_b", "bluetooth_b", "boot_b",
+					"dtbo_b", "dsp_b", "vendor_boot_b",
+					"vendor_boot_a", "init_boot_b", "init_boot_a";
+		};
+	};
+};
