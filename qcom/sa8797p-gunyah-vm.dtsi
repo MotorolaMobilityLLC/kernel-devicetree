@@ -1118,6 +1118,34 @@
 				peer-default;
 			};
 
+			hab-virq5-dbl {
+				vdevice-type = "doorbell";
+				generate = "/hypervisor/hab-virq5-dbl";
+				qcom,label = <0x5>;
+				peer-default;
+			};
+
+			hab-virq5-dbl-source {
+				vdevice-type = "doorbell-source";
+				generate = "/hypervisor/hab-virq5-dbl-source";
+				qcom,label = <0x5>;
+				peer-default;
+			};
+
+			hab-virq6-dbl {
+				vdevice-type = "doorbell";
+				generate = "/hypervisor/hab-virq6-dbl";
+				qcom,label = <0x6>;
+				peer-default;
+			};
+
+			hab-virq6-dbl-source {
+				vdevice-type = "doorbell-source";
+				generate = "/hypervisor/hab-virq6-dbl-source";
+				qcom,label = <0x6>;
+				peer-default;
+			};
+
 			test-msgq-gvm1 {
 				vdevice-type = "message-queue-pair";
 				generate = "/hypervisor/test-msgq-gvm1-pair";
@@ -1611,3 +1639,95 @@
 	};
 };
 
+&soc {
+	hab: qcom,hab {
+		compatible = "qcom,hab";
+		vmid = <2>;
+		virt-irq = <0x5 0x6>;
+
+		mmidgrp100: mmidgrp100 {
+			grp-start-id = <100>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp200: mmidgrp200 {
+			grp-start-id = <200>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp300: mmidgrp300 {
+			grp-start-id = <300>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp400: mmidgrp400 {
+			grp-start-id = <400>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp500: mmidgrp500 {
+			grp-start-id = <500>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp600: mmidgrp600 {
+			grp-start-id = <600>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp700: mmidgrp700 {
+			grp-start-id = <700>;
+			role = "fe";
+			remote-vmids = <0>;
+			kernel_only;
+		};
+
+		mmidgrp900: mmidgrp900 {
+			grp-start-id = <900>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1000: mmidgrp1000 {
+			grp-start-id = <1000>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1100: mmidgrp1100 {
+			grp-start-id = <1100>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1200: mmidgrp1200 {
+			grp-start-id = <1200>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1400: mmidgrp1400 {
+			grp-start-id = <1400>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1500: mmidgrp1500 {
+			grp-start-id = <1500>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1600: mmidgrp1600 {
+			grp-start-id = <1600>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+	};
+};
