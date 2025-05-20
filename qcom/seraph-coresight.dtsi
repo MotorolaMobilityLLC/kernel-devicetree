@@ -852,8 +852,10 @@
 		reg = <0x114c1000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
+		atid = <100>;
 		coresight-name = "coresight-tpdm-tmess-dsb";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -874,8 +876,10 @@
 		reg = <0x114c2000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
+		atid = <100>;
 		coresight-name = "coresight-tpdm-tmess-dl";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -896,9 +900,11 @@
 		reg = <0x114c0000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
+		atid = <100>;
 
 		coresight-name = "coresight-tpdm-tmess-irq";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -917,7 +923,7 @@
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb969>;
 
-		qcom,tpda-atid = <85>;
+		qcom,tpda-atid = <100>;
 		qcom,dsb-elem-size = <4 64>;
 		qcom,cmb-elem-size = <2 32>,
 				     <3 32>,
@@ -3498,10 +3504,12 @@
 
 		coresight-name = "coresight-tpdm-dcc";
 
+		qcom,hw-enable-check;
+
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
-		atid = <64>;
+		atid = <65>;
 		out-ports {
 			port {
 				tpdm_dcc_out_tpda_qdss: endpoint {
