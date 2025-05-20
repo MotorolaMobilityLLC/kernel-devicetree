@@ -4,6 +4,7 @@
  */
 
 #include "canoe-qrd.dtsi"
+#include "canoe-vantg-touchscreen-overlay.dtsi"
 
 &wcd_usbss {
 	interrupt-parent = <&spmi0_bus>;
