@@ -45,8 +45,7 @@ _platform_map = {
     "canoe": {
         "dtb_list": [
             # keep sorted
-            {"name": "canoe-tp-vantg-base.dtb", "product": "vantg"},
-            {"name": "canoe-tp-v2-vantg-base.dtb", "product": "vantg"},
+            {"name": "canoe-vantg-base.dtb", "product": "vantg"},
         ],
         "dtbo_list": [
             # keep sorted
