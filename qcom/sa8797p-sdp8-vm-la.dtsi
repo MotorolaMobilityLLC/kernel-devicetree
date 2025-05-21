@@ -20,3 +20,11 @@
 		};
 	};
 };
+
+&virt_scmi {
+	status = "ok";
+};
+
+&scmi {
+	status = "ok";
+};
