@@ -8,5 +8,5 @@
 	qcom,board-id = <0x0 0x1000001>;
 };
 
-#include "sdp8-quin-vm-common.dtsi"
 #include "sa8797p-sdp8-vm-la.dtsi"
+#include "sa8797p-sdp8-vm.dtsi"

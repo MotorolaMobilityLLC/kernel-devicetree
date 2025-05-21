@@ -4,6 +4,8 @@
 #include <dt-bindings/clock/qcom,rpmh.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
+#define GIC_ESPI 0x2
+
 &{/} {
 	chosen: chosen {
 		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 ufshcd-core.use_mcq_mode=n qcom_dma_heaps.enable_bitstream_contig_heap=y arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1 fw_devlink.strict=1";
