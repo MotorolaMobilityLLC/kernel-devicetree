@@ -1489,6 +1489,30 @@
 				label = "cdsp3";
 				qcom,glink-label = "cdsp3";
 			};
+
+			remoteproc_hpass0_glink: glink-edge4 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_ADSP0 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_ADSP0 0>;
+				label = "adsp";
+				qcom,glink-label = "adsp";
+			};
+
+			remoteproc_hpass1_glink: glink-edge5 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_ADSP1 0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_ADSP1 0>;
+				label = "adsp1";
+				qcom,glink-label = "adsp1";
+			};
+
+			remoteproc_hpass2_glink: glink-edge6 {
+				interrupt-parent = <&ipcc_mproc_apps_ns1>;
+				interrupts = <IPCC_MPROC_ADSP2  0 IRQ_TYPE_EDGE_RISING>;
+				mboxes = <&ipcc_mproc_apps_ns1 IPCC_MPROC_ADSP2 0>;
+				label = "adsp2";
+				qcom,glink-label = "adsp2";
+			};
 		};
 	};
 
