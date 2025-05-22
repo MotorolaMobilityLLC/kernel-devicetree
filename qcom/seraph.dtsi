@@ -1753,6 +1753,8 @@
 		reg = <0x88f0000 0xc000>;
 		clocks = <&gcc GCC_PDM_AHB_CLK>;
 		clock-names =  "pdm_ahb_clk";
+		assigned-clocks = <&gcc GCC_PWM0_XO512_CLK>;
+		assigned-clock-rates = <19200000>;
 		#pwm-cells = <3>;
 
 		pwm@0 {
