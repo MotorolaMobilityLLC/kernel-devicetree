@@ -19,6 +19,8 @@
 #include "canoe-vantg-haptics-overlay.dtsi"
 #include "canoe-vantg-thermal-overlay.dtsi"
 #include "canoe-vantg-sensors-overlay.dtsi"
+#include "canoe-moto-common-charger.dtsi"
+#include "canoe-vantg-charger-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
