@@ -195,7 +195,7 @@
 
 	adspslpi_mem: adspslpi_region@99e00000 {
 		no-map;
-		reg = <0x0 0x99e00000 0x0 0x2a00000>;
+		reg = <0x0 0x99e00000 0x0 0x3a00000>;
 	};
 
 	wlan_msa_mem: wlan_msa_region@a6400000 {
