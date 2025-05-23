@@ -77,7 +77,8 @@
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
 			usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
-			dr_mode = "peripheral";
+			usb-role-switch;
+			dr_mode = "otg";
 			maximum-speed = "super-speed-plus";
 		};
 	};
