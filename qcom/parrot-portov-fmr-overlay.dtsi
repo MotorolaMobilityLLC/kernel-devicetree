@@ -44,5 +44,9 @@
 		pinctrl-0 = <&fm_elna_default>;
 		pinctrl-1 = <&fm_elna_active>;
 		pinctrl-2 = <&fm_elna_suspend>;
+
+		// for portov HW design only
+		vdd-elna-supply = <&L11E>;
+		moto,vdd-elna-voltage = <3000000 3312000>;
 	};
 };
