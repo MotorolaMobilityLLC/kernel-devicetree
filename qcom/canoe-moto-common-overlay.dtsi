@@ -14,13 +14,13 @@
 
 &utags {
 	compatible = "mmi,utags";
-	mmi,main-utags = "/dev/block/bootdevice/by-name/utags";
-	mmi,backup-utags = "/dev/block/bootdevice/by-name/utagsBackup";
+	mmi,main-utags = "/dev/block/by-name/utags";
+	mmi,backup-utags = "/dev/block/by-name/utagsBackup";
 };
 
 &hw {
 	compatible = "mmi,utags";
 	mmi,dir-name = "hw";
-	mmi,main-utags = "/dev/block/bootdevice/by-name/hw";
+	mmi,main-utags = "/dev/block/by-name/hw";
 };
 
