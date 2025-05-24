@@ -1,0 +1,25 @@
+#include "sdp8-quin-vm-common.dtsi"
+#include "sa8797p-pinctrl.dtsi"
+
+&{/} {
+	model = "Qualcomm Technologies, Inc. SA8797p Single LA  Guest Virtual Machine";
+	compatible = "qcom,sa8797p", "qcom,quinvm";
+	qcom,msm-id = <690 0x10000>, <690 0x20000>, <690 0x10001>;
+	qcom,board-id = <0x0 0x1000001>;
+	qcom,msm-name  = "SA_NORD_IVI";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+};
+
+&soc {
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,sa8797p-tlmm";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+	};
+};
