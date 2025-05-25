@@ -7,7 +7,6 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <532 0x10000>, <533 0x10000>, <534 0x10000>, <532 0x20000>, <533 0x20000>, <534 0x20000>;
 	interrupt-parent = <&intc>;
 
 	qcom,mem-buf {
@@ -88,6 +87,20 @@
 		gptp_timedata_mem: gptp_timedata_region {
 			no-map;
 			qcom,label = <0x61>;
+		};
+
+		cp_pixel_mem: cp_pixel_region {
+			no-map;
+			qcom,target-vmid = <0xa>;
+			qcom,label = <0xc0a>;
+			qcom,unmapped;
+		};
+
+		system_secure_mem: system_secure_region {
+			no-map;
+			qcom,label = <0xc09>;
+			qcom,target-vmid = <0x9>;
+			qcom,unmapped;
 		};
 	};
 
@@ -306,7 +319,15 @@
 		qcom,dev-name = "devinfo";
 	};
 
-	qcom,vm-config {
+	virtio_blk_la_bootloader_b {
+		qcom,dev-name = "bootloader_b";
+	};
+
+	virtio_blk_la_bootloader_a {
+		qcom,dev-name = "bootloader_a";
+	};
+
+	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
 		boot-config = "fdt,unified";
@@ -320,6 +341,7 @@
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "vpm-virq", "allow-unprotected";
+		qcom,peripheral-vmids = <0x9 0xa>;
 
 		/* Pass through regions */
 		iomemory-ranges = <
@@ -1138,15 +1160,47 @@
 
 			virtio-mmio@44 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_bootloader_a";
 				peer-default;
-				vqs-num = <0x2>;
+				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
 				dma_base = <0x0 0x23A000>;
 				memory {
 					qcom,label = <0x4C>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@45 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_la_bootloader_b";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x23E000>;
+				memory {
+					qcom,label = <0x4D>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			virtio-mmio@46 {
+				vdevice-type = "virtio-mmio";
+				generate = "/virtio-mmio";
+				peer-default;
+				vqs-num = <0x4>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x242000>;
+				memory {
+					qcom,label = <0x4E>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -1226,7 +1280,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
+			boot_devices = "7002e000.virtio_blk_la_bootloader_b,7002d000.virtio_blk_la_bootloader_a,70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -1367,6 +1421,21 @@
 			qcom,dma-heap-name = "qcom,qseecom-ta";
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
+		};
+
+		qcom,cp_pixel {
+			qcom,dma-heap-name = "qcom,secure-pixel";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x80000>;
+			memory-region = <&cp_pixel_mem>;
+		};
+
+
+		qcom,cp_bitstream {
+			qcom,dma-heap-name = "system-secure";
+			qcom,dma-heap-type = <HEAP_TYPE_SECURE_CARVEOUT>;
+			qcom,token = <0x40000>;
+			memory-region = <&system_secure_mem>;
 		};
 	};
 
@@ -1601,6 +1670,7 @@
 		qcom,arm-smmu;
 		reg = <0x2300C000 0x1000>;
 		reg-names = "stmmaceth";
+		status = "disabled";
 		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
 
@@ -1618,6 +1688,7 @@
 		emac1_emb_smmu: emac1_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x148 0x1>;
+			status = "disabled";
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
 		};
@@ -1635,7 +1706,8 @@
 					"vdj", "vdk", "vdl",
 					"vdm", "vdn", "vdo",
 					"vdp", "vdq", "vdr",
-					"vds", "vdt", "vdu", "vdv";
+					"vds", "vdt", "vdu",
+					"vdv", "vdw", "vdx";
 			rename-dev = "super", "userdata", "metadata",
 					"persist", "misc", "vbmeta_b",
 					"vbmeta_a", "modem_b", "modem_a",
@@ -1643,7 +1715,9 @@
 					"boot_b", "boot_a", "dtbo_b",
 					"dtbo_a", "dsp_b", "dsp_a",
 					"vendor_boot_b", "vendor_boot_a",
-					"init_boot_b", "init_boot_a", "devinfo";
+					"init_boot_b", "init_boot_a", "devinfo",
+					"bootloader_b", "bootloader_a"
+					;
 		};
 	};
 };

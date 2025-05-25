@@ -255,7 +255,7 @@
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
 		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,she_gvm;";
-		qcom,secdomain-ids = <52>;
+		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "allow-unprotected";
 
@@ -1052,8 +1052,8 @@
 			vsmmu@15e00000 {
 				vdevice-type = "vsmmu-v2";
 				smmu-handle = <0x15e00000>;
-				num-cbs = <0x8>;
-				num-smrs = <0x8>;
+				num-cbs = <0x1>;
+				num-smrs = <0xc>;
 				patch = "/soc/apps-smmu@15e00000";
 			};
 
@@ -1279,6 +1279,16 @@
 		status = "ok";
 	};
 
+	tlmm: pinctrl@f000000 {
+		compatible = "qcom,sa8797p-tlmm";
+		reg = <0xf000000 0x1000000>;
+		interrupts = <GIC_SPI 208 IRQ_TYPE_LEVEL_HIGH>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+	};
+
 	virtio_glink_cma: virtio-glink-cma@2e000000 {
 		glink_bridge: virtio-glink-bridge {
 			compatible = "virtio,device49162";
@@ -1318,13 +1328,13 @@
 		interrupts = <GIC_SPI 820 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-names = "macirq";
 
-		iommus = <&apps_smmu_2 0x11c1 0x0>,
-			 <&apps_smmu_2 0x11c2 0x0>,
-			 <&apps_smmu_2 0x11c3 0x0>,
-			 <&apps_smmu_2 0x11c4 0x0>,
-			 <&apps_smmu_2 0x11c5 0x0>,
-			 <&apps_smmu_2 0x11c6 0x0>,
-			 <&apps_smmu_2 0x11c7 0x0>;
+		iommus = <&apps_smmu_2 0x11c1 0x8>,
+			 <&apps_smmu_2 0x11c2 0x1>,
+			 <&apps_smmu_2 0x11c3 0x1>,
+			 <&apps_smmu_2 0x11c4 0x3>,
+			 <&apps_smmu_2 0x11c5 0x3>,
+			 <&apps_smmu_2 0x11c6 0x3>,
+			 <&apps_smmu_2 0x11c7 0x3>;
 
 		power-domains = <&scmi_power 8>, <&scmi_power 9>, <&scmi_perf 1>, <&scmi_perf 2>;
 		power-domain-names = "power_core", "power_mdio", "perf_serdes", "perf_5g_serdes";

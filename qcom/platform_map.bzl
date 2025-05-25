@@ -47,6 +47,7 @@ _platform_map = {
         "dtb_list": [
             # keep sorted
             {"name": "lemans-gunyah-vm-cob.dtb"},
+            {"name": "lemans-gunyah-vm-flex-qam.dtb"},
             {"name": "lemans-gunyah-vm-qam.dtb"},
             {"name": "lemans-gunyah-vm-vp.dtb"},
             {"name": "monaco-gunyah-vm-qam.dtb"},
@@ -55,6 +56,7 @@ _platform_map = {
         "dtbo_list": [
             # keep sorted
             {"name": "lemans-gunyah-vm-cob-overlay.dtbo"},
+            {"name": "lemans-gunyah-vm-flex-qam-overlay.dtbo"},
             {"name": "lemans-gunyah-vm-qam-overlay.dtbo"},
             {"name": "lemans-gunyah-vm-vp-overlay.dtbo"},
             {"name": "monaco-gunyah-vm-qam-overlay.dtbo"},
@@ -412,6 +414,10 @@ _platform_map = {
             {"name": "seraph-vm-rumi.dtb"},
             {"name": "seraph-vm-atp.dtb"},
             {"name": "seraphp-vm-atp.dtb"},
+            {"name": "seraph-vm-idp-dtof.dtb"},
+            {"name": "seraphp-vm-idp-dtof.dtb"},
+            {"name": "seraph-vm-idp.dtb"},
+            {"name": "seraphp-vm-idp.dtb"},
         ],
     },
     "cliffs-tuivm": {
