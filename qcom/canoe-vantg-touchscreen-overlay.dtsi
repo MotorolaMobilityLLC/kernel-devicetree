@@ -29,8 +29,8 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
-		synaptics,avdd-name = "vdd";
 		synaptics,vdd-name = "avdd";
+		synaptics,vio-name = "vdd";
 		synaptics,power-delay-ms = <200>;
 		synaptics,irq-gpio = <&tlmm 158 0x2008>;
 		synaptics,irq-on-state = <0>;
