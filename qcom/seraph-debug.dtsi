@@ -10,7 +10,7 @@
 		alloc-ranges = <0x1 0x00000000 0xfffffffe 0xffffffff>;
 		reusable;
 		alignment = <0x0 0x400000>;
-		size = <0 0x1800000>;
+		size = <0 0x1c00000>;
 	};
 };
 
@@ -48,11 +48,6 @@
 		c300_context {
 			qcom,dump-size = <0x800>;
 			qcom,dump-id = <0x3>;
-		};
-
-		dcp_sw {
-			qcom,dump-size = <0x600FFF>;
-			qcom,dump-id = <0x290>;
 		};
 
 		c400_context {
@@ -459,5 +454,11 @@
 			qcom,dump-size = <0x400>;
 			qcom,dump-id = <0x165>;
 		};
+
+		dcp_sw {
+			qcom,dump-size = <0x601000>;
+			qcom,dump-id = <0x290>;
+		};
+
 	};
 };
