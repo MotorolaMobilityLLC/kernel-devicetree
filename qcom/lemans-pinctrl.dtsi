@@ -239,6 +239,86 @@
 		};
 	};
 
+	qupv3_se3_4uart_pins: qupv3_se3_4uart_pins {
+		qupv3_se3_default_cts: qupv3_se3_default_cts {
+			mux {
+				pins = "gpio28";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio28";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se3_default_rtsrx: qupv3_se3_default_rtsrx {
+			mux {
+				pins = "gpio29", "gpio31";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio29", "gpio31";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+
+		qupv3_se3_default_tx: qupv3_se3_default_tx {
+			mux {
+				pins = "gpio30";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio30";
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+		};
+
+		qupv3_se3_ctsrx: qupv3_se3_ctsrx {
+			mux {
+				pins = "gpio28", "gpio31";
+				function = "qup0_se3";
+			};
+
+			config {
+				pins = "gpio28", "gpio31";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se3_rts: qupv3_se3_rts {
+			mux {
+				pins = "gpio29";
+				function = "qup0_se3";
+			};
+
+			config {
+				pins = "gpio29";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+
+		qupv3_se3_tx: qupv3_se3_tx {
+			mux {
+				pins = "gpio30";
+				function = "qup0_se3";
+			};
+
+			config {
+				pins = "gpio30";
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+		};
+	};
+
 	qupv3_se4_i2c_pins: qupv3_se4_i2c_pins {
 		qupv3_se4_i2c_active: qupv3_se4_i2c_active {
 			mux {

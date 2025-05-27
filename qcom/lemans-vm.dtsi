@@ -9,6 +9,7 @@
 
 	aliases {
 		hsuart0 = &qupv3_se17_4uart;
+		hsuart1 = &qupv3_se3_4uart;
 		ufshc2 = &ufshc2_mem;
 	};
 
@@ -828,6 +829,10 @@
 
 &usb2 {
 	vbus_dwc3-supply = <&usb2_vbus_boost_regulator>;
+};
+
+&qupv3_0 {
+	qcom,iommu-dma = "bypass";
 };
 
 &qupv3_1 {
