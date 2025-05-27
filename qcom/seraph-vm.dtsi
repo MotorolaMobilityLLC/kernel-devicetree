@@ -86,7 +86,7 @@
 		qcom,sensitive;
 		vm-attrs = "context-dump", "crash-restart";
 
-		iomemory-ranges = <0x0 405000 0x0 405000 0x1000 0x0>;
+		iomemory-ranges = <0x0 0x405000 0x0 0x405000 0x0 0x1000 0x0>;
 		/* For LEVM por usecases is QUP1_SE4 and QUP2_SE7.
 		 * QUP1_SE4: GPII5 : IRQ_316
 		 * QUP2_SE7: GPII5 : IRQ_625
