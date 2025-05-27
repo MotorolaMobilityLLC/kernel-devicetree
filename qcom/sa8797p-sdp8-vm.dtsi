@@ -1,5 +1,4 @@
 #include "sdp8-quin-vm-common.dtsi"
-#include "sa8797p-pinctrl.dtsi"
 
 &{/} {
 	model = "Qualcomm Technologies, Inc. SA8797p Single LA  Guest Virtual Machine";
@@ -358,3 +357,6 @@
 		memory-region = <&system_cma>;
 	};
 };
+
+#include "sa8797p-pinctrl.dtsi"
+#include "sa8797p-vm-usb.dtsi"
