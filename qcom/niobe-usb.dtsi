@@ -394,6 +394,7 @@
 		resets = <&gcc GCC_QUSB2PHY_SEC_BCR>;
 		reset-names = "phy_reset";
 
+		qcom,port-num = /bits/ 8 <0x2>;
 	};
 
 	/* Secondary USB port related QMP USB DP Combo PHY */
