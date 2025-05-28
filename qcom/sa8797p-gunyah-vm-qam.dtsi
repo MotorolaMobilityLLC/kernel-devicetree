@@ -56,6 +56,10 @@
 				0x0 0x9307000 0x0 0x9307000 0x0 0x1000 0x0
 				/* QRNG region */
 				0x0 0x10cd000 0x0 0x10cd000 0x0 0x1000 0x0
+				/* USB1 region */
+				0x0 0x88eb000 0x0 0x88eb000 0x0 0x1000 0x0
+				0x0 0x88e4000 0x0 0x88e4000 0x0 0x3000 0x0
+				0x0 0xa400000 0x0 0xa400000 0x0 0x200000 0x0
 				>;
 
 		/* Pass through IRQs */
@@ -102,6 +106,12 @@
 				136 136
 				/* Fence NS1 IPCC GIC IRQ */
 				491 491
+				/* USB1 IRQs */
+				789 789
+				790 790
+				818 818
+				949 949
+				950 950
 				>;
 
 	vcpus {
@@ -122,5 +132,17 @@
 };
 
 &eusb2_phy2 {
+	status = "ok";
+};
+
+&usb1 {
+	status = "ok";
+};
+
+&eusb2_phy1 {
+	status = "ok";
+};
+
+&usb_1_qmp_combo_phy {
 	status = "ok";
 };
