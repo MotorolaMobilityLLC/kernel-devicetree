@@ -185,14 +185,6 @@
 		power-source = <0>; /* 1.8 V */
 	};
 
-	lcd_bl_pwm_default: lcd-bl-pwm-default-state {
-		pins = "gpio5";
-		function = "func3";
-		input-disable;
-		output-enable;
-		power-source = <0>; /* 1.8 V */
-	};
-
 	xoagg_therm_default: xoagg-therm-default-state {
 		pins = "gpio7";
 		function = "normal";
