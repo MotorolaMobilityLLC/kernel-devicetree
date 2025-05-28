@@ -1533,6 +1533,7 @@
 				pins = "gpio4";
 				drive-strength = <6>;
 				bias-disable;
+				qcom,apps;
 			};
 		};
 
@@ -1546,6 +1547,7 @@
 				pins = "gpio5";
 				drive-strength = <6>;
 				bias-disable;
+				qcom,apps;
 			};
 		};
 
@@ -1575,16 +1577,55 @@
 			};
 		};
 
-		qupv3_se10_spi_sleep: qupv3_se10_spi_sleep {
+		qupv3_se10_spi_miso_sleep: qupv3_se10_spi_miso_sleep {
 			mux {
-				pins = "gpio4", "gpio5",
-					"gpio6", "gpio7";
+				pins = "gpio4";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio4", "gpio5",
-					"gpio6", "gpio7";
+				pins = "gpio4";
+				drive-strength = <2>;
+				bias-disable;
+				qcom,remote;
+			};
+		};
+
+		qupv3_se10_spi_mosi_sleep: qupv3_se10_spi_mosi_sleep {
+			mux {
+				pins = "gpio5";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio5";
+				drive-strength = <2>;
+				bias-disable;
+				qcom,remote;
+			};
+		};
+
+		qupv3_se10_spi_clk_sleep: qupv3_se10_spi_clk_sleep {
+			mux {
+				pins = "gpio6";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio6";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+
+		qupv3_se10_spi_cs_sleep: qupv3_se10_spi_cs_sleep {
+			mux {
+				pins = "gpio7";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio7";
 				drive-strength = <2>;
 				bias-disable;
 			};
