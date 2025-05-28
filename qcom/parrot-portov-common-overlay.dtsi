@@ -19,6 +19,17 @@
 #include "parrot-portov-nfc-overlay.dtsi"
 #include "parrot-portov-fps-overlay.dtsi"
 
+&soc {
+	mmi_lpd_dbg: mmi_lpd_dbg {
+		compatible = "mmi,lpm-dbg";
+		status = "okay";
+
+		trigger-threshold = <1200>;	/* triger threshold 20 min */
+		check-work-delay = <200>;	/* schedule uevent work for 200 ms */
+		re-trigger-threshold = <7200>;	/* retriger threshold 2 h */
+	};
+};
+
 &display_panel_vddio {
          status = "disabled";
 };
