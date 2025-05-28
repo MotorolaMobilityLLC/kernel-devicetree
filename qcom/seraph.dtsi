@@ -1917,6 +1917,10 @@
 		memory-region = <&va_md_mem>;
 	};
 
+	dcp_cb_group: dcp_cb_group {
+		qcom,iommu-faults = "non-fatal";
+	};
+
 	logbuf: qcom,logbuf-vendor-hooks {
 		compatible = "qcom,logbuf-vendor-hooks";
 	};
