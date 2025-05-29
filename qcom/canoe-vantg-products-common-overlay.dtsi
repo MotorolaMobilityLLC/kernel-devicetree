@@ -48,6 +48,36 @@
 			output-low;
 		};
 	};
+
+	key_ai_default: key_ai_default {
+		mux {
+			pins = "gpio11";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio11";
+			bias-pull-up;
+			input-enable;
+		};
+	};
+};
+
+&soc {
+	gpio_keys {
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
+
+		ai_assist {
+			label = "ai_assist";
+			gpios = <&tlmm 11 GPIO_ACTIVE_LOW>;
+			linux,input-type = <EV_KEY>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
 };
 
 &wcd_usbss {
