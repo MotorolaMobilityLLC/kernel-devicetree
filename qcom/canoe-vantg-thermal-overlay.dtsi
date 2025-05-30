@@ -1,0 +1,430 @@
+&soc {
+	sys_temp_support {
+		compatible = "mmi,sys-temp";
+		mmi,temperature-names = "front_temp",
+			"back_temp",
+			"fuse_temp",
+			"tmo_temp";
+		status = "ok";
+	};
+};
+
+&socd_trip {
+    temperature = <95>;
+};
+
+&pmk8850_vadc {
+	pmh0101_rec_therm {
+		reg = <PMH0101_ADC5_GEN4_AMUX_THM5_100K_PU(0, PMH0101_SID)>;
+		label = "pmh0101_spkr_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
+	};
+
+	pmih010x_mchg_therm {
+		reg = <PMIH010X_ADC5_GEN4_AMUX1_GPIO6_100K_PU(1, PMIH010X_SID)>;
+		label = "pmih010x_mchg_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
+	};
+
+	pmih010x_chg_therm {
+		reg = <PMIH010X_ADC5_GEN4_AMUX2_BAT2_ID_100K_PU(1, PMIH010X_SID)>;
+		label = "pmih010x_chg_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,adc-tm-type = <1>;
+	};
+};
+
+/delete-node/ &trip_config0;
+/delete-node/ &trip_config1;
+/delete-node/ &display_test_config1;
+/delete-node/ &display_test_config2;
+/delete-node/ &display_test_config3;
+
+&thermal_zones {
+	spkr-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM5_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	mchg-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX1_GPIO6_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	chg-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX2_BAT2_ID_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* XO_THERM */
+	sys-therm-0 {
+		status = "disabled";
+	};
+	xo-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMK8850_ADC5_GEN4_AMUX_THM1_XO_THERM_100K_PU(0, PMK8850_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			trip_config0: trip-config0 {
+				temperature = <78000>;
+				hysteresis = <8000>;
+				type = "passive";
+			};
+
+			trip_config1: trip-config1 {
+				temperature = <80000>;
+				hysteresis = <10000>;
+				type = "passive";
+			};
+
+			shutdown-trip {
+				temperature = <90000>;
+				hysteresis = <0>;
+				type = "hot";
+			};
+
+			display_test_config1: display-test-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			display_test_config2: display-test-config2 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			display_test_config3: display-test-config3 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+
+		cooling-maps {
+			therm_cdev0 {
+				trip = <&trip_config0>;
+				cooling-device = <&APC1_MX_CX_PAUSE 1 1
+					&APC0_MX_CX_PAUSE 1 1
+					&cdsp_sw 5 THERMAL_NO_LIMIT
+					&msm_gpu 5 THERMAL_NO_LIMIT>;
+			};
+
+			therm_cdev1 {
+				trip = <&trip_config1>;
+				cooling-device = <&cpu3_hotplug 1 1
+					&cpu4_hotplug 1 1
+					&cpu5_hotplug 1 1
+					&cpu6_hotplug 1 1
+					&cpu7_hotplug 1 1
+					&modem_lte_dsc 255 255
+					&modem_nr_scg_dsc 255 255>;
+			};
+
+			display_cdev1 {
+				trip = <&display_test_config1>;
+				cooling-device = <&display_fps 1 1>;
+			};
+
+			display_cdev2 {
+				trip = <&display_test_config2>;
+				cooling-device = <&display_fps 2 2>;
+			};
+
+			display_cdev3 {
+				trip = <&display_test_config3>;
+				cooling-device = <&display_fps 3 3>;
+			};
+		};
+	};
+
+	/* XOAGG_THERM */
+	sys-therm-1 {
+		status = "disabled";
+	};
+	xog-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMK8850_ADC5_GEN4_AMUX2_GPIO7_100K_PU(0, PMK8850_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* SKIN_THERM */
+	sys-therm-2 {
+		status = "disabled";
+	};
+	msm-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM1_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <80000>;
+				hysteresis = <2000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <90000>;
+				hysteresis = <2000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* CAM_FLASH_THERM */
+	sys-therm-3 {
+		status = "disabled";
+	};
+	cam-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM2_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* WLAN_THERM */
+	sys-therm-4 {
+		status = "disabled";
+	};
+	wifi-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM3_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* PA_THERM1 */
+	sys-therm-5 {
+		status = "disabled";
+	};
+	pa1-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM4_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* PA_THERM2 */
+	sys-therm-7 {
+		status = "disabled";
+	};
+	pa2-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMH0101_ADC5_GEN4_AMUX_THM6_GPIO3_100K_PU(0, PMH0101_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	sys-therm-8 {
+		status = "disabled";
+	};
+
+	wchg-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX4_GPIO12_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* BATT_THERM */
+	sys-therm-9 {
+		status = "disabled";
+	};
+	batt-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX_THM1_BAT_THERM_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	sys-therm-11 {
+		status = "disabled";
+	};
+	conn-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX_THM4_USB_THERM_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/* BATT2_THERM */
+	sys-therm-12 {
+		status = "disabled";
+	};
+	/* DCN: 80-74889-100: Net name: GPIO_16V, AMUX3_GPIO */
+	quiet-therm {
+		thermal-sensors = <&pmk8850_vadc
+				   PMIH010X_ADC5_GEN4_AMUX3_BAT2_THERM_100K_PU(1, PMIH010X_SID)>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+};

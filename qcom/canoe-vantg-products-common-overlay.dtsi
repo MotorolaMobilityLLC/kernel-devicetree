@@ -17,6 +17,7 @@
 #include "canoe-moto-common-overlay-base.dtsi"
 #include "canoe-moto-common-overlay.dtsi"
 #include "canoe-vantg-haptics-overlay.dtsi"
+#include "canoe-vantg-thermal-overlay.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
