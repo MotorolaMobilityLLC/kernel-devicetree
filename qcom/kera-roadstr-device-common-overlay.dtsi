@@ -51,7 +51,7 @@
         label = "gpio-keys";
 
         pinctrl-names = "default";
-        pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
+        pinctrl-0 = <&key_ai_default>;
 
         ai_assist {
             label = "ai_assist";
