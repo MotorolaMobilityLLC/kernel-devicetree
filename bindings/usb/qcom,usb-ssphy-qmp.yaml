@@ -17,6 +17,7 @@ properties:
         - qcom,usb-ssphy-qmp-v2
         - qcom,usb-ssphy-qmp-usb3-or-dp
         - qcom,usb-ssphy-qmp-dp-combo
+        - qcom,usb-ssphy-qmp-dp-combo-fw-managed
 
   reg:
     description: |
@@ -70,6 +71,15 @@ properties:
       - const: ref_clk_src
       - const: ref_clk
       - const: com_aux_clk
+
+  power-domains:
+    description: specifies phandles to PM domain provider nodes
+    maxItems: 2
+
+  power-domain-names:
+    items:
+      - const: usb_transfer
+      - const: usb_core
 
   qcom,vdd-voltage-level:
     description: |
@@ -176,16 +186,30 @@ required:
   - compatible
   - reg
   - reg-names
-  - vdd-supply
-  - core-supply
-  - clocks
-  - clock-names
-  - qcom,vdd-voltage-level
-  - resets
-  - reset-names
   - qcom,qmp-phy-init-seq
   - qcom,qmp-phy-reg-offset
-  - refgen-supply
+
+allOf:
+  - if:
+      properties:
+        compatible:
+          contains:
+            enum:
+              - qcom,usb-ssphy-qmp-dp-combo-fw-managed
+    then:
+      required:
+        - power-domains1
+        - power-domain-names
+    else:
+      required:
+        - vdd-supply
+        - core-supply
+        - clocks
+        - clock-names
+        - qcom,vdd-voltage-level
+        - resets
+        - reset-names
+        - refgen-supply
 
 additionalProperties: false
 
@@ -245,4 +269,35 @@ examples:
             USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE1 0x01
             USB3_DP_QSERDES_COM_CP_CTRL_MODE1 0x02>;
     };
+  - |
+    usb_qmp_dp_phy: ssphy@88e8000 {
+      compatible = "qcom,usb-ssphy-qmp-dp-combo-fw-managed";
+      reg = <0x88e8000 0x3000>;
+      reg-names = "qmp_phy_base";
+
+      power-domains = <&scmi12_pd 0>, <&scmi12_pd 1>;
+      power-domain-names = "usb_transfer", "usb_core";
+
+      qcom,qmp-phy-reg-offset =
+           <USB3_DP_PCS_PCS_STATUS1
+            USB3_DP_PCS_USB3_AUTONOMOUS_MODE_CTRL
+            USB3_DP_PCS_USB3_LFPS_RXTERM_IRQ_CLEAR
+            USB3_DP_PCS_POWER_DOWN_CONTROL
+            USB3_DP_PCS_SW_RESET
+            USB3_DP_PCS_START_CONTROL
+            0xffff /* USB3_PHY_PCS_MISC_TYPEC_CTRL */
+            USB3_DP_COM_POWER_DOWN_CTRL
+            USB3_DP_COM_SW_RESET
+            USB3_DP_COM_RESET_OVRD_CTRL
+            USB3_DP_COM_PHY_MODE_CTRL
+            USB3_DP_COM_TYPEC_CTRL
+            USB3_DP_PCS_AON_CLAMP_ENABLE>;
+
+      qcom,qmp-phy-init-seq =
+           /* <reg_offset, value> */
+           <USB3_DP_QSERDES_COM_SSC_STEP_SIZE1_MODE1 0xC0
+            USB3_DP_QSERDES_COM_SSC_STEP_SIZE2_MODE1 0x01
+            USB3_DP_QSERDES_COM_CP_CTRL_MODE1 0x02>;
+    };
+
 ...
