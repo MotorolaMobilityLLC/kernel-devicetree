@@ -18,7 +18,7 @@
 	mmi,max-fcc-ma = <4000>;
 	mmi,demo-fv-mv = <4000>;
 	mmi,df-serialnum = "LWNRN55SWD";
-	profile-ids-map = "107000", "LWNRN55SWD","38000","ATLRN55NVT";
+	profile-ids-map = "107000", "LWNRN55SWD","38000","ATLRN55NVT","107000", "SB18E69500", "107000", "SB18E70455","38000","SB18E69499", "38000","SB18E70454";
 };
 
 
