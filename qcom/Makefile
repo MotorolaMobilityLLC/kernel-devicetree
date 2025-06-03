@@ -31,6 +31,12 @@ KERA_BOARDS += \
 		kera-roadstr-evt-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_QOGIR_DTB),y)
+KERA_BASE_DTB += kera-qogir-base.dtb
+KERA_BOARDS += \
+        kera-qogir-evb-overlay.dtbo
+endif
+
 sun-dtb-$(CONFIG_ARCH_KERA) +=  \
 	$(call add-overlays, $(KERA_BOARDS),$(KERA_BASE_DTB))
 sun-dtb-$(CONFIG_ARCH_SUN) += \
