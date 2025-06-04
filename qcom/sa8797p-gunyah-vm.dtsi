@@ -1726,6 +1726,30 @@
 	};
 };
 
+&remoteproc_hpass0_glink {
+	qcom,fastrpc {
+		label = "hpass";
+		instance-id = <0>;
+		dsp-type = <5>;
+	};
+};
+
+&remoteproc_hpass1_glink {
+	qcom,fastrpc {
+		label = "hpass";
+		instance-id = <1>;
+		dsp-type = <5>;
+	};
+};
+
+&remoteproc_hpass2_glink {
+	qcom,fastrpc {
+		label = "hpass";
+		instance-id = <2>;
+		dsp-type = <5>;
+	};
+};
+
 / {
 	rename_devices: rename_devices {
 		compatible = "qcom,rename-devices";
