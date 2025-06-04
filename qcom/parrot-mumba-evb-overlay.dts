@@ -1,0 +1,12 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-mumba-common-overlay.dtsi"
+
+/ {
+	model = "mumba";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,mumba";
+	qcom,msm-id = <613 0x10000>;
+	qcom,board-id = <0x46 0x9000>;
+};
+
