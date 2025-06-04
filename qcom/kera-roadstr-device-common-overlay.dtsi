@@ -116,7 +116,7 @@
         //aw8693x_uvlo_vol_default = /bits/ 8 < 0 >;
         aw8693x_cont_smart_loop = /bits/ 8 < 0 >;
         aw8693x_cont_drv1_lvl = /bits/ 8 < 0x7F >;
-        aw8693x_cont_lra_vrms = < 1000 >;
+        aw8693x_cont_lra_vrms = < 900 >;
         aw8693x_cont_drv1_time = /bits/ 8 < 0x04 >;
         aw8693x_cont_drv2_time = /bits/ 8 < 0x14 >;
         aw8693x_cont_track_margin = /bits/ 8 < 0x0F >;
