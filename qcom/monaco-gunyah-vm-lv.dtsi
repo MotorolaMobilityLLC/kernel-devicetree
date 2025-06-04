@@ -166,6 +166,10 @@
 		};
 	};
 
+	virtio_console {
+		qcom,dev-name = "vconsole";
+	};
+
 	virtio_blk_lv_system_a {
 		qcom,dev-name = "system_a";
 	};
@@ -843,7 +847,7 @@
 			/* console */
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_console";
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
