@@ -119,10 +119,6 @@
 				949 949
 				950 950
 				>;
-
-	vcpus {
-		affinity-map = <0xd 0xc 0xb 0xa 0x9 0x8>;
-	};
 };
 
 &xpcs1 {
