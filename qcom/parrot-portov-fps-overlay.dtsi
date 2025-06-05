@@ -109,9 +109,9 @@
 		rst = <&tlmm 101 0>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <111 0>;
-		//rgltr-ctrl-support;
-		//fp,vdd-supply=<&L28B>;
-		//fp,voltage-range = <3000000 3000000>;
+		rgltr-ctrl-support;
+		fp,vdd-supply=<&L28B>;
+		fp,voltage-range = <3000000 3000000>;
 		fp-gpio-ven = <&tlmm 132 0x0>;
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&fps_rst_active &fps_int_active>;
@@ -127,6 +127,8 @@
 		anc,gpio_irq = <&tlmm 111 0x1>;
 		anc,vdd_use_gpio;
 		anc,gpio_pwr = <&tlmm 132 0x0>;
+		vdd-supply=<&L28B>;
+		anc,vdd_config = <3000000 3000000 5000>;
 		netlink_type = <29>;
 		/* anc,enable-on-boot; */
 		pinctrl-names = "anc_reset_low",
