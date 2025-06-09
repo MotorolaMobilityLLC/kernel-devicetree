@@ -1469,6 +1469,9 @@
 		power-domains = <&scmi_power 8>, <&scmi_power 9>, <&scmi_perf 1>, <&scmi_perf 2>;
 		power-domain-names = "power_core", "power_mdio", "perf_serdes", "perf_5g_serdes";
 
+		pinctrl-0 = <&ethernet1_default>;
+		pinctrl-names = "default";
+
 		snps,ptp-ref-clk-rate = <250000000>;
 		snps,ptp-req-clk-rate = <250000000>;
 
