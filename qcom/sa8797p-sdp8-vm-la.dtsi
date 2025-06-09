@@ -28,3 +28,7 @@
 &scmi {
 	status = "ok";
 };
+
+&usb1 {
+	interrupts-extended = <&qvm_vdev_gic GIC_SPI 918 IRQ_TYPE_LEVEL_HIGH>;
+};
