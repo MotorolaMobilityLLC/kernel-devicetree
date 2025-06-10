@@ -306,7 +306,7 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,she_gvm;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,she_gvm,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,gpsample,gpsample2_internal,gpsample2,gptest,gptest2,gp_auto_test_a,gp_auto_test_b,gp_auto_test_c,gp_auto_test_d,gp_auto_test_e,gp_auto_test_f,gp_auto_test_g,gp_auto_test_h,gp_auto_test_i,gp_auto_test_j,gp_auto_test_k,gp_auto_test_l,gp_auto_test_m,gp_auto_test_n,gp_auto_test_o,gp_auto_test_p,gp_auto_test_dep_a,gp_auto_test_dep_b,gp_auto_test_dep_c,gp_auto_test_dep_d,gp_auto_test_dep_e,gp_auto_test_dep_f,gp_auto_test_dep_g,gp_auto_test_large,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,smplap64;";
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "allow-unprotected";
