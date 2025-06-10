@@ -83,7 +83,9 @@ VOLCANO_BOARDS += \
 		volcano6i-mtp-wcd9395-brahma-overlay.dtbo \
 		volcano6i-mtp-brahma-overlay.dtbo \
 		volcano6i-mtp-wcd9395-moselle-overlay.dtbo \
-		volcano6i-mtp-moselle-wingmate-overlay.dtbo \
+		volcano6i-mtp-moselle-overlay.dtbo \
+		volcano6i-mtp-wcd9395-moselle-emmc-overlay.dtbo \
+		volcano6i-mtp-moselle-emmc-overlay.dtbo \
 		volcano-qrd-overlay.dtbo \
 		volcano6i-qrd-moselle-overlay.dtbo \
 		volcano6i-mtp-STSafe320-brahma-overlay.dtbo
@@ -420,11 +422,13 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
 		volcano-vm-mtp-wcd9395-aatc-evros.dtb \
 		volcano6i-vm-mtp-brahma.dtb \
 		volcano6i-vm-mtp-ganges.dtb \
-		volcano6i-vm-mtp-moselle-wingmate.dtb \
+		volcano6i-vm-mtp-moselle.dtb \
+		volcano6i-vm-mtp-moselle-emmc.dtb \
 		volcano6i-vm-mtp-wcd9395-brahma.dtb \
 		volcano6i-vm-mtp-wcd9395-ganges-hac2019.dtb \
 		volcano6i-vm-mtp-wcd9395-ganges.dtb \
 		volcano6i-vm-mtp-wcd9395-moselle.dtb \
+		volcano6i-vm-mtp-wcd9395-moselle-emmc.dtb \
                 volcano-vm-qrd.dtb \
 		volcano6i-vm-qrd-moselle.dtb \
                 volcano-oemvm-atp.dtb \
@@ -440,11 +444,13 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
 		volcano-oemvm-mtp-wcd9395-aatc-evros.dtb \
                 volcano6i-oemvm-mtp-brahma.dtb \
                 volcano6i-oemvm-mtp-ganges.dtb \
-                volcano6i-oemvm-mtp-moselle-wingmate.dtb \
+                volcano6i-oemvm-mtp-moselle.dtb \
+                volcano6i-oemvm-mtp-moselle-emmc.dtb \
                 volcano6i-oemvm-mtp-wcd9395-brahma.dtb \
                 volcano6i-oemvm-mtp-wcd9395-ganges-hac2019.dtb \
                 volcano6i-oemvm-mtp-wcd9395-ganges.dtb \
                 volcano6i-oemvm-mtp-wcd9395-moselle.dtb \
+                volcano6i-oemvm-mtp-wcd9395-moselle-emmc.dtb \
                 volcano-oemvm-qrd.dtb \
                 volcano6i-oemvm-qrd-moselle.dtb
 
