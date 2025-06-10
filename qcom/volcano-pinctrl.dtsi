@@ -1481,6 +1481,64 @@
 		};
 	};
 
+	sdc1_on: sdc1_on {
+		clk {
+			pins = "gpio77";
+			function = "sdc1_clk";
+			bias-disable;
+			drive-strength = <14>;
+		};
+
+		cmd {
+			pins = "gpio78";
+			function = "sdc1_cmd";
+			bias-pull-up;
+			drive-strength = <14>;
+		};
+
+		data {
+			pins = "gpio79", "gpio80", "gpio81", "gpio82","gpio73","gpio74","gpio75","gpio76";
+			function = "sdc1_data";
+			bias-pull-up;
+			drive-strength = <14>;
+		};
+
+		rclk {
+			pins = "gpio72";
+			bias-disable;
+			drive-strength = <14>;
+		};
+	};
+
+	sdc1_off: sdc1_off {
+		clk {
+			pins = "gpio77";
+			function = "gpio";
+			bias-disable;
+			drive-strength = <2>;
+		};
+
+		cmd {
+			pins = "gpio78";
+			function = "gpio";
+			bias-pull-up;
+			drive-strength = <2>;
+		};
+
+		data {
+			pins = "gpio79", "gpio80", "gpio81", "gpio82","gpio73","gpio74","gpio75","gpio76";
+			function = "gpio";
+			bias-pull-up;
+			drive-strength = <2>;
+		};
+
+		rclk {
+			pins = "gpio72";
+			bias-disable;
+			drive-strength = <2>;
+		};
+	};
+
 	sdc2_on: sdc2_on {
 		clk {
 			pins = "gpio62";
