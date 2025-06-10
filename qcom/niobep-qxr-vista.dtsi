@@ -333,6 +333,13 @@
 	};
 };
 
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Tx pre-emphasis tuning */
+		<0x4 0x57>;
+};
+
 &redriver1 {
 	set-aux;
 };
