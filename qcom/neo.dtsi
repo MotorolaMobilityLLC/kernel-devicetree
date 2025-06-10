@@ -877,6 +877,7 @@
 		no-sd;
 		no-sdio;
 
+		qcom,restore-after-cx-collapse;
 		mmc-ddr-1_8v;
 		mmc-hs200-1_8v;
 		mmc-hs400-1_8v;
