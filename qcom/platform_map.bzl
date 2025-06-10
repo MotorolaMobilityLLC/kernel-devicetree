@@ -35,6 +35,7 @@ _platform_map = {
         "dtbo_list": [
             # keep sorted
             {"name": "canoe-vantg-evb-overlay.dtbo", "product": "vantg"},
+            {"name": "canoe-vantg-evt1-overlay.dtbo", "product": "vantg"},
         ],
        # "binary_compatible_with": ["alor", "alor-interposer", "chora", "malabar"],
     },

@@ -19,7 +19,8 @@ ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 
 ifeq ($(CONFIG_VANTG_DTB),y)
 CANOE_BASE_DTB += canoe-vantg-base.dtb
-CANOE_BOARDS += canoe-vantg-evb-overlay.dtbo
+CANOE_BOARDS += canoe-vantg-evb-overlay.dtbo \
+                canoe-vantg-evt1-overlay.dtbo
 endif
 
 canoe-dtb-$(CONFIG_ARCH_CANOE) += \
