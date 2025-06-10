@@ -40,6 +40,34 @@
 		};
 	};
 
+	qupv3_se1_1uart_pins: qupv3_se1_1uart_pins {
+		qupv3_se1_1uart_active: qupv3_se1_1uart_active {
+			mux {
+				pins = "gpio41";
+				function = "qup0_se1_l2";
+			};
+
+			config {
+				pins = "gpio41";
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+		};
+
+		qupv3_se1_1uart_sleep: qupv3_se1_1uart_sleep {
+			mux {
+				pins = "gpio41";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio41";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
 	qupv3_se7_4uart_pins: qupv3_se7_4uart_pins {
 		qupv3_se7_default_cts: qupv3_se7_default_cts {
 			mux {
