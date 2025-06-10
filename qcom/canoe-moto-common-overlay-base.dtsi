@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
  * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * this file base canoe-qrd-st54l-pandeiro.dtsi
  */
 
-#include "canoe-qrd.dtsi"
+#include "canoe-moto-overlay-base-qrd.dtsi"
 #include "canoe-vantg-touchscreen-overlay.dtsi"
 
 &wcd_usbss {
