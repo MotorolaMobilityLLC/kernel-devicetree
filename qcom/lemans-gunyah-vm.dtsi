@@ -20,7 +20,7 @@
 	};
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n androidboot.usbcontroller=a400000.dwc3";
+		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n";
 	};
 
 	reserved_memory: reserved-memory {
