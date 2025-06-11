@@ -32,3 +32,12 @@
 &usb1 {
 	interrupts-extended = <&qvm_vdev_gic GIC_SPI 918 IRQ_TYPE_LEVEL_HIGH>;
 };
+
+&usb2 {
+	interrupts-extended = <&qvm_vdev_gic GIC_SPI 907 IRQ_TYPE_LEVEL_HIGH>;
+	status = "ok";
+};
+
+&eusb2_phy2 {
+	status = "ok";
+};

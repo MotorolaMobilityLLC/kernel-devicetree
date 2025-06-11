@@ -271,5 +271,33 @@
 				#reset-cells = <1>;
 			};
 		};
+
+		qcom,msm-imem@14680000 {
+			compatible = "qcom,msm-imem";
+			reg = <0x14680000 0x1000>;
+			ranges = <0x0 0x14680000 0x1000>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			boot_stats@6b0 {
+				compatible = "qcom,msm-imem-boot_stats";
+				reg = <0x6b0 0x20>;
+			};
+
+			mem_dump_table@10 {
+				compatible = "qcom,msm-imem-mem_dump_table";
+				reg = <0x10 0x8>;
+			};
+
+			dload_type@1c {
+				compatible = "qcom,msm-imem-dload-type";
+				reg = <0x1c 0x4>;
+			};
+
+			diag_dload@c8 {
+				compatible = "qcom,msm-imem-diag-dload";
+				reg = <0xc8 0xc8>;
+			};
+		};
 	};
 };
