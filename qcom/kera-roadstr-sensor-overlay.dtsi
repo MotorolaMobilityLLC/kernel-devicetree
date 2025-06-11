@@ -182,9 +182,10 @@
                 //interrupt-names = "awinic_irq";
                 irq-gpio = <&tlmm 30 0x02>;
                 vcc0-supply = <&L7B>;
-                channel_use_flag = <0x1f>;
+                channel_use_flag = <0xf>;
                 aw_sar,use_plug_cail;
-                aw_sar,update_fw;
+                aw_sar,new_fw_format;
+                //aw_sar,update_fw;
                 /* private node belongs to aw963xx */
                 start-mode = < 1 >; // 0: start in rom  1: start in ram
                 irq-mux = < 2 >; // set csx as irq pin. config this field when connect to aw96308/aw96310
