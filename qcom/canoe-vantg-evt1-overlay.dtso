@@ -7,6 +7,7 @@
 /plugin/;
 
 #include "canoe-vantg-products-common-overlay.dtsi"
+#include "canoe-vantg-touchscreen-thp-overlay.dtsi"
 
 / {
 	model = "vantg";
