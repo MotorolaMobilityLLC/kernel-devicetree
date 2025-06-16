@@ -127,6 +127,7 @@
 		anc,gpio_irq = <&tlmm 111 0x1>;
 		anc,vdd_use_gpio;
 		anc,gpio_pwr = <&tlmm 132 0x0>;
+		anc,vdd_use_pmic;
 		vdd-supply=<&L28B>;
 		anc,vdd_config = <3000000 3000000 5000>;
 		netlink_type = <29>;
