@@ -11,7 +11,7 @@
  */
 #include "parrot-moto-common-overlay-base.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
-#include "parrot-portov-charger-overlay.dtsi"
+#include "parrot-portov-and-mumba-charger-overlay.dtsi"
 #include "parrot-portov-fmr-overlay.dtsi"
 #include "parrot-portov-thermal-overlay.dtsi"
 #include "parrot-portov-touchscreen-overlay.dtsi"
