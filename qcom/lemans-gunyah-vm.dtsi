@@ -1677,7 +1677,7 @@
 		reg = <0x2300C000 0x1000>;
 		reg-names = "stmmaceth";
 		status = "disabled";
-		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
+		interrupts-extended = <&intc 0 776 1>, <&intc 0 828 1>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
 
 		power-domains = <&scmi_power 9>;
