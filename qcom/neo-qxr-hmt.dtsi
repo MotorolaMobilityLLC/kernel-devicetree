@@ -1,0 +1,2 @@
+#include <dt-bindings/interconnect/qcom,neo.h>
+#include "neo-qxr.dtsi"

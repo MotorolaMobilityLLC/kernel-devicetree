@@ -15,6 +15,7 @@
 		reg-names = "parf", "phy", "dm_core", "elbi", "iatu", "conf",
 				"pcie_sm";
 
+		device_type = "pci";
 		cell-index = <0>;
 		linux,pci-domain = <0>;
 
