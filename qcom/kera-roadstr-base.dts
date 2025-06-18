@@ -14,3 +14,6 @@
 
 #include "kera-moto-common-base.dtsi"
 
+&mem_offline{
+    status = "disabled";
+};

@@ -79,7 +79,7 @@
 
 	ddr-regions { };
 
-	mem-offline {
+	mem_offline:mem-offline {
 		compatible = "qcom,mem-offline";
 		offline-sizes = <0x2 0xc0000000 0x1 0x0>;
 		granule = <512>;
