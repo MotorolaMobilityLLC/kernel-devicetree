@@ -1620,7 +1620,7 @@
 
 	ptp_virtual {
 		compatible = "qcom,ptp_virtual";
-		reg = <0xacfff000 0x1000>,
+		reg = <0xac5fe000 0x1000>,
 			<0x23047000 0x1000>,
 			<0x17c23000 0x1000>;
 		reg-names = "ptp_carveout_mem",
