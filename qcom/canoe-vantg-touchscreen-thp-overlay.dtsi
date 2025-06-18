@@ -16,9 +16,9 @@
 };
 
 &L14B {
-    regulator-min-microvolt = <2960000>;
+    regulator-min-microvolt = <3200000>;
     regulator-max-microvolt = <3200000>;
-    qcom,init-voltage = <3000000>;
+    qcom,init-voltage = <3200000>;
 };
 
 &qupv3_se19_spi {
@@ -46,7 +46,6 @@
 		goodix,panel-max-y = <44480>; /* 2780*16 */
 		goodix,panel-max-w = <255>;
 		goodix,panel-max-p = <4096>;
-		/* goodix,iovdd-gpio = <&tlmm 126 0x0>; */
 		goodix,iovdd-name = "iovdd";
 		iovdd-supply = <&L4B>;
 		goodix,avdd-name = "avdd";
