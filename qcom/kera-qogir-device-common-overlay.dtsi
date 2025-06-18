@@ -15,4 +15,9 @@
 */
 
 #include "kera-qogir-products-common-overlay.dtsi"
+#include "kera-pmiv0102.dtsi"
 #include "kera_ufs3.dtsi"
+
+&L11B {
+    /delete-property/ regulator-always-on;
+};
