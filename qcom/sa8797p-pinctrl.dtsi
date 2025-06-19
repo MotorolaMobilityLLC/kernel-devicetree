@@ -70,5 +70,25 @@
 			drive-strength = <16>;
 			bias-pull-up;
 		};
+
+		ethernet1_pps_o_0: ethernet1-pps-o-0-pins {
+			pins = "gpio41";
+			function = "emac1_ptp";
+		};
+
+		ethernet1_pps_o_1: ethernet1-pps-o-1-pins {
+			pins = "gpio42";
+			function = "emac1_ptp";
+		};
+
+		ethernet1_pps_o_2: ethernet1-pps-o-2-pins {
+			pins = "gpio43";
+			function = "emac1_ptp";
+		};
+
+		ethernet1_pps_o_3: ethernet1-pps-o-3-pins {
+			pins = "gpio44";
+			function = "emac1_ptp";
+		};
 	};
 };
