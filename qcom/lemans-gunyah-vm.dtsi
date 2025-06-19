@@ -1676,7 +1676,7 @@
 		qcom,arm-smmu;
 		reg = <0x2300C000 0x1000>;
 		reg-names = "stmmaceth";
-		status = "disabled";
+
 		interrupts-extended = <&intc 0 776 1>, <&intc 0 828 1>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
 
@@ -1694,7 +1694,6 @@
 		emac1_emb_smmu: emac1_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x148 0x1>;
-			status = "disabled";
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
 		};
