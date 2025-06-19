@@ -20,7 +20,7 @@
 	mmi,thermal-primary-mitigation = <4000000 3000000 2000000 1000000 500000 300000 200000>;
 //	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
 
-	main-ids-map = "107000", "SB18E07971";
+	main-ids-map = "107000", "ATLSE48NVT","107000", "COSSE48COS";
 //	flip-ids-map = "38000", "SB18D58447";
 	mmi,upper-limit-capacity = <78>;
 	mmi,lower-limit-capacity = <65>;
