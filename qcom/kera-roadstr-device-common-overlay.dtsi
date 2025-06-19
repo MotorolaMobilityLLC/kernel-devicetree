@@ -157,6 +157,22 @@
                 snps,usb2-lpm-disable;
         };
 };
+
+&pmiv010x_eusb2_repeater {
+        qcom,param-override-seq =
+                /* <value reg_offset> */
+                /* Adjust HS trasmit amplitude */
+                <0xa 0x51
+                /* Tx pre-emphasis tuning */
+                 0x5 0x57>;
+        qcom,host-param-override-seq =
+                /* <value reg_offset> */
+                /* Adjust HS trasmit amplitude */
+                <0xa 0x51
+                /* Tx pre-emphasis tuning */
+                 0x5 0x57>;
+};
+
 &tlmm {
 	/* reserve FP GPIOs: gpio12,13,14,15 24 25 26 27 for ESE 111 112 for WLAN*/
 	qcom,gpios-reserved = <8 9 10 11 20 21 22 23 111 112 118>;
