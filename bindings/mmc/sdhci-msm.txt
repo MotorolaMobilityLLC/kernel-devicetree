@@ -74,6 +74,13 @@ Optional Properties:
 		Please refer to Documentation/devicetree/bindings/
 		interconnect/ for more details.
 
+- qcom,no-partial-init: If present, disables partial initialization of
+	the MMC/SD card.
+	This is useful for platforms where partial init is known to be
+	broken or causes instability.
+	When set, the driver will skip attempts to cache card state
+	and perform partial resume.
+
 Example:
 
 	sdhc_1: sdhci@f9824900 {
