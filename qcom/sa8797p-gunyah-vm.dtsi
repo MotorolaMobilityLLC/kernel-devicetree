@@ -1552,8 +1552,7 @@
 		pcs-v4;
 		snps,tso;
 
-		snps,pbl = <4>;
-		snps,no-pbl-x8;
+		snps,pbl = <0x10>;
 		dma-coherent;
 
 		rx-fifo-depth = <98304>;
@@ -1643,8 +1642,8 @@
 		};
 
 		stmmac_axi_setup1: stmmac-axi-config {
-			snps,rd_osr_lmt = <0x8>;
-			snps,wr_osr_lmt = <0x8>;
+			snps,rd_osr_lmt = <0x10>;
+			snps,wr_osr_lmt = <0x10>;
 			snps,kbbe;
 			snps,blen = <0 0 0 0 16 0 0>;
 		};
