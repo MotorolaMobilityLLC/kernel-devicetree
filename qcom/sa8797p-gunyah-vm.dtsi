@@ -1694,6 +1694,15 @@
 		qcom,no-clock-support;
 		status = "ok";
 	};
+
+	pdc: interrupt-controller@b220000 {
+		compatible = "qcom,pdc";
+		reg = <0xb220000 0x10000>;
+		qcom,pdc-ranges = <7 752 2>;
+		#interrupt-cells = <2>;
+		interrupt-parent = <&intc>;
+		interrupt-controller;
+	};
 };
 
 &remoteproc_cdsp_glink {
