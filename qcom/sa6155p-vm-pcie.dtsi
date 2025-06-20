@@ -1,5 +1,6 @@
 &soc {
 	pcie0: qcom,pcie@1c08000 {
+		device_type = "pci";
 		compatible = "qcom,pci-msm";
 		cell-index = <0>;
 
