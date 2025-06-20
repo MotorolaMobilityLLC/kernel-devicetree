@@ -37,7 +37,7 @@
 		spi-max-frequency = <30000000>;
 		chip-type = <2>; // 1: 9897 2: 9916 3: 466
 
-		mmi,status = "/chosen","mmi,panel_name","contains","tm_vtdr6115","boe_nt37701a";
+		mmi,status = "/chosen","mmi,panel_name","contains","boe_ili97680A";
 		goodix,reset-gpio = <&tlmm 66 0x0>;
 		goodix,irq-gpio = <&tlmm 158 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
