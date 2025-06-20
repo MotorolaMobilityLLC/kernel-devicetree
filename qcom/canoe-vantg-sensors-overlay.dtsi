@@ -35,3 +35,47 @@
 
 
 };
+
+&tlmm {
+	phone_case_int_default: phone_case_int_default {
+			mux {
+				pins = "gpio65";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio65";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+
+	phone_case_int_sleep: phone_case_int_sleep {
+			mux {
+				pins = "gpio65";
+				function =  "gpio";
+			};
+			config {
+				pins = "gpio65";
+				num-grp-pins = <1>;
+				drive-strength = <2>;
+				bias-pull-up;
+			};
+	};
+};
+
+&soc {
+	hall_phone_case_detect {
+		compatible = "hall,hall_phone_case_detect";
+		pinctrl-names = "default","sleep";
+		pinctrl-0 = <&phone_case_int_default>;
+		pinctrl-1 = <&phone_case_int_sleep>;
+		hall,factory-class-name = "hall";
+		hall,input-dev-name = "phone_case_hall_sensor";
+		hall_vdd-supply = <&L1B>;
+		hall,nirq-gpio-num = <1>;
+		hall,nirq-gpio_0 = <&tlmm 65 0x02>;
+		hall,nirq-gpio-high-val_0 = <0>;
+		hall,nirq-gpio-low-val_0 = <1>;
+	};
+};
