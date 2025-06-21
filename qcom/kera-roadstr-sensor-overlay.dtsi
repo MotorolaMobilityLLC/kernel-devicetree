@@ -183,6 +183,7 @@
                 irq-gpio = <&tlmm 30 0x02>;
                 vcc0-supply = <&L7B>;
                 channel_use_flag = <0xf>;
+                monitor_esd_flag = <1>;
                 aw_sar,use_plug_cail;
                 aw_sar,new_fw_format;
                 //aw_sar,update_fw;
