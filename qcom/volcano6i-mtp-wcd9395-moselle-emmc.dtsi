@@ -1,11 +1,16 @@
 #include "volcano6i-mtp-wcd9395-moselle.dtsi"
 
 &ufsphy_mem {
-status = "disabled";
+	status = "disabled";
 };
 
 &ufshc_mem {
-status = "disabled";
+	status = "disabled";
+};
+
+&L12B {
+	regulator-min-microvolt = <2952000>;
+	regulator-max-microvolt = <2952000>;
 };
 
 &sdhc_1 {
