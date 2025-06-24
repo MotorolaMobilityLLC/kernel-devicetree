@@ -270,8 +270,12 @@
 		power-domains = <&scmi_power 0>, <&scmi_power 1>;
 		power-domain-names = "usb_transfer", "usb_core";
 
-		interrupts-extended = <&intc GIC_SPI 907 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "pwr_event_irq";
+		interrupts-extended = <&pdc 8 IRQ_TYPE_EDGE_RISING>,
+				<&intc GIC_SPI 907 IRQ_TYPE_LEVEL_HIGH>,
+				<&pdc 7 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "dp_hs_phy_irq", "pwr_event_irq",
+				"dm_hs_phy_irq";
+		qcom,use-pdc-interrupts;
 
 		qcom,disable-wakeup;
 
