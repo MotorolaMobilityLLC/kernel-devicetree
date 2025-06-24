@@ -10,15 +10,38 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/iio/qcom,spmi-adc5-gen4-pmk8850.h>
 
 &qupv3_se19_i2c {
 	status = "disabled";
 };
 
 &L14B {
-    regulator-min-microvolt = <3200000>;
-    regulator-max-microvolt = <3200000>;
-    qcom,init-voltage = <3200000>;
+	regulator-min-microvolt = <3200000>;
+	regulator-max-microvolt = <3200000>;
+	qcom,init-voltage = <3200000>;
+};
+
+&pmk8850_gpios {
+	stylus_clk_ctrl {
+		stylus_clk_active: stylus_clk_active {
+			pins = "gpio5";
+			function = "func2";
+			bias-disable; /* No Pull*/
+			output-enable; /* digital output, no invert */
+			intput-disable; /* prevent GPIO from being set to DIO */
+			power-source = <0>;
+		};
+		stylus_clk_suspend: stylus_clk_suspend {
+			pins = "gpio5";
+			function = "func2";
+			bias-high-impedance;
+			output-enable; /* digital output, no invert */
+			intput-disable; /* prevent GPIO from being set to DIO */
+			power-source = <0>;
+		};
+	};
 };
 
 &qupv3_se19_spi {
@@ -55,10 +78,12 @@
 		goodix,power-on-delay-us = <100000>; /*300ms*/
 		goodix,power-off-delay-us = <10000>;
 
-		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release";
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release",  "stylus_clk_active", "stylus_clk_suspend";
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
+		pinctrl-3 = <&stylus_clk_active>;
+		pinctrl-4 = <&stylus_clk_suspend>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
@@ -72,6 +97,7 @@
 		mmi,usb-charger-detection;
 		mmi,supported_gesture_type = <0x07>;
 		mmi,resolution_boost = <16>;
+		goodix,stylus_mode-ctrl;
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
