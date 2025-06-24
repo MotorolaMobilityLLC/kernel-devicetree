@@ -12,7 +12,7 @@
  */
 
 &mmi_charger {
-	mmi,pd-power-max = <68000>;
+	mmi,pd-power-max = <90000>;
 	mmi,wls-power-max = <30000>;
 	mmi,ibat-calc-alignment-time = <1000>;
 	mmi,max-fcc-ma = <4000000>;
