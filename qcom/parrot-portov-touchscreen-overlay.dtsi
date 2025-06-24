@@ -109,6 +109,7 @@
 		chipone,irq-gpio = <&tlmm 65 0x2002>;
 		chipone,x-res = <4320>;
 		chipone,y-res = <9600>;
+		chipone,resolution_boost = <4>;
 		chipone,def-build-id = <0x0101>;
 		chipone,def-config-id = <0x0001>;
 		chipone,touch-charger-detect-enable;
@@ -131,6 +132,7 @@
 		pinctrl-names = "pmx_ts_int_active","pmx_ts_int_suspend_high";
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend_high>;
+		ilitek,resolution_boost = <4>;
 		ilitek,supported_gesture_type = <0x06>;
 		ilitek,report_gesture_key;
 		status = "ok";
