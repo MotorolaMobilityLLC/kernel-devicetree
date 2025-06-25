@@ -65,6 +65,9 @@
         qcom,vccq-shutdown-supply = <&L3D>;
         qcom,vccq-shutdown-max-microamp = <1200000>;
 
+        rpm-level = <3>;
+        spm-level = <3>;
+
 	status = "ok";
 };
 
