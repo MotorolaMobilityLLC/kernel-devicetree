@@ -17,6 +17,7 @@
 #include "kera-qogir-products-common-overlay.dtsi"
 #include "kera-pmiv0102.dtsi"
 #include "kera_ufs3.dtsi"
+#include "kera-qogir-st-nfc.dtsi"
 
 &L11B {
     /delete-property/ regulator-always-on;
