@@ -97,3 +97,9 @@
 &ufshc2_mem {
 	status = "ok";
 };
+
+&soc {
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+};

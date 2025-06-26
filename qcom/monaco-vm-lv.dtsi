@@ -83,6 +83,10 @@
 			};
 		};
 	};
+
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
 };
 
 &hab {

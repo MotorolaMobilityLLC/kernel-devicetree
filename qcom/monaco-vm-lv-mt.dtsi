@@ -35,3 +35,10 @@
 &qcom_rng_ee3 {
 	status = "ok";
 };
+
+&soc {
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+};
+
