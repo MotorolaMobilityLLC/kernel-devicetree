@@ -25,7 +25,7 @@
 			interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH>;
 			power-domains = <&scmi_power 4>, <&scmi_perf 0>;
 			power-domain-names = "power", "perf";
-			status = "okay";
+			status = "disabled";
 		};
 	};
 };

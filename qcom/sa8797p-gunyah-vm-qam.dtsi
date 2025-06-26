@@ -148,3 +148,11 @@
 &usb_1_qmp_combo_phy {
 	status = "ok";
 };
+
+&qupv3_se14_4uart {
+	status = "ok";
+};
+
+&qupv3_se17_4uart {
+	status = "ok";
+};
