@@ -1408,6 +1408,12 @@
 			  "cdsp", "apss";
 	};
 
+	qcom,power-state {
+		compatible = "qcom,power-state";
+		qcom,subsys-name = "cdsp", "lpass";
+		qcom,rproc-handle = <&cdsp_pas>, <&adsp_pas>;
+	};
+
 	tlmm: pinctrl@f000000 {
 		compatible = "qcom,seraph-pinctrl";
 		reg = <0x0F000000 0x1000000>;
