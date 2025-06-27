@@ -2259,6 +2259,7 @@
 	      /* DLL HSR settings. Refer go/hsr - <Target> DLL settings */
 		qcom,dll-hsr-list = <0x000F44EC 0x0 0x01 0x290106C0 0x80040868>;
 
+		qcom,no-partial-init;
 		cap-mmc-hw-reset;
 
 		non-removable;
