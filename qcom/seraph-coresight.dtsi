@@ -853,12 +853,13 @@
 		reg-names = "tpdm-base";
 
 		atid = <100>;
-		coresight-name = "coresight-tpdm-tmess-dsb";
+		coresight-name = "coresight-tpdm-tmess-cmb";
 
 		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
+		status = "disabled";
 
 		out-ports {
 			port {
