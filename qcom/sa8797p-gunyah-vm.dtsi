@@ -1875,5 +1875,23 @@
 			role = "fe";
 			remote-vmids = <0>;
 		};
+
+		mmidgrp1700: mmidgrp1700 {
+			grp-start-id = <1700>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1800: mmidgrp1800 {
+			grp-start-id = <1800>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1900: mmidgrp1900 {
+			grp-start-id = <1900>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
 	};
 };
