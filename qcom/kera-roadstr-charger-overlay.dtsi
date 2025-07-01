@@ -79,6 +79,10 @@
 	};
 };
 
+&qti_glink_charger {
+	profile-ids-map = "107000", "ATLSE48NVT","107000", "COSSE48COS";
+};
+
 &battery_charger {
 	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 500000 300000 100000>;
 	qcom,wireless-fw-name = "sc9624.bin";
