@@ -24,6 +24,7 @@
 #include "kera-qogir-charger-overlay.dtsi"
 #include "moto-qogir-wl2866d.dtsi"
 #include "kera-qogir-thermal-overlay.dtsi"
+#include "kera-qogir-fingerprint-overlay.dtsi"
 
 &L11B {
     /delete-property/ regulator-always-on;
