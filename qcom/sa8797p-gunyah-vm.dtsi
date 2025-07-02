@@ -304,6 +304,12 @@
 		qcom,dev-name = "bootloader_a";
 	};
 
+	virtio_mmio_i2c_19 {
+		virtio_i2c_19: virtio_i2c_19@0 {
+			compatible = "virtio,device22";
+		};
+	};
+
 	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
@@ -1156,8 +1162,25 @@
 				};
 			};
 
-			/* Reserved device */
+			/* Virtio I2C device for USB-Linked Peripherals */
 			virtio-mmio@48 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_mmio_i2c_19";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x292000>;
+				memory {
+					qcom,label = <0x51>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* Reserved device */
+			virtio-mmio@49 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -1165,9 +1188,9 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x292000>;
+				dma_base = <0x0 0x294000>;
 				memory {
-					qcom,label = <0x51>;
+					qcom,label = <0x52>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
