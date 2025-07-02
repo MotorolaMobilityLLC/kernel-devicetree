@@ -68,6 +68,7 @@
 		synaptics,spi-mode = <0>;
 		synaptics,spi-byte-delay-us = <0>;
 		synaptics,spi-block-delay-us = <0>;
+		mmi,status = "/chosen","mmi,panel_name","contains","cmd_v0";
 	};
 
 };
