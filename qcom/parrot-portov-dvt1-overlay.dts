@@ -1,0 +1,12 @@
+/dts-v1/;
+/plugin/;
+
+#include "parrot-portov-common-overlay.dtsi"
+
+/ {
+	model = "portov";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,portov";
+	qcom,msm-id = <613 0x10000>;
+	qcom,board-id = <0x46 0xB100>, <0x47 0xB100>;
+};
+
