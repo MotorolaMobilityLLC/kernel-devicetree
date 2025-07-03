@@ -105,6 +105,11 @@
 			size = <0x0 0x1000>;
 			no-map;
 		};
+
+		soccp_fe_vm_1: soccp_fe_vm_1 {
+			no-map;
+			qcom,label = <0x80>;
+		};
 	};
 
 	cpus {
