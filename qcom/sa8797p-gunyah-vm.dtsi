@@ -11,7 +11,7 @@
 	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "console=hvc0 root=/dev/ram rw rootwait nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n kpti=0 loglevel=8 printk.devkmsg=on maxcpus=6";
+		bootargs = "console=hvc0 root=/dev/ram rw rootwait nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n kpti=0 loglevel=8 printk.devkmsg=on maxcpus=18";
 	};
 
 	reserved_memory: reserved-memory {
@@ -143,7 +143,7 @@
 			cpu-idle-states = <&CPU_PWR_DWN>;
 		};
 
-		CPU4: cpu@10000 {
+		CPU4: cpu@400 {
 			compatible = "arm,armv8";
 			reg = <0x0 0x400>;
 			device_type = "cpu";
@@ -151,9 +151,105 @@
 			cpu-idle-states = <&CPU_PWR_DWN>;
 		};
 
-		CPU5: cpu@10100 {
+		CPU5: cpu@500 {
 			compatible = "arm,armv8";
 			reg = <0x0 0x500>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU6: cpu@10000 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU7: cpu@10100 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10100>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU8: cpu@10200 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10200>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU9: cpu@10300 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10300>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU10: cpu@10400 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10400>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU11: cpu@10500 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x10500>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU12: cpu@20000 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20000>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU13: cpu@20100 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20100>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU14: cpu@20200 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20200>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU15: cpu@20300 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20300>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU16: cpu@20400 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20400>;
+			device_type = "cpu";
+			enable-method = "psci";
+			cpu-idle-states = <&CPU_PWR_DWN>;
+		};
+
+		CPU17: cpu@20500 {
+			compatible = "arm,armv8";
+			reg = <0x0 0x20500>;
 			device_type = "cpu";
 			enable-method = "psci";
 			cpu-idle-states = <&CPU_PWR_DWN>;
@@ -183,6 +279,58 @@
 
 				core5 {
 					cpu = <&CPU5>;
+				};
+			};
+
+			cluster1 {
+				core0 {
+					cpu = <&CPU6>;
+				};
+
+				core1 {
+					cpu = <&CPU7>;
+				};
+
+				core2 {
+					cpu = <&CPU8>;
+				};
+
+				core3 {
+					cpu = <&CPU9>;
+				};
+
+				core4 {
+					cpu = <&CPU10>;
+				};
+
+				core5 {
+					cpu = <&CPU11>;
+				};
+			};
+
+			cluster2 {
+				core0 {
+					cpu = <&CPU12>;
+				};
+
+				core1 {
+					cpu = <&CPU13>;
+				};
+
+				core2 {
+					cpu = <&CPU14>;
+				};
+
+				core3 {
+					cpu = <&CPU15>;
+				};
+
+				core4 {
+					cpu = <&CPU16>;
+				};
+
+				core5 {
+					cpu = <&CPU17>;
 				};
 			};
 		};
@@ -327,6 +475,7 @@
 		vcpus {
 			config = "/cpus";
 			affinity = "pinned";
+			affinity-map = <0x15 0x14 0x13 0x12 0x11 0x10 0xd 0xc 0xb 0xa 0x9 0x8 0x5 0x4 0x3 0x2 0x1 0x0>;
 			sched-priority = <0>;       /* relative to PVM */
 			sched-timeslice = <5000>;   /* in ms */
 		};
@@ -1289,7 +1438,7 @@
 		#redistributor-regions = <1>;
 		redistributor-stride = <0x0 0x20000>;
 		reg = <0x17a00000 0x10000>,     /* GICD */
-		      <0x17a60000 0x100000>;    /* GICR * 8 */
+		      <0x17a60000 0x240000>;    /* GICR * 8 */
 	};
 
 	arch_timer: timer {
