@@ -192,10 +192,12 @@ SERAPH_BOARDS += \
 		seraph-idp-overlay.dtbo \
 		seraph-idp-dtof-overlay.dtbo \
 		seraph-idp-no-display-overlay.dtbo \
+		seraph-idp-no-display-no-gpu-overlay.dtbo \
 		seraphp-atp-overlay.dtbo \
 		seraphp-idp-overlay.dtbo \
 		seraphp-idp-dtof-overlay.dtbo \
-		seraphp-idp-no-display-overlay.dtbo
+		seraphp-idp-no-display-overlay.dtbo \
+		seraphp-idp-no-display-no-gpu-overlay.dtbo
 
 NOAPQ_SERAPH_BOARDS += \
                   seraph-rumi-overlay.dtbo
