@@ -18,7 +18,7 @@
 	mmi,max-fcc-ma = <4000000>;
 	mmi,chrg-iterm-ma = <229>;
 	mmi,thermal-primary-mitigation = <4000000 3000000 2000000 1000000 500000 300000 200000>;
-//	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
+	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
 
 	main-ids-map = "107000", "ATLSE48NVT","107000", "COSSE48COS";
 //	flip-ids-map = "38000", "SB18D58447";
@@ -84,7 +84,7 @@
 };
 
 &battery_charger {
-	qcom,thermal-mitigation = <5750000 4000000 3000000 2000000 1000000 500000 300000 100000>;
+	qcom,thermal-mitigation = <3000000 2500000 2000000 1500000 1000000 500000 300000 100000>;
 	qcom,wireless-fw-name = "sc9624.bin";
 //	mmi,wls-2nd-fw-by-sku;
 	/*PRC 0x01, ROW 0x02, NA 0x03, VZW 0x04, JP 0x05 ...*/
