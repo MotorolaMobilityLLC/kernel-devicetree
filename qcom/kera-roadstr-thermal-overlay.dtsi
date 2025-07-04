@@ -7,7 +7,7 @@
                 mmi,temperature-names = "front_temp",
                         "back_temp",
                         "fuse_temp",
-                        "tmo_temp";
+                        "rf_ul_temp";
                 status = "ok";
         };
 };
@@ -42,15 +42,6 @@
 &pmk8550_vadc {
 	pinctrl-names = "default";
 	pinctrl-0 = <&sys_therm_6_gpio7_default &schg_therm_default &quiet_therm_default &spkr_therm_default>;
-
-	pm7750_mchg_therm {
-		reg = <PMIV0104_ADC5_GEN3_AMUX_THM3_SMB_TEMP_V_100K_PU>;
-		label = "pm7750_mchg_therm";
-		qcom,adc-tm-type = <1>;
-		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
-		qcom,pre-scaling = <1 1>;
-	};
 
 	pm7750_pa1_therm {
                 reg = <PMXR2230_ADC5_GEN3_AMUX_THM5_100K_PU>;
