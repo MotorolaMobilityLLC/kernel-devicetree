@@ -31,11 +31,13 @@ _platform_map = {
         "dtb_list": [
             # keep sorted
             {"name": "canoe-vantg-base.dtb", "product": "vantg"},
+            {"name": "canoe-blanc-base.dtb", "product": "blanc"},
         ],
         "dtbo_list": [
             # keep sorted
             {"name": "canoe-vantg-evb-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-vantg-evt1-overlay.dtbo", "product": "vantg"},
+            {"name": "canoe-blanc-evb-overlay.dtbo", "product": "blanc"},
         ],
        # "binary_compatible_with": ["alor", "alor-interposer", "chora", "malabar"],
     },
