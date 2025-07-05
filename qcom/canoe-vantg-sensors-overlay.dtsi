@@ -24,8 +24,9 @@
                 interrupt-names = "awinic_irq";
                 irq-gpio = <&tlmm 67 0x02>;
                 //vcc0-supply = <&L12A>;
-                channel_use_flag = <0x1f>;
-                //aw_sar,use_plug_cail;
+                channel_use_flag = <0x07>;
+                monitor_esd_flag = <1>;
+                aw_sar,use_plug_cail;
                 aw_sar,update_fw;
                 /* private node belongs to aw963xx */
                 start-mode = < 1 >; // 0: start in rom  1: start in ram
