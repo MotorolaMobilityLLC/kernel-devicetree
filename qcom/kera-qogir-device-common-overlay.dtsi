@@ -22,6 +22,7 @@
 #include "kera-qogir-haptics-overlay.dtsi"
 #include "kera-moto-common-charger.dtsi"
 #include "kera-qogir-charger-overlay.dtsi"
+#include "moto-qogir-wl2866d.dtsi"
 
 &L11B {
     /delete-property/ regulator-always-on;
