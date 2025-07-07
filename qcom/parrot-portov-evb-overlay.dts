@@ -10,3 +10,18 @@
 	qcom,board-id = <0x46 0x9000>;
 };
 
+&fpc {
+	fp-gpio-ven = <&tlmm 132 0x0>;
+	/delete-property/ rgltr-ctrl-support;
+	/delete-property/ fp,vdd-supply;
+	/delete-property/ fp,voltage-range;
+};
+
+&jiiov_fp {
+	anc,vdd_use_gpio;
+	anc,gpio_pwr = <&tlmm 132 0x0>;
+	/delete-property/ anc,vdd_use_pmic;
+	/delete-property/ vdd-supply;
+	/delete-property/ anc,vdd_config;
+};
+
