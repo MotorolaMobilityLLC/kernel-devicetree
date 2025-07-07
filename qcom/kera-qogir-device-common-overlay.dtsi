@@ -20,6 +20,8 @@
 #include "kera-qogir-st-nfc.dtsi"
 #include "kera-qogir-touchscreen-overlay.dtsi"
 #include "kera-qogir-haptics-overlay.dtsi"
+#include "kera-moto-common-charger.dtsi"
+#include "kera-qogir-charger-overlay.dtsi"
 
 &L11B {
     /delete-property/ regulator-always-on;
