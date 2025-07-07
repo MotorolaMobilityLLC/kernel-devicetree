@@ -157,6 +157,11 @@ PARROT_BASE_DTB += parrot-moto-base.dtb
 PARROT_BOARDS += parrot-mona-evb-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_LAMY_DTB),y)
+PARROT_BASE_DTB += parrot-moto-base.dtb
+PARROT_BOARDS += parrot-lamy-evb-overlay.dtbo
+endif
+
 ifeq ($(CONFIG_MONAI_DTB),y)
 PARROT_BASE_DTB += parrot-moto-base.dtb
 PARROT_BOARDS += parrot-monai-dvt1-overlay.dtbo
