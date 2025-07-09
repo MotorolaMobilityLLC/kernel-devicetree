@@ -153,3 +153,13 @@
 		/* Tx pre-emphasis tuning */
 		 0x3 0x57>;
 };
+
+&qupv3_se19_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+	thp_goodix: goodix-berlin@0 {
+		status = "disabled";
+	};
+};
