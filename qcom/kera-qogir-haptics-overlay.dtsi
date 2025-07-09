@@ -45,7 +45,7 @@
 
 &qupv3_se4_i2c {
     status = "okay";
-	haptic_hv_ext: haptic_hv@5A {
+	haptic_hv@5A {
         status = "okay";
         compatible = "awinic,haptic_hv";
         reg = < 0x5A >;
