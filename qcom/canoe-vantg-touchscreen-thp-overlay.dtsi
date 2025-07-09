@@ -44,13 +44,7 @@
 	};
 };
 
-&qupv3_se19_spi {
-	#address-cells = <1>;
-	#size-cells = <0>;
-
-	status = "ok";
-
-	goodix-berlin@0 {
+&thp_goodix {
 		status = "ok";
 		compatible = "goodix_thp";
 		reg = <0>;
@@ -155,5 +149,4 @@
 				9D 02
 			];
 		};
-	};
 };
