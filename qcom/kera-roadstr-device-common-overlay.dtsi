@@ -169,6 +169,8 @@
                 /* <value reg_offset> */
                 /* Adjust HS trasmit amplitude */
                 <0xa 0x51
+                /* Disconnect Threshold */
+                 0x7 0x53
                 /* Tx pre-emphasis tuning */
                  0x5 0x57>;
 };
