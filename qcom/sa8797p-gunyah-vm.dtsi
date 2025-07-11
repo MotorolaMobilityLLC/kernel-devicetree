@@ -449,6 +449,14 @@
 		qcom,dev-name = "devinfo";
 	};
 
+	virtio_blk_la_bootloader_b {
+		qcom,dev-name = "bootloader_b";
+	};
+
+	virtio_blk_la_bootloader_a {
+		qcom,dev-name = "bootloader_a";
+	};
+
 	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
@@ -1268,8 +1276,42 @@
 				};
 			};
 
-			/* Reserved device */
+			/* VBLK la_bootloader_a device */
 			virtio-mmio@46 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_la_bootloader_a";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x28A000>;
+				memory {
+					qcom,label = <0x4E>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* VBLK la_bootloader_b device */
+			virtio-mmio@47 {
+				vdevice-type = "virtio-mmio";
+				patch = "/virtio_blk_la_bootloader_b";
+				peer-default;
+				vqs-num = <0x1>;
+				push-compatible = "virtio,mmio";
+				sync-reset;
+				dma-coherent;
+				dma_base = <0x0 0x28E000>;
+				memory {
+					qcom,label = <0x4F>;
+					#address-cells = <0x2>;
+					allocate-base;
+				};
+			};
+
+			/* Reserved device */
+			virtio-mmio@48 {
 				vdevice-type = "virtio-mmio";
 				generate = "/virtio-mmio";
 				peer-default;
@@ -1277,9 +1319,9 @@
 				push-compatible = "virtio,mmio";
 				sync-reset;
 				dma-coherent;
-				dma_base = <0x0 0x28A000>;
+				dma_base = <0x0 0x292000>;
 				memory {
-					qcom,label = <0x4E>;
+					qcom,label = <0x51>;
 					#address-cells = <0x2>;
 					allocate-base;
 				};
@@ -1401,7 +1443,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "7002f000.virtio_blk_la_bootloader_b,7002e000.virtio_blk_la_bootloader_a,70003000.virtio_blk_la_devinfo,70004000.virtio_blk_la_init_boot_a,70005000.virtio_blk_la_init_boot_b,70006000.virtio_blk_la_vendor_boot_a,70007000.virtio_blk_la_vendor_boot_b,70008000.virtio_blk_dsp_a,70009000.virtio_blk_dsp_b,7000a000.virtio_blk_la_dtbo_a,7000b000.virtio_blk_la_dtbo_b,7000c000.virtio_blk_la_boot_a,7000d000.virtio_blk_la_boot_b,7000e000.virtio_blk_bluetooth_a,7000f000.virtio_blk_bluetooth_b,70010000.virtio_blk_modem_a,70011000.virtio_blk_modem_b,70012000.virtio_blk_vbmeta_a,70013000.virtio_blk_vbmeta_b,70014000.virtio_blk_misc,70015000.virtio_blk_persist,70016000.virtio_blk_metadata,70017000.virtio_blk_userdata,70018000.virtio_blk_super";
+			boot_devices = "70031000.virtio_blk_la_bootloader_b,70030000.virtio_blk_la_bootloader_a,70003000.virtio_blk_la_devinfo,70004000.virtio_blk_la_init_boot_a,70005000.virtio_blk_la_init_boot_b,70006000.virtio_blk_la_vendor_boot_a,70007000.virtio_blk_la_vendor_boot_b,70008000.virtio_blk_dsp_a,70009000.virtio_blk_dsp_b,7000a000.virtio_blk_la_dtbo_a,7000b000.virtio_blk_la_dtbo_b,7000c000.virtio_blk_la_boot_a,7000d000.virtio_blk_la_boot_b,7000e000.virtio_blk_bluetooth_a,7000f000.virtio_blk_bluetooth_b,70010000.virtio_blk_modem_a,70011000.virtio_blk_modem_b,70012000.virtio_blk_vbmeta_a,70013000.virtio_blk_vbmeta_b,70014000.virtio_blk_misc,70015000.virtio_blk_persist,70016000.virtio_blk_metadata,70017000.virtio_blk_userdata,70018000.virtio_blk_super";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -1926,7 +1968,8 @@
 					"vdj", "vdk", "vdl",
 					"vdm", "vdn", "vdo",
 					"vdp", "vdq", "vdr",
-					"vds", "vdt", "vdu", "vdv";
+					"vds", "vdt", "vdu",
+					"vdv", "vdw", "vdx";
 			rename-dev = "super", "userdata", "metadata",
 					"persist", "misc", "vbmeta_b",
 					"vbmeta_a", "modem_b", "modem_a",
@@ -1934,7 +1977,8 @@
 					"boot_b", "boot_a", "dtbo_b",
 					"dtbo_a", "dsp_b", "dsp_a",
 					"vendor_boot_b", "vendor_boot_a",
-					"init_boot_b", "init_boot_a", "devinfo";
+					"init_boot_b", "init_boot_a", "devinfo",
+					"bootloader_b", "bootloader_a";
 		};
 	};
 };
