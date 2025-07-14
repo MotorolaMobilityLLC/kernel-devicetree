@@ -1,6 +1,11 @@
 #include "monaco-vm-la.dtsi"
 
 / {
+	chosen {
+		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 qcom_dma_heaps.enable_bitstream_contig_heap=y ufshcd-core.use_mcq_mode=n arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1 fw_devlink.strict=1";
+		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=9";
+	};
+
 	cpus {
 		/delete-node/ opp-table1;
 		/delete-node/ cpu@2;
