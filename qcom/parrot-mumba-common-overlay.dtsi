@@ -18,7 +18,6 @@
 #include "parrot-mumba-sensor-overlay.dtsi"
 #include "parrot-mumba-nfc-overlay.dtsi"
 #include "parrot-mumba-fps-overlay.dtsi"
-//#include "parrot-mona-haptics-overlay.dtsi"
 
 &display_panel_vddio {
          status = "disabled";
