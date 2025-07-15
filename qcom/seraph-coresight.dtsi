@@ -3207,6 +3207,7 @@
 		coresight-name = "coresight-wpss-etm0";
 		qcom,inst-id = <3>;
 		atid = <44>;
+		status = "disabled";
 
 		out-ports {
 			port {
