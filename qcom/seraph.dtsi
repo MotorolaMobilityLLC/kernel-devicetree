@@ -2003,11 +2003,6 @@
 		qcom,non-tn-collection-on-crash;
 		qcom,tx-wrapper-cache-max-size = <400>;
 		qcom,ipa-gpi-event-rp-ddr;
-		qcom,ulso-supported;
-		qcom,ulso-ip-id-min-linux-val = <0>;
-		qcom,ulso-ip-id-max-linux-val = <0xffff>;
-		qcom,ulso-ip-id-min-windows-val = <0>;
-		qcom,ulso-ip-id-max-windows-val = <0x7fff>;
 		qcom,max_num_smmu_cb = <5>;
 		clock-names = "core_clk";
 		clocks = <&rpmhcc RPMH_IPA_CLK>;
