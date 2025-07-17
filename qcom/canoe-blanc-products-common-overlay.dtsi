@@ -63,6 +63,23 @@
 	status = "disabled";
 };
 
+&qupv3_se5_i2c {
+	status = "ok";
+
+	gpio_expander: aw95016a@20 {
+		compatible = "awinic,aw95016a";
+		reg = <0x20>; /* AD pin connected to GND */
+
+		gpio-controller;
+		#gpio-cells = <2>;
+
+		/* Reset GPIO if connected */
+		reset-gpios = <&tlmm 30 GPIO_ACTIVE_HIGH>;
+
+		/* Optional: Configure edge control for output timing */
+		awinic,edge-control = <0>; /* 0.5ns edge control */
+	};
+};
 
 &eusb2_phy0 {
 	dummy-supply = <&pmih010x_eusb2_repeater>;
