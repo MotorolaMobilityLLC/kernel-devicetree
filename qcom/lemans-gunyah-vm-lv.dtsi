@@ -296,8 +296,6 @@
 		iomemory-ranges = <
 			/* QUPv3 SE14 region */
 			0x0 0x880000 0x0 0x880000 0x0 0x3000 0x0
-			/* QUPv3 SE16 region */
-			0x0 0x888000 0x0 0x888000 0x0 0x3000 0x0
 			/* QUPv3 SE3 region */
 			0x0 0x98c000 0x0 0x98c000 0x0 0x3000 0x0
 			/* QUPv3 SE0 region */
@@ -308,8 +306,6 @@
 		gic-irq-ranges = <
 			/* QUPv3 SE14 GIC IRQ */
 			405 405
-			/* QUPv3 SE16 GIC IRQ */
-			616 616
 			/* QUPv3 SE3 GIC IRQ */
 			562 562
 			/* QUPv3 SE0 GIC IRQ */
