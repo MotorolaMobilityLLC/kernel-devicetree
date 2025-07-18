@@ -425,6 +425,10 @@ _platform_map = {
             {"name": "seraphp-vm-idp-dtof.dtb"},
             {"name": "seraph-vm-idp.dtb"},
             {"name": "seraphp-vm-idp.dtb"},
+            {"name": "seraph-vm-idp-no-display.dtb"},
+            {"name": "seraph-vm-idp-no-display-no-gpu.dtb"},
+            {"name": "seraphp-vm-idp-no-display.dtb"},
+            {"name": "seraphp-vm-idp-no-display-no-gpu.dtb"},
         ],
     },
     "cliffs-tuivm": {

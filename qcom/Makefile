@@ -372,7 +372,11 @@ seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb \
 				seraph-vm-idp-dtof.dtb \
 				seraphp-vm-idp-dtof.dtb \
 				seraph-vm-idp.dtb \
-				seraphp-vm-idp.dtb
+				seraphp-vm-idp.dtb \
+				seraph-vm-idp-no-display.dtb \
+				seraph-vm-idp-no-display-no-gpu.dtb \
+				seraphp-vm-idp-no-display.dtb \
+				seraphp-vm-idp-no-display-no-gpu.dtb
 
 dtb-y += $(seraph_tuivm-dtb-y)
 endif
