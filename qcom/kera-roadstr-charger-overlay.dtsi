@@ -84,7 +84,7 @@
 };
 
 &battery_charger {
-	qcom,thermal-mitigation = <3000000 2500000 2000000 1500000 1000000 500000 300000 100000>;
+	qcom,thermal-mitigation = <6000000 5000000 4000000 3500000 3000000 2000000 1500000 1000000 500000 300000>;
 	qcom,wireless-fw-name = "sc9624.bin";
 //	mmi,wls-2nd-fw-by-sku;
 	/*PRC 0x01, ROW 0x02, NA 0x03, VZW 0x04, JP 0x05 ...*/
