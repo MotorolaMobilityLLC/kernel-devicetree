@@ -14,12 +14,16 @@
 		power-domains = <&scmi_power 13>, <&scmi_power 14>;
 		power-domain-names = "usb_transfer", "usb_core";
 
-		interrupts-extended = <&intc GIC_SPI 918 IRQ_TYPE_LEVEL_HIGH>;
-		interrupt-names = "pwr_event_irq";
+		interrupts-extended = <&intc GIC_SPI 918 IRQ_TYPE_LEVEL_HIGH>,
+					<&intc GIC_SPI 758 IRQ_TYPE_EDGE_RISING>,
+					<&intc GIC_SPI 757 IRQ_TYPE_EDGE_RISING>,
+					<&intc GIC_SPI 786 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "pwr_event_irq", "dp_hs_phy_irq",
+				"dm_hs_phy_irq", "ss_phy_irq";
 
 		qcom,default-mode-host;
 		qcom,disable-wakeup;
-
+		qcom,disable-host-ssphy-powerdown;
 		/*
 		 * Establish dependency on smmu driver so that depopulate path of
 		 * deferred probe doesn't run into existing bug in smmu driver.
@@ -32,7 +36,7 @@
 			compatible = "snps,dwc3";
 			reg = <0x0a400000 0xd800>;
 			iommus = <&apps_smmu_0 0x15c0 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
 			interrupts = <GIC_SPI 917 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&eusb2_phy1>, <&usb_1_qmp_combo_phy>;
 			snps,disable-clk-gating;
@@ -40,6 +44,7 @@
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
 			snps,dis_u2_susphy_quirk;
+			snps,dis_u3_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			snps,hird-threshold = /bits/ 8 <0x0>;
 			snps,is-utmi-l1-suspend;
@@ -270,12 +275,11 @@
 		power-domains = <&scmi_power 0>, <&scmi_power 1>;
 		power-domain-names = "usb_transfer", "usb_core";
 
-		interrupts-extended = <&pdc 8 IRQ_TYPE_EDGE_RISING>,
-				<&intc GIC_SPI 907 IRQ_TYPE_LEVEL_HIGH>,
-				<&pdc 7 IRQ_TYPE_EDGE_RISING>;
-		interrupt-names = "dp_hs_phy_irq", "pwr_event_irq",
+		interrupts-extended = <&intc GIC_SPI 907 IRQ_TYPE_LEVEL_HIGH>,
+			<&intc GIC_SPI 753 IRQ_TYPE_EDGE_RISING>,
+			<&intc GIC_SPI 752 IRQ_TYPE_EDGE_RISING>;
+		interrupt-names = "pwr_event_irq", "dp_hs_phy_irq",
 				"dm_hs_phy_irq";
-		qcom,use-pdc-interrupts;
 
 		qcom,disable-wakeup;
 
@@ -291,7 +295,7 @@
 			compatible = "snps,dwc3";
 			reg = <0x0a200000 0xd800>;
 			iommus = <&apps_smmu_0 0x14e0 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
 			interrupts = <GIC_SPI 910 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&eusb2_phy2>, <&usb_nop_phy>;
 			snps,disable-clk-gating;
