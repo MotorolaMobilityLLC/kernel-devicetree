@@ -573,6 +573,7 @@
 };
 
 &qupv3_se10_i2c {
+	qcom,bus-recovery;
 	status = "okay";
 	lm3535_led_hat: lm3535@38 {
 		status = "okay";
