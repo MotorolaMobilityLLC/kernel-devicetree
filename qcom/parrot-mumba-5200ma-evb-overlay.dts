@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#define LABR_RADIO 1
+#define EMEAAP_RADIO 2
+
+#include "parrot-mumba-common-overlay.dtsi"
+
+/ {
+	model = "mumba";
+	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,mumba";
+	qcom,msm-id = <663 0x10000>, <715 0x10000>;
+	qcom,board-id = <(LABR_RADIO << 8 | 0x41) 0x9000>, <(EMEAAP_RADIO << 8 | 0x41) 0x9000>;
+};
+

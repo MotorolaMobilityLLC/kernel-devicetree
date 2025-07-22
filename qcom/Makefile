@@ -176,6 +176,7 @@ endif
 ifeq ($(CONFIG_MUMBA_DTB),y)
 PARROT_BASE_DTB += parrot-moto-base.dtb
 PARROT_BOARDS += parrot-mumba-evb-overlay.dtbo
+PARROT_BOARDS += parrot-mumba-5200ma-evb-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_PARO_DTB),y)

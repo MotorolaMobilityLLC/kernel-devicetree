@@ -504,6 +504,7 @@ _platform_map = {
             {"name": "parrot-portov-evb-overlay.dtbo", "product": "portov",},
             {"name": "parrot-portov-dvt1-overlay.dtbo", "product": "portov",},
             {"name": "parrot-mumba-evb-overlay.dtbo", "product": "mumba",},
+            {"name": "parrot-mumba-5200ma-evb-overlay.dtbo", "product": "mumba",},
             {"name": "parrot-lamy-evb-overlay.dtbo", "product": "lamy",},
 	],
     },
