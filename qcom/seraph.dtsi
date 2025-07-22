@@ -13,6 +13,8 @@
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/spmi/spmi.h>
+#include <dt-bindings/power/qcom-aoss-qmp.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Seraph";
@@ -664,11 +666,18 @@
 
 	cache-controller@25000000 {
 		compatible = "qcom,seraph-llcc", "qcom,llcc-v51";
-		reg = <0x25000000 0x400000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
+		reg = <0x25000000 0x800000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
 		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
 		cap-based-alloc-and-pwr-collapse;
 		qcom,sct-initialized;
+
+		llcc-perfmon {
+			compatible = "qcom,llcc-perfmon";
+			clocks = <&aoss_qmp QDSS_CLK>;
+			clock-names = "qdss_clk";
+			llcc-occupancy-snapshot;
+		};
 	};
 
 	gic-interrupt-router {
