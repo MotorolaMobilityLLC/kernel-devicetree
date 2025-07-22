@@ -192,7 +192,7 @@ _platform_map = {
             {"name": "pineapple-arcf-evt2-overlay.dtbo", "product": "arcf", },
             {"name": "pineapple-ctwov-evb-overlay.dtbo", "product": "ctwov", },
         ],
-        "binary_compatible_with": ["cliffs"],
+        "binary_compatible_with": ["cliffs", "volcano"],
     },
     "pineapple-le": {
         "dtb_list": [
@@ -620,61 +620,10 @@ _platform_map = {
     },
     "volcano": {
         "dtb_list": [
-            {"name": "volcano.dtb"},
-            {"name": "volcano6.dtb"},
-            {"name": "volcano6i-fp1.dtb"},
-            {"name": "volcano6i-fp2.dtb"},
-            {"name": "volcano6i-fp3.dtb"},
-            {"name": "volcano6i-fp4.dtb"},
-            {
-                "name": "volcano6p.dtb",
-                "apq": True,
-            },
-            {
-                "name": "volcanop.dtb",
-                "apq": True,
-            },
-            {
-                "name": "volcano6ip-fp1.dtb",
-                "apq": True,
-            },
-            {
-                "name": "volcano6ip-fp2.dtb",
-                "apq": True,
-            },
-            {
-                "name": "volcano6ip-fp3.dtb",
-                "apq": True,
-            },
-            {
-                "name": "volcano6ip-fp4.dtb",
-                "apq": True,
-            },
+            { "name": "volcano-marvel-base.dtb", "product": "marvel", },
         ],
         "dtbo_list": [
-            {"name": "volcano-atp-overlay.dtbo"},
-            {"name": "volcano-idp-overlay.dtbo"},
-            {"name": "volcano-idp-evros-overlay.dtbo"},
-            {"name": "volcano-idp-wcd9395-overlay.dtbo"},
-            {"name": "volcano-idp-wcd9395-evros-overlay.dtbo"},
-            {"name": "volcano6i-idp-wcd9395-ganges-overlay.dtbo"},
-            {"name": "volcano6i-idp-wcd9395-brahma-overlay.dtbo"},
-            {"name": "volcano-mtp-overlay.dtbo"},
-            {"name": "volcano-mtp-wcd9395-aatc-overlay.dtbo"},
-            {"name": "volcano-mtp-wcd9395-aatc-evros-overlay.dtbo"},
-            {"name": "volcano-mtp-wcd9378-hsj-evros-overlay.dtbo"},
-            {"name": "volcano6i-mtp-wcd9395-ganges-overlay.dtbo"},
-            {"name": "volcano6i-mtp-ganges-overlay.dtbo"},
-            {"name": "volcano6i-mtp-wcd9395-ganges-hac2019-overlay.dtbo"},
-            {"name": "volcano6i-mtp-wcd9395-brahma-overlay.dtbo"},
-            {"name": "volcano6i-mtp-brahma-overlay.dtbo"},
-            {"name": "volcano6i-mtp-wcd9395-moselle-overlay.dtbo"},
-            {"name": "volcano6i-mtp-wcd9395-moselle-emmc-overlay.dtbo"},
-            {"name": "volcano6i-mtp-moselle-overlay.dtbo"},
-            {"name": "volcano6i-mtp-moselle-emmc-overlay.dtbo"},
-            {"name": "volcano-qrd-overlay.dtbo"},
-            {"name": "volcano6i-qrd-moselle-overlay.dtbo"},
-            {"name": "volcano6i-mtp-STSafe320-brahma-overlay.dtbo"},
+            {"name": "volcano-marvel-evb-overlay.dtbo", "product": "marvel", },
         ],
     },
 }

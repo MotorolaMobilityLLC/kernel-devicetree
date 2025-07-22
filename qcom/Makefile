@@ -42,6 +42,10 @@ PINEAPPLE_BOARDS += cliffs-ctwo-dvt1-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-ctwo-dvt1b-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_MARVEL_DTB),y)
+PINEAPPLE_BASE_DTB += volcano-marvel-base.dtb
+PINEAPPLE_BOARDS += volcano-marvel-evb-overlay.dtbo
+endif
 
 PINEAPPLE_BOARDS += pineapple-dpm-overlay.dtbo
 
