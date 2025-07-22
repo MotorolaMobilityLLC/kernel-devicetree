@@ -7,6 +7,6 @@
 	model = "lamy";
 	compatible = "qcom,parrot-qrd", "qcom,parrot", "qcom,qrd", "moto,lamy";
 	qcom,msm-id = <663 0x10000>;
-	qcom,board-id = <0x41 0x9000>;
+	qcom,board-id = <0x42 0x9000>;
 };
 
