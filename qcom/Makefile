@@ -34,7 +34,8 @@ endif
 ifeq ($(CONFIG_QOGIR_DTB),y)
 KERA_BASE_DTB += kera-qogir-base.dtb
 KERA_BOARDS += \
-        kera-qogir-evb-overlay.dtbo
+        kera-qogir-evb-overlay.dtbo \
+        kera-qogir-evb2-overlay.dtbo
 endif
 
 sun-dtb-$(CONFIG_ARCH_KERA) +=  \
