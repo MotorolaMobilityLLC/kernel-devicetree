@@ -105,7 +105,7 @@
 			 * IPA address linux image is loaded at. Must be within
 			 * first 1GB due to memory hotplug requirement.
 			 */
-			base-address = <0x0 0x88800000 >;
+			base-address = <0x0 0x64400000 >;
 		};
 
 		segments {
