@@ -256,6 +256,16 @@
 		status = "disabled";
 	};
 
+	/* ADSP0 USB client */
+	usb_audio_qmi_dev: usb_audio_qmi_dev@0 {
+		compatible = "qcom,usb-audio-qmi-dev";
+		iommus = <&apps_smmu_0 0x09e7 0x0>;
+		qcom,iommu-dma = "disabled";
+		qcom,usb-audio-stream-id = <0x7>;
+		qcom,usb-audio-intr-num = <2>;
+
+		status = "disabled";
+	};
 
 	/* Tertiary USB port related controller */
 	usb2: hsusb@a200000 {
