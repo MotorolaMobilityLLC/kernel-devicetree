@@ -13,3 +13,7 @@
 	qcom,board-id = <(LABR_RADIO << 8 | 0x41) 0x9000>, <(EMEAAP_RADIO << 8 | 0x41) 0x9000>;
 };
 
+&qti_glink_charger {
+	mmi,df-serialnum = "ATLSM52NVT";
+	profile-ids-map = "88000", "ATLSM52NVT","58000","VEKSM52VEK";
+};

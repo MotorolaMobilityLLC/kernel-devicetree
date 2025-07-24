@@ -10,3 +10,7 @@
 	qcom,board-id = <0x41 0x9000>;
 };
 
+&qti_glink_charger {
+	mmi,df-serialnum = "ATLSF70NVT";
+	profile-ids-map = "107000", "ATLSF70NVT","38000","COSSF70COS";
+};
