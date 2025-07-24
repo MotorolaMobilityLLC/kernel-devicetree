@@ -844,6 +844,10 @@
 };
 
 &hab {
+	mmidgrp200: mmidgrp200 {
+		dma-coherent;
+	};
+
 	mmidgrp300: mmidgrp300 {
 		dma-coherent;
 	};
