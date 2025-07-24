@@ -1,0 +1,11 @@
+/dts-v1/;
+
+#include "seraphp-vm.dtsi"
+#include "seraphp-vm-idp-no-display-no-gpu.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. SeraphP SVM IDP NO DISPLAY NO GPU";
+	compatible = "qcom,seraphp-idp", "qcom,seraphp", "qcom,idp";
+	qcom,board-id = <0x10022 3>;
+};
+
