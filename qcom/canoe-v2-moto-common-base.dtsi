@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+
+/dts-v1/;
+
+#include "canoe-v2.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Canoe v2 SoC";
+	compatible = "qcom,canoe";
+	qcom,board-id = <0 0>;
+/*
+ * Moto common base dtb nodes definition
+ */
+	channel-id-map = "";
+	chosen: chosen { };
+	aliases: aliases { };
+	reserved_memory: reserved-memory { };
+	utags: utags { };
+	hw: hw { };
+};
+
+&reserved_memory {
+	/delete-node/ ramoops-region;
+};
+
+&soc {
+	/delete-node/ qcom_ramoops;
+};
+
