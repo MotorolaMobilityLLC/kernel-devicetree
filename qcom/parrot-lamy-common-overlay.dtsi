@@ -11,8 +11,8 @@
  */
 #include "parrot-moto-common-overlay-base-pm8350b.dtsi"
 #include "parrot-moto-common-overlay.dtsi"
-#include "parrot-mona-charger-overlay.dtsi"
-#include "parrot-mona-thermal-overlay.dtsi"
+#include "parrot-lamy-charger-overlay.dtsi"
+#include "parrot-lamy-thermal-overlay.dtsi"
 #include "parrot-mona-touchscreen-overlay.dtsi"
 #include "parrot-lamy-sensor-overlay.dtsi"
 #include "parrot-mona-fps-overlay.dtsi"
