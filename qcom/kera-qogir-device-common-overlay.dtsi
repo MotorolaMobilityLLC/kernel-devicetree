@@ -26,6 +26,11 @@
 #include "kera-qogir-thermal-overlay.dtsi"
 #include "kera-qogir-fingerprint-overlay.dtsi"
 
+&tlmm {
+	/* add reserved GPIOs for FPS SPI : gpio 8/9/10/11 */
+	qcom,gpios-reserved = <8 9 10 11 20 21 22 23 111 112 118>;
+};
+
 &L11B {
     /delete-property/ regulator-always-on;
 };
