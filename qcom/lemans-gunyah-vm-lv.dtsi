@@ -278,7 +278,7 @@
 		qcom,dev-name = "bootloader_b";
 	};
 
-	qcom,vm-config {
+	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
 		boot-config = "fdt,unified";
