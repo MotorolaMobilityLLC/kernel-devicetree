@@ -2,7 +2,9 @@
    This base is original from "volcano-qrd-overlay.dts"
 */
 
-#include "volcano-qrd.dtsi"
+#include "volcano-mtp.dtsi"
+#include "volcano-pmiv0104.dtsi"
+
 
 &pmiv0104_eusb2_repeater {
 	status = "ok";
