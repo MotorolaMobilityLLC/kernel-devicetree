@@ -15,9 +15,24 @@
 		<0xb 0x51
 		 0x2 0x53
 		 0x6 0x57>;
+	qcom,host-param-override-seq =
+		<0xb 0x51
+		 0x2 0x53
+		 0x6 0x57>;
 };
 
 &eusb2_phy0 {
 	dummy-supply = <&pmiv0104_eusb2_repeater>;
 	usb-repeater = <&pmiv0104_eusb2_repeater>;
+};
+
+&usb0 {
+	qcom,interconnect-values-nom = /* NOMINAL Votes */
+					<1000000 4500000>,
+					<0 2400>,
+					<0 40000>;
+	qcom,interconnect-values-svs = /* SVS Votes */
+					<240000 700000>,
+					<0 2400>,
+					<0 40000>;
 };
