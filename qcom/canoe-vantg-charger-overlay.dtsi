@@ -21,6 +21,7 @@
 	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
 
 	main-ids-map = "107000", "SB18E07971";
+	profile-ids-map = "107000", "ATLSR52NVT";
 	mmi,upper-limit-capacity = <78>;
 	mmi,lower-limit-capacity = <65>;
 	charger_device_0 {
