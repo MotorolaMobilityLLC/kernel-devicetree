@@ -23,31 +23,6 @@
 #include "canoe-blanc-charger-overlay.dtsi"
 
 &tlmm {
-	redriver_enable: redriver_enable {
-		mux {
-			pins = "gpio95";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio95";
-			drive-strength = <2>;
-			bias-disable; /* NO PULL */
-			output-high;
-		};
-	};
-	redriver_disable: redriver_disable {
-		mux {
-			pins = "gpio95";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio95";
-			drive-strength = <2>;
-			output-low;
-		};
-	};
 
 	key_ai_default: key_ai_default {
 		mux {
@@ -87,10 +62,6 @@
 	status = "disabled";
 };
 
-&qupv3_se5_i2c {
-	status = "ok";
-	#include "canoe-moto-common-redriver.dtsi"
-};
 
 &eusb2_phy0 {
 	dummy-supply = <&pmih010x_eusb2_repeater>;
@@ -107,7 +78,6 @@
 	pinctrl-0 = <&usb3phy_portselect_gpio>;
 	gpios = <&tlmm 60 0>;
 
-	ssusb_redriver = <&redriver_mmi>;
 
 	/delete-node/ qcom,wcd_usbss;
 
@@ -118,6 +88,7 @@
 		snps,usb2-lpm-disable;
 	};
 };
+
 
 &pmih010x_eusb2_repeater {
 	qcom,param-override-seq =
