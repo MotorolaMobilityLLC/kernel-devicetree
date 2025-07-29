@@ -53,6 +53,7 @@ _platform_map = {
             # keep sorted
             {"name": "canoe-vantg-evb-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-vantg-evt1-overlay.dtbo", "product": "vantg"},
+            {"name": "canoe-vantg-dvt1a-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-blanc-evb-overlay.dtbo", "product": "blanc"},
         ],
        # "binary_compatible_with": ["alor", "alor-interposer", "chora", "malabar"],
