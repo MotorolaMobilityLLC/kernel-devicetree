@@ -25,7 +25,7 @@ CANOE_BOARDS += canoe-vantg-evb-overlay.dtbo \
 endif
 
 ifeq ($(CONFIG_BLANC_DTB),y)
-CANOE_BASE_DTB += canoe-blanc-base.dtb
+CANOE_BASE_DTB += canoe-blanc-base.dtb canoe-v2-blanc-base.dtb
 CANOE_BOARDS += canoe-blanc-evb-overlay.dtbo
 endif
 

@@ -12,5 +12,5 @@
 
 /dts-v1/;
 
-#include "canoe-tp-moto-common-base.dtsi"
+#include "canoe-v2-moto-common-base.dtsi"
 
