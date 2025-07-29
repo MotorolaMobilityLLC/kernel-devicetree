@@ -81,6 +81,7 @@
 		awinic,edge-control = <0>; /* 0.5ns edge control */
 	};
 };
+#include "canoe-blanc-touchscreen-thp-overlay.dtsi"
 
 &eusb2_phy0 {
 	dummy-supply = <&pmih010x_eusb2_repeater>;
