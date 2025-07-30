@@ -27,13 +27,5 @@
 };
 
 &usb0 {
-	qcom,interconnect-values-nom = /* NOMINAL Votes */
-					<1000000 4500000>,
-					<0 2400>,
-					<0 40000>;
-	qcom,interconnect-values-svs = /* SVS Votes */
-					<240000 700000>,
-					<0 2400>,
-					<0 40000>;
 	qcom,force-adb-enable;
 };
