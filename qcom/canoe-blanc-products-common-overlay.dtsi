@@ -19,7 +19,7 @@
 #include "canoe-blanc-sensors-overlay.dtsi"
 #include "canoe-blanc-haptics-overlay.dtsi"
 #include "canoe-blanc-fingerprint-overlay.dtsi"
-//#include "canoe-blanc-thermal-overlay.dtsi"
+#include "canoe-blanc-thermal-overlay.dtsi"
 #include "canoe-moto-common-charger.dtsi"
 #include "canoe-blanc-charger-overlay.dtsi"
 #include "moto-blanc-pmic.dtsi"
