@@ -1,0 +1,166 @@
+/*
+ * Copyright (c) 2025, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&tlmm {
+	pmx_ts_active {
+		ts_spi_active: ts_spi_active {
+			mux {
+				pins = "gpio131", "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131", "gpio65";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_reset_suspend {
+		ts_spi_reset_suspend: ts_spi_reset_suspend {
+			mux {
+				pins = "gpio131";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	pmx_ts_int_suspend {
+		ts_spi_int_suspend: ts_spi_int_suspend {
+			mux {
+				pins = "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio65";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+
+	pmx_ts_release {
+		ts_spi_release: ts_spi_release {
+			mux {
+				pins = "gpio131", "gpio65";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio131", "gpio65";
+				drive-strength = <2>;
+				bias-disable;
+			};
+		};
+	};
+};
+
+&pmk8350_gpios {
+	stylus_clk_ctrl {
+		stylus_clk_active: stylus_clk_active {
+			pins = "gpio3";
+			function = "normal";
+			bias-disable; /* No Pull*/
+			output-enable; /* digital output, no invert */
+			input-disable; /* prevent GPIO from being set to DIO */
+			power-source = <0>;
+		};
+		stylus_clk_suspend: stylus_clk_suspend {
+			pins = "gpio3";
+			function = "normal";
+			bias-high-impedance;
+			output-enable; /* digital output, no invert */
+			input-disable; /* prevent GPIO from being set to DIO */
+			power-source = <0>;
+		};
+	};
+};
+
+&qupv3_se9_i2c {
+	status = "disabled";
+};
+
+&qupv3_se9_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix_thp";
+		reg = <0>;
+
+		spi-mode = <0>;
+		bits-per-word = <8>;
+		spi-max-frequency = <30000000>;
+		chip-type = <2>; // 1: 9897 2: 9916 3: 9966
+
+		mmi,status = "/chosen","mmi,panel_name","contains","tm_nt37706","csot_vtdr6126";
+		goodix,reset-gpio = <&tlmm 131 0x0>;
+		goodix,irq-gpio = <&tlmm 65 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <19520>; /* 1220*16 */
+		goodix,panel-max-y = <43392>; /* 2712*16 */
+		goodix,panel-max-w = <1000>;
+		goodix,panel-max-p = <4096>;
+		goodix,iovdd-gpio = <&tlmm 126 0x0>;
+		goodix,avdd-name = "avdd";
+		avdd-supply = <&L28B>;
+
+		goodix,panel-key-map = <158 172 217>; /*BACK,HOMEPAGE,SEARCH*/
+		goodix,power-on-delay-us = <100000>; /*100ms*/
+		goodix,power-off-delay-us = <10000>;
+
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "pmx_ts_release", "stylus_clk_active", "stylus_clk_suspend";
+		pinctrl-0 = <&ts_spi_active>;
+		pinctrl-1 = <&ts_spi_int_suspend &ts_spi_reset_suspend>;
+		pinctrl-2 = <&ts_spi_release>;
+		pinctrl-3 = <&stylus_clk_active>;
+		pinctrl-4 = <&stylus_clk_suspend>;
+		goodix,firmware-name = "goodix_firmware.bin";
+		goodix,config-name = "goodix_cfg_group.bin";
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,gesture-wait-pm;
+		goodix,sample-ctrl;
+		goodix,passive-stylus-mode-ctrl;
+		mmi,power-off-suspend;
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x07>;
+		mmi,resolution_boost = <16>;
+		goodix,stylus_mode-ctrl;
+
+		goodix,sched-priority = <90>;
+		goodix,cpu-affinity = <0xf0>;
+	};
+};
+
+&soc {
+	mmi_stow {
+		compatible = "moto,mmi_stow";
+		mmi,stow-gpio = <&tlmm 124 0x0>;
+	};
+
+};
+
