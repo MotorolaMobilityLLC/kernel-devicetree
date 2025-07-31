@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2025, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -18,7 +18,7 @@
 	mmi,max-fcc-ma = <4000000>;
 	mmi,chrg-iterm-ma = <229>;
 	mmi,thermal-primary-mitigation = <4000000 3000000 2000000 1000000 500000 300000 200000>;
-	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
+	mmi,thermal-secondary-mitigation = <12400000 10000000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000>;
 
 	main-ids-map = "107000", "ATLSE48NVT","107000", "COSSE48COS";
 //	flip-ids-map = "38000", "SB18D58447";
