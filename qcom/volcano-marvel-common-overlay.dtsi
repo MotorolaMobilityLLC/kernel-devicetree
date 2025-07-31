@@ -11,4 +11,4 @@
  */
 #include "volcano-moto-common-overlay.dtsi"
 #include "volcano-moto-common-overlay-base.dtsi"
-
+#include "volcano-marvel-sensor-overlay.dtsi"
