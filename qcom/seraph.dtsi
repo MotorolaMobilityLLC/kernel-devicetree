@@ -1718,11 +1718,9 @@
 		rproc-ddr-set-icc-low-svs;
 		rproc-ddr-lowsvs-icc-bw = <1050>;
 
-		firmware-name = "soccp.mbn", "soccp_dtb_mbn";
+		firmware-name = "soccp.mbn", "soccp_dtb.mbn";
 
 		memory-region = <&soccp_mem &soccp_dtb_mem>;
-		soccp-tcsr = <&tcsr 0x9d004>;
-		soccp-spare = <0xda0048>;
 
 		/* Inputs from SOCCP */
 		interrupts-extended = <&intc GIC_SPI 256 IRQ_TYPE_EDGE_RISING>,
