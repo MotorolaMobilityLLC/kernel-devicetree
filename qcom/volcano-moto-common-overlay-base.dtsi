@@ -25,7 +25,3 @@
 	dummy-supply = <&pmiv0104_eusb2_repeater>;
 	usb-repeater = <&pmiv0104_eusb2_repeater>;
 };
-
-&usb0 {
-	qcom,force-adb-enable;
-};
