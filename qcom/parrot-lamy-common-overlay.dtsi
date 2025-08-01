@@ -16,7 +16,7 @@
 #include "parrot-lamy-touchscreen-overlay.dtsi"
 #include "parrot-lamy-sensor-overlay.dtsi"
 #include "parrot-lamy-fps-overlay.dtsi"
-#include "moto-mona-aw37004.dtsi"
+#include "moto-lamy-aw37004.dtsi"
 #include "parrot-mona-haptics-overlay.dtsi"
 
 &display_panel_avdd {
