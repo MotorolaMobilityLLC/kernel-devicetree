@@ -1,0 +1,82 @@
+/*
+ * Each QUP device that's a parent to PMIC must be listed as a critical device
+ * to GCC.
+ */
+
+&gcc {
+	qcom,critical-devices = <&qupv3_se12_i2c>, <&qupv3_se8_i2c>, <&qupv3_1>;
+};
+
+&qupv3_se12_i2c {
+	status = "ok";
+	cam_pmic: aw37004@28 {
+		compatible = "aw37004";
+		reg = <0x28>;
+
+		vin1-supply = <&S2B>;
+		vin2-supply = <&BOB>;
+
+		regulators {
+			cam_ldo1_rw_dvdd: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo2_ft_dvdd: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo3_rw_avdd: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			cam_ldo4_rw_afvdd: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+		};
+	};
+};
+
+&qupv3_se8_i2c {
+	status = "ok";
+	cam_pmic_2nd: aw37004-2nd@28 {
+		compatible = "aw37004-2nd";
+		reg = <0x28>;
+
+		vin1-supply = <&S2B>;
+		vin2-supply = <&BOB>;
+
+		regulators {
+			cam_ldo1_rm_dvdd: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo2_tl_dvdd: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo3_rm_avdd: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			cam_ldo4_rm_afvdd: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+		};
+	};
+};
