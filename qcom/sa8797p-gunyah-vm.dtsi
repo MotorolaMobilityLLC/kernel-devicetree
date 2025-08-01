@@ -457,8 +457,8 @@
 		qcom,dev-name = "bootloader_a";
 	};
 
-	virtio_mmio_i2c_19 {
-		virtio_i2c_19: virtio_i2c_19@0 {
+	virtio_mmio_i2c_9 {
+		virtio_i2c_9: virtio_i2c_9@0 {
 			compatible = "virtio,device22";
 		};
 	};
@@ -1319,7 +1319,7 @@
 			/* Virtio I2C device for USB-Linked Peripherals */
 			virtio-mmio@48 {
 				vdevice-type = "virtio-mmio";
-				patch = "/virtio_mmio_i2c_19";
+				patch = "/virtio_mmio_i2c_9";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
