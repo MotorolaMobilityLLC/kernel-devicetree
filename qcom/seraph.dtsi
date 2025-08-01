@@ -2265,6 +2265,8 @@
 
 		qcom,no-partial-init;
 		cap-mmc-hw-reset;
+		qcom,restore-after-cx-collapse;
+		mmc-rst-n-disable;
 
 		non-removable;
 		supports-cqe;
