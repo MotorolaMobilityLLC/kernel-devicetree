@@ -1,0 +1,41 @@
+&mmi_charger {
+	mmi,upper-limit-capacity = <70>;
+	mmi,pd-power-max = <68000>;
+	mmi,heartbeat-interval = <10000>;
+};
+
+&qti_glink_charger {
+	compatible = "mmi,adsp-glink-charger";
+	polling-interval-ms = <60000>;
+	def_batt: battery {
+		type = <0x0000>;
+		battid-utags = "mmi,battid";
+		df-serialnum = "SB18D58448";
+		profile-ids-map = "107000", "SB18D58448";
+	};
+
+	charger {
+		type = <0x0100>;
+		battery = <&def_batt>;
+		encrypted-chg-enabled;
+	};
+
+	usb {
+		type = <0x0200>;
+		//therm-supported;
+	};
+
+	pump_charger_master {
+		type = <0x0400>;
+		//pump-psy-enabled;
+	};
+
+	pump_charger_slave {
+		type = <0x0401>;
+		//pump-psy-enabled;
+	};
+};
+
+&battery_charger {
+	qcom,thermal-mitigation = <22800000 21000000 20000000 19000000 18000000 17000000 16000000 15000000 14000000 13000000 12000000 11000000 10000000 9000000 8000000 6000000 5000000 4000000 3000000 2000000 1000000 500000>;
+};

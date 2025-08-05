@@ -4,6 +4,7 @@
 
 #include "volcano-mtp.dtsi"
 #include "volcano-pmiv0104.dtsi"
+#include "volcano-moto-common-charger.dtsi"
 
 
 &pmiv0104_eusb2_repeater {
