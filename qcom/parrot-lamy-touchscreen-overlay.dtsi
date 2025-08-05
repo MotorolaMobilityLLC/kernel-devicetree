@@ -77,7 +77,7 @@
 	stylus_clk_ctrl {
 		stylus_clk_active: stylus_clk_active {
 			pins = "gpio3";
-			function = "normal";
+			function = "func2";
 			bias-disable; /* No Pull*/
 			output-enable; /* digital output, no invert */
 			input-disable; /* prevent GPIO from being set to DIO */
@@ -85,7 +85,7 @@
 		};
 		stylus_clk_suspend: stylus_clk_suspend {
 			pins = "gpio3";
-			function = "normal";
+			function = "func2";
 			bias-high-impedance;
 			output-enable; /* digital output, no invert */
 			input-disable; /* prevent GPIO from being set to DIO */
