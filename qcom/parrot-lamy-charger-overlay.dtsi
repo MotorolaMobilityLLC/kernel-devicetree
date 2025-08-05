@@ -1,3 +1,31 @@
+&tlmm {
+	chg_ldswtch_en_gpio_default: chg_ldswtch_en_gpio_default {
+		mux {
+			pins = "gpio46";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio46";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	chg_boost_en_gpio_default: chg_boost_en_gpio_default {
+		mux {
+			pins = "gpio34";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio34";
+			drive-strength = <2>;
+			bias-disable;
+			output-low;
+		};
+	};
+};
+
 &soc {
 	mmi_charger: mmi,charger {
 		compatible = "mmi,mmi-charger";
@@ -39,8 +67,20 @@
 			disable-dynamic-open-log;
 		};
 	};
-};
 
+	mmi,pogo_pen_charger {
+		status = "ok";
+		compatible = "mmi,pogo-pen-charger";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&chg_ldswtch_en_gpio_default  &chg_boost_en_gpio_default>;
+		mmi,chg-ldswtch-en-gpio = <&tlmm 46 0x0>;
+		mmi,chg-boost-en-gpio = <&tlmm 34 0x0>;
+
+		io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO2>;
+		io-channel-names = "pm8350b_pen_sns";
+	};
+};
 
 &battery_charger {
 	qcom,thermal-mitigation = <12200000 10000000 8000000 7000000 6000000 5000000 4000000 3500000 3000000 1500000 1000000 500000 100000>;

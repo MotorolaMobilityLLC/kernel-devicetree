@@ -24,11 +24,18 @@
 			bias-high-impedance;
 		};
 	};
+
+	pm8350b_pen {
+		pm8350b_pen_default: pm8350b_pen_default {
+			pins = "gpio2";
+			bias-high-impedance;
+		};
+	};
 };
 
 &pmk8350_vadc {
 	pinctrl-names = "default";
-	pinctrl-0 = <&quiet_therm_default &pm8350b_chg_therm_default &pm8350b_cp_therm_default>;
+	pinctrl-0 = <&quiet_therm_default &pm8350b_chg_therm_default &pm8350b_cp_therm_default &pm8350b_pen_default>;
 
 	pm8350b_chg_skin_therm {
 		reg = <PM8350B_ADC7_GPIO1_100K_PU>;
@@ -45,8 +52,13 @@
 		qcom,hw-settle-time = <200>;
 		qcom,pre-scaling = <1 1>;
 	};
-};
 
+	pm8350b_pen_sns {
+		reg = <PM8350B_ADC7_GPIO2>;
+		label = "pm8350b_pen_sns";
+		qcom,pre-scaling = <1 1>;
+	};
+};
 &pmk8350_adc_tm {
 /*
 	pmk8350_xo_therm {
