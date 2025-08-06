@@ -2,6 +2,7 @@
 
 &soc {
 	pcie0: qcom,pcie@1c00000 {
+		device_type = "pci";
 		compatible = "qcom,pci-msm";
 		cell-index = <0>;
 
@@ -285,6 +286,7 @@
 	};
 
 	pcie1: qcom,pcie@1c10000 {
+		device_type = "pci";
 		compatible = "qcom,pci-msm";
 		cell-index = <1>;
 

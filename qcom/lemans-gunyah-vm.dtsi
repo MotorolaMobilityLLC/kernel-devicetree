@@ -20,7 +20,7 @@
 	};
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n androidboot.usbcontroller=a400000.dwc3";
+		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n";
 	};
 
 	reserved_memory: reserved-memory {
@@ -337,7 +337,7 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,she_gvm;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,pr_3_0,she_gvm,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,bintestapp64,tzecotestapp1,crypto_testapp,sst_testapp,autosst_testapp,auto_test_unpermitted,FD02C9DA-306C-48C7-A49C-BBD827AE86EE,5AF8C3E6-D9DF-446E-4FF2-D4D58E8CA49B,19CE19B9-FD73-4262-8553-E5CAC40C895A,C02CAC07-2639-4EF0-BC12-C4AF1FB3E276,15C6B6E4-D083-48E4-8744-4D90A8FF1EF2,CAD10542-34E4-452D-6156-E979AA6E61BC,23914957-C174-4EA6-54D1-DA820F77B4B0,5AF8C3E6-D9DF-446E-4FF2-C3C47D7B938A,CAD10542-34E4-452D-6156-E979AA6E6132,5AF8C3E6-D9DF-446E-4FF2-B2B36C6A8279,smplap32,smplap64;";
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "vpm-virq", "allow-unprotected";
@@ -450,6 +450,12 @@
 				message-size = <0x000000f0>;
 				queue-depth = <0x00000008>;
 				qcom,label = <0x1>;
+			};
+
+			vrtc {
+				vdevice-type = "vrtc-pl031";
+				peer-default;
+				allocate-base;
 			};
 
 			virtio-mmio@0 {
@@ -1280,7 +1286,7 @@
 
 		android {
 			compatible = "android,firmware";
-			boot_devices = "7002e000.virtio_blk_la_bootloader_b,7002d000.virtio_blk_la_bootloader_a,70002000.virtio_blk_la_devinfo,70003000.virtio_blk_la_init_boot_a,70004000.virtio_blk_la_init_boot_b,70005000.virtio_blk_la_vendor_boot_a,70006000.virtio_blk_la_vendor_boot_b,70007000.virtio_blk_dsp_a,70008000.virtio_blk_dsp_b,70009000.virtio_blk_la_dtbo_a,7000a000.virtio_blk_la_dtbo_b,7000b000.virtio_blk_la_boot_a,7000c000.virtio_blk_la_boot_b,7000d000.virtio_blk_bluetooth_a,7000e000.virtio_blk_bluetooth_b,7000f000.virtio_blk_modem_a,70010000.virtio_blk_modem_b,70011000.virtio_blk_vbmeta_a,70012000.virtio_blk_vbmeta_b,70013000.virtio_blk_misc,70014000.virtio_blk_persist,70015000.virtio_blk_metadata,70016000.virtio_blk_userdata,70017000.virtio_blk_super";
+			boot_devices = "7002f000.virtio_blk_la_bootloader_b,7002e000.virtio_blk_la_bootloader_a,70003000.virtio_blk_la_devinfo,70004000.virtio_blk_la_init_boot_a,70005000.virtio_blk_la_init_boot_b,70006000.virtio_blk_la_vendor_boot_a,70007000.virtio_blk_la_vendor_boot_b,70008000.virtio_blk_dsp_a,70009000.virtio_blk_dsp_b,7000a000.virtio_blk_la_dtbo_a,7000b000.virtio_blk_la_dtbo_b,7000c000.virtio_blk_la_boot_a,7000d000.virtio_blk_la_boot_b,7000e000.virtio_blk_bluetooth_a,7000f000.virtio_blk_bluetooth_b,70010000.virtio_blk_modem_a,70011000.virtio_blk_modem_b,70012000.virtio_blk_vbmeta_a,70013000.virtio_blk_vbmeta_b,70014000.virtio_blk_misc,70015000.virtio_blk_persist,70016000.virtio_blk_metadata,70017000.virtio_blk_userdata,70018000.virtio_blk_super";
 
 			vbmeta {
 				compatible = "android,vbmeta";
@@ -1614,7 +1620,7 @@
 
 	ptp_virtual {
 		compatible = "qcom,ptp_virtual";
-		reg = <0xacfff000 0x1000>,
+		reg = <0xac5fe000 0x1000>,
 			<0x23047000 0x1000>,
 			<0x17c23000 0x1000>;
 		reg-names = "ptp_carveout_mem",
@@ -1670,8 +1676,8 @@
 		qcom,arm-smmu;
 		reg = <0x2300C000 0x1000>;
 		reg-names = "stmmaceth";
-		status = "disabled";
-		interrupts-extended = <&intc 0 776 4>, <&intc 0 828 4>;
+
+		interrupts-extended = <&intc 0 776 1>, <&intc 0 828 1>;
 		interrupt-names = "rx_ch0_intr", "tx_ch0_intr";
 
 		power-domains = <&scmi_power 9>;
@@ -1680,15 +1686,14 @@
 		snps,tso;
 		snps,pbl = <32>;
 		mac-address = [00 55 7B B5 7D f7];
-		rx-fifo-depth = <4096>;
-		tx-fifo-depth = <4096>;
+		rx-fifo-depth = <5120>;
+		tx-fifo-depth = <5120>;
 		snps,mtl-rx-config = <&mtl_rx_setup>;
 		snps,mtl-tx-config = <&mtl_tx_setup>;
 		queue = <0>;
 		emac1_emb_smmu: emac1_emb_smmu {
 			compatible = "qcom,emac-thin-smmu-embedded";
 			iommus = <&apps_smmu 0x148 0x1>;
-			status = "disabled";
 			qcom,iommu-dma = "fastmap";
 			qcom,iommu-dma-addr-pool = <0x80000000 0x40000000>;
 		};

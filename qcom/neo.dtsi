@@ -289,7 +289,7 @@
 		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 		reusable;
 		alignment = <0x0 0x400000>;
-		size = <0x0 0x400000>;
+		size = <0x0 0x1400000>;
 	};
 
 	qseecom_ta_mem: qseecom_ta_region {
@@ -835,12 +835,6 @@
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
 
-		opp-400000 {
-			opp-hz = /bits/ 64 <400000>;
-			opp-peak-kBps = <0 0>;
-			opp-avg-kBps = <0 0>;
-		};
-
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <500000 200000>;
@@ -852,6 +846,10 @@
 			opp-peak-kBps = <2500000 1000000>;
 			opp-avg-kBps = <400000 0>;
 		};
+	};
+
+	crypto_node {
+		compatible = "qcom,crypto";
 	};
 
 	sdhc_1: sdhci@7C4000 {
@@ -873,12 +871,14 @@
 		no-sd;
 		no-sdio;
 
+		qcom,restore-after-cx-collapse;
 		mmc-ddr-1_8v;
 		mmc-hs200-1_8v;
 		mmc-hs400-1_8v;
 		mmc-hs400-enhanced-strobe;
 
 		qcom,dll_lock_bist_fail_wa;
+		qcom,no-partial-init;
 		cap-mmc-hw-reset;
 
 		iommus = <&apps_smmu 0x160 0x0>;

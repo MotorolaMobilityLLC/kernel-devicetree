@@ -1,4 +1,5 @@
 #include "seraph-pmic-overlay.dtsi"
+#include "seraph-qpt-overlay.dtsi"
 #include "seraph-thermal-overlay.dtsi"
 
 &soc {
@@ -25,4 +26,44 @@
 	qcom,vdd-io-lpm-sup;
 	qcom,vdd-io-voltage-level = <1800000 1800000>;
 	qcom,vdd-io-current-level = <0 325560>;
+};
+
+&regulator_ocp_notifier {
+	periph-0c1-supply = <&L1A>;
+	periph-0c2-supply = <&L2A_LEVEL>;
+	periph-0c3-supply = <&L3A>;
+	periph-0c4-supply = <&L4A>;
+	periph-0c5-supply = <&L5A>;
+	periph-0c6-supply = <&L6A>;
+	periph-0c7-supply = <&L7A>;
+	periph-0c8-supply = <&L8A_LEVEL>;
+	periph-0c9-supply = <&L9A>;
+	periph-0ca-supply = <&L10A>;
+	periph-0cb-supply = <&L11A>;
+	periph-0cd-supply = <&L13A>;
+	periph-0ce-supply = <&L14A>;
+	periph-0cf-supply = <&L15A>;
+	periph-0d2-supply = <&L18A>;
+	periph-09e-supply = <&S2A_LEVEL>;
+	periph-0a1-supply = <&S3A>;
+	periph-0a4-supply = <&S4A_LEVEL>;
+	periph-0a7-supply = <&S5A_LEVEL>;
+	periph-0aa-supply = <&S6A_LEVEL>;
+	periph-0ad-supply = <&S7A>;
+	periph-0b0-supply = <&S8A>;
+	periph-0b3-supply = <&S9A_LEVEL>;
+	periph-0b6-supply = <&S10A_LEVEL>;
+	periph-0ec-supply = <&BOB1>;
+	periph-c40-supply = <&L1M>;
+	periph-c41-supply = <&L2M>;
+	periph-c42-supply = <&L3M>;
+	periph-c43-supply = <&L4M>;
+	periph-c44-supply = <&L5M>;
+	periph-c45-supply = <&L6M>;
+	periph-c46-supply = <&L7M>;
+	periph-d40-supply = <&L1N>;
+	periph-d42-supply = <&L3N>;
+	periph-d43-supply = <&L4N>;
+	periph-d45-supply = <&L6N>;
+	periph-d46-supply = <&L7N>;
 };

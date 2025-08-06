@@ -185,6 +185,24 @@
 			status = "disabled";
 		};
 
+		qupv3_se1_1uart: qcom,qup_1uart@884000 {
+			compatible = "qcom,msm-geni-one-wire-serial";
+			reg = <0x884000 0x4000>;
+			reg-names = "se_phys";
+			interrupts = <GIC_SPI 496 IRQ_TYPE_LEVEL_HIGH>;
+			clock-names = "se-clk";
+			clocks = <&gcc GCC_QUPV3_WRAP1_S1_CLK>;
+			interconnect-names = "qup-core", "qup-config", "qup-memory";
+			interconnects =
+			<&clk_virt MASTER_QUP_CORE_0 &clk_virt SLAVE_QUP_CORE_0>,
+			<&gem_noc MASTER_APPSS_PROC &cnoc_cfg SLAVE_QUP_0>,
+			<&system_noc MASTER_QUP_0 &mc_virt SLAVE_EBI1>;
+			pinctrl-names = "default", "sleep";
+			pinctrl-0 = <&qupv3_se1_1uart_active>;
+			pinctrl-1 = <&qupv3_se1_1uart_sleep>;
+			status = "disabled";
+		};
+
 		qupv3_se2_i2c: i2c@888000 {
 			compatible = "qcom,i2c-geni";
 			reg = <0x888000 0x4000>;
@@ -706,7 +724,8 @@
 			pinctrl-names = "default", "sleep";
 			pinctrl-0 = <&qupv3_se10_spi_mosi_active>, <&qupv3_se10_spi_miso_active>,
 				<&qupv3_se10_spi_clk_active>, <&qupv3_se10_spi_cs_active>;
-			pinctrl-1 = <&qupv3_se10_spi_sleep>;
+			pinctrl-1 = <&qupv3_se10_spi_mosi_sleep>, <&qupv3_se10_spi_miso_sleep>,
+				<&qupv3_se10_spi_clk_sleep>, <&qupv3_se10_spi_cs_sleep>;
 			dmas = <&gpi_dma1 0 4 1 64 0>,
 				<&gpi_dma1 1 4 1 64 0>;
 			dma-names = "tx", "rx";

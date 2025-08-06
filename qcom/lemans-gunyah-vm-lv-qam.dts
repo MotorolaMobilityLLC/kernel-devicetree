@@ -6,4 +6,29 @@
 	model = "Qualcomm Technologies, Inc. Lemans IVI ADAS QAM Gunyah LV VM";
 	compatible = "qcom,lemans", "qcom,qam";
 	qcom,board-id = <0x10025 0x0>;
+
+	cpus {
+		/delete-node/ cpu@10200;
+		/delete-node/ cpu@10300;
+
+		cpu-map {
+			/delete-node/ cluster1;
+
+			cluster1 {
+				core0 {
+					cpu = <&CPU4>;
+				};
+
+				core1 {
+					cpu = <&CPU5>;
+				};
+			};
+		};
+	};
+};
+
+&vm_config {
+	vcpus {
+		affinity-map = <0x7 0x6 0x5 0x4 0x3 0x2>;
+	};
 };

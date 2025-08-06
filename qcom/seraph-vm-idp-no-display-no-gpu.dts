@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "seraph-vm.dtsi"
+#include "seraph-vm-idp-no-display-no-gpu.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. Seraph SVM IDP NO DISPLAY NO GPU";
+	compatible = "qcom,seraph-idp", "qcom,seraph", "qcom,idp";
+	qcom,board-id = <0x10022 3>;
+};

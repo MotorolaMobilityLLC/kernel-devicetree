@@ -1,7 +1,7 @@
 &soc {
-	ddr_cti0: cti@11502f00 {
+	ddr_cti0: cti@11502000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x11502f00 0x1000>;
+		reg = <0x11502000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-ddr_cti0";
@@ -10,9 +10,9 @@
 		clock-names = "apb_pclk";
 	};
 
-	ddr_cti1: cti@11508f00 {
+	ddr_cti1: cti@11508000 {
 		compatible = "arm,coresight-cti", "arm,primecell";
-		reg = <0x11508f00 0x1000>;
+		reg = <0x11508000 0x1000>;
 
 		arm,primecell-periphid = <0x000bb922>;
 		coresight-name = "coresight-cti-ddr_cti1";
@@ -852,11 +852,14 @@
 		reg = <0x114c1000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
-		coresight-name = "coresight-tpdm-tmess-dsb";
+		atid = <100>;
+		coresight-name = "coresight-tpdm-tmess-cmb";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
+		status = "disabled";
 
 		out-ports {
 			port {
@@ -874,8 +877,10 @@
 		reg = <0x114c2000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
+		atid = <100>;
 		coresight-name = "coresight-tpdm-tmess-dl";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -896,9 +901,11 @@
 		reg = <0x114c0000 0x1000>;
 		reg-names = "tpdm-base";
 
-		atid = <85>;
+		atid = <100>;
 
 		coresight-name = "coresight-tpdm-tmess-irq";
+
+		qcom,hw-enable-check;
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -917,7 +924,7 @@
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb969>;
 
-		qcom,tpda-atid = <85>;
+		qcom,tpda-atid = <100>;
 		qcom,dsb-elem-size = <4 64>;
 		qcom,cmb-elem-size = <2 32>,
 				     <3 32>,
@@ -1444,7 +1451,6 @@
 		reg-names = "tpdm-base";
 
 		coresight-name = "coresight-tpdm-llcc0";
-		status = "disabled";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -1467,7 +1473,6 @@
 		reg-names = "tpdm-base";
 
 		coresight-name = "coresight-tpdm-llcc1";
-		status = "disabled";
 
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
@@ -1641,6 +1646,23 @@
 		};
 	};
 
+	gladiator: gladiator {
+		compatible = "qcom,coresight-dummy";
+		coresight-name = "coresight-gladiator";
+		qcom,dummy-source;
+
+		atid = <96>;
+
+		out-ports {
+			port {
+				gladiator_out_funnel_ddr_dl1: endpoint {
+					remote-endpoint =
+					<&funnel_ddr_dl1_in_gladiator>;
+				};
+			};
+		};
+	};
+
 	funnel_ddr_dl1: funnel@1150a000 {
 		compatible = "arm,primecell";
 		arm,primecell-periphid = <0x000bb908>;
@@ -1663,6 +1685,14 @@
 				funnel_ddr_dl1_in_tpda_llcc: endpoint {
 					remote-endpoint =
 					<&tpda_llcc_out_funnel_ddr_dl1>;
+				};
+			};
+
+			port@3 {
+				reg = <3>;
+				funnel_ddr_dl1_in_gladiator: endpoint {
+					remote-endpoint =
+					<&gladiator_out_funnel_ddr_dl1>;
 				};
 			};
 		};
@@ -1772,7 +1802,6 @@
 				funnel_ddr_dl0_out_funnel_dlct0: endpoint {
 					remote-endpoint =
 					<&funnel_dlct0_in_funnel_ddr_dl0>;
-					source = <&tpda_llcc>;
 				};
 			};
 
@@ -3178,6 +3207,7 @@
 		coresight-name = "coresight-wpss-etm0";
 		qcom,inst-id = <3>;
 		atid = <44>;
+		status = "disabled";
 
 		out-ports {
 			port {
@@ -3498,10 +3528,12 @@
 
 		coresight-name = "coresight-tpdm-dcc";
 
+		qcom,hw-enable-check;
+
 		clocks = <&aoss_qmp>;
 		clock-names = "apb_pclk";
 
-		atid = <64>;
+		atid = <65>;
 		out-ports {
 			port {
 				tpdm_dcc_out_tpda_qdss: endpoint {

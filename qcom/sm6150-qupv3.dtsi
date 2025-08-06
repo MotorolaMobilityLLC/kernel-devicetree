@@ -29,6 +29,7 @@
 		qcom,ev-factor = <2>;
 		iommus = <&apps_smmu 0x00d6 0x0>;
 		qcom,iommu-dma-addr-pool = <0x100000 0x100000>;
+		dma-coherent;
 		status = "disabled";
 	};
 
@@ -46,6 +47,7 @@
 		clocks = <&gcc GCC_QUPV3_WRAP_0_M_AHB_CLK>,
 			<&gcc GCC_QUPV3_WRAP_0_S_AHB_CLK>;
 		ranges;
+		dma-coherent;
 		status = "ok";
 
 		/* Debug UART Instance for CDP/MTP platform */
@@ -167,6 +169,7 @@
 		qcom,gpii-mask = <0x0f>;
 		iommus = <&apps_smmu 0x0376 0x0>;
 		qcom,iommu-dma-addr-pool = <0x100000 0x100000>;
+		dma-coherent;
 		status = "ok";
 	};
 
@@ -184,6 +187,7 @@
 		qcom,iommu-geometry = <0x40000000 0x10000000>;
 		qcom,iommu-dma = "fastmap";
 		ranges;
+		dma-coherent;
 		status = "ok";
 
 		/* GNSS UART Instance for CDP/MTP platform */

@@ -1916,12 +1916,6 @@
 	sdhc1_opp_table: sdhc1-opp-table {
 		compatible = "operating-points-v2";
 
-		opp-400000 {
-			opp-hz = /bits/ 64 <400000>;
-			opp-peak-kBps = <0 0>;
-			opp-avg-kBps = <0 0>;
-		};
-
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <250000 133320>;
@@ -2022,12 +2016,6 @@
 
 	sdhc2_opp_table: sdhc2-opp-table {
 		compatible = "operating-points-v2";
-
-		opp-400000 {
-			opp-hz = /bits/ 64 <400000>;
-			opp-peak-kBps = <0 0>;
-			opp-avg-kBps = <0 0>;
-		};
 
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;

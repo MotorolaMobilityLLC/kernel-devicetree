@@ -1,6 +1,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/qcom,gcc-seraph.h>
 #include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
+#include <dt-bindings/soc/qcom,ipcc.h>
 
 / {
 	#address-cells = <0x2>;
@@ -86,7 +87,7 @@
 		qcom,sensitive;
 		vm-attrs = "context-dump", "crash-restart";
 
-		iomemory-ranges = <0x0 405000 0x0 405000 0x1000 0x0>;
+		iomemory-ranges = <0x0 0x405000 0x0 0x405000 0x0 0x1000 0x0>;
 		/* For LEVM por usecases is QUP1_SE4 and QUP2_SE7.
 		 * QUP1_SE4: GPII5 : IRQ_316
 		 * QUP2_SE7: GPII5 : IRQ_625
@@ -104,7 +105,7 @@
 			 * IPA address linux image is loaded at. Must be within
 			 * first 1GB due to memory hotplug requirement.
 			 */
-			base-address = <0x0 0x88800000 >;
+			base-address = <0x0 0x64400000 >;
 		};
 
 		segments {
@@ -195,6 +196,17 @@
 					qcom,label = <0x12>;
 					#address-cells = <0x2>;
 					base = <0x0 0xDA70c000>;
+				};
+			};
+
+			qrtr-shm {
+				vdevice-type = "shm-doorbell";
+				generate = "/hypervisor/qrtr-shm";
+				push-compatible = "qcom,qrtr-gunyah-gen";
+				peer-default;
+				memory {
+					qcom,label = <0x3>;
+					allocate-base;
 				};
 			};
 
@@ -336,7 +348,7 @@
 	ipcc_mproc_ns1: qcom,ipcc@405000 {
 		compatible = "qcom,ipcc";
 		reg = <0x405000 0x1000>; /* size */
-		interrupts = <GIC_SPI 703 IRQ_TYPE_LEVEL_HIGH>;
+		interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH>;
 		interrupt-controller;
 		#interrupt-cells = <3>;
 		#mbox-cells = <2>;
@@ -425,6 +437,11 @@
 		affinity = <0>;
 	};
 
+	qrtr-gunyah {
+		compatible = "qcom,qrtr-gunyah";
+		gunyah-label = <3>;
+	};
+
 	qcom,gh-qtimer@1742b000 {
 		compatible = "qcom,gh-qtmr";
 		reg = <0x1742b000 0x1000>;
@@ -472,7 +489,7 @@
 			 <&apps_smmu 0x1902 0x0>,
 			 <&apps_smmu 0x1921 0x0>,
 			 <&apps_smmu 0x0801 0x0>,
-			 <&apps_smmu 0x19A7 0x0>;
+			 <&apps_smmu 0x1967 0x0>;
 		dma-coherent;
 	};
 

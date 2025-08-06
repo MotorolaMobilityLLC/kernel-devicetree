@@ -2139,12 +2139,6 @@
 	sdhc2_opp_table: sdhc2-opp-table {
 		compatible = "operating-points-v2";
 
-		opp-400000 {
-			opp-hz = /bits/ 64 <400000>;
-			opp-peak-kBps = <0 0>;
-			opp-avg-kBps = <0 0>;
-		};
-
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <1600000 280000>;
@@ -2225,6 +2219,10 @@
 			reg = <0x138 0x4>;
 		};
 
+		feat_conf15: feat_conf15@13c {
+			reg = <0x13c 0x4>;
+		};
+
 		gpu_speed_bin: gpu_speed_bin@139 {
 			reg = <0x139 0x2>;
 			bits = <2 9>;
@@ -2234,8 +2232,10 @@
 	qfprom_sys: qfprom@0 {
 		compatible = "qcom,qfprom-sys";
 
-		nvmem-cells = <&feat_conf14>;
-		nvmem-cell-names = "feat_conf14";
+		nvmem-cells = <&feat_conf14>,
+				<&feat_conf15>;
+		nvmem-cell-names = "feat_conf14",
+				"feat_conf15";
 	};
 
 	mmio_sram: mmio-sram@17D09100 {

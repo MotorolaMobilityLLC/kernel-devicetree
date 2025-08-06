@@ -38,7 +38,7 @@
 		 *	    <0x300 &pcie_smmu 0x20003 0x1>;
 		 */
 
-		status = "disabled";
+		status = "okay";
 	};
 
 	pcie3: pci@0x400000000 {

@@ -1,10 +1,19 @@
+#include <dt-bindings/soc/qcom,ipcc.h>
 &soc {
+	ipcc_mproc_apps_ns1: qcom,ipcc@421000 {
+		compatible = "qcom,ipcc";
+		reg = <0x421000 0x1000>;
+		interrupts = <GIC_SPI 559 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+	};
 };
 
 / {
 	chosen {
 		bootargs = "rcupdate.rcu_expedited=1 rcu_nocbs=0-7 cgroup.memory=nokmem,nosocket kpti=0 arm64.nopauth kasan=off msm_show_resume_irq.debug_mask=1";
-		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom";
+		bootconfig = "androidboot.usbcontroller=a600000.dwc3 androidboot.fstab_suffix=gen4.qcom androidboot.dtbo_idx=10";
 	};
 
 	rename_devices: rename_devices {

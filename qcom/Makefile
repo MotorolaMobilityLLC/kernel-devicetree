@@ -83,7 +83,9 @@ VOLCANO_BOARDS += \
 		volcano6i-mtp-wcd9395-brahma-overlay.dtbo \
 		volcano6i-mtp-brahma-overlay.dtbo \
 		volcano6i-mtp-wcd9395-moselle-overlay.dtbo \
-		volcano6i-mtp-moselle-wingmate-overlay.dtbo \
+		volcano6i-mtp-moselle-overlay.dtbo \
+		volcano6i-mtp-wcd9395-moselle-emmc-overlay.dtbo \
+		volcano6i-mtp-moselle-emmc-overlay.dtbo \
 		volcano-qrd-overlay.dtbo \
 		volcano6i-qrd-moselle-overlay.dtbo \
 		volcano6i-mtp-STSafe320-brahma-overlay.dtbo
@@ -190,10 +192,12 @@ SERAPH_BOARDS += \
 		seraph-idp-overlay.dtbo \
 		seraph-idp-dtof-overlay.dtbo \
 		seraph-idp-no-display-overlay.dtbo \
+		seraph-idp-no-display-no-gpu-overlay.dtbo \
 		seraphp-atp-overlay.dtbo \
 		seraphp-idp-overlay.dtbo \
 		seraphp-idp-dtof-overlay.dtbo \
-		seraphp-idp-no-display-overlay.dtbo
+		seraphp-idp-no-display-overlay.dtbo \
+		seraphp-idp-no-display-no-gpu-overlay.dtbo
 
 NOAPQ_SERAPH_BOARDS += \
                   seraph-rumi-overlay.dtbo
@@ -368,7 +372,11 @@ seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb \
 				seraph-vm-idp-dtof.dtb \
 				seraphp-vm-idp-dtof.dtb \
 				seraph-vm-idp.dtb \
-				seraphp-vm-idp.dtb
+				seraphp-vm-idp.dtb \
+				seraph-vm-idp-no-display.dtb \
+				seraph-vm-idp-no-display-no-gpu.dtb \
+				seraphp-vm-idp-no-display.dtb \
+				seraphp-vm-idp-no-display-no-gpu.dtb
 
 dtb-y += $(seraph_tuivm-dtb-y)
 endif
@@ -420,11 +428,13 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
 		volcano-vm-mtp-wcd9395-aatc-evros.dtb \
 		volcano6i-vm-mtp-brahma.dtb \
 		volcano6i-vm-mtp-ganges.dtb \
-		volcano6i-vm-mtp-moselle-wingmate.dtb \
+		volcano6i-vm-mtp-moselle.dtb \
+		volcano6i-vm-mtp-moselle-emmc.dtb \
 		volcano6i-vm-mtp-wcd9395-brahma.dtb \
 		volcano6i-vm-mtp-wcd9395-ganges-hac2019.dtb \
 		volcano6i-vm-mtp-wcd9395-ganges.dtb \
 		volcano6i-vm-mtp-wcd9395-moselle.dtb \
+		volcano6i-vm-mtp-wcd9395-moselle-emmc.dtb \
                 volcano-vm-qrd.dtb \
 		volcano6i-vm-qrd-moselle.dtb \
                 volcano-oemvm-atp.dtb \
@@ -440,11 +450,13 @@ pineapple_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += volcano-vm-atp.dtb \
 		volcano-oemvm-mtp-wcd9395-aatc-evros.dtb \
                 volcano6i-oemvm-mtp-brahma.dtb \
                 volcano6i-oemvm-mtp-ganges.dtb \
-                volcano6i-oemvm-mtp-moselle-wingmate.dtb \
+                volcano6i-oemvm-mtp-moselle.dtb \
+                volcano6i-oemvm-mtp-moselle-emmc.dtb \
                 volcano6i-oemvm-mtp-wcd9395-brahma.dtb \
                 volcano6i-oemvm-mtp-wcd9395-ganges-hac2019.dtb \
                 volcano6i-oemvm-mtp-wcd9395-ganges.dtb \
                 volcano6i-oemvm-mtp-wcd9395-moselle.dtb \
+                volcano6i-oemvm-mtp-wcd9395-moselle-emmc.dtb \
                 volcano-oemvm-qrd.dtb \
                 volcano6i-oemvm-qrd-moselle.dtb
 
@@ -565,6 +577,10 @@ MONACO_FLEX_MULTI_GVM_BASE_DTB += monaco-vm-flex-la-mt.dtb
 
 MONACO_FLEX_MULTI_GVM_BOARDS += \
 		monaco-vm-flex-la-mt-overlay.dtbo
+SA8797P_LA_GVM_BOARDS += \
+		sa8797p-sdp8-vm-la-overlay.dtbo
+
+SA8797P_LA_GVM_BASE_DTB += sa8797p-sdp8-vm-la.dtb
 
 autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(SA8155_LA_GVM_BOARDS),$(SA8155_LA_GVM_BASE_DTB)) \
@@ -582,7 +598,8 @@ autogvm-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(call add-overlays, $(SA8155_MULTI_GVM_BOARDS),$(SA8155_MULTI_GVM_BASE_DTB)) \
 	$(call add-overlays, $(MONACO_FLEX_LA_GVM_BOARDS),$(MONACO_FLEX_LA_GVM_BASE_DTB)) \
 	$(call add-overlays, $(MONACO_MULTI_GVM_BOARDS),$(MONACO_MULTI_GVM_BASE_DTB)) \
-	$(call add-overlays, $(MONACO_FLEX_MULTI_GVM_BOARDS),$(MONACO_FLEX_MULTI_GVM_BASE_DTB))
+	$(call add-overlays, $(MONACO_FLEX_MULTI_GVM_BOARDS),$(MONACO_FLEX_MULTI_GVM_BASE_DTB)) \
+	$(call add-overlays, $(SA8797P_LA_GVM_BOARDS),$(SA8797P_LA_GVM_BASE_DTB))
 
 autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(SA8155_LA_GVM_BOARDS) $(SA8155_LA_GVM_BASE_DTB) \
@@ -600,7 +617,8 @@ autogvm-overlays-dtb-$(CONFIG_QTI_QUIN_GVM) += \
 	$(SA8155_MULTI_GVM_BOARDS) $(SA8155_MULTI_GVM_BASE_DTB) \
 	$(MONACO_FLEX_LA_GVM_BOARDS) $(MONACO_FLEX_LA_GVM_BASE_DTB) \
 	$(MONACO_MULTI_GVM_BOARDS) $(MONACO_MULTI_GVM_BASE_DTB) \
-	$(MONACO_FLEX_MULTI_GVM_BOARDS) $(MONACO_FLEX_MULTI_GVM_BASE_DTB)
+	$(MONACO_FLEX_MULTI_GVM_BOARDS) $(MONACO_FLEX_MULTI_GVM_BASE_DTB) \
+	$(SA8797P_LA_GVM_BOARDS) $(SA8797P_LA_GVM_BASE_DTB)
 
 dtb-y += $(autogvm-dtb-y)
 

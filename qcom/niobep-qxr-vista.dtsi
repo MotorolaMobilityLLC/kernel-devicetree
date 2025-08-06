@@ -205,8 +205,8 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
 		irq-gpios = <&tlmm 141 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
-		touchscreen-size-x = <3840>;
-		touchscreen-size-y = <3550>;
+		touchscreen-size-x = <2700>;
+		touchscreen-size-y = <600>;
 		azoteq,num-contacts = <1>;
 		azoteq,forced-comms = <1>;
 		azoteq,tp_settings = <7>;
@@ -248,6 +248,12 @@
 
 			event-swipe-x-pos {
 				linux,code = <KEY_REWIND>;
+				azoteq,gesture-max-ms = <300>;
+				azoteq,gesture-mid-ms = <300>;
+				azoteq,gesture-min-ms = <200>;
+				azoteq,gesture-dist = <100>;
+				azoteq,gesture-dist-rep = <100>;
+				azoteq,gesture-angle = <64>;
 			};
 
 			event-swipe-x-pos-hold {
@@ -264,6 +270,12 @@
 
 			event-swipe-y-pos {
 				linux,code = <KEY_VOLUMEUP>;
+				azoteq,gesture-max-ms = <300>;
+				azoteq,gesture-mid-ms = <300>;
+				azoteq,gesture-min-ms = <200>;
+				azoteq,gesture-dist = <150>;
+				azoteq,gesture-dist-rep = <100>;
+				azoteq,gesture-angle = <64>;
 			};
 
 			event-swipe-y-pos-hold {
@@ -331,6 +343,13 @@
 			};
 		};
 	};
+};
+
+&pm8550b_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Tx pre-emphasis tuning */
+		<0x4 0x57>;
 };
 
 &redriver1 {
@@ -554,6 +573,7 @@
 };
 
 &qupv3_se10_i2c {
+	qcom,bus-recovery;
 	status = "okay";
 	lm3535_led_hat: lm3535@38 {
 		status = "okay";
@@ -577,9 +597,10 @@
 		status = "okay";
 		compatible = "adi,max77720";
 		reg = <0x41>;
-		regulator-name = "vout_dtof";
-		regulator-min-microvolt = <11000000>;
-		regulator-max-microvolt = <11000000>;
+		regulator-name = "max77720_dtof";
+		regulator-min-microvolt = <17010000>;
+		regulator-max-microvolt = <24000000>;
 		regulator-initial-mode = <1>;
+		enable-gpio = <&tlmm 136 GPIO_ACTIVE_HIGH>;
 	};
 };

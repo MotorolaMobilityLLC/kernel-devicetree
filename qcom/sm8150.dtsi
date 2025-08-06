@@ -353,7 +353,7 @@
 	};
 
 	chosen: chosen {
-		bootargs = "qcom_dma_heaps.enable_bitstream_contig_heap=y kpti=0 ssbd=force-off rcupdate.rcu_expedited=1 cpufreq.default_governor=performance fw_devlink.strict=1 ufshcd-core.use_mcq_mode=n ufshcd_core.uic_cmd_timeout=2000 mem_sleep_default=s2idle";
+		bootargs = "qcom_dma_heaps.enable_bitstream_contig_heap=y kpti=0 ssbd=force-off rcupdate.rcu_expedited=1 cpufreq.default_governor=performance fw_devlink.strict=1 ufshcd-core.use_mcq_mode=n ufshcd_core.uic_cmd_timeout=2000";
 	};
 
 	soc: soc { };
@@ -1277,12 +1277,6 @@
 	sdhc2_opp_table: sdhc2-opp-table {
 		compatible = "operating-points-v2";
 
-		opp-400000 {
-			opp-hz = /bits/ 64 <400000>;
-			opp-peak-kBps = <0 0>;
-			opp-avg-kBps = <0 0>;
-		};
-
 		opp-100000000 {
 			opp-hz = /bits/ 64 <100000000>;
 			opp-peak-kBps = <1600000 280000>;
@@ -1696,7 +1690,7 @@
 		qcom,smem-states = <&modem_smp2p_out 0>;
 		qcom,smem-state-names = "stop";
 
-		glink-edge {
+		glink_edge_modem: glink-edge {
 			qcom,remote-pid = <1>;
 			transport = "smem";
 			mboxes = <&apss_shared 12>;

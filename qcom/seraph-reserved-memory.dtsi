@@ -118,6 +118,41 @@
 		reg = <0x0 0x82071000 0x0 0x40000>;
 	};
 
+	dae_gic_context_mem: dae_gic_context_region@82160000 {
+		no-map;
+		reg = <0x0 0x82160000 0x0 0x100000>;
+	};
+
+	dae_ocimem_mem: dae_ocimem_region@82260000 {
+		no-map;
+		reg = <0x0 0x82260000 0x0 0x2c000>;
+	};
+
+	dae_xpu_mem: dae_xpu_region@8228c000 {
+		no-map;
+		reg = <0x0 0x8228c000 0x0 0x1d000>;
+	};
+
+	dae_lcp_l4_vault_mem: dae_lcp_l4_vault_region@822a9000 {
+		no-map;
+		reg = <0x0 0x822a9000 0x0 0x3000>;
+	};
+
+	dae_tz_entry_mem: dae_tz_entry_region@822ac000 {
+		no-map;
+		reg = <0x0 0x822ac000 0x0 0x1000>;
+	};
+
+	dae_reserved_mem: dae_reserved_region@822ad000 {
+		no-map;
+		reg = <0x0 0x822ad000 0x0 0x3000>;
+	};
+
+	dae_tags_mem: dae_tags_region@822b0000 {
+		no-map;
+		reg = <0x0 0x822b0000 0x0 0x2a000>;
+	};
+
 	soccp_sdi_mem: soccp_sdi_region@823a0000 {
 		reg = <0x0 0x823a0000 0x0 0x40000>;
 		no-map;

@@ -166,6 +166,10 @@
 		};
 	};
 
+	virtio_console {
+		qcom,dev-name = "vconsole";
+	};
+
 	virtio_blk_lv_system_a {
 		qcom,dev-name = "system_a";
 	};
@@ -260,7 +264,7 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvmlv";
 		qcom,pasid = <0x0 0x2d>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,FD02C9DA-306C-48C7-A49C-BBD827AE86EE;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,bintestapp64,tzecotestapp1,crypto_testapp,sst_testapp,autosst_testapp,auto_test_unpermitted,FD02C9DA-306C-48C7-A49C-BBD827AE86EE,5AF8C3E6-D9DF-446E-4FF2-D4D58E8CA49B,19CE19B9-FD73-4262-8553-E5CAC40C895A,C02CAC07-2639-4EF0-BC12-C4AF1FB3E276,15C6B6E4-D083-48E4-8744-4D90A8FF1EF2,CAD10542-34E4-452D-6156-E979AA6E61BC,23914957-C174-4EA6-54D1-DA820F77B4B0,5AF8C3E6-D9DF-446E-4FF2-C3C47D7B938A,CAD10542-34E4-452D-6156-E979AA6E6132,5AF8C3E6-D9DF-446E-4FF2-B2B36C6A8279,smplap32,smplap64;";
 		qcom,secdomain-ids = <53>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump";
@@ -299,6 +303,12 @@
 				message-size = <0x000000f0>;
 				queue-depth = <0x00000008>;
 				qcom,label = <0x1>;
+			};
+
+			vrtc {
+				vdevice-type = "vrtc-pl031";
+				peer-default;
+				allocate-base;
 			};
 
 			virtio-mmio@0 {
@@ -843,7 +853,7 @@
 			/* console */
 			virtio-mmio@33 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_console";
 				peer-default;
 				vqs-num = <0x2>;
 				push-compatible = "virtio,mmio";
@@ -1112,4 +1122,65 @@
 
 	qcom,auto-suspend-disable;
 	status = "disabled";
+};
+
+&soc {
+	hab: qcom,hab {
+		compatible = "qcom,hab";
+		vmid = <3>;
+
+		mmidgrp100: mmidgrp100 {
+			grp-start-id = <100>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp200: mmidgrp200 {
+			grp-start-id = <200>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp300: mmidgrp300 {
+			grp-start-id = <300>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp400: mmidgrp400 {
+			grp-start-id = <400>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp500: mmidgrp500 {
+			grp-start-id = <500>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp600: mmidgrp600 {
+			grp-start-id = <600>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1400: mmidgrp1400 {
+			grp-start-id = <1400>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1500: mmidgrp1500 {
+			grp-start-id = <1500>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+
+		mmidgrp1600: mmidgrp1600 {
+			grp-start-id = <1600>;
+			role = "fe";
+			remote-vmids = <0>;
+		};
+	};
 };

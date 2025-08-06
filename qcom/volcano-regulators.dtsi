@@ -435,8 +435,6 @@
 		pm7550_l12: regulator-pm7550-l12 {
 			regulator-name = "pm7550_l12";
 			qcom,set = <RPMH_REGULATOR_SET_ALL>;
-			regulator-min-microvolt = <2952000>;
-			regulator-max-microvolt = <2952000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
 		};
 	};
