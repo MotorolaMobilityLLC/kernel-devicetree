@@ -52,6 +52,7 @@
 		interrupts = <62 0x02>;
 		interrupt-names = "sx937x_irq";
 		Semtech,nirq-gpio= <&tlmm 62 0x02>;
+		esd-reinit-on = <1>;
 		/*use PH4/5/6 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
 		Semtech,ref-phases-a = <5>;
@@ -83,7 +84,7 @@
 			0x8098 0x00007F40
 			0x80B8 0x00002323
 			0x80D8 0x00003737
-			0x80F8 0x00005A35
+			0x80F8 0x00005A2A
 			0x8118 0x00003737
 			0x8138 0x000000FF
 			0x8158 0x000000FF
