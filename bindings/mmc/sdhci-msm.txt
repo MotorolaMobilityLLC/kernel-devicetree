@@ -81,6 +81,12 @@ Optional Properties:
 	When set, the driver will skip attempts to cache card state
 	and perform partial resume.
 
+- mmc-rst-n-disable: If present, disables reliance on the eMMC ext_csd
+	rst_n register value during hardware reset. This is useful for
+	Quickboot and deep sleep scenarios where the rst_n register may
+	be disabled. When this property is set, the controller performs
+	gcc hardware reset without relying on the ext_csd rst_n value.
+
 Example:
 
 	sdhc_1: sdhci@f9824900 {
