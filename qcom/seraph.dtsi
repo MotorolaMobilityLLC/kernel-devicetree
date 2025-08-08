@@ -963,6 +963,10 @@
 		< 1 >;
 	};
 
+	qcom_dcvs_prof: qcom-dcvs-prof {
+		max_masters = <4>;
+	};
+
 	qcom_dcvs: qcom,dcvs {
 		compatible = "qcom,dcvs";
 		#address-cells = <1>;
