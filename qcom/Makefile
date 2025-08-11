@@ -175,7 +175,8 @@ NEO_BOARDS += \
 		neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo \
 		neo_luna-v2-sg-idp-dual-display-overlay.dtbo \
 		neo_luna-v2-sg-idp-overlay.dtbo \
-		neo_luna-v2-sg-idp-pm8008-overlay.dtbo
+		neo_luna-v2-sg-idp-pm8008-overlay.dtbo \
+		neo_luna-v2-sg-qar-overlay.dtbo
 
 neo-dtb-$(CONFIG_ARCH_NEO) += \
 	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LA_BASE_DTB)) \
