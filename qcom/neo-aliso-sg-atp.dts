@@ -1,0 +1,12 @@
+/dts-v1/;
+
+#include "neo_la.dtsi"
+#include "neo-aliso-sg-atp.dtsi"
+
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO ALISO SG ATP";
+	compatible = "qcom,neo-atp", "qcom,neo", "qcom,atp";
+	qcom,board-id = <33 1>;
+};
+
