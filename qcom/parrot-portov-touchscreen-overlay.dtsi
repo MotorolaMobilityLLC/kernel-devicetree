@@ -1,4 +1,4 @@
-/* Copyright (c) 2021, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2025, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -105,6 +105,7 @@
 		interrupts = <65 0x2002>;
 		spi-cpha;
 		spi-cpol;
+		chipone,gesture-wait-pm;
 		chipone,rst-gpio = <&tlmm 131 0x00>;
 		chipone,irq-gpio = <&tlmm 65 0x2002>;
 		chipone,x-res = <4320>;
@@ -135,6 +136,7 @@
 		ilitek,resolution_boost = <4>;
 		ilitek,supported_gesture_type = <0x06>;
 		ilitek,report_gesture_key;
+		ilitek,gesture-wait-pm;
 		status = "ok";
 	};
 
