@@ -15,6 +15,7 @@
 #include "volcano-marvel-sensor-overlay.dtsi"
 #include "volcano-marvel-thermal-overlay.dtsi"
 #include "volcano-marvel-nfc-overlay.dtsi"
+#include "volcano-marvel-fps-overlay.dtsi"
 #include "moto-marvel-aw37004.dtsi"
 #include "volcano-marvel-touchscreen-overlay.dtsi"
 #include "volcano-marvel-wlan-antenna-control.dtsi"
