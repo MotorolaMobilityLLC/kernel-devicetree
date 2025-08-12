@@ -29,9 +29,16 @@ CANOE_BASE_DTB += canoe-blanc-base.dtb canoe-v2-blanc-base.dtb
 CANOE_BOARDS += canoe-blanc-evb-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_VANTAGE_DTB),y)
+ALOR_BASE_DTB += alor-vantage-base.dtb
+ALOR_BOARDS += alor-vantage-dvt1b-overlay.dtbo
+endif
+
 canoe-dtb-$(CONFIG_ARCH_CANOE) += \
 	$(call add-overlays, $(CANOE_BOARDS), $(CANOE_BASE_DTB))
 
+canoe-dtb-$(CONFIG_ARCH_ALOR) += \
+	$(call add-overlays, $(ALOR_BOARDS), $(ALOR_BASE_DTB))
 else
 
 CANOE_BASE_DTB += canoe.dtb canoe-v2.dtb canoe-tp.dtb canoe-tp-v2.dtb alor-interposer.dtb alor-interposer-v2.dtb whale.dtb
