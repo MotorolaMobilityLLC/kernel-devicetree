@@ -231,6 +231,7 @@
 
 &usb0 {
 	extcon = <&charger>, <&eud>;
+	dummy-supply = <&eud>;
 };
 
 &pm8150_poweron {
