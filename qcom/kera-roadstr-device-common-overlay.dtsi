@@ -154,7 +154,6 @@
                 usb-phy = <&eusb2_phy0>, <&usb_nop_phy>;
                 maximum-speed = "high-speed";
                 snps,usb2-gadget-lpm-disable;
-                snps,usb2-lpm-disable;
         };
 };
 
