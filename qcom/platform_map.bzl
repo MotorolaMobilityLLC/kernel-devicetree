@@ -42,7 +42,7 @@ _platform_map = {
             {"name": "canoe-vantg-dvt1a-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-blanc-evb-overlay.dtbo", "product": "blanc"},
         ],
-       # "binary_compatible_with": ["alor", "alor-interposer", "chora", "malabar"],
+        "binary_compatible_with": ["alor"],
     },
     "canoe-le": {
         "dtb_list": [
@@ -101,26 +101,11 @@ _platform_map = {
     "alor": {
         "dtb_list": [
             # keep sorted
-            {"name": "alor.dtb"},
-            {
-                "name": "alorp.dtb",
-                "apq": True,
-            },
+            {"name": "alor-vantage-base.dtb","product": "vantage"},
         ],
         "dtbo_list": [
             # keep sorted
-            {"name": "alor-atp-overlay.dtbo"},
-            {"name": "alor-cdp-overlay.dtbo"},
-            {"name": "alor-cdp-peach-overlay.dtbo"},
-            {"name": "alor-mtp-overlay.dtbo"},
-            {"name": "alor-mtp-pm7550ba-smb1398-overlay.dtbo"},
-            {"name": "alor-mtp-pmih010x-smb1398-overlay.dtbo"},
-            {"name": "alor-rcm-overlay.dtbo"},
-            {"name": "alor-rcm-peach-overlay.dtbo"},
-            {"name": "alor-qrd-overlay.dtbo"},
-            {"name": "alor-qrd-peach-overlay.dtbo"},
-            {"name": "alor-qrd-ufcs-overlay.dtbo"},
-            {"name": "alor-rumi-overlay.dtbo"},
+            {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
         ],
     },
     "alor-interposer": {
