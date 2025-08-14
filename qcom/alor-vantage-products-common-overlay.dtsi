@@ -17,3 +17,72 @@
 #include "alor-moto-common-overlay-base.dtsi"
 #include "alor-moto-common-overlay.dtsi"
 #include "alor-vantage-haptics-overlay.dtsi"
+
+&tlmm {
+	redriver_enable: redriver_enable {
+		mux {
+			pins = "gpio71";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio71";
+			drive-strength = <2>;
+			bias-disable; /* NO PULL */
+			output-high;
+		};
+	};
+	redriver_disable: redriver_disable {
+		mux {
+			pins = "gpio71";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio71";
+			drive-strength = <2>;
+			output-low;
+		};
+	};
+
+};
+
+&wcd_usbss {
+	status = "disabled";
+};
+&redriver {
+	status = "disabled";
+};
+
+&qupv3_se20_i2c {
+	status = "ok";
+	#include "alor-vantage-usb-redriver.dtsi"
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pmih010x_eusb2_repeater>;
+	usb-repeater = <&pmih010x_eusb2_repeater>;
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	usb-role-switch;
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 60 0>;
+
+	ssusb_redriver = <&redriver_mmi>;
+
+	/delete-property/ qcom,wcd_usbss;
+
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+		maximum-speed = "super-speed-plus";
+		snps,usb2-gadget-lpm-disable;
+		snps,usb2-lpm-disable;
+	};
+};
+
