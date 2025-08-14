@@ -16,3 +16,4 @@
 
 #include "alor-moto-common-overlay-base.dtsi"
 #include "alor-moto-common-overlay.dtsi"
+#include "alor-vantage-haptics-overlay.dtsi"
