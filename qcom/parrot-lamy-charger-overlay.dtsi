@@ -79,6 +79,11 @@
 
 		io-channels = <&pmk8350_vadc PM8350B_ADC7_GPIO2>;
 		io-channel-names = "pm8350b_pen_sns";
+
+		mmi,r-sns-milliohm = <1000>;
+		mmi,charge-iterm-ma = <5>;
+		mmi,charge-buffer-s = <420>;
+		mmi,heartbeat-interval-s = <180>;
 	};
 };
 
