@@ -16,6 +16,8 @@
 
 #include "alor-moto-common-overlay-base.dtsi"
 #include "alor-moto-common-overlay.dtsi"
+#include "alor-moto-common-charger.dtsi"
+#include "alor-vantage-charger-overlay.dtsi"
 #include "alor-vantage-haptics-overlay.dtsi"
 #include "alor-vantage-sensors-overlay.dtsi"
 #include "alor-vantage-touchscreen-thp-overlay.dtsi"
@@ -117,4 +119,3 @@
 		snps,usb2-lpm-disable;
 	};
 };
-
