@@ -23,6 +23,13 @@ SUN_BOARDS += sun-leap-evb-overlay.dtbo \
               sun-leap-evt1-overlay.dtbo \
               sun-leap-pvt1-overlay.dtbo
 endif
+ifeq ($(CONFIG_LHOTSE_DTB),y)
+#LEAP and LHOTSE have same base dts, so use leap base
+ifneq ($(CONFIG_LEAP_DTB),y)
+SUN_BASE_DTB += sun-tp-leap-base.dtb sun-tp-v2-leap-base.dtb
+endif
+SUN_BOARDS += sun-lhotse-evt-overlay.dtbo
+endif
 
 ifeq ($(CONFIG_ROADSTR_DTB),y)
 KERA_BASE_DTB += kera-roadstr-base.dtb

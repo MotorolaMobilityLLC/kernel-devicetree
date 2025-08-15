@@ -25,12 +25,15 @@ _platform_map = {
         "dtb_list": [
             {"name": "sun-tp-leap-base.dtb", "product": "leap"},
             {"name": "sun-tp-v2-leap-base.dtb", "product": "leap"},
+            {"name": "sun-tp-leap-base.dtb", "product": "lhotse"},
+            {"name": "sun-tp-v2-leap-base.dtb", "product": "lhotse"},
         ],
         "dtbo_list": [
             # keep sorted
             {"name": "sun-leap-evb-overlay.dtbo", "product": "leap"},
             {"name": "sun-leap-evt1-overlay.dtbo", "product": "leap"},
             {"name": "sun-leap-pvt1-overlay.dtbo", "product": "leap"},
+            {"name": "sun-lhotse-evt-overlay.dtbo", "product": "lhotse"},
         ],
         "binary_compatible_with": ["tuna", "kera"],
     },
