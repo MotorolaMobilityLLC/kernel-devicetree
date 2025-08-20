@@ -145,6 +145,9 @@ Generic board variants:
 - IDP device:
   compatible = "qcom,idp"
 
+- QAR device:
+  compatible = "qcom,qar"
+
 - QXR device:
   compatible = "qcom,qxr"
 
@@ -398,6 +401,7 @@ compatible = "qcom,neo-rumi"
 compatible = "qcom,neo-qxr"
 compatible = "qcom,neo-idp"
 compatible = "qcom,neo-atp"
+compatible = "qcom,neo-qar"
 compatible = "qcom,anorak-idp"
 compatible = "qcom,anorak-qxr"
 compatible = "qcom,anorak-atp"
