@@ -1,0 +1,9 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2024-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+
+&mpss_mem{
+	no-map;
+	reg = <0x0 0x8bc00000 0x0 0xd700000>;
+};
