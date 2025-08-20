@@ -40,6 +40,10 @@
 	status = "disabled";
 };
 
+&sdhc_2 {
+	status = "disabled";
+};
+
 &qupv3_se8_i2c {
 	status = "ok";
 	qcom,clk-freq-out = <1000000>;
