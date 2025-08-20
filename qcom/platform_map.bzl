@@ -32,15 +32,12 @@ _platform_map = {
             # keep sorted
             {"name": "canoe-vantg-base.dtb", "product": "vantg"},
             {"name": "canoe-v2-vantg-base.dtb", "product": "vantg"},
-            {"name": "canoe-blanc-base.dtb", "product": "blanc"},
-            {"name": "canoe-v2-blanc-base.dtb", "product": "blanc"},
         ],
         "dtbo_list": [
             # keep sorted
             {"name": "canoe-vantg-evb-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-vantg-evt1-overlay.dtbo", "product": "vantg"},
             {"name": "canoe-vantg-dvt1a-overlay.dtbo", "product": "vantg"},
-            {"name": "canoe-blanc-evb-overlay.dtbo", "product": "blanc"},
         ],
         "binary_compatible_with": ["alor"],
     },
@@ -101,10 +98,12 @@ _platform_map = {
     "alor": {
         "dtb_list": [
             # keep sorted
+            {"name": "alor-blanc-base.dtb","product": "blanc"},
             {"name": "alor-vantage-base.dtb","product": "vantage"},
         ],
         "dtbo_list": [
             # keep sorted
+            {"name": "alor-blanc-evb-overlay.dtbo", "product": "blanc"},
             {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
         ],
     },
