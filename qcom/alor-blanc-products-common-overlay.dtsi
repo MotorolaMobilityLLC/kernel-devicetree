@@ -1,0 +1,93 @@
+/* Copyright (c) 2025 Motorola Mobility LLC. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+/*
+   This file is used for all blanc products include prc, row, na etc.
+*/
+
+#include "alor-moto-common-overlay-base.dtsi"
+#include "alor-moto-common-overlay.dtsi"
+
+&tlmm {
+
+	key_ai_default: key_ai_default {
+		mux {
+			pins = "gpio124";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio124";
+			bias-pull-up;
+			input-enable;
+		};
+	};
+};
+
+&soc {
+	gpio_keys {
+		pinctrl-names = "default";
+		pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
+
+		ai_assist {
+			label = "ai_assist";
+			gpios = <&tlmm 124 GPIO_ACTIVE_LOW>;
+			linux,input-type = <EV_KEY>;
+			linux,code = <KEY_SEARCH>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+	};
+};
+
+&wcd_usbss {
+	status = "disabled";
+};
+&redriver {
+	status = "disabled";
+};
+
+&qupv3_se20_i2c {
+	status = "ok";
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pmih010x_eusb2_repeater>;
+	usb-repeater = <&pmih010x_eusb2_repeater>;
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	usb-role-switch;
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 60 0>;
+
+
+	/delete-property/ qcom,wcd_usbss;
+
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+		maximum-speed = "super-speed-plus";
+		snps,usb2-gadget-lpm-disable;
+		snps,usb2-lpm-disable;
+	};
+};
+
+&sdhc_2 {
+       status = "disabled";
+};
+
