@@ -258,6 +258,8 @@
 					&hgsl_tcsr_receiver1
 					&hgsl_tcsr_receiver2
 					&hgsl_tcsr_receiver3>;
+		default_iocoherency;
+		writecombine_enable;
 	};
 
 	pdc: interrupt-controller@b220000 {
