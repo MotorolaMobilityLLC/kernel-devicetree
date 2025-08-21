@@ -2727,6 +2727,7 @@
 
 	qcom_smcinvoke {
 		compatible = "qcom,smcinvoke";
+		interrupts = <GIC_SPI 705 IRQ_TYPE_EDGE_RISING>;
 	};
 
 	qcom_mem_object {
