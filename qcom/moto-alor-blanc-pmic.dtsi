@@ -1,0 +1,114 @@
+/*
+ * Each QUP device that's a parent to PMIC must be listed as a critical device
+ * to GCC.
+ */
+
+&gcc {
+	qcom,critical-devices = <&qupv3_se0_i2c>, <&qupv3_se3_i2c>, <&qupv3_1>;
+};
+
+&tlmm {
+	vdd_cam_3p0_en_default: vdd_cam_3p0_en_default {
+		mux {
+			pins = "gpio74";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio74";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+};
+
+&soc {
+	vdd_cam_3p0: gpio-regulator@50 {
+		compatible = "regulator-fixed";
+		reg = <0x50 0x00>;
+		regulator-name = "vdd_cam_3p0";
+		regulator-min-microvolt = <3000000>;
+		regulator-max-microvolt = <3000000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 74 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vdd_cam_3p0_en_default>;
+		regulator-always-on;
+		vin-supply = <&BOB1>;
+	};
+};
+
+&qupv3_se0_i2c {
+	status = "ok";
+	cam_pmic: aw37004@28 {
+		compatible = "aw37004";
+		reg = <0x28>;
+
+		vin1-supply = <&S4F>;
+		vin2-supply = <&vdd_cam_3p0>;
+
+		regulators {
+			cam_ldo1: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo2: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam_ldo3: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			cam_ldo4: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+		};
+	};
+};
+
+&qupv3_se3_i2c {
+	status = "ok";
+	cam_pmic_2nd: aw37004-2nd@28 {
+		compatible = "aw37004-2nd";
+		reg = <0x28>;
+
+		vin1-supply = <&S4F>;
+		vin2-supply = <&vdd_cam_3p0>;
+
+		regulators {
+			cam2_ldo1: ldo1 {
+				regulator-name = "ldo1";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam2_ldo2: ldo2 {
+				regulator-name = "ldo2";
+				regulator-min-microvolt = <600000>;
+				regulator-max-microvolt = <1800000>;
+			};
+
+			cam2_ldo3: ldo3 {
+				regulator-name = "ldo3";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+
+			cam2_ldo4: ldo4 {
+				regulator-name = "ldo4";
+				regulator-min-microvolt = <1200000>;
+				regulator-max-microvolt = <4300000>;
+			};
+		};
+	};
+};
