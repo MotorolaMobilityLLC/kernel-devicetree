@@ -18,6 +18,11 @@
 		reg = <0x0 0x38000000 0x0 0xa00000>;
 	};
 
+	proxy_tcm_mem: proxy_tcm_mem@82800000 {
+		no-map;
+		reg = <0x0 0x82800000 0x0 0xa00000>;
+	};
+
 	/*
 	 * hyp_tags_mem is dynamically removed from the RAM
 	 * partition tables before boot occurs.

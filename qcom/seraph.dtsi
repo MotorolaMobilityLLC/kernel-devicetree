@@ -673,7 +673,7 @@
 		reg = <0x25000000 0x800000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
 		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
-		memory-region = <&sc_tcm_mem>;
+		memory-region = <&proxy_tcm_mem>;
 		cap-based-alloc-and-pwr-collapse;
 		qcom,sct-initialized;
 
