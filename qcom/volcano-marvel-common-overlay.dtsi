@@ -81,3 +81,22 @@
 		aw8693x_is_enabled_track_en;
 	};
 };
+
+&pmiv0104_eusb2_repeater {
+        qcom,param-override-seq =
+                /* <value reg_offset> */
+                /* Adjust HS trasmit amplitude */
+                <0x6 0x51
+                /* Squelch Detector Threshold */
+                 0x5 0x54
+                /* Tx pre-emphasis tuning */
+                 0x5 0x57>;
+        qcom,host-param-override-seq =
+                /* <value reg_offset> */
+                /* Adjust HS trasmit amplitude */
+                <0x6 0x51
+                /* Disconnect Threshold */
+                 0x7 0x53
+                /* Tx pre-emphasis tuning */
+                 0x5 0x57>;
+};
