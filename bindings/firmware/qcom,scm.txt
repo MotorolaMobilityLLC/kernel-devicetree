@@ -41,7 +41,20 @@ Required properties:
   clock and "bus" for the bus clock per the requirements of the compatible.
 - qcom,dload-mode: phandle to the TCSR hardware block and offset of the
 		   download mode control register (optional)
+- qcom,regulator-names: Regulator on which the vote has to be placed (optional)
+- mmcx-supply: Phandle for MMCX regulator device node(optional)
+- mmcx-uV-uA:  Voltage and current values for the MMCX regulator(optional)
 
+Example for SERAPH:
+	firmware {
+		qcom_scm {
+			compatible = "qcom,scm";
+			qcom,dload-mode = <&tcsr 0x99000>;
+			mmcx-supply = <&VDD_MMCX_LEVEL>;
+			mmcx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+			qcom,regulator-names = "mmcx";
+		};
+	};
 Example for MSM8916:
 
 	firmware {
