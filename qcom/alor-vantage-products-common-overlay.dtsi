@@ -19,6 +19,7 @@
 #include "alor-vantage-haptics-overlay.dtsi"
 #include "alor-vantage-sensors-overlay.dtsi"
 #include "alor-vantage-touchscreen-thp-overlay.dtsi"
+#include "alor-qrd-peach-vantage.dtsi"
 
 &tlmm {
 	redriver_enable: redriver_enable {
