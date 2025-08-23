@@ -128,9 +128,6 @@
 		compatible = "awinic,aw_sar";
 		reg = < 0x12 >;
 		sar-num = < 0 >;
-		pinctrl-names = "default","sleep";
-		pinctrl-0 = <&sar_int_default>;
-		pinctrl-1 = <&sar_int_sleep>;
 		interrupt-parent = <&tlmm>;
 		interrupts = <82 0x02>;
 		interrupt-names = "awinic_irq";
