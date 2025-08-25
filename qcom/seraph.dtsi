@@ -251,6 +251,10 @@
 
 	soc: soc { };
 
+	pcie0: qcom,pcie@1c00000 { };
+
+	pcie1: qcom,pcie@1c0a000 { };
+
 };
 
 &soc {
