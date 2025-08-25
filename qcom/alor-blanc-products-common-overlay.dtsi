@@ -17,6 +17,8 @@
 #include "alor-moto-common-overlay-base.dtsi"
 #include "alor-moto-common-overlay.dtsi"
 #include "alor-blanc-fingerprint-overlay.dtsi"
+#include "alor-moto-common-charger.dtsi"
+#include "alor-blanc-charger-overlay.dtsi"
 &tlmm {
 
 	key_ai_default: key_ai_default {
