@@ -23,11 +23,11 @@
 	qcom,init-voltage = <3200000>;
 };
 
-/*
-&pmk8850_gpios {
+
+&pmk8550_gpios {
 	stylus_clk_ctrl {
 		stylus_clk_active: stylus_clk_active {
-			pins = "gpio5";
+			pins = "gpio2";
 			function = "func2";
 			bias-disable; // No Pull
 			output-enable; // digital output, no invert
@@ -35,7 +35,7 @@
 			power-source = <0>;
 		};
 		stylus_clk_suspend: stylus_clk_suspend {
-			pins = "gpio5";
+			pins = "gpio2";
 			function = "func2";
 			bias-high-impedance;
 			output-enable; // digital output, no invert
@@ -44,7 +44,6 @@
 		};
 	};
 };
-*/
 
 &qupv3_se4_spi {
 	#address-cells = <1>;
@@ -84,8 +83,8 @@
 		pinctrl-0 = <&ts_active>;
 		pinctrl-1 = <&ts_int_suspend &ts_reset_suspend>;
 		pinctrl-2 = <&ts_release>;
-//		pinctrl-3 = <&stylus_clk_active>;
-//		pinctrl-4 = <&stylus_clk_suspend>;
+		pinctrl-3 = <&stylus_clk_active>;
+		pinctrl-4 = <&stylus_clk_suspend>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
