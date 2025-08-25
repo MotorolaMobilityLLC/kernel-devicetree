@@ -36,7 +36,7 @@
 	qcom,uses_level_shifter;
 	qcom,external-fb-clk;
 
-	status = "ok";
+	status = "disabled";
 };
 
 &ufsphy_mem {
