@@ -45,6 +45,16 @@
 			0x03 0x78>;
 };
 
+&adsp_mem {
+	no-map;
+	reg = <0x0 0x86c00000 0x0 0x2800000>;
+};
+
+&video_mem {
+	no-map;
+	reg = <0x0 0x9a200000 0x0 0x700000>;
+};
+
 &tlmm {
 	google_key_default: google_key_default {
 		mux {
