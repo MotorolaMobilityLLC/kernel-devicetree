@@ -55,9 +55,50 @@
                         input-enable;
                 };
         };
+
+        fingerfp_rst_high: fingerfp_rst_high {
+		mux {
+			pins = "gpio76";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio76";
+			drive-strength = <2>;
+			output-high;
+			bias--pull-down;
+		};
+	};
+
+	fingerfp_rst_low: fingerfp_rst_low {
+		mux {
+			pins = "gpio76";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio76";
+			drive-strength = <2>;
+			output-low;
+			bias-disable;
+		};
+	};
+
+	fingerfp_irq_active: fingerfp_irq_active {
+		mux {
+			pins = "gpio75";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio75";
+			drive-strength = <2>;
+			bias-disable;
+			input-enable;
+		};
+	};
 };
 
 &L13B {
+	regulator-min-microvolt = <3300000>;
 	regulator-max-microvolt = <3300000>;
 	qcom,init-voltage = <3300000>;
 	status = "ok";
@@ -78,6 +119,21 @@
 		pinctrl-names = "default", "suspend";
 		pinctrl-0 = <&fps_rst_active &fps_int_active>;
 		pinctrl-1 = <&fps_rst_suspend &fps_int_suspend>;
+	};
+	
+	el732: el732 {
+		status = "ok";
+		compatible = "fp-egistec";
+		fp-ctrl-power;
+		vcc_fp-supply = <&L13B>;
+		egis-fp,vcc-voltage = <3300000 3300000>;
+		egis-fp,vcc-current = <100000>;
+		egistec,gpio_irq = <&tlmm 75 0x00>;
+		egistec,gpio_reset = <&tlmm 76 0x00>;
+		pinctrl-names = "egis_rst_high", "egis_rst_low", "egis_irq_active";
+		pinctrl-0 = <&fingerfp_rst_high>;
+		pinctrl-1 = <&fingerfp_rst_low>;
+		pinctrl-2 = <&fingerfp_irq_active>;
 	};
 };
 
