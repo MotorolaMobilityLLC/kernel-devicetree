@@ -24,6 +24,9 @@
 #include "alor-qrd-peach-vantage.dtsi"
 
 &tlmm {
+	/* remove gpio73/74/75 as they are used as camera LDO enable pin*/
+	qcom,gpios-reserved = <36 37 38 39 46 72 148 149 56 57 58 59>;
+
 	redriver_enable: redriver_enable {
 		mux {
 			pins = "gpio71";
