@@ -50,8 +50,8 @@
 			mmi,max-fv-mv = <4500>;
 			mmi,max-fcc-ma = <4000>;
 			mmi,demo-fv-mv = <4000>;
-			mmi,df-serialnum = "COSRH50COS";
-			profile-ids-map = "107000", "COSRH50COS","38000","LWNRH50SWD";
+			mmi,df-serialnum = "LWNSD52SWD";
+			profile-ids-map = "107000", "LWNSD52SWD","38000","COSSD52COS";
 		};
 	};
 
