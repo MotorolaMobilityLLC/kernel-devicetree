@@ -51,6 +51,7 @@
 		i2c2 = &qupv3_se2_i2c;
 		i2c3 = &qupv3_se3_i2c;
 		i2c4 = &qupv3_se4_i2c;
+		i2c5 = &qupv3_se5_i2c;
 		i2c6 = &qupv3_se6_i2c;
 		i2c8 = &qupv3_se8_i2c;
 		i2c9 = &qupv3_se9_i2c;
