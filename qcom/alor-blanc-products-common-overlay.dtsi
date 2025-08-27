@@ -19,6 +19,8 @@
 #include "alor-blanc-fingerprint-overlay.dtsi"
 #include "alor-moto-common-charger.dtsi"
 #include "alor-blanc-charger-overlay.dtsi"
+#include "alor-qrd-peach-vantage.dtsi"
+
 &tlmm {
 
 	key_ai_default: key_ai_default {
