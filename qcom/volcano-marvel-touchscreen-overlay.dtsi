@@ -35,8 +35,10 @@
 	#size-cells = <0>;
 
 	status = "ok";
-
 	goodix-berlin@0 {
+		status = "disabled";
+	};
+	goodix-berlin-mmi@0 {
 		status = "ok";
 		compatible = "goodix,gt9916P";
 		reg = <0>;
