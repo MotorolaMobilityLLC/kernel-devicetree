@@ -447,7 +447,7 @@
 		};
 	};
 
-	qcom,smp2p-dcp {
+	qcom_smp2p_dcp: qcom,smp2p-dcp {
 		compatible = "qcom,smp2p";
 		qcom,smem = <617>, <616>;
 		interrupt-parent = <&ipcc_mproc>;
