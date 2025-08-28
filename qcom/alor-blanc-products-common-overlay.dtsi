@@ -22,6 +22,7 @@
 #include "alor-qrd-peach-vantage.dtsi"
 #include "alor-blanc-sensors-overlay.dtsi"
 #include "alor-blanc-haptics-overlay.dtsi"
+#include "alor-blanc-thermal-overlay.dtsi"
 
 &tlmm {
 
