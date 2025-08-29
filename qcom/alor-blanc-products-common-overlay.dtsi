@@ -24,6 +24,7 @@
 #include "alor-blanc-haptics-overlay.dtsi"
 #include "alor-blanc-thermal-overlay.dtsi"
 #include "moto-alor-blanc-pmic.dtsi"
+#include "alor-blanc-touchscreen-thp-overlay.dtsi"
 
 &tlmm {
 
