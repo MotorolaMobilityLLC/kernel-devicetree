@@ -22,6 +22,7 @@
 #include "alor-vantage-sensors-overlay.dtsi"
 #include "alor-vantage-touchscreen-thp-overlay.dtsi"
 #include "alor-qrd-peach-vantage.dtsi"
+#include "alor-vantage-thermal-overlay.dtsi"
 
 &tlmm {
 	/* remove gpio73/74/75 as they are used as camera LDO enable pin*/
