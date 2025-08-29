@@ -10,8 +10,21 @@
  * GNU General Public License for more details.
  */
 
+&soc {
+	sys_temp_support {
+		compatible = "mmi,sys-temp";
+		mmi,temperature-names = "front_temp",
+			"back_temp",
+			"fuse_temp",
+			"tmo_temp";
+		status = "ok";
+	};
+};
 
 &pmk8550_vadc {
+
+	/delete-node/ pm8550_sys_therm_12;
+	/delete-node/ pmih010x_sys_therm_8;
 
 	pm8550_wlan_therm {
 		reg = <PM8550_ADC5_GEN3_AMUX_THM3_100K_PU>;
@@ -40,12 +53,23 @@
 		qcom,adc-tm-type = <1>;
 	};
 
+	pm8550_spk_therm {
+		reg = <PM8550_ADC5_GEN3_AMUX2_GPIO4_100K_PU>;
+		label = "pm8550_spk_therm";
+		qcom,ratiometric;
+		qcom,hw-settle-time = <200>;
+		qcom,pre-scaling = <1 1>;
+		qcom,adc-tm-type = <1>;
+                qcom,adc5-gen3;
+	};
+
 	pmih010x_mchg_therm {
 		reg = <PMIH010X_ADC5_GEN4_AMUX1_GPIO6_100K_PU(0, PMIH010X_SID)>;
 		label = "pmih010x_mchg_therm";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
 
 	pmih010x_chg_therm {
@@ -54,7 +78,9 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
+
 
 	pmih010x_batt_therm {
 		reg = <PMIH010X_ADC5_GEN4_AMUX_THM1_BAT_THERM_100K_PU(0, PMIH010X_SID)>;
@@ -62,7 +88,9 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
+
 
 	pmih010x_quiet_therm {
 		reg = <PMIH010X_ADC5_GEN4_AMUX3_BAT2_THERM_100K_PU(0, PMIH010X_SID)>;
@@ -72,6 +100,15 @@
 		qcom,adc-tm-type = <1>;
 		qcom,adc5-gen4;
 	};
+
+	pmih010x_mdisp_therm {
+                reg = <PMIH010X_ADC5_GEN4_AMUX5_GPIO18_100K_PU(0, PMIH010X_SID)>;
+                label = "pmih010x_mdisp_therm";
+                qcom,ratiometric;
+                qcom,hw-settle-time = <200>;
+                qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
+        };
 };
 
 &thermal_zones {
@@ -208,6 +245,47 @@
 		};
 	};
 
+	spk-therm {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&pmk8550_vadc PM8550_ADC5_GEN3_AMUX2_GPIO4_100K_PU>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};
+
+	/*sys-therm-12 {
+		status = "disabled";
+	};
+	mmw-therm {
+		polling-delay-passive = <0>;
+		polling-delay = <0>;
+		thermal-sensors = <&pmk8550_vadc PM8550_ADC5_GEN3_AMUX_THM6_GPIO2_100K_PU>;
+
+		trips {
+			active-config0 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+			active-config1 {
+				temperature = <125000>;
+				hysteresis = <1000>;
+				type = "passive";
+			};
+		};
+	};*/
+
 	xog-therm {
 		polling-delay-passive = <0>;
 		polling-delay = <0>;
@@ -270,6 +348,24 @@
 		};
 	};
 
+	display-therm {
+                thermal-sensors = <&pmk8550_vadc PMIH010X_ADC5_GEN4_AMUX5_GPIO18_100K_PU(0, PMIH010X_SID)>;
+
+                trips {
+                        active-config0 {
+                                temperature = <125000>;
+                                hysteresis = <1000>;
+                                type = "passive";
+                        };
+
+                        active-config1 {
+                                temperature = <125000>;
+                                hysteresis = <1000>;
+                                type = "passive";
+                        };
+                };
+        };
+
 	chg-therm {
 		thermal-sensors = <&pmk8550_vadc PMIH010X_ADC5_GEN4_AMUX2_BAT2_ID_100K_PU(0, PMIH010X_SID)>;
 
@@ -288,7 +384,7 @@
 		};
 	};
 
-	sys-therm-8 {
+	/*sys-therm-8 {
 		status = "disabled";
 	};
 	conn-therm {
@@ -308,7 +404,7 @@
 				type = "passive";
 			};
 		};
-	};
+	};*/
 
 	batt-therm {
 		thermal-sensors = <&pmk8550_vadc PMIH010X_ADC5_GEN4_AMUX_THM1_BAT_THERM_100K_PU(0, PMIH010X_SID)>;
