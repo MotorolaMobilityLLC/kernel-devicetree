@@ -23,8 +23,11 @@
 #include "alor-blanc-sensors-overlay.dtsi"
 #include "alor-blanc-haptics-overlay.dtsi"
 #include "alor-blanc-thermal-overlay.dtsi"
+#include "moto-alor-blanc-pmic.dtsi"
 
 &tlmm {
+
+	qcom,gpios-reserved = <36 37 38 39 46 72 73 148 149 58 59>;
 
 	key_ai_default: key_ai_default {
 		mux {
