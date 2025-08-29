@@ -21,33 +21,33 @@
 	};
 };
 
-&sys_therm_12_gpio2_default {
-	status = "disabled";
-};
+//&sys_therm_12_gpio2_default {
+//	status = "disabled";
+//};
 
-&pmih010x_gpios {
-	quiet_therm_gpio16 {
-		quiet_gpio16_default: quiet_gpio16_default {
-			pins = "gpio16";
-			bias-high-impedance;
-		};
-	};
-
-    mchg_therm_gpio6 {
-		mchg_gpio6_default: mchg_gpio6_default {
-			pins = "gpio6";
-			bias-high-impedance;
-		};
-	};
-};
+//&pmih010x_gpios {
+//	quiet_therm_gpio16 {
+//		quiet_gpio16_default: quiet_gpio16_default {
+//			pins = "gpio16";
+//			bias-high-impedance;
+//		};
+//	};
+//
+//    mchg_therm_gpio6 {
+//		mchg_gpio6_default: mchg_gpio6_default {
+//			pins = "gpio6";
+//			bias-high-impedance;
+//		};
+//	};
+//};
 
 &pmk8550_vadc {
-	pinctrl-0 = <&sys_therm_5_gpio3_default>,
-			<&sys_therm_7_gpio12_default>,
-			<&sys_therm_5_gpio3_default>,
-			<&quiet_gpio16_default>,
-            <&mchg_gpio6_default>;
-	pinctrl-names = "default";
+//	pinctrl-0 = <&sys_therm_5_gpio3_default>,
+//			<&sys_therm_7_gpio12_default>,
+//			<&sys_therm_5_gpio3_default>,
+//			<&quiet_gpio16_default>,
+//            <&mchg_gpio6_default>;
+//	pinctrl-names = "default";
 
 	pm8550_wlan_therm {
 		reg = <PM8550_ADC5_GEN3_AMUX_THM3_100K_PU>;
@@ -82,6 +82,7 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
 
 	pmih010x_chg_therm {
@@ -90,17 +91,19 @@
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
 
-/*
+
 	pmih010x_batt_therm {
 		reg = <PMIH010X_ADC5_GEN4_AMUX_THM1_BAT_THERM_100K_PU(0, PMIH010X_SID)>;
 		label = "pmih010x_batt_therm";
 		qcom,ratiometric;
 		qcom,hw-settle-time = <200>;
 		qcom,adc-tm-type = <1>;
+		qcom,adc5-gen4;
 	};
-*/
+
 
 	pmih010x_quiet_therm {
 		reg = <PMIH010X_ADC5_GEN4_AMUX3_BAT2_THERM_100K_PU(0, PMIH010X_SID)>;
@@ -371,7 +374,7 @@
 			};
 		};
 	};
-/*
+
 	batt-therm {
 		thermal-sensors = <&pmk8550_vadc PMIH010X_ADC5_GEN4_AMUX_THM1_BAT_THERM_100K_PU(0, PMIH010X_SID)>;
 
@@ -389,7 +392,7 @@
 			};
 		};
 	};
-*/
+
 
 	quiet-therm {
 		polling-delay-passive = <0>;
