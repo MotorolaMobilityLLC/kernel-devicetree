@@ -58,7 +58,7 @@
 		spi-max-frequency = <30000000>;
 		chip-type = <3>; // 1: 9897 2: 9916 3: 9966
 
-//		mmi,status = "/chosen","mmi,panel_name","contains","csot";
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_nt37900";
 		goodix,reset-gpio = <&gpio_expander 11 0>;
 		goodix,irq-gpio = <&tlmm 55 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
@@ -173,7 +173,7 @@
 		mmi,control-dsi = <1>;
 		mmi,class-entry-name = "secondary";
 
-//		mmi,status = "/chosen","mmi,panel_name","contains","csot";
+		mmi,status = "/chosen","mmi,panel_name_s","contains","csot_nt37707";
 		goodix,reset-gpio = <&gpio_expander 12 0>;
 		goodix,irq-gpio = <&tlmm 162 0x2002>;
 		goodix,irq-flags = <0x2002>; /* 1:trigger rising, 2:trigger falling;*/
