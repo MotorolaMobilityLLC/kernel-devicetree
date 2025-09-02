@@ -20,7 +20,9 @@
 	mmi,thermal-primary-mitigation = <4000000 3000000 2000000 1000000 500000 300000 200000>;
 	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
 
-	main-ids-map = "107000", "SB18E07971";
+	main-ids-map = "107000", "SB18E95980";
+	flip-ids-map = "38000", "SB18E95979";
+	profile-ids-map = "107000", "ATLSH31NVT","38000", "ATLSH29NVT";
 	mmi,upper-limit-capacity = <78>;
 	mmi,lower-limit-capacity = <65>;
 	charger_device_0 {
@@ -29,23 +31,47 @@
 		dev-type = <1>;
 		dev-role = <0>;
 	};
+        charger_device_1 {
+                dev-name = "flip_battery";
+                psy-name = "flip_battery";
+                dev-type = <1>;
+                dev-role = <1>;
+        };
 	charger_device_2 {
 		dev-name = "wireless";
 		psy-name = "wireless";
 		dev-type = <5>;
 	};
-	charger_device_3 {
-		dev-name = "charge_pump_master";
-		psy-name = "charge_pump_master";
-		dev-type = <3>;
-		dev-role = <0>;
-	};
-	charger_device_4 {
-		dev-name = "usb_info";
-		psy-name = "usb_info";
-		dev-type = <6>;
-		dev-role = <0>;
-	};
+        charger_device_3 {
+                dev-name = "sc760x_master";
+                psy-name = "balance_master";
+                dev-type = <4>;
+                dev-role = <0>;
+        };
+        charger_device_4 {
+                dev-name = "sc760x_slave";
+                psy-name = "balance_slave";
+                dev-type = <4>;
+                dev-role = <1>;
+        };
+        charger_device_5 {
+                dev-name = "switch_buck";
+                psy-name = "switch_buck_master";
+                dev-type = <2>;
+                dev-role = <0>;
+        };
+        charger_device_6 {
+                dev-name = "charge_pump_master";
+                psy-name = "charge_pump_master";
+                dev-type = <3>;
+                dev-role = <0>;
+        };
+        charger_device_7 {
+                dev-name = "usb_info";
+                psy-name = "usb_info";
+                dev-type = <6>;
+                dev-role = <0>;
+        };
 };
 
 &battery_charger {
