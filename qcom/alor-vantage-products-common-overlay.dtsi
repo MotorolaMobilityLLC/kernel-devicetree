@@ -69,7 +69,7 @@
 };
 
 &soc {
-	gpio_keys {
+	gpio_key {
 		pinctrl-names = "default";
 		pinctrl-0 = <&key_vol_up_default>, <&key_ai_default>;
 
