@@ -152,6 +152,26 @@
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
+
+		/* report rate config example, without fps info */
+		goodix,report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x02>;
+			goodix,interpolation-ctrl;
+
+			/* config item 0 */
+			goodix,report-rate-config-0 = [
+				00
+				00 82 //130HZ
+				9D 03
+			];
+
+			/* config item 1 */
+			goodix,report-rate-config-1 = [
+				01
+				01 2C //300Hz
+				9D 02
+			];
+		};
 	};
 };
 
