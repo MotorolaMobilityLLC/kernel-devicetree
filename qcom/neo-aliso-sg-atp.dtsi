@@ -1,1 +1,2 @@
+#include "neo-aliso-regulators.dtsi"
 #include "neo-atp.dtsi"

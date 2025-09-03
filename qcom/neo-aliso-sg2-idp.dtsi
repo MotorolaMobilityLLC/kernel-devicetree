@@ -1,1 +1,2 @@
 #include "neo_luna-v2-sg-idp.dtsi"
+#include "neo-aliso-regulators.dtsi"
