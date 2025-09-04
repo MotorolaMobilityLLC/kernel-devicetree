@@ -208,7 +208,7 @@
 
 	adspslpi_mem: adspslpi_region@9f100000 {
 		no-map;
-		reg = <0x0 0x9f100000 0x0 0x4600000>;
+		reg = <0x0 0x9f100000 0x0 0x4f00000>;
 	};
 
 	dcp_dtb_mem: dcp_dtb_region@a4080000 {
