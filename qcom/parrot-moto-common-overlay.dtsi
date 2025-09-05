@@ -56,3 +56,8 @@
 		nvmem-cell-names = "extra_restart_reason";
 	};
 };
+
+&ufshc_mem {
+        rpm-level = <3>;
+        spm-level = <3>;
+};
