@@ -26,7 +26,8 @@
 
 &tlmm {
 	/* remove gpio73/74/75 as they are used as camera LDO enable pin*/
-	qcom,gpios-reserved = <36 37 38 39 46 72 148 149 56 57 58 59>;
+	/* remove gpio40/41/42/43 as they are used as QFP SPI, which are accessed only by TEE */
+	qcom,gpios-reserved = <36 37 38 39 40 41 42 43 46 72 148 149 56 57 58 59>;
 
 	redriver_enable: redriver_enable {
 		mux {
