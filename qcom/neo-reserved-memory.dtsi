@@ -124,9 +124,4 @@
 		reg = <0x0 0xe8e00000 0x0 0x500000>;
 	};
 
-	trusted_apps_mem: trusted_apps_region@e9300000 {
-		no-map;
-		reg = <0x0 0xe9300000 0x0 0xc00000>;
-	};
-
 };
