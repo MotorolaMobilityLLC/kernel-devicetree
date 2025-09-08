@@ -13,7 +13,8 @@
 };
 
 &socd_trip {
-    temperature = <95>;
+    temperature = <98>;
+    hysteresis = <1>;
 };
 
 &pmxr2230_gpios {
