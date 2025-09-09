@@ -262,6 +262,8 @@
 					&hgsl_tcsr_receiver1
 					&hgsl_tcsr_receiver2
 					&hgsl_tcsr_receiver3>;
+		default_iocoherency;
+		writecombine_enable;
 	};
 
 	apps_smmu: apps-smmu@15000000 {
