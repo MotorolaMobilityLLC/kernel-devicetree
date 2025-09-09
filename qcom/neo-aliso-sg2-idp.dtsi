@@ -1,2 +1,18 @@
 #include "neo_luna-v2-sg-idp.dtsi"
 #include "neo-aliso-regulators.dtsi"
+
+&pcie0 {
+	vreg-1p2-supply = <&L6A>;
+	vreg-0p9-supply = <&L9A>;
+
+	qcom,vreg-1p2-voltage-level = <1200000 1200000 15000>;
+	qcom,vreg-0p9-voltage-level = <880000 880000 45760>;
+};
+
+&pcie1 {
+	vreg-1p2-supply = <&L6A>;
+	vreg-0p9-supply = <&L9A>;
+
+	qcom,vreg-1p2-voltage-level = <1200000 1200000 15000>;
+	qcom,vreg-0p9-voltage-level = <880000 880000 47510>;
+};
