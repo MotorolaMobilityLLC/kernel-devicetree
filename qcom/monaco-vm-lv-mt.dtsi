@@ -1,3 +1,16 @@
+#include <dt-bindings/soc/qcom,ipcc.h>
+
+&soc {
+	ipcc_mproc_apps_ns2: qcom,ipcc@422000 {
+		compatible = "qcom,ipcc";
+		reg = <0x422000 0x1000>;
+		interrupts = <GIC_SPI 560 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-controller;
+		#interrupt-cells = <3>;
+		#mbox-cells = <2>;
+	};
+};
+
 &hab {
 	vmid = <3>;
 };
@@ -25,7 +38,7 @@
 };
 
 &glink_cma_mem0 {
-	status = "disabled";
+	status = "ok";
 };
 
 &emac_ctrl_fe {
@@ -34,4 +47,24 @@
 
 &qcom_rng_ee3 {
 	status = "ok";
+};
+
+&soc {
+	logbuf: qcom,logbuf-vendor-hooks {
+		compatible = "qcom,logbuf-vendor-hooks";
+	};
+
+	va_mini_dump {
+		compatible = "qcom,va-minidump";
+		memory-region = <&va_md_mem>;
+	};
+};
+
+&reserved_memory {
+	va_md_mem: va_md_mem_region {
+		compatible = "shared-dma-pool";
+		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+		reusable;
+		size = <0 0x1000000>;
+	};
 };

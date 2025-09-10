@@ -254,6 +254,12 @@ _platform_map = {
             {"name": "neo_luna-v2-sg-idp-dual-display-overlay.dtbo"},
             {"name": "neo_luna-v2-sg-idp-overlay.dtbo"},
             {"name": "neo_luna-v2-sg-idp-pm8008-overlay.dtbo"},
+            {"name": "neo_luna-v2-sg-qar-overlay.dtbo"},
+            {"name": "neo-aliso-sg2-idp-overlay.dtbo"},
+            {"name": "neo-aliso-sg2-qar-overlay.dtbo"},
+            {"name": "neo-aliso-sg2-atp-overlay.dtbo"},
+            {"name": "neo-aliso-sg-atp-overlay.dtbo"},
+            {"name": "neo-aliso-sg-idp-overlay.dtbo"},
         ],
     },
     "neo": {

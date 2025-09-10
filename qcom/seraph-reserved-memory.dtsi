@@ -13,6 +13,11 @@
 		reg = <0x0 0x80e00000 0x0 0x400000>;
 	};
 
+	llcc_tcm_mem: llcc_tcm_region@38000000 {
+		no-map;
+		reg = <0x0 0x38000000 0x0 0x1c00000>;
+	};
+
 	/*
 	 * hyp_tags_mem is dynamically removed from the RAM
 	 * partition tables before boot occurs.

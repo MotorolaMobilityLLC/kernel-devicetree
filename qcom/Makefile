@@ -175,7 +175,14 @@ NEO_BOARDS += \
 		neo_luna-v2-sg-idp-dual-display-camera-overlay.dtbo \
 		neo_luna-v2-sg-idp-dual-display-overlay.dtbo \
 		neo_luna-v2-sg-idp-overlay.dtbo \
-		neo_luna-v2-sg-idp-pm8008-overlay.dtbo
+		neo_luna-v2-sg-idp-pm8008-overlay.dtbo \
+		neo_luna-v2-sg-qar-overlay.dtbo \
+		neo-aliso-sg2-idp-overlay.dtbo \
+		neo-aliso-sg2-qar-overlay.dtbo \
+		neo-aliso-sg2-atp-overlay.dtbo \
+		neo-aliso-sg-atp-overlay.dtbo\
+		neo-aliso-sg-idp-overlay.dtbo
+
 
 neo-dtb-$(CONFIG_ARCH_NEO) += \
 	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LA_BASE_DTB)) \
@@ -654,13 +661,18 @@ LEMANS_GH_LV_GVM_QAM_BASE_DTB += lemans-gunyah-vm-lv-qam.dtb
 LEMANS_GH_LV_GVM_COB_BOARDS += lemans-gunyah-vm-lv-cob-overlay.dtbo
 LEMANS_GH_LV_GVM_QAM_BOARDS += lemans-gunyah-vm-lv-qam-overlay.dtbo
 
+LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB += lemans-gunyah-vm-lv-flex-qam.dtb
+LEMANS_GH_LV_GVM_FLEX_QAM_BOARDS += lemans-gunyah-vm-lv-flex-qam-overlay.dtbo
+
 autoghgvm-dtb-$(CONFIG_ARCH_QTI_VM) += \
 	$(call add-overlays, $(LEMANS_GH_LV_GVM_COB_BOARDS),$(LEMANS_GH_LV_GVM_COB_BASE_DTB)) \
-	$(call add-overlays, $(LEMANS_GH_LV_GVM_QAM_BOARDS),$(LEMANS_GH_LV_GVM_QAM_BASE_DTB))
+	$(call add-overlays, $(LEMANS_GH_LV_GVM_QAM_BOARDS),$(LEMANS_GH_LV_GVM_QAM_BASE_DTB)) \
+	$(call add-overlays, $(LEMANS_GH_LV_GVM_FLEX_QAM_BOARDS),$(LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB))
 
 autoghgvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
 	$(LEMANS_GH_LV_GVM_COB_BOARDS) $(LEMANS_GH_LV_GVM_COB_BASE_DTB) \
-	$(LEMANS_GH_LV_GVM_QAM_BOARDS) $(LEMANS_GH_LV_GVM_QAM_BASE_DTB)
+	$(LEMANS_GH_LV_GVM_QAM_BOARDS) $(LEMANS_GH_LV_GVM_QAM_BASE_DTB) \
+	$(LEMANS_GH_LV_GVM_FLEX_QAM_BOARDS) $(LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB)
 
 dtb-y += $(autoghgvm-dtb-y)
 endif

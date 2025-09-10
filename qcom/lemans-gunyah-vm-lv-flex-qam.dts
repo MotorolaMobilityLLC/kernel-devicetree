@@ -3,33 +3,25 @@
 #include "lemans-gunyah-vm-lv.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. Lemans IVI QAM Gunyah LV VM";
+	model = "Qualcomm Technologies, Inc. Lemans Flex QAM Gunyah LV VM";
 	compatible = "qcom,lemans", "qcom,qam";
-	qcom,msm-id = <532 0x10000>, <532 0x20000>;
+	qcom,msm-id = <534 0x10000>, <534 0x20000>;
 	qcom,board-id = <0x10025 0x0>;
 
 	cpus {
+		/delete-node/ cpu@10000;
+		/delete-node/ cpu@10100;
 		/delete-node/ cpu@10200;
 		/delete-node/ cpu@10300;
 
 		cpu-map {
 			/delete-node/ cluster1;
-
-			cluster1 {
-				core0 {
-					cpu = <&CPU4>;
-				};
-
-				core1 {
-					cpu = <&CPU5>;
-				};
-			};
 		};
 	};
 };
 
 &vm_config {
 	vcpus {
-		affinity-map = <0x7 0x6 0x5 0x4 0x3 0x2>;
+		affinity-map = <0x7 0x6 0x5 0x4>;
 	};
 };

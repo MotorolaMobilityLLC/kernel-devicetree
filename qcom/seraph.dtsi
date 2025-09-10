@@ -13,6 +13,8 @@
 #include <dt-bindings/mailbox/qcom-ipcc.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/spmi/spmi.h>
+#include <dt-bindings/power/qcom-aoss-qmp.h>
+#include <dt-bindings/clock/qcom,aop-qmp.h>
 
 / {
 	model = "Qualcomm Technologies, Inc. Seraph";
@@ -25,7 +27,7 @@
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
 
 	chosen: chosen {
-		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8 cpufreq.default_governor=performance printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-4 kernel.panic_on_rcu_stall=1 no-steal-acc ftrace_dump_on_oops can.stats_timer=0 fw_devlink.strict=1 service_locator.enable=1 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware pcie_ports=compat irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on";
+		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8 cpufreq.default_governor=performance printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-4 kernel.panic_on_rcu_stall=1 no-steal-acc ftrace_dump_on_oops can.stats_timer=0 fw_devlink.strict=1 service_locator.enable=1 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware pcie_ports=compat irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on pci=pcie_bus_safe";
 	};
 
 	reserved_memory: reserved-memory {};
@@ -664,11 +666,19 @@
 
 	cache-controller@25000000 {
 		compatible = "qcom,seraph-llcc", "qcom,llcc-v51";
-		reg = <0x25000000 0x400000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
+		reg = <0x25000000 0x800000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
 		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
+		memory-region = <&llcc_tcm_mem>;
 		cap-based-alloc-and-pwr-collapse;
 		qcom,sct-initialized;
+
+		llcc-perfmon {
+			compatible = "qcom,llcc-perfmon";
+			clocks = <&aoss_qmp QDSS_CLK>;
+			clock-names = "qdss_clk";
+			llcc-occupancy-snapshot;
+		};
 	};
 
 	gic-interrupt-router {
@@ -952,6 +962,10 @@
 		qcom,freq-tbl =
 		< 0 >,
 		< 1 >;
+	};
+
+	qcom_dcvs_prof: qcom-dcvs-prof {
+		max_masters = <4>;
 	};
 
 	qcom_dcvs: qcom,dcvs {
@@ -1709,11 +1723,9 @@
 		rproc-ddr-set-icc-low-svs;
 		rproc-ddr-lowsvs-icc-bw = <1050>;
 
-		firmware-name = "soccp.mbn", "soccp_dtb_mbn";
+		firmware-name = "soccp.mbn", "soccp_dtb.mbn";
 
 		memory-region = <&soccp_mem &soccp_dtb_mem>;
-		soccp-tcsr = <&tcsr 0x9d004>;
-		soccp-spare = <0xda0048>;
 
 		/* Inputs from SOCCP */
 		interrupts-extended = <&intc GIC_SPI 256 IRQ_TYPE_EDGE_RISING>,
@@ -2256,6 +2268,8 @@
 
 		qcom,no-partial-init;
 		cap-mmc-hw-reset;
+		qcom,restore-after-cx-collapse;
+		mmc-rst-n-disable;
 
 		non-removable;
 		supports-cqe;
@@ -2329,6 +2343,7 @@
 		qcom,vmid = <45>;
 		qcom,firmware-name = "trustedvm";
 		qcom,keep-running;
+		qcom,rebootable;
 		memory-region = <&trust_ui_vm_region &vm_comm_mem>;
 		virtio-backends = <&trust_ui_vm_virt_be0 &trust_ui_vm_virt_be1 &trust_ui_vm_virt_be2>;
 	};
@@ -2712,6 +2727,7 @@
 
 	qcom_smcinvoke {
 		compatible = "qcom,smcinvoke";
+		interrupts = <GIC_SPI 705 IRQ_TYPE_EDGE_RISING>;
 	};
 
 	qcom_mem_object {

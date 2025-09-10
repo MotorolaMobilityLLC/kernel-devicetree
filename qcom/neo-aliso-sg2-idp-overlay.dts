@@ -1,0 +1,11 @@
+/dts-v1/;
+/plugin/;
+
+#include "neo-aliso-sg2-idp.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO Aliso SG2 IDP";
+	compatible = "qcom,neo";
+	qcom,msm-id = <740 0x10000>;
+	qcom,board-id = <34 2>;
+};

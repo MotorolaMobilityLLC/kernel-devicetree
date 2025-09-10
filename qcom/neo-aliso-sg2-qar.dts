@@ -1,0 +1,11 @@
+/dts-v1/;
+
+#include "neo_luna-v2.dtsi"
+#include "neo-aliso-sg2-qar.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO Aliso SG2 QAR";
+	compatible = "qcom,neo-qar", "qcom,neo", "qcom,qar";
+	qcom,board-id = <44 1>;
+};
+

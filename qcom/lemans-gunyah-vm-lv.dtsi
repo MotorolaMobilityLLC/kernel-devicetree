@@ -5,7 +5,6 @@
 / {
 	#address-cells = <0x2>;
 	#size-cells = <0x2>;
-	qcom,msm-id = <532 0x10000>, <533 0x10000>, <534 0x10000>, <532 0x20000>, <533 0x20000>, <534 0x20000>;
 	interrupt-parent = <&intc>;
 
 	aliases {
