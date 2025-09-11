@@ -24,7 +24,7 @@
 
 	#address-cells = <2>;
 	#size-cells = <2>;
-	memory { device_type = "memory"; reg = <0 0 0 0>; };
+	memory { device_type = "memory"; reg = <0x0 0x38000000 0x0 0xa00000>; };
 
 	chosen: chosen {
 		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8 cpufreq.default_governor=performance printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-4 kernel.panic_on_rcu_stall=1 no-steal-acc ftrace_dump_on_oops can.stats_timer=0 fw_devlink.strict=1 service_locator.enable=1 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware pcie_ports=compat irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on pci=pcie_bus_safe";
