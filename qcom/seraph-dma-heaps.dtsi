@@ -22,6 +22,12 @@
 			qcom,dma-heap-type = <HEAP_TYPE_CMA>;
 			memory-region = <&qseecom_ta_mem>;
 		};
+
+		qcom,sc-tcm-heap {
+			qcom,dma-heap-name = "qcom,sc-tcm";
+			qcom,dma-heap-type = <HEAP_TYPE_SC_TCM_CARVEOUT>;
+			qcom,token = <0x200000>; /*heap size */
+		};
 	};
 };
 
