@@ -5,7 +5,9 @@
 };
 
 &qti_glink_charger {
-	profile-ids-map = "107000", "SB18D58448";
+	profile-ids-map-7000 = "107000", "ATLSA70NVT", "87000", "LWNSA70SWD", "67000", "COSSA70COS";
+	profile-ids-map-5200 = "47000", "ATLSA52NVT", "27000", "VEKSA52VEK";
+	profile-ids-map-5600 = "7000", "ATLSA56NVT";
 };
 
 &battery_charger {
