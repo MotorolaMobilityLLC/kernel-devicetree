@@ -130,3 +130,10 @@
                 /* Tx pre-emphasis tuning */
                  0x5 0x57>;
 };
+
+&pm8010_n {
+    status = "disabled";
+};
+&pm8010_m {
+    status = "disabled";
+};
