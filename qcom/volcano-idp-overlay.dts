@@ -11,6 +11,10 @@
 	qcom,board-id = <34 0>;
 };
 
+&pcie0 {
+	status = "disabled";
+};
+
 &pmiv0104_eusb2_repeater {
 	status = "ok";
 	vdd18-supply = <&L7B>;
