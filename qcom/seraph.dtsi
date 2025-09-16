@@ -2727,6 +2727,9 @@
 	qcom_scm {
 		compatible = "qcom,scm";
 		qcom,dload-mode = <&tcsr 0x99000>;
+		mmcx-supply = <&VDD_MMCX_LEVEL>;
+		mmcx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		qcom,regulator-names = "mmcx";
 	};
 
 	qcom_smcinvoke {
