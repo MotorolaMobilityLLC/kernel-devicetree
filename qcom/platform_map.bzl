@@ -341,6 +341,7 @@ _platform_map = {
         "dtb_list": [
             { "name": "cliffs-ctwo-base.dtb", "product": "ctwo", },
             { "name": "cliffs-arcfox-base.dtb", "product": "arcfox", },
+            { "name": "cliffs-arcfox-base.dtb", "product": "eiger", },
         ],
         "dtbo_list": [
             {"name": "cliffs-ctwo-evb3-overlay.dtbo", "product": "ctwo", },
@@ -351,6 +352,12 @@ _platform_map = {
             {"name": "cliffs-arcfox-dvt1c-overlay.dtbo", "product": "arcfox", },
             {"name": "cliffs-arcfox-jp-evt-overlay.dtbo", "product": "arcfox", },
             {"name": "cliffs-arcfox-pvt2-overlay.dtbo", "product": "arcfox", },
+            {"name": "cliffs-arcfox-evt3-overlay.dtbo", "product": "eiger", },
+            {"name": "cliffs-arcfox-dvt1b-overlay.dtbo", "product": "eiger", },
+            {"name": "cliffs-arcfox-dvt1c-overlay.dtbo", "product": "eiger", },
+            {"name": "cliffs-arcfox-jp-evt-overlay.dtbo", "product": "eiger", },
+            {"name": "cliffs-arcfox-pvt2-overlay.dtbo", "product": "eiger", },
+            {"name": "cliffs-eiger-evt-overlay.dtbo", "product": "eiger", },
         ],
     },
     "pineapple-tuivm": {
