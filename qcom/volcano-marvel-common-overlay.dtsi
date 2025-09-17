@@ -102,3 +102,14 @@
                 /* Tx pre-emphasis tuning */
                  0x5 0x57>;
 };
+
+&soc {
+	mmi_lpm_dbg: mmi_lpm_dbg {
+		compatible = "mmi,lpm-dbg";
+		status = "okay";
+
+		trigger-threshold = <1200>;	/* trigger threshold 20 min */
+		check-work-delay = <200>;	/* schedule uevent work for 200 ms */
+		re-trigger-threshold = <7200>;	/* retrigger threshold 2 h */
+	};
+};
