@@ -35,7 +35,8 @@ ifeq ($(CONFIG_ROADSTR_DTB),y)
 KERA_BASE_DTB += kera-roadstr-base.dtb
 KERA_BOARDS += \
 		kera-roadstr-evb-overlay.dtbo \
-		kera-roadstr-evt-overlay.dtbo
+		kera-roadstr-evt-overlay.dtbo \
+		kera-roadstr-evt-india-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_QOGIR_DTB),y)

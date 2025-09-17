@@ -14,11 +14,13 @@
 /plugin/;
 
 #include "kera-roadstr-device-common-overlay.dtsi"
-#include "kera-roadstr-charger-overlay.dtsi"
+#include "kera-roadstr-charger-india-overlay.dtsi"
+
 / {
 	model = "roadstr";
 	compatible = "qcom,kera-qrd", "qcom,kera", "qcom,kerap-qrd", "qcom,kerap",
 			"qcom,qrd";
 	qcom,msm-id = <686 0x10000>, <659 0x10000>;
-	qcom,board-id = <0x41 0x9000>;
+	qcom,board-id = <0x441 0xA100>;
 };
+

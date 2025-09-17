@@ -14,7 +14,7 @@
 /plugin/;
 
 #include "kera-roadstr-device-common-overlay.dtsi"
-
+#include "kera-roadstr-charger-overlay.dtsi"
 / {
 	model = "roadstr";
 	compatible = "qcom,kera-qrd", "qcom,kera", "qcom,kerap-qrd", "qcom,kerap",
