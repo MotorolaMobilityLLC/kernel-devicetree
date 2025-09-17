@@ -28,13 +28,14 @@ PINEAPPLE_BOARDS += cliffs-arcfox-dvt1b-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-arcfox-dvt1c-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-arcfox-jp-evt-overlay.dtbo
 PINEAPPLE_BOARDS += cliffs-arcfox-pvt2-overlay.dtbo
+endif
+
 ifeq ($(CONFIG_EIGER_DTB),y)
 #ARCFOX and EIGER have same base dts, so use ARCFOX base
 ifneq ($(CONFIG_ARCFOX_DTB),y)
 PINEAPPLE_BASE_DTB += cliffs-arcfox-base.dtb
 endif
 PINEAPPLE_BOARDS += cliffs-eiger-evt-overlay.dtbo
-endif
 endif
 
 ifeq ($(CONFIG_CTWOV_DTB),y)
