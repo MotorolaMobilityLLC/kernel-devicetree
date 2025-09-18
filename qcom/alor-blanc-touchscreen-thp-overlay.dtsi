@@ -115,6 +115,7 @@
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
+		goodix,dev_id = <1>;
 #if 0
 		/* report rate config example, with fps info*/
 		goodix,report-rate-config {
@@ -227,6 +228,7 @@
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
+		goodix,dev_id = <2>;
 #if 0
 		/* report rate config example, with fps info*/
 		goodix,report-rate-config {
