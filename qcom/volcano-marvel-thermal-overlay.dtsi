@@ -301,5 +301,14 @@
 			};
 		};
 	};
+
+	socd {
+		cooling-maps {
+			socd_apc1 {
+				trip = <&socd_trip>;
+				cooling-device = <&cpu_6_7_pause 1 1>;
+			};
+		};
+	};
 };
 

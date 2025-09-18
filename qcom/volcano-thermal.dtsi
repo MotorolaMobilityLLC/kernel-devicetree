@@ -88,6 +88,12 @@
 			#cooling-cells = <2>;
 		};
 
+		cpu_6_7_pause: cpu-6-7-pause {
+			qcom,cpus = <&CPU6 &CPU7>;
+			qcom,cdev-alias = "thermal-pause-C0";
+			#cooling-cells = <2>;
+		};
+
 		/* Thermal-engine cooling devices */
 		pause-cpu0 {
 			qcom,cpus = <&CPU0>;
