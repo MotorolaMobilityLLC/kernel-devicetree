@@ -1501,6 +1501,13 @@
 		method = "smc";
 	};
 
+	tsc@1c81000 {
+		compatible = "qcom,tsc-vm";
+		reg = <0x01c81000 0x1000>;
+		reg-names = "tsc";
+		qcom,tsc-nsec-update;
+	};
+
 	intc: interrupt-controller@17a00000 {
 		compatible = "arm,gic-v3";
 		interrupt-controller;
