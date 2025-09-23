@@ -764,7 +764,7 @@
 		qupv3_se5_i2c_sda_active: qupv3_se5_i2c_sda_active {
 			mux {
 				pins = "gpio72";
-				function = "qup1_se5_l0";
+				function = "qup1_se5_l0_mira";
 			};
 
 			config {
@@ -778,7 +778,7 @@
 		qupv3_se5_i2c_scl_active: qupv3_se5_i2c_scl_active {
 			mux {
 				pins = "gpio73";
-				function = "qup1_se5_l1";
+				function = "qup1_se5_l1_mira";
 			};
 
 			config {
