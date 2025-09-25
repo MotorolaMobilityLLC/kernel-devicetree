@@ -30,7 +30,22 @@
 		config {
 			pins = "gpio136";
 			drive-strength = <2>; /* 2 MA */
-			bias-pull-down;
+			bias-pull-up;
+			input-enable;
+		};
+	};
+
+	vib_rst_active: vib_rst_active {
+		/* active state */
+		mux {
+			pins = "gpio137";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio137";
+			drive-strength = <2>; /* 2 MA */
+			bias-disable;
+			output-low;
 		};
 	};
 
@@ -55,8 +70,8 @@
 		reg = <0x5A>;
 		irq-gpio = <&tlmm 136 0>;
 		reset-gpio = <&tlmm 137 0>;
-		pinctrl-names = "irq_active";
-		pinctrl-0 = <&vib_int_active>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&vib_int_active &vib_rst_active>;
 		f0_pre = < 1700 >;
 		mode = /bits/ 8 < 5 >;
 
