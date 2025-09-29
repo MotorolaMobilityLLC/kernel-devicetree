@@ -205,6 +205,7 @@
 		nvmem = <&pmk8550_sdam_5>, <&pmk8550_sdam_6>;
 		nvmem-names = "pon_log0", "pon_log1";
 		depends-on-supply = <&wdog>;
+		qcom,pmic-fault-panic;
 	};
 
 	regulator_ocp_notifier: regulator-ocp-notifier {
