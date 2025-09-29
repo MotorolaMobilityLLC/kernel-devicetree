@@ -25,14 +25,12 @@
 	};
 };
 &pmk8350_adc_tm {
-	io-channels = <&pmk8350_vadc PMK8350_ADC7_AMUX_THM1_100K_PU>,
-			<&pmk8350_vadc PM6450_ADC7_AMUX1_GPIO2_100K_PU>,
-			<&pmk8350_vadc PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
 
 	pm6450_chg_pump_therm {
-		reg = <PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
+		reg = <2>;
+		io-channels = <&pmk8350_vadc PM6450_ADC7_AMUX3_GPIO4_100K_PU>;
 		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
+		qcom,hw-settle-time-us = <200>;
 	};
 };
 
@@ -135,26 +133,26 @@
 
 &pm7250b_adc_tm {
 	interrupts = <0x8 0x35 0x0 IRQ_TYPE_EDGE_RISING>;
-	io-channels = <&pm7250b_vadc ADC5_AMUX_THM3_100K_PU>,
-			<&pm7250b_vadc ADC5_AMUX_THM2_100K_PU>,
-			<&pm7250b_vadc ADC5_AMUX_THM1_100K_PU>;
 
 	pm7250b_usb_conn_therm {
-		reg = <ADC5_AMUX_THM3_100K_PU>;
+		reg = <0>;
+		io-channels = <&pm7250b_vadc ADC5_AMUX_THM3_100K_PU>;
 		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
+		qcom,hw-settle-time-us = <200>;
 	};
 
 	pm7250b_smb_skin_therm {
-		reg = <ADC5_AMUX_THM1_100K_PU>;
+		reg = <2>;
+		io-channels = <&pm7250b_vadc ADC5_AMUX_THM1_100K_PU>;
 		qcom,ratiometric;
-		qcom,hw-settle-time = <200>;
+		qcom,hw-settle-time-us = <200>;
 	};
 
 	pm7250b_smb_therm {
-                reg = <ADC5_AMUX_THM2_100K_PU>;
+                reg = <1>;
+                io-channels = <&pm7250b_vadc ADC5_AMUX_THM2_100K_PU>;
                 qcom,ratiometric;
-                qcom,hw-settle-time = <200>;
+                qcom,hw-settle-time-us = <200>;
         };
 
 };
@@ -162,36 +160,36 @@
 &spmi_bus {
 	qcom,pm6150l@4 {
 		pm6150l_adc_tm_iio: adc_tm@3400 {
-		compatible = "qcom,adc-tm5-iio";
+		compatible = "qcom,spmi-adc-tm5-iio";
 			reg = <0x3400>;
 			#thermal-sensor-cells = <1>;
 			#address-cells = <1>;
 			#size-cells = <0>;
-			io-channels = <&pm6150l_vadc ADC5_AMUX_THM2_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO3_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO2_100K_PU>,
-			<&pm6150l_vadc ADC5_GPIO1_100K_PU>;
 
 			msm_therm {
-				reg = <ADC5_AMUX_THM2_100K_PU>;
+				reg = <0>;
+				io-channels = <&pm6150l_vadc ADC5_AMUX_THM2_100K_PU>;
 				qcom,ratiometric;
-				qcom,hw-settle-time = <200>;
+				qcom,hw-settle-time-us = <200>;
 			};
 			cam_therm {
-				reg = <ADC5_GPIO2_100K_PU>;
+				reg = <2>;
+				io-channels = <&pm6150l_vadc ADC5_GPIO2_100K_PU>;
 				qcom,ratiometric;
-				qcom,hw-settle-time = <200>;
+				qcom,hw-settle-time-us = <200>;
 			};
 			spkr_therm {
-                                reg = <ADC5_GPIO1_100K_PU>;
-                                qcom,ratiometric;
-                                qcom,hw-settle-time = <200>;
-                        };
+				reg = <3>;
+				io-channels = <&pm6150l_vadc ADC5_GPIO1_100K_PU>;
+				qcom,ratiometric;
+				qcom,hw-settle-time-us = <200>;
+			};
 			rear_cam_therm {
-                                reg = <ADC5_GPIO3_100K_PU>;
-                                qcom,ratiometric;
-                                qcom,hw-settle-time = <200>;
-                        };
+				reg = <1>;
+				io-channels = <&pm6150l_vadc ADC5_GPIO3_100K_PU>;
+				qcom,ratiometric;
+				qcom,hw-settle-time-us = <200>;
+			};
 
 		};
 	};
@@ -208,7 +206,7 @@
 	cam-therm {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
-		thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO2_100K_PU>;
+		thermal-sensors = <&pm6150l_adc_tm_iio 2>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -220,7 +218,7 @@
 	spkr-therm {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
-                thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO1_100K_PU>;
+                thermal-sensors = <&pm6150l_adc_tm_iio 3>;
                 trips {
                         active-config0 {
                                 temperature = <125000>;
@@ -232,7 +230,7 @@
 	sub-therm {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
-                thermal-sensors = <&pm6150l_adc_tm_iio ADC5_GPIO3_100K_PU>;
+                thermal-sensors = <&pm6150l_adc_tm_iio 1>;
                 trips {
                         active-config0 {
                                 temperature = <125000>;
@@ -248,7 +246,7 @@
 	quiet-therm {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
-		thermal-sensors = <&pmk8350_adc_tm PM6450_ADC7_AMUX1_GPIO2_100K_PU>;
+		thermal-sensors = <&pmk8350_adc_tm 1>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -270,7 +268,7 @@
 	pa-therm2 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
-		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM1_100K_PU>;
+		thermal-sensors = <&pm6150l_adc_tm 0>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -291,7 +289,7 @@
 	pa-therm1 {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
-		thermal-sensors = <&pm6150l_adc_tm ADC5_AMUX_THM3_100K_PU>;
+		thermal-sensors = <&pm6150l_adc_tm 1>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -311,7 +309,7 @@
 	msm-therm {
 		polling-delay-passive = <3000>;
 		polling-delay = <5000>;
-		thermal-sensors = <&pm6150l_adc_tm_iio ADC5_AMUX_THM2_100K_PU>;
+		thermal-sensors = <&pm6150l_adc_tm_iio 0>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -336,7 +334,7 @@
 	chg-therm  {
 		polling-delay-passive = <5000>;
 		polling-delay = <20000>;
-		thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM1_100K_PU>;
+		thermal-sensors =  <&pm7250b_adc_tm 2>;
 		trips {
 			active-config0 {
 				temperature = <125000>;
@@ -354,7 +352,7 @@
 	mchg-therm  {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
-                thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM2_100K_PU>;
+                thermal-sensors =  <&pm7250b_adc_tm 1>;
                 trips {
                         active-config0 {
                                 temperature = <125000>;
@@ -372,7 +370,7 @@
 	conn-therm  {
                 polling-delay-passive = <5000>;
                 polling-delay = <20000>;
-                thermal-sensors =  <&pm7250b_adc_tm ADC5_AMUX_THM3_100K_PU>;
+                thermal-sensors =  <&pm7250b_adc_tm 0>;
                 trips {
                         active-config0 {
                                 temperature = <125000>;
