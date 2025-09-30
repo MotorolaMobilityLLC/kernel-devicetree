@@ -151,11 +151,11 @@
 		interrupts = <67 0x02>;
 		interrupt-names = "capsense0_irq";
 		Semtech,nirq-gpio= <&tlmm 67 0x02>;
-		/*use PH4/5/6 as the reference sensor
+		/*use PH3/4/5 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
-		Semtech,ref-phases-a = <4>;
-		Semtech,ref-phases-b = <5>;
-		Semtech,ref-phases-c = <6>;
+		Semtech,ref-phases-a = <3>;
+		Semtech,ref-phases-b = <4>;
+		Semtech,ref-phases-c = <5>;
 		Semtech,button-flag = <0x47>;
 		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch1","Moto CapSense Ch2","Moto CapSense Ch6";
 		Semtech,debug-name = "capsense0";
@@ -271,11 +271,11 @@
 		interrupts = <66 0x02>;
 		interrupt-names = "capsense1_irq";
 		Semtech,nirq-gpio= <&tlmm 66 0x02>;
-		/*use PH4/5/6 as the reference sensor
+		/*use PH0/1/2 as the reference sensor
 		set it to 0xff if the ref-phases-x is not used*/
-		Semtech,ref-phases-a = <4>;
-		Semtech,ref-phases-b = <5>;
-		Semtech,ref-phases-c = <6>;
+		Semtech,ref-phases-a = <0>;
+		Semtech,ref-phases-b = <1>;
+		Semtech,ref-phases-c = <2>;
 		Semtech,button-flag = <0x38>;
 		Semtech,button-names = "Moto CapSense Ch3","Moto CapSense Ch4","Moto CapSense Ch5";
 		Semtech,debug-name = "capsense1";
