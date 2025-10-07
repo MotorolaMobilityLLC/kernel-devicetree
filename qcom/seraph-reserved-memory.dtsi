@@ -13,9 +13,14 @@
 		reg = <0x0 0x80e00000 0x0 0x400000>;
 	};
 
-	llcc_tcm_mem: llcc_tcm_region@38000000 {
+	sc_tcm_mem: sc_tcm_region@38000000 {
 		no-map;
-		reg = <0x0 0x38000000 0x0 0x1c00000>;
+		reg = <0x0 0x38000000 0x0 0xa00000>;
+	};
+
+	proxy_tcm_mem: proxy_tcm_mem@82800000 {
+		no-map;
+		reg = <0x0 0x82800000 0x0 0xa00000>;
 	};
 
 	/*

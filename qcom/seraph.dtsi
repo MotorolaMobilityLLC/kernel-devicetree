@@ -24,7 +24,7 @@
 
 	#address-cells = <2>;
 	#size-cells = <2>;
-	memory { device_type = "memory"; reg = <0 0 0 0>; };
+	memory { device_type = "memory"; reg = <0x0 0x38000000 0x0 0xa00000>; };
 
 	chosen: chosen {
 		bootargs = "kpti=0 log_buf_len=256K swiotlb=0 loop.max_part=7 loglevel=8 cpufreq.default_governor=performance printk.console_no_auto_verbose=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-4 kernel.panic_on_rcu_stall=1 no-steal-acc ftrace_dump_on_oops can.stats_timer=0 fw_devlink.strict=1 service_locator.enable=1 firmware_class.path=/vendor/firmware_mnt/image,/vendor/firmware pcie_ports=compat irqaffinity=0-1 kasan=off cgroup.memory=nokmem,nosocket disable_dma32=on pci=pcie_bus_safe";
@@ -251,6 +251,10 @@
 
 	soc: soc { };
 
+	pcie0: qcom,pcie@1c00000 { };
+
+	pcie1: qcom,pcie@1c0a000 { };
+
 };
 
 &soc {
@@ -443,7 +447,7 @@
 		};
 	};
 
-	qcom,smp2p-dcp {
+	qcom_smp2p_dcp: qcom,smp2p-dcp {
 		compatible = "qcom,smp2p";
 		qcom,smem = <617>, <616>;
 		interrupt-parent = <&ipcc_mproc>;
@@ -669,7 +673,7 @@
 		reg = <0x25000000 0x800000> , <0x25800000 0x200000>, <0xD8170000 0x1000>;
 		reg-names = "llcc_base", "llcc_broadcast_base", "slc_mem_base";
 		interrupts = <GIC_SPI 266 IRQ_TYPE_LEVEL_HIGH>;
-		memory-region = <&llcc_tcm_mem>;
+		memory-region = <&proxy_tcm_mem>;
 		cap-based-alloc-and-pwr-collapse;
 		qcom,sct-initialized;
 
@@ -2723,6 +2727,9 @@
 	qcom_scm {
 		compatible = "qcom,scm";
 		qcom,dload-mode = <&tcsr 0x99000>;
+		mmcx-supply = <&VDD_MMCX_LEVEL>;
+		mmcx-uV-uA = <RPMH_REGULATOR_LEVEL_TURBO 0>;
+		qcom,regulator-names = "mmcx";
 	};
 
 	qcom_smcinvoke {

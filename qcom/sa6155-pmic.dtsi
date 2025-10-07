@@ -175,44 +175,69 @@
 	};
 
 	pm6155-1-tz {
+		trips {
+			trip0 {
+				temperature = <95000>;
+			};
+
+			trip1 {
+				temperature = <115000>;
+				type = "passive";
+			};
+
+			trip2 {
+				temperature = <145000>;
+				type = "passive";
+			};
+		};
+
 		cooling-maps {
+			/*
+			 * trip0 cooling map is dummy node to enable
+			 * passive polling on trip0 violation.
+			 */
 			trip0_cpu0 {
 				trip = <&pm6155_trip0>;
+				cooling-device = <&CPU0 0 0>;
+			};
+
+			trip1_cpu0 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&CPU0 5 5>;
 			};
 
-			trip0_cpu1 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu1 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu1_hotplug 1 1>;
 			};
 
-			trip0_cpu2 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu2 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu2_hotplug 1 1>;
 			};
 
-			trip0_cpu3 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu3 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu3_hotplug 1 1>;
 			};
 
-			trip0_cpu4 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu4 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu4_hotplug 1 1>;
 			};
 
-			trip0_cpu5 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu5 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu5_hotplug 1 1>;
 			};
 
-			trip0_cpu6 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu6 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu6_hotplug 1 1>;
 			};
 
-			trip0_cpu7 {
-				trip = <&pm6155_trip0>;
+			trip1_cpu7 {
+				trip = <&pm6155_trip1>;
 				cooling-device = <&cpu7_hotplug 1 1>;
 			};
 		};

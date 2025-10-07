@@ -51,6 +51,7 @@
 				pins = "gpio41";
 				drive-strength = <2>;
 				bias-pull-up;
+				qcom,i2c_pull;
 			};
 		};
 
@@ -779,6 +780,7 @@
 			config {
 				pins = "gpio20", "gpio21";
 				drive-strength = <2>;
+				bias-disable;
 			};
 		};
 	};

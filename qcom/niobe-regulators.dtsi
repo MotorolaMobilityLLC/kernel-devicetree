@@ -846,6 +846,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		proxy-supply = <&L1D>;
 
 		L1D:
 		pm_v8d_l1: vreg-pm-v8d-l1 {
@@ -855,6 +856,9 @@
 			regulator-max-microvolt = <1200000>;
 			qcom,init-voltage = <1200000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+			qcom,proxy-consumer-enable;
+			qcom,proxy-consumer-current = <30100>;
+			qcom,proxy-consumer-voltage = <1200000 1200000>;
 		};
 	};
 
@@ -934,6 +938,7 @@
 			<RPMH_REGULATOR_MODE_LPM
 			RPMH_REGULATOR_MODE_HPM>;
 		qcom,mode-threshold-currents = <0 30000>;
+		proxy-supply = <&L1F>;
 
 		L1F:
 		pm_v8f_l1: vreg-pm-v8f-l1 {
@@ -943,6 +948,9 @@
 			regulator-max-microvolt = <912000>;
 			qcom,init-voltage = <880000>;
 			qcom,init-mode = <RPMH_REGULATOR_MODE_HPM>;
+			qcom,proxy-consumer-enable;
+			qcom,proxy-consumer-current = <115000>;
+			qcom,proxy-consumer-voltage = <880000 912000>;
 		};
 	};
 

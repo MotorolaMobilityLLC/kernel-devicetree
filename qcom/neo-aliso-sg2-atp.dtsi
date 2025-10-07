@@ -1,1 +1,36 @@
-#include "neo_la.dtsi"
+#include "neo-atp.dtsi"
+#include "neo-aliso-regulators.dtsi"
+
+&pcie0 {
+	vreg-1p2-supply = <&L6A>;
+	vreg-0p9-supply = <&L9A>;
+
+	qcom,vreg-1p2-voltage-level = <1200000 1200000 15000>;
+	qcom,vreg-0p9-voltage-level = <880000 880000 45760>;
+};
+
+&pcie1 {
+	vreg-1p2-supply = <&L6A>;
+	vreg-0p9-supply = <&L9A>;
+
+	qcom,vreg-1p2-voltage-level = <1200000 1200000 15000>;
+	qcom,vreg-0p9-voltage-level = <880000 880000 47510>;
+};
+
+&sdhc_1 {
+	status = "ok";
+
+	vdd-supply = <&L11A>;
+	qcom,vdd-voltage-level = <2960000 2960000>;
+	qcom,vdd-current-level = <0 570000>;
+
+	vdd-io-supply = <&L4A>;
+	qcom,vdd-io-always-on;
+	qcom,vdd-io-lpm-sup;
+	qcom,vdd-io-voltage-level = <1800000 1800000>;
+	qcom,vdd-io-current-level = <0 325000>;
+
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&sdc1_on>;
+	pinctrl-1 = <&sdc1_off>;
+};

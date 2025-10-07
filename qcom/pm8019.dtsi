@@ -16,20 +16,18 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		qcom,power-on@800 {
-			compatible = "qcom,qpnp-power-on";
-			reg = <0x800>;
+	qcom,power-on@800 {
+		compatible = "qcom,pm8998-pon";
+		reg = <0x800>;
+		pon_pwrkey: pwrkey {
+			compatible = "qcom,pm8941-pwrkey";
 			interrupts = <0x0 0x8 0x2 IRQ_TYPE_NONE>;
-			interrupt-names = "cblpwr";
-			qcom,pon-dbc-delay = <15625>;
-			qcom,system-reset;
-
-			qcom,pon_1 {
-				qcom,pon-type = <PON_POWER_ON_TYPE_CBLPWR>;
-				qcom,pull-up;
-				linux,code = <KEY_POWER>;
-			};
+			debounce = <15625>;
+			bias-pull-up;
+			linux,code = <KEY_POWER>;
 		};
+
+	};
 
 		pm8019_rtc: qcom,pm8019_rtc {
 			compatible = "qcom,pm8941-rtc";
