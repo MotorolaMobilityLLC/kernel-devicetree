@@ -81,7 +81,7 @@
 	status = "okay";
 };
 
-&apps_rsc {
+&apps_rsc_drv2 {
 	rpmh-regulator-ldob15 {
 		compatible = "qcom,rpmh-vrm-regulator";
 		qcom,resource-name = "ldob15";
