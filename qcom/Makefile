@@ -34,6 +34,11 @@ ALOR_BASE_DTB += alor-vantage-base.dtb
 ALOR_BOARDS += alor-vantage-dvt1b-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_AVR_DTB),y)
+ALOR_BASE_DTB += alor-avr-base.dtb
+ALOR_BOARDS += alor-avr-evb-overlay.dtbo
+endif
+
 canoe-dtb-$(CONFIG_ARCH_CANOE) += \
 	$(call add-overlays, $(CANOE_BOARDS), $(CANOE_BASE_DTB))
 
