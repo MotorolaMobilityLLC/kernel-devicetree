@@ -29,9 +29,3 @@
         rpm-level = <3>;
         spm-level = <3>;
 };
-
-&pm7550_l12 {
-	regulator-min-microvolt = <2504000>;
-	regulator-max-microvolt = <2504000>;
-	qcom,init-voltage = <2504000>;
-};
