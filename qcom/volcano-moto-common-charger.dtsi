@@ -9,6 +9,7 @@
 		mmi,dcp-power-max = <10000>;
 		mmi,hvdcp-power-max = <20000>;
 		mmi,factory-kill-debounce-ms = <3000>;
+		mmi,factory-syspoweroff-wait;
 	};
 
 	qcom,pmic_glink {
