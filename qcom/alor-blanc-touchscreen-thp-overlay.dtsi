@@ -104,8 +104,6 @@
 		goodix,interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
-		goodix,stowed-mode-ctrl;
-		goodix,pocket-mode-ctrl;
 		mmi,power-off-suspend;
 		mmi,enable-gestures;
 		mmi,usb-charger-detection;
@@ -217,10 +215,8 @@
 		goodix,interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
-		goodix,stowed-mode-ctrl;
 		goodix,pocket-mode-ctrl;
 		mmi,power-off-suspend;
-		mmi,enable-gestures;
 		mmi,usb-charger-detection;
 		mmi,supported_gesture_type = <0x06>;
 		mmi,resolution_boost = <16>;
