@@ -2928,7 +2928,7 @@
 		reg = <0x0 0xc3f0000 0x0 0x400>;
 		qcom,qmp = <&aoss_qmp>;
 		ss-name = "modem", "adsp", "adsp_island",
-			  "cdsp", "apss", "wpss";
+			  "cdsp", "apss", "wpss", "soccp";
 	};
 
 	cluster-device0 {
