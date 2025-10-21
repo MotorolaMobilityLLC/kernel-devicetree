@@ -67,8 +67,7 @@
 		interrupt-parent = <&tlmm>;
 		interrupts = <31 0>;
 		interrupt-names = "nfc_irq";
-		pinctrl-names = "nfc_active", "nfc_suspend";
+		pinctrl-names = "default";
 		pinctrl-0 = <&nfc_int_active &nfc_enable_active>;
-		pinctrl-1 = <&nfc_int_suspend &nfc_enable_suspend>;
 	};
 };
