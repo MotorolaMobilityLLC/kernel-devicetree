@@ -31,7 +31,8 @@ endif
 
 ifeq ($(CONFIG_VANTAGE_DTB),y)
 ALOR_BASE_DTB += alor-vantage-base.dtb
-ALOR_BOARDS += alor-vantage-dvt1b-overlay.dtbo
+ALOR_BOARDS += alor-vantage-dvt1b-overlay.dtbo \
+               alor-vantage-pvt-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_AVR_DTB),y)
