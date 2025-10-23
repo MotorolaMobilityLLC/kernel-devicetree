@@ -192,13 +192,13 @@
 	primitive_8 {
 		/* LOW_TICK */
 		qcom,primitive-id = <8>;
-		qcom,wf-vmax-mv = <4000>;
+		qcom,wf-vmax-mv = <100>;
 		/delete-property/ qcom,wf-fifo-preload;
-		qcom,wf-fifo-data = [7f 7f 28 81];
+		qcom,wf-fifo-data = [00 00 00 00];
 		qcom,wf-fifo-period = <S_PERIOD_T_LRA_DIV_4>;
 		qcom,wf-auto-res-disable;
 		qcom,wf-brake-pattern = /bits/ 8 <0xff 0x3f 0x1f>;
-		/delete-property/ qcom,wf-brake-disable;
+		qcom,wf-brake-disable;
 	};
 
 };
