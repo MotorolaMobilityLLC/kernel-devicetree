@@ -23,6 +23,11 @@
 	qcom,init-voltage = <3200000>;
 };
 
+&L4B {
+	regulator-min-microvolt = <1650000>;
+	regulator-max-microvolt = <1950000>;
+	qcom,init-voltage = <1800000>;
+};
 
 &pmk8550_gpios {
 	stylus_clk_ctrl {
