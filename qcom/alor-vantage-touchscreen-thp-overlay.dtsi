@@ -94,9 +94,9 @@
 		goodix,stowed-mode-ctrl;
 		goodix,pocket-mode-ctrl;
 		mmi,power-off-suspend;
-		//mmi,enable-gestures;
+		mmi,enable-gestures;
 		mmi,usb-charger-detection;
-		//mmi,supported_gesture_type = <0x07>;
+		mmi,supported_gesture_type = <0x07>;
 		mmi,resolution_boost = <16>;
 		goodix,stylus_mode-ctrl;
 
