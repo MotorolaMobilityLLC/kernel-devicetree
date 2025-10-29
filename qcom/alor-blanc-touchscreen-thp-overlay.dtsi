@@ -37,7 +37,7 @@
 			pins = "gpio5";
 			function = "func2";
 			bias-high-impedance;
-			output-enable; // digital output, no invert
+			output-disable; // digital output, no invert
 			input-disable; // prevent GPIO from being set to DIO
 			power-source = <0>;
 		};
@@ -55,7 +55,7 @@
 			pins = "gpio3";
 			function = "func2";
 			bias-high-impedance;
-			output-enable; // digital output, no invert
+			output-disable; // digital output, no invert
 			input-disable; // prevent GPIO from being set to DIO
 			power-source = <0>;
 		};
