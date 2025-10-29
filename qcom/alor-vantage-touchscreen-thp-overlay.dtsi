@@ -94,6 +94,7 @@
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,edge-ctrl;
 		goodix,interpolation-ctrl;
+		goodix,stylus-interpolation-ctrl;
 		goodix,gesture-wait-pm;
 		goodix,sample-ctrl;
 		goodix,stowed-mode-ctrl;
@@ -159,6 +160,23 @@
 				01
 				01 2C //300Hz
 				9D 02
+			];
+		};
+
+		/* stylus report rate config */
+		goodix,stylus-report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x02>;
+
+			/* config item 0, default */
+			goodix,stylus-report-rate-config-0 = [
+				00 B4 //report rate 180HZ
+				CE 01 //command
+			];
+
+			/* config item 1, high */
+			goodix,stylus-report-rate-config-1 = [
+				01 68 //360Hz
+				CE 00
 			];
 		};
 	};
