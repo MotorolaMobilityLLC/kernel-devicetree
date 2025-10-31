@@ -44,4 +44,8 @@
 
 &battery_charger {
 	qcom,thermal-mitigation = <6000000 5000000 4000000 3500000 3000000 2500000 2000000 1500000 1000000 500000 100000>;
+	mmi,batt-sn-capacity-map = "ATLSF70NVT","7000",
+					"COSSF70COS","7000",
+					"ATLSM52NVT","5200",
+					"VEKSM52VEK","5200";
 };
