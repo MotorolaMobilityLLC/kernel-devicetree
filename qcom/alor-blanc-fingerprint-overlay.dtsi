@@ -77,7 +77,7 @@
 
 
 &soc {
-	goodix_fingerprint {
+	goodix_fingerprint: goodix_fingerprint{
 		compatible = "goodix,fingerprint";
 		status = "ok";
 		//VBOB1->FPS VDD-> GPIO97 switcher
