@@ -23,7 +23,7 @@
 
 	main-ids-map = "107000", "SB18E07971";
 	profile-ids-map = "107000", "ATLSR52NVT";
-	mmi,upper-limit-capacity = <65>;
+	mmi,upper-limit-capacity = <80>;
 	mmi,lower-limit-capacity = <60>;
 	charger_device_0 {
 		dev-name = "main_battery";
