@@ -14,3 +14,24 @@
 	qcom,msm-id = <685 0x10000>;
 	qcom,board-id = <0x41 0xC000>;
 };
+
+&pmk8550_gpios {
+	stylus_clk_ctrl {
+		stylus_clk_active: stylus_clk_active {
+			pins = "gpio5";
+			function = "func2";
+			bias-disable; // No Pull
+			output-enable; // digital output, no invert
+			intput-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+		stylus_clk_suspend: stylus_clk_suspend {
+			pins = "gpio5";
+			function = "func2";
+			bias-high-impedance;
+			output-enable; // digital output, no invert
+			intput-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+	};
+};
