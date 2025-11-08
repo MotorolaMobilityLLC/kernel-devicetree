@@ -303,6 +303,8 @@
 	};
 
 	socd {
+		polling-delay-passive = <500>;
+
 		cooling-maps {
 			socd_apc1 {
 				trip = <&socd_trip>;
