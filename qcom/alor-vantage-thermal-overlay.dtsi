@@ -16,6 +16,7 @@
 		mmi,temperature-names = "front_temp",
 			"back_temp",
 			"fuse_temp",
+			"spk_temp",
 			"tmo_temp";
 		status = "ok";
 	};
