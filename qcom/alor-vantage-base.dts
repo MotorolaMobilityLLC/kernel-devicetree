@@ -14,3 +14,10 @@
 
 #include "alor-moto-common-base.dtsi"
 
+/delete-node/ &dsm_partition_2_mem;
+
+&soc {
+	modem_pas: remoteproc-mss@04080000 {
+		memory-region = <&mpss_mem &q6_mpss_dtb_mem &system_cma &dsm_partition_1_mem>;
+	};
+};
