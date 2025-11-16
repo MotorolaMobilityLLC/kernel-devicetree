@@ -109,7 +109,7 @@
 
 		spi-mode = <0>;
 		bits-per-word = <8>;
-		spi-max-frequency = <30000000>;
+		spi-max-frequency = <25000000>;
 		chip-type = <2>; // 1: 9897 2: 9916 3: 9966
 
 		mmi,status = "/chosen","mmi,panel_name","contains","tm_nt37706","csot_vtdr6126";
