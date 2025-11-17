@@ -105,6 +105,7 @@
 		mmi,supported_gesture_type = <0x07>;
 		mmi,resolution_boost = <16>;
 		goodix,stylus_mode-ctrl;
+		goodix,esd-enable;
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
