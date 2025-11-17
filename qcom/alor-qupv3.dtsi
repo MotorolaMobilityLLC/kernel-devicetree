@@ -857,7 +857,8 @@
 			<&aggre2_noc MASTER_QUP_2 &mc_virt SLAVE_EBI1>;
 			pinctrl-names = "default", "sleep";
 			pinctrl-0 = <&qupv3_se12_i2c_sda_active>, <&qupv3_se12_i2c_scl_active>;
-			pinctrl-1 = <&qupv3_se12_i2c_sleep>;
+			pinctrl-1 = <&qupv3_se12_spi_sleep>, <&qupv3_se12_spi_miso_sleep>,
+			<&qupv3_se12_spi_cs_sleep>;
 			dmas = <&gpi_dma2 0 4 3 64 0>,
 				<&gpi_dma2 1 4 3 64 0>;
 			dma-names = "tx", "rx";

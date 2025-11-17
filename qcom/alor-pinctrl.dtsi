@@ -1744,7 +1744,7 @@
 			config {
 				pins = "gpio118";
 				drive-strength = <6>;
-				bias-disable;
+				bias-pull-down;
 			};
 		};
 
@@ -1757,7 +1757,7 @@
 			config {
 				pins = "gpio109";
 				drive-strength = <6>;
-				bias-disable;
+				bias-pull-down;
 			};
 		};
 
@@ -1776,16 +1776,17 @@
 
 		qupv3_se12_spi_sleep: qupv3_se12_spi_sleep {
 			mux {
-				pins = "gpio117", "gpio118",
-					"gpio109";
+				pins = "gpio118", "gpio109";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio117", "gpio118",
-					"gpio109";
-				drive-strength = <2>;
-				bias-disable;
+				pins = "gpio118", "gpio109";
+				drive-strength = <6>;
+				bias-pull-down;
+				output-enable;
+				input-disable;
+				output-low;
 			};
 		};
 
@@ -1797,10 +1798,29 @@
 
 			config {
 				pins = "gpio164";
-				drive-strength = <2>;
+				drive-strength = <6>;
 				bias-pull-up;
+				output-enable;
+				input-disable;
+				output-high;
 			};
 		};
+
+		qupv3_se12_spi_miso_sleep: qupv3_se12_spi_miso_sleep {
+			mux {
+				pins = "gpio117";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio117";
+				drive-strength = <6>;
+				bias-disable;
+				input-enable;
+				output-disable;
+				output-low;
+			};
+				};
 	};
 
 	qupv3_se13_i2c_pins: qupv3_se13_i2c_pins {
