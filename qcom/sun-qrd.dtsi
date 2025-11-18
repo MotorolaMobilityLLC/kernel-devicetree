@@ -297,7 +297,7 @@
 	#size-cells = <0>;
 	status = "ok";
 	qcom,touch-active = "st,fts";
-	qcom,la-vm;
+	/*qcom,la-vm;*/ /*no products supports TUI, so disable this feature, force spi suspend*/
 
 	st_fts@0 {
 		compatible = "st,fts";
