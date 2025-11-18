@@ -123,7 +123,7 @@
 	#size-cells = <0>;
 	status = "ok";
 	qcom,touch-active = "goodix,gt9916S";
-	qcom,la-vm;
+	/*qcom,la-vm;*/ /*no products supports TUI, so disable this feature, force spi suspend*/
 
 	goodix-berlin@0 {
 		compatible = "goodix,gt9916S";
