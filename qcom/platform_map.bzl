@@ -59,6 +59,22 @@ _platform_map = {
     "alor": {
         "dtb_list": [
             # keep sorted
+            {"name": "alor-blanc-base.dtb","product": "blanc"},
+            {"name": "alor-vantage-base.dtb","product": "vantage"},
+            {"name": "alor-avr-base.dtb","product": "avr"},
+        ],
+        "dtbo_list": [
+            # keep sorted
+            {"name": "alor-blanc-evb-overlay.dtbo", "product": "blanc"},
+            {"name": "alor-blanc-dvt1b-overlay.dtbo", "product": "blanc"},
+            {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
+            {"name": "alor-vantage-pvt-overlay.dtbo", "product": "vantage"},
+            {"name": "alor-avr-evb-overlay.dtbo", "product": "avr"},
+        ],
+    },
+    "alor-le": {
+        "dtb_list": [
+            # keep sorted
             {"name": "alor.dtb"},
             {
                 "name": "alorp.dtb",
@@ -79,22 +95,6 @@ _platform_map = {
             {"name": "alor-qrd-peach-overlay.dtbo"},
             {"name": "alor-qrd-ufcs-overlay.dtbo"},
             {"name": "alor-rumi-overlay.dtbo"},
-        ],
-    },
-    "alor-le": {
-        "dtb_list": [
-            # keep sorted
-            {"name": "alor-blanc-base.dtb","product": "blanc"},
-            {"name": "alor-vantage-base.dtb","product": "vantage"},
-            {"name": "alor-avr-base.dtb","product": "avr"},
-        ],
-        "dtbo_list": [
-            # keep sorted
-            {"name": "alor-blanc-evb-overlay.dtbo", "product": "blanc"},
-            {"name": "alor-blanc-dvt1b-overlay.dtbo", "product": "blanc"},
-            {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
-            {"name": "alor-vantage-pvt-overlay.dtbo", "product": "vantage"},
-            {"name": "alor-avr-evb-overlay.dtbo", "product": "avr"},
         ],
     },
     "alor-interposer": {
