@@ -107,7 +107,7 @@
                 /* Squelch Detector Threshold */
                  0x5 0x54
                 /* Tx pre-emphasis tuning */
-                 0x7 0x57>;
+                 0x5 0x57>;
         qcom,host-param-override-seq =
                 /* <value reg_offset> */
                 /* Adjust HS trasmit amplitude */
