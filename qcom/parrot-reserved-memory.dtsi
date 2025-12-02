@@ -13,6 +13,11 @@
 		reg = <0x0 0x83600000 0x0 0xe00000>;
 	};
 
+        hyp_mem1: hyp_region1@0x82200000 {
+                no-map;
+                reg = <0x0 0x82200000 0x0 0x800000>;
+        };
+
 	xbl_dtlog_mem: xbl_dtlog_region@80600000 {
 		no-map;
 		reg = <0x0 0x80600000 0x0 0x40000>;
