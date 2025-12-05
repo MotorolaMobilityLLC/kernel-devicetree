@@ -23,7 +23,7 @@
 
 	main-ids-map = "107000", "ATLSR52NVT", "38000", "ATLSR52NVP";
 	profile-ids-map = "107000", "ATLSR52NVT", "38000", "ATLSR52NVP";
-	mmi,upper-limit-capacity = <80>;
+	mmi,upper-limit-capacity = <70>;
 	mmi,lower-limit-capacity = <60>;
 	charger_device_0 {
 		dev-name = "main_battery";
