@@ -18,3 +18,72 @@
 #include "alor-moto-common-overlay.dtsi"
 #include "moto-alor-avr-pmic.dtsi"
 #include "alor-avr-touchscreen-thp-overlay.dtsi"
+
+&wcd_usbss {
+	status = "disabled";
+};
+&redriver {
+	status = "disabled";
+};
+
+&eusb2_phy0 {
+	dummy-supply = <&pmih010x_eusb2_repeater>;
+	usb-repeater = <&pmih010x_eusb2_repeater>;
+};
+
+&usb_qmp_dp_phy {
+	pinctrl-names = "unused";
+};
+
+&usb0 {
+	usb-role-switch;
+	pinctrl-names = "default";
+	pinctrl-0 = <&usb3phy_portselect_gpio>;
+	gpios = <&tlmm 60 0>;
+
+	/delete-property/ ssusb_redriver;
+
+	/delete-property/ qcom,wcd_usbss;
+
+	dwc3@a600000 {
+		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
+		maximum-speed = "high-speed";
+		snps,usb2-gadget-lpm-disable;
+		snps,usb2-lpm-disable;
+	};
+};
+
+&pmih010x_eusb2_repeater {
+	qcom,param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS termination resistor */
+		 0x1 0x52
+		/* HS disconnect threshold */
+		 0x1 0x53
+		/* Squelch detection threshold */
+		 0x3 0x54
+		/* USB2 Tx slew rate */
+		 0x3 0x55
+		/* USB2 Rx Equalization */
+		 0x0 0x56
+		/* Tx pre-emphasis tuning */
+		 0x3 0x57>;
+	qcom,host-param-override-seq =
+		/* <value reg_offset> */
+		/* Adjust HS trasmit amplitude */
+		<0xa 0x51
+		/* HS termination resistor */
+		 0x1 0x52
+		/* HS disconnect threshold */
+		 0x1 0x53
+		/* Squelch detection threshold */
+		 0x3 0x54
+		/* USB2 Tx slew rate */
+		 0x2 0x55
+		/* USB2 Rx Equalization */
+		 0x0 0x56
+		/* Tx pre-emphasis tuning */
+		 0x3 0x57>;
+};
