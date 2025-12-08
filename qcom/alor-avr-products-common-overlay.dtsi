@@ -20,6 +20,9 @@
 #include "alor-avr-touchscreen-thp-overlay.dtsi"
 
 &tlmm {
+
+        qcom,gpios-reserved = <36 37 38 39 46 74 148 149 57 58 59>;
+
 	key_ai_default: key_ai_default {
 		mux {
 			pins = "gpio124";
