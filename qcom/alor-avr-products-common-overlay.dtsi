@@ -21,12 +21,15 @@
 #include "alor-avr-charger-overlay.dtsi"
 #include "alor-avr-modem-overlay.dtsi"
 #include "alor-avr-touchscreen-thp-overlay.dtsi"
+#include "alor-avr-fingerprint-overlay.dtsi"
 #include "alor-avr-haptics-overlay.dtsi"
 #include "alor-avr-sensors-overlay.dtsi"
 
 &tlmm {
 
-        qcom,gpios-reserved = <36 37 38 39 46 74 148 149 57 58 59>;
+	/* GPIO72/73/75/56 used by camera */
+	/* GPIO40/41/42/43 used as FoD SPI (accessible only by TZ) */
+	qcom,gpios-reserved = <36 37 38 39 40 41 42 43 46 74 148 149 57 58 59>;
 
 	key_ai_default: key_ai_default {
 		mux {
