@@ -390,14 +390,6 @@
 		size = <0x0 0x800000>;
 	};
 
-	non_secure_display_memory: non_secure_display_region {
-		compatible = "shared-dma-pool";
-		reusable;
-		alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
-		size = <0x0 0xc800000>;
-		alignment = <0x0 0x400000>;
-	};
-
 	/* cdsp eva shared memory */
 	cdsp_eva_mem: cdsp_eva_region {
 		compatible = "shared-dma-pool";
@@ -2986,7 +2978,7 @@
 
 	gunyah-cma-mem {
 		compatible = "gunyah-cma-vm-mem";
-		memory-region = <&trust_ui_vm_mem &oem_vm_mem>;
+		memory-region = <&oem_vm_mem>;
 		memory-region-names = "trustedvm_cma" , "oemvm_cma";
 	};
 
@@ -3002,7 +2994,7 @@
 		qcom,vmid = <45>;
 		qcom,firmware-name = "trustedvm";
 		qcom,keep-running;
-		memory-region = <&trust_ui_vm_mem &vm_comm_mem>;
+		memory-region = <&vm_comm_mem>;
 		virtio-backends = <&trust_ui_vm_virt_be0 &trust_ui_vm_virt_be1>;
 	};
 
