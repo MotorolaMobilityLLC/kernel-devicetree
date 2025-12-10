@@ -19,6 +19,7 @@
 #include "moto-alor-avr-pmic.dtsi"
 #include "alor-avr-touchscreen-thp-overlay.dtsi"
 #include "alor-avr-haptics-overlay.dtsi"
+#include "alor-avr-sensors-overlay.dtsi"
 
 &tlmm {
 
