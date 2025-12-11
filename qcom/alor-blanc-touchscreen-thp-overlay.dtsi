@@ -69,6 +69,68 @@
 	};
 };
 
+&tlmm {
+	/* touchscreen pins */
+	pmx_ts_active {
+		ts_active: ts_active {
+			mux {
+				pins = "gpio55";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio55";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_int_suspend {
+		ts_int_suspend: ts_int_suspend {
+			mux {
+				pins = "gpio55";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio55";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+	pmx_ts_fold_active {
+		ts_fold_active: ts_fold_active {
+			mux {
+				pins = "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio162";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_fold_int_suspend {
+		ts_fold_int_suspend: ts_fold_int_suspend {
+			mux {
+				pins = "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio162";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+};
+
 &qupv3_se4_spi {
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -101,9 +163,11 @@
 		goodix,power-on-delay-us = <100000>; /*300ms*/
 		goodix,power-off-delay-us = <10000>;
 
-		pinctrl-names = "stylus_clk_active", "stylus_clk_suspend";
-		pinctrl-0 = <&stylus_clk_active>;
-		pinctrl-1 = <&stylus_clk_suspend>;
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "stylus_clk_active", "stylus_clk_suspend";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend>;
+		pinctrl-2 = <&stylus_clk_active>;
+		pinctrl-3 = <&stylus_clk_suspend>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,gpio-expander;
@@ -118,6 +182,7 @@
 		mmi,supported_gesture_type = <0x06>;
 		mmi,resolution_boost = <16>;
 		goodix,stylus_mode-ctrl;
+		goodix,esd-enable;
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
@@ -229,9 +294,11 @@
 		goodix,power-on-delay-us = <100000>; /*300ms*/
 		goodix,power-off-delay-us = <10000>;
 
-		pinctrl-names = "stylus_fold_clk_active", "stylus_fold_clk_suspend";
-		pinctrl-0 = <&stylus_fold_clk_active>;
-		pinctrl-1 = <&stylus_fold_clk_suspend>;
+		pinctrl-names = "pmx_ts_fold_active", "pmx_ts_fold_suspend", "stylus_fold_clk_active", "stylus_fold_clk_suspend";
+		pinctrl-0 = <&ts_fold_active>;
+		pinctrl-1 = <&ts_fold_int_suspend>;
+		pinctrl-2 = <&stylus_fold_clk_active>;
+		pinctrl-3 = <&stylus_fold_clk_suspend>;
 		goodix,firmware-name = "goodix_firmware.bin";
 		goodix,config-name = "goodix_cfg_group.bin";
 		goodix,gpio-expander;
@@ -247,6 +314,7 @@
 		mmi,resolution_boost = <16>;
 		mmi,cli-enable-gestures;
 		goodix,stylus_mode-ctrl;
+		goodix,esd-enable;
 
 		goodix,sched-priority = <90>;
 		goodix,cpu-affinity = <0xf0>;
