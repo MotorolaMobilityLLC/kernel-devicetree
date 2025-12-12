@@ -24,6 +24,8 @@
 #include "alor-avr-fingerprint-overlay.dtsi"
 #include "alor-avr-haptics-overlay.dtsi"
 #include "alor-avr-sensors-overlay.dtsi"
+/* Reuse vantage thermal configuration as both products share the same sensors design. */
+#include "alor-vantage-thermal-overlay.dtsi"
 
 &tlmm {
 
