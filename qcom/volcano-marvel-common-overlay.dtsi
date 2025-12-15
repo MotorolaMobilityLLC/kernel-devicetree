@@ -19,6 +19,7 @@
 #include "moto-marvel-aw37004.dtsi"
 #include "volcano-marvel-touchscreen-overlay.dtsi"
 #include "volcano-marvel-wlan-antenna-control.dtsi"
+#include "volcano-marvel-reserved-memory.dtsi"
 
 &tlmm {
 	vib_int_active: vib_int_active {

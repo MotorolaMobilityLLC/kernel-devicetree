@@ -1,0 +1,5 @@
+
+&mpss_mem{
+	no-map;
+	reg = <0x0 0x8ac00000 0x0 0xdc00000>;
+};
