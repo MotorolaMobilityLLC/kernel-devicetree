@@ -87,10 +87,6 @@
 	};
 };
 
-&qseecom_ta_mem {
-	size = <0x0 0x1800000>;
-};
-
 &wcd_usbss {
 	status = "disabled";
 };
