@@ -351,7 +351,17 @@
 		cooling-maps {
 			socd_apc1 {
 				trip = <&socd_trip>;
-				cooling-device = <&cpu_6_7_pause 1 1>;
+				cooling-device = <&cpu1_pause 1 1>;
+			};
+
+			socd_apc2 {
+				trip = <&socd_trip>;
+				cooling-device = <&cpu2_pause 1 1>;
+			};
+
+			socd_apc3 {
+				trip = <&socd_trip>;
+				cooling-device = <&cpu3_pause 1 1>;
 			};
 
 			socd_cdsp1 {
