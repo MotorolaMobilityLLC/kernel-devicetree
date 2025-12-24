@@ -20,15 +20,4 @@
 	modem_pas: remoteproc-mss@04080000 {
 		memory-region = <&mpss_mem &q6_mpss_dtb_mem &system_cma &dsm_partition_1_mem>;
 	};
-	qcom,dma-heaps {
-		qcom,qseecom_ta {
-			qcom,dma-heap-type = <HEAP_TYPE_CARVEOUT>;
-		};
-	};
-};
-
-&qseecom_ta_mem {
-	/delete-property/ reusable;
-	no-map;
-	reg = <0x0 0xf6800000 0x0 0x1400000>;
 };
