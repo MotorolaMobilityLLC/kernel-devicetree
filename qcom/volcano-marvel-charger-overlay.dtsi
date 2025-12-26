@@ -1,5 +1,5 @@
 &mmi_charger {
-	mmi,upper-limit-capacity = <70>;
+	mmi,upper-limit-capacity = <72>;
 	mmi,pd-power-max = <68000>;
 	mmi,heartbeat-interval = <10000>;
 };
