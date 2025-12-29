@@ -6,7 +6,7 @@
 
 &qti_glink_charger {
 	profile-ids-map-7000 = "107000", "ATLSA70NVT", "87000", "LWNSA70SWD", "67000", "COSSA70COS";
-	profile-ids-map-5200 = "47000", "ATLSA52NVT", "27000", "VEKSA52VEK";
+	profile-ids-map-5200 = "47000", "ATLSA52NVT", "47000", "ATLSA52UCB", "27000", "VEKSA52VEK";
 	profile-ids-map-5600 = "7000", "ATLSA56NVT";
 	mmi,df-serialnum-7000 = "ATLSA70NVT";
 	mmi,df-serialnum-5200 = "ATLSA52NVT";
