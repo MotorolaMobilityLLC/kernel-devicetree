@@ -121,3 +121,9 @@
 		status = "disabled";
 	};
 };
+
+&pm6450_l13 {
+	regulator-min-microvolt = <1140000>;
+	regulator-max-microvolt = <1260000>;
+	qcom,init-voltage = <1250000>;
+};
