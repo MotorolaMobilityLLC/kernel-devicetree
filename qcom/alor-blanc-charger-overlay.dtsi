@@ -24,7 +24,7 @@
 	main-ids-map = "107000", "SB18E95980";
 	flip-ids-map = "38000", "SB18E95979";
 	profile-ids-map = "107000", "ATLSH31NVT","38000", "ATLSH29NVT";
-	mmi,upper-limit-capacity = <78>;
+	mmi,upper-limit-capacity = <75>;
 	mmi,lower-limit-capacity = <65>;
 	charger_device_0 {
 		dev-name = "main_battery";
