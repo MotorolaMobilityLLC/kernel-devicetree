@@ -249,12 +249,16 @@
 			goodix,stylus-report-rate-config-0 = [
 				00 B4 //report rate 180HZ
 				CE 01 //command
+				D1 00 //filter
+				D2 00 //palm area
 			];
 
 			/* config item 1, high */
 			goodix,stylus-report-rate-config-1 = [
 				01 68 //360Hz
 				CE 00
+				D1 01 //filter
+				D2 01 //palm area
 			];
 		};
 	};
@@ -381,12 +385,16 @@
 			goodix,stylus-report-rate-config-0 = [
 				00 B4 //report rate 180HZ
 				CE 01 //command
+				D1 00 //filter
+				D2 00 //palm area
 			];
 
 			/* config item 1, high */
 			goodix,stylus-report-rate-config-1 = [
 				01 68 //360Hz
 				CE 00
+				D1 01 //filter
+				D2 01 //palm area
 			];
 		};
 	};
