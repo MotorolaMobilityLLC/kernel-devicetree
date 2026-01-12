@@ -134,6 +134,7 @@
                 compatible = "awinic,aw_sar";
                 reg = < 0x12 >;
                 aw_sar,regulator-power-supply = <1>;
+                aw_sar,using_pm_ops;
                 sar-num = < 0 >;
                 interrupt-parent = < &tlmm >;
                 interrupts = <67 0x02>;
