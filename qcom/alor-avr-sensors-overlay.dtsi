@@ -36,7 +36,6 @@
 			};
 	};
 };
-
 &qupv3_se10_i2c {
         status = "okay";
         sx937x@2c { /* SAR sensor */
@@ -58,8 +57,8 @@
 		Semtech,ref-phases-a = <4>;
 		Semtech,ref-phases-b = <5>;
 		Semtech,ref-phases-c = <6>;
-		Semtech,button-flag = <0x07>;
-		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch1","Moto CapSense Ch2";
+		Semtech,button-flag = <0x1f>;
+		Semtech,button-names = "Moto CapSense Ch0","Moto CapSense Ch1","Moto CapSense Ch2","Moto CapSense Ch3","Moto CapSense Ch4";
 		Semtech,reg-num = <65>;
 		Semtech,reg-init = <
 			0x4004 0x00000070
@@ -141,7 +140,7 @@
                 interrupt-names = "awinic_irq";
                 irq-gpio = <&tlmm 67 0x02>;
                 vcc0-supply = <&L15B>;
-                channel_use_flag = <0x07>;
+                channel_use_flag = <0x1f>;
                 monitor_esd_flag = <1>;
                 aw_sar,use_plug_cail;
                 aw_sar,update_fw;
