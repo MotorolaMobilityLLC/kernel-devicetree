@@ -113,7 +113,7 @@
 
 	dwc3@a600000 {
 		usb-phy = <&eusb2_phy0>, <&usb_qmp_dp_phy>;
-		maximum-speed = "super-speed-plus";
+		maximum-speed = "super-speed";
 		snps,usb2-gadget-lpm-disable;
 		snps,usb2-lpm-disable;
 	};
