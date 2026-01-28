@@ -118,7 +118,7 @@
 	qcom,host-param-override-seq =
 		/* <value reg_offset> */
 		/* Adjust HS trasmit amplitude */
-		<0xa 0x51
+		<0xb 0x51
 		/* HS termination resistor */
 		 0x1 0x52
 		/* HS disconnect threshold */
@@ -130,5 +130,5 @@
 		/* USB2 Rx Equalization */
 		 0x0 0x56
 		/* Tx pre-emphasis tuning */
-		 0x3 0x57>;
+		 0x5 0x57>;
 };
