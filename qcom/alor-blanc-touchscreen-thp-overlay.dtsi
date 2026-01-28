@@ -37,7 +37,7 @@
 			pins = "gpio5";
 			function = "func2";
 			bias-high-impedance;
-			output-disable; // digital output, no invert
+			output-enable; // digital output, no invert
 			input-disable; // prevent GPIO from being set to DIO
 			power-source = <0>;
 		};
@@ -55,7 +55,7 @@
 			pins = "gpio3";
 			function = "func2";
 			bias-high-impedance;
-			output-disable; // digital output, no invert
+			output-enable; // digital output, no invert
 			input-disable; // prevent GPIO from being set to DIO
 			power-source = <0>;
 		};
@@ -243,7 +243,7 @@
 		};
 		/* stylus report rate config */
 		goodix,stylus-report-rate-config {
-			goodix,rate-config-count = /bits/ 8 <0x02>;
+			goodix,rate-config-count = /bits/ 8 <0x03>;
 
 			/* config item 0, default */
 			goodix,stylus-report-rate-config-0 = [
@@ -257,6 +257,14 @@
 			goodix,stylus-report-rate-config-1 = [
 				01 68 //360Hz
 				CE 00
+				D1 01 //filter
+				D2 01 //palm area
+			];
+
+			/* config item 2, low */
+			goodix,stylus-report-rate-config-2 = [
+				00 78 //report rate 120HZ
+				CE 02 //command
 				D1 01 //filter
 				D2 01 //palm area
 			];
@@ -379,7 +387,7 @@
 		};
 		/* stylus report rate config */
 		goodix,stylus-report-rate-config {
-			goodix,rate-config-count = /bits/ 8 <0x02>;
+			goodix,rate-config-count = /bits/ 8 <0x03>;
 
 			/* config item 0, default */
 			goodix,stylus-report-rate-config-0 = [
@@ -393,6 +401,14 @@
 			goodix,stylus-report-rate-config-1 = [
 				01 68 //360Hz
 				CE 00
+				D1 01 //filter
+				D2 01 //palm area
+			];
+
+			/* config item 2, low */
+			goodix,stylus-report-rate-config-2 = [
+				00 78 //report rate 120HZ
+				CE 02 //command
 				D1 01 //filter
 				D2 01 //palm area
 			];
