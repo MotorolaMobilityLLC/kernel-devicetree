@@ -21,8 +21,8 @@
 	mmi,thermal-secondary-mitigation = <8400000 8000000 7000000 6000000 5000000 4000000 3000000 2000000 1000000 500000 500000 100000>;
 	mmi,factory-syspoweroff-wait;
 
-	main-ids-map = "107000", "ATLSR52NVT", "38000", "ATLSR52NVP";
-	profile-ids-map = "107000", "ATLSR52NVT", "38000", "ATLSR52NVP";
+	main-ids-map = "107000", "ATLSA80NVT", "38000", "ATLSA71NVT";
+	profile-ids-map = "107000", "ATLSA80NVT", "38000", "ATLSA71NVT";
 	mmi,upper-limit-capacity = <70>;
 	mmi,lower-limit-capacity = <60>;
 	charger_device_0 {
