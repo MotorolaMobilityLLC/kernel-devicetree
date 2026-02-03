@@ -127,7 +127,7 @@
         qcom,param-override-seq =
                 /* <value reg_offset> */
                 /* Adjust HS transmit amplitude */
-                <0xf 0x51
+                <0xb 0x51
                 /* Squelch Detector Threshold */
                  0x4 0x54
                 /* Tx pre-emphasis tuning */
@@ -135,9 +135,9 @@
         qcom,host-param-override-seq =
                 /* <value reg_offset> */
                 /* Adjust HS transmit amplitude */
-                <0xe 0x51
+                <0xb 0x51
                 /* Disconnect Threshold */
-                 0x5 0x53
+                 0x6 0x53
                 /* Squelch Detector Threshold */
                  0x6 0x54
                 /* Tx pre-emphasis tuning */
