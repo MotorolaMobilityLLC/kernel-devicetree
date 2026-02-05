@@ -48,6 +48,8 @@
 		psy-name = "usb_info";
 		dev-type = <6>;
 		dev-role = <0>;
+		otg-boost-limit-vph-mv = <2800>;
+		otg-boost-recover-vph-mv = <3200>;
 	};
 };
 
