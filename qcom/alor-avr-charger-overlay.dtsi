@@ -50,6 +50,8 @@
 		dev-role = <0>;
 		otg-boost-limit-vph-mv = <2800>;
 		otg-boost-recover-vph-mv = <3200>;
+		snk-thermal-mitigation = <6300 3000 2000 1500 1000 500 0>;
+		src-thermal-mitigation = <1000 500 0>;
 	};
 };
 
