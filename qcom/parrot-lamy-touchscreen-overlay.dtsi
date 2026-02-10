@@ -192,7 +192,7 @@
 				01 68 //360Hz
 				CE 00
 				D1 01 //filter
-				D2 01 //palm area
+				D2 00 //palm area
 			];
 
 			/* config item 2, low */
@@ -200,7 +200,7 @@
 				00 78 //report rate 120HZ
 				CE 02 //command
 				D1 01 //filter
-				D2 01 //palm area
+				D2 00 //palm area
 			];
 		};
 	};
