@@ -3372,6 +3372,11 @@
 		clocks = <&rpmhcc RPMH_CXO_CLK>;
 		clock-names = "xo";
 
+		interconnects = <&aggre2_noc MASTER_SOCCP_PROC &mc_virt SLAVE_EBI1>,
+				<&gem_noc MASTER_APPSS_PROC &cnoc_main SLAVE_SOCCP>;
+
+		interconnect-names = "rproc_ddr", "rproc_cnoc";
+
 		firmware-name = "soccp.mbn", "soccp_dtb.mbn";
 
 		memory-region = <&soccp_mem &soccp_dtb_mem>;
