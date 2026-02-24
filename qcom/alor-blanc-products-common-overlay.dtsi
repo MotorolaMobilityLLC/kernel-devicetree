@@ -25,6 +25,7 @@
 #include "alor-blanc-thermal-overlay.dtsi"
 #include "moto-alor-blanc-pmic.dtsi"
 #include "alor-blanc-touchscreen-thp-overlay.dtsi"
+#include "alor-blanc-wonder.dtsi"
 #include <dt-bindings/phy/qcom,usb3-3nm-qmp-combo.h>
 
 &tlmm {
