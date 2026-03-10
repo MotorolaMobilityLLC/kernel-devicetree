@@ -30,6 +30,12 @@ ALOR_BOARDS += alor-blanc-evb-overlay.dtbo
 ALOR_BOARDS += alor-blanc-dvt1b-overlay.dtbo
 endif
 
+ifeq ($(CONFIG_MAKALU_DTB),y)
+ALOR_BASE_DTB += alor-makalu-base.dtb
+ALOR_BOARDS += alor-makalu-evb-overlay.dtbo
+ALOR_BOARDS += alor-makalu-dvt1b-overlay.dtbo
+endif
+
 ifeq ($(CONFIG_VANTAGE_DTB),y)
 ALOR_BASE_DTB += alor-vantage-base.dtb
 ALOR_BOARDS += alor-vantage-dvt1b-overlay.dtbo \
