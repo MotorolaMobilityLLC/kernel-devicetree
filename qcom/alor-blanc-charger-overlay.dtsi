@@ -28,8 +28,8 @@
 	mmi,lower-limit-capacity = <65>;
         /* mmi_charger_sku_type - PRC 0x01, ROW 0x02, NA 0x03, VZW 0x04, JP 0x05 ...*/
         mmi,limit-capacity-by-sku = <1>;
-        mmi,sku-upper-limit-capacity = <92>;
-        mmi,sku-lower-limit-capacity = <82>;
+        mmi,sku-upper-limit-capacity = <82>;
+        mmi,sku-lower-limit-capacity = <72>;
 	charger_device_0 {
 		dev-name = "main_battery";
 		psy-name = "main_battery";
