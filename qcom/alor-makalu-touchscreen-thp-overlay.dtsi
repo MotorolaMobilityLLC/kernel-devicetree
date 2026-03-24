@@ -1,0 +1,348 @@
+/*
+ * Copyright (c) 2026, Motorola Mobility LLC. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/iio/qcom,spmi-adc5-gen4-pmk8850.h>
+
+&qupv3_se4_i2c {
+	status = "disabled";
+};
+&qupv3_se10_i2c {
+	status = "disabled";
+};
+&alt_sleep_clk_default {
+	pins = "gpio1";
+};
+
+&pmk8550_gpios {
+	stylus_clk_ctrl {
+		stylus_clk_active: stylus_clk_active {
+			pins = "gpio5";
+			function = "func2";
+			bias-disable; // No Pull
+			output-enable; // digital output, no invert
+			input-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+		stylus_clk_suspend: stylus_clk_suspend {
+			pins = "gpio5";
+			function = "func2";
+			bias-high-impedance;
+			output-enable; // digital output, no invert
+			input-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+	};
+	stylus_fold_clk_ctrl {
+		stylus_fold_clk_active: stylus_fold_clk_active {
+			pins = "gpio3";
+			function = "func2";
+			bias-disable; // No Pull
+			output-enable; // digital output, no invert
+			input-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+		stylus_fold_clk_suspend: stylus_fold_clk_suspend {
+			pins = "gpio3";
+			function = "func2";
+			bias-high-impedance;
+			output-enable; // digital output, no invert
+			input-disable; // prevent GPIO from being set to DIO
+			power-source = <0>;
+		};
+	};
+};
+
+&soc {
+	mmi_stow {
+		compatible = "moto,mmi_stow";
+		mmi,stow-gpio = <&tlmm 201 0x0>;
+	};
+};
+
+&tlmm {
+	/* touchscreen pins */
+	pmx_ts_active {
+		ts_active: ts_active {
+			mux {
+				pins = "gpio55";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio55";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_int_suspend {
+		ts_int_suspend: ts_int_suspend {
+			mux {
+				pins = "gpio55";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio55";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+	pmx_ts_fold_active {
+		ts_fold_active: ts_fold_active {
+			mux {
+				pins = "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio162";
+				drive-strength = <8>;
+				bias-pull-up;
+			};
+		};
+	};
+
+	pmx_ts_fold_int_suspend {
+		ts_fold_int_suspend: ts_fold_int_suspend {
+			mux {
+				pins = "gpio162";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio162";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
+		};
+	};
+};
+
+&qupv3_se4_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin@0 {
+		status = "ok";
+		compatible = "goodix_thp";
+		reg = <0>;
+
+		spi-mode = <0>;
+		bits-per-word = <8>;
+		spi-max-frequency = <30000000>;
+		chip-type = <3>; // 1: 9897 2: 9916 3: 9966
+
+		mmi,status = "/chosen","mmi,panel_name","contains","csot_nt37900";
+		goodix,reset-gpio = <&gpio_expander 11 0>;
+		goodix,irq-gpio = <&tlmm 55 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 2001:trigger rising, 2002:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <35712>; /* 2232*16 */
+		goodix,panel-max-y = <39744>; /* 2484*16 */
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-gpio = <&gpio_expander 4 0>;
+		goodix,iovdd-gpio = <&gpio_expander 3 0>;
+
+		goodix,panel-key-map = <158 172 217>; /*BACK,HOMEPAGE,SEARCH*/
+		goodix,power-on-delay-us = <100000>; /*100ms*/
+		goodix,power-off-delay-us = <10000>;
+
+		pinctrl-names = "pmx_ts_active", "pmx_ts_suspend", "stylus_clk_active", "stylus_clk_suspend";
+		pinctrl-0 = <&ts_active>;
+		pinctrl-1 = <&ts_int_suspend>;
+		pinctrl-2 = <&stylus_clk_active>;
+		pinctrl-3 = <&stylus_clk_suspend>;
+		goodix,firmware-name = "goodix_firmware.bin";
+		goodix,config-name = "goodix_cfg_group.bin";
+		goodix,gpio-expander;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,stylus-interpolation-ctrl;
+		goodix,gesture-wait-pm;
+		goodix,sample-ctrl;
+		mmi,power-off-suspend;
+		mmi,enable-gestures;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x06>;
+		mmi,resolution_boost = <16>;
+		goodix,stylus_mode-ctrl;
+		goodix,esd-enable;
+
+		goodix,sched-priority = <90>;
+		goodix,cpu-affinity = <0xf0>;
+		goodix,dev_id = <1>;
+		/* report rate config example, without fps info */
+		goodix,report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x02>;
+			goodix,interpolation-ctrl;
+
+			/* config item 0 */
+			goodix,report-rate-config-0 = [
+				00
+				00 82 //130HZ
+				9D 03
+			];
+
+			/* config item 1 */
+			goodix,report-rate-config-1 = [
+				01
+				01 2C //300Hz
+				9D 02
+			];
+		};
+		/* stylus report rate config */
+		goodix,stylus-report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x03>;
+
+			/* config item 0, default */
+			goodix,stylus-report-rate-config-0 = [
+				00 B4 //report rate 180HZ
+				CE 01 //command
+				D1 00 //filter
+				D2 00 //palm area
+			];
+
+			/* config item 1, high */
+			goodix,stylus-report-rate-config-1 = [
+				01 68 //360Hz
+				CE 00
+				D1 01 //filter
+				D2 01 //palm area
+			];
+
+			/* config item 2, low */
+			goodix,stylus-report-rate-config-2 = [
+				00 78 //report rate 120HZ
+				CE 02 //command
+				D1 01 //filter
+				D2 01 //palm area
+			];
+		};
+	};
+};
+
+&qupv3_se10_spi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	status = "ok";
+
+	goodix-berlin-fold@0 {
+		status = "ok";
+		compatible = "goodix_thp";
+		reg = <0>;
+
+		spi-mode = <0>;
+		bits-per-word = <8>;
+		spi-max-frequency = <30000000>;
+		chip-type = <2>; // 1: 9897 2: 9916 3: 9966
+		mmi,control-dsi = <1>;
+		mmi,class-entry-name = "secondary";
+
+		mmi,status = "/chosen","mmi,panel_name_s","contains","csot_nt37707";
+		goodix,reset-gpio = <&gpio_expander 12 0>;
+		goodix,irq-gpio = <&tlmm 162 0x2002>;
+		goodix,irq-flags = <0x2002>; /* 2001:trigger rising, 2002:trigger falling;*/
+		goodix,panel-max-id = <10>;
+		goodix,panel-max-x = <17280>; /* 1080*16 */
+		goodix,panel-max-y = <40320>; /* 2520*16 */
+		goodix,panel-max-w = <255>;
+		goodix,panel-max-p = <4096>;
+		goodix,avdd-gpio = <&gpio_expander 8 0>;
+		goodix,iovdd-gpio = <&gpio_expander 9 0>;
+
+		goodix,panel-key-map = <158 172 217>; /*BACK,HOMEPAGE,SEARCH*/
+		goodix,power-on-delay-us = <100000>; /*100ms*/
+		goodix,power-off-delay-us = <10000>;
+
+		pinctrl-names = "pmx_ts_fold_active", "pmx_ts_fold_suspend", "stylus_fold_clk_active", "stylus_fold_clk_suspend";
+		pinctrl-0 = <&ts_fold_active>;
+		pinctrl-1 = <&ts_fold_int_suspend>;
+		pinctrl-2 = <&stylus_fold_clk_active>;
+		pinctrl-3 = <&stylus_fold_clk_suspend>;
+		goodix,firmware-name = "goodix_firmware.bin";
+		goodix,config-name = "goodix_cfg_group.bin";
+		goodix,gpio-expander;
+		goodix,edge-ctrl;
+		goodix,interpolation-ctrl;
+		goodix,stylus-interpolation-ctrl;
+		goodix,gesture-wait-pm;
+		goodix,sample-ctrl;
+		goodix,pocket-mode-ctrl;
+		mmi,power-off-suspend;
+		mmi,usb-charger-detection;
+		mmi,supported_gesture_type = <0x06>;
+		mmi,resolution_boost = <16>;
+		mmi,cli-enable-gestures;
+		goodix,stylus_mode-ctrl;
+		goodix,esd-enable;
+
+		goodix,sched-priority = <90>;
+		goodix,cpu-affinity = <0xf0>;
+		goodix,dev_id = <2>;
+		/* report rate config example, without fps info */
+		goodix,report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x02>;
+			goodix,interpolation-ctrl;
+
+			/* config item 0 */
+			goodix,report-rate-config-0 = [
+				00
+				00 82 //130HZ
+				9D 03
+			];
+
+			/* config item 1 */
+			goodix,report-rate-config-1 = [
+				01
+				01 2C //300Hz
+				9D 02
+			];
+		};
+		/* stylus report rate config */
+		goodix,stylus-report-rate-config {
+			goodix,rate-config-count = /bits/ 8 <0x03>;
+
+			/* config item 0, default */
+			goodix,stylus-report-rate-config-0 = [
+				00 B4 //report rate 180HZ
+				CE 01 //command
+				D1 00 //filter
+				D2 00 //palm area
+			];
+
+			/* config item 1, high */
+			goodix,stylus-report-rate-config-1 = [
+				01 68 //360Hz
+				CE 00
+				D1 01 //filter
+				D2 01 //palm area
+			];
+
+			/* config item 2, low */
+			goodix,stylus-report-rate-config-2 = [
+				00 78 //report rate 120HZ
+				CE 02 //command
+				D1 01 //filter
+				D2 01 //palm area
+			];
+		};
+	};
+};
+
