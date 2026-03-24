@@ -23,7 +23,7 @@
 #include "alor-blanc-sensors-overlay.dtsi"
 #include "alor-blanc-haptics-overlay.dtsi"
 #include "alor-blanc-thermal-overlay.dtsi"
-#include "moto-alor-blanc-pmic.dtsi"
+#include "moto-makalu-camera-pmic.dtsi"
 #include "alor-makalu-touchscreen-thp-overlay.dtsi"
 #include <dt-bindings/phy/qcom,usb3-3nm-qmp-combo.h>
 
