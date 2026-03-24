@@ -18,7 +18,7 @@
 #include "alor-moto-common-overlay.dtsi"
 #include "alor-blanc-fingerprint-overlay.dtsi"
 #include "alor-moto-common-charger.dtsi"
-#include "alor-blanc-charger-overlay.dtsi"
+#include "alor-makalu-charger-overlay.dtsi"
 #include "alor-qrd-peach-vantage.dtsi"
 #include "alor-blanc-sensors-overlay.dtsi"
 #include "alor-makalu-haptics-overlay.dtsi"
