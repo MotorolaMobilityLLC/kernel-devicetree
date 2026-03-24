@@ -21,7 +21,7 @@
 #include "alor-blanc-charger-overlay.dtsi"
 #include "alor-qrd-peach-vantage.dtsi"
 #include "alor-blanc-sensors-overlay.dtsi"
-#include "alor-blanc-haptics-overlay.dtsi"
+#include "alor-makalu-haptics-overlay.dtsi"
 #include "alor-makalu-thermal-overlay.dtsi"
 #include "moto-makalu-camera-pmic.dtsi"
 #include "alor-makalu-touchscreen-thp-overlay.dtsi"
