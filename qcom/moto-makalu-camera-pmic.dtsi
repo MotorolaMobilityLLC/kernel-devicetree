@@ -14,7 +14,7 @@
     reg = <0x28>;
 
     vin1-supply = <&S4F>;
-    vin2-supply = <&BOB>;
+    vin2-supply = <&BOB1>;
 
     regulators {
       cam_ldo1: ldo1 {
