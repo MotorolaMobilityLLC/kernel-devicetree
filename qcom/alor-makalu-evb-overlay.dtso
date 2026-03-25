@@ -6,11 +6,11 @@
 /dts-v1/;
 /plugin/;
 
-#include "alor-blanc-products-common-overlay.dtsi"
+#include "alor-makalu-products-common-overlay.dtsi"
 
 / {
-	model = "blanc";
+	model = "makalu";
 	compatible = "qcom,alor-qrd", "qcom,alor", "qcom,qrd";
 	qcom,msm-id = <685 0x10000>;
-	qcom,board-id = <0x41 0x9100>;
+	qcom,board-id = <0x48 0x9100>;
 };
