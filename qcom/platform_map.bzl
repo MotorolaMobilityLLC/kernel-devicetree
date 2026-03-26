@@ -87,7 +87,6 @@ _platform_map = {
         "dtbo_list": [
             # keep sorted
             {"name": "alor-blanc-evb-overlay.dtbo", "product": "blanc"},
-            {"name": "alor-blanc-dvt1b-overlay.dtbo", "product": "blanc"},
             {"name": "alor-makalu-evb-overlay.dtbo", "product": "makalu"},
             {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
             {"name": "alor-vantage-pvt-overlay.dtbo", "product": "vantage"},
