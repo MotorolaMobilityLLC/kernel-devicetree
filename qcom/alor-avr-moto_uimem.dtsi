@@ -1,0 +1,12 @@
+&soc {
+    uimem_property {
+		compatible = "moto,uimem";
+
+		/* UX_TYPE_* mask */
+		labeled-thread-mask = <0x101648>;
+		/* order, size(linux/sizes.h), high/low water-mark level1 level2*/
+		moto,uimem_prop =
+			<0 0x06000000 80 60>, /* SIZE_64M + SIZE_32M*/
+			<1 0x00800000 80 60>; /* SIZE_8M */
+    };
+};
