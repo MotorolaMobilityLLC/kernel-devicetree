@@ -20,7 +20,7 @@
 #include "alor-moto-common-charger.dtsi"
 #include "alor-makalu-charger-overlay.dtsi"
 #include "alor-qrd-peach-vantage.dtsi"
-#include "alor-blanc-sensors-overlay.dtsi"
+#include "alor-makalu-sensors-overlay.dtsi"
 #include "alor-makalu-haptics-overlay.dtsi"
 #include "alor-makalu-thermal-overlay.dtsi"
 #include "moto-makalu-camera-pmic.dtsi"
