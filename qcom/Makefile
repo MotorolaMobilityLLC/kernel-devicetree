@@ -26,7 +26,9 @@ endif
 
 ifeq ($(CONFIG_BLANC_DTB),y)
 ALOR_BASE_DTB += alor-blanc-base.dtb
-ALOR_BOARDS += alor-blanc-evb-overlay.dtbo
+ALOR_BOARDS += alor-blanc-evb-overlay.dtbo \
+	       alor-blanc-dvt1b-overlay.dtbo \
+	       alor-blanc-mmw-overlay.dtbo
 endif
 
 ifeq ($(CONFIG_MAKALU_DTB),y)
