@@ -108,6 +108,7 @@ _platform_map = {
             {"name": "alor-blanc-dvt1b-overlay.dtbo", "product": "blanc"},
             {"name": "alor-vantage-dvt1b-overlay.dtbo", "product": "vantage"},
             {"name": "alor-vantage-pvt-overlay.dtbo", "product": "vantage"},
+            {"name": "alor-vantage-japan-evt1-overlay.dtbo", "product": "vantage"},
             {"name": "alor-avr-evb-overlay.dtbo", "product": "avr"},
         ],
     },
