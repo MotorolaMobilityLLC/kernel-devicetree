@@ -83,6 +83,7 @@ _platform_map = {
             {"name": "alor-makalu-base.dtb","product": "makalu"},
             {"name": "alor-vantage-base.dtb","product": "vantage"},
             {"name": "alor-avr-base.dtb","product": "avr"},
+            {"name": "alor-avr-base.dtb","product": "eletre"},
         ],
         "dtbo_list": [
             # keep sorted
@@ -94,6 +95,8 @@ _platform_map = {
             {"name": "alor-vantage-pvt-overlay.dtbo", "product": "vantage"},
             {"name": "alor-vantage-japan-evt1-overlay.dtbo", "product": "vantage"},
             {"name": "alor-avr-evb-overlay.dtbo", "product": "avr"},
+            {"name": "alor-avr-evb-overlay.dtbo", "product": "eletre"},
+            {"name": "alor-eletre-evb-overlay.dtbo", "product": "eletre"},
         ],
     },
     "alor-le": {
