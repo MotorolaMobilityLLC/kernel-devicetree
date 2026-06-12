@@ -95,17 +95,29 @@
 
 		qupv3_se0_spi_sleep: qupv3_se0_spi_sleep {
 			mux {
-				pins = "gpio0", "gpio1",
-					"gpio2", "gpio3";
+				pins = "gpio1", "gpio2",
+					"gpio3";
 				function = "gpio";
 			};
 
 			config {
-				pins = "gpio0", "gpio1",
-					"gpio2", "gpio3";
+				pins = "gpio1", "gpio2",
+					"gpio3";
 				drive-strength = <2>;
 				bias-disable;
-				input-enable;
+			};
+		};
+
+		qupv3_se0_spi_miso_sleep: qupv3_se0_spi_miso_sleep {
+			mux {
+				pins = "gpio0";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio0";
+				drive-strength = <2>;
+				output-low;
 			};
 		};
 
@@ -117,7 +129,7 @@
 	#size-cells = <0>;
 	pinctrl-0 = <&qupv3_se0_spi_mosi_active>, <&qupv3_se0_spi_miso_active>,
 				<&qupv3_se0_spi_clk_active>, <&qupv3_se0_spi_cs_active>;
-	pinctrl-1 = <&qupv3_se0_spi_sleep>;
+	pinctrl-1 = <&qupv3_se0_spi_sleep>, <&qupv3_se0_spi_miso_sleep>;
 
 	status = "ok";
 	goodix-berlin@0 {
