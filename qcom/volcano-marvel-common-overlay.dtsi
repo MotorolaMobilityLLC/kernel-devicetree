@@ -129,3 +129,7 @@
 		re-trigger-threshold = <7200>;	/* retrigger threshold 2 h */
 	};
 };
+
+&aoss_qmp {
+    moto_aoss_enable;
+};
